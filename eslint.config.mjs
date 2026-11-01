@@ -6,9 +6,17 @@ export default tseslint.config(
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {
-    files: ["**/*.{ts,tsx}"],
     languageOptions: {
-      globals: { window: "readonly", document: "readonly" },
+      globals: {
+        console: "readonly",
+        process: "readonly",
+        window: "readonly",
+        document: "readonly",
+      },
     },
+  },
+  {
+    files: ["**/*.{ts,tsx}"],
+    rules: { "no-undef": "off" }, // TypeScript checks undefined names.
   },
 );
