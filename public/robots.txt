@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /
+
+# PRE-LAUNCH: this is intentional. Do not enable indexing or submit
+# a sitemap until the company authorizes public publication.
