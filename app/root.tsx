@@ -1,7 +1,9 @@
 import type { ReactNode } from "react";
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from "react-router";
 import { SiteFooter, SiteHeader } from "./components/layout";
+import { MotionDirector } from "./components/motion";
 import "./app.css";
+import "./styles/refinement.css";
 
 export function Layout({ children }: { children: ReactNode }) {
   return (
@@ -21,6 +23,7 @@ export function Layout({ children }: { children: ReactNode }) {
         <SiteHeader />
         {children}
         <SiteFooter />
+        <MotionDirector />
         <ScrollRestoration />
         <Scripts />
       </body>
