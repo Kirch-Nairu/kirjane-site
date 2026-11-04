@@ -13,13 +13,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      # Replace npm install with npm ci after committing the verified lockfile.
-      - run: npm install --no-audit --no-fund
-      - uses: actions/upload-artifact@v4
-        with:
-          name: resolved-dependency-lock
-          path: package-lock.json
-          retention-days: 1
+          cache: npm
+      - run: npm ci --no-audit --no-fund
       - run: npm run typecheck
       - run: npm run lint
       - run: npm run build
