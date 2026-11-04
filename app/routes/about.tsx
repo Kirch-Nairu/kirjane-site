@@ -1,3 +1,4 @@
+import "../styles/leadership.css";
 import type { MetaFunction } from "react-router";
 import { PageIntro, SectionLabel, TextLink } from "../components/ui";
 
