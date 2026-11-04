@@ -10,6 +10,35 @@
   line-height: .94;
   letter-spacing: -.075em;
 }
+.leadership-identity { min-width: 0; }
+.founder-portrait {
+  position: relative;
+  width: min(100%, 400px);
+  margin: clamp(2rem, 4.5vw, 4rem) 0 0;
+  border: 1px solid var(--line);
+  background: #232a2d;
+}
+.founder-portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center;
+}
+.founder-portrait figcaption {
+  background: var(--forest-deep);
+  color: white;
+  padding: .95rem 1.1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: .5rem 1rem;
+  font-size: .67rem;
+  font-weight: 700;
+  letter-spacing: .075em;
+}
+.founder-portrait figcaption span:first-child { color: var(--lime); }
 .leadership-details {
   border-top: 1px solid var(--line);
   padding-top: 1.5rem;
@@ -34,10 +63,9 @@
   max-width: 560px;
   font-size: 1.02rem;
 }
-.leadership-details .approval-note {
-  margin-top: 2rem;
-}
+.leadership-details .approval-note { margin-top: 2rem; }
 @media (max-width: 760px) {
   .leadership-profile { grid-template-columns: 1fr; gap: 3.5rem; }
   .leadership-profile h2 { font-size: clamp(2.9rem, 9vw, 5rem); }
+  .founder-portrait { width: min(100%, 400px); }
 }

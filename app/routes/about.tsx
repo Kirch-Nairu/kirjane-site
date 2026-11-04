@@ -4,7 +4,7 @@ import { PageIntro, SectionLabel, TextLink } from "../components/ui";
 
 export const meta: MetaFunction = () => [
   { title: "About Us — Kirjane Labs" },
-  { name: "description", content: "Meet the thinking and technical leadership behind Kirjane Labs: practical problem-solving across software, automation, and digital systems." },
+  { name: "description", content: "Meet the founder and technical leadership behind Kirjane Labs: practical problem-solving across software, automation, and digital systems." },
 ];
 
 export default function About() {
@@ -28,15 +28,26 @@ export default function About() {
     <section className="section content-section shell" aria-labelledby="founder-heading">
       <SectionLabel number="02" text="FOUNDER / TECHNICAL LEADERSHIP"/>
       <div className="leadership-profile">
-        <div>
+        <div className="leadership-identity">
           <span className="eyebrow">KIRJANE LABS / FOUNDER</span>
           <h2 id="founder-heading">KIRCH IVAN<br/><em>A. BALITE.</em></h2>
+          <figure className="founder-portrait">
+            <img
+              src="/people/kirch-ivan-balite.webp"
+              width={400}
+              height={500}
+              loading="lazy"
+              decoding="async"
+              alt="Kirch Ivan A. Balite seated in a black business suit, white shirt, and navy tie against a dark studio background"
+            />
+            <figcaption><span>01 / FOUNDER</span><span>KIRCH IVAN A. BALITE</span></figcaption>
+          </figure>
         </div>
         <div className="leadership-details">
           <h3>Founder &amp;<br/>Chief Technology Officer</h3>
           <p className="leadership-roles">Head of Engineering <span aria-hidden="true">/</span> Main Systems Architect <span aria-hidden="true">/</span> Backend Engineer</p>
           <p>Kirch Ivan A. Balite founded Kirjane Labs and leads its engineering direction. His responsibilities span systems architecture, backend engineering, and technical leadership.</p>
-          <p className="approval-note">The official portrait and additional team profiles will be included once approved for public use.</p>
+          <p className="approval-note">Additional team profiles and official company photography will be introduced following content review.</p>
         </div>
       </div>
     </section>
