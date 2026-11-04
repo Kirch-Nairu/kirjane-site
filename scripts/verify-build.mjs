@@ -5,7 +5,7 @@ const base = "build/client";
 const routes = ["/", "/services", "/projects", "/about", "/process", "/contact"];
 let failed = false;
 for (const route of routes) {
-  const file = join(base, route === "/" ? "index.html" : route.slice(1), "index.html");
+  const file = route === "/" ? join(base, "index.html") : join(base, route.slice(1), "index.html");
   if (!existsSync(file)) {
     console.error("MISSING:", file);
     failed = true;
@@ -21,6 +21,6 @@ for (const route of routes) {
     console.error("FAILED", route, label);
     failed = true;
   }
-  if (!checks.some(([, ok]) => !ok)) console.log("PASS", route, file);
+  if (checks.every(([, ok]) => ok)) console.log("PASS", route, file);
 }
 if (failed) process.exitCode = 1;
