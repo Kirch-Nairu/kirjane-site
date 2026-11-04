@@ -1,0 +1,30 @@
+# Temporary candidate-only lockfile materialization.
+# Delete this workflow after package-lock.json has been committed and verified.
+name: Bootstrap dependency lock
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/lockfile-bootstrap.yml'
+permissions:
+  contents: write
+jobs:
+  create-lock:
+    if: github.event.pull_request.head.repo.full_name == github.repository && github.head_ref == 'feat/m02-m03-editorial-site-foundation'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --package-lock-only --ignore-scripts --no-audit --no-fund
+      - name: Commit resolved lockfile to PR branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add package-lock.json
+          if ! git diff --cached --quiet; then
+            git commit -m "chore(deps): lock verified CI dependency resolution"
+            git push origin HEAD:feat/m02-m03-editorial-site-foundation
+          fi
