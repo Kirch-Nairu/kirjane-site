@@ -19,3 +19,9 @@ jobs:
       - run: npm run lint
       - run: npm run build
       - run: npm run verify:build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: kirjane-static-preview
+          path: build/client/
+          if-no-files-found: error
+          retention-days: 7
