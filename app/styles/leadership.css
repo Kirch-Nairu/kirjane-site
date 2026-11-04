@@ -1,0 +1,43 @@
+.leadership-profile {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+  gap: clamp(2.5rem, 7vw, 8rem);
+  align-items: start;
+}
+.leadership-profile h2 {
+  margin: 1.3rem 0 0;
+  font-size: clamp(2.8rem, 5.3vw, 6.5rem);
+  line-height: .94;
+  letter-spacing: -.075em;
+}
+.leadership-details {
+  border-top: 1px solid var(--line);
+  padding-top: 1.5rem;
+}
+.leadership-details h3 {
+  font-size: clamp(1.9rem, 3.1vw, 3.5rem);
+  line-height: 1.08;
+  letter-spacing: -.055em;
+  margin-bottom: 1.5rem;
+}
+.leadership-roles {
+  font-size: .8rem;
+  font-weight: 750;
+  letter-spacing: .06em;
+  line-height: 2;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 1.5rem;
+}
+.leadership-roles span { color: var(--muted); margin: 0 .35rem; }
+.leadership-details > p:not(.leadership-roles):not(.approval-note) {
+  max-width: 560px;
+  font-size: 1.02rem;
+}
+.leadership-details .approval-note {
+  margin-top: 2rem;
+}
+@media (max-width: 760px) {
+  .leadership-profile { grid-template-columns: 1fr; gap: 3.5rem; }
+  .leadership-profile h2 { font-size: clamp(2.9rem, 9vw, 5rem); }
+}
