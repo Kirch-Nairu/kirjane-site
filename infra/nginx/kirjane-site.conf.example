@@ -1,0 +1,24 @@
+# Sample HTTP virtual host ONLY. Do not copy directly into production without
+# company-controlled TLS, domain ownership, and deployment approval.
+# Expected release path: /srv/kirjane-site/current/build/client
+server {
+    listen 80;
+    server_name kirjane.tech www.kirjane.tech;
+    root /srv/kirjane-site/current/build/client;
+    index index.html;
+
+    # No broad SPA fallback. Each public route must exist as a pre-rendered file.
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    location /assets/ {
+        try_files $uri =404;
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+    }
+
+    location ~ /\\. {
+        deny all;
+    }
+}
