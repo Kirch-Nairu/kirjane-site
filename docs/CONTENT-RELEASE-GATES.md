@@ -17,9 +17,9 @@ The conceptual K. motif in the candidate is not the official Kirjane mark and mu
 There are no published case studies, customer testimonials, awards, metrics or team portraits without evidence.
 Contact does not offer a fake form success state or imply an inbox is already receiving messages.
 
-## QA to complete
-- [ ] Install packages and commit verified package-lock.json; switch CI from npm install to npm ci
-- [ ] Automated typecheck, lint, static build and six-route HTML inspection
+## QA
+- [x] Generate and commit the dependency lockfile; CI configured for npm ci
+- [x] Automated typecheck, lint, static build and six-route HTML inspection on the initial candidate (verify again on the final lockfile commit)
 - [ ] Visual review at 320, 375, 768, 1280, 1440 widths
 - [ ] Keyboard, screen reader, zoom and reduced-motion smoke checks
 - [ ] Lighthouse and Core Web Vitals baselines
