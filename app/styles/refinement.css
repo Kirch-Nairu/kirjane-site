@@ -1,0 +1,39 @@
+/* R2 / site-wide editorial refinement. No third-party animation dependency. */
+:root { --ease-editorial: cubic-bezier(.2,.7,.2,1); }
+[data-reveal] { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .reveal-pending { opacity: 0; transform: translate3d(0,18px,0); }
+  .reveal-complete { animation: reveal-in .65s var(--ease-editorial) both; }
+  @keyframes reveal-in {
+    from { opacity: .15; transform: translate3d(0,18px,0); }
+    to { opacity: 1; transform: translate3d(0,0,0); }
+  }
+}
+:focus-visible { outline: 3px solid #9bbe77; outline-offset: 4px; }
+html { scroll-padding-top: 108px; }
+body { overflow-x: clip; }
+.site-header { position: sticky; top: 0; background: rgba(250,251,248,.97); backdrop-filter: blur(12px); }
+.header-inner { transition: height .25s var(--ease-editorial); }
+.nav-link { text-underline-offset: .4em; }
+.action, .text-action { transition-timing-function: var(--ease-editorial); }
+.section-label { margin-bottom: clamp(2.5rem, 5vw, 4.75rem); }
+.section-label::before { content: ""; display: block; width: 22px; height: 1px; background: currentColor; opacity: .4; }
+.page-title, .split-head h2, .simple-cta h2 { text-wrap: balance; }
+.page-description, .split-head p { text-wrap: pretty; }
+@media (max-width: 760px) {
+  .site-header { backdrop-filter: none; }
+  .page-intro { padding-top: 4rem; padding-bottom: 4.5rem; }
+  .page-title { font-size: clamp(2.8rem, 9vw, 5rem); line-height: .98; overflow-wrap: anywhere; }
+  .page-description { font-size: 1.05rem; line-height: 1.7; }
+  .section { padding-top: 5rem; padding-bottom: 5rem; }
+  .split-head h2 { overflow-wrap: anywhere; }
+}
+@media (max-width: 375px) {
+  .shell { width: calc(100% - 2rem); }
+  .page-title { font-size: 2.7rem; }
+  .footer-links { gap: 2.6rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal], .reveal-pending, .reveal-complete { animation: none !important; opacity: 1 !important; transform: none !important; }
+  .site-header, .header-inner, .nav-link, .action, .text-action { backdrop-filter: none; transition: none !important; }
+}
