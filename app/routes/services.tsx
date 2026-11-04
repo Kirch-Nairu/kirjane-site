@@ -3,20 +3,69 @@ import { PageIntro, SectionLabel, TextLink } from "../components/ui";
 
 export const meta: MetaFunction = () => [
   { title: "Services — Kirjane Labs" },
-  { name: "description", content: "Technology should fit the work. Explore Kirjane Labs' proposed software, automation, integration, and technical infrastructure capabilities." },
+  { name: "description", content: "Explore Kirjane Labs' software, automation, systems integration and infrastructure capability areas." },
 ];
 
-const services = [
-  ["Custom Software Development", "Applications built around specific workflows and requirements."],
-  ["Process Automation", "Reducing repetitive tasks and improving the movement of information."],
-  ["Systems Engineering & Integration", "Designing technical solutions and connecting systems where needed."],
-  ["Technical Infrastructure & Support", "Supporting the environments and services that software depends on."],
+const capabilities = [
+  {
+    number: "01",
+    title: "Custom Software Development",
+    tagline: "SOFTWARE SHAPED BY THE WORK",
+    description: "Applications designed for the workflows, requirements and people they need to support. The goal is clarity in the experience and discipline behind the implementation.",
+  },
+  {
+    number: "02",
+    title: "Process Automation",
+    tagline: "REPETITION IS NOT THE REQUIREMENT",
+    description: "Examine recurring manual steps, information handoffs and operational friction. Identify where automation can remove unnecessary work without losing oversight.",
+  },
+  {
+    number: "03",
+    title: "Systems Engineering & Integration",
+    tagline: "THE PARTS HAVE TO WORK TOGETHER",
+    description: "Plan how software, services and data interact. Design the boundaries and connections that keep a system maintainable as requirements evolve.",
+  },
+  {
+    number: "04",
+    title: "Technical Infrastructure & Support",
+    tagline: "THE ENVIRONMENT MATTERS",
+    description: "Consider hosting, deployment, technical operations and ongoing support as part of the system, not as details added at the end.",
+  },
 ];
 
 export default function Services() {
-  return <main id="main-content">
-    <PageIntro number="02" category="OUR CAPABILITIES" title={<>TECHNOLOGY SHOULD FIT<br/><em>THE WORK.</em></>} description={<>Not the other way around. Every organization has its own requirements, challenges, and ways of operating. Our focus is on understanding those needs before deciding how technology should respond.</>}/>
-    <section className="section content-section shell"><SectionLabel number="01" text="CAPABILITY AREAS"/><p className="approval-note">The service categories below are part of the approved planning direction and are pending final company confirmation before public release.</p><div className="detail-grid">{services.map(([name, desc], i) => <article className="detail-item" key={name}><span>0{i + 1} / CAPABILITY</span><h2>{name}</h2><p>{desc}</p></article>)}</div></section>
-    <section className="simple-cta shell"><span>THE NEXT STEP</span><h2>START WITH THE PROBLEM.<br/><em>WE’LL DISCUSS THE OPTIONS.</em></h2><TextLink to="/contact">Tell Us What You Need</TextLink></section>
-  </main>;
+  return (
+    <main id="main-content">
+      <PageIntro
+        number="02"
+        category="OUR CAPABILITIES"
+        title={<>TECHNOLOGY SHOULD FIT<br/><em>THE WORK.</em></>}
+        description={<>Not the other way around. Every organization has its own requirements and ways of operating. Those realities should shape the technical approach.</>}
+      />
+      <section className="section content-section shell capabilities-section">
+        <SectionLabel number="01" text="FOUR AREAS / ONE APPROACH" />
+        <div className="capabilities-lead" data-reveal>
+          <h2>THOUGHTFUL SYSTEMS.<br/><em>USEFUL OUTCOMES.</em></h2>
+          <p>These are the areas in which we structure technical discussions. The right combination depends on what the organization is trying to accomplish.</p>
+        </div>
+        <div className="capability-list">
+          {capabilities.map((item) => (
+            <article className="capability-row" key={item.number} data-reveal>
+              <span className="capability-number">{item.number}</span>
+              <div>
+                <span className="eyebrow">{item.tagline}</span>
+                <h3>{item.title}</h3>
+              </div>
+              <p>{item.description}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+      <section className="simple-cta shell" data-reveal>
+        <span>START WITH CONTEXT</span>
+        <h2>THE RIGHT SOLUTION<br/><em>STARTS WITH A QUESTION.</em></h2>
+        <TextLink to="/process">See Our Process</TextLink>
+      </section>
+    </main>
+  );
 }

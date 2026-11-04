@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router";
 
 const links = [
@@ -9,13 +9,18 @@ const links = [
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const menuButton = useRef<HTMLButtonElement>(null);
   const location = useLocation();
 
   useEffect(() => { setOpen(false); }, [location.pathname]);
+
   useEffect(() => {
     if (!open) return;
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setOpen(false);
+      if (event.key === "Escape") {
+        setOpen(false);
+        menuButton.current?.focus();
+      }
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
@@ -33,10 +38,11 @@ export function SiteHeader() {
             <NavLink key={to} to={to} className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>{label}</NavLink>
           ))}
           <NavLink to="/contact" className={({ isActive }) => isActive ? "nav-contact active" : "nav-contact"}>
-            Let’s Talk <span aria-hidden="true">↗</span>
+            Let's Talk <span aria-hidden="true">↗</span>
           </NavLink>
         </nav>
         <button
+          ref={menuButton}
           type="button"
           className="menu-toggle"
           aria-controls="mobile-nav"

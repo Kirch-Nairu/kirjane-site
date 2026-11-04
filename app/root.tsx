@@ -4,6 +4,7 @@ import { SiteFooter, SiteHeader } from "./components/layout";
 import { MotionDirector } from "./components/motion";
 import "./app.css";
 import "./styles/refinement.css";
+import "./styles/site-r2.css";
 
 export function Layout({ children }: { children: ReactNode }) {
   return (
