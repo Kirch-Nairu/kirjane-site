@@ -37,6 +37,18 @@ export default function Contact() {
           <ContactInquiryForm />
         </div>
       </section>
+      <section className="page-shell contact-prep" aria-labelledby="contact-prep-heading">
+        <div className="section-marker"><span>BEFORE YOU REACH OUT</span><span>THREE USEFUL QUESTIONS</span></div>
+        <div className="page-lead">
+          <h2 id="contact-prep-heading" className="section-title compact">NO LONG BRIEF<br /><span className="ink-green">REQUIRED.</span></h2>
+          <p className="section-copy">When the inquiry channel opens, a few practical details will help us understand your situation.</p>
+        </div>
+        <ol className="contact-prep-list">
+          <li><span>01</span><p>What does the current process look like?</p></li>
+          <li><span>02</span><p>What do you want to improve or change?</p></li>
+          <li><span>03</span><p>Who will use or depend on the result?</p></li>
+        </ol>
+      </section>
     </>
   );
 }

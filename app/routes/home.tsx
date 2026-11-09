@@ -43,8 +43,12 @@ export default function Home() {
           <div className="section-marker"><span>03 / SELECTED PROJECTS</span><span>PROOF, NOT PROMISES</span></div>
           <h2 id="projects-heading" className="section-title">WHAT WE BUILT.<br /><span className="ink-green">WHY IT EXISTS.</span></h2>
           <div className="projects-layout">
-            <div className="project-placeholder"><div className="placeholder-symbol" aria-hidden="true">01</div><p>Approved case study visual</p><span>Public project review pending</span></div>
-            <div className="projects-description"><p>Every project begins with a reason.</p><p>Take a closer look at the problems, decisions, and technical work behind selected Kirjane Labs projects.</p><div className="review-label">Public project details and publication permissions are not yet approved.</div><ArrowLink to="/projects">View Selected Projects</ArrowLink></div>
+            <div className="project-editorial-panel" aria-label="A project is more than its interface">
+              <div className="panel-topline"><span>KIRJANE / WORK IN CONTEXT</span><span>01—04</span></div>
+              <div className="panel-statement"><span>THE</span><strong>WHY.</strong><span>BEHIND THE</span><strong>BUILD.</strong></div>
+              <div className="panel-bottomline"><span>THE PROBLEM</span><span>THE DECISIONS</span><span>THE RESULT</span></div>
+            </div>
+            <div className="projects-description"><p>Every project begins with a reason.</p><p>Take a closer look at the problems, decisions, and technical work behind a system—not just the finished interface.</p><p className="project-publishing-note">Individual case studies will be published once their details can be shared.</p><ArrowLink to="/projects">Explore Our Approach to Projects</ArrowLink></div>
           </div>
         </div>
       </section>
