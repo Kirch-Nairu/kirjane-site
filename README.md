@@ -6,9 +6,11 @@ Kirjane Labs' first official corporate website, implementing the planning-approv
 
 ## Ownership
 
-- **Kurt / @k3nchinxd:** sole frontend designer and implementer; UI/UX, accessible responsive React components, tests, frontend integration.
-- **Kirch Ivan:** separate backend/API contributions when business requirements require them.
-- **Company:** owns final published brand facts, domain, client inquiries, and release approval.
+- **Kurt / @k3nchinxd:** sole website developer and designer, responsible for **frontend, backend/API work when needed, Netlify Forms, testing, deployment preparation, and maintenance**.
+- **Kirch Ivan:** **not assigned** to this website's implementation; any future contributions require a separate explicit decision.
+- **Company:** retains control of final published brand facts, domain, client inquiries, and release authorization.
+
+This supersedes older role allocations in the approved blueprint; see `docs/OWNERSHIP_UPDATE_2026-11-09.md`.
 
 ## Approved stack
 
@@ -27,7 +29,7 @@ npm run build
 npm run verify:routes
 ```
 
-Commit the generated `package-lock.json` before making CI a protected required check. No GitHub Actions or local build results are claimed until actually run.
+GitHub Actions previously passed typecheck, lint, static build and six-route artifact checks on commit `a3bf3d4a7dc09f00101d4a5bb9da348b79b3cc9a`; subsequent changes require fresh verification. Commit a generated `package-lock.json` before making `npm ci` a required check.
 
 ## Public routes
 
@@ -39,7 +41,7 @@ The approved homepage sections are Hero, Services, Projects, Process, About, Con
 
 Original vector logo/official HEX tokens; confirmed services; permitted case-study visuals; approved team description; company inbox/privacy notice; domain and company-owned access; release authority. All are flagged as placeholders in code where appropriate.
 
-**Contact:** Netlify Forms integration is scaffolded but visibly disabled until an approved company inbox and privacy notice exist. The form is not claimed functional. No fabricated portfolio results.
+**Contact:** The approved contact-field UI is implemented as a disabled preview. Netlify Forms registration is scaffolded, but submissions are **not live** until the company inbox, privacy notice and handling policy are approved and delivery is tested. No fabricated portfolio results.
 
 ## Release discipline
 
@@ -50,6 +52,7 @@ Feature branch → PR → preview + evidence → reviewed merge → company-auth
 - `app/routes`: one module per approved public path.
 - `app/components`: header, footer and reusable UI components.
 - `app/styles/app.css`: Tailwind and centralized **working, not verified** palette tokens.
+- `app/components/ContactInquiryForm.tsx`: accessible disabled inquiry-form UI with approved fields.
 - `public/__forms.html`: static Netlify Forms registration blueprint (not activated).
 - `scripts/verify-prerender.mjs`: checks six generated HTML routes.
 

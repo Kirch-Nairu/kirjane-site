@@ -1,4 +1,4 @@
-# M01–M03 candidate — review notes
+# M01–M04 candidate — review notes
 
 Source of truth: **Kirjane Labs Corporate Website Design & Development Blueprint V1.0**, pp. 4–23.
 
@@ -9,8 +9,12 @@ Source of truth: **Kirjane Labs Corporate Website Design & Development Blueprint
 - Shared site header, accessible mobile menu, footer and editorial links.
 - Supporting route content using approved copy; unconfirmed services and public case studies marked as pending.
 - Working temporary color roles and typographic hierarchy.
-- Netlify static publish configuration plus form-detection blueprint **not yet activated**.
+- Netlify static publish configuration, form-detection blueprint and responsive Contact UI preview **not yet activated**.
 - Build-time six-route HTML artifact verification script.
+
+## Ownership update
+
+Kurt (@k3nchinxd) is solely responsible for frontend and any future backend/API functionality. Kirch Ivan is not assigned to this website. The older planning blueprint is superseded on this point only; see `docs/OWNERSHIP_UPDATE_2026-11-09.md`.
 
 ## No false claims
 
@@ -28,4 +32,4 @@ Source of truth: **Kirjane Labs Corporate Website Design & Development Blueprint
 5. Confirm approved logo, color tokens, services, projects and contact details with company.
 6. Configure Netlify Deploy Preview and protect controlled production publishing.
 
-**Status:** implementation candidate, NOT verified or merged; no production release.
+**Status:** implementation candidate; all new changes require passing CI and visual QA. No merge or production release.

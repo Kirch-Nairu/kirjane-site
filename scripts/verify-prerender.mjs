@@ -22,5 +22,26 @@ for (const route of routes) {
     console.log("OK:", "/" + route, found);
   }
 }
+// The contact form is deliberately non-submittable before company approval.
+const contactHtmlPath = [join(output, "contact", "index.html"), join(output, "contact.html")].find(existsSync);
+if (contactHtmlPath) {
+  const contactHtml = readFileSync(contactHtmlPath, "utf8");
+  const fields = ["full-name", "email", "organization", "inquiry-type", "details"];
+  for (const field of fields) {
+    if (!contactHtml.includes(`name="${field}"`)) {
+      console.error("MISSING contact field:", field);
+      failures++;
+    }
+  }
+  if (!/<fieldset[^>]*disabled/.test(contactHtml)) {
+    console.error("SAFETY GATE: contact fieldset must remain disabled before approval.");
+    failures++;
+  }
+  const blueprint = join(output, "__forms.html");
+  if (!existsSync(blueprint)) {
+    console.error("MISSING Netlify form detection blueprint.");
+    failures++;
+  }
+}
 if (failures) process.exit(1);
 console.log("Verified six HTML route artifacts.");
