@@ -11,6 +11,7 @@ import {
 import { SiteHeader } from "./components/SiteHeader";
 import { SiteFooter } from "./components/SiteFooter";
 import "./styles/app.css";
+import "./styles/refinement.css";
 
 export function links() {
   return [
@@ -30,6 +31,7 @@ export function Layout({ children }: { children: ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta name="theme-color" content="#173b29" />
         <Meta />
         <Links />
       </head>

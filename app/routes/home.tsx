@@ -27,14 +27,14 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="hero-bottom"><span>DESIGN THAT SERVES A PURPOSE.</span><span>SCROLL TO EXPLORE ↓</span></div>
+        <div className="hero-bottom"><span>DESIGN THAT SERVES A PURPOSE.</span><a className="hero-scroll" href="#services-heading">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></a></div>
       </section>
 
       <section className="home-section page-shell" aria-labelledby="services-heading">
         <div className="section-marker"><span>02 / SERVICES</span><span>WHAT WE DO</span></div>
         <div className="section-split">
           <div><h2 id="services-heading" className="section-title">LESS FRICTION.<br /><span className="ink-green">MORE FUNCTION.</span></h2><p className="section-copy">Technology should make operations easier, not introduce unnecessary complexity.</p><p className="section-copy">Explore how software, automation, and systems engineering can support the way your organization operates.</p><ArrowLink to="/services">Explore Our Services</ArrowLink></div>
-          <ol className="service-list">{services.slice(0,3).map(s => <li key={s.number}><span className="list-index">{s.number}</span><span>{s.title}</span><span aria-hidden="true">↗</span></li>)}</ol>
+          <ol className="service-list">{services.slice(0,3).map(s => <li key={s.number}><Link to="/services" className="service-list-link"><span className="list-index">{s.number}</span><span>{s.title}</span><span aria-hidden="true">↗</span></Link></li>)}</ol>
         </div>
       </section>
 
