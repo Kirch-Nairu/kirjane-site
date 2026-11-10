@@ -14,6 +14,7 @@ import "./styles/app.css";
 import "./styles/refinement.css";
 import "./styles/hero-r2.css";
 import "./styles/mobile-r3.css";
+import "./styles/homepage-r4.css";
 
 export function links() {
   return [

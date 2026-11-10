@@ -2,10 +2,22 @@ import { Link } from "react-router";
 import { ArrowLink } from "../components/Editorial";
 import { services, processSteps } from "../data/content";
 
+const projectChapters = [
+  { number: "01", label: "THE PROBLEM" },
+  { number: "02", label: "THE DECISIONS" },
+  { number: "03", label: "THE RESULT" },
+];
+
+const principles = [
+  { number: "01", label: "UNDERSTAND", detail: "Start with the people and the work." },
+  { number: "02", label: "DESIGN", detail: "Give every interaction a purpose." },
+  { number: "03", label: "VALIDATE", detail: "Check what the result actually does." },
+];
+
 export function meta() {
   return [
     { title: "Kirjane Labs | The Work Comes First" },
-    { name: "description", content: "Explore Kirjane Labs' approach to software engineering, automation, and digital systems built around real organizational work." },
+    { name: "description", content: "Kirjane Labs develops software, automation and digital systems with practical organizational needs at the center." },
   ];
 }
 
@@ -31,46 +43,115 @@ export default function Home() {
         <div className="hero-bottom"><span>DESIGN THAT SERVES A PURPOSE.</span><a className="hero-scroll" href="#services-heading">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></a></div>
       </section>
 
-      <section className="home-section page-shell" aria-labelledby="services-heading">
+      <section className="home-section page-shell home-services-r4" aria-labelledby="services-heading">
         <div className="section-marker"><span>02 / SERVICES</span><span>WHAT WE DO</span></div>
-        <div className="section-split">
-          <div><h2 id="services-heading" className="section-title">LESS FRICTION.<br /><span className="ink-green">MORE FUNCTION.</span></h2><p className="section-copy">Technology should make operations easier, not introduce unnecessary complexity.</p><p className="section-copy">Explore how software, automation, and systems engineering can support the way your organization operates.</p><ArrowLink to="/services">Explore Our Services</ArrowLink></div>
-          <ol className="service-list">{services.slice(0,3).map(s => <li key={s.number}><Link to="/services" className="service-list-link"><span className="list-index">{s.number}</span><span>{s.title}</span><span aria-hidden="true">↗</span></Link></li>)}</ol>
+        <div className="home-services-grid">
+          <div className="home-services-intro">
+            <h2 id="services-heading" className="section-title">LESS FRICTION.<br /><span className="ink-green">MORE FUNCTION.</span></h2>
+            <p className="section-copy">Technology should make operations easier, not introduce unnecessary complexity.</p>
+            <p className="section-copy">From tailored applications to automation and integration, the starting point is always the work itself.</p>
+            <ArrowLink to="/services">Explore Our Services</ArrowLink>
+          </div>
+          <ol className="home-capabilities" aria-label="Service areas">
+            {services.map((s) => (
+              <li key={s.number}>
+                <Link to="/services" className="home-capability-link">
+                  <span className="home-capability-index">{s.number}</span>
+                  <span className="home-capability-content"><strong>{s.title}</strong><small>{s.description}</small></span>
+                  <span className="home-capability-arrow" aria-hidden="true">↗</span>
+                </Link>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
-      <section className="project-section" aria-labelledby="projects-heading">
+      <section className="project-section home-projects-r4" aria-labelledby="projects-heading">
         <div className="page-shell">
-          <div className="section-marker"><span>03 / SELECTED PROJECTS</span><span>PROOF, NOT PROMISES</span></div>
-          <h2 id="projects-heading" className="section-title">WHAT WE BUILT.<br /><span className="ink-green">WHY IT EXISTS.</span></h2>
-          <div className="projects-layout">
-            <div className="project-editorial-panel" aria-label="A project is more than its interface">
-              <div className="panel-topline"><span>KIRJANE / WORK IN CONTEXT</span><span>01—04</span></div>
-              <div className="panel-statement"><span>THE</span><strong>WHY.</strong><span>BEHIND THE</span><strong>BUILD.</strong></div>
-              <div className="panel-bottomline"><span>THE PROBLEM</span><span>THE DECISIONS</span><span>THE RESULT</span></div>
+          <div className="section-marker"><span>03 / SELECTED PROJECTS</span><span>WORK IN CONTEXT</span></div>
+          <div className="home-project-heading">
+            <h2 id="projects-heading" className="section-title">WHAT WE BUILT.<br /><span className="ink-green">WHY IT EXISTS.</span></h2>
+            <p>Good work has a reason behind it. Every decision should connect back to the problem it was meant to solve.</p>
+          </div>
+          <div className="home-project-showcase">
+            <div className="project-r4-panel" aria-label="Editorial graphic about looking beyond the interface">
+              <div className="project-r4-top"><span>KIRJANE LABS / PROJECT PERSPECTIVE</span><span aria-hidden="true">↗</span></div>
+              <div className="project-r4-type" aria-hidden="true"><span>BEYOND</span><span>THE</span><strong>INTERFACE.</strong></div>
+              <div className="project-r4-bottom"><span>THE WHY</span><span>THE HOW</span><span>THE RESULT</span></div>
             </div>
-            <div className="projects-description"><p>Every project begins with a reason.</p><p>Take a closer look at the problems, decisions, and technical work behind a system—not just the finished interface.</p><p className="project-publishing-note">Individual case studies will be published once their details can be shared.</p><ArrowLink to="/projects">Explore Our Approach to Projects</ArrowLink></div>
+            <div className="project-r4-aside">
+              <p className="eyebrow">THE WORK BEHIND THE WORK</p>
+              <h3>A SCREEN IS<br />ONLY THE START.</h3>
+              <p>Explore the challenges, architecture, and decisions that shape useful digital systems. Individual case studies will follow when their materials are approved for publication.</p>
+              <ol className="project-r4-chapters">
+                {projectChapters.map((c) => <li key={c.number}><span>{c.number}</span><strong>{c.label}</strong></li>)}
+              </ol>
+              <ArrowLink to="/projects">Explore Selected Projects</ArrowLink>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="home-section page-shell" aria-labelledby="process-heading">
+      <section className="home-section page-shell home-approach-r4" aria-labelledby="process-heading">
         <div className="section-marker"><span>04 / OUR APPROACH</span><span>HOW WE THINK</span></div>
-        <div className="section-split">
-          <div><h2 id="process-heading" className="section-title">BEFORE THE CODE,<br /><span className="ink-green">THERE'S A QUESTION.</span></h2><p className="section-copy">What needs to change? Who will use it? What should the system accomplish?</p><p className="section-copy">Those answers shape the technical direction.</p><ArrowLink to="/process">How We Work</ArrowLink></div>
-          <ol className="process-timeline">{processSteps.slice(0,4).map(s => <li key={s.number}><span>{s.number}</span><strong>{s.title}</strong></li>)}</ol>
+        <div className="home-approach-grid">
+          <div className="home-approach-intro">
+            <h2 id="process-heading" className="section-title">BEFORE THE CODE,<br /><span className="ink-green">THERE'S A QUESTION.</span></h2>
+            <p className="section-copy">What needs to change? Who will use it? What should the system accomplish?</p>
+            <p className="section-copy">Those answers shape the technical direction.</p>
+            <ArrowLink to="/process">How We Work</ArrowLink>
+          </div>
+          <ol className="home-approach-steps">
+            {processSteps.map((step) => (
+              <li key={step.number}>
+                <span className="home-step-index">{step.number}</span>
+                <div><strong>{step.title}</strong><p>{step.detail}</p></div>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
-      <section className="about-section page-shell" aria-labelledby="about-heading">
-        <div className="section-marker"><span>05 / ABOUT US</span><span>THE TEAM</span></div>
-        <div className="about-layout"><h2 id="about-heading" className="section-title">THE PEOPLE<br /><span className="ink-green">DOING THE WORK.</span></h2><div><p className="section-copy">Meet the team, discover our disciplines, and understand the thinking behind Kirjane Labs.</p><ArrowLink to="/about">Meet the Team</ArrowLink></div></div>
+      <section className="home-about-r4" aria-labelledby="about-heading">
+        <div className="page-shell">
+          <div className="section-marker"><span>05 / ABOUT US</span><span>THE PEOPLE BEHIND THE WORK</span></div>
+          <div className="home-about-grid">
+            <div>
+              <h2 id="about-heading" className="section-title">THE PEOPLE<br /><span className="ink-green">DOING THE WORK.</span></h2>
+            </div>
+            <div className="home-about-content">
+              <p className="home-about-lead">Behind every system are real people, processes, and decisions.</p>
+              <p>Kirjane Labs approaches the work by connecting engineering decisions to practical needs, with clarity and usability in mind.</p>
+              <ArrowLink to="/about">About Kirjane Labs</ArrowLink>
+            </div>
+          </div>
+          <ol className="home-principles">
+            {principles.map((item) => (
+              <li key={item.number}>
+                <span className="eyebrow">{item.number} / 03</span>
+                <strong>{item.label}</strong>
+                <p>{item.detail}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
       </section>
 
-      <section className="contact-band" aria-labelledby="contact-heading">
+      <section className="contact-band home-contact-r4" aria-labelledby="contact-heading">
         <div className="page-shell">
           <div className="section-marker section-marker-light"><span>06 / CONTACT</span><span>START HERE</span></div>
-          <div className="contact-band-layout"><div><h2 id="contact-heading" className="section-title">WHAT NEEDS<br />TO CHANGE?</h2><p>A new idea. An outdated process. A system that needs rethinking.</p><p>Tell us what your organization is working on.</p></div><Link className="button-light" to="/contact">Start a Conversation <span aria-hidden="true">↗</span></Link></div>
+          <div className="contact-band-layout home-contact-layout">
+            <div>
+              <p className="eyebrow">A CONVERSATION BEGINS WITH CONTEXT</p>
+              <h2 id="contact-heading" className="section-title">WHAT NEEDS<br />TO CHANGE?</h2>
+              <p>A new idea. An outdated process. A system that needs rethinking.</p>
+              <p>Tell us what your organization is working on.</p>
+            </div>
+            <div className="home-contact-action">
+              <Link className="button-light" to="/contact">Explore Contact <span aria-hidden="true">↗</span></Link>
+              <small>The inquiry form is being prepared and is not accepting submissions yet.</small>
+            </div>
+          </div>
         </div>
       </section>
     </>
