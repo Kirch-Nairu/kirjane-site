@@ -13,6 +13,7 @@ import { SiteFooter } from "./components/SiteFooter";
 import "./styles/app.css";
 import "./styles/refinement.css";
 import "./styles/hero-r2.css";
+import "./styles/mobile-r3.css";
 
 export function links() {
   return [

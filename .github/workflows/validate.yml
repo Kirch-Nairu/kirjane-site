@@ -1,7 +1,7 @@
 name: Frontend validation
 on:
   pull_request:
-    branches: [main, "feat/m01-frontend-foundation-home", "feat/m04-supporting-pages-r1", "feat/m05-editorial-visual-polish-r1"]
+    branches: [main, "feat/m01-frontend-foundation-home", "feat/m04-supporting-pages-r1", "feat/m05-editorial-visual-polish-r1", "feat/m06-home-visual-r2"]
   workflow_dispatch:
 
 jobs:
@@ -32,7 +32,7 @@ jobs:
       - name: Upload source ZIP for review
         uses: actions/upload-artifact@v4
         with:
-          name: kirjane-visual-r2-source
+          name: kirjane-mobile-r3-source
           path: kirjane-source.zip
           retention-days: 14
           if-no-files-found: error
