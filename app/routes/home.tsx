@@ -15,9 +15,10 @@ export default function Home() {
       <section className="hero page-shell" aria-labelledby="hero-title">
         <div className="hero-rail"><span>01 / INTRODUCTION</span><span>ADAPT. AUTOMATE. EVOLVE.</span></div>
         <div className="hero-core">
+          <span className="hero-diagonal-mark" aria-hidden="true" />
           <p className="eyebrow">SOFTWARE ENGINEERING / AUTOMATION / DIGITAL SYSTEMS</p>
           <h1 id="hero-title" className="hero-title">
-            <span>THE WORK.</span><span className="hero-title-second">COMES <em>FIRST.</em></span>
+            <span>THE WORK.</span><span className="hero-title-second"><span>COMES</span><em>FIRST.</em></span>
           </h1>
           <div className="hero-details">
             <p>Every organization has its own way of getting things done. We start there — then build technology around what the work actually needs.</p>
