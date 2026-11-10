@@ -15,6 +15,7 @@ import "./styles/refinement.css";
 import "./styles/hero-r2.css";
 import "./styles/mobile-r3.css";
 import "./styles/homepage-r4.css";
+import "./styles/brand-r1.css";
 
 export function links() {
   return [
@@ -63,7 +64,7 @@ export function ErrorBoundary({ error }: { error: unknown }) {
   const notFound = status === 404;
   return (
     <main id="main-content" className="page-shell error-page">
-      <span className="eyebrow">KIRJANE LABS / {status}</span>
+      <span className="eyebrow">KIRJANE IT SOLUTIONS / {status}</span>
       <h1>{notFound ? "THIS PAGE ISN'T HERE." : "SOMETHING WENT WRONG."}</h1>
       <p>{notFound ? "The address you entered doesn't match a published page." : "The page could not be loaded."}</p>
       <Link to="/" className="text-link">Return home <span aria-hidden="true">↗</span></Link>

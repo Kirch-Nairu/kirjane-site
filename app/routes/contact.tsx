@@ -3,8 +3,8 @@ import { ContactInquiryForm } from "../components/ContactInquiryForm";
 
 export function meta() {
   return [
-    { title: "Contact | Kirjane Labs" },
-    { name: "description", content: "Start a conversation with Kirjane Labs about software, automation, or digital-system requirements." },
+    { title: "Contact | Kirjane IT Solutions" },
+    { name: "description", content: "Start a conversation with Kirjane IT Solutions about software, automation, or digital-system requirements." },
   ];
 }
 

@@ -9,8 +9,8 @@ const caseStudyChapters = [
 
 export function meta() {
   return [
-    { title: "Projects | Kirjane Labs" },
-    { name: "description", content: "How Kirjane Labs presents the problems, decisions, systems and verified results behind selected work." },
+    { title: "Projects | Kirjane IT Solutions" },
+    { name: "description", content: "How Kirjane IT Solutions presents the problems, decisions, systems and verified results behind selected work." },
   ];
 }
 

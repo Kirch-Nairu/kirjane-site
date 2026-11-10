@@ -3,8 +3,8 @@ import { services } from "../data/content";
 
 export function meta() {
   return [
-    { title: "Services | Kirjane Labs" },
-    { name: "description", content: "Explore software development, process automation, systems integration and technical infrastructure at Kirjane Labs." },
+    { title: "Services | Kirjane IT Solutions" },
+    { name: "description", content: "Explore software development, process automation, systems integration and technical infrastructure at Kirjane IT Solutions." },
   ];
 }
 

@@ -3,7 +3,7 @@ import { processSteps } from "../data/content";
 
 export function meta() {
   return [
-    { title: "Our Process | Kirjane Labs" },
+    { title: "Our Process | Kirjane IT Solutions" },
     { name: "description", content: "Five stages: discovery, planning and design, development, validation, and delivery with support." },
   ];
 }

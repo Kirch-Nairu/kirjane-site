@@ -20,8 +20,8 @@ const points = [
 
 export function meta() {
   return [
-    { title: "About | Kirjane Labs" },
-    { name: "description", content: "Learn about the thinking, disciplines and problem-solving approach behind Kirjane Labs." },
+    { title: "About | Kirjane IT Solutions" },
+    { name: "description", content: "Learn about the thinking, disciplines and problem-solving approach behind Kirjane IT Solutions." },
   ];
 }
 
@@ -32,7 +32,7 @@ export default function About() {
         number="04"
         eyebrow="ABOUT US"
         lines={["THE THINKING", "BEHIND THE BUILD."]}
-        summary="Good technology takes more than good code. Kirjane Labs approaches software, automation, and digital systems by first understanding the real work they need to support."
+        summary="Good technology takes more than good code. Kirjane IT Solutions approaches software, automation, and digital systems by first understanding the real work they need to support."
       />
 
       <section className="page-shell subpage-content" aria-labelledby="about-story-title">

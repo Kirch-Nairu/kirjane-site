@@ -16,8 +16,8 @@ const principles = [
 
 export function meta() {
   return [
-    { title: "Kirjane Labs | The Work Comes First" },
-    { name: "description", content: "Kirjane Labs develops software, automation and digital systems with practical organizational needs at the center." },
+    { title: "Kirjane IT Solutions | The Work Comes First" },
+    { name: "description", content: "Kirjane IT Solutions develops software, automation and digital systems with practical organizational needs at the center." },
   ];
 }
 
@@ -75,7 +75,7 @@ export default function Home() {
           </div>
           <div className="home-project-showcase">
             <div className="project-r4-panel" aria-label="Editorial graphic about looking beyond the interface">
-              <div className="project-r4-top"><span>KIRJANE LABS / PROJECT PERSPECTIVE</span><span aria-hidden="true">↗</span></div>
+              <div className="project-r4-top"><span>KIRJANE IT SOLUTIONS / PROJECT PERSPECTIVE</span><span aria-hidden="true">↗</span></div>
               <div className="project-r4-type" aria-hidden="true"><span>BEYOND</span><span>THE</span><strong>INTERFACE.</strong></div>
               <div className="project-r4-bottom"><span>THE WHY</span><span>THE HOW</span><span>THE RESULT</span></div>
             </div>
@@ -121,8 +121,8 @@ export default function Home() {
             </div>
             <div className="home-about-content">
               <p className="home-about-lead">Behind every system are real people, processes, and decisions.</p>
-              <p>Kirjane Labs approaches the work by connecting engineering decisions to practical needs, with clarity and usability in mind.</p>
-              <ArrowLink to="/about">About Kirjane Labs</ArrowLink>
+              <p>Kirjane IT Solutions approaches the work by connecting engineering decisions to practical needs, with clarity and usability in mind.</p>
+              <ArrowLink to="/about">About Kirjane IT Solutions</ArrowLink>
             </div>
           </div>
           <ol className="home-principles">

@@ -1,8 +1,12 @@
-# Kirjane Labs — Corporate Website
+# Kirjane IT Solutions — Corporate Website
 
-Kirjane Labs' first official corporate website, implementing the planning-approved **Website Blueprint V1.0 (31 October 2026)**.
+Website implementation for the public-facing name **Kirjane IT Solutions**, originating from the approved Kirjane Labs Website Blueprint V1.0 (31 October 2026). The owner changed the **website display name** on 10 November 2026; this is not confirmation of a legal-entity name change.
 
 **Status:** implementation candidate, not released. Do not enable production publishing without authorized company sign-off.
+
+## Branding
+
+The public site displays **Kirjane IT Solutions** in navigation, page titles, footer and copy. The uploaded logo artwork reads *Kirjane Information Technology Services* and must be supplied in an approved final export matching the new web display name before publication. Do not treat generated mockup artwork as an authorized final logo.
 
 ## Ownership
 
