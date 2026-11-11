@@ -1,0 +1,411 @@
+.page {
+  background-color: var(--color-paper-light);
+  color: var(--color-ink-primary);
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+.header {
+  background-color: var(--color-forest-deep);
+  color: var(--color-ink-light);
+  border-bottom: 1px solid var(--color-forest-border);
+  padding-block: clamp(3.5rem, 7vw, 5.5rem);
+}
+
+.kicker {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--color-green-leaf);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: var(--space-3);
+}
+
+.headline {
+  font-family: var(--font-display);
+  font-size: var(--text-h1);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--color-ink-light);
+  max-width: 840px;
+  margin-bottom: var(--space-4);
+}
+
+.lead {
+  font-size: var(--text-body-lead);
+  line-height: 1.6;
+  color: var(--color-ink-light-muted);
+  max-width: 740px;
+  margin-bottom: var(--space-8);
+}
+
+.navStrip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-forest-border);
+}
+
+.stripLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.625rem 1rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--color-forest-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-ink-light);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all var(--duration-fast) ease;
+}
+
+.stripLink:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: var(--color-green-leaf);
+}
+
+.stripNumber {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-green-leaf);
+  font-weight: 700;
+}
+
+.stripTitle {
+  font-weight: 600;
+}
+
+.stripBadge {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--radius-sm);
+  text-transform: uppercase;
+}
+
+.stripBadge.pilot {
+  background-color: rgba(168, 206, 100, 0.2);
+  color: var(--color-green-leaf);
+}
+
+.stripBadge.delivered {
+  background-color: rgba(36, 104, 68, 0.35);
+  color: #7dd9a6;
+}
+
+.stripBadge.development {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--color-ink-light-muted);
+}
+
+.narrativesSection {
+  padding-block: clamp(4rem, 8vw, 6.5rem);
+}
+
+.casesList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.caseArticle {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  background-color: var(--color-paper-card);
+  border: 1px solid var(--color-paper-border);
+  border-radius: var(--radius-sm);
+  padding: clamp(2rem, 4.5vw, 3.5rem);
+  box-shadow: 0 4px 24px rgba(16, 41, 29, 0.04);
+}
+
+.caseHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid var(--color-paper-border);
+}
+
+.headerTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.caseNumber {
+  font-family: var(--font-mono);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-green-institutional);
+}
+
+.statusBadge {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.statusBadge.pilot {
+  background-color: rgba(168, 206, 100, 0.15);
+  color: #648c26;
+  border: 1px solid rgba(168, 206, 100, 0.35);
+}
+
+.statusBadge.delivered {
+  background-color: rgba(36, 104, 68, 0.15);
+  color: var(--color-green-institutional);
+  border: 1px solid rgba(36, 104, 68, 0.35);
+}
+
+.statusBadge.development {
+  background-color: rgba(86, 102, 90, 0.15);
+  color: #56665a;
+  border: 1px solid rgba(86, 102, 90, 0.35);
+}
+
+.category {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(1.85rem, 3.5vw, 2.75rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--color-ink-primary);
+  line-height: 1.15;
+}
+
+.subtitle {
+  font-size: 1.15rem;
+  color: var(--color-green-institutional);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.caseGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+}
+
+@media (min-width: 960px) {
+  .caseGrid {
+    grid-template-columns: 1.35fr 1fr;
+    gap: var(--space-12);
+  }
+}
+
+.narrativeCol {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.blockTitle {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-green-institutional);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.blockText {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--color-ink-secondary);
+}
+
+.specCol {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.specCard,
+.evidenceCard {
+  background-color: var(--color-paper-surface);
+  border: 1px solid var(--color-paper-border);
+  border-radius: var(--radius-sm);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.specHeading,
+.evidenceHeading {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.highlightsList,
+.evidenceList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.highlightItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: var(--color-ink-secondary);
+}
+
+.hDot {
+  flex-shrink: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--color-green-institutional);
+  margin-top: 0.45rem;
+}
+
+.evidenceItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: var(--color-ink-primary);
+}
+
+.evCheck {
+  flex-shrink: 0;
+  color: var(--color-green-institutional);
+  font-weight: bold;
+}
+
+.evLabel {
+  display: block;
+  font-weight: 600;
+}
+
+.evDate {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--color-ink-muted);
+}
+
+.demoBanner {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-green-institutional);
+  background-color: rgba(36, 104, 68, 0.08);
+  border: 1px solid rgba(36, 104, 68, 0.2);
+  padding: 0.625rem;
+  border-radius: var(--radius-sm);
+  margin-top: 0.5rem;
+}
+
+.caseFooter {
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-paper-border);
+}
+
+.inquireLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-green-institutional);
+  transition: transform var(--duration-fast) ease, color var(--duration-fast) ease;
+}
+
+.inquireLink:hover {
+  color: #1a4f34;
+  transform: translateX(3px);
+}
+
+.ctaSection {
+  background-color: var(--color-forest-deep);
+  color: var(--color-ink-light);
+  border-top: 1px solid var(--color-forest-border);
+  padding-block: clamp(3.5rem, 7vw, 5.5rem);
+}
+
+.ctaInner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 760px;
+}
+
+.ctaTitle {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--color-ink-light);
+  line-height: 1.15;
+}
+
+.ctaLead {
+  font-size: var(--text-body-lead);
+  line-height: 1.6;
+  color: var(--color-ink-light-muted);
+}
+
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.875rem 1.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-forest-deep);
+  background-color: var(--color-green-leaf);
+  border: 1px solid var(--color-green-leaf);
+  border-radius: var(--radius-sm);
+  margin-top: var(--space-2);
+  width: fit-content;
+  transition: all var(--duration-fast) ease;
+  min-height: 48px;
+}
+
+.ctaBtn:hover {
+  background-color: #b9df77;
+  transform: translateY(-2px);
+}

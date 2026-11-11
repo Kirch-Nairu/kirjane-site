@@ -1,90 +1,128 @@
 import { Link } from "react-router";
-import { services, company } from "../data/content";
-import { PageIntro } from "../components/Editorial";
-import { Reveal } from "../components/Motion";
+import { services } from "../content/services";
+import styles from "./services.module.css";
 
 export function meta() {
   return [
     {
-      title: "Services — Backend Engineering, Security, Cloud & Web Hosting | Kirjane Labs",
+      title: "Services & Systems Architecture — Kirjane Labs",
     },
     {
       name: "description",
       content:
-        "Kirjane Labs (Kirjane IT Solutions) specializes in backend architecture, application security, cloud operations, managed web hosting, and custom websites in Bohol, Philippines.",
+        "Backend architecture, database engineering, application security, cloud operations, managed web hosting, and bespoke software systems by Kirjane Labs in Bohol.",
     },
   ];
 }
 
 export default function Services() {
   return (
-    <>
-      <PageIntro
-        eyebrow="Engineering & Services"
-        badge="Backend · Security · Cloud · Web Hosting"
-        lines={["Software engineering that prioritizes reliability, security, and clarity."]}
-        summary="While we craft clean, modern websites and interfaces, our deepest strength is underneath the surface: accurate databases, strict role permissions, cloud infrastructure, and dependable web hosting."
-      />
+    <div className={styles.page}>
+      {/* Editorial Header */}
+      <header className={styles.header}>
+        <div className={styles.container}>
+          <span className={styles.kicker}>SYSTEM SERVICES & ARCHITECTURE</span>
+          <h1 className={styles.headline}>Engineering Focused on Operational Stability</h1>
+          <p className={styles.lead}>
+            We engineer the invisible foundations that keep businesses operating without
+            disruption: transaction-safe database schemas, role-governed security boundaries,
+            automated CI/CD pipelines, and high-performance web systems.
+          </p>
 
-      <section className="page-shell section-block">
-        <div className="services-detailed-stack">
-          {services.map((service, idx) => (
-            <Reveal key={service.number} delay={idx * 65}>
-              <article className="service-detail-row">
-                <div className="service-detail-left">
-                  <span className="service-detail-num">{service.number}</span>
-                  <span className="badge-pill">{service.tag}</span>
-                  {service.isCoreStrength && (
-                    <span className="core-strength-note">Core Specialty</span>
-                  )}
+          {/* Jump Navigation */}
+          <nav className={styles.jumpNav} aria-label="Jump to service area">
+            {services.map((service) => (
+              <a key={service.id} href={`#${service.id}`} className={styles.jumpLink}>
+                <span className={styles.jumpNumber}>{service.number}</span>
+                <span>{service.title}</span>
+              </a>
+            ))}
+          </nav>
+        </div>
+      </header>
+
+      {/* Services List */}
+      <section className={styles.servicesSection}>
+        <div className={styles.container}>
+          <div className={styles.servicesGrid}>
+            {services.map((service) => (
+              <article key={service.id} id={service.id} className={styles.serviceArticle}>
+                <div className={styles.articleHeader}>
+                  <div className={styles.metaRow}>
+                    <span className={styles.serviceNumber}>{service.number}</span>
+                    <span className={styles.serviceTag}>{service.tag}</span>
+                  </div>
+                  <h2 className={styles.serviceTitle}>{service.title}</h2>
+                  <p className={styles.serviceHeadline}>{service.headline}</p>
                 </div>
 
-                <div className="service-detail-center">
-                  <h2>{service.title}</h2>
-                  <p className="service-detail-desc">{service.description}</p>
-                  <blockquote className="service-question-box">
-                    <span>The question we solve for you:</span>
-                    <p>&ldquo;{service.question}&rdquo;</p>
-                  </blockquote>
+                <div className={styles.articleBody}>
+                  <div className={styles.descBlock}>
+                    <p className={styles.description}>{service.description}</p>
+                    <div className={styles.problemCallout}>
+                      <span className={styles.calloutLabel}>PRIMARY PROBLEM RESOLVED</span>
+                      <p className={styles.calloutText}>{service.problemSolved}</p>
+                    </div>
+                  </div>
+
+                  <div className={styles.detailsGrid}>
+                    <div className={styles.detailCol}>
+                      <h3 className={styles.colTitle}>Architectural Capabilities</h3>
+                      <ul className={styles.list}>
+                        {service.capabilities.map((cap, idx) => (
+                          <li key={idx} className={styles.listItem}>
+                            <span className={styles.dot} aria-hidden="true" />
+                            <span>{cap}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className={styles.detailCol}>
+                      <h3 className={styles.colTitle}>Concrete Deliverables</h3>
+                      <ul className={styles.list}>
+                        {service.deliverables.map((deliv, idx) => (
+                          <li key={idx} className={styles.listItem}>
+                            <span className={styles.checkIcon} aria-hidden="true">✓</span>
+                            <span>{deliv}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
                 </div>
 
-                <div className="service-detail-right">
-                  <h3>What&apos;s Included</h3>
-                  <ul className="clean-check-list">
-                    {service.focus.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
+                <div className={styles.articleFooter}>
+                  <Link to="/contact" className={styles.actionBtn}>
+                    <span>Consult on {service.title}</span>
+                    <span aria-hidden="true">→</span>
+                  </Link>
                 </div>
               </article>
-            </Reveal>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="page-shell section-block">
-        <Reveal direction="scale">
-          <div className="closing-cta-banner">
-            <div className="closing-cta-copy">
-              <span className="section-kicker light">Web Hosting &amp; Custom Development</span>
-              <h2>Need a custom system, a company website, or managed hosting?</h2>
-              <p>
-                Tell us what your organization needs. We&apos;ll recommend the simplest, most
-                dependable path forward—whether that&apos;s a Salryn setup, a custom build, or
-                managed cloud hosting.
+      {/* Consultation Banner */}
+      <section className={styles.ctaBanner}>
+        <div className={styles.container}>
+          <div className={styles.ctaCard}>
+            <div>
+              <span className={styles.ctaKicker}>TECHNICAL EVALUATION</span>
+              <h2 className={styles.ctaTitle}>Need an architectural review of your current systems?</h2>
+              <p className={styles.ctaDesc}>
+                We audit bottlenecks, data synchronization risks, and access permissions for
+                growing enterprises and public offices.
               </p>
             </div>
-            <div className="closing-cta-actions">
-              <Link to="/contact" className="btn-hero-primary">
-                Talk to Our Team
-              </Link>
-              <a href={`mailto:${company.email}`} className="btn-hero-secondary">
-                {company.email}
-              </a>
-            </div>
+            <Link to="/contact" className={styles.ctaLink}>
+              <span>Book an Engineering Consultation</span>
+              <span aria-hidden="true">→</span>
+            </Link>
           </div>
-        </Reveal>
+        </div>
       </section>
-    </>
+    </div>
   );
 }

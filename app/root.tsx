@@ -8,8 +8,8 @@ import {
   ScrollRestoration,
   Link,
 } from "react-router";
-import { SiteHeader } from "./components/SiteHeader";
-import { SiteFooter } from "./components/SiteFooter";
+import { SiteHeader } from "./components/navigation/SiteHeader";
+import { SiteFooter } from "./components/navigation/SiteFooter";
 import "./styles/app.css";
 
 export function links() {
@@ -30,7 +30,7 @@ export function Layout({ children }: { children: ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <meta name="theme-color" content="#0A140E" />
+        <meta name="theme-color" content="#07130E" />
         <Meta />
         <Links />
       </head>

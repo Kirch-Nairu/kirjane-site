@@ -1,0 +1,494 @@
+.page {
+  background-color: var(--color-paper-light);
+  color: var(--color-ink-primary);
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+.header {
+  background-color: var(--color-forest-deep);
+  color: var(--color-ink-light);
+  border-bottom: 1px solid var(--color-forest-border);
+  padding-block: clamp(3.5rem, 7vw, 5.5rem);
+}
+
+.kicker {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--color-green-leaf);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: var(--space-3);
+}
+
+.headline {
+  font-family: var(--font-display);
+  font-size: var(--text-h1);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--color-ink-light);
+  max-width: 860px;
+  margin-bottom: var(--space-4);
+}
+
+.lead {
+  font-size: var(--text-body-lead);
+  line-height: 1.6;
+  color: var(--color-ink-light-muted);
+  max-width: 760px;
+  margin-bottom: var(--space-8);
+}
+
+.metaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-forest-border);
+}
+
+.metaBadge {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.5rem 0.875rem;
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--color-forest-border);
+  border-radius: var(--radius-sm);
+}
+
+.badgeLabel {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--color-green-leaf);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.badgeValue {
+  font-size: 0.875rem;
+  color: var(--color-ink-light);
+  font-weight: 500;
+}
+
+.thesisSection {
+  padding-block: clamp(4rem, 7vw, 6rem);
+  border-bottom: 1px solid var(--color-paper-border);
+  background-color: var(--color-paper-card);
+}
+
+.thesisGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .thesisGrid {
+    grid-template-columns: 1.6fr 1fr;
+    gap: var(--space-12);
+  }
+}
+
+.thesisContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.thesisKicker {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--color-green-institutional);
+  text-transform: uppercase;
+}
+
+.thesisTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--color-ink-primary);
+  line-height: 1.15;
+}
+
+.thesisText {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--color-ink-secondary);
+}
+
+.emblemCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-4);
+  background-color: var(--color-paper-surface);
+  border: 1px solid var(--color-paper-border);
+  border-radius: var(--radius-sm);
+  padding: 2.5rem;
+}
+
+.cardEmblem {
+  width: 96px;
+  height: auto;
+}
+
+.emblemDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.motto {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-green-institutional);
+  letter-spacing: 0.05em;
+}
+
+.mottoDesc {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--color-ink-muted);
+}
+
+.teamSection {
+  padding-block: clamp(4rem, 8vw, 6.5rem);
+}
+
+.sectionHeader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-12);
+  max-width: 760px;
+}
+
+.teamKicker {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--color-green-institutional);
+  text-transform: uppercase;
+}
+
+.teamTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--color-ink-primary);
+  line-height: 1.15;
+}
+
+.teamLead {
+  font-size: var(--text-body-lead);
+  line-height: 1.55;
+  color: var(--color-ink-secondary);
+}
+
+.stageGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+}
+
+@media (min-width: 960px) {
+  .stageGrid {
+    grid-template-columns: 1.35fr 1fr;
+    gap: var(--space-12);
+    align-items: start;
+  }
+}
+
+.spotlightCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  background-color: var(--color-forest-deep);
+  color: var(--color-ink-light);
+  border: 1px solid var(--color-forest-border);
+  border-radius: var(--radius-sm);
+  padding: clamp(2rem, 4vw, 3rem);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.spotlightHeader {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid var(--color-forest-border);
+}
+
+.spotlightAvatar {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  background-color: #10291d;
+  border: 2px solid;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spotlightInitials {
+  font-family: var(--font-mono);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-ink-light);
+}
+
+.spotlightIndex {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: var(--color-green-leaf);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.spotlightName {
+  font-family: var(--font-display);
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--color-ink-light);
+  line-height: 1.15;
+}
+
+.spotlightRole {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-ink-light-muted);
+  display: block;
+}
+
+.spotlightBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.infoGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.infoLabel {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: var(--color-green-leaf);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.infoText {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--color-ink-light-muted);
+}
+
+.verifiedNotice {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-green-leaf);
+  background-color: rgba(168, 206, 100, 0.08);
+  border: 1px solid rgba(168, 206, 100, 0.2);
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-sm);
+  margin-top: var(--space-2);
+}
+
+.verifiedIcon {
+  font-size: 0.875rem;
+}
+
+.selectorList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.selectorItem {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 0.875rem 1rem;
+  background-color: var(--color-paper-card);
+  border: 1px solid var(--color-paper-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  text-align: left;
+  transition: all var(--duration-fast) ease;
+  min-height: 48px;
+}
+
+.selectorItem:hover {
+  background-color: var(--color-paper-surface);
+  border-color: var(--color-green-institutional);
+}
+
+.selectorItemActive {
+  background-color: var(--color-forest-deep);
+  border-color: var(--color-forest-deep);
+  color: var(--color-ink-light);
+}
+
+.selectorItemActive:hover {
+  background-color: var(--color-forest-deep);
+}
+
+.itemAvatar {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  background-color: rgba(16, 41, 29, 0.1);
+  border: 1.5px solid;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-ink-primary);
+}
+
+.selectorItemActive .itemAvatar {
+  background-color: #10291d;
+  color: var(--color-ink-light);
+}
+
+.itemInfo {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.itemName {
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.itemRole {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--color-ink-muted);
+}
+
+.selectorItemActive .itemRole {
+  color: var(--color-ink-light-subtle);
+}
+
+.itemIndex {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-ink-muted);
+}
+
+.selectorItemActive .itemIndex {
+  color: var(--color-green-leaf);
+}
+
+.contactBanner {
+  background-color: var(--color-paper-surface);
+  border-top: 1px solid var(--color-paper-border);
+  padding-block: clamp(3.5rem, 7vw, 5rem);
+}
+
+.bannerCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  background-color: var(--color-forest-deep);
+  color: var(--color-ink-light);
+  border: 1px solid var(--color-forest-border);
+  border-radius: var(--radius-sm);
+  padding: clamp(2rem, 4vw, 3rem);
+}
+
+@media (min-width: 860px) {
+  .bannerCard {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.bannerKicker {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--color-green-leaf);
+  text-transform: uppercase;
+}
+
+.bannerTitle {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-ink-light);
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.bannerDesc {
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--color-ink-light-muted);
+  max-width: 600px;
+}
+
+.bannerBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.65rem;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-forest-deep);
+  background-color: var(--color-green-leaf);
+  border: 1px solid var(--color-green-leaf);
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  transition: all var(--duration-fast) ease;
+  min-height: 48px;
+}
+
+.bannerBtn:hover {
+  background-color: #b9df77;
+  transform: translateY(-2px);
+}

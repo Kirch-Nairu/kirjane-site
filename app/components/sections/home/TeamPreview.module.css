@@ -1,0 +1,192 @@
+.section {
+  background-color: var(--color-paper-surface);
+  border-bottom: 1px solid var(--color-paper-border);
+  padding-block: clamp(4rem, 8vw, 6rem);
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  margin-bottom: var(--space-12);
+}
+
+@media (min-width: 860px) {
+  .header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+}
+
+.headerText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-width: 720px;
+}
+
+.kicker {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--color-green-institutional);
+  text-transform: uppercase;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: var(--color-ink-primary);
+  line-height: 1.15;
+}
+
+.lead {
+  font-size: var(--text-body-lead);
+  line-height: 1.55;
+  color: var(--color-ink-secondary);
+}
+
+.fullRosterLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-green-institutional);
+  border: 1px solid var(--color-paper-border-strong);
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-paper-card);
+  transition: all var(--duration-fast) ease;
+  white-space: nowrap;
+  min-height: 44px;
+}
+
+.fullRosterLink:hover {
+  background-color: var(--color-paper-light);
+  border-color: var(--color-green-institutional);
+  transform: translateY(-1px);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1040px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  background-color: var(--color-paper-card);
+  border: 1px solid var(--color-paper-border);
+  border-radius: var(--radius-sm);
+  padding: 1.75rem;
+  transition: border-color var(--duration-fast) ease, transform var(--duration-fast) ease;
+}
+
+.card:hover {
+  border-color: var(--color-green-institutional);
+  transform: translateY(-2px);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-paper-border);
+}
+
+.avatarBadge {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-forest-deep);
+  border: 2px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatarCode {
+  font-family: var(--font-mono);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--color-ink-light);
+  letter-spacing: 0.05em;
+}
+
+.titleGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.memberName {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-ink-primary);
+  line-height: 1.2;
+}
+
+.memberRole {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--color-ink-muted);
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.disciplineBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.disciplineLabel {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: var(--color-green-institutional);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.disciplineText {
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--color-ink-muted);
+}
+
+.summaryText {
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--color-ink-secondary);
+  margin-top: auto;
+}

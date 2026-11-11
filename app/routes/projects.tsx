@@ -1,168 +1,149 @@
 import { Link } from "react-router";
-import {
-  flagshipProjects,
-  salrynFlavors,
-  salrynKernelModules,
-  scorynRecognitions,
-} from "../data/content";
-import { PageIntro } from "../components/Editorial";
-import { Reveal, Stagger } from "../components/Motion";
-import { SalrynInteractiveSimulator } from "../components/SalrynInteractiveSimulator";
+import { projects } from "../content/projects";
+import styles from "./projects.module.css";
 
 export function meta() {
   return [
     {
-      title: "Products & Work — Salryn BMS, Scoryn & Talibon Intra-Office | Kirjane Labs",
+      title: "Selected Work & Case Narratives — Kirjane Labs",
     },
     {
       name: "description",
       content:
-        "Explore Kirjane Labs' flagship software: Salryn Business Management System and its industry setups, Scoryn live event tabulation, and the Talibon Intra-Office System.",
+        "Verified case narratives of Salryn BMS, Scoryn live competition scoring, and the Talibon Intra-Office document routing system engineered by Kirjane Labs.",
     },
   ];
 }
 
 export default function Projects() {
   return (
-    <>
-      <PageIntro
-        eyebrow="Products & Selected Work"
-        badge="Bohol, Philippines"
-        lines={["Software built for daily operations, accurate accounting, and live events."]}
-        summary="We build both ready-to-deploy software platforms and custom institutional systems. Every product is engineered around a dependable database core and an interface your staff can learn in minutes."
-      />
+    <div className={styles.page}>
+      {/* Editorial Header */}
+      <header className={styles.header}>
+        <div className={styles.container}>
+          <span className={styles.kicker}>EVIDENCE & PLATFORMS</span>
+          <h1 className={styles.headline}>Engineering Validated in Operation</h1>
+          <p className={styles.lead}>
+            Kirjane Labs delivers platforms engineered for distinct operational requirements.
+            Below are our three signature systems, accompanied by their operational context,
+            technical architecture, and verifiable deployment statuses.
+          </p>
 
-      {/* Flagship Case Studies */}
-      <section className="page-shell section-block">
-        <div className="case-study-stack">
-          {flagshipProjects.map((project, idx) => (
-            <Reveal key={project.id} delay={idx * 70}>
-              <article id={project.id} className="case-study-card">
-                <div className="case-study-meta-col">
-                  <span className="case-study-num">{project.number}</span>
-                  <span className="case-study-category">{project.category}</span>
-                  <span className="badge-pill">{project.statusBadge}</span>
+          <nav className={styles.navStrip} aria-label="Projects directory">
+            {projects.map((proj) => (
+              <a key={proj.id} href={`#${proj.slug}`} className={styles.stripLink}>
+                <span className={styles.stripNumber}>{proj.number}</span>
+                <span className={styles.stripTitle}>{proj.title}</span>
+                <span className={`${styles.stripBadge} ${styles[proj.deliveryState]}`}>
+                  {proj.statusBadge}
+                </span>
+              </a>
+            ))}
+          </nav>
+        </div>
+      </header>
+
+      {/* Case Narratives */}
+      <section className={styles.narrativesSection}>
+        <div className={styles.container}>
+          <div className={styles.casesList}>
+            {projects.map((project) => (
+              <article key={project.id} id={project.slug} className={styles.caseArticle}>
+                <div className={styles.caseHeader}>
+                  <div className={styles.headerTop}>
+                    <span className={styles.caseNumber}>{project.number}</span>
+                    <span className={`${styles.statusBadge} ${styles[project.deliveryState]}`}>
+                      {project.statusBadge}
+                    </span>
+                  </div>
+                  <span className={styles.category}>{project.category}</span>
+                  <h2 className={styles.title}>{project.title}</h2>
+                  <p className={styles.subtitle}>{project.subtitle}</p>
                 </div>
 
-                <div className="case-study-body-col">
-                  <h2>{project.title}</h2>
-                  <p className="case-study-subtitle">{project.subtitle}</p>
-                  <p className="case-study-summary">{project.summary}</p>
+                <div className={styles.caseGrid}>
+                  <div className={styles.narrativeCol}>
+                    <div className={styles.block}>
+                      <h3 className={styles.blockTitle}>Operational Context & Problem</h3>
+                      <p className={styles.blockText}>{project.problem}</p>
+                    </div>
 
-                  {project.recognitions && project.recognitions.length > 0 && (
-                    <div className="case-study-recognitions">
-                      <span className="recognition-heading">Proven In Action</span>
-                      <div className="tag-cluster">
-                        {project.recognitions.map((rec) => (
-                          <span key={rec} className="tag-chip-strong">
-                            {rec}
-                          </span>
+                    <div className={styles.block}>
+                      <h3 className={styles.blockTitle}>Architectural Solution</h3>
+                      <p className={styles.blockText}>{project.solution}</p>
+                    </div>
+
+                    {project.outcome && (
+                      <div className={styles.block}>
+                        <h3 className={styles.blockTitle}>Measured Operational Outcome</h3>
+                        <p className={styles.blockText}>{project.outcome}</p>
+                      </div>
+                    )}
+                  </div>
+
+                  <div className={styles.specCol}>
+                    <div className={styles.specCard}>
+                      <h3 className={styles.specHeading}>System Highlights</h3>
+                      <ul className={styles.highlightsList}>
+                        {project.architectureHighlights.map((h, i) => (
+                          <li key={i} className={styles.highlightItem}>
+                            <span className={styles.hDot} aria-hidden="true" />
+                            <span>{h}</span>
+                          </li>
                         ))}
+                      </ul>
+                    </div>
+
+                    <div className={styles.evidenceCard}>
+                      <h3 className={styles.evidenceHeading}>Verification Ledger</h3>
+                      <ul className={styles.evidenceList}>
+                        {project.evidence.map((ev, i) => (
+                          <li key={i} className={styles.evidenceItem}>
+                            <span className={styles.evCheck} aria-hidden="true">✔</span>
+                            <div>
+                              <span className={styles.evLabel}>{ev.sourceLabel}</span>
+                              {ev.checkedAt && (
+                                <span className={styles.evDate}>Verified: {ev.checkedAt}</span>
+                              )}
+                            </div>
+                          </li>
+                        ))}
+                      </ul>
+                      <div className={styles.demoBanner}>
+                        <span>{project.demonstrationLabel}</span>
                       </div>
                     </div>
-                  )}
+                  </div>
                 </div>
 
-                <div className="case-study-highlights-col">
-                  <h3>Key Capabilities</h3>
-                  <ul className="clean-check-list">
-                    {project.architectureHighlights.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                  <p className="case-study-note">{project.placeholderSlot}</p>
-                  <Link to="/contact" className="btn-secondary">
-                    Inquire About {project.title.split("—")[0].trim()}
+                <div className={styles.caseFooter}>
+                  <Link to="/contact" className={styles.inquireLink}>
+                    <span>Inquire About {project.title} Architecture</span>
+                    <span aria-hidden="true">→</span>
                   </Link>
                 </div>
               </article>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
-      {/* Salryn Interactive Demo & Industry Setups */}
-      <section id="salryn" className="surface-band">
-        <div className="page-shell section-block">
-          <Reveal className="section-header-split">
-            <div>
-              <span className="section-kicker">Salryn — The Business Kernel</span>
-              <h2 className="section-heading">
-                One dependable core, tailored for your specific industry.
-              </h2>
-            </div>
-            <p className="section-subcopy">
-              Co-designed by our engineers and accountants, Salryn handles your checkout, stock, and
-              financial ledger automatically—with specialized setups for food &amp; beverage, retail,
-              hardware, pharmacies, and service shops.
-            </p>
-          </Reveal>
-
-          <Stagger className="kernel-pillars-grid" baseDelay={50} step={65}>
-            {salrynKernelModules.map((mod) => (
-              <div key={mod.code} className="kernel-pillar-card">
-                <span className="kernel-pillar-tag">{mod.code}</span>
-                <h3>{mod.name}</h3>
-                <p>{mod.detail}</p>
-              </div>
             ))}
-          </Stagger>
-
-          <Reveal delay={120}>
-            <SalrynInteractiveSimulator />
-          </Reveal>
-
-          <div className="flavors-catalog-block">
-            <Reveal>
-              <h3 className="subsection-heading">All Salryn Industry Setups</h3>
-            </Reveal>
-            <Stagger className="flavors-grid" baseDelay={60} step={60}>
-              {salrynFlavors.map((flavor) => (
-                <article key={flavor.id} className="flavor-detail-card">
-                  <div className="flavor-detail-top">
-                    <span className="badge-pill">{flavor.code}</span>
-                    <span className="flavor-industry-label">{flavor.industry}</span>
-                  </div>
-                  <h4>{flavor.name}</h4>
-                  <p>{flavor.description}</p>
-                  <ul className="clean-check-list">
-                    {flavor.modules.map((m) => (
-                      <li key={m}>{m}</li>
-                    ))}
-                  </ul>
-                </article>
-              ))}
-            </Stagger>
           </div>
         </div>
       </section>
 
-      {/* Scoryn Event Recognitions */}
-      <section id="scoryn" className="page-shell section-block">
-        <Reveal className="section-header-split">
-          <div>
-            <span className="section-kicker">Scoryn — Live Event Tabulation</span>
-            <h2 className="section-heading">
-              Trusted by municipal pageants and live competitions across Bohol.
-            </h2>
+      {/* Inquiry Callout */}
+      <section className={styles.ctaSection}>
+        <div className={styles.container}>
+          <div className={styles.ctaInner}>
+            <h2 className={styles.ctaTitle}>Have a custom platform requirement?</h2>
+            <p className={styles.ctaLead}>
+              We architect custom business systems, intra-office workflows, and live tabulation
+              engines tailored to your specific organizational hierarchy and hardware constraints.
+            </p>
+            <Link to="/contact" className={styles.ctaBtn}>
+              <span>Start an Engineering Scope Discussion</span>
+              <span aria-hidden="true">→</span>
+            </Link>
           </div>
-          <p className="section-subcopy">
-            Scoryn replaces stressful manual tallying with instant, verified digital tabulation—so
-            hosts and organizers can announce results on time with complete confidence.
-          </p>
-        </Reveal>
-
-        <Stagger className="scoryn-events-grid" baseDelay={60} step={80}>
-          {scorynRecognitions.map((item) => (
-            <article key={item.title} className="scoryn-event-card">
-              <span className="badge-pill">{item.code}</span>
-              <h3>{item.title}</h3>
-              <p className="scoryn-event-role">{item.role}</p>
-              <p>{item.detail}</p>
-            </article>
-          ))}
-        </Stagger>
+        </div>
       </section>
-    </>
+    </div>
   );
 }

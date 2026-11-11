@@ -1,0 +1,186 @@
+.section {
+  background-color: var(--color-paper-surface);
+  border-bottom: 1px solid var(--color-paper-border);
+  padding-block: clamp(4rem, 8vw, 6rem);
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-12);
+  max-width: 780px;
+}
+
+.kicker {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--color-green-institutional);
+  text-transform: uppercase;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: var(--color-ink-primary);
+  line-height: 1.15;
+}
+
+.lead {
+  font-size: var(--text-body-lead);
+  line-height: 1.55;
+  color: var(--color-ink-secondary);
+}
+
+.chaptersList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.chapterCard {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  background-color: var(--color-paper-card);
+  border: 1px solid var(--color-paper-border);
+  border-radius: var(--radius-sm);
+  padding: clamp(1.5rem, 3.5vw, 2.75rem);
+  transition: border-color var(--duration-fast) ease, box-shadow var(--duration-fast) ease;
+}
+
+@media (min-width: 860px) {
+  .chapterCard {
+    grid-template-columns: 240px 1fr;
+    gap: var(--space-12);
+  }
+}
+
+.chapterCard:hover {
+  border-color: var(--color-paper-border-strong);
+  box-shadow: 0 8px 24px rgba(16, 41, 29, 0.05);
+}
+
+.chapterMeta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  border-bottom: 1px solid var(--color-paper-border);
+  padding-bottom: var(--space-4);
+}
+
+@media (min-width: 860px) {
+  .chapterMeta {
+    border-bottom: none;
+    padding-bottom: 0;
+    border-right: 1px solid var(--color-paper-border);
+    padding-right: var(--space-6);
+  }
+}
+
+.chapterNumber {
+  font-family: var(--font-mono);
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--color-green-institutional);
+  line-height: 1;
+}
+
+.chapterTag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+}
+
+.chapterContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.chapterTitle {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2vw, 1.65rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--color-ink-primary);
+  line-height: 1.25;
+}
+
+.chapterHeadline {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--color-green-institutional);
+  line-height: 1.5;
+}
+
+.chapterDesc {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--color-ink-secondary);
+}
+
+.capabilitiesList {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.625rem;
+  padding: 0;
+  margin: var(--space-2) 0;
+  list-style: none;
+}
+
+@media (min-width: 640px) {
+  .capabilitiesList {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.capabilityItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: var(--color-ink-secondary);
+}
+
+.itemDot {
+  flex-shrink: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--color-green-institutional);
+  margin-top: 0.45rem;
+}
+
+.chapterLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-green-institutional);
+  margin-top: var(--space-2);
+  width: fit-content;
+  transition: transform var(--duration-fast) ease, color var(--duration-fast) ease;
+}
+
+.chapterLink:hover {
+  color: #1b4f34;
+  transform: translateX(3px);
+}

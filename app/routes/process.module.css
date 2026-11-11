@@ -1,0 +1,421 @@
+.page {
+  background-color: var(--color-paper-light);
+  color: var(--color-ink-primary);
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+.header {
+  background-color: var(--color-forest-deep);
+  color: var(--color-ink-light);
+  border-bottom: 1px solid var(--color-forest-border);
+  padding-block: clamp(3.5rem, 7vw, 5.5rem);
+}
+
+.kicker {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--color-green-leaf);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: var(--space-3);
+}
+
+.headline {
+  font-family: var(--font-display);
+  font-size: var(--text-h1);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--color-ink-light);
+  max-width: 860px;
+  margin-bottom: var(--space-4);
+}
+
+.lead {
+  font-size: var(--text-body-lead);
+  line-height: 1.6;
+  color: var(--color-ink-light-muted);
+  max-width: 760px;
+  margin-bottom: var(--space-8);
+}
+
+.stageTimelineNav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-forest-border);
+}
+
+.navStep {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.625rem 1.15rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--color-forest-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-ink-light);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--duration-fast) ease;
+}
+
+.navStep:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: var(--color-green-leaf);
+}
+
+.navStepActive {
+  background-color: var(--color-green-leaf);
+  border-color: var(--color-green-leaf);
+  color: var(--color-forest-deep);
+  font-weight: 600;
+}
+
+.navStepActive:hover {
+  background-color: #b9df77;
+}
+
+.stepNum {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.stageSection {
+  padding-block: clamp(3.5rem, 6vw, 5rem);
+  background-color: var(--color-paper-surface);
+  border-bottom: 1px solid var(--color-paper-border);
+}
+
+.stageDisplayCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  background-color: var(--color-paper-card);
+  border: 1px solid var(--color-paper-border);
+  border-radius: var(--radius-sm);
+  padding: clamp(2rem, 4.5vw, 3.5rem);
+  box-shadow: 0 4px 24px rgba(16, 41, 29, 0.05);
+}
+
+.stageHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid var(--color-paper-border);
+}
+
+.stageBadgeRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: 0.25rem;
+}
+
+.stageNumberBadge {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-green-institutional);
+  letter-spacing: 0.08em;
+}
+
+.stagePhase {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-ink-muted);
+  text-transform: uppercase;
+}
+
+.stageTitle {
+  font-family: var(--font-display);
+  font-size: clamp(1.65rem, 3vw, 2.35rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--color-ink-primary);
+  line-height: 1.15;
+}
+
+.stageDetail {
+  font-size: 1.1rem;
+  line-height: 1.65;
+  color: var(--color-ink-secondary);
+  max-width: 900px;
+}
+
+.stageDetailsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-paper-border);
+}
+
+@media (min-width: 860px) {
+  .stageDetailsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.detailCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  background-color: var(--color-paper-surface);
+  border: 1px solid var(--color-paper-border);
+  border-radius: var(--radius-sm);
+  padding: 1.25rem;
+}
+
+.verificationCard {
+  border-color: rgba(36, 104, 68, 0.3);
+  background-color: rgba(36, 104, 68, 0.04);
+}
+
+.cardKicker {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-green-institutional);
+}
+
+.cardText {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--color-ink-primary);
+  font-weight: 500;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.35rem;
+}
+
+.checkIcon {
+  color: var(--color-green-institutional);
+  font-weight: bold;
+}
+
+.allStagesSection {
+  padding-block: clamp(4rem, 8vw, 6.5rem);
+}
+
+.allStagesHeader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-12);
+  max-width: 760px;
+}
+
+.sectionTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--color-ink-primary);
+  line-height: 1.15;
+}
+
+.sectionLead {
+  font-size: var(--text-body-lead);
+  line-height: 1.55;
+  color: var(--color-ink-secondary);
+}
+
+.stagesAccordion {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.fullStageRow {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  background-color: var(--color-paper-card);
+  border: 1px solid var(--color-paper-border);
+  border-radius: var(--radius-sm);
+  padding: clamp(1.5rem, 3.5vw, 2.5rem);
+}
+
+@media (min-width: 768px) {
+  .fullStageRow {
+    grid-template-columns: 180px 1fr;
+    gap: var(--space-10);
+  }
+}
+
+.rowNumberCol {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  border-bottom: 1px solid var(--color-paper-border);
+  padding-bottom: var(--space-4);
+}
+
+@media (min-width: 768px) {
+  .rowNumberCol {
+    border-bottom: none;
+    padding-bottom: 0;
+    border-right: 1px solid var(--color-paper-border);
+    padding-right: var(--space-6);
+  }
+}
+
+.rowNum {
+  font-family: var(--font-mono);
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--color-green-institutional);
+  line-height: 1;
+}
+
+.rowName {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-ink-primary);
+}
+
+.rowContentCol {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.rowPhase {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--color-green-institutional);
+  text-transform: uppercase;
+}
+
+.rowTitle {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-ink-primary);
+  letter-spacing: -0.015em;
+}
+
+.rowDetail {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--color-ink-secondary);
+}
+
+.rowDeliverables {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: var(--space-2);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-paper-border);
+}
+
+.dItem {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.dLabel {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-ink-muted);
+  text-transform: uppercase;
+}
+
+.dVal {
+  color: var(--color-ink-primary);
+  font-weight: 500;
+}
+
+.ctaSection {
+  background-color: var(--color-forest-deep);
+  color: var(--color-ink-light);
+  border-top: 1px solid var(--color-forest-border);
+  padding-block: clamp(3.5rem, 7vw, 5.5rem);
+}
+
+.ctaCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+@media (min-width: 860px) {
+  .ctaCard {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.ctaKicker {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--color-green-leaf);
+  text-transform: uppercase;
+}
+
+.ctaTitle {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.8vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--color-ink-light);
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.ctaDesc {
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--color-ink-light-muted);
+  max-width: 600px;
+}
+
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.65rem;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-forest-deep);
+  background-color: var(--color-green-leaf);
+  border: 1px solid var(--color-green-leaf);
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  transition: all var(--duration-fast) ease;
+  min-height: 48px;
+}
+
+.ctaBtn:hover {
+  background-color: #b9df77;
+  transform: translateY(-2px);
+}

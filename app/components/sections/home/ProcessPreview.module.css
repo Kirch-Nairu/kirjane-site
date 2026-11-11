@@ -1,0 +1,202 @@
+.section {
+  background-color: var(--color-paper-light);
+  border-bottom: 1px solid var(--color-paper-border);
+  padding-block: clamp(4rem, 8vw, 6rem);
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-8);
+  max-width: 780px;
+}
+
+.kicker {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--color-green-institutional);
+  text-transform: uppercase;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: var(--color-ink-primary);
+  line-height: 1.15;
+}
+
+.lead {
+  font-size: var(--text-body-lead);
+  line-height: 1.55;
+  color: var(--color-ink-secondary);
+}
+
+.tabList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+  margin-bottom: var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .tabList {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.tabButton {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+  padding: 1rem 1.25rem;
+  background-color: var(--color-paper-card);
+  border: 1px solid var(--color-paper-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  text-align: left;
+  transition: all var(--duration-fast) ease;
+  min-height: 44px;
+}
+
+.tabButton:hover {
+  border-color: var(--color-green-institutional);
+  background-color: var(--color-paper-surface);
+}
+
+.tabButtonActive {
+  background-color: var(--color-forest-deep);
+  border-color: var(--color-forest-deep);
+  color: var(--color-ink-light);
+}
+
+.tabButtonActive:hover {
+  background-color: var(--color-forest-deep);
+}
+
+.tabNumber {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-green-institutional);
+}
+
+.tabButtonActive .tabNumber {
+  color: var(--color-green-leaf);
+}
+
+.tabName {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.stagePanel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  background-color: var(--color-paper-card);
+  border: 1px solid var(--color-paper-border);
+  border-radius: var(--radius-sm);
+  padding: clamp(1.75rem, 4vw, 3rem);
+  box-shadow: 0 4px 20px rgba(16, 41, 29, 0.04);
+}
+
+.panelHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.panelPhase {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-green-institutional);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.panelTitle {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+  font-weight: 700;
+  color: var(--color-ink-primary);
+  letter-spacing: -0.02em;
+}
+
+.panelDetail {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--color-ink-secondary);
+  max-width: 880px;
+}
+
+.panelGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-paper-border);
+}
+
+@media (min-width: 768px) {
+  .panelGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.metaCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.metaLabel {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: var(--color-ink-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.metaContent {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--color-ink-primary);
+  font-weight: 500;
+}
+
+.footerAction {
+  margin-top: var(--space-8);
+}
+
+.processLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-green-institutional);
+  transition: transform var(--duration-fast) ease, color var(--duration-fast) ease;
+}
+
+.processLink:hover {
+  color: #1b4f34;
+  transform: translateX(3px);
+}

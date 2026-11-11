@@ -1,116 +1,83 @@
-export interface ProjectCaseStudy {
-  id: string;
-  number: string;
-  category: string;
-  title: string;
-  subtitle: string;
-  summary: string;
-  architectureHighlights: string[];
-  recognitions?: string[];
-  statusBadge: string;
-  placeholderSlot: string;
-}
+import type { ProjectCaseStudy } from "./types";
+import { projectEvidence } from "./evidence";
 
-export const flagshipProjects: ProjectCaseStudy[] = [
-  {
-    id: "talibon-intra-office",
-    number: "01",
-    category: "Government & Institutional Platform",
-    title: "Talibon Intra-Office System",
-    subtitle: "Paperless document routing, inter-office tracking, and workflow accountability.",
-    summary:
-      "Developed to modernize how departments coordinate daily records and approvals in Talibon. Instead of lost paper trails and manual follow-ups, staff can route documents between offices, see exact approval statuses in real time, and maintain a complete digital archive.",
-    architectureHighlights: [
-      "Fast document routing across municipal offices",
-      "Real-time status tracking & receiving logs",
-      "Role-based access for staff and department heads",
-      "Dependable backend built for everyday office operations",
-    ],
-    recognitions: ["Flagship Institutional Deployment — Municipality of Talibon"],
-    statusBadge: "Live Institutional System",
-    placeholderSlot: "Deployed for municipal intra-office operations in Bohol.",
-  },
+export const projects: ProjectCaseStudy[] = [
   {
     id: "salryn-bms",
-    number: "02",
-    category: "Flagship Business Product",
-    title: "Salryn — The Business Kernel",
-    subtitle: "One reliable business management core tailored for cafes, retail, hardware, and more.",
+    slug: "salryn",
+    number: "01",
+    category: "Flagship Business Management System",
+    title: "Salryn",
+    subtitle: "A unified operational kernel for retail, hospitality, pharmacy, and trade.",
     summary:
-      "Co-designed by our systems engineers and accountant co-founders, Salryn combines POS checkout, real-time inventory, supplier purchasing, and automatic accounting in one clean system—configured specifically for your type of business.",
+      "Co-engineered by systems architects and accountants, Salryn unifies checkout transactions, real-time inventory management, purchasing workflows, and automated double-entry accounting into one coherent system.",
+    problem:
+      "Small and mid-sized enterprises often struggle with disconnected point-of-sale registers, manual inventory spreadsheets, and delayed book balancing that take days to reconcile at the end of each month.",
+    solution:
+      "Salryn anchors the front-of-house register to a balanced accounting ledger in real time. Every scan, return, or stock transfer writes directly to general ledger accounts with zero drift.",
+    outcome:
+      "Piloted in commercial retail and cafe environments across Bohol, giving operators real-time visibility into daily margins, low-stock warnings, and cash drawers.",
+    deliveryState: "pilot",
+    statusBadge: "Commercial Pilot",
     architectureHighlights: [
-      "Automatic double-entry accounting behind every sale",
-      "Industry-tailored flavors (Cafe, Gen Merch, Hardware, Pharmacy)",
-      "Multi-branch stock & sales consolidation",
-      "Clear shift closeouts & daily profit summaries",
+      "Zero-drift double-entry ledger integration behind every transaction",
+      "Sector-specific operational flavors (Cafe, General Merch, Hardware, Pharmacy)",
+      "Multi-branch and multi-terminal stock consolidation",
+      "Shift reconciliation with discrepancy audits and cashier lockouts",
     ],
-    recognitions: ["Powering Cafe, Retail, General Merchandise & Enterprise Operations"],
-    statusBadge: "Flagship Product",
-    placeholderSlot: "Available in industry-ready setups or custom enterprise builds.",
+    evidence: projectEvidence.salryn,
+    demonstrationLabel: "Demonstrated in active commercial pilot and internal test benches.",
   },
   {
     id: "scoryn-tabulation",
-    number: "03",
-    category: "Live Event & Competition Software",
-    title: "Scoryn — Automated Tabulation",
-    subtitle: "Instant, error-free live judging and score tabulation for pageants and events.",
-    summary:
-      "During live events, manual calculator tallying and spreadsheet formulas cause costly delays and human error. Scoryn connects every judge's screen to a central scoring engine—calculating weighted scores, round lockouts, and final winners instantaneously.",
-    architectureHighlights: [
-      "Real-time score syncing from every judge's terminal",
-      "Automatic weighted criteria & tie-break computation",
-      "Locked rounds and print-ready official audit sheets",
-      "Works reliably even on local venue networks",
-    ],
-    recognitions: [
-      "Official Tabulation — Miss Poblacion Occidental (Miss Pob Oc)",
-      "Official Tabulation — Mister Valencia",
-      "Official Tabulation — Miss Lila",
-    ],
-    statusBadge: "Event-Proven Platform",
-    placeholderSlot: "Available for municipal pageants, school competitions, and regional events.",
-  },
-];
-
-export const processSteps = [
-  {
-    number: "01",
-    code: "Step 1 · Understand",
-    title: "Listen & Map the Real Workflow",
-    detail:
-      "We sit down with the people who actually do the work—cashiers, accountants, managers, or office staff—to understand what slows you down before we write a single line of code.",
-    question: "How does your team work today, and where do errors or delays happen?",
-  },
-  {
+    slug: "scoryn",
     number: "02",
-    code: "Step 2 · Blueprint",
-    title: "Define the Rules & Numbers",
-    detail:
-      "Our engineers and accountants map out your exact business rules, staff permissions, and financial calculations so nothing is left to guesswork.",
-    question: "Which numbers, approvals, and records must stay 100% accurate?",
+    category: "Live Competition & Scoring Platform",
+    title: "Scoryn",
+    subtitle: "Real-time, fault-tolerant scoring and audit tabulation for live events.",
+    summary:
+      "Scoryn provides instantaneous tablet-to-server score aggregation for pageants, athletic events, and institutional competitions, replacing error-prone paper scorecards and manual calculator tallying.",
+    problem:
+      "Live competitions face critical deadlines where manual score collection and spreadsheet data entry introduce human calculation errors, delayed announcements, and audit challenges under intense public pressure.",
+    solution:
+      "Judges score on dedicated networked tablet interfaces. Scoryn calculates weighted scores, enforces round cutoffs, flags anomalies, and generates tamper-evident audit printouts for officials.",
+    outcome:
+      "Successfully deployed as the official automated tabulation system for Miss Poblacion Occidental, Mister Valencia, and Miss Lila.",
+    deliveryState: "delivered",
+    statusBadge: "Event-Proven Platform",
+    architectureHighlights: [
+      "Decentralized scoring synchronization resilient to intermittent venue Wi-Fi",
+      "Automated weighted scoring algorithms and deterministic tie-break criteria",
+      "Cryptographic round lockouts to prevent retrospective tampering",
+      "Instantaneous official audit sheets and organizer summary views",
+    ],
+    evidence: projectEvidence.scoryn,
+    demonstrationLabel: "Verified through official live event tabulations in Bohol.",
   },
   {
+    id: "talibon-intra-office",
+    slug: "talibon",
     number: "03",
-    code: "Step 3 · Build",
-    title: "Engineer the System & Interface",
-    detail:
-      "We build a rock-solid backend database alongside a clean, easy-to-learn screen that your team can use confidently without weeks of complicated training.",
-    question: "Is it fast, reliable, and simple for your staff to use every day?",
-  },
-  {
-    number: "04",
-    code: "Step 4 · Verify",
-    title: "Test Against Real Scenarios",
-    detail:
-      "Before launch, we test the system against real daily transactions, edge cases, and permission checks to make sure it performs smoothly under pressure.",
-    question: "Does every report, receipt, and workflow match your expectations?",
-  },
-  {
-    number: "05",
-    code: "Step 5 · Launch & Support",
-    title: "Deploy, Host & Stand By Your Team",
-    detail:
-      "We handle cloud setup, web hosting, backups, and staff onboarding—and remain available as your technical partner as your organization grows.",
-    question: "Who keeps your system fast, secure, and updated after launch? We do.",
+    category: "Government & Institutional Workflow",
+    title: "Talibon Intra-Office System",
+    subtitle: "Digital document routing, receiving logs, and accountability for municipal offices.",
+    summary:
+      "Engineered to modernize inter-departmental communications and document routing within municipal local government units, replacing physical paper transit with traceable digital tracking.",
+    problem:
+      "Municipal departments frequently rely on manual messenger delivery and physical logbooks, causing lost paper trails, bottlenecked approvals, and lack of accountability for time-sensitive public documents.",
+    solution:
+      "A centralized intranet platform that logs document movement across departments, records digital receiving receipts with timestamps, and provides department heads with real-time status visibility.",
+    outcome:
+      "Institutional workflow system engineered for the Municipality of Talibon, tailored to public-sector document security and audit requirements.",
+    deliveryState: "development",
+    statusBadge: "Institutional Deployment",
+    architectureHighlights: [
+      "Role-based routing permissions matching official municipal hierarchies",
+      "Tamper-proof digital receiving receipts and historical movement audit logs",
+      "Department-level priority queues and overdue notification flags",
+      "Air-gapped and intranet-compatible on-premise server deployment",
+    ],
+    evidence: projectEvidence.talibon,
+    demonstrationLabel: "Engineered for institutional municipal operations.",
   },
 ];

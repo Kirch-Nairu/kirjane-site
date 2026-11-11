@@ -1,32 +1,19 @@
-export interface TeamMember {
-  id: string;
-  index: string;
-  name: string;
-  role: string;
-  secondaryRole?: string;
-  discipline: string;
-  isFounder?: boolean;
-  summaryPlaceholder: string;
-  quote: string;
-  avatarCode: string;
-  photoUrl?: string;
-  accentTone: string;
-}
+import type { TeamMember } from "./types";
 
 export const teamMembers: TeamMember[] = [
   {
     id: "kirch",
     index: "01",
     name: "Kirch",
-    role: "Founder, CTO & Head of Engineering",
+    role: "Founder, Chief Technology Officer & Head of Engineering",
     secondaryRole: "Kirjane Labs Tech Lead",
-    discipline: "Backend Architecture · Security · Cloud Infrastructure · System Design",
+    discipline: "Backend Architecture · Database Engineering · Cloud Operations · Systems Security",
     isFounder: true,
-    summaryPlaceholder:
-      "Architects the core backend engines, security boundaries, and database kernels behind Salryn, Scoryn, and our custom enterprise platforms. Ensures every system we ship is fast, secure, and built to last.",
-    quote: "Software only matters if the foundation underneath it never compromises.",
-    avatarCode: "KR",
-    accentTone: "#95C159",
+    summary:
+      "Directs system architecture, security standards, and backend engineering across Kirjane Labs. Oversees core database kernel design, API reliability, and high-concurrency event scoring infrastructure.",
+    avatarCode: "KB",
+    accentTone: "#A8CE64",
+    verifiedTitle: "Founder & CTO",
   },
   {
     id: "paul",
@@ -34,13 +21,13 @@ export const teamMembers: TeamMember[] = [
     name: "Paul",
     role: "Co-Founder & Chief Executive Officer",
     secondaryRole: "Accountant",
-    discipline: "Executive Strategy · Financial Governance · Accounting Systems",
+    discipline: "Executive Strategy · Financial Governance · Accounting Systems · Commercial Operations",
     isFounder: true,
-    summaryPlaceholder:
-      "Brings professional accounting rigor to Kirjane's executive direction. Ensures that every business management system we build handles ledgers, cash flow, and financial reporting with real-world accuracy.",
-    quote: "Technology should give business owners clarity over their numbers, not more guesswork.",
-    avatarCode: "PL",
-    accentTone: "#7BC062",
+    summary:
+      "Leads executive operations and financial oversight. Brings certified accounting rigor to system design, ensuring double-entry ledgers, reconciliation rules, and tax compliance accurately reflect enterprise practice.",
+    avatarCode: "PB",
+    accentTone: "#246844",
+    verifiedTitle: "Co-Founder & CEO",
   },
   {
     id: "james-karl",
@@ -48,13 +35,13 @@ export const teamMembers: TeamMember[] = [
     name: "James Karl",
     role: "Co-Founder & Business Lead",
     secondaryRole: "Accountant",
-    discipline: "Business Operations · Client Strategy · Financial Workflows",
+    discipline: "Client Strategy · Financial Workflows · Industry Scoping · Operations Analysis",
     isFounder: true,
-    summaryPlaceholder:
-      "Works directly with business owners and institutions to translate daily operational bottlenecks and accounting requirements into practical software solutions.",
-    quote: "Every business has its own rhythm—our job is to build around how your people actually work.",
+    summary:
+      "Manages client engagements, organizational workflow scoping, and functional requirements translation. Pairs business analysis with accounting principles to design operational solutions for retail and enterprise partners.",
     avatarCode: "JK",
-    accentTone: "#5AA854",
+    accentTone: "#2E7D52",
+    verifiedTitle: "Co-Founder & Business Lead",
   },
   {
     id: "siris",
@@ -62,48 +49,48 @@ export const teamMembers: TeamMember[] = [
     name: "Siris",
     role: "Co-Founder & Developer Operations Lead",
     secondaryRole: "Co-Founder",
-    discipline: "Developer Operations · Engineering Delivery · System Reliability",
+    discipline: "Developer Operations · System Reliability · Delivery Pipelines · Quality Engineering",
     isFounder: true,
-    summaryPlaceholder:
-      "Leads developer operations and delivery workflows across Kirjane Labs—keeping engineering teams coordinated, code quality high, and client rollouts smooth.",
-    quote: "Reliable delivery comes from disciplined workflows and clear accountability.",
+    summary:
+      "Coordinates developer operations, delivery cadence, and release quality. Establishes development environments, code review standards, and reliable continuous deployment routines across active software projects.",
     avatarCode: "SR",
-    accentTone: "#86C25E",
+    accentTone: "#3A9B66",
+    verifiedTitle: "Co-Founder & DevOps Lead",
   },
   {
     id: "kurt",
     index: "05",
     name: "Kurt",
     role: "CI/CD & DevOps Engineer",
-    discipline: "Automated Deployments · Cloud Hosting · Build & Release Pipelines",
-    summaryPlaceholder:
-      "Manages automated build pipelines, server reliability, and web hosting infrastructure so client websites and enterprise platforms stay fast and online 24/7.",
-    quote: "Every release should be tested, repeatable, and ready for production traffic.",
+    discipline: "Automated Deployments · Server Hardening · Cloud Infrastructure · Reliability",
+    summary:
+      "Specializes in automated build pipelines, containerized deployments, and server health. Maintains infrastructure uptime, automated backup replication, and zero-downtime release routines.",
     avatarCode: "KT",
-    accentTone: "#68B458",
+    accentTone: "#4BA874",
+    verifiedTitle: "DevOps Engineer",
   },
   {
     id: "jesse",
     index: "06",
     name: "Jesse",
-    role: "Social Media Manager",
-    discipline: "Brand Presence · Digital Storytelling · Community & Client Reach",
-    summaryPlaceholder:
-      "Shapes how Kirjane Labs communicates with businesses and communities—translating complex technical milestones into clear, engaging stories.",
-    quote: "Great engineering deserves clear, human storytelling.",
+    role: "Digital Communications & Brand Lead",
+    discipline: "Brand Communications · Digital Presence · Technical Documentation · Community Engagement",
+    summary:
+      "Shapes organizational brand identity, project communications, and community outreach. Translates technical achievements and system milestones into clear, accessible documentation for stakeholders.",
     avatarCode: "JS",
-    accentTone: "#95C159",
+    accentTone: "#5CB782",
+    verifiedTitle: "Communications Lead",
   },
   {
     id: "ace",
     index: "07",
     name: "Ace",
-    role: "Market Research Specialist",
-    discipline: "Industry Discovery · User Research · Product Fit",
-    summaryPlaceholder:
-      "Studies local and regional industries—from cafes and retail stores to municipal offices—so our Salryn flavors and custom tools solve the right problems.",
-    quote: "The best features come from listening closely to the people on the ground.",
+    role: "Market & Systems Research Analyst",
+    discipline: "Industry Discovery · User Workflow Research · Product Requirements · Usability Analysis",
+    summary:
+      "Conducts field research into operational workflows across retail, hospitality, hardware, and municipal institutions. Analyzes real-world bottlenecks to guide functional feature prioritization in software platforms.",
     avatarCode: "AC",
-    accentTone: "#75B95B",
+    accentTone: "#6EC690",
+    verifiedTitle: "Research Analyst",
   },
 ];
