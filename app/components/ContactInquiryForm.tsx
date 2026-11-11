@@ -1,7 +1,7 @@
 /**
  * Pre-launch presentation of the approved Section 10 inquiry fields.
  * Fieldset stays disabled until Kirjane authorizes the inbox, privacy notice,
- * retention/access handling, Netlify configuration and an end-to-end test.
+ * retention/access handling, backend/form configuration and an end-to-end test.
  * No mocked success state, no accidental form submissions.
  */
 const inquiryTypes = [
@@ -26,15 +26,8 @@ export function ContactInquiryForm() {
         className="inquiry-form"
         name="contact"
         method="POST"
-        data-netlify="true"
-        data-netlify-honeypot="bot-field"
         aria-describedby="contact-form-status"
       >
-        <input type="hidden" name="form-name" value="contact" />
-        <div hidden>
-          <label htmlFor="contact-bot">Leave this field empty</label>
-          <input id="contact-bot" name="bot-field" tabIndex={-1} autoComplete="off" />
-        </div>
         <fieldset disabled className="inquiry-fields">
           <legend className="visually-hidden">Contact information and project details</legend>
           <div className="inquiry-pair">

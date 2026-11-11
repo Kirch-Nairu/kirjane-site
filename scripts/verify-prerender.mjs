@@ -37,11 +37,6 @@ if (contactHtmlPath) {
     console.error("SAFETY GATE: contact fieldset must remain disabled before approval.");
     failures++;
   }
-  const blueprint = join(output, "__forms.html");
-  if (!existsSync(blueprint)) {
-    console.error("MISSING Netlify form detection blueprint.");
-    failures++;
-  }
 }
 if (failures) process.exit(1);
 console.log("Verified six HTML route artifacts.");

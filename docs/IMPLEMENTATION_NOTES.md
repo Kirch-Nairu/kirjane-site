@@ -9,7 +9,7 @@ Source of truth: **Kirjane Labs Corporate Website Design & Development Blueprint
 - Shared site header, accessible mobile menu, footer and editorial links.
 - Supporting route content using approved copy; unconfirmed services and public case studies marked as pending.
 - Working temporary color roles and typographic hierarchy.
-- Netlify static publish configuration, form-detection blueprint and responsive Contact UI preview **not yet activated**.
+- Static publish configuration and responsive Contact UI preview **not yet activated**.
 - Build-time six-route HTML artifact verification script.
 
 ## Ownership update
@@ -28,8 +28,8 @@ Kurt (@k3nchinxd) is solely responsible for frontend and any future backend/API 
 1. Run `npm install` with Node 22.22+ and commit `package-lock.json`.
 2. Run `npm run check`, fix all errors, record command output.
 3. Preview at 390px and 1440px; test menu, links, keyboard focus, headline wrapping and overflow.
-4. Inspect all six generated HTML pages; verify missing-route 404 behavior on Netlify.
+4. Inspect all six generated HTML pages; verify missing-route 404 behavior.
 5. Confirm approved logo, color tokens, services, projects and contact details with company.
-6. Configure Netlify Deploy Preview and protect controlled production publishing.
+6. Protect controlled production publishing.
 
 **Status:** implementation candidate; all new changes require passing CI and visual QA. No merge or production release.

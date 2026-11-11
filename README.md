@@ -10,7 +10,7 @@ The public site displays **Kirjane IT Solutions** in navigation, page titles, fo
 
 ## Ownership
 
-- **Kurt / @k3nchinxd:** sole website developer and designer, responsible for **frontend, backend/API work when needed, Netlify Forms, testing, deployment preparation, and maintenance**.
+- **Kurt / @k3nchinxd:** sole website developer and designer, responsible for **frontend, backend/API work when needed, contact form integration, testing, deployment preparation, and maintenance**.
 - **Kirch Ivan:** **not assigned** to this website's implementation; any future contributions require a separate explicit decision.
 - **Company:** retains control of final published brand facts, domain, client inquiries, and release authorization.
 
@@ -18,7 +18,7 @@ This supersedes older role allocations in the approved blueprint; see `docs/OWNE
 
 ## Approved stack
 
-React 19 + Vite + TypeScript + Tailwind CSS 4 + React Router Framework Mode. All six approved routes are pre-rendered at build time and served as static files by Netlify.
+React 19 + Vite + TypeScript + Tailwind CSS 4 + React Router Framework Mode. All six approved routes are pre-rendered at build time as static files.
 
 ## Development
 
@@ -45,11 +45,11 @@ The approved homepage sections are Hero, Services, Projects, Process, About, Con
 
 Original vector logo/official HEX tokens; confirmed services; permitted case-study visuals; approved team description; company inbox/privacy notice; domain and company-owned access; release authority. All are flagged as placeholders in code where appropriate.
 
-**Contact:** The approved contact-field UI is implemented as a disabled preview. Netlify Forms registration is scaffolded, but submissions are **not live** until the company inbox, privacy notice and handling policy are approved and delivery is tested. No fabricated portfolio results.
+**Contact:** The approved contact-field UI is implemented as a disabled preview. Inquiries are **not live** until the company inbox, privacy notice and handling policy are approved and delivery is tested. No fabricated portfolio results.
 
 ## Release discipline
 
-Feature branch → PR → preview + evidence → reviewed merge → company-authorized manual Netlify production publish. Never deploy or merge automatically on behalf of the company.
+Feature branch → PR → preview + evidence → reviewed merge → company-authorized manual production publish. Never deploy or merge automatically on behalf of the company.
 
 ## Architecture
 
@@ -57,7 +57,6 @@ Feature branch → PR → preview + evidence → reviewed merge → company-auth
 - `app/components`: header, footer and reusable UI components.
 - `app/styles/app.css`: Tailwind and centralized **working, not verified** palette tokens.
 - `app/components/ContactInquiryForm.tsx`: accessible disabled inquiry-form UI with approved fields.
-- `public/__forms.html`: static Netlify Forms registration blueprint (not activated).
 - `scripts/verify-prerender.mjs`: checks six generated HTML routes.
 
 See `docs/IMPLEMENTATION_NOTES.md` for the initial review packet.

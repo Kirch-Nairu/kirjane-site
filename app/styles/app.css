@@ -219,7 +219,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 
 
-/* CONTACT PAGE / V1 approved Netlify form fields, pre-launch disabled */
+/* CONTACT PAGE / V1 approved inquiry form fields, pre-launch disabled */
 .visually-hidden { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
 .contact-editorial { display:grid; grid-template-columns:minmax(0,.83fr) minmax(0,1.17fr); gap:clamp(35px,5vw,100px); align-items:start; }
 .contact-introduction { padding-top:24px; }
