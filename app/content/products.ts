@@ -133,27 +133,27 @@ export const salrynFlavors: SalrynFlavor[] = [
 
 export const scorynRecognitions = [
   {
-    code: "Official Tabulation",
+    code: "Featured Tabulation",
     title: "Miss Poblacion Occidental",
     shortName: "Miss Pob Oc",
     role: "Automated Live Judging & Tabulation",
     detail:
-      "Real-time score syncing from judges' tablets to the official audit desk with zero manual encoding.",
+      "Live score syncing from judges' terminals to the central tabulation desk without manual spreadsheet re-encoding.",
   },
   {
-    code: "Official Tabulation",
+    code: "Featured Tabulation",
     title: "Mister Valencia",
     shortName: "Mister Valencia",
     role: "Automated Live Judging & Tabulation",
     detail:
-      "Instant round-by-round rankings, weighted criteria computation, and verified tie-breaker handling.",
+      "Round-by-round rankings, weighted criteria computation, and structured tie-breaker handling.",
   },
   {
-    code: "Official Tabulation",
+    code: "Featured Tabulation",
     title: "Miss Lila",
     shortName: "Miss Lila",
     role: "Automated Live Judging & Tabulation",
     detail:
-      "Fast, tamper-proof score calculation with print-ready official audit sheets for organizers and judges.",
+      "Automated score calculation with print-ready audit sheets for event organizers and judging panels.",
   },
 ];
