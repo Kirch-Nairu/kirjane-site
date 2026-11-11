@@ -1,341 +1,356 @@
 import { Link } from "react-router";
-import {
-  company,
-  services,
-  scorynRecognitions,
-  flagshipProjects,
-  processSteps,
-  teamMembers,
-} from "../data/content";
-import { Reveal, Stagger } from "../components/Motion";
+import { company, scorynRecognitions, teamMembers } from "../data/content";
+import { Reveal } from "../components/Motion";
 import { SalrynInteractiveSimulator } from "../components/SalrynInteractiveSimulator";
 import { TeamScrollShowcase } from "../components/TeamScrollShowcase";
+import { ProcessStoryScroll } from "../components/ProcessStoryScroll";
 
 export function meta() {
   return [
     {
-      title: "Kirjane Labs — Software, Backend Engineering & Business Systems | Bohol, Philippines",
+      title: "Kirjane Labs — Enterprise Software, Backend & Business Systems | Bohol, Philippines",
     },
     {
       name: "description",
       content:
-        "Based in Bohol, Philippines, Kirjane Labs (Kirjane IT Solutions) builds dependable backend architecture, web hosting, custom software, the Salryn business management system, Scoryn live event tabulation, and the Talibon Intra-Office System.",
+        "Kirjane Labs (Kirjane IT Solutions) in Bohol, Philippines engineers enterprise backend architecture, managed web hosting, Salryn BMS, Scoryn automated tabulation, and the Talibon Intra-Office System.",
     },
   ];
 }
 
-export default function Home() {
-  const talibonProject = flagshipProjects.find((p) => p.id === "talibon-intra-office")!;
+const conciseCapabilities = [
+  {
+    num: "01",
+    label: "CORE SPECIALTY",
+    title: "Backend & Database Architecture",
+    line: "High-speed APIs and accounting-grade databases engineered by systems architects and CPAs.",
+    tags: ["Zero-Drift Ledgers", "Multi-Branch Sync", "High-Load APIs"],
+  },
+  {
+    num: "02",
+    label: "ACCESS & AUDIT",
+    title: "Security & Staff Permissions",
+    line: "Strict role boundaries and tamper-proof audit trails for cashiers, managers, and executives.",
+    tags: ["Role-Based Control", "Action Audit Logs", "Encrypted Sessions"],
+  },
+  {
+    num: "03",
+    label: "INFRASTRUCTURE",
+    title: "Cloud Ops & Managed Web Hosting",
+    line: "Automated CI/CD deployments, 24/7 server monitoring, and fast managed web hosting.",
+    tags: ["Managed Hosting", "Automated Releases", "Daily Backups"],
+  },
+  {
+    num: "04",
+    label: "BESPOKE BUILD",
+    title: "Tailored Systems & Custom Websites",
+    line: "Custom intra-office platforms, municipal workflows, and high-craft corporate websites.",
+    tags: ["Intra-Office Systems", "Custom Web Apps", "Corporate Sites"],
+  },
+];
 
+export default function Home() {
   return (
     <>
-      {/* 01 · Hero — Immediate Clarity & Official Brand Identity */}
-      <section className="hero-surface">
-        <div className="hero-backdrop-grid" aria-hidden="true" />
-        <div className="page-shell hero-inner">
-          <div className="hero-main-grid">
-            <div className="hero-copy-col">
-              <Reveal direction="up" duration={550}>
-                <div className="hero-kicker-bar">
-                  <span className="hero-location-badge">
-                    <span className="status-dot" aria-hidden="true" />
-                    {company.location}
-                  </span>
-                  <span className="hero-legal-pill">{company.legalName}</span>
-                </div>
-              </Reveal>
+      {/* 01 · ARCHITECTURAL CORPORATE HERO — CLEAN LIGHT GRID + LAYERED CHAMELEON LOGOS */}
+      <section className="arch-hero">
+        {/* Multi-depth background logo layers */}
+        <div className="arch-hero-logo-layers" aria-hidden="true">
+          <img
+            src="/brand/chameleon-green.png"
+            alt=""
+            className="hero-bg-logo hero-bg-logo-outer"
+          />
+          <img
+            src="/brand/chameleon-color.png"
+            alt=""
+            className="hero-bg-logo hero-bg-logo-inner"
+          />
+        </div>
 
-              <Reveal direction="up" delay={70} duration={650}>
-                <h1 className="hero-headline">{company.hero.headline}</h1>
-              </Reveal>
+        <div className="page-shell arch-hero-grid">
+          {/* Left: High-Impact Corporate Headline */}
+          <div className="arch-hero-left">
+            <Reveal direction="up" duration={500}>
+              <div className="arch-hero-meta-row">
+                <span className="arch-eyebrow">01 / KIRJANE LABS · BOHOL, PHILIPPINES</span>
+                <span className="arch-legal-tag">{company.legalName}</span>
+              </div>
+            </Reveal>
 
-              <Reveal direction="up" delay={140} duration={650}>
-                <p className="hero-lead">{company.hero.subheadline}</p>
-              </Reveal>
+            <Reveal direction="up" delay={60} duration={600}>
+              <h1 className="arch-hero-title">
+                ENTERPRISE SOFTWARE BUILT FOR HOW YOUR BUSINESS ACTUALLY RUNS.
+              </h1>
+            </Reveal>
 
-              <Reveal direction="up" delay={210} duration={650}>
-                <div className="hero-cta-group">
-                  <Link to="/contact" className="btn-hero-primary">
-                    {company.hero.primaryCta}
-                  </Link>
-                  <Link to="/projects" className="btn-hero-secondary">
-                    {company.hero.secondaryCta}
-                  </Link>
-                </div>
-              </Reveal>
-            </div>
+            <Reveal direction="up" delay={120} duration={600}>
+              <p className="arch-hero-sub">
+                Founded by systems engineers and accountants in Bohol. We architect rock-solid
+                backend systems, custom enterprise platforms, and managed web hosting—alongside{" "}
+                <strong>Salryn BMS</strong> and <strong>Scoryn</strong> live tabulation.
+              </p>
+            </Reveal>
 
-            <Reveal direction="scale" delay={140} duration={700} className="hero-brand-col">
-              <aside className="hero-brand-card" aria-label="Kirjane Labs Overview">
-                <div className="hero-brand-card-top">
-                  <div className="hero-emblem-frame">
-                    <img
-                      src={company.logos.chameleonColor}
-                      alt="Kirjane Labs Chameleon K Emblem"
-                      className="hero-emblem-img"
-                    />
-                  </div>
-                  <div className="hero-brand-titles">
-                    <span className="hero-brand-name">{company.brandName}</span>
-                    <span className="hero-brand-motto">{company.motto}</span>
-                  </div>
-                </div>
-
-                <p className="hero-brand-statement">
-                  Founded by systems engineers and accountants—combining dependable backend
-                  engineering with accurate financial and operational workflows.
-                </p>
-
-                <dl className="hero-quick-facts">
-                  <div>
-                    <dt>Core Strengths</dt>
-                    <dd>Backend, Security, Cloud &amp; Web Hosting</dd>
-                  </div>
-                  <div>
-                    <dt>Flagship Products</dt>
-                    <dd>Salryn BMS &amp; Scoryn Tabulation</dd>
-                  </div>
-                  <div>
-                    <dt>Institutional Work</dt>
-                    <dd>Talibon Intra-Office System</dd>
-                  </div>
-                  <div>
-                    <dt>Direct Contact</dt>
-                    <dd>{company.email}</dd>
-                  </div>
-                </dl>
-              </aside>
+            <Reveal direction="up" delay={180} duration={600}>
+              <div className="arch-hero-actions">
+                <Link to="/contact" className="btn-arch-primary">
+                  <span>Start a Project</span>
+                  <span aria-hidden="true">→</span>
+                </Link>
+                <Link to="/projects" className="btn-arch-secondary">
+                  Explore Products &amp; Work
+                </Link>
+              </div>
             </Reveal>
           </div>
 
-          <Stagger className="hero-pillars-bar" baseDelay={260} step={65}>
-            {company.pillars.map((pillar) => (
-              <Link key={pillar.title} to={pillar.href} className="hero-pillar-card">
-                <span className="hero-pillar-label">{pillar.label}</span>
-                <strong className="hero-pillar-title">{pillar.title}</strong>
-                <p className="hero-pillar-summary">{pillar.summary}</p>
+          {/* Right: Sharp Corporate Emblem & System Spec Matrix */}
+          <Reveal direction="scale" delay={120} duration={650} className="arch-hero-right">
+            <div className="arch-spec-panel">
+              <div className="arch-spec-header">
+                <img
+                  src="/brand/chameleon-color.png"
+                  alt="Kirjane Labs Chameleon K Emblem"
+                  className="arch-spec-logo"
+                />
+                <div className="arch-spec-titles">
+                  <strong>KIRJANE LABS</strong>
+                  <span>{company.motto}</span>
+                </div>
+                <span className="arch-live-badge">BOHOL, PH</span>
+              </div>
+
+              <div className="arch-spec-cells">
+                <div className="arch-spec-cell">
+                  <span>FLAGSHIP BMS</span>
+                  <strong>Salryn Business Kernel</strong>
+                  <small>Cafe · Retail · Hardware · Pharmacy · Custom</small>
+                </div>
+                <div className="arch-spec-cell">
+                  <span>EVENT TABULATION</span>
+                  <strong>Scoryn Live Scoring</strong>
+                  <small>Miss Pob Oc · Mister Valencia · Miss Lila</small>
+                </div>
+                <div className="arch-spec-cell">
+                  <span>GOVT &amp; INSTITUTIONAL</span>
+                  <strong>Talibon Intra-Office</strong>
+                  <small>Municipal routing &amp; digital workflow</small>
+                </div>
+                <div className="arch-spec-cell">
+                  <span>CORE ENGINEERING</span>
+                  <strong>Backend, Cloud &amp; Hosting</strong>
+                  <small>Security, CI/CD &amp; managed web hosting</small>
+                </div>
+              </div>
+
+              <div className="arch-spec-footer">
+                <span>DIRECT CHANNEL</span>
+                <a href={`mailto:${company.email}`}>{company.email}</a>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+
+        {/* Flush 4-Column Architectural Index Bar */}
+        <div className="arch-hero-bottom-strip">
+          <div className="page-shell arch-pillars-row">
+            {company.pillars.map((pillar, idx) => (
+              <Link key={pillar.title} to={pillar.href} className="arch-pillar-cell">
+                <div className="arch-pillar-top">
+                  <span className="arch-pillar-idx">0{idx + 1}</span>
+                  <span className="arch-pillar-label">{pillar.label}</span>
+                </div>
+                <strong className="arch-pillar-name">{pillar.title}</strong>
+                <span className="arch-pillar-arrow">Inspect →</span>
               </Link>
             ))}
-          </Stagger>
+          </div>
         </div>
       </section>
 
-      {/* 02 · Flagship Products & Institutional Work */}
-      <section className="page-shell section-block">
-        <Reveal className="section-header-split">
-          <div>
-            <span className="section-kicker">Products &amp; Flagship Work</span>
-            <h2 className="section-heading">
-              Proven systems running in businesses, offices, and live events.
-            </h2>
-          </div>
-          <p className="section-subcopy">
-            Whether you need a ready-to-run business management system, automated event scoring, or
-            a custom platform built around your organization, our software is engineered for daily
-            reliability.
-          </p>
-        </Reveal>
+      {/* 02 · FLAGSHIP PRODUCTS & INSTITUTIONAL deployments */}
+      <section className="arch-section arch-section-light">
+        <img
+          src="/brand/chameleon-green.png"
+          alt=""
+          aria-hidden="true"
+          className="section-watermark-logo watermark-right"
+        />
 
-        <Reveal delay={80}>
-          <SalrynInteractiveSimulator />
-        </Reveal>
-
-        <div className="dual-showcase-grid">
-          <Reveal direction="up" delay={60} className="showcase-card">
-            <div className="showcase-card-top">
-              <span className="badge-pill">Live Event Software</span>
-              <span className="showcase-meta-tag">Automated Tabulation</span>
+        <div className="page-shell">
+          <Reveal className="arch-section-header">
+            <div>
+              <span className="arch-eyebrow">02 / PRODUCTS &amp; DEPLOYMENTS</span>
+              <h2 className="arch-section-title">
+                SALRYN KERNEL, SCORYN TABULATION &amp; TALIBON INTRA-OFFICE.
+              </h2>
             </div>
-            <h3>Scoryn — Instant Pageant &amp; Event Scoring</h3>
-            <p className="showcase-description">
-              Manual score sheets and spreadsheet formulas slow down live events and invite errors.
-              Scoryn connects every judge&apos;s tablet directly to a central scoring engine—computing
-              weighted criteria, round rankings, and audit-ready results immediately.
+            <p className="arch-section-lead">
+              Test the interactive Salryn BMS terminal below across six industry setups, or inspect
+              our live municipal and pageant deployments.
             </p>
+          </Reveal>
 
-            <div className="recognition-block">
-              <span className="recognition-heading">Trusted Official Tabulator For:</span>
-              <div className="recognition-list">
-                {scorynRecognitions.map((event) => (
-                  <div key={event.title} className="recognition-row">
-                    <div>
-                      <strong>{event.title}</strong>
-                      <span>{event.detail}</span>
-                    </div>
-                    <span className="recognition-pill">{event.shortName}</span>
+          <Reveal delay={70}>
+            <SalrynInteractiveSimulator />
+          </Reveal>
+
+          {/* Clean, Low-Text Architectural Split for Scoryn & Talibon */}
+          <div className="arch-deployments-split">
+            <Reveal direction="up" delay={50} className="arch-deployment-box">
+              <div className="arch-deployment-top">
+                <span className="arch-eyebrow">PRODUCT // SCORYN</span>
+                <span className="arch-tag-outline">AUTOMATED TABULATION</span>
+              </div>
+              <h3>Scoryn — Live Event &amp; Pageant Scoring</h3>
+              <p>
+                Zero manual encoding. Judges score on tablets while Scoryn computes weighted rounds,
+                tie-breakers, and official audit sheets in real time.
+              </p>
+
+              <div className="arch-event-badges">
+                {scorynRecognitions.map((ev) => (
+                  <div key={ev.title} className="arch-event-item">
+                    <strong>{ev.title}</strong>
+                    <span>Official Tabulator</span>
                   </div>
                 ))}
               </div>
-            </div>
 
-            <div className="showcase-footer">
-              <Link to="/contact" className="text-link">
-                Book Scoryn for your next event
-              </Link>
-              <Link to="/projects#scoryn-tabulation" className="text-link-muted">
-                Read full overview
-              </Link>
-            </div>
-          </Reveal>
+              <div className="arch-deployment-foot">
+                <Link to="/contact" className="btn-arch-inline">
+                  Book Scoryn →
+                </Link>
+                <Link to="/projects#scoryn-tabulation" className="arch-muted-link">
+                  Specifications
+                </Link>
+              </div>
+            </Reveal>
 
-          <Reveal direction="up" delay={140} className="showcase-card showcase-card-dark">
-            <div className="showcase-card-top">
-              <span className="badge-pill badge-pill-accent">Government &amp; Institutional</span>
-              <span className="showcase-meta-tag light">{talibonProject.statusBadge}</span>
-            </div>
-            <h3>{talibonProject.title}</h3>
-            <p className="showcase-description">{talibonProject.summary}</p>
+            <Reveal direction="up" delay={120} className="arch-deployment-box arch-deployment-dark">
+              <img
+                src="/brand/chameleon-white.png"
+                alt=""
+                aria-hidden="true"
+                className="deployment-box-watermark"
+              />
+              <div className="arch-deployment-top">
+                <span className="arch-eyebrow light">CASE STUDY // MUNICIPAL</span>
+                <span className="arch-tag-solid">LIVE DEPLOYMENT</span>
+              </div>
+              <h3>Talibon Intra-Office System</h3>
+              <p>
+                Engineered for municipal operations in Talibon—replacing paper trails with real-time
+                inter-departmental document routing, approval tracking, and digital archiving.
+              </p>
 
-            <ul className="clean-check-list light">
-              {talibonProject.architectureHighlights.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
+              <div className="arch-stat-strip">
+                <div>
+                  <span>ROUTING</span>
+                  <strong>Real-Time Inter-Office</strong>
+                </div>
+                <div>
+                  <span>ACCESS</span>
+                  <strong>Role-Verified</strong>
+                </div>
+                <div>
+                  <span>AUDIT</span>
+                  <strong>100% Traceable</strong>
+                </div>
+              </div>
 
-            <div className="institutional-callout">
-              <span>Recognized Milestone</span>
-              <strong>Municipal Inter-Office Workflow &amp; Document Tracking System</strong>
-            </div>
-
-            <div className="showcase-footer">
-              <Link to="/projects#talibon-intra-office" className="text-link light">
-                Explore the Talibon deployment
-              </Link>
-              <Link to="/contact" className="text-link light">
-                Discuss a custom system
-              </Link>
-            </div>
-          </Reveal>
+              <div className="arch-deployment-foot">
+                <Link to="/projects#talibon-intra-office" className="btn-arch-inline light">
+                  Case Study →
+                </Link>
+                <Link to="/contact" className="arch-muted-link light">
+                  Build a Custom System
+                </Link>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </section>
 
-      {/* 03 · Core Capabilities & Web Hosting */}
-      <section className="surface-band">
-        <div className="page-shell section-block">
-          <Reveal className="section-header-split">
+      {/* 03 · CORE CAPABILITIES — PUNCHY, LOW-TEXT ARCHITECTURAL MATRIX */}
+      <section className="arch-section arch-section-surface">
+        <div className="arch-capabilities-bg-logos" aria-hidden="true">
+          <img src="/brand/chameleon-color.png" alt="" className="cap-bg-logo-1" />
+          <img src="/brand/chameleon-green.png" alt="" className="cap-bg-logo-2" />
+        </div>
+
+        <div className="page-shell">
+          <Reveal className="arch-section-header">
             <div>
-              <span className="section-kicker">What We Do Best</span>
-              <h2 className="section-heading">
-                Strong backend engineering, secure systems, and dependable web hosting.
+              <span className="arch-eyebrow">03 / CORE ENGINEERING &amp; HOSTING</span>
+              <h2 className="arch-section-title">
+                BUILT STRONG UNDERNEATH: BACKEND, SECURITY, CLOUD &amp; WEB HOSTING.
               </h2>
             </div>
-            <p className="section-subcopy">
-              A great interface means nothing if the system behind it is slow, insecure, or offline.
-              We specialize in the foundation that keeps your business running smoothly—from
-              database design and cloud operations to custom websites and managed hosting.
-            </p>
-          </Reveal>
-
-          <Stagger className="capabilities-grid" baseDelay={60} step={75}>
-            {services.map((service) => (
-              <article key={service.number} className="capability-card">
-                <div className="capability-card-top">
-                  <span className="capability-num">{service.number}</span>
-                  <span className="capability-tag">{service.tag}</span>
-                </div>
-                <h3>{service.title}</h3>
-                <p>{service.description}</p>
-                <ul className="capability-list">
-                  {service.focus.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </article>
-            ))}
-          </Stagger>
-
-          <Reveal delay={160} className="section-action-bar">
-            <p>Need custom software, backend engineering, or reliable hosting for your website?</p>
-            <div className="section-action-links">
-              <Link to="/services" className="btn-secondary">
-                See All Services
-              </Link>
-              <Link to="/contact" className="btn-primary">
-                Talk to Our Team
+            <div className="arch-header-cta">
+              <Link to="/services" className="btn-arch-secondary">
+                Full Capability Breakdown →
               </Link>
             </div>
           </Reveal>
+
+          <div className="arch-cap-matrix">
+            {conciseCapabilities.map((cap) => (
+              <article key={cap.num} className="arch-cap-cell">
+                <div className="arch-cap-cell-top">
+                  <span className="arch-cap-num">{cap.num}</span>
+                  <span className="arch-cap-label">{cap.label}</span>
+                </div>
+                <h3>{cap.title}</h3>
+                <p>{cap.line}</p>
+                <div className="arch-cap-tags">
+                  {cap.tags.map((t) => (
+                    <span key={t}>{t}</span>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* 04 · The People Behind Kirjane — Scroll-Driven Spotlight Stage */}
-      <section className="page-shell section-block">
-        <Reveal className="section-header-split">
-          <div>
-            <span className="section-kicker">The People Behind Kirjane</span>
-            <h2 className="section-heading">
-              Engineers, accountants, and builders working as one team.
-            </h2>
-          </div>
-          <p className="section-subcopy">
-            Scroll through our seven-person roster—led by Founder &amp; CTO Kirch alongside
-            co-founders Paul, James Karl, and Siris, and specialists Kurt, Jesse, and Ace.
-          </p>
-        </Reveal>
-
+      {/* 04 · THE PEOPLE BEHIND KIRJANE — FULL-BLEED 50/50 SPLIT SCREEN */}
+      <section className="arch-fullbleed-section">
         <TeamScrollShowcase members={teamMembers} />
       </section>
 
-      {/* 05 · How We Work — Simple 5-Step Delivery */}
-      <section className="surface-band">
-        <div className="page-shell section-block">
-          <Reveal className="section-header-split">
-            <div>
-              <span className="section-kicker">How We Work</span>
-              <h2 className="section-heading">
-                A clear, straightforward process from first conversation to launch.
-              </h2>
-            </div>
-            <p className="section-subcopy">
-              No confusing technical jargon. We listen to how your team operates, map out the exact
-              rules and numbers, and build software that makes daily work easier.
-            </p>
-          </Reveal>
-
-          <Stagger className="steps-horizontal-grid" baseDelay={60} step={70}>
-            {processSteps.map((step) => (
-              <article key={step.number} className="step-card">
-                <span className="step-badge">{step.code}</span>
-                <h3>{step.title}</h3>
-                <p>{step.detail}</p>
-              </article>
-            ))}
-          </Stagger>
-        </div>
+      {/* 05 · HOW WE WORK — PROGRESSIVE STORYTELLING SCROLL / SWIPE ENGINE */}
+      <section className="arch-process-section">
+        <ProcessStoryScroll />
       </section>
 
-      {/* 06 · Closing CTA Banner */}
-      <section className="page-shell section-block">
-        <Reveal direction="scale" duration={650}>
-          <div className="closing-cta-banner">
-            <div className="closing-cta-copy">
-              <div className="closing-brand-row">
-                <img
-                  src={company.logos.chameleonColor}
-                  alt=""
-                  className="closing-brand-logo"
-                  aria-hidden="true"
-                />
-                <span>
-                  {company.brandName} · {company.location}
-                </span>
-              </div>
-              <h2>Ready to upgrade how your business runs?</h2>
-              <p>
-                Whether you want a live demo of Salryn, need Scoryn for an upcoming event, or have a
-                custom website or internal system in mind, our team in Bohol is ready to help.
-              </p>
-            </div>
-            <div className="closing-cta-actions">
-              <Link to="/contact" className="btn-hero-primary">
-                Start a Conversation
-              </Link>
-              <a href={`mailto:${company.email}`} className="btn-hero-secondary">
-                {company.email}
-              </a>
-            </div>
+      {/* 06 · ARCHITECTURAL CLOSING CALLOUT */}
+      <section className="arch-closing-band">
+        <img
+          src="/brand/chameleon-white.png"
+          alt=""
+          aria-hidden="true"
+          className="closing-watermark-logo"
+        />
+        <div className="page-shell arch-closing-grid">
+          <div>
+            <span className="arch-eyebrow light">06 / START A CONVERSATION</span>
+            <h2>READY TO DEPLOY SALRYN, SCORYN, OR A CUSTOM SYSTEM?</h2>
+            <p>
+              Based in Bohol, Philippines. Reach our engineering and accounting leads directly.
+            </p>
           </div>
-        </Reveal>
+          <div className="arch-closing-actions">
+            <Link to="/contact" className="btn-arch-primary">
+              <span>Talk to Our Team</span>
+              <span aria-hidden="true">→</span>
+            </Link>
+            <a href={`mailto:${company.email}`} className="btn-arch-secondary light">
+              {company.email}
+            </a>
+          </div>
+        </div>
       </section>
     </>
   );

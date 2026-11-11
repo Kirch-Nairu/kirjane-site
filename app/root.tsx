@@ -18,7 +18,7 @@ export function links() {
     { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
     {
       rel: "stylesheet",
-      href: "https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap",
+      href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Space+Grotesk:wght@500;600;700&display=swap",
     },
     { rel: "icon", type: "image/png", href: "/brand/chameleon-color.png" },
   ];
@@ -30,7 +30,7 @@ export function Layout({ children }: { children: ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <meta name="theme-color" content="#122B1D" />
+        <meta name="theme-color" content="#0A140E" />
         <Meta />
         <Links />
       </head>
@@ -63,15 +63,15 @@ export function ErrorBoundary({ error }: { error: unknown }) {
   const notFound = status === 404;
   return (
     <main id="main-content" className="page-shell error-page">
-      <span className="section-kicker">Kirjane Labs · Error {status}</span>
-      <h1>{notFound ? "This page could not be found." : "Something went wrong."}</h1>
+      <span className="section-kicker">Kirjane Labs · {status}</span>
+      <h1>{notFound ? "Page not found." : "System error."}</h1>
       <p>
         {notFound
-          ? "The address you entered does not match a published page on our site."
-          : "The requested view could not be loaded right now."}
+          ? "The address you entered does not match a published route."
+          : "The requested view could not be loaded."}
       </p>
       <Link to="/" className="btn-primary">
-        Back to Home
+        Return Home
       </Link>
     </main>
   );

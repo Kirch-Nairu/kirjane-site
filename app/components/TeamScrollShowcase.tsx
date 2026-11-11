@@ -72,35 +72,170 @@ export function TeamScrollShowcase({ members = teamMembers }: { members?: TeamMe
   const activeMember = members[activeIndex] ?? members[0];
 
   return (
-    <div ref={trackRef} className="team-theatre-track">
-      <div className="team-theatre-sticky">
-        {/* Ambient radial glow that shifts subtly per member */}
-        <div
-          className="team-theatre-glow"
-          style={{
-            background: `radial-gradient(650px circle at ${28 + activeIndex * 9}% 38%, rgba(149, 193, 89, 0.16), rgba(45, 114, 70, 0.08) 45%, transparent 72%)`,
-          }}
-          aria-hidden="true"
-        />
-
-        <div className="team-theatre-grid">
-          {/* Left Column: Roster Index & Smooth Progress */}
-          <aside className="team-roster-sidebar" aria-label="Team spotlight navigation">
-            <div className="team-roster-top">
-              <span className="team-roster-label">Leadership & Team</span>
-              <span className="team-roster-fraction">
-                {activeMember.index} <span>/ 0{members.length}</span>
-              </span>
-            </div>
-
-            <div className="team-roster-progress" aria-hidden="true">
-              <div
-                className="team-roster-progress-bar"
-                style={{ transform: `scaleX(${Math.max(0.14, scrollProgress)})` }}
+    <div ref={trackRef} className="team-fullbleed-track">
+      <div className="team-fullbleed-sticky">
+        <div className="team-split-screen">
+          {/* LEFT 50% OF SCREEN: FULL-BLEED PORTRAIT & LAYERED LOGO VISUAL STAGE */}
+          <div className="team-left-visual-pane">
+            {/* Multi-layered Kirjane Chameleon logos in the background */}
+            <div className="team-visual-logo-layers" aria-hidden="true">
+              <img
+                src="/brand/chameleon-green.png"
+                alt=""
+                className="bg-logo-layer bg-logo-giant"
+                style={{
+                  transform: `translate3d(${activeIndex * -14}px, ${activeIndex * 10}px, 0) scale(${1.05 + activeIndex * 0.03})`,
+                }}
+              />
+              <img
+                src="/brand/chameleon-white.png"
+                alt=""
+                className="bg-logo-layer bg-logo-Ghost"
+                style={{
+                  transform: `translate3d(${activeIndex * 12}px, ${activeIndex * -8}px, 0)`,
+                }}
               />
             </div>
 
-            <div className="team-roster-list" role="tablist" aria-label="People of Kirjane">
+            <div className="team-left-grid-overlay" aria-hidden="true" />
+
+            {/* Stacked Full-Height Portrait Slides */}
+            <div className="team-portrait-stack">
+              {members.map((member, idx) => {
+                const state =
+                  idx === activeIndex ? "active" : idx < activeIndex ? "past" : "upcoming";
+                return (
+                  <div
+                    key={member.id}
+                    className={`team-portrait-slide is-${state}`}
+                    aria-hidden={state !== "active"}
+                  >
+                    <div className="portrait-giant-index" aria-hidden="true">
+                      {member.index}
+                    </div>
+
+                    {member.photoUrl ? (
+                      <img
+                        src={member.photoUrl}
+                        alt={member.name}
+                        className="team-fullbleed-photo"
+                      />
+                    ) : (
+                      <div className="team-architectural-figure" aria-hidden="true">
+                        <div className="figure-halo" />
+                        <img
+                          src="/brand/chameleon-color.png"
+                          alt=""
+                          className="figure-crest-mark"
+                        />
+                        <svg
+                          viewBox="0 0 400 480"
+                          className="figure-silhouette-svg"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <circle
+                            cx="200"
+                            cy="155"
+                            r="68"
+                            fill="rgba(149, 193, 89, 0.08)"
+                            stroke="rgba(149, 193, 89, 0.55)"
+                            strokeWidth="1.5"
+                          />
+                          <path
+                            d="M64 460C64 352 122 292 200 292C278 292 336 352 336 460"
+                            fill="rgba(15, 36, 24, 0.72)"
+                            stroke="rgba(149, 193, 89, 0.45)"
+                            strokeWidth="1.5"
+                          />
+                        </svg>
+                        <div className="figure-monogram-stamp">{member.avatarCode}</div>
+                      </div>
+                    )}
+
+                    <div className="portrait-bottom-bar">
+                      <div className="portrait-bottom-meta">
+                        <span className="portrait-slot-code">PORTRAIT // {member.index}</span>
+                        <strong>{member.name}</strong>
+                      </div>
+                      <span className="portrait-role-pill">
+                        {member.secondaryRole ?? (member.isFounder ? "Co-Founder" : "Specialist")}
+                      </span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* RIGHT 50% OF SCREEN: EDITORIAL BIO, QUOTE & ROSTER STAGE */}
+          <div className="team-right-content-pane">
+            <img
+              src="/brand/chameleon-green.png"
+              alt=""
+              aria-hidden="true"
+              className="team-right-watermark"
+            />
+
+            {/* Top Bar */}
+            <div className="team-right-header">
+              <div className="team-right-kicker-group">
+                <span className="arch-eyebrow">04 / THE PEOPLE BEHIND KIRJANE</span>
+                <span className="team-step-counter">
+                  {activeMember.index} <em>/ 0{members.length}</em>
+                </span>
+              </div>
+              <div className="team-progress-rail" aria-hidden="true">
+                <div
+                  className="team-progress-fill"
+                  style={{ transform: `scaleX(${Math.max(0.14, scrollProgress)})` }}
+                />
+              </div>
+            </div>
+
+            {/* Center Bio Deck */}
+            <div className="team-copy-deck">
+              {members.map((member, idx) => {
+                const state =
+                  idx === activeIndex ? "active" : idx < activeIndex ? "past" : "upcoming";
+                const disciplines = member.discipline.split("·").map((d) => d.trim());
+
+                return (
+                  <article
+                    key={member.id}
+                    className={`team-copy-slide is-${state}`}
+                    aria-hidden={state !== "active"}
+                  >
+                    <div className="team-badges-row">
+                      <span className="arch-tag-solid">
+                        {member.isFounder ? "Founding Leadership" : "Core Specialist"}
+                      </span>
+                      {member.secondaryRole ? (
+                        <span className="arch-tag-outline">{member.secondaryRole}</span>
+                      ) : null}
+                    </div>
+
+                    <h3 className="team-member-heading">{member.name}</h3>
+                    <p className="team-member-title">{member.role}</p>
+
+                    <blockquote className="team-member-quote">“{member.quote}”</blockquote>
+
+                    <p className="team-member-bio">{member.summaryPlaceholder}</p>
+
+                    <div className="team-discipline-chips">
+                      {disciplines.map((d) => (
+                        <span key={d} className="discipline-chip">
+                          {d}
+                        </span>
+                      ))}
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+
+            {/* Bottom Interactive Roster Strip */}
+            <div className="team-roster-Dock" role="tablist" aria-label="Select team member">
               {members.map((member, idx) => {
                 const isCurrent = idx === activeIndex;
                 return (
@@ -110,116 +245,14 @@ export function TeamScrollShowcase({ members = teamMembers }: { members?: TeamMe
                     role="tab"
                     aria-selected={isCurrent}
                     onClick={() => jumpToMember(idx)}
-                    className={isCurrent ? "team-roster-item is-active" : "team-roster-item"}
+                    className={isCurrent ? "roster-dock-btn is-active" : "roster-dock-btn"}
                   >
-                    <span className="team-roster-num">{member.index}</span>
-                    <span className="team-roster-person">
-                      <strong>{member.name}</strong>
-                      <small>{member.secondaryRole ?? member.role}</small>
-                    </span>
-                    <span className="team-roster-dot" aria-hidden="true" />
+                    <span className="roster-dock-idx">{member.index}</span>
+                    <span className="roster-dock-name">{member.name}</span>
                   </button>
                 );
               })}
             </div>
-
-            <p className="team-scroll-caption">
-              Scroll down to step through each spotlight, or select a name above.
-            </p>
-          </aside>
-
-          {/* Center & Right: Layered Animated Spotlight Stage */}
-          <div className="team-stage-deck">
-            {members.map((member, idx) => {
-              const state =
-                idx === activeIndex ? "active" : idx < activeIndex ? "past" : "upcoming";
-              const disciplines = member.discipline.split("·").map((d) => d.trim());
-
-              return (
-                <article
-                  key={member.id}
-                  className={`team-slide-panel is-${state}`}
-                  aria-hidden={state !== "active"}
-                >
-                  {/* Editorial Portrait Frame Placeholder */}
-                  <div className="team-editorial-portrait">
-                    <div className="portrait-backdrop-mesh" aria-hidden="true">
-                      <img
-                        src="/brand/chameleon-white.png"
-                        alt=""
-                        className="portrait-watermark-logo"
-                      />
-                    </div>
-
-                    {member.photoUrl ? (
-                      <img
-                        src={member.photoUrl}
-                        alt={member.name}
-                        className="portrait-real-photo"
-                      />
-                    ) : (
-                      <div className="portrait-silhouette-stage" aria-hidden="true">
-                        {/* Refined Architectural Silhouette SVG */}
-                        <svg
-                          viewBox="0 0 240 280"
-                          className="portrait-silhouette-svg"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <circle
-                            cx="120"
-                            cy="92"
-                            r="42"
-                            fill="rgba(255,255,255,0.1)"
-                            stroke="rgba(149,193,89,0.55)"
-                            strokeWidth="1.5"
-                          />
-                          <path
-                            d="M44 260C44 206 76 174 120 174C164 174 196 206 196 260"
-                            fill="rgba(255,255,255,0.06)"
-                            stroke="rgba(149,193,89,0.45)"
-                            strokeWidth="1.5"
-                          />
-                        </svg>
-                        <div className="portrait-monogram-pill">{member.avatarCode}</div>
-                      </div>
-                    )}
-
-                    <div className="portrait-frame-footer">
-                      <span className="portrait-frame-number">{member.index}</span>
-                      <span className="portrait-frame-caption">Portrait Reserved · {member.name}</span>
-                    </div>
-                  </div>
-
-                  {/* Editorial Narrative Column */}
-                  <div className="team-editorial-copy">
-                    <div className="team-meta-row">
-                      <span className="team-tier-badge">
-                        {member.isFounder ? "Founding Leadership" : "Operations & Growth"}
-                      </span>
-                      {member.secondaryRole ? (
-                        <span className="team-credential-badge">{member.secondaryRole}</span>
-                      ) : null}
-                    </div>
-
-                    <h3 className="team-display-name">{member.name}</h3>
-                    <p className="team-display-role">{member.role}</p>
-
-                    <blockquote className="team-pull-quote">“{member.quote}”</blockquote>
-
-                    <p className="team-bio-paragraph">{member.summaryPlaceholder}</p>
-
-                    <div className="team-focus-row">
-                      {disciplines.map((d) => (
-                        <span key={d} className="team-focus-tag">
-                          {d}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </article>
-              );
-            })}
           </div>
         </div>
       </div>
