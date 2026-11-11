@@ -20,33 +20,33 @@ export default function About() {
   return (
     <>
       <PageIntro
-        eyebrow="03 / ABOUT KIRJANE LABS"
+        eyebrow="About Kirjane Labs"
         badge={company.location}
-        lines={["WHERE SYSTEMS ENGINEERING MEETS REAL-WORLD ACCOUNTING."]}
-        summary="Kirjane Labs (registered as Kirjane IT Solutions) was founded in Bohol, Philippines by systems engineers and accountants working side by side to build dependable business software."
+        lines={["Where systems engineering meets real-world accounting."]}
+        summary="Kirjane Labs (registered as Kirjane IT Solutions) was founded in Bohol, Philippines by systems engineers and accountants working side by side to build dependable business software, cloud infrastructure, and institutional platforms."
       />
 
       {/* Full-Bleed 50/50 Split Screen Team Showcase */}
-      <section className="arch-fullbleed-section">
+      <section className="arch-fullbleed-section" aria-label="Kirjane Labs Leadership and Team">
         <TeamScrollShowcase members={teamMembers} />
       </section>
 
       <section className="arch-closing-band">
         <img
-          src="/brand/chameleon-white.png"
+          src={company.logos.chameleonWhite}
           alt=""
           aria-hidden="true"
           className="closing-watermark-logo"
         />
         <div className="page-shell arch-closing-grid">
           <div>
-            <span className="arch-eyebrow light">WORK WITH US</span>
-            <h2>READY TO PARTNER WITH OUR BOHOL ENGINEERING TEAM?</h2>
-            <p>Reach out directly for Salryn BMS, Scoryn tabulation, or custom development.</p>
+            <span className="section-kicker light">Work With Us</span>
+            <h2>Ready to partner with our Bohol engineering and accounting team?</h2>
+            <p>Reach out directly for Salryn BMS, Scoryn tabulation, web hosting, or custom builds.</p>
           </div>
           <div className="arch-closing-actions">
             <Link to="/contact" className="btn-arch-primary">
-              <span>Start a Project</span>
+              <span>{company.hero.primaryCta}</span>
               <span aria-hidden="true">→</span>
             </Link>
           </div>

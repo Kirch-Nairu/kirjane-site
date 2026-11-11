@@ -1,11 +1,15 @@
 import {
-  useEffect,
   useRef,
-  useState,
-  type CSSProperties,
   type MouseEvent,
   type ReactNode,
 } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger, useGSAP);
+}
 
 type Direction = "up" | "down" | "left" | "right" | "scale" | "none";
 
@@ -22,51 +26,55 @@ export function Reveal({
   children,
   direction = "up",
   delay = 0,
-  duration = 700,
+  duration = 480,
   className = "",
   once = true,
 }: RevealProps) {
   const ref = useRef<HTMLDivElement | null>(null);
-  const [visible, setVisible] = useState(false);
 
-  useEffect(() => {
-    const node = ref.current;
-    if (!node) return;
+  useGSAP(
+    () => {
+      const el = ref.current;
+      if (!el) return;
 
-    if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setVisible(true);
-      return;
-    }
+      const mm = gsap.matchMedia();
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setVisible(true);
-            if (once) observer.unobserve(entry.target);
-          } else if (!once) {
-            setVisible(false);
-          }
+      mm.add("(prefers-reduced-motion: no-preference)", () => {
+        const fromVars: gsap.TweenVars = {};
+        if (direction === "up") fromVars.y = 10;
+        else if (direction === "down") fromVars.y = -10;
+        else if (direction === "left") fromVars.x = 10;
+        else if (direction === "right") fromVars.x = -10;
+        else if (direction === "scale") fromVars.scale = 0.992;
+
+        gsap.fromTo(el, fromVars, {
+          x: 0,
+          y: 0,
+          scale: 1,
+          duration: duration / 1000,
+          delay: delay / 1000,
+          ease: "power2.out",
+          immediateRender: false,
+          overwrite: "auto",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 95%",
+            toggleActions: once ? "play none none none" : "play none none reverse",
+          },
         });
-      },
-      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
-    );
+      });
 
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, [once]);
+      mm.add("(prefers-reduced-motion: reduce)", () => {
+        gsap.set(el, { clearProps: "all" });
+      });
 
-  const style: CSSProperties = {
-    transitionDelay: `${delay}ms`,
-    transitionDuration: `${duration}ms`,
-  };
+      return () => mm.revert();
+    },
+    { scope: ref, dependencies: [direction, delay, duration, once] },
+  );
 
   return (
-    <div
-      ref={ref}
-      style={style}
-      className={`motion-reveal motion-${direction} ${visible ? "is-visible" : ""} ${className}`.trim()}
-    >
+    <div ref={ref} className={`gsap-reveal ${className}`.trim()}>
       {children}
     </div>
   );
@@ -108,10 +116,50 @@ interface StaggerProps {
   step?: number;
 }
 
-export function Stagger({ children, className = "", baseDelay = 0 }: StaggerProps) {
+export function Stagger({ children, className = "", baseDelay = 0, step = 55 }: StaggerProps) {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  useGSAP(
+    () => {
+      const container = containerRef.current;
+      if (!container) return;
+      const items = Array.from(container.children);
+      if (!items.length) return;
+
+      const mm = gsap.matchMedia();
+
+      mm.add("(prefers-reduced-motion: no-preference)", () => {
+        gsap.fromTo(
+          items,
+          { y: 10 },
+          {
+            y: 0,
+            duration: 0.45,
+            delay: baseDelay / 1000,
+            stagger: step / 1000,
+            ease: "power2.out",
+            immediateRender: false,
+            scrollTrigger: {
+              trigger: container,
+              start: "top 95%",
+              toggleActions: "play none none none",
+            },
+          },
+        );
+      });
+
+      mm.add("(prefers-reduced-motion: reduce)", () => {
+        gsap.set(items, { clearProps: "all" });
+      });
+
+      return () => mm.revert();
+    },
+    { scope: containerRef, dependencies: [baseDelay, step] },
+  );
+
   return (
-    <Reveal direction="up" delay={baseDelay} className={`motion-stagger ${className}`.trim()}>
+    <div ref={containerRef} className={`gsap-stagger ${className}`.trim()}>
       {children}
-    </Reveal>
+    </div>
   );
 }

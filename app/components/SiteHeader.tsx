@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router";
+import { company } from "../data/content";
 
 const navItems = [
-  { index: "01", to: "/projects", label: "Products & Work" },
-  { index: "02", to: "/services", label: "Capabilities" },
-  { index: "03", to: "/about", label: "The Team" },
-  { index: "04", to: "/process", label: "How We Work" },
+  { to: "/projects", label: "Products & Work" },
+  { to: "/services", label: "Services & Hosting" },
+  { to: "/about", label: "Our Team" },
+  { to: "/process", label: "How We Work" },
 ];
 
 export function SiteHeader() {
@@ -27,80 +28,93 @@ export function SiteHeader() {
 
   return (
     <header className="site-header">
-      <div className="header-grid-bar">
-        <Link className="brand-cell" to="/" aria-label="Kirjane Labs — Kirjane IT Solutions, home">
-          <img
-            src="/brand/chameleon-color.png"
-            alt=""
-            className="brand-logo-mark"
-            width={40}
-            height={32}
-          />
+      <div className="page-shell header-bar">
+        <Link
+          className="brand-lockup"
+          to="/"
+          aria-label={`${company.brandName} — ${company.legalName}, home`}
+        >
+          <span className="brand-emblem-frame">
+            <img
+              src={company.logos.chameleonColor}
+              alt=""
+              className="brand-logo-mark"
+              width={38}
+              height={30}
+            />
+          </span>
           <span className="brand-text-stack">
-            <span className="brand-word">KIRJANE LABS</span>
-            <span className="brand-sub">Kirjane IT Solutions</span>
+            <span className="brand-word">{company.brandName}</span>
+            <span className="brand-sub">{company.legalName}</span>
           </span>
         </Link>
 
-        <nav className="desktop-nav-cells" aria-label="Primary navigation">
-          {navItems.map(({ index, to, label }) => (
+        <nav className="desktop-nav" aria-label="Primary navigation">
+          {navItems.map(({ to, label }) => (
             <NavLink
               key={to}
               to={to}
-              className={({ isActive }) => (isActive ? "nav-cell active" : "nav-cell")}
+              className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}
             >
-              <span className="nav-cell-index">{index}</span>
-              <span className="nav-cell-label">{label}</span>
+              {label}
             </NavLink>
           ))}
         </nav>
 
-        <div className="header-meta-cell">
-          <span className="header-loc-dot" aria-hidden="true" />
-          <span>Bohol, PH</span>
+        <div className="header-actions">
+          <span className="header-location-tag" aria-label={`Location: ${company.location}`}>
+            <span className="header-loc-dot" aria-hidden="true" />
+            <span>Bohol, PH</span>
+          </span>
+
+          <Link className="header-cta-btn" to="/contact">
+            <span>{company.hero.primaryCta}</span>
+            <span className="header-cta-arrow" aria-hidden="true">
+              →
+            </span>
+          </Link>
+
+          <button
+            type="button"
+            className="menu-toggle"
+            aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={isOpen}
+            aria-controls="mobile-menu"
+            onClick={() => setIsOpen((open) => !open)}
+          >
+            <span className="menu-toggle-label" aria-hidden="true">
+              {isOpen ? "Close" : "Menu"}
+            </span>
+            <span className={isOpen ? "menu-mark open" : "menu-mark"} aria-hidden="true">
+              <i />
+              <i />
+            </span>
+          </button>
         </div>
-
-        <Link className="header-cta-cell" to="/contact">
-          <span>Start a Project</span>
-          <span className="header-cta-arrow" aria-hidden="true">
-            →
-          </span>
-        </Link>
-
-        <button
-          type="button"
-          className="menu-toggle"
-          aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
-          aria-expanded={isOpen}
-          aria-controls="mobile-menu"
-          onClick={() => setIsOpen((open) => !open)}
-        >
-          <span aria-hidden="true">{isOpen ? "CLOSE" : "MENU"}</span>
-          <span className={isOpen ? "menu-mark open" : "menu-mark"} aria-hidden="true">
-            <i />
-            <i />
-          </span>
-        </button>
       </div>
 
       <nav id="mobile-menu" className="mobile-nav" aria-label="Mobile navigation" hidden={!isOpen}>
-        {navItems.map(({ index, to, label }) => (
+        <div className="page-shell mobile-nav-inner">
+          {navItems.map(({ to, label }) => (
+            <NavLink
+              key={to}
+              to={to}
+              className={({ isActive }) => (isActive ? "mobile-link active" : "mobile-link")}
+            >
+              <span>{label}</span>
+              <span aria-hidden="true">→</span>
+            </NavLink>
+          ))}
           <NavLink
-            key={to}
-            to={to}
-            className={({ isActive }) => (isActive ? "mobile-link active" : "mobile-link")}
+            to="/contact"
+            className={({ isActive }) =>
+              isActive ? "mobile-link mobile-link-cta active" : "mobile-link mobile-link-cta"
+            }
           >
-            <span className="nav-cell-index">{index}</span>
-            <span>{label}</span>
+            <span>{company.hero.primaryCta}</span>
+            <span aria-hidden="true">→</span>
           </NavLink>
-        ))}
-        <NavLink
-          to="/contact"
-          className={({ isActive }) => (isActive ? "mobile-link active" : "mobile-link")}
-        >
-          <span className="nav-cell-index">05</span>
-          <span>Start a Project</span>
-        </NavLink>
+        </div>
       </nav>
     </header>
   );

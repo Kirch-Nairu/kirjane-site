@@ -1,9 +1,17 @@
+import { useRef } from "react";
 import { Link } from "react-router";
-import { company, scorynRecognitions, teamMembers } from "../data/content";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+import { company, scorynRecognitions, services, teamMembers } from "../data/content";
 import { Reveal } from "../components/Motion";
 import { SalrynInteractiveSimulator } from "../components/SalrynInteractiveSimulator";
 import { TeamScrollShowcase } from "../components/TeamScrollShowcase";
 import { ProcessStoryScroll } from "../components/ProcessStoryScroll";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger, useGSAP);
+}
 
 export function meta() {
   return [
@@ -13,166 +21,240 @@ export function meta() {
     {
       name: "description",
       content:
-        "Kirjane Labs (Kirjane IT Solutions) in Bohol, Philippines engineers enterprise backend architecture, managed web hosting, Salryn BMS, Scoryn automated tabulation, and the Talibon Intra-Office System.",
+        "Kirjane Labs (Kirjane IT Solutions) in Bohol, Philippines engineers dependable backend architecture, managed web hosting, Salryn BMS, Scoryn automated tabulation, and the Talibon Intra-Office System.",
     },
   ];
 }
 
-const conciseCapabilities = [
-  {
-    num: "01",
-    label: "CORE SPECIALTY",
-    title: "Backend & Database Architecture",
-    line: "High-speed APIs and accounting-grade databases engineered by systems architects and CPAs.",
-    tags: ["Zero-Drift Ledgers", "Multi-Branch Sync", "High-Load APIs"],
-  },
-  {
-    num: "02",
-    label: "ACCESS & AUDIT",
-    title: "Security & Staff Permissions",
-    line: "Strict role boundaries and tamper-proof audit trails for cashiers, managers, and executives.",
-    tags: ["Role-Based Control", "Action Audit Logs", "Encrypted Sessions"],
-  },
-  {
-    num: "03",
-    label: "INFRASTRUCTURE",
-    title: "Cloud Ops & Managed Web Hosting",
-    line: "Automated CI/CD deployments, 24/7 server monitoring, and fast managed web hosting.",
-    tags: ["Managed Hosting", "Automated Releases", "Daily Backups"],
-  },
-  {
-    num: "04",
-    label: "BESPOKE BUILD",
-    title: "Tailored Systems & Custom Websites",
-    line: "Custom intra-office platforms, municipal workflows, and high-craft corporate websites.",
-    tags: ["Intra-Office Systems", "Custom Web Apps", "Corporate Sites"],
-  },
-];
-
 export default function Home() {
+  const heroRef = useRef<HTMLElement | null>(null);
+
+  useGSAP(
+    () => {
+      const hero = heroRef.current;
+      if (!hero) return;
+
+      const mm = gsap.matchMedia();
+
+      mm.add("(prefers-reduced-motion: no-preference)", () => {
+        const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+        tl.fromTo(
+          ".arch-hero-logo-layers",
+          { autoAlpha: 0, scale: 0.98 },
+          { autoAlpha: 1, scale: 1, duration: 0.85 },
+          0,
+        )
+          .fromTo(
+            ".hero-anim-item",
+            { autoAlpha: 0, y: 16 },
+            { autoAlpha: 1, y: 0, duration: 0.55, stagger: 0.065 },
+            0.05,
+          )
+          .fromTo(
+            ".arch-spec-panel",
+            { autoAlpha: 0, y: 18, scale: 0.99 },
+            { autoAlpha: 1, y: 0, scale: 1, duration: 0.6 },
+            0.14,
+          )
+          .fromTo(
+            ".arch-pillar-cell",
+            { autoAlpha: 0, y: 12 },
+            { autoAlpha: 1, y: 0, duration: 0.45, stagger: 0.045 },
+            0.22,
+          );
+
+        gsap.to(".hero-bg-logo-outer", {
+          yPercent: 10,
+          ease: "none",
+          scrollTrigger: {
+            trigger: hero,
+            start: "top top",
+            end: "bottom top",
+            scrub: 0.6,
+          },
+        });
+
+        gsap.to(".hero-bg-logo-inner", {
+          yPercent: -12,
+          ease: "none",
+          scrollTrigger: {
+            trigger: hero,
+            start: "top top",
+            end: "bottom top",
+            scrub: 0.6,
+          },
+        });
+      });
+
+      mm.add("(prefers-reduced-motion: reduce)", () => {
+        gsap.set(
+          [".arch-hero-logo-layers", ".hero-anim-item", ".arch-spec-panel", ".arch-pillar-cell"],
+          {
+            clearProps: "all",
+            autoAlpha: 1,
+            x: 0,
+            y: 0,
+            scale: 1,
+          },
+        );
+      });
+
+      return () => mm.revert();
+    },
+    { scope: heroRef },
+  );
+
   return (
     <>
-      {/* 01 · ARCHITECTURAL CORPORATE HERO — CLEAN LIGHT GRID + LAYERED CHAMELEON LOGOS */}
-      <section className="arch-hero">
-        {/* Multi-depth background logo layers */}
+      {/* 01 · CORPORATE EDITORIAL HERO — CLEAN PAPER GRID + MULTI-LAYER CHAMELEON DEPTH */}
+      <section ref={heroRef} className="arch-hero">
         <div className="arch-hero-logo-layers" aria-hidden="true">
           <img
-            src="/brand/chameleon-green.png"
+            src={company.logos.chameleonGreen}
             alt=""
             className="hero-bg-logo hero-bg-logo-outer"
           />
           <img
-            src="/brand/chameleon-color.png"
+            src={company.logos.chameleonColor}
             alt=""
             className="hero-bg-logo hero-bg-logo-inner"
+          />
+          <img
+            src={company.logos.chameleonGreen}
+            alt=""
+            className="hero-bg-logo hero-bg-logo-accent"
           />
         </div>
 
         <div className="page-shell arch-hero-grid">
-          {/* Left: High-Impact Corporate Headline */}
+          {/* Left: Corporate Editorial Headline & Direct Actions */}
           <div className="arch-hero-left">
-            <Reveal direction="up" duration={500}>
-              <div className="arch-hero-meta-row">
-                <span className="arch-eyebrow">01 / KIRJANE LABS · BOHOL, PHILIPPINES</span>
-                <span className="arch-legal-tag">{company.legalName}</span>
-              </div>
-            </Reveal>
+            <div className="arch-hero-meta-row hero-anim-item">
+              <span className="section-kicker">{company.hero.eyebrow}</span>
+              <span className="arch-legal-tag">{company.legalName}</span>
+            </div>
 
-            <Reveal direction="up" delay={60} duration={600}>
-              <h1 className="arch-hero-title">
-                ENTERPRISE SOFTWARE BUILT FOR HOW YOUR BUSINESS ACTUALLY RUNS.
-              </h1>
-            </Reveal>
+            <h1 className="arch-hero-title hero-anim-item">{company.hero.headline}</h1>
 
-            <Reveal direction="up" delay={120} duration={600}>
-              <p className="arch-hero-sub">
-                Founded by systems engineers and accountants in Bohol. We architect rock-solid
-                backend systems, custom enterprise platforms, and managed web hosting—alongside{" "}
-                <strong>Salryn BMS</strong> and <strong>Scoryn</strong> live tabulation.
-              </p>
-            </Reveal>
+            <p className="arch-hero-sub hero-anim-item">{company.hero.subheadline}</p>
 
-            <Reveal direction="up" delay={180} duration={600}>
-              <div className="arch-hero-actions">
-                <Link to="/contact" className="btn-arch-primary">
-                  <span>Start a Project</span>
-                  <span aria-hidden="true">→</span>
-                </Link>
-                <Link to="/projects" className="btn-arch-secondary">
-                  Explore Products &amp; Work
-                </Link>
-              </div>
-            </Reveal>
+            <div className="arch-hero-actions hero-anim-item">
+              <Link to="/contact" className="btn-arch-primary">
+                <span>{company.hero.primaryCta}</span>
+                <span aria-hidden="true">→</span>
+              </Link>
+              <Link to="/projects" className="btn-arch-secondary">
+                {company.hero.secondaryCta}
+              </Link>
+            </div>
           </div>
 
-          {/* Right: Sharp Corporate Emblem & System Spec Matrix */}
-          <Reveal direction="scale" delay={120} duration={650} className="arch-hero-right">
-            <div className="arch-spec-panel">
+          {/* Right: Kirjane System & Product Overview Panel */}
+          <div className="arch-hero-right">
+            <aside className="arch-spec-panel" aria-label="Kirjane Labs company and product summary">
               <div className="arch-spec-header">
-                <img
-                  src="/brand/chameleon-color.png"
-                  alt="Kirjane Labs Chameleon K Emblem"
-                  className="arch-spec-logo"
-                />
+                <span className="arch-spec-logo-box">
+                  <img
+                    src={company.logos.chameleonColor}
+                    alt="Kirjane Labs Chameleon K emblem"
+                    className="arch-spec-logo"
+                  />
+                </span>
                 <div className="arch-spec-titles">
-                  <strong>KIRJANE LABS</strong>
+                  <strong>{company.brandName}</strong>
                   <span>{company.motto}</span>
                 </div>
-                <span className="arch-live-badge">BOHOL, PH</span>
+                <span className="arch-live-badge">{company.location}</span>
               </div>
 
               <div className="arch-spec-cells">
-                <div className="arch-spec-cell">
-                  <span>FLAGSHIP BMS</span>
-                  <strong>Salryn Business Kernel</strong>
-                  <small>Cafe · Retail · Hardware · Pharmacy · Custom</small>
-                </div>
-                <div className="arch-spec-cell">
-                  <span>EVENT TABULATION</span>
-                  <strong>Scoryn Live Scoring</strong>
-                  <small>Miss Pob Oc · Mister Valencia · Miss Lila</small>
-                </div>
-                <div className="arch-spec-cell">
-                  <span>GOVT &amp; INSTITUTIONAL</span>
-                  <strong>Talibon Intra-Office</strong>
-                  <small>Municipal routing &amp; digital workflow</small>
-                </div>
-                <div className="arch-spec-cell">
-                  <span>CORE ENGINEERING</span>
-                  <strong>Backend, Cloud &amp; Hosting</strong>
-                  <small>Security, CI/CD &amp; managed web hosting</small>
-                </div>
+                {company.hero.specCells.map((cell) => (
+                  <div key={cell.title} className="arch-spec-cell">
+                    <span>{cell.label}</span>
+                    <strong>{cell.title}</strong>
+                    <small>{cell.detail}</small>
+                  </div>
+                ))}
               </div>
 
               <div className="arch-spec-footer">
-                <span>DIRECT CHANNEL</span>
+                <span>Direct Engineering Inquiry</span>
                 <a href={`mailto:${company.email}`}>{company.email}</a>
               </div>
-            </div>
-          </Reveal>
+            </aside>
+          </div>
         </div>
 
-        {/* Flush 4-Column Architectural Index Bar */}
+        {/* Bottom 4-Pillar Quick Index Bar */}
         <div className="arch-hero-bottom-strip">
           <div className="page-shell arch-pillars-row">
-            {company.pillars.map((pillar, idx) => (
+            {company.pillars.map((pillar) => (
               <Link key={pillar.title} to={pillar.href} className="arch-pillar-cell">
                 <div className="arch-pillar-top">
-                  <span className="arch-pillar-idx">0{idx + 1}</span>
+                  <span className="arch-pillar-idx">{pillar.index}</span>
                   <span className="arch-pillar-label">{pillar.label}</span>
                 </div>
                 <strong className="arch-pillar-name">{pillar.title}</strong>
-                <span className="arch-pillar-arrow">Inspect →</span>
+                <span className="arch-pillar-arrow">Explore →</span>
               </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 02 · FLAGSHIP PRODUCTS & INSTITUTIONAL deployments */}
+      {/* 02 · CORE CAPABILITIES — CONCISE, LOW-TEXT EDITORIAL LEDGER */}
+      <section className="arch-section arch-section-surface">
+        <div className="arch-capabilities-bg-logos" aria-hidden="true">
+          <img src={company.logos.chameleonColor} alt="" className="cap-bg-logo-1" />
+          <img src={company.logos.chameleonGreen} alt="" className="cap-bg-logo-2" />
+        </div>
+
+        <div className="page-shell">
+          <Reveal className="arch-section-header">
+            <div>
+              <span className="section-kicker">Core Engineering &amp; Web Hosting</span>
+              <h2 className="arch-section-title">
+                Strong backend architecture, security, cloud operations, and web hosting.
+              </h2>
+            </div>
+            <div className="arch-header-cta">
+              <Link to="/services" className="btn-arch-secondary">
+                See Full Service Scope →
+              </Link>
+            </div>
+          </Reveal>
+
+          <ol className="editorial-cap-ledger">
+            {services.map((cap) => (
+              <li key={cap.number} className="editorial-cap-row">
+                <div className="editorial-cap-meta">
+                  <span className="editorial-cap-num">{cap.number}</span>
+                  <span className="editorial-cap-label">{cap.shortLabel}</span>
+                </div>
+
+                <div className="editorial-cap-main">
+                  <h3>{cap.title}</h3>
+                  <p>{cap.shortSummary}</p>
+                </div>
+
+                <div className="editorial-cap-tags">
+                  {cap.tags.map((tag) => (
+                    <span key={tag} className="editorial-cap-pill">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* 03 · FLAGSHIP PRODUCTS & INSTITUTIONAL WORK */}
       <section className="arch-section arch-section-light">
         <img
-          src="/brand/chameleon-green.png"
+          src={company.logos.chameleonGreen}
           alt=""
           aria-hidden="true"
           className="section-watermark-logo watermark-right"
@@ -181,91 +263,91 @@ export default function Home() {
         <div className="page-shell">
           <Reveal className="arch-section-header">
             <div>
-              <span className="arch-eyebrow">02 / PRODUCTS &amp; DEPLOYMENTS</span>
+              <span className="section-kicker">Products &amp; Institutional Work</span>
               <h2 className="arch-section-title">
-                SALRYN KERNEL, SCORYN TABULATION &amp; TALIBON INTRA-OFFICE.
+                Salryn business kernel, Scoryn live tabulation, and the Talibon Intra-Office System.
               </h2>
             </div>
             <p className="arch-section-lead">
-              Test the interactive Salryn BMS terminal below across six industry setups, or inspect
-              our live municipal and pageant deployments.
+              Explore the interactive Salryn BMS product demonstration across six industry
+              configurations, or review our municipal workflow and live event systems.
             </p>
           </Reveal>
 
-          <Reveal delay={70}>
+          <Reveal delay={60}>
             <SalrynInteractiveSimulator />
           </Reveal>
 
-          {/* Clean, Low-Text Architectural Split for Scoryn & Talibon */}
+          {/* Architectural Split for Scoryn & Talibon Intra-Office */}
           <div className="arch-deployments-split">
-            <Reveal direction="up" delay={50} className="arch-deployment-box">
+            <Reveal direction="up" delay={40} className="arch-deployment-box">
               <div className="arch-deployment-top">
-                <span className="arch-eyebrow">PRODUCT // SCORYN</span>
-                <span className="arch-tag-outline">AUTOMATED TABULATION</span>
+                <span className="section-kicker">Product · Scoryn</span>
+                <span className="arch-tag-outline">Automated Tabulation</span>
               </div>
               <h3>Scoryn — Live Event &amp; Pageant Scoring</h3>
               <p>
-                Zero manual encoding. Judges score on tablets while Scoryn computes weighted rounds,
-                tie-breakers, and official audit sheets in real time.
+                Judges score on digital terminals while Scoryn computes weighted criteria, round
+                rankings, tie-breakers, and print-ready audit sheets for event organizers.
               </p>
 
               <div className="arch-event-badges">
                 {scorynRecognitions.map((ev) => (
                   <div key={ev.title} className="arch-event-item">
                     <strong>{ev.title}</strong>
-                    <span>Official Tabulator</span>
+                    <span>Featured Event</span>
                   </div>
                 ))}
               </div>
 
               <div className="arch-deployment-foot">
                 <Link to="/contact" className="btn-arch-inline">
-                  Book Scoryn →
+                  Inquire About Scoryn →
                 </Link>
                 <Link to="/projects#scoryn-tabulation" className="arch-muted-link">
-                  Specifications
+                  System Overview
                 </Link>
               </div>
             </Reveal>
 
-            <Reveal direction="up" delay={120} className="arch-deployment-box arch-deployment-dark">
+            <Reveal direction="up" delay={100} className="arch-deployment-box arch-deployment-dark">
               <img
-                src="/brand/chameleon-white.png"
+                src={company.logos.chameleonWhite}
                 alt=""
                 aria-hidden="true"
                 className="deployment-box-watermark"
               />
               <div className="arch-deployment-top">
-                <span className="arch-eyebrow light">CASE STUDY // MUNICIPAL</span>
-                <span className="arch-tag-solid">LIVE DEPLOYMENT</span>
+                <span className="section-kicker light">Institutional Project · Municipal</span>
+                <span className="arch-tag-solid">Talibon, Bohol</span>
               </div>
               <h3>Talibon Intra-Office System</h3>
               <p>
-                Engineered for municipal operations in Talibon—replacing paper trails with real-time
-                inter-departmental document routing, approval tracking, and digital archiving.
+                Developed for municipal office operations in Talibon—replacing manual paper routing
+                with inter-departmental document tracking, status logs, and digital archiving.
               </p>
 
               <div className="arch-stat-strip">
                 <div>
-                  <span>ROUTING</span>
-                  <strong>Real-Time Inter-Office</strong>
+                  <span>Workflow</span>
+                  <strong>Inter-Office Routing</strong>
                 </div>
                 <div>
-                  <span>ACCESS</span>
-                  <strong>Role-Verified</strong>
+                  <span>Permissions</span>
+                  <strong>Role-Based Access</strong>
                 </div>
                 <div>
-                  <span>AUDIT</span>
-                  <strong>100% Traceable</strong>
+                  <span>Records</span>
+                  <strong>Receiving &amp; Status Logs</strong>
                 </div>
               </div>
 
               <div className="arch-deployment-foot">
                 <Link to="/projects#talibon-intra-office" className="btn-arch-inline light">
-                  Case Study →
+                  Project Details →
                 </Link>
                 <Link to="/contact" className="arch-muted-link light">
-                  Build a Custom System
+                  Discuss a Custom System
                 </Link>
               </div>
             </Reveal>
@@ -273,77 +355,35 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 03 · CORE CAPABILITIES — PUNCHY, LOW-TEXT ARCHITECTURAL MATRIX */}
-      <section className="arch-section arch-section-surface">
-        <div className="arch-capabilities-bg-logos" aria-hidden="true">
-          <img src="/brand/chameleon-color.png" alt="" className="cap-bg-logo-1" />
-          <img src="/brand/chameleon-green.png" alt="" className="cap-bg-logo-2" />
-        </div>
-
-        <div className="page-shell">
-          <Reveal className="arch-section-header">
-            <div>
-              <span className="arch-eyebrow">03 / CORE ENGINEERING &amp; HOSTING</span>
-              <h2 className="arch-section-title">
-                BUILT STRONG UNDERNEATH: BACKEND, SECURITY, CLOUD &amp; WEB HOSTING.
-              </h2>
-            </div>
-            <div className="arch-header-cta">
-              <Link to="/services" className="btn-arch-secondary">
-                Full Capability Breakdown →
-              </Link>
-            </div>
-          </Reveal>
-
-          <div className="arch-cap-matrix">
-            {conciseCapabilities.map((cap) => (
-              <article key={cap.num} className="arch-cap-cell">
-                <div className="arch-cap-cell-top">
-                  <span className="arch-cap-num">{cap.num}</span>
-                  <span className="arch-cap-label">{cap.label}</span>
-                </div>
-                <h3>{cap.title}</h3>
-                <p>{cap.line}</p>
-                <div className="arch-cap-tags">
-                  {cap.tags.map((t) => (
-                    <span key={t}>{t}</span>
-                  ))}
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* 04 · THE PEOPLE BEHIND KIRJANE — FULL-BLEED 50/50 SPLIT SCREEN */}
-      <section className="arch-fullbleed-section">
+      <section className="arch-fullbleed-section" aria-label="The People Behind Kirjane">
         <TeamScrollShowcase members={teamMembers} />
       </section>
 
-      {/* 05 · HOW WE WORK — PROGRESSIVE STORYTELLING SCROLL / SWIPE ENGINE */}
-      <section className="arch-process-section">
+      {/* 05 · HOW WE WORK — PROGRESSIVE 5-STAGE STORYTELLING MOTION */}
+      <section className="arch-process-section" aria-label="How We Work">
         <ProcessStoryScroll />
       </section>
 
-      {/* 06 · ARCHITECTURAL CLOSING CALLOUT */}
+      {/* 06 · CLOSING CALLOUT */}
       <section className="arch-closing-band">
         <img
-          src="/brand/chameleon-white.png"
+          src={company.logos.chameleonWhite}
           alt=""
           aria-hidden="true"
           className="closing-watermark-logo"
         />
         <div className="page-shell arch-closing-grid">
           <div>
-            <span className="arch-eyebrow light">06 / START A CONVERSATION</span>
-            <h2>READY TO DEPLOY SALRYN, SCORYN, OR A CUSTOM SYSTEM?</h2>
+            <span className="section-kicker light">Start a Conversation</span>
+            <h2>Ready to deploy Salryn, book Scoryn, or build a custom system?</h2>
             <p>
-              Based in Bohol, Philippines. Reach our engineering and accounting leads directly.
+              Based in {company.location}. Speak directly with our engineering and accounting leads.
             </p>
           </div>
           <div className="arch-closing-actions">
             <Link to="/contact" className="btn-arch-primary">
-              <span>Talk to Our Team</span>
+              <span>{company.hero.primaryCta}</span>
               <span aria-hidden="true">→</span>
             </Link>
             <a href={`mailto:${company.email}`} className="btn-arch-secondary light">
