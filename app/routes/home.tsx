@@ -1,26 +1,28 @@
-import { useState } from "react";
 import { Link } from "react-router";
 import { ArrowLink } from "../components/Editorial";
-import { Reveal, SpotlightCard } from "../components/Motion";
+import { Reveal } from "../components/Motion";
+import { SalrynInteractiveSimulator } from "../components/SalrynInteractiveSimulator";
+import { TeamScrollShowcase } from "../components/TeamScrollShowcase";
 import {
   services,
   salrynKernelModules,
-  salrynFlavors,
   scorynRecognitions,
   flagshipProjects,
   processSteps,
-  teamMembers,
 } from "../data/content";
 
 export function meta() {
   return [
-    { title: "Kirjane IT Solutions | Enterprise Software, Salryn BMS & Scoryn" },
+    { title: "Kirjane Labs — Kirjane IT Solutions | Enterprise Software, Salryn & Scoryn" },
     {
       name: "description",
       content:
-        "Kirjane IT Solutions builds enterprise-grade software that matters—excelling in backend architecture, security, cloud ops, web hosting, Salryn BMS, Scoryn Automated Tabulation, and tailored digital systems.",
+        "Kirjane Labs (Kirjane IT Solutions) builds enterprise-grade software that matters—excelling in backend architecture, security, cloud ops, web hosting, Salryn BMS, Scoryn Automated Tabulation, and tailored digital systems.",
     },
-    { property: "og:title", content: "Kirjane IT Solutions | Enterprise Software That Matters" },
+    {
+      property: "og:title",
+      content: "Kirjane Labs (Kirjane IT Solutions) | Enterprise Software That Matters",
+    },
     {
       property: "og:description",
       content:
@@ -31,9 +33,6 @@ export function meta() {
 }
 
 export default function Home() {
-  const [activeFlavorId, setActiveFlavorId] = useState<string>(salrynFlavors[0].id);
-  const activeFlavor =
-    salrynFlavors.find((flavor) => flavor.id === activeFlavorId) ?? salrynFlavors[0];
   const talibonProject = flagshipProjects[0];
 
   return (
@@ -41,7 +40,7 @@ export default function Home() {
       {/* 01 // HERO */}
       <section className="hero page-shell" aria-labelledby="hero-title">
         <div className="hero-rail">
-          <span>01 // KIRJANE IT SOLUTIONS · KIRJANE LABS</span>
+          <span>01 // KIRJANE LABS · KIRJANE IT SOLUTIONS</span>
           <span>BACKEND · SECURITY · CLOUD OPS · WEB HOSTING</span>
         </div>
 
@@ -49,7 +48,7 @@ export default function Home() {
           <span className="hero-diagonal-mark" aria-hidden="true" />
           <Reveal direction="up" duration={550}>
             <p className="eyebrow">
-              ENTERPRISE SOFTWARE THAT ACTUALLY MATTERS / TAILORED SYSTEMS & PRODUCTS
+              KIRJANE LABS (KIRJANE IT SOLUTIONS) // ENTERPRISE SOFTWARE THAT ACTUALLY MATTERS
             </p>
           </Reveal>
 
@@ -66,7 +65,8 @@ export default function Home() {
           <Reveal direction="up" delay={180} duration={750}>
             <div className="hero-details">
               <p>
-                Founded by systems engineers and accountants, we engineer mission-critical backend
+                Founded by systems engineers and accountants, <strong>Kirjane Labs</strong> (registered
+                as <strong>Kirjane IT Solutions</strong>) engineers mission-critical backend
                 architectures, hardened security, cloud operations, managed web hosting, and custom
                 platforms built around how your organization actually runs.
               </p>
@@ -134,8 +134,9 @@ export default function Home() {
             </h2>
             <p className="section-copy">
               Polished interfaces matter, but software lives or dies by what happens underneath. We
-              excel most in <strong>backend engineering, security, cloud operations, and managed web hosting</strong>—alongside
-              tailored enterprise systems and custom websites.
+              excel most in{" "}
+              <strong>backend engineering, security, cloud operations, and managed web hosting</strong>
+              —alongside tailored enterprise systems and custom websites.
             </p>
             <p className="section-copy">
               Whether you need a custom multi-branch platform, high-availability hosting, or a
@@ -166,7 +167,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 03 // SALRYN: THE KERNEL FOR EVERY BUSINESS NEED + INTERACTIVE FLAVORS */}
+      {/* 03 // SALRYN: INTERACTIVE POS, LEDGER & KERNEL ARCHITECTURE SIMULATOR */}
       <section className="salryn-section" aria-labelledby="salryn-heading">
         <div className="page-shell">
           <Reveal direction="up">
@@ -179,7 +180,9 @@ export default function Home() {
           <Reveal direction="up" delay={70}>
             <div className="salryn-header-grid">
               <div>
-                <span className="eyebrow eyebrow-lime">MODULAR BUSINESS MANAGEMENT SYSTEM (BMS)</span>
+                <span className="eyebrow eyebrow-lime">
+                  INTERACTIVE KERNEL · POS · CPA DOUBLE-ENTRY LEDGER
+                </span>
                 <h2 id="salryn-heading" className="section-title title-light">
                   ONE KERNEL.
                   <br />
@@ -192,9 +195,9 @@ export default function Home() {
                   unified operational and accounting kernel that adapts to any business type.
                 </p>
                 <p>
-                  Co-designed by systems engineers and accountants, Salryn keeps your financial
-                  ledgers, inventory, permissions, and audit trails rock-solid while mounting
-                  specialized modules for your exact industry.
+                  Test the interactive simulator below: switch between industry flavors, adjust POS
+                  line items, inspect the live double-entry accounting journal, and view the mounted
+                  kernel topology.
                 </p>
               </div>
             </div>
@@ -213,69 +216,9 @@ export default function Home() {
             </div>
           </Reveal>
 
-          {/* Interactive Flavor Switcher */}
+          {/* Live Interactive Simulator */}
           <Reveal direction="up" delay={170}>
-            <div className="flavor-explorer">
-              <div className="flavor-tabs-column">
-                <span className="eyebrow eyebrow-lime">SELECT A SALRYN FLAVOR</span>
-                <div className="flavor-tab-list" role="tablist" aria-label="Salryn industry flavors">
-                  {salrynFlavors.map((flavor) => {
-                    const isSelected = flavor.id === activeFlavor.id;
-                    return (
-                      <button
-                        key={flavor.id}
-                        type="button"
-                        role="tab"
-                        aria-selected={isSelected}
-                        className={isSelected ? "flavor-tab active" : "flavor-tab"}
-                        onClick={() => setActiveFlavorId(flavor.id)}
-                      >
-                        <span className="flavor-tab-code">{flavor.code}</span>
-                        <span className="flavor-tab-name">{flavor.name}</span>
-                        <span aria-hidden="true">→</span>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
-              <SpotlightCard className="flavor-detail-panel">
-                <div className="flavor-detail-top">
-                  <span className="telemetry-pill telemetry-pill-dark">
-                    {activeFlavor.code} // {activeFlavor.industry}
-                  </span>
-                  <span className="flavor-kernel-status">MOUNTED ON SALRYN KERNEL v1</span>
-                </div>
-
-                <h3>{activeFlavor.name}</h3>
-                <p className="flavor-tagline">{activeFlavor.tagline}</p>
-                <p className="flavor-description">{activeFlavor.description}</p>
-
-                <div className="flavor-modules-block">
-                  <span className="eyebrow eyebrow-lime">INCLUDED VERTICAL MODULES</span>
-                  <ul className="flavor-module-grid">
-                    {activeFlavor.modules.map((mod) => (
-                      <li key={mod}>
-                        <span aria-hidden="true">◆</span> {mod}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="placeholder-slot-box">
-                  <span>{activeFlavor.placeholderNote}</span>
-                </div>
-
-                <div className="flavor-panel-footer">
-                  <ArrowLink to="/projects" light>
-                    Explore Salryn Architecture
-                  </ArrowLink>
-                  <ArrowLink to="/contact" light>
-                    Request a Salryn Flavor Demo
-                  </ArrowLink>
-                </div>
-              </SpotlightCard>
-            </div>
+            <SalrynInteractiveSimulator />
           </Reveal>
         </div>
       </section>
@@ -422,13 +365,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 06 // THE PEOPLE BEHIND KIRJANE (TEAM & PLACEHOLDERS) */}
+      {/* 06 // THE PEOPLE BEHIND KIRJANE — SCROLL-DRIVEN 7-MEMBER SPOTLIGHT STAGE */}
       <section className="home-about-r4" aria-labelledby="about-heading">
         <div className="page-shell">
           <Reveal direction="up">
             <div className="section-marker">
-              <span>06 // THE PEOPLE BEHIND KIRJANE</span>
-              <span>ENGINEERS + ACCOUNTANTS + OPERATORS</span>
+              <span>06 // THE PEOPLE BEHIND KIRJANE LABS</span>
+              <span>SCROLL-DRIVEN INDIVIDUAL SPOTLIGHTS (01 — 07)</span>
             </div>
           </Reveal>
 
@@ -443,50 +386,22 @@ export default function Home() {
               </div>
               <div className="home-about-content">
                 <p className="home-about-lead">
-                  Where hardcore systems engineering meets accounting-grade business discipline.
+                  Scroll through each member's dedicated spotlight stage—starting with our Founder,
+                  CTO & Head of Engineering.
                 </p>
                 <p>
-                  Kirjane's leadership combines founders in <strong>software architecture & DevOps</strong> with{" "}
-                  <strong>accountants</strong>—supported by specialists in CI/CD, market research,
-                  and digital communications. That is why our systems don't just run fast; their
-                  numbers, workflows, and business logic actually add up.
+                  Kirjane Labs unites founders in <strong>systems architecture & DevOps</strong> with{" "}
+                  <strong>accountants</strong>, backed by specialists in CI/CD, market research, and
+                  digital communications.
                 </p>
-                <ArrowLink to="/about">Meet the Full Kirjane Team</ArrowLink>
+                <ArrowLink to="/about">Explore Full Story & Team Page</ArrowLink>
               </div>
             </div>
           </Reveal>
+        </div>
 
-          <div className="team-preview-grid" aria-label="Kirjane leadership and team members">
-            {teamMembers.map((member, index) => (
-              <Reveal key={member.id} direction="up" delay={index * 55}>
-                <article className="team-card">
-                  <div className="team-card-top">
-                    <div className="team-avatar-placeholder" aria-hidden="true">
-                      <span>{member.avatarCode}</span>
-                      <small>PORTRAIT SLOT</small>
-                    </div>
-                    <div className="team-badge-stack">
-                      <span className="team-index">
-                        {member.index} / 0{teamMembers.length}
-                      </span>
-                      {member.isFounder ? (
-                        <span className="founder-badge">FOUNDING LEADERSHIP</span>
-                      ) : (
-                        <span className="ops-badge">CORE TEAM</span>
-                      )}
-                    </div>
-                  </div>
-                  <h3>{member.name}</h3>
-                  <p className="team-role">{member.role}</p>
-                  {member.secondaryRole ? (
-                    <p className="team-secondary-role">{member.secondaryRole}</p>
-                  ) : null}
-                  <p className="team-discipline">{member.discipline}</p>
-                  <p className="team-placeholder-copy">{member.summaryPlaceholder}</p>
-                </article>
-              </Reveal>
-            ))}
-          </div>
+        <div className="page-shell">
+          <TeamScrollShowcase />
         </div>
       </section>
 

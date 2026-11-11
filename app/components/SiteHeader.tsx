@@ -28,11 +28,11 @@ export function SiteHeader() {
   return (
     <header className="site-header">
       <div className="page-shell header-inner">
-        <Link className="brand" to="/" aria-label="Kirjane IT Solutions, home">
+        <Link className="brand" to="/" aria-label="Kirjane Labs — Kirjane IT Solutions, home">
           <span className="brand-word">
-            KIRJANE<span className="brand-dot">.</span>
+            KIRJANE LABS<span className="brand-dot">.</span>
           </span>
-          <span className="brand-sub">IT SOLUTIONS</span>
+          <span className="brand-sub">KIRJANE IT SOLUTIONS</span>
         </Link>
         <nav className="desktop-nav" aria-label="Primary navigation">
           {navItems.map(({ to, label }) => (

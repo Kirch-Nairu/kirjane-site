@@ -36,7 +36,7 @@ export function PageIntro({
     <section className="page-shell subpage-intro">
       <Reveal direction="up" duration={550}>
         <div className="section-marker">
-          <span>{number} // KIRJANE IT SOLUTIONS</span>
+          <span>{number} // KIRJANE LABS · KIRJANE IT SOLUTIONS</span>
           <span>{eyebrow}</span>
         </div>
       </Reveal>

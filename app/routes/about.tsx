@@ -1,6 +1,6 @@
 import { PageIntro, ArrowLink } from "../components/Editorial";
 import { Reveal } from "../components/Motion";
-import { teamMembers } from "../data/content";
+import { TeamScrollShowcase } from "../components/TeamScrollShowcase";
 
 const points = [
   {
@@ -25,27 +25,24 @@ const points = [
 
 export function meta() {
   return [
-    { title: "The People Behind Kirjane | About Kirjane IT Solutions" },
+    { title: "The People Behind Kirjane Labs | Kirjane IT Solutions" },
     {
       name: "description",
       content:
-        "Meet the founders, engineers, accountants, and operators behind Kirjane IT Solutions and Kirjane Labs.",
+        "Meet the 7 people behind Kirjane Labs (Kirjane IT Solutions): Kirch, Paul, James Karl, Siris, Kurt, Jesse, and Ace.",
     },
   ];
 }
 
 export default function About() {
-  const founders = teamMembers.filter((m) => m.isFounder);
-  const coreTeam = teamMembers.filter((m) => !m.isFounder);
-
   return (
     <>
       <PageIntro
         number="04"
-        eyebrow="ABOUT KIRJANE & KIRJANE LABS"
+        eyebrow="ABOUT KIRJANE LABS · KIRJANE IT SOLUTIONS"
         badge="FOUNDED BY ENGINEERS & ACCOUNTANTS"
         lines={["THE PEOPLE", "BEHIND THE BUILD."]}
-        summary="Enterprise software fails when engineers don't understand business ledgers—or when business tools lack serious backend architecture. Kirjane bridges both worlds under one roof."
+        summary="Enterprise software fails when engineers don't understand business ledgers—or when business tools lack serious backend architecture. Kirjane Labs (registered as Kirjane IT Solutions) bridges both worlds under one roof."
       />
 
       <section className="page-shell subpage-content" aria-labelledby="about-story-title">
@@ -68,7 +65,7 @@ export default function About() {
             </div>
             <div className="about-editorial-copy">
               <p>
-                Kirjane was built around a rare composition: hardcore backend, security, and
+                Kirjane Labs was built around a rare composition: hardcore backend, security, and
                 infrastructure engineers working side-by-side with co-founders who are{" "}
                 <strong>accountants</strong>.
               </p>
@@ -115,7 +112,7 @@ export default function About() {
       <section className="page-shell subpage-content" aria-labelledby="team-heading">
         <Reveal direction="up">
           <div className="section-marker">
-            <span>LEADERSHIP & OPERATIONS ROSTER</span>
+            <span>INDIVIDUAL SCROLL SPOTLIGHTS // 01 — 07</span>
             <span>PORTRAIT & BIO PLACEHOLDERS READY FOR FINAL ASSETS</span>
           </div>
         </Reveal>
@@ -123,78 +120,19 @@ export default function About() {
         <Reveal direction="up" delay={60}>
           <div className="page-lead">
             <h2 id="team-heading" className="section-title compact">
-              MEET THE
+              SEVEN PEOPLE.
               <br />
-              <span className="ink-green">KIRJANE TEAM.</span>
+              <span className="ink-green">ONE STANDARD.</span>
             </h2>
             <p className="section-copy">
-              Structured below are our founding leadership and specialist operations pillars.
-              Each profile includes designated placeholder slots for portraits, credentials, and
-              extended biographies.
+              Scroll through each member's individual spotlight stage below—starting with{" "}
+              <strong>Kirch</strong> (Founder, CTO & Head of Engineering · Kirjane Labs Tech Lead)
+              followed by our co-founders and operations specialists.
             </p>
           </div>
         </Reveal>
 
-        {/* Founding Leadership */}
-        <div className="team-group-block">
-          <span className="eyebrow">01 // FOUNDING LEADERSHIP & EXECUTIVE CORE</span>
-          <div className="team-preview-grid" style={{ marginTop: "20px" }}>
-            {founders.map((member, index) => (
-              <Reveal key={member.id} direction="up" delay={index * 60}>
-                <article className="team-card">
-                  <div className="team-card-top">
-                    <div className="team-avatar-placeholder" aria-hidden="true">
-                      <span>{member.avatarCode}</span>
-                      <small>PORTRAIT SLOT</small>
-                    </div>
-                    <div className="team-badge-stack">
-                      <span className="team-index">
-                        {member.index} / 0{teamMembers.length}
-                      </span>
-                      <span className="founder-badge">FOUNDER / CO-FOUNDER</span>
-                    </div>
-                  </div>
-                  <h3>{member.name}</h3>
-                  <p className="team-role">{member.role}</p>
-                  {member.secondaryRole ? (
-                    <p className="team-secondary-role">{member.secondaryRole}</p>
-                  ) : null}
-                  <p className="team-discipline">{member.discipline}</p>
-                  <p className="team-placeholder-copy">{member.summaryPlaceholder}</p>
-                </article>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-
-        {/* Core Engineering, DevOps, Market Research & Communications */}
-        <div className="team-group-block" style={{ marginTop: "56px" }}>
-          <span className="eyebrow">02 // DEVOPS, MARKET RESEARCH & COMMUNICATIONS</span>
-          <div className="team-preview-grid" style={{ marginTop: "20px" }}>
-            {coreTeam.map((member, index) => (
-              <Reveal key={member.id} direction="up" delay={index * 60}>
-                <article className="team-card">
-                  <div className="team-card-top">
-                    <div className="team-avatar-placeholder" aria-hidden="true">
-                      <span>{member.avatarCode}</span>
-                      <small>PORTRAIT SLOT</small>
-                    </div>
-                    <div className="team-badge-stack">
-                      <span className="team-index">
-                        {member.index} / 0{teamMembers.length}
-                      </span>
-                      <span className="ops-badge">OPERATIONS & GROWTH</span>
-                    </div>
-                  </div>
-                  <h3>{member.name}</h3>
-                  <p className="team-role">{member.role}</p>
-                  <p className="team-discipline">{member.discipline}</p>
-                  <p className="team-placeholder-copy">{member.summaryPlaceholder}</p>
-                </article>
-              </Reveal>
-            ))}
-          </div>
-        </div>
+        <TeamScrollShowcase />
 
         <Reveal direction="up" delay={120}>
           <div style={{ marginTop: "48px" }}>

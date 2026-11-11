@@ -14,9 +14,9 @@ export function SiteFooter() {
     <footer className="site-footer">
       <div className="page-shell footer-top">
         <div className="footer-intro">
-          <Link to="/" className="footer-brand" aria-label="Kirjane IT Solutions home">
-            <span className="footer-brand-main">KIRJANE</span>
-            <span className="footer-brand-detail">IT SOLUTIONS · KIRJANE LABS</span>
+          <Link to="/" className="footer-brand" aria-label="Kirjane Labs — Kirjane IT Solutions home">
+            <span className="footer-brand-main">KIRJANE LABS.</span>
+            <span className="footer-brand-detail">KIRJANE IT SOLUTIONS</span>
           </Link>
           <p className="footer-tagline">Enterprise Software That Actually Matters.</p>
           <p className="footer-description">
@@ -29,7 +29,7 @@ export function SiteFooter() {
           </div>
         </div>
         <div className="footer-links-area">
-          <span className="eyebrow">EXPLORE KIRJANE</span>
+          <span className="eyebrow">EXPLORE KIRJANE LABS</span>
           <nav aria-label="Footer navigation" className="footer-nav">
             {links.map(({ to, label }) => (
               <Link key={to} to={to}>
@@ -41,7 +41,7 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="page-shell footer-bottom">
-        <small>© 2026 Kirjane IT Solutions. All rights reserved.</small>
+        <small>© 2026 Kirjane Labs (Kirjane IT Solutions). All rights reserved.</small>
         <small>Backend Architecture / Security / Cloud Ops / Web Hosting / Tailored Enterprise Systems</small>
       </div>
     </footer>
