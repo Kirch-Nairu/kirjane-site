@@ -14,19 +14,17 @@ export function ArrowLink({
   return (
     <Link className={light ? "text-link light" : "text-link"} to={to}>
       {children}
-      <span aria-hidden="true">↗</span>
     </Link>
   );
 }
 
 export function PageIntro({
-  number,
   eyebrow,
   lines,
   summary,
   badge,
 }: {
-  number: string;
+  number?: string;
   eyebrow: string;
   lines: string[];
   summary: string;
@@ -35,28 +33,19 @@ export function PageIntro({
   return (
     <section className="page-shell subpage-intro">
       <Reveal direction="up" duration={550}>
-        <div className="section-marker">
-          <span>{number} // KIRJANE LABS · KIRJANE IT SOLUTIONS</span>
-          <span>{eyebrow}</span>
+        <div className="subpage-kicker-row">
+          <span className="section-kicker">{eyebrow}</span>
+          {badge ? <span className="telemetry-pill">{badge}</span> : null}
         </div>
       </Reveal>
-      {badge ? (
-        <Reveal direction="up" delay={60}>
-          <div className="subpage-badge-row">
-            <span className="telemetry-pill">{badge}</span>
-          </div>
-        </Reveal>
-      ) : null}
-      <Reveal direction="up" delay={110} duration={700}>
+      <Reveal direction="up" delay={80} duration={650}>
         <h1 className="subpage-title">
-          {lines.map((line, i) => (
-            <span key={line} className={i === lines.length - 1 ? "ink-green" : undefined}>
-              {line}
-            </span>
+          {lines.map((line) => (
+            <span key={line}>{line}</span>
           ))}
         </h1>
       </Reveal>
-      <Reveal direction="up" delay={190} duration={700}>
+      <Reveal direction="up" delay={140} duration={650}>
         <p className="intro-summary">{summary}</p>
       </Reveal>
     </section>

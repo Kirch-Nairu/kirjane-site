@@ -1,180 +1,227 @@
 import { useEffect, useRef, useState } from "react";
 import { teamMembers, type TeamMember } from "../data/content";
 
-export function TeamScrollShowcase() {
+export function TeamScrollShowcase({ members = teamMembers }: { members?: TeamMember[] } = {}) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [scrollProgress, setScrollProgress] = useState(0);
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const trackRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const container = containerRef.current;
-      if (!container) return;
-      const rect = container.getBoundingClientRect();
+    let rafId = 0;
+
+    const updateFromScroll = () => {
+      const track = trackRef.current;
+      if (!track) return;
+      const rect = track.getBoundingClientRect();
       const viewportHeight = window.innerHeight;
       const totalScrollable = rect.height - viewportHeight;
-      if (totalScrollable <= 0) return;
+
+      if (totalScrollable <= 0) {
+        setScrollProgress(0);
+        return;
+      }
 
       const scrolled = Math.min(Math.max(-rect.top, 0), totalScrollable);
-      setScrollProgress(scrolled / totalScrollable);
+      const ratio = scrolled / totalScrollable;
+      setScrollProgress(ratio);
 
-      // Determine which member trigger is closest to the viewport center
-      const center = viewportHeight * 0.48;
-      let bestIdx = 0;
-      let bestDist = Number.POSITIVE_INFINITY;
-
-      stepRefs.current.forEach((el, idx) => {
-        if (!el) return;
-        const r = el.getBoundingClientRect();
-        const mid = r.top + r.height / 2;
-        const dist = Math.abs(mid - center);
-        if (dist < bestDist) {
-          bestDist = dist;
-          bestIdx = idx;
-        }
-      });
-
-      setActiveIndex(bestIdx);
+      const count = members.length;
+      const nextIdx = Math.min(count - 1, Math.max(0, Math.floor(ratio * count)));
+      setActiveIndex(nextIdx);
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    const onScroll = () => {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(updateFromScroll);
+    };
 
-  const scrollToMember = (idx: number) => {
-    const target = stepRefs.current[idx];
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth", block: "center" });
-    } else {
-      setActiveIndex(idx);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    updateFromScroll();
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, [members.length]);
+
+  const jumpToMember = (index: number) => {
+    const track = trackRef.current;
+    if (!track) {
+      setActiveIndex(index);
+      return;
     }
+    const rect = track.getBoundingClientRect();
+    const trackTopDocument = window.scrollY + rect.top;
+    const viewportHeight = window.innerHeight;
+    const totalScrollable = rect.height - viewportHeight;
+
+    if (totalScrollable <= 0) {
+      setActiveIndex(index);
+      return;
+    }
+
+    const targetRatio = (index + 0.35) / members.length;
+    window.scrollTo({
+      top: trackTopDocument + targetRatio * totalScrollable,
+      behavior: "smooth",
+    });
   };
 
-  const activeMember: TeamMember = teamMembers[activeIndex] ?? teamMembers[0];
+  const activeMember = members[activeIndex] ?? members[0];
 
   return (
-    <div ref={containerRef} className="team-scroll-theatre">
-      {/* Sticky Full-Viewport Spotlight Stage */}
-      <div className="team-sticky-stage">
-        <div className="team-stage-bg-glow" data-member-index={activeIndex} aria-hidden="true" />
+    <div ref={trackRef} className="team-theatre-track">
+      <div className="team-theatre-sticky">
+        {/* Ambient radial glow that shifts subtly per member */}
+        <div
+          className="team-theatre-glow"
+          style={{
+            background: `radial-gradient(650px circle at ${28 + activeIndex * 9}% 38%, rgba(149, 193, 89, 0.16), rgba(45, 114, 70, 0.08) 45%, transparent 72%)`,
+          }}
+          aria-hidden="true"
+        />
 
-        <div className="team-stage-shell">
-          {/* Left Rail: Roster Progress & Quick Jump */}
-          <div className="team-stage-rail">
-            <div className="team-rail-header">
-              <span className="eyebrow eyebrow-lime">ROSTER TELEMETRY</span>
-              <span className="team-rail-counter">
-                0{activeIndex + 1} / 0{teamMembers.length}
+        <div className="team-theatre-grid">
+          {/* Left Column: Roster Index & Smooth Progress */}
+          <aside className="team-roster-sidebar" aria-label="Team spotlight navigation">
+            <div className="team-roster-top">
+              <span className="team-roster-label">Leadership & Team</span>
+              <span className="team-roster-fraction">
+                {activeMember.index} <span>/ 0{members.length}</span>
               </span>
             </div>
 
-            <div className="team-progress-track" aria-hidden="true">
+            <div className="team-roster-progress" aria-hidden="true">
               <div
-                className="team-progress-fill"
-                style={{ transform: `scaleY(${Math.max(0.08, scrollProgress)})` }}
+                className="team-roster-progress-bar"
+                style={{ transform: `scaleX(${Math.max(0.14, scrollProgress)})` }}
               />
             </div>
 
-            <nav className="team-rail-nav" aria-label="Jump to team member spotlight">
-              {teamMembers.map((member, idx) => {
+            <div className="team-roster-list" role="tablist" aria-label="People of Kirjane">
+              {members.map((member, idx) => {
                 const isCurrent = idx === activeIndex;
                 return (
                   <button
                     key={member.id}
                     type="button"
-                    onClick={() => scrollToMember(idx)}
-                    className={isCurrent ? "team-rail-btn active" : "team-rail-btn"}
-                    aria-current={isCurrent ? "step" : undefined}
+                    role="tab"
+                    aria-selected={isCurrent}
+                    onClick={() => jumpToMember(idx)}
+                    className={isCurrent ? "team-roster-item is-active" : "team-roster-item"}
                   >
-                    <span className="team-rail-idx">{member.index}</span>
-                    <span className="team-rail-name">{member.name}</span>
-                    <span className="team-rail-tag">{member.avatarCode.split("//")[1]?.trim()}</span>
+                    <span className="team-roster-num">{member.index}</span>
+                    <span className="team-roster-person">
+                      <strong>{member.name}</strong>
+                      <small>{member.secondaryRole ?? member.role}</small>
+                    </span>
+                    <span className="team-roster-dot" aria-hidden="true" />
                   </button>
                 );
               })}
-            </nav>
-          </div>
-
-          {/* Center / Right: Active Member Cinematic Spotlight */}
-          <div key={activeMember.id} className="team-spotlight-card">
-            <div className="team-spotlight-visual">
-              <div className="team-portrait-frame">
-                <div className="portrait-corner portrait-tl" aria-hidden="true" />
-                <div className="portrait-corner portrait-tr" aria-hidden="true" />
-                <div className="portrait-corner portrait-bl" aria-hidden="true" />
-                <div className="portrait-corner portrait-br" aria-hidden="true" />
-
-                <span className="portrait-giant-index" aria-hidden="true">
-                  {activeMember.index}
-                </span>
-                <div className="portrait-monogram-badge">{activeMember.avatarCode}</div>
-                <span className="portrait-placeholder-label">
-                  [PLACEHOLDER: HIGH-RES PORTRAIT — {activeMember.name.toUpperCase()}]
-                </span>
-              </div>
-
-              <div className="portrait-telemetry-bar">
-                <span>STATUS // ACTIVE</span>
-                <span>
-                  {activeMember.isFounder ? "TIER // FOUNDING LEADERSHIP" : "TIER // CORE SPECIALIST"}
-                </span>
-              </div>
             </div>
 
-            <div className="team-spotlight-content">
-              <div className="team-spotlight-badges">
-                <span className="status-chip">
-                  SPOTLIGHT {activeMember.index} OF 0{teamMembers.length}
-                </span>
-                {activeMember.isFounder ? (
-                  <span className="founder-pill-highlight">FOUNDER / CO-FOUNDER</span>
-                ) : (
-                  <span className="ops-pill-highlight">OPERATIONS & ENGINEERING</span>
-                )}
-              </div>
+            <p className="team-scroll-caption">
+              Scroll down to step through each spotlight, or select a name above.
+            </p>
+          </aside>
 
-              <h3 className="team-spotlight-name">{activeMember.name}</h3>
-              <p className="team-spotlight-role">{activeMember.role}</p>
-              {activeMember.secondaryRole ? (
-                <p className="team-spotlight-subrole">{activeMember.secondaryRole}</p>
-              ) : null}
+          {/* Center & Right: Layered Animated Spotlight Stage */}
+          <div className="team-stage-deck">
+            {members.map((member, idx) => {
+              const state =
+                idx === activeIndex ? "active" : idx < activeIndex ? "past" : "upcoming";
+              const disciplines = member.discipline.split("·").map((d) => d.trim());
 
-              <div className="team-discipline-pills">
-                {activeMember.discipline.split("·").map((item) => (
-                  <span key={item.trim()} className="discipline-chip">
-                    {item.trim()}
-                  </span>
-                ))}
-              </div>
+              return (
+                <article
+                  key={member.id}
+                  className={`team-slide-panel is-${state}`}
+                  aria-hidden={state !== "active"}
+                >
+                  {/* Editorial Portrait Frame Placeholder */}
+                  <div className="team-editorial-portrait">
+                    <div className="portrait-backdrop-mesh" aria-hidden="true">
+                      <img
+                        src="/brand/chameleon-white.png"
+                        alt=""
+                        className="portrait-watermark-logo"
+                      />
+                    </div>
 
-              <div className="team-spotlight-bio-box">
-                <span className="eyebrow eyebrow-lime">OPERATIONAL FOCUS & BIO SLOT</span>
-                <p>{activeMember.summaryPlaceholder}</p>
-              </div>
+                    {member.photoUrl ? (
+                      <img
+                        src={member.photoUrl}
+                        alt={member.name}
+                        className="portrait-real-photo"
+                      />
+                    ) : (
+                      <div className="portrait-silhouette-stage" aria-hidden="true">
+                        {/* Refined Architectural Silhouette SVG */}
+                        <svg
+                          viewBox="0 0 240 280"
+                          className="portrait-silhouette-svg"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <circle
+                            cx="120"
+                            cy="92"
+                            r="42"
+                            fill="rgba(255,255,255,0.1)"
+                            stroke="rgba(149,193,89,0.55)"
+                            strokeWidth="1.5"
+                          />
+                          <path
+                            d="M44 260C44 206 76 174 120 174C164 174 196 206 196 260"
+                            fill="rgba(255,255,255,0.06)"
+                            stroke="rgba(149,193,89,0.45)"
+                            strokeWidth="1.5"
+                          />
+                        </svg>
+                        <div className="portrait-monogram-pill">{member.avatarCode}</div>
+                      </div>
+                    )}
 
-              <div className="team-scroll-hint">
-                <span>SCROLL TO TRANSITION SPOTLIGHT</span>
-                <span aria-hidden="true">↓</span>
-              </div>
-            </div>
+                    <div className="portrait-frame-footer">
+                      <span className="portrait-frame-number">{member.index}</span>
+                      <span className="portrait-frame-caption">Portrait Reserved · {member.name}</span>
+                    </div>
+                  </div>
+
+                  {/* Editorial Narrative Column */}
+                  <div className="team-editorial-copy">
+                    <div className="team-meta-row">
+                      <span className="team-tier-badge">
+                        {member.isFounder ? "Founding Leadership" : "Operations & Growth"}
+                      </span>
+                      {member.secondaryRole ? (
+                        <span className="team-credential-badge">{member.secondaryRole}</span>
+                      ) : null}
+                    </div>
+
+                    <h3 className="team-display-name">{member.name}</h3>
+                    <p className="team-display-role">{member.role}</p>
+
+                    <blockquote className="team-pull-quote">“{member.quote}”</blockquote>
+
+                    <p className="team-bio-paragraph">{member.summaryPlaceholder}</p>
+
+                    <div className="team-focus-row">
+                      {disciplines.map((d) => (
+                        <span key={d} className="team-focus-tag">
+                          {d}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
           </div>
         </div>
-      </div>
-
-      {/* Scroll Trigger Waypoints (Drives the sticky stage as user scrolls) */}
-      <div className="team-scroll-waypoints" aria-hidden="true">
-        {teamMembers.map((member, idx) => (
-          <div
-            key={member.id}
-            ref={(el) => {
-              stepRefs.current[idx] = el;
-            }}
-            className="team-waypoint-step"
-            data-step={member.index}
-          />
-        ))}
       </div>
     </div>
   );

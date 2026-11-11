@@ -1,12 +1,13 @@
 import { Link } from "react-router";
+import { company } from "../data/content";
 
 const links = [
   { to: "/", label: "Home" },
-  { to: "/services", label: "Capabilities & Hosting" },
-  { to: "/projects", label: "Salryn · Scoryn · Work" },
-  { to: "/process", label: "Engineering Methodology" },
-  { to: "/about", label: "The People Behind Kirjane" },
-  { to: "/contact", label: "Start a Conversation" },
+  { to: "/projects", label: "Products & Case Studies" },
+  { to: "/services", label: "Services & Web Hosting" },
+  { to: "/about", label: "Meet the Team" },
+  { to: "/process", label: "How We Work" },
+  { to: "/contact", label: "Contact Us" },
 ];
 
 export function SiteFooter() {
@@ -15,34 +16,46 @@ export function SiteFooter() {
       <div className="page-shell footer-top">
         <div className="footer-intro">
           <Link to="/" className="footer-brand" aria-label="Kirjane Labs — Kirjane IT Solutions home">
-            <span className="footer-brand-main">KIRJANE LABS.</span>
-            <span className="footer-brand-detail">KIRJANE IT SOLUTIONS</span>
+            <img
+              src="/brand/chameleon-color.png"
+              alt=""
+              className="footer-logo-mark"
+              width={56}
+              height={44}
+            />
+            <span className="footer-brand-stack">
+              <span className="footer-brand-main">{company.brandName}</span>
+              <span className="footer-brand-detail">{company.legalName}</span>
+            </span>
           </Link>
-          <p className="footer-tagline">Enterprise Software That Actually Matters.</p>
+          <p className="footer-tagline">{company.tagline}</p>
           <p className="footer-description">
-            Backend architecture, hardened security, cloud operations, managed web hosting, and mission-critical systems built by engineers and accountants.
+            Custom software, reliable backend systems, cloud operations, and web hosting—plus
+            Salryn BMS and Scoryn automated tabulation.
           </p>
-          <div className="footer-pill-row">
-            <span className="telemetry-pill">SALRYN BMS KERNEL</span>
-            <span className="telemetry-pill">SCORYN TABULATION</span>
-            <span className="telemetry-pill">CLOUD & WEB HOSTING</span>
+          <div className="footer-contact-meta">
+            <span>📍 {company.location}</span>
+            <a href={`mailto:${company.email}`}>{company.email}</a>
           </div>
         </div>
+
         <div className="footer-links-area">
-          <span className="eyebrow">EXPLORE KIRJANE LABS</span>
+          <span className="section-kicker">Navigation</span>
           <nav aria-label="Footer navigation" className="footer-nav">
             {links.map(({ to, label }) => (
               <Link key={to} to={to}>
                 {label}
-                <span aria-hidden="true">↗</span>
               </Link>
             ))}
           </nav>
         </div>
       </div>
+
       <div className="page-shell footer-bottom">
-        <small>© 2026 Kirjane Labs (Kirjane IT Solutions). All rights reserved.</small>
-        <small>Backend Architecture / Security / Cloud Ops / Web Hosting / Tailored Enterprise Systems</small>
+        <small>
+          © 2026 {company.brandName} ({company.legalName}). Based in {company.location}.
+        </small>
+        <small>Salryn BMS · Scoryn Tabulation · Custom Software · Cloud & Web Hosting</small>
       </div>
     </footer>
   );

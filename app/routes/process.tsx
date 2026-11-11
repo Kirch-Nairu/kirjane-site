@@ -1,14 +1,17 @@
-import { PageIntro, ArrowLink } from "../components/Editorial";
-import { Reveal } from "../components/Motion";
+import { Link } from "react-router";
 import { processSteps } from "../data/content";
+import { PageIntro } from "../components/Editorial";
+import { Reveal } from "../components/Motion";
 
 export function meta() {
   return [
-    { title: "Engineering Methodology | Kirjane IT Solutions" },
+    {
+      title: "How We Work — Our 5-Step Delivery Process | Kirjane Labs",
+    },
     {
       name: "description",
       content:
-        "How Kirjane IT Solutions approaches enterprise software: contract-first discovery, invariant modeling, bounded systems engineering, evidence-led verification, and controlled promotion.",
+        "See how Kirjane Labs takes your project from initial workflow discovery and accounting blueprint to engineering, testing, and managed cloud hosting.",
     },
   ];
 }
@@ -17,84 +20,52 @@ export default function Process() {
   return (
     <>
       <PageIntro
-        number="05"
-        eyebrow="ENGINEERING METHODOLOGY"
-        badge="CONTRACT-FIRST · INVARIANT-SAFE · EVIDENCE-GATED"
-        lines={["THE CONTRACT", "BEFORE THE CODE."]}
-        summary="Strong execution discipline cannot compensate for an unready specification. We close the gap between business intent and production software through five explicit readiness and verification gates."
+        eyebrow="How We Work"
+        badge="Clear 5-Step Process"
+        lines={["A calm, disciplined way to build software that fits your team."]}
+        summary="You don't need to speak programmer jargon to work with us. We guide you through five clear steps so you always know what is being built, how much it costs, and when it launches."
       />
 
-      <section className="page-shell subpage-content" aria-labelledby="process-sequence-title">
-        <Reveal direction="up">
-          <div className="section-marker">
-            <span>HOW THE WORK MOVES</span>
-            <span>FIVE EVIDENCE-GATED STAGES</span>
-          </div>
-        </Reveal>
-
-        <Reveal direction="up" delay={60}>
-          <div className="page-lead">
-            <h2 id="process-sequence-title" className="section-title compact">
-              NO GUESSWORK.
-              <br />
-              <span className="ink-green">NO SILENT DRIFT.</span>
-            </h2>
-            <p className="section-copy">
-              Every stage exists to answer a specific architectural and operational question—so
-              requirements, permissions, and accounting invariants stay aligned from discovery to
-              production.
-            </p>
-          </div>
-        </Reveal>
-
-        <ol className="process-steps-list">
-          {processSteps.map((step, index) => (
-            <li key={step.number} className="process-step">
-              <Reveal direction="up" delay={index * 65} className="process-step-inner">
-                <span className="process-step-number">{step.number}</span>
-                <div className="process-step-main">
-                  <span className="capability-tag-inline">{step.code}</span>
-                  <h3>{step.title}</h3>
+      <section className="page-shell section-block">
+        <div className="process-vertical-stack">
+          {processSteps.map((step, idx) => (
+            <Reveal key={step.number} delay={idx * 65}>
+              <article className="process-step-row">
+                <div className="process-step-left">
+                  <span className="process-step-num">{step.number}</span>
+                  <span className="badge-pill">{step.code}</span>
+                </div>
+                <div className="process-step-center">
+                  <h2>{step.title}</h2>
                   <p>{step.detail}</p>
                 </div>
-                <div className="process-step-aside">
-                  <span className="eyebrow">THE GATE QUESTION</span>
-                  <p>{step.question}</p>
+                <div className="process-step-right">
+                  <span className="process-question-label">Key Question Answered</span>
+                  <p>&ldquo;{step.question}&rdquo;</p>
                 </div>
-              </Reveal>
-            </li>
+              </article>
+            </Reveal>
           ))}
-        </ol>
+        </div>
       </section>
 
-      <section className="subpage-contrast" aria-labelledby="process-next-title">
-        <div className="page-shell contrast-grid">
-          <Reveal direction="up">
-            <div>
-              <span className="eyebrow eyebrow-lime">READY TO SCOPE YOUR SYSTEM?</span>
-              <h2 id="process-next-title">
-                START WITH THE
-                <br />
-                OPERATIONAL REALITY.
-              </h2>
-            </div>
-          </Reveal>
-          <Reveal direction="up" delay={80}>
-            <div>
+      <section className="page-shell section-block">
+        <Reveal direction="scale">
+          <div className="closing-cta-banner">
+            <div className="closing-cta-copy">
+              <h2>Have a workflow you want to simplify?</h2>
               <p>
-                Bring us the workflow bottlenecks, the ledger requirements, or the event parameters.
-                We will translate them into a clear, verifiable system architecture.
+                Start with a simple conversation. We&apos;ll listen to how your team works today and
+                recommend the clearest solution.
               </p>
-              <p className="contrast-footnote">
-                All delivery timelines, SLAs, and hosting arrangements are defined transparently
-                within each project contract.
-              </p>
-              <ArrowLink to="/contact" light>
-                Start a Scoping Conversation
-              </ArrowLink>
             </div>
-          </Reveal>
-        </div>
+            <div className="closing-cta-actions">
+              <Link to="/contact" className="btn-hero-primary">
+                Talk to Our Team
+              </Link>
+            </div>
+          </div>
+        </Reveal>
       </section>
     </>
   );

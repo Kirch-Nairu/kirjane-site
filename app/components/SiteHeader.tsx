@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router";
 
 const navItems = [
-  { to: "/services", label: "Capabilities" },
   { to: "/projects", label: "Products & Work" },
-  { to: "/process", label: "Methodology" },
-  { to: "/about", label: "Team & Story" },
+  { to: "/services", label: "Services & Hosting" },
+  { to: "/about", label: "Our Team" },
+  { to: "/process", label: "How We Work" },
 ];
 
 export function SiteHeader() {
@@ -29,11 +29,19 @@ export function SiteHeader() {
     <header className="site-header">
       <div className="page-shell header-inner">
         <Link className="brand" to="/" aria-label="Kirjane Labs — Kirjane IT Solutions, home">
-          <span className="brand-word">
-            KIRJANE LABS<span className="brand-dot">.</span>
+          <img
+            src="/brand/chameleon-color.png"
+            alt=""
+            className="brand-logo-mark"
+            width={46}
+            height={36}
+          />
+          <span className="brand-text-stack">
+            <span className="brand-word">Kirjane Labs</span>
+            <span className="brand-sub">Kirjane IT Solutions</span>
           </span>
-          <span className="brand-sub">KIRJANE IT SOLUTIONS</span>
         </Link>
+
         <nav className="desktop-nav" aria-label="Primary navigation">
           {navItems.map(({ to, label }) => (
             <NavLink
@@ -45,9 +53,10 @@ export function SiteHeader() {
             </NavLink>
           ))}
           <Link className="nav-contact" to="/contact">
-            Start a Project <span aria-hidden="true">↗</span>
+            Talk to Our Team
           </Link>
         </nav>
+
         <button
           type="button"
           className="menu-toggle"
@@ -63,6 +72,7 @@ export function SiteHeader() {
           </span>
         </button>
       </div>
+
       <nav id="mobile-menu" className="mobile-nav" aria-label="Mobile navigation" hidden={!isOpen}>
         {navItems.map(({ to, label }) => (
           <NavLink
@@ -70,14 +80,14 @@ export function SiteHeader() {
             to={to}
             className={({ isActive }) => (isActive ? "mobile-link active" : "mobile-link")}
           >
-            {label} <span aria-hidden="true">↗</span>
+            {label}
           </NavLink>
         ))}
         <NavLink
           to="/contact"
           className={({ isActive }) => (isActive ? "mobile-link active" : "mobile-link")}
         >
-          Start a Project <span aria-hidden="true">↗</span>
+          Talk to Our Team
         </NavLink>
       </nav>
     </header>

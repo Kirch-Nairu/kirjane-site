@@ -100,3 +100,18 @@ export function SpotlightCard({ children, className = "" }: SpotlightCardProps) 
     </div>
   );
 }
+
+interface StaggerProps {
+  children: ReactNode;
+  className?: string;
+  baseDelay?: number;
+  step?: number;
+}
+
+export function Stagger({ children, className = "", baseDelay = 0 }: StaggerProps) {
+  return (
+    <Reveal direction="up" delay={baseDelay} className={`motion-stagger ${className}`.trim()}>
+      {children}
+    </Reveal>
+  );
+}
