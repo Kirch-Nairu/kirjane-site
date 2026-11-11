@@ -10,6 +10,7 @@
     "typecheck": "react-router typegen && tsc --noEmit",
     "lint": "eslint .",
     "verify:routes": "node scripts/verify-prerender.mjs",
+    "test": "playwright test",
     "check": "npm run typecheck && npm run lint && npm run build && npm run verify:routes"
   },
   "dependencies": {

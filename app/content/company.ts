@@ -6,6 +6,7 @@ export const company = {
   location: "Bohol, Philippines",
   email: "kirjanelabs@gmail.com",
   facebook: "Kirjane Labs",
+  facebookUrl: "https://www.facebook.com/kirjanelabs",
   logos: {
     chameleonColor: "/brand/chameleon-color.png",
     chameleonGreen: "/brand/chameleon-green.png",

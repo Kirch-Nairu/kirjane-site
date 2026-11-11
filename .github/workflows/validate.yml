@@ -1,9 +1,9 @@
 name: Frontend validation
 on:
   push:
-    branches: [main]
+    branches: [main, "design/**", "feat/**"]
   pull_request:
-    branches: [main, "feat/**"]
+    branches: [main, "design/**", "feat/**"]
   workflow_dispatch:
 
 jobs:
@@ -27,3 +27,7 @@ jobs:
         run: npm run build
       - name: Verify six pre-rendered HTML routes
         run: npm run verify:routes
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Run Playwright test suite
+        run: npm test

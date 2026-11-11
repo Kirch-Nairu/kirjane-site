@@ -138,8 +138,16 @@ export function SalrynInteractiveSimulator() {
         </div>
 
         <div className="salryn-sim-summary-box">
-          <strong>Tailored for {activeFlavor.industry}</strong>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "0.5rem", marginBottom: "0.5rem" }}>
+            <strong>{activeFlavor.name}</strong>
+            <span className="badge-pill" style={{ fontSize: "0.72rem", padding: "0.2rem 0.55rem" }}>
+              {activeFlavor.statusBadge}
+            </span>
+          </div>
           <p>{activeFlavor.description}</p>
+          <p style={{ marginTop: "0.6rem", fontSize: "0.82rem", color: "rgba(255, 255, 255, 0.72)", borderTop: "1px solid rgba(255, 255, 255, 0.12)", paddingTop: "0.5rem" }}>
+            <strong>Readiness Audit:</strong> {activeFlavor.readinessDetail}
+          </p>
         </div>
       </div>
 
@@ -336,23 +344,42 @@ export function SalrynInteractiveSimulator() {
 
               <div className="arch-topology-diagram">
                 <div className="arch-layer arch-layer-flavor">
-                  <span className="kernel-code">Included in {activeFlavor.name}</span>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "0.5rem" }}>
+                    <span className="kernel-code">Modules in {activeFlavor.name}</span>
+                    <span className="status-chip" style={{ fontSize: "0.72rem" }}>
+                      {activeFlavor.statusBadge}
+                    </span>
+                  </div>
                   <div className="arch-node-row">
                     {activeFlavor.modules.map((mod) => (
-                      <div key={mod} className="arch-node arch-node-active">
-                        <span>✓</span> {mod}
+                      <div key={mod.name} className="arch-node arch-node-active" style={{ display: "flex", flexDirection: "column", gap: "0.25rem" }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: "0.4rem" }}>
+                          <span>✓</span>
+                          <strong>{mod.name}</strong>
+                        </div>
+                        <span style={{ fontSize: "0.72rem", color: "rgba(255, 255, 255, 0.65)" }}>
+                          Status: {mod.status}
+                        </span>
                       </div>
                     ))}
                   </div>
                 </div>
 
                 <div className="arch-layer arch-layer-kernel">
-                  <span className="kernel-code">Shared Salryn Core Modules</span>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "0.5rem" }}>
+                    <span className="kernel-code">Shared Salryn Core Modules (Implemented)</span>
+                    <span className="status-chip" style={{ fontSize: "0.72rem" }}>
+                      Implemented Core
+                    </span>
+                  </div>
                   <div className="arch-node-row">
                     {salrynKernelModules.map((kmod) => (
                       <div key={kmod.code} className="arch-node">
                         <strong>{kmod.name}</strong>
                         <span>{kmod.detail}</span>
+                        <span style={{ display: "inline-block", marginTop: "0.35rem", fontSize: "0.7rem", color: "var(--lime-bright, #92C056)" }}>
+                          ● {kmod.status}
+                        </span>
                       </div>
                     ))}
                   </div>

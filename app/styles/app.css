@@ -2129,6 +2129,30 @@ textarea {
   position: relative;
 }
 
+@media (min-width: 1024px) {
+  .process-story-track {
+    min-height: 250vh;
+  }
+  .process-story-sticky {
+    position: sticky;
+    top: var(--header-h);
+    min-height: calc(100svh - var(--header-h));
+    display: flex;
+    align-items: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .process-story-track {
+    min-height: auto !important;
+  }
+  .process-story-sticky {
+    position: relative !important;
+    top: 0 !important;
+    min-height: auto !important;
+  }
+}
+
 .process-story-sticky {
   position: relative;
   background: var(--bg-surface);

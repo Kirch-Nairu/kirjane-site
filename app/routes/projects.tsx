@@ -121,13 +121,23 @@ export default function Projects() {
                 <article key={flavor.id} className="flavor-detail-card">
                   <div className="flavor-detail-top">
                     <span className="badge-pill">{flavor.code}</span>
-                    <span className="flavor-industry-label">{flavor.industry}</span>
+                    <span className="badge-pill" style={{ background: "rgba(36, 104, 68, 0.12)", color: "var(--forest-emerald, #246844)", borderColor: "rgba(36, 104, 68, 0.25)" }}>
+                      {flavor.statusBadge}
+                    </span>
                   </div>
                   <h4>{flavor.name}</h4>
                   <p>{flavor.description}</p>
+                  <p className="flavor-readiness-callout" style={{ fontSize: "0.82rem", color: "var(--ink-secondary)", background: "var(--bg-mist)", padding: "0.5rem 0.65rem", borderRadius: "4px", margin: "0.5rem 0 0.85rem" }}>
+                    <strong>Readiness:</strong> {flavor.readinessDetail}
+                  </p>
                   <ul className="clean-check-list">
                     {flavor.modules.map((m) => (
-                      <li key={m}>{m}</li>
+                      <li key={m.name}>
+                        <span>{m.name}</span>
+                        <small style={{ display: "inline-block", marginLeft: "0.4rem", opacity: 0.75, fontSize: "0.75rem" }}>
+                          ({m.status})
+                        </small>
+                      </li>
                     ))}
                   </ul>
                 </article>

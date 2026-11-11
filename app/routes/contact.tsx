@@ -32,14 +32,19 @@ export default function Contact() {
             <a href={`mailto:${company.email}`} className="contact-channel-card">
               <span className="contact-channel-label">Direct Email</span>
               <strong>{company.email}</strong>
-              <span className="contact-channel-Action">Send an email directly</span>
+              <span className="contact-channel-Action">Open email client ↗</span>
             </a>
 
-            <div className="contact-channel-card">
-              <span className="contact-channel-label">Facebook Page</span>
+            <a
+              href={company.facebookUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="contact-channel-card"
+            >
+              <span className="contact-channel-label">Official Facebook</span>
               <strong>{company.facebook}</strong>
-              <span className="contact-channel-Action">Message us on Facebook</span>
-            </div>
+              <span className="contact-channel-Action">Message on Facebook ↗</span>
+            </a>
 
             <div className="contact-channel-card">
               <span className="contact-channel-label">Office &amp; Operations</span>

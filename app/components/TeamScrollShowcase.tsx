@@ -24,7 +24,7 @@ export function TeamScrollShowcase({ members = teamMembers }: { members?: TeamMe
 
       const mm = gsap.matchMedia();
 
-      mm.add("(prefers-reduced-motion: no-preference)", () => {
+      mm.add("(min-width: 1024px) and (prefers-reduced-motion: no-preference)", () => {
         ScrollTrigger.create({
           trigger: track,
           start: "top 72px",

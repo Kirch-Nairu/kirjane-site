@@ -1,26 +1,56 @@
-# KIRJANE VISUAL QA R1 — EXECUTED BROWSER & MOTION EVIDENCE
+# KIRJANE VISUAL & PERFORMANCE QA LEDGER — R1 & R1-QA2
 
-**Candidate Commit SHA:** `ca2ad11af41803c47281abbd33bd6b97c9e3f17a`  
-**Branch:** `design/kirjane-premium-r1-antigravity`  
-**Browser / Runtime:** Headless Chromium via `@playwright/test` (`tests/visual-qa.spec.ts`) on Windows 11 (`Node >=22.22.0`)
-
----
-
-## 1. Gate Summary & Evidence Table
-
-| Gate | Candidate SHA | Route / Viewport | Result | Artifact Path (Tracked on Branch) | Notes / Fixes Verified |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **G3 · Hero First Viewport** | `ca2ad11` | `/` @ `1440×900`, `768×900`, `390×844`, `360×800` | **PASS** | [`qa-artifacts/screenshots/g3-hero-1440x900.png`](../qa-artifacts/screenshots/g3-hero-1440x900.png), [`g3-hero-768x900.png`](../qa-artifacts/screenshots/g3-hero-768x900.png), [`g3-hero-390x844.png`](../qa-artifacts/screenshots/g3-hero-390x844.png), [`g3-hero-360x800.png`](../qa-artifacts/screenshots/g3-hero-360x800.png) | Clean light-paper corporate header, sentence-case `Space Grotesk` headline, Kirjane System & Product Overview ledger, 4-pillar quick index, and subtle multi-layer Chameleon-K watermarks. |
-| **G4 · Homepage Section Captures** | `ca2ad11` | `/` sections @ `1440×900` | **PASS** | [`g4-home-capabilities-1440x900.png`](../qa-artifacts/screenshots/g4-home-capabilities-1440x900.png), [`g4-home-salryn-1440x900.png`](../qa-artifacts/screenshots/g4-home-salryn-1440x900.png), [`g4-home-team-split-1440x900.png`](../qa-artifacts/screenshots/g4-home-team-split-1440x900.png), [`g4-home-process-story-1440x900.png`](../qa-artifacts/screenshots/g4-home-process-story-1440x900.png) | Verified concise 4-row capability ledger, Salryn demo simulation badge, full-bleed 50/50 split-screen Team showcase, and 5-stage Process storytelling layout. |
-| **G7 · 24-Capture Full-Page Matrix** | `ca2ad11` | 6 routes × 4 viewports (24 PNGs) | **PASS** | `qa-artifacts/screenshots/{home,services,projects,about,process,contact}-{1440x900,768x900,390x844,360x800}.png` | 0 console errors, 0 page errors, 0 horizontal overflow across all 24 combinations. |
-| **G5 · Motion Recording & Reverse Scroll** | `ca2ad11` | `/`, `/about`, `/process` @ `1440×900` | **PASS** | [`qa-artifacts/videos/kirjane-desktop-motion-1440x900.webm`](../qa-artifacts/videos/kirjane-desktop-motion-1440x900.webm) | Demonstrates Hero entrance + parallax, Salryn flavor/ledger switching, Team 50/50 split forward/back + keyboard `ArrowRight`/`ArrowLeft`, and Process stages `01` → `05` → `01`. |
-| **G5 · Keyboard, Touch & Reduced Motion** | `ca2ad11` | `/` @ `390×844` (`prefers-reduced-motion: reduce`) | **PASS** | [`qa-artifacts/videos/kirjane-reduced-motion-390x844.webm`](../qa-artifacts/videos/kirjane-reduced-motion-390x844.webm), [`qa-artifacts/screenshots/g5-reduced-motion-390x844.png`](../qa-artifacts/screenshots/g5-reduced-motion-390x844.png) | Verifies immediate static visibility under reduced motion and mobile navigation drawer open + `Escape` close. |
-| **G6 & G7 · Build + Playwright Checks** | `ca2ad11` | All 6 routes | **PASS** | `npm run check` (exit 0) & `npx playwright test` (3 passed) | Verified truthful content assertions (no fabricated quotes, no `24/7`, no `Daily Encrypted Backups`, no `100% Verified`). |
-| **G8 · Owner Visual Acceptance** | `ca2ad11` | Final candidate on Draft PR #4 | **PENDING** | https://github.com/Kirch-Nairu/kirjane-site/pull/4 | Awaiting owner review and sign-off. |
+**Candidate Working Branch:** `design/kirjane-premium-r1-antigravity`  
+**Automated Suites:** `npm run check` (PASS) + `npx playwright test` (8/8 PASS)  
+**Measured Performance Metrics:** Recorded in `qa-artifacts/performance-metrics.json`  
+**Visual Approval Status:** **PENDING OWNER REVIEW** (per `AGENTS.md`)
 
 ---
 
-## 2. Full 24-Capture Matrix Inventory (`qa-artifacts/screenshots/`)
+## 1. Measured Performance & Layout Stability Evidence
+
+Extracted via Playwright browser execution (`tests/visual-qa.spec.ts`):
+
+| Route | Cumulative Layout Shift (CLS) | DOM Content Loaded (DCL) | Total Page Load | TTFB | Verdict |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| `/` (Home) | **0.007** (threshold `< 0.100`) | 324 ms | 578 ms | 37 ms | **PASS** |
+| `/services` | **0.000** | 68 ms | 118 ms | 26 ms | **PASS** |
+| `/projects` | **0.000** | 47 ms | 90 ms | 23 ms | **PASS** |
+| `/about` | **0.000** | 42 ms | 71 ms | 19 ms | **PASS** |
+| `/process` | **0.000** | 42 ms | 69 ms | 17 ms | **PASS** |
+| `/contact` | **0.000** | 93 ms | 122 ms | 19 ms | **PASS** |
+
+*All 6 routes achieve near-zero Cumulative Layout Shift (`0.000` to `0.007`), easily exceeding Google Core Web Vitals thresholds (`< 0.100`). Total CSS bundle is `48.11 kB` (`8.70 kB` gzip).*
+
+---
+
+## 2. Salryn Capability & Readiness Audit
+
+| Flavor / Core | Readiness Classification | Tested & Verified Functionality | Status In Staging |
+| :--- | :--- | :--- | :--- |
+| **Accounting Core** | **Implemented Core** | Double-entry journal entries (Cash, Sales Revenue, Output VAT, COGS, Inventory Asset) generated from checkout events. | Fully Implemented |
+| **Inventory Engine** | **Implemented Core** | Multi-unit stock tracking, supplier purchase order logging, and cost-of-goods calculations. | Fully Implemented |
+| **Cafe & F&B** | **Piloted Configuration** | Front-counter POS ordering, drink modifier options, and shift cash drawer counts tested in local food & beverage settings. | Piloted |
+| **General Merchandise** | **Piloted Configuration** | Barcode lookup, piece/pack retail & wholesale price tiers, and supplier purchase order logging in retail settings. | Piloted |
+| **Hardware & Supply** | **In-Development** | Quotation-to-invoice data schema and fractional unit conversion models staged in dev; yard delivery dispatch in design review. | In-Development |
+| **Pharmacy & Wellness** | **In-Development** | FEFO earliest-expiry batch tracking tables and statutory Senior/PWD discount calculations in active development. | In-Development |
+| **Services & Job Orders** | **Proposed Configuration** | Architecture designed for repair shops and service centers (job order intake, labor + parts billing, commission splits). | Proposed |
+| **Custom Enterprise** | **Custom Deployment** | Bespoke configuration built on the validated Salryn core ledger directly with Kirjane Labs engineering and accounting leads. | Custom Deployment |
+
+---
+
+## 3. Contact Experience Verification
+
+- **Elimination of Disabled Mock:** Removed `<fieldset disabled>` and `<button disabled>` completely. No dummy, unavailable form elements are presented to visitors.
+- **Active Project Inquiry Composer:** Functional inputs (Name, Email, Organization, Inquiry Type, Project Details) with:
+  - **Launch Email Client:** Launches mail client via `mailto:kirjanelabs@gmail.com` with pre-filled subject and structured inquiry body.
+  - **Copy Formatted Draft:** One-click copy to clipboard with instant confirmation ("✓ Inquiry text copied to clipboard!").
+  - **Direct Email Channel:** Active `mailto:kirjanelabs@gmail.com` link.
+  - **Official Social Channel:** Direct `<a>` link to `https://www.facebook.com/kirjanelabs` with `target="_blank"` and `rel="noopener noreferrer"`.
+
+---
+
+## 4. Full 24-Capture Matrix Inventory (`qa-artifacts/screenshots/`)
 
 | Route | `1440×900` | `768×900` | `390×844` | `360×800` |
 | :--- | :--- | :--- | :--- | :--- |
@@ -30,3 +60,10 @@
 | **`/about`** | [`about-1440x900.png`](../qa-artifacts/screenshots/about-1440x900.png) | [`about-768x900.png`](../qa-artifacts/screenshots/about-768x900.png) | [`about-390x844.png`](../qa-artifacts/screenshots/about-390x844.png) | [`about-360x800.png`](../qa-artifacts/screenshots/about-360x800.png) |
 | **`/process`** | [`process-1440x900.png`](../qa-artifacts/screenshots/process-1440x900.png) | [`process-768x900.png`](../qa-artifacts/screenshots/process-768x900.png) | [`process-390x844.png`](../qa-artifacts/screenshots/process-390x844.png) | [`process-360x800.png`](../qa-artifacts/screenshots/process-360x800.png) |
 | **`/contact`** | [`contact-1440x900.png`](../qa-artifacts/screenshots/contact-1440x900.png) | [`contact-768x900.png`](../qa-artifacts/screenshots/contact-768x900.png) | [`contact-390x844.png`](../qa-artifacts/screenshots/contact-390x844.png) | [`contact-360x800.png`](../qa-artifacts/screenshots/contact-360x800.png) |
+
+---
+
+## 5. Motion Recordings (`qa-artifacts/videos/`)
+
+- **Desktop Motion Walkthrough (`1440×900`):** [`kirjane-desktop-motion-1440x900.webm`](../qa-artifacts/videos/kirjane-desktop-motion-1440x900.webm)
+- **Reduced-Motion & Mobile Walkthrough (`390×844`):** [`kirjane-reduced-motion-390x844.webm`](../qa-artifacts/videos/kirjane-reduced-motion-390x844.webm)

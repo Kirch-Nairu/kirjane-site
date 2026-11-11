@@ -40,7 +40,7 @@ test.describe("Kirjane R1 Visual Acceptance, Motion & Route QA", () => {
     for (const vp of VIEWPORTS) {
       await page.setViewportSize({ width: vp.width, height: vp.height });
       await page.goto("/", { waitUntil: "networkidle" });
-      await page.waitForTimeout(700);
+      await page.waitForTimeout(600);
 
       const overflow = await page.evaluate(
         () => document.documentElement.scrollWidth > window.innerWidth,
@@ -56,11 +56,11 @@ test.describe("Kirjane R1 Visual Acceptance, Motion & Route QA", () => {
     // Capture dedicated 1440x900 section views for Gate G4 inspection
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto("/", { waitUntil: "networkidle" });
-    await page.waitForTimeout(600);
+    await page.waitForTimeout(500);
 
     const capSection = page.locator(".editorial-cap-ledger");
     await capSection.scrollIntoViewIfNeeded();
-    await page.waitForTimeout(450);
+    await page.waitForTimeout(400);
     await page.screenshot({
       path: path.join(SCREENSHOT_DIR, "g4-home-capabilities-1440x900.png"),
       fullPage: false,
@@ -68,7 +68,7 @@ test.describe("Kirjane R1 Visual Acceptance, Motion & Route QA", () => {
 
     const salrynSection = page.locator(".flavor-explorer").first();
     await salrynSection.scrollIntoViewIfNeeded();
-    await page.waitForTimeout(450);
+    await page.waitForTimeout(400);
     await page.screenshot({
       path: path.join(SCREENSHOT_DIR, "g4-home-salryn-1440x900.png"),
       fullPage: false,
@@ -76,7 +76,7 @@ test.describe("Kirjane R1 Visual Acceptance, Motion & Route QA", () => {
 
     const teamSection = page.locator(".team-split-screen").first();
     await teamSection.scrollIntoViewIfNeeded();
-    await page.waitForTimeout(450);
+    await page.waitForTimeout(400);
     await page.screenshot({
       path: path.join(SCREENSHOT_DIR, "g4-home-team-split-1440x900.png"),
       fullPage: false,
@@ -84,7 +84,7 @@ test.describe("Kirjane R1 Visual Acceptance, Motion & Route QA", () => {
 
     const processSection = page.locator(".process-story-shell").first();
     await processSection.scrollIntoViewIfNeeded();
-    await page.waitForTimeout(450);
+    await page.waitForTimeout(400);
     await page.screenshot({
       path: path.join(SCREENSHOT_DIR, "g4-home-process-story-1440x900.png"),
       fullPage: false,
@@ -106,7 +106,7 @@ test.describe("Kirjane R1 Visual Acceptance, Motion & Route QA", () => {
       for (const vp of VIEWPORTS) {
         await page.setViewportSize({ width: vp.width, height: vp.height });
         await page.goto(route.path, { waitUntil: "networkidle" });
-        await page.waitForTimeout(550);
+        await page.waitForTimeout(450);
 
         // Verify zero horizontal overflow
         const hasOverflow = await page.evaluate(
@@ -132,6 +132,267 @@ test.describe("Kirjane R1 Visual Acceptance, Motion & Route QA", () => {
     expect(errors).toEqual([]);
   });
 
+  test("Gate G5: Process Stages Real Forward & Reverse Scroll Scrubbing", async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto("/process", { waitUntil: "networkidle" });
+    await page.waitForTimeout(500);
+
+    const track = page.locator(".process-story-track");
+    await track.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(400);
+
+    // Initial stage is Stage 01
+    await expect(page.locator(".process-story-slide.is-active h3")).toContainText(
+      "Listen & Map the Real Workflow",
+    );
+
+    // Scroll down forward through the track
+    await page.evaluate(() => {
+      const el = document.querySelector(".process-story-track");
+      if (el) {
+        const top = el.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({ top: top + 600, behavior: "instant" });
+      }
+    });
+    await page.waitForTimeout(400);
+
+    // Bounded progress advances
+    const activeTextMid = await page.locator(".process-story-slide.is-active h3").innerText();
+    expect(activeTextMid.length).toBeGreaterThan(0);
+
+    // Scroll down further toward end of track
+    await page.evaluate(() => {
+      const el = document.querySelector(".process-story-track");
+      if (el) {
+        const top = el.getBoundingClientRect().top + window.scrollY;
+        const height = el.getBoundingClientRect().height;
+        window.scrollTo({ top: top + height * 0.85, behavior: "instant" });
+      }
+    });
+    await page.waitForTimeout(450);
+
+    // Stage advances toward final steps
+    await expect(page.locator(".process-story-slide.is-active h3")).toContainText(
+      "Deploy, Host & Stand By Your Team",
+    );
+
+    // Test REVERSE scrolling: scroll back up to top of track
+    await page.evaluate(() => {
+      const el = document.querySelector(".process-story-track");
+      if (el) {
+        const top = el.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({ top: top + 50, behavior: "instant" });
+      }
+    });
+    await page.waitForTimeout(450);
+
+    // Reversible scroll returns to Stage 01
+    await expect(page.locator(".process-story-slide.is-active h3")).toContainText(
+      "Listen & Map the Real Workflow",
+    );
+  });
+
+  test("Gate G5 & Mobile: Process Stages Touch-Swipe Navigation", async () => {
+    const browser = await chromium.launch();
+    const context = await browser.newContext({
+      viewport: { width: 390, height: 844 },
+      hasTouch: true,
+    });
+    const page = await context.newPage();
+
+    await page.goto("http://localhost:5173/", { waitUntil: "networkidle" });
+    await page.waitForTimeout(500);
+
+    const track = page.locator(".process-story-track").first();
+    await track.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(400);
+
+    // Initial stage is Stage 01
+    await expect(page.locator(".process-story-slide.is-active h3").first()).toContainText(
+      "Listen & Map the Real Workflow",
+    );
+
+    // Touch Swipe Left (advance forward): clientX 320 -> clientX 60 (deltaX: -260)
+    await page.evaluate(() => {
+      const el = document.querySelector(".process-story-track");
+      if (!el) return;
+      const startTouch = new Touch({ identifier: 1, target: el, clientX: 320, clientY: 400 });
+      const endTouch = new Touch({ identifier: 1, target: el, clientX: 60, clientY: 400 });
+      el.dispatchEvent(new TouchEvent("touchstart", { touches: [startTouch], changedTouches: [startTouch], bubbles: true }));
+      el.dispatchEvent(new TouchEvent("touchend", { touches: [], changedTouches: [endTouch], bubbles: true }));
+    });
+    await page.waitForTimeout(400);
+
+    // Verified advances to Stage 02
+    await expect(page.locator(".process-story-slide.is-active h3").first()).toContainText(
+      "Define the Rules & Numbers",
+    );
+
+    // Another Touch Swipe Left to Stage 03
+    await page.evaluate(() => {
+      const el = document.querySelector(".process-story-track");
+      if (!el) return;
+      const startTouch = new Touch({ identifier: 2, target: el, clientX: 320, clientY: 400 });
+      const endTouch = new Touch({ identifier: 2, target: el, clientX: 60, clientY: 400 });
+      el.dispatchEvent(new TouchEvent("touchstart", { touches: [startTouch], changedTouches: [startTouch], bubbles: true }));
+      el.dispatchEvent(new TouchEvent("touchend", { touches: [], changedTouches: [endTouch], bubbles: true }));
+    });
+    await page.waitForTimeout(400);
+
+    await expect(page.locator(".process-story-slide.is-active h3").first()).toContainText(
+      "Engineer the System & Interface",
+    );
+
+    // Touch Swipe Right (reverse backward): clientX 60 -> clientX 320 (deltaX: +260)
+    await page.evaluate(() => {
+      const el = document.querySelector(".process-story-track");
+      if (!el) return;
+      const startTouch = new Touch({ identifier: 3, target: el, clientX: 60, clientY: 400 });
+      const endTouch = new Touch({ identifier: 3, target: el, clientX: 320, clientY: 400 });
+      el.dispatchEvent(new TouchEvent("touchstart", { touches: [startTouch], changedTouches: [startTouch], bubbles: true }));
+      el.dispatchEvent(new TouchEvent("touchend", { touches: [], changedTouches: [endTouch], bubbles: true }));
+    });
+    await page.waitForTimeout(400);
+
+    // Verified reverses to Stage 02
+    await expect(page.locator(".process-story-slide.is-active h3").first()).toContainText(
+      "Define the Rules & Numbers",
+    );
+
+    await context.close();
+    await browser.close();
+  });
+
+  test("Gate G6: Contact Experience, Form Usability & Functional Social/Email Channels", async ({
+    page,
+    context,
+  }) => {
+    // Grant clipboard permissions for copy draft test
+    await context.grantPermissions(["clipboard-read", "clipboard-write"]);
+
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto("/contact", { waitUntil: "networkidle" });
+    await page.waitForTimeout(400);
+
+    // 1. Direct Email channel is a functional mailto link
+    const emailLink = page.locator('a[href^="mailto:kirjanelabs@gmail.com"]');
+    await expect(emailLink.first()).toBeVisible();
+
+    // 2. Facebook channel is an active external link
+    const fbLink = page.locator('.contact-channel-card[href="https://www.facebook.com/kirjanelabs"]');
+    await expect(fbLink).toBeVisible();
+    await expect(fbLink).toHaveAttribute("target", "_blank");
+
+    // 3. Inquiry form fields are ACTIVE and NOT disabled
+    const nameInput = page.locator("#contact-name");
+    const emailInput = page.locator("#contact-email");
+    const orgInput = page.locator("#contact-organization");
+    const detailsInput = page.locator("#contact-details");
+    const submitBtn = page.locator('button[type="submit"].inquiry-submit');
+
+    await expect(nameInput).not.toBeDisabled();
+    await expect(emailInput).not.toBeDisabled();
+    await expect(orgInput).not.toBeDisabled();
+    await expect(detailsInput).not.toBeDisabled();
+    await expect(submitBtn).not.toBeDisabled();
+
+    // 4. Fill form and test Copy Formatted Draft action
+    await nameInput.fill("Juan dela Cruz");
+    await emailInput.fill("juan@enterprise.ph");
+    await orgInput.fill("Bohol Commercial Hub");
+    await detailsInput.fill("Looking for a Salryn Retail setup for 2 grocery branches.");
+
+    const copyBtn = page.getByRole("button", { name: /Copy Formatted Draft/i });
+    await copyBtn.click();
+    await page.waitForTimeout(300);
+
+    await expect(page.getByText("✓ Inquiry text copied to clipboard!")).toBeVisible();
+  });
+
+  test("Gate G6: Salryn Capability Audit & Readiness Badging Verification", async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto("/projects", { waitUntil: "networkidle" });
+    await page.waitForTimeout(500);
+
+    // Verify readiness badges on flavor cards
+    await expect(page.getByText("Piloted Configuration").first()).toBeVisible();
+    await expect(page.getByText("In-Development").first()).toBeVisible();
+    await expect(page.getByText("Proposed Configuration").first()).toBeVisible();
+    await expect(page.getByText("Custom Deployment").first()).toBeVisible();
+
+    // Verify Salryn interactive simulator shows readiness details
+    const sim = page.locator(".flavor-explorer");
+    await sim.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(400);
+
+    await expect(page.getByText("Readiness Audit:").first()).toBeVisible();
+
+    // Switch to View 3: Included Modules & Core Kernel
+    await page.getByRole("tab", { name: /3\. Included Modules/i }).click();
+    await page.waitForTimeout(400);
+
+    await expect(page.getByText("Shared Salryn Core Modules (Implemented)")).toBeVisible();
+    await expect(page.getByText("● Implemented Core").first()).toBeVisible();
+  });
+
+  test("Gate G7: Measured Performance & Layout Stability across all 6 routes", async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    const performanceResults: Record<
+      string,
+      { cls: number; dclMs: number; loadMs: number; ttfbMs: number }
+    > = {};
+
+    for (const route of ROUTES) {
+      // Inject CLS observer before load
+      await page.addInitScript(() => {
+        (window as unknown as { __clsValue: number }).__clsValue = 0;
+        try {
+          const observer = new PerformanceObserver((entryList) => {
+            for (const entry of entryList.getEntries()) {
+              if (!(entry as unknown as { hadRecentInput?: boolean }).hadRecentInput) {
+                (window as unknown as { __clsValue: number }).__clsValue +=
+                  (entry as unknown as { value: number }).value || 0;
+              }
+            }
+          });
+          observer.observe({ type: "layout-shift", buffered: true });
+        } catch {
+          // ignore
+        }
+      });
+
+      await page.goto(route.path, { waitUntil: "networkidle" });
+      await page.waitForTimeout(300);
+
+      const metrics = await page.evaluate(() => {
+        const nav = performance.getEntriesByType("navigation")[0] as
+          | PerformanceNavigationTiming
+          | undefined;
+        const cls = (window as unknown as { __clsValue: number }).__clsValue ?? 0;
+        return {
+          cls: Math.round(cls * 1000) / 1000,
+          dclMs: nav ? Math.round(nav.domContentLoadedEventEnd - nav.startTime) : 0,
+          loadMs: nav ? Math.round(nav.loadEventEnd - nav.startTime) : 0,
+          ttfbMs: nav ? Math.round(nav.responseStart - nav.startTime) : 0,
+        };
+      });
+
+      // Strict assertions: CLS must be under 0.05 (well below 0.1 threshold)
+      expect(metrics.cls, `CLS on ${route.path} exceeds threshold`).toBeLessThan(0.05);
+
+      performanceResults[route.slug] = metrics;
+    }
+
+    // Save measured evidence to qa-artifacts/performance-metrics.json
+    fs.writeFileSync(
+      path.join(ARTIFACT_DIR, "performance-metrics.json"),
+      JSON.stringify(performanceResults, null, 2),
+      "utf-8",
+    );
+  });
+
   test("Gate G5 & G7: Interactive Controls, Keyboard Navigation, Reduced Motion & Motion Videos", async () => {
     const browser = await chromium.launch();
 
@@ -146,7 +407,7 @@ test.describe("Kirjane R1 Visual Acceptance, Motion & Route QA", () => {
     const page = await context.newPage();
 
     await page.goto("http://localhost:5173/", { waitUntil: "networkidle" });
-    await page.waitForTimeout(900);
+    await page.waitForTimeout(800);
 
     // Test Skip-link focus
     await page.keyboard.press("Tab");
@@ -156,7 +417,7 @@ test.describe("Kirjane R1 Visual Acceptance, Motion & Route QA", () => {
     // Test Salryn Interactive Simulator (Flavor switch + Qty + Mode switch)
     const salryn = page.locator(".flavor-explorer").first();
     await salryn.scrollIntoViewIfNeeded();
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(400);
     await page.getByRole("tab", { name: /Salryn General Merchandise/i }).click();
     await page.waitForTimeout(400);
     await expect(page.getByRole("heading", { name: "Salryn General Merchandise" })).toBeVisible();
@@ -167,7 +428,7 @@ test.describe("Kirjane R1 Visual Acceptance, Motion & Route QA", () => {
     // Test Full-Bleed 50/50 Team Showcase (Forward & Backward + Keyboard)
     const team = page.locator(".team-split-screen").first();
     await team.scrollIntoViewIfNeeded();
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(450);
     await expect(page.locator(".team-copy-slide.is-active h3")).toHaveText("Kirch");
 
     // Step forward through Paul -> James Karl -> Siris
@@ -189,17 +450,17 @@ test.describe("Kirjane R1 Visual Acceptance, Motion & Route QA", () => {
     await page.waitForTimeout(450);
     await expect(page.locator(".team-copy-slide.is-active h3")).toHaveText("James Karl");
 
-    // Test Progressive 5-Stage Storytelling Process (Forward & Reverse)
+    // Test Progressive 5-Stage Storytelling Process (Forward & Reverse buttons)
     const process = page.locator(".process-story-shell").first();
     await process.scrollIntoViewIfNeeded();
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(450);
     await expect(page.locator(".process-story-slide.is-active h3")).toContainText(
       "Listen & Map the Real Workflow",
     );
 
     for (let step = 2; step <= 5; step++) {
       await page.getByRole("button", { name: "Next delivery stage" }).click();
-      await page.waitForTimeout(400);
+      await page.waitForTimeout(350);
     }
     await expect(page.locator(".process-story-slide.is-active h3")).toContainText(
       "Deploy, Host & Stand By Your Team",

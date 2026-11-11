@@ -1,0 +1,38 @@
+{
+  "home": {
+    "cls": 0.007,
+    "dclMs": 324,
+    "loadMs": 578,
+    "ttfbMs": 37
+  },
+  "services": {
+    "cls": 0,
+    "dclMs": 68,
+    "loadMs": 118,
+    "ttfbMs": 26
+  },
+  "projects": {
+    "cls": 0,
+    "dclMs": 47,
+    "loadMs": 90,
+    "ttfbMs": 23
+  },
+  "about": {
+    "cls": 0,
+    "dclMs": 42,
+    "loadMs": 71,
+    "ttfbMs": 19
+  },
+  "process": {
+    "cls": 0,
+    "dclMs": 42,
+    "loadMs": 69,
+    "ttfbMs": 17
+  },
+  "contact": {
+    "cls": 0,
+    "dclMs": 93,
+    "loadMs": 122,
+    "ttfbMs": 19
+  }
+}
