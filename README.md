@@ -1,62 +1,42 @@
-# Kirjane IT Solutions — Corporate Website
+# Kirjane IT Solutions · Kirjane Labs — Official Website
 
-Website implementation for the public-facing name **Kirjane IT Solutions**, originating from the approved Kirjane Labs Website Blueprint V1.0 (31 October 2026). The owner changed the **website display name** on 10 November 2026; this is not confirmation of a legal-entity name change.
+High-craft static pre-rendered corporate & product platform for **Kirjane IT Solutions**, showcasing our core strengths in **Enterprise Backend Engineering, Security Governance, Cloud Operations, Managed Web Hosting, and Tailored Systems**, alongside our flagship products (**Salryn BMS** and **Scoryn Automated Tabulation**) and institutional deployments (**Talibon Intra-Office System**).
 
-**Status:** implementation candidate, not released. Do not enable production publishing without authorized company sign-off.
+---
 
-## Branding
+## Core Products & Flagship Deployments
 
-The public site displays **Kirjane IT Solutions** in navigation, page titles, footer and copy. The uploaded logo artwork reads *Kirjane Information Technology Services* and must be supplied in an approved final export matching the new web display name before publication. Do not treat generated mockup artwork as an authorized final logo.
+- **Salryn — *The Kernel for Every Business Need*:** Modular Business Management System built on a shared accounting, inventory, RBAC, and reporting kernel with industry-specific **Flavors** (*Cafe & F&B, General Merchandise & Retail, Hardware & Supply, Pharmacy & Wellness, Service & Booking, and Custom Enterprise*).
+- **Scoryn — *Automated Tabulation System*:** Real-time multi-judge scoring and deterministic tabulation platform featured in **Miss Poblacion Occidental (Miss Pob Oc)**, **Mister Valencia**, and **Miss Lila**.
+- **Talibon Intra-Office System:** Recognized institutional software deployment modernizing inter-departmental workflows, document routing, and operational accountability.
 
-## Ownership
+---
 
-- **Kurt / @k3nchinxd:** sole website developer and designer, responsible for **frontend, backend/API work when needed, contact form integration, testing, deployment preparation, and maintenance**.
-- **Kirch Ivan:** **not assigned** to this website's implementation; any future contributions require a separate explicit decision.
-- **Company:** retains control of final published brand facts, domain, client inquiries, and release authorization.
+## Leadership & Team Composition
 
-This supersedes older role allocations in the approved blueprint; see `docs/OWNERSHIP_UPDATE_2026-11-09.md`.
+- **Kirch** — Founder, CTO & Head of Engineering · Kirjane Labs Tech Lead
+- **Paul** — Co-Founder & Chief Executive Officer (CEO) · Accountant
+- **James Karl** — Co-Founder & Business Lead · Accountant
+- **Siris** — Co-Founder & Developer Operations Lead
+- **Kurt** — CI/CD & DevOps Engineer
+- **Jesse** — Social Media Manager
+- **Ace** — Market Research Specialist
 
-## Approved stack
+*(All team profiles, product media, and case-study metrics use structured placeholder slots in `app/data/content.ts` for seamless asset drop-in.)*
 
-React 19 + Vite + TypeScript + Tailwind CSS 4 + React Router Framework Mode. All six approved routes are pre-rendered at build time as static files.
+---
 
-## Development
+## Tech Stack & Architecture
 
-Requires Node.js **22.22+**.
+- **Framework:** React 19 + React Router Framework Mode (Static Pre-Rendering across all 6 routes) + Vite 7 + TypeScript 5.9
+- **Styling & Motion:** Unified CSS Token System (`app/styles/app.css`) + Tailwind CSS 4 + Hardware-Accelerated Viewport Reveal & Spotlight Motion Engine (`app/components/Motion.tsx`)
+- **Content Layer:** Centralized, strongly-typed content registry in `app/data/content.ts`
+- **Verification Gate:** Automated static route and safety verification via `scripts/verify-prerender.mjs`
+
+## Commands
 
 ```bash
 npm install
 npm run dev
-npm run typecheck
-npm run lint
-npm run build
-npm run verify:routes
+npm run check # Runs typecheck + lint + build + 6-route HTML verification
 ```
-
-GitHub Actions previously passed typecheck, lint, static build and six-route artifact checks on commit `a3bf3d4a7dc09f00101d4a5bb9da348b79b3cc9a`; subsequent changes require fresh verification. Commit a generated `package-lock.json` before making `npm ci` a required check.
-
-## Public routes
-
-`/` · `/services` · `/projects` · `/about` · `/process` · `/contact`
-
-The approved homepage sections are Hero, Services, Projects, Process, About, Contact, Footer. The approved hero is **THE WORK. COMES FIRST.**
-
-## Remaining publication dependencies
-
-Original vector logo/official HEX tokens; confirmed services; permitted case-study visuals; approved team description; company inbox/privacy notice; domain and company-owned access; release authority. All are flagged as placeholders in code where appropriate.
-
-**Contact:** The approved contact-field UI is implemented as a disabled preview. Inquiries are **not live** until the company inbox, privacy notice and handling policy are approved and delivery is tested. No fabricated portfolio results.
-
-## Release discipline
-
-Feature branch → PR → preview + evidence → reviewed merge → company-authorized manual production publish. Never deploy or merge automatically on behalf of the company.
-
-## Architecture
-
-- `app/routes`: one module per approved public path.
-- `app/components`: header, footer and reusable UI components.
-- `app/styles/app.css`: Tailwind and centralized **working, not verified** palette tokens.
-- `app/components/ContactInquiryForm.tsx`: accessible disabled inquiry-form UI with approved fields.
-- `scripts/verify-prerender.mjs`: checks six generated HTML routes.
-
-See `docs/IMPLEMENTATION_NOTES.md` for the initial review packet.

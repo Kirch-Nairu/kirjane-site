@@ -11,11 +11,6 @@ import {
 import { SiteHeader } from "./components/SiteHeader";
 import { SiteFooter } from "./components/SiteFooter";
 import "./styles/app.css";
-import "./styles/refinement.css";
-import "./styles/hero-r2.css";
-import "./styles/mobile-r3.css";
-import "./styles/homepage-r4.css";
-import "./styles/brand-r1.css";
 
 export function links() {
   return [
@@ -23,7 +18,7 @@ export function links() {
     { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
     {
       rel: "stylesheet",
-      href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap",
+      href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Space+Grotesk:wght@500;600;700&display=swap",
     },
     { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
   ];
@@ -35,7 +30,7 @@ export function Layout({ children }: { children: ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <meta name="theme-color" content="#173b29" />
+        <meta name="theme-color" content="#102b1e" />
         <Meta />
         <Links />
       </head>
@@ -51,9 +46,13 @@ export function Layout({ children }: { children: ReactNode }) {
 export default function App() {
   return (
     <>
-      <a className="skip-link" href="#main-content">Skip to content</a>
+      <a className="skip-link" href="#main-content">
+        Skip to content
+      </a>
       <SiteHeader />
-      <main id="main-content"><Outlet /></main>
+      <main id="main-content">
+        <Outlet />
+      </main>
       <SiteFooter />
     </>
   );
@@ -64,10 +63,16 @@ export function ErrorBoundary({ error }: { error: unknown }) {
   const notFound = status === 404;
   return (
     <main id="main-content" className="page-shell error-page">
-      <span className="eyebrow">KIRJANE IT SOLUTIONS / {status}</span>
+      <span className="eyebrow">KIRJANE IT SOLUTIONS // {status}</span>
       <h1>{notFound ? "THIS PAGE ISN'T HERE." : "SOMETHING WENT WRONG."}</h1>
-      <p>{notFound ? "The address you entered doesn't match a published page." : "The page could not be loaded."}</p>
-      <Link to="/" className="text-link">Return home <span aria-hidden="true">↗</span></Link>
+      <p>
+        {notFound
+          ? "The address you entered doesn't match a published route."
+          : "The requested view could not be loaded."}
+      </p>
+      <Link to="/" className="text-link">
+        Return home <span aria-hidden="true">↗</span>
+      </Link>
     </main>
   );
 }

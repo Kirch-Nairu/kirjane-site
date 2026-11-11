@@ -2,16 +2,19 @@ import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router";
 
 const navItems = [
-  { to: "/services", label: "Services" },
-  { to: "/projects", label: "Projects" },
-  { to: "/about", label: "About" },
+  { to: "/services", label: "Capabilities" },
+  { to: "/projects", label: "Products & Work" },
+  { to: "/process", label: "Methodology" },
+  { to: "/about", label: "Team & Story" },
 ];
 
 export function SiteHeader() {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
-  useEffect(() => { setIsOpen(false); }, [location.pathname]);
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location.pathname]);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -26,16 +29,24 @@ export function SiteHeader() {
     <header className="site-header">
       <div className="page-shell header-inner">
         <Link className="brand" to="/" aria-label="Kirjane IT Solutions, home">
-          <span className="brand-word">KIRJANE<span className="brand-dot">.</span></span>
+          <span className="brand-word">
+            KIRJANE<span className="brand-dot">.</span>
+          </span>
           <span className="brand-sub">IT SOLUTIONS</span>
         </Link>
         <nav className="desktop-nav" aria-label="Primary navigation">
           {navItems.map(({ to, label }) => (
-            <NavLink key={to} to={to} className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
+            <NavLink
+              key={to}
+              to={to}
+              className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}
+            >
               {label}
             </NavLink>
           ))}
-          <Link className="nav-contact" to="/contact">Let's Talk <span aria-hidden="true">↗</span></Link>
+          <Link className="nav-contact" to="/contact">
+            Start a Project <span aria-hidden="true">↗</span>
+          </Link>
         </nav>
         <button
           type="button"
@@ -46,17 +57,28 @@ export function SiteHeader() {
           onClick={() => setIsOpen((open) => !open)}
         >
           <span aria-hidden="true">{isOpen ? "Close" : "Menu"}</span>
-          <span className={isOpen ? "menu-mark open" : "menu-mark"} aria-hidden="true"><i /><i /></span>
+          <span className={isOpen ? "menu-mark open" : "menu-mark"} aria-hidden="true">
+            <i />
+            <i />
+          </span>
         </button>
       </div>
       <nav id="mobile-menu" className="mobile-nav" aria-label="Mobile navigation" hidden={!isOpen}>
         {navItems.map(({ to, label }) => (
-          <NavLink key={to} to={to} className={({ isActive }) => isActive ? "mobile-link active" : "mobile-link"}>
+          <NavLink
+            key={to}
+            to={to}
+            className={({ isActive }) => (isActive ? "mobile-link active" : "mobile-link")}
+          >
             {label} <span aria-hidden="true">↗</span>
           </NavLink>
         ))}
-        <NavLink to="/process" className={({ isActive }) => isActive ? "mobile-link active" : "mobile-link"}>Our Process <span aria-hidden="true">↗</span></NavLink>
-        <NavLink to="/contact" className={({ isActive }) => isActive ? "mobile-link active" : "mobile-link"}>Let's Talk <span aria-hidden="true">↗</span></NavLink>
+        <NavLink
+          to="/contact"
+          className={({ isActive }) => (isActive ? "mobile-link active" : "mobile-link")}
+        >
+          Start a Project <span aria-hidden="true">↗</span>
+        </NavLink>
       </nav>
     </header>
   );
