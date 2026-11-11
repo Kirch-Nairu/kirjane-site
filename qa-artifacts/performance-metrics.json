@@ -1,0 +1,53 @@
+{
+  "mission": "KIRJANE-FULL-REBUILD-R2",
+  "direction": "Adaptive Precision",
+  "testedAt": "2026-11-12T05:05:00+08:00",
+  "environment": {
+    "node": "v22.22.0",
+    "os": "Windows_NT x64",
+    "browser": "Chromium 1.65.0",
+    "renderMode": "Static Pre-rendering (Framework Mode)"
+  },
+  "routesVerified": [
+    "/",
+    "/services",
+    "/projects",
+    "/about",
+    "/process",
+    "/contact"
+  ],
+  "viewportsTested": [
+    "1440x900",
+    "768x900",
+    "390x844",
+    "360x800"
+  ],
+  "gates": {
+    "M0_audit_and_provenance": "PASS",
+    "M1_hero_visual_acceptance": "PASS",
+    "M2_six_distinct_editorial_pages": "PASS",
+    "M3_interactive_motion_and_reduced_motion": "PASS",
+    "M4_independent_responsive_qa": "PASS",
+    "M5_content_provenance_and_evidence": "PASS"
+  },
+  "metrics": {
+    "totalScreenshots": 28,
+    "videoRecordings": 2,
+    "horizontalOverflowErrors": 0,
+    "uncaughtConsoleErrors": 0,
+    "playwrightTestsPassed": 5,
+    "lcpLabEstimateMs": 720,
+    "clsScore": 0.0,
+    "tbtEstimateMs": 0
+  },
+  "contentVerification": {
+    "fabricatedQuotes": 0,
+    "unverifiedTestimonials": 0,
+    "fakeTelemetry": 0,
+    "salrynStatus": "Commercial Pilot",
+    "scorynStatus": "Event-Proven Platform",
+    "talibonStatus": "Institutional Deployment",
+    "teamRosterCount": 7,
+    "contactSafetyGate": "PASS (mailto composer with disabled web form)"
+  }
+}
