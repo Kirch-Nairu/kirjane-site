@@ -1,0 +1,224 @@
+{
+  "title": "Kirjane IT Solutions — Luminous Architecture R2 Cinematic Asset Pack",
+  "production_scope": "12/12 core artworks visually approved by user; release QA still pending",
+  "created_date": "2026-11-16 Asia/Manila",
+  "design_direction": "Luminous Architecture R2 — Cinematic Graphics",
+  "brand_palette": "Reference/working palette only, not officially verified",
+  "repository_for_later_implementation": "https://github.com/Kirch-Nairu/kirjane-site",
+  "repository_modified": false,
+  "rights_review": "AI-generated and original composites; final business/license/provenance review required before public use",
+  "real_UI": "No client screenshots or unverified results; labels/navigation/buttons should be HTML",
+  "assets": [
+    {
+      "id": "H01",
+      "section": "Hero / Desktop",
+      "file_png": "H01_APPROVED_01_H01_hero_cinematic_r2.png",
+      "file_webp": "H01_APPROVED_01_H01_hero_cinematic_r2.webp",
+      "pixel_dimensions": [
+        1672,
+        941
+      ],
+      "sha256_png": "338472cb7c356c8e376b4568ec9285a0e02227dbf790ad5aa2e11985f9f4760a",
+      "size_bytes_png": 1939877,
+      "size_bytes_webp": 131130,
+      "status": "VISUAL_APPROVED_PRIOR_ANCHOR",
+      "provenance": "Direct AI-generated original from approved R2 anchor set"
+    },
+    {
+      "id": "H02",
+      "section": "Hero / Mobile",
+      "file_png": "H02_hero_mobile_cinematic_r2.png",
+      "file_webp": "H02_hero_mobile_cinematic_r2.webp",
+      "pixel_dimensions": [
+        941,
+        1672
+      ],
+      "sha256_png": "3b367e2fa94e5075c00d9054cde4f600614dd92e22402fb84502b8cdade84384",
+      "size_bytes_png": 1554290,
+      "size_bytes_webp": 131898,
+      "status": "VISUAL_APPROVED_2026_11_16",
+      "provenance": "AI-generated mobile hero candidate preserved from previous turn"
+    },
+    {
+      "id": "S01",
+      "section": "Services / Development",
+      "file_png": "S01_APPROVED_02_S01_services_cinematic_r2.png",
+      "file_webp": "S01_APPROVED_02_S01_services_cinematic_r2.webp",
+      "pixel_dimensions": [
+        1672,
+        941
+      ],
+      "sha256_png": "3f31b702a5603dca26bf7aa5e690c3813b7845d1ff3ef6f02ea1cbfb6eabcd9f",
+      "size_bytes_png": 1821210,
+      "size_bytes_webp": 109366,
+      "status": "VISUAL_APPROVED_PRIOR_ANCHOR",
+      "provenance": "Direct AI-generated original from approved R2 anchor set"
+    },
+    {
+      "id": "S02",
+      "section": "Services / Automation",
+      "file_png": "S02_workflow_automation_cinematic_r2.png",
+      "file_webp": "S02_workflow_automation_cinematic_r2.webp",
+      "pixel_dimensions": [
+        1672,
+        941
+      ],
+      "sha256_png": "494fedf2ca4658546b5e694050248b6ce8aab5b4c69e049d6ee36aec58e289fc",
+      "size_bytes_png": 1624678,
+      "size_bytes_webp": 146548,
+      "status": "VISUAL_APPROVED_2026_11_16",
+      "provenance": "Direct AI-generated standalone glass automation-network render with left dark overlay"
+    },
+    {
+      "id": "S03",
+      "section": "Services / Integration",
+      "file_png": "S03_systems_integration_cinematic_r2.png",
+      "file_webp": "S03_systems_integration_cinematic_r2.webp",
+      "pixel_dimensions": [
+        1672,
+        941
+      ],
+      "sha256_png": "59e9ab5f9f0ca14198173dd34cd5e8fd4b1ecd18335d7c85fbfa0cf13f822764",
+      "size_bytes_png": 1352497,
+      "size_bytes_webp": 112072,
+      "status": "VISUAL_APPROVED_2026_11_16",
+      "provenance": "Composite of AI-generated R2 stack and source artwork, original generated glass network geometry"
+    },
+    {
+      "id": "S04",
+      "section": "Services / Infrastructure",
+      "file_png": "S04_infrastructure_support_cinematic_r2.png",
+      "file_webp": "S04_infrastructure_support_cinematic_r2.webp",
+      "pixel_dimensions": [
+        1672,
+        941
+      ],
+      "sha256_png": "cc79a67e4828468f990d9cb8777d41b14ef66681ba71a2a633d588e23d14cdbf",
+      "size_bytes_png": 1190993,
+      "size_bytes_webp": 103750,
+      "status": "VISUAL_APPROVED_2026_11_16",
+      "provenance": "Composite of AI-generated R2 stack and source artwork, original generated luminous infrastructure racks"
+    },
+    {
+      "id": "P01",
+      "section": "Process / Five Stages",
+      "file_png": "P01_APPROVED_03_P01_process_cinematic_r2.png",
+      "file_webp": "P01_APPROVED_03_P01_process_cinematic_r2.webp",
+      "pixel_dimensions": [
+        1672,
+        941
+      ],
+      "sha256_png": "76970b8e2add6f617fd26885d357be108b396c4a000fa5ed531d973a1e54183a",
+      "size_bytes_png": 1781215,
+      "size_bytes_webp": 106898,
+      "status": "VISUAL_APPROVED_PRIOR_ANCHOR",
+      "provenance": "Direct AI-generated original from approved R2 anchor set"
+    },
+    {
+      "id": "W01",
+      "section": "Projects / Connected Operations",
+      "file_png": "W01_connected_operations_concept_r2.png",
+      "file_webp": "W01_connected_operations_concept_r2.webp",
+      "pixel_dimensions": [
+        1672,
+        941
+      ],
+      "sha256_png": "3432786a0981f5297a39c775c5e9344daf386d04444979a1914537d06c809040",
+      "size_bytes_png": 1154384,
+      "size_bytes_webp": 87502,
+      "status": "VISUAL_APPROVED_2026_11_16",
+      "provenance": "Composite of AI-generated process/source artwork and original abstract data panel geometry; illustrative only"
+    },
+    {
+      "id": "W02",
+      "section": "Projects / Decision Visibility",
+      "file_png": "W02_decision_visibility_concept_r2.png",
+      "file_webp": "W02_decision_visibility_concept_r2.webp",
+      "pixel_dimensions": [
+        1672,
+        941
+      ],
+      "sha256_png": "f576d02c0da3c30554a3febf2d5b854162a0f89274f8db6f9556c72d092be21c",
+      "size_bytes_png": 1388552,
+      "size_bytes_webp": 126108,
+      "status": "VISUAL_APPROVED_2026_11_16",
+      "provenance": "Composite of AI-generated hero/source artwork and original ring/checkpoint geometry; illustrative only"
+    },
+    {
+      "id": "A01",
+      "section": "About / Collaboration",
+      "file_png": "A01_human_centered_engineering_concept_r2.png",
+      "file_webp": "A01_human_centered_engineering_concept_r2.webp",
+      "pixel_dimensions": [
+        1672,
+        941
+      ],
+      "sha256_png": "ecf1a0a2209d0096aa5cca4f76533b35b6fa45e15422133c45dd9e060b38bb45",
+      "size_bytes_png": 1354062,
+      "size_bytes_webp": 129088,
+      "status": "VISUAL_APPROVED_2026_11_16",
+      "provenance": "Composite of AI-generated hero/source artwork and original human-centered mesh and clusters; no real people"
+    },
+    {
+      "id": "C01",
+      "section": "Contact / Desktop",
+      "file_png": "C01_APPROVED_04_C01_contact_cinematic_r2.png",
+      "file_webp": "C01_APPROVED_04_C01_contact_cinematic_r2.webp",
+      "pixel_dimensions": [
+        1916,
+        821
+      ],
+      "sha256_png": "3351c87201c8dbea9d6ffc17c46d139edb4051936ae5cde3af22a884721c856a",
+      "size_bytes_png": 1952456,
+      "size_bytes_webp": 138750,
+      "status": "VISUAL_APPROVED_PRIOR_ANCHOR",
+      "provenance": "Direct AI-generated original from approved R2 anchor set"
+    },
+    {
+      "id": "C02",
+      "section": "Contact / Mobile",
+      "file_png": "C02_contact_mobile_cinematic_r2.png",
+      "file_webp": "C02_contact_mobile_cinematic_r2.webp",
+      "pixel_dimensions": [
+        1080,
+        1920
+      ],
+      "sha256_png": "69d639193eafeaef403dda9162071de9a9828fdd5284dc16dab5415ab7792e2e",
+      "size_bytes_png": 1521719,
+      "size_bytes_webp": 161602,
+      "status": "VISUAL_APPROVED_2026_11_16",
+      "provenance": "Purpose-built vertical composite of AI-generated R2 contact portal background and original light trails"
+    }
+  ],
+  "review_status": "VISUAL_APPROVED_ALL_12 / RELEASE_QA_PENDING",
+  "visual_approval": {
+    "approved_date_local": "2026-11-16",
+    "approval_source": "Explicit user message \"apprived\" following delivery of complete 12-artwork R2 review pack",
+    "approval_scope": "Visual art direction and selection of all eight outstanding candidate artworks; previous four R2 anchor approvals preserved",
+    "newly_approved_asset_ids": [
+      "H02",
+      "S02",
+      "S03",
+      "S04",
+      "W01",
+      "W02",
+      "A01",
+      "C02"
+    ],
+    "previously_approved_anchor_ids": [
+      "H01",
+      "S01",
+      "P01",
+      "C01"
+    ],
+    "publication_approved": false,
+    "repository_modification_authorized": false
+  },
+  "release_gates_pending": [
+    "Verify official brand palette and use unchanged original official logo",
+    "Validate license/rights and provenance for final commercial release",
+    "Check desktop/mobile composition, text contrast, cropping, accessibility and reduced-motion behavior in implementation",
+    "Performance QA of selected AVIF/WebP/fallbacks in actual site",
+    "Explicit separate authorization for implementation, merge and deployment"
+  ]
+}
