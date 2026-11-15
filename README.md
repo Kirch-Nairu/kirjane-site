@@ -1,39 +1,55 @@
 # Kirjane IT Solutions — Luminous Architecture R2
 
-**Implementation candidate / integration review only.** This branch is not a production release. No deployment, merge, or publication is authorized by this work.
+**Status: OWNER-APPROVED DEVELOPMENT BASELINE on `main` (2026-11-16).**  
+**This is not a production deployment or certification of release readiness.**
 
-## What is here
+Promoted from [PR #7](https://github.com/Kirch-Nairu/kirjane-site/pull/7) at candidate SHA `75122edbf01dbef710ea931bf91960d704fddbdf`. The approved visual system and current implementation are the starting point for all subsequent website changes. Preserve the six-page structure and 12 approved artworks unless KIRCH authorizes changes.
 
-A production-minded **zero-runtime-dependency, pre-rendered static editorial website candidate**, built on the locked Luminous Architecture R2 art direction. Six accessible content routes are present: `/`, `/services/`, `/projects/`, `/about/`, `/process/`, `/contact/`, plus `404.html`.
+## Pages and assets
 
-- All **12 visual-approved R2 assets** are bundled as optimized WebP under `assets/visuals/`, retaining the approval manifest and original PNG masters in Google Drive. Four original anchors and eight successor artworks are distinct by provenance.
-- Desktop and mobile-specific hero and contact images use `<picture>` media selection.
-- HTML-rendered headings, links, navigation, disclosure statements, and disabled contact form; no generated text embedded in image assets.
-- Keyboard-operable mobile navigation and service-exploration tabs, skip link, focus indicators, and reduced-motion support.
-- Local review with `python3 -m http.server 8000` from the repository root. All routes work as directory-index static pages.
-- No client identities, measured benefits, real project screenshots, contact endpoints, trackers, or team portraits have been fabricated.
+Six pre-rendered routes: `/`, `/services/`, `/projects/`, `/about/`, `/process/`, `/contact/`, plus `404.html`.
 
-### Architectural gate
+- 12 owner-approved Luminous Architecture R2 cinematic WebP assets in `assets/visuals/`; high-resolution PNG masters and provenance remain in the Kirjane Drive asset library.
+- Separate desktop/mobile artwork for the homepage and contact page.
+- Semantic HTML content, mobile navigation, interactive service selection, keyboard focus styles, reduced-motion accommodation.
+- Projects artwork is illustrative; no fictitious client testimonials, team biographies, performance numbers, or real-client screenshots.
+- The contact form is intentionally disabled until a verified communication channel, privacy/data-handling measures, and spam protection are tested.
 
-The earlier Kirjane planning blueprint specified **React + Vite + TypeScript + Tailwind CSS 4 / React Router**. This fresh repo contained only a README. To deliver a verifiable, deployable visual candidate without network-installed npm dependencies, this first integration intentionally uses semantic HTML, modular CSS, and dependency-free JavaScript, pre-rendered via `scripts/build.py`. **The intended React/TypeScript architecture is not yet implemented; migrate or explicitly approve this static implementation before declaring technical signoff.**
+## Local development — primary workflow
 
-### Operating locally
+Requires Python 3, no package manager or frontend build server.
 
-```bash
-python3 scripts/build.py
-python3 -m http.server 8000
+```powershell
+git clone https://github.com/Kirch-Nairu/kirjane-site.git
+cd kirjane-site
+git switch main
+py -m http.server 8000
 ```
 
-Then open `http://localhost:8000/`. A standard static host such as Netlify can serve the root with no build command. Publish remains HELD.
+Open **http://localhost:8000/**.
 
-### Release holds
+On Linux/macOS use `python3 -m http.server 8000`. If editing the content generator, run `python3 scripts/build.py` before previewing, then inspect its changes.
 
-1. Owner must accept compiled desktop/tablet/mobile screenshots and the implementation architecture.
-2. Independent accessibility/contrast review (axe/WCAG 2.2 AA), keyboard QA, cross-browser QA.
-3. Final brand hex codes and official logo asset placement must be validated; the header is typography only, not a fabricated brand mark.
-4. Rights/commercial-policy review of AI-origin and composited assets. See `docs/asset-manifest.json`.
-5. Verify company contact channel, data handling/privacy statement and spam protection before enabling contact submissions.
-6. Publish real client case studies only with explicit consent and verified project evidence.
-7. Merge/deployment requires separate explicit authorization.
+## Hosting policy
 
-**Website repository:** `Kirch-Nairu/kirjane-site`. KIRCH identity only. Source and approved artwork preserved in Drive.
+| Environment | Destination | Status |
+| --- | --- | --- |
+| Local inspection | localhost | Available immediately |
+| Preview / staging | **Vercel** | Not deployed by this baseline promotion |
+| Public production | **Hostinger** | Not deployed; requires separate go-live authorization |
+
+**Do not use Netlify** for this project. No production deployment is implied by merging into `main`.
+
+## QA evidence and outstanding release gates
+
+- Historical local QA: Python generator PASS, JavaScript syntax PASS, Chromium inline DOM tests **30/30 PASS** across 6 routes × 5 widths. See `docs/QA_REPORT.md`. These were *not* Vercel/Hostinger real-host tests, full accessibility certification, or multi-browser production checks.
+- The original architectural specification proposed React + Vite + TypeScript + Tailwind/React Router. The owner-approved visual baseline is currently dependency-free static HTML/CSS/JavaScript. Treat framework migration as a separate explicit technical decision; it is **not required for localhost visual review**.
+- Before public release: verify official Kirjane logo/colors; audit WCAG 2.2 AA, browsers, SEO, performance, and security; complete rights/provenance review; configure a real contact method and privacy/data retention; verify live host routes and HTTPS; publish real case studies/team details only with authorization.
+- Work on branches from `main`, submit focused PRs, and keep the approved cinematic design intact.
+
+## Source of authority
+
+- Repository: https://github.com/Kirch-Nairu/kirjane-site
+- Initial baseline PR: https://github.com/Kirch-Nairu/kirjane-site/pull/7
+- Visual system: Kirjane Luminous Architecture R2, **12/12 artworks visually approved** by KIRCH
+- Hosting: **localhost → Vercel previews → Hostinger production**. Vercel and Hostinger remain separate from this repository promotion.
