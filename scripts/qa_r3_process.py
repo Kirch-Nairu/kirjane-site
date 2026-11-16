@@ -32,7 +32,7 @@ with sync_playwright() as p:
         m=page.evaluate('''() => {let s=document.querySelector('.r3-process-stage'),t=document.querySelector('.r3-process-track'),pic=document.querySelector('.r3-process-art'),r=s.getBoundingClientRect(),ar=pic.getBoundingClientRect(),top=document.querySelector('.r3-process-overline').getBoundingClientRect(),steps=document.querySelector('.r3-process-steps').getBoundingClientRect(),hs=document.querySelector('.r3-process-heading-group').getBoundingClientRect(),focus=document.querySelector('.r3-process-detail').getBoundingClientRect();return {width:document.documentElement.scrollWidth,stage:{w:r.width,h:r.height},art:{x:ar.x,w:ar.width,h:ar.height},sticky:getComputedStyle(s).position,enabled:document.documentElement.classList.contains('r3-process-scroll-active'),processSteps:document.querySelectorAll('[data-r3-process-step]').length,broken:[...document.images].filter(i=>i.complete&&!i.naturalWidth).length,hasSvg:!!s.querySelector('svg'),hasCanvas:!!s.querySelector('canvas'),h1:document.querySelectorAll('h1').length,stepsTop:steps.top,focusBottom:focus.bottom,headingBottom:hs.bottom,overlineBottom:top.bottom,headingTop:hs.top};}''')
         assert m['width']<=w+1 and m['art']['x']>=-1 and abs(m['art']['w']-w)<2 and m['stage']['w']>=w-1,m
         assert m['processSteps']==5 and m['h1']==1 and not m['broken'] and not m['hasSvg'] and not m['hasCanvas'],m
-        enabled=w>=960 and h>=650
+        enabled=w>=960 and h>=650 and w/h>=1.5
         assert m['enabled']==enabled,(w,h,m)
         if enabled:
             assert m['sticky']=='sticky' and abs(m['stage']['h']-h)<3,m

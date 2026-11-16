@@ -271,3 +271,12 @@ html.r3-process-scroll-active .r3-process-stage{height:100svh;min-height:0;posit
   .r3-process-art-focus{-webkit-mask-image:none!important;mask-image:none!important;opacity:0!important}
   .r3-process-step,.r3-process-step:before{transition:none!important}
 }
+
+/* M03 stabilization: a tall/narrow desktop cannot display five 16:9 glass
+   pillars with cover cropping. Fall back to a fully visible, non-pinned frame. */
+@media (min-width:960px) and (max-aspect-ratio:149/100){
+  .r3-process-track{height:auto!important}
+  .r3-process-stage{height:auto!important;min-height:900px;position:relative!important}
+  .r3-process-art img{object-fit:contain;transform:none!important;will-change:auto}
+  .r3-process-art-focus{opacity:0!important;mask-image:none!important;-webkit-mask-image:none!important}
+}

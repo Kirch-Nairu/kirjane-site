@@ -1,0 +1,268 @@
+[
+  {
+    "viewport": "320x760",
+    "pass": true,
+    "layout": {
+      "overflow": false,
+      "sticky": "relative",
+      "height": 940,
+      "steps": 5,
+      "active": false,
+      "imageFit": "cover",
+      "broken": 0
+    },
+    "story": {
+      "manual": true,
+      "nonPinned": true
+    }
+  },
+  {
+    "viewport": "390x844",
+    "pass": true,
+    "layout": {
+      "overflow": false,
+      "sticky": "relative",
+      "height": 940,
+      "steps": 5,
+      "active": false,
+      "imageFit": "cover",
+      "broken": 0
+    },
+    "story": {
+      "manual": true,
+      "nonPinned": true
+    }
+  },
+  {
+    "viewport": "768x1024",
+    "pass": true,
+    "layout": {
+      "overflow": false,
+      "sticky": "relative",
+      "height": 870,
+      "steps": 5,
+      "active": false,
+      "imageFit": "cover",
+      "broken": 0
+    },
+    "story": {
+      "manual": true,
+      "nonPinned": true
+    }
+  },
+  {
+    "viewport": "960x740",
+    "pass": true,
+    "layout": {
+      "overflow": false,
+      "sticky": "relative",
+      "height": 900,
+      "steps": 5,
+      "active": false,
+      "imageFit": "contain",
+      "broken": 0
+    },
+    "story": {
+      "manual": true,
+      "nonPinned": true
+    }
+  },
+  {
+    "viewport": "1024x768",
+    "pass": true,
+    "layout": {
+      "overflow": false,
+      "sticky": "relative",
+      "height": 900,
+      "steps": 5,
+      "active": false,
+      "imageFit": "contain",
+      "broken": 0
+    },
+    "story": {
+      "manual": true,
+      "nonPinned": true
+    }
+  },
+  {
+    "viewport": "1280x720",
+    "pass": true,
+    "layout": {
+      "overflow": false,
+      "sticky": "sticky",
+      "height": 720,
+      "steps": 5,
+      "active": true,
+      "imageFit": "cover",
+      "broken": 0
+    },
+    "story": {
+      "states": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "reverse": true,
+      "focus": [
+        [
+          11.5,
+          69.01
+        ],
+        [
+          30.91,
+          59
+        ],
+        [
+          49.69,
+          49.01
+        ],
+        [
+          69.31,
+          37.99
+        ],
+        [
+          90.3,
+          25.99
+        ]
+      ]
+    }
+  },
+  {
+    "viewport": "1440x900",
+    "pass": true,
+    "layout": {
+      "overflow": false,
+      "sticky": "sticky",
+      "height": 900,
+      "steps": 5,
+      "active": true,
+      "imageFit": "cover",
+      "broken": 0
+    },
+    "story": {
+      "states": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "reverse": true,
+      "focus": [
+        [
+          7.24,
+          69
+        ],
+        [
+          28.79,
+          59
+        ],
+        [
+          49.66,
+          49
+        ],
+        [
+          71.43,
+          38
+        ],
+        [
+          94.75,
+          26
+        ]
+      ],
+      "click_history": [
+        "Plan & Design",
+        "Develop",
+        "Validate",
+        "Deliver & Support"
+      ],
+      "same_stage_mutations": 0,
+      "keyboard_end": true,
+      "services": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ]
+    }
+  },
+  {
+    "viewport": "1920x1080",
+    "pass": true,
+    "layout": {
+      "overflow": false,
+      "sticky": "sticky",
+      "height": 1080,
+      "steps": 5,
+      "active": true,
+      "imageFit": "cover",
+      "broken": 0
+    },
+    "story": {
+      "states": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "reverse": true,
+      "focus": [
+        [
+          11.51,
+          69.01
+        ],
+        [
+          30.89,
+          59.01
+        ],
+        [
+          49.7,
+          49
+        ],
+        [
+          69.31,
+          37.99
+        ],
+        [
+          90.29,
+          25.99
+        ]
+      ]
+    }
+  },
+  {
+    "viewport": "1440x600",
+    "pass": true,
+    "layout": {
+      "overflow": false,
+      "sticky": "relative",
+      "height": 730,
+      "steps": 5,
+      "active": false,
+      "imageFit": "cover",
+      "broken": 0
+    },
+    "story": {
+      "manual": true,
+      "nonPinned": true
+    }
+  },
+  {
+    "viewport": "1440x900",
+    "reducedMotion": true,
+    "pass": true
+  },
+  {
+    "viewport": "390x844",
+    "reducedMotion": true,
+    "pass": true
+  },
+  {
+    "viewport": "1440x900",
+    "noJS": true,
+    "pass": true
+  }
+]
