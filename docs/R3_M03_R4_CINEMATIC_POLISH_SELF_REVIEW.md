@@ -1,8 +1,8 @@
 # Kirjane R3 M03 R4 — cinematic Process polish / two-pass self-review
 
-**Target:** `Kirch-Nairu/kirjane-site` draft PR #8, `feat/r3-homepage-cinematic-storytelling`.  
-**Frozen input:** `a32a293a31dd0fec20fb27398434593bcdd37293`.  
-**Scope:** existing full-screen Process chapter only, plus repository-wide self-review automation and maintenance of an obsolete test.  
+**Target:** `Kirch-Nairu/kirjane-site` draft PR #8, `feat/r3-homepage-cinematic-storytelling`.
+**Frozen input:** `a32a293a31dd0fec20fb27398434593bcdd37293`.
+**Scope:** existing full-screen Process chapter only, plus repository-wide self-review automation and maintenance of an obsolete test.
 **No merge / no Vercel preview / no Hostinger deployment.**
 
 ## Implementation — pass 1

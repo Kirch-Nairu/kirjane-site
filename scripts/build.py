@@ -135,7 +135,7 @@ home_workflow=f'''<section class="workflow-home r3-process-home" id="home-proces
       </div>
     </div>
   </div>
-</section>''' 
+</section>'''
 
 home_projects=f'''<section class="projects-home section-light"><div class="shell">{section_head('04','WORK / SYSTEMS IN CONTEXT','PROJECT PERSPECTIVE')}
 <div class="section-intro-grid"><h2 class="display section-heading dark">BEYOND<br><span class="ink-green">THE INTERFACE.</span></h2><div class="section-aside"><p>Every useful system begins with a problem worth solving. We examine the work behind the screen—from information flow to operational decisions.</p>{link('Explore project thinking','/projects/')}</div></div>

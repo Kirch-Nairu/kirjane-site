@@ -1,8 +1,8 @@
 # Kirjane R3 M03 — stabilization and two-pass self-review
 
-**Repository:** `Kirch-Nairu/kirjane-site`  
-**PR:** #8, existing R3 homepage feature branch  
-**Starting defective SHA:** `5d620402f08aa3777fac16d7caf38feacaadd6eb`  
+**Repository:** `Kirch-Nairu/kirjane-site`
+**PR:** #8, existing R3 homepage feature branch
+**Starting defective SHA:** `5d620402f08aa3777fac16d7caf38feacaadd6eb`
 **State:** correction candidate / owner localhost acceptance and independent review still pending; **NO MERGE / NO DEPLOY**.
 
 ## Pass 1 — reproducible defects, root causes, corrections
