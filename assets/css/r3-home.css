@@ -148,3 +148,12 @@ html.r3-scroll-active .r3-services-stage{position:sticky;top:0;height:100svh;min
   .r3-service-meter{display:none}
   html.r3-entered .home-hero .hero-copy h1>span,html.r3-entered .home-hero .hero-overline,html.r3-entered .home-hero .hero-support,html.r3-entered .home-hero .signal{animation:none!important}
 }
+
+/* The inter-chapter editorial stripe matches the later manifesto. On smaller
+   viewports, expose all three phrases instead of clipping the long ticker. */
+@media(max-width:680px){
+  .r3-hero-separator .manifest-line{display:block;white-space:normal;font-size:clamp(26px,7vw,34px);line-height:1.03;letter-spacing:-.055em}
+  .r3-hero-separator .manifest-line span{display:block;margin:0 0 10px;overflow-wrap:normal}
+  .r3-hero-separator .manifest-line span:last-child{margin-bottom:0}
+  .r3-hero-separator .manifest-line i{display:none}
+}

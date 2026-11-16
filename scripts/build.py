@@ -126,7 +126,16 @@ home_about=f'''<section class="about-home"><div class="shell">{section_head('05'
 
 contact_cta=f'''<section class="closing-cta"><picture class="cta-media"><source media="(max-width: 680px)" srcset="{ASSET}c02-contact-mobile.webp" type="image/webp"><img src="{ASSET}c01-contact-desktop.webp" alt="" loading="lazy" decoding="async"></picture><div class="shell cta-grid"><div><p class="mono eyebrow">06 / HAVE A CHALLENGE?</p><h2 class="display">LET'S BUILD<br><em>WHAT'S NEXT.</em></h2><p>Tell us what needs to change. We'll start with the right questions.</p>{link('Contact Kirjane','/contact/','acid')}</div><span class="mono cta-corner">THE NEXT SYSTEM STARTS HERE. ↗</span></div></section>'''
 
-home=home_hero+home_services+home_manifest+home_workflow+home_projects+home_about+contact_cta
+# R3: editorial chapter divider between Hero and the Services story. Reuses
+# the existing chartreuse manifesto band visual treatment; HTML typography only.
+home_hero_separator=f'''<section class="manifest-band r3-hero-separator" aria-label="From the work to the solution">
+  <div class="shell manifest-inner">
+    <p>FROM AN IDEA TO A SYSTEM THAT WORKS.</p>
+    <div class="manifest-line"><span>UNDERSTAND THE WORK.</span><i aria-hidden="true">✳</i><span>ENGINEER THE ANSWER.</span><i aria-hidden="true">✳</i><span>BUILD WHAT MATTERS.</span></div>
+  </div>
+</section>'''
+
+home=home_hero+home_hero_separator+home_services+home_manifest+home_workflow+home_projects+home_about+contact_cta
 
 # SERVICES
 service_cards=''.join(f'''<article class="discipline" id="service-{i+1}" data-reveal><div class="discipline-text"><div class="discipline-line mono"><span>{no} / 04</span><span>THE PRACTICE</span></div><h2>{title}</h2><p>{desc}</p><p class="discipline-focus"><span>FOCUS</span>{focus}</p></div>{picture(img,cls='discipline-art')}<span class="discipline-num">{no}</span></article>''' for i,(no,title,desc,img,focus) in enumerate(SERVICES))
