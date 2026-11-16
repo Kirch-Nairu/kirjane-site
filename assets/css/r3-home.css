@@ -174,16 +174,16 @@ html.r3-scroll-active .r3-services-stage{position:sticky;top:0;height:100svh;min
 .r3-process-overline{display:flex;justify-content:space-between;align-items:center;gap:20px;padding-bottom:clamp(14px,2svh,24px);border-bottom:1px solid rgba(226,255,212,.27);font-size:10px;letter-spacing:.15em;color:#c4d9c2}
 .r3-process-overline>span:last-child{color:#d1fb8a}
 .r3-process-overline>span:last-child>span:first-child{padding-inline:7px;color:#739874}
-.r3-process-story{min-height:0;flex:1;display:flex;justify-content:space-between;align-items:stretch;gap:38px}
-.r3-process-heading-group{align-self:flex-start;padding-top:clamp(33px,6svh,104px);max-width:790px}
+.r3-process-story{min-height:0;flex:1;display:flex;justify-content:flex-start;align-items:stretch;gap:38px;position:relative}
+.r3-process-heading-group{align-self:flex-start;padding-top:clamp(33px,6svh,104px);max-width:790px;position:relative;z-index:1}
 .r3-process-eyebrow{color:#c9f779;font-size:10px;letter-spacing:.14em;display:block;margin-bottom:clamp(20px,2.8svh,36px)}
 .r3-process-heading-group h2{font-size:clamp(52px,6.2vw,102px);font-weight:700;letter-spacing:-.075em;line-height:.92;margin:0 0 22px;color:#fbfff8;text-shadow:0 2px 28px rgba(0,0,0,.25)}
 .r3-process-heading-group h2 em{font-style:normal;color:#d0f676}
 .r3-process-heading-group>p{max-width:490px;font-size:clamp(13px,1.15vw,16px);line-height:1.6;color:#c3d2c4;margin:0;text-shadow:0 2px 10px #011509}
-.r3-process-detail{align-self:flex-end;text-align:right;margin-bottom:clamp(40px,6svh,98px);max-width:360px;min-width:245px}
-.r3-process-detail-index{font-size:10px;color:#d0fa84;letter-spacing:.14em}
-.r3-process-detail h3{font-family:'Space Grotesk',sans-serif;font-size:clamp(32px,3.35vw,57px);font-weight:600;letter-spacing:-.06em;line-height:1;margin:14px 0;color:white;text-shadow:0 2px 26px rgba(0,0,0,.68)}
-.r3-process-detail>p{font-size:clamp(13px,1.05vw,16px);line-height:1.55;color:#e1eedf;margin:0;text-shadow:0 2px 19px rgba(0,0,0,.75)}
+.r3-process-detail{position:absolute;left:50%;top:58%;bottom:auto;transform:translate(-50%,0);text-align:center;margin:0;max-width:min(560px,68vw);width:min(560px,68vw);min-width:300px;padding:clamp(10px,1.3vw,18px) clamp(16px,2vw,26px);z-index:1}
+.r3-process-detail-index{font-size:10px;color:#d0fa84;letter-spacing:.14em;display:block;margin-bottom:10px}
+.r3-process-detail h3{font-family:'Space Grotesk',sans-serif;font-size:clamp(42px,4.4vw,72px);font-weight:600;letter-spacing:-.065em;line-height:.96;margin:0 0 14px;color:white;text-shadow:0 3px 34px rgba(0,0,0,.72)}
+.r3-process-detail>p{font-size:clamp(15px,1.2vw,19px);line-height:1.5;color:#f0f7ee;margin:0 auto;max-width:34ch;text-shadow:0 2px 22px rgba(0,0,0,.82)}
 .r3-process-bottom{flex:none}
 .r3-process-meter{height:2px;background:rgba(219,248,207,.3);overflow:hidden;margin-bottom:16px}
 .r3-process-meter>span{display:block;height:100%;width:100%;background:#d0f676;transform-origin:left;transform:scaleX(var(--r3-process-p));will-change:transform}
@@ -204,8 +204,9 @@ html.r3-process-scroll-active .r3-process-track{height:clamp(2450px,410svh,5000p
 html.r3-process-scroll-active .r3-process-stage{height:100svh;min-height:0;position:sticky;top:0}
 @media(max-width:1200px){
   .r3-process-heading-group h2{font-size:clamp(47px,5.6vw,75px)}
-  .r3-process-detail{max-width:285px;min-width:220px}
-  .r3-process-detail h3{font-size:36px}
+  .r3-process-detail{top:58%;max-width:min(500px,74vw);width:min(500px,74vw);min-width:280px}
+  .r3-process-detail h3{font-size:clamp(38px,4vw,56px)}
+  .r3-process-detail>p{font-size:clamp(14px,1.4vw,17px)}
   .r3-process-step strong{font-size:clamp(11px,1.3vw,15px)}
 }
 @media(max-height:790px) and (min-width:960px){
@@ -213,7 +214,7 @@ html.r3-process-scroll-active .r3-process-stage{height:100svh;min-height:0;posit
   .r3-process-heading-group{padding-top:23px}
   .r3-process-heading-group h2{font-size:clamp(42px,5vw,73px);margin-bottom:12px}
   .r3-process-eyebrow{margin-bottom:16px}
-  .r3-process-detail{margin-bottom:27px}
+  .r3-process-detail{top:58%}
   .r3-process-detail h3{font-size:32px;margin:9px 0}
   .r3-process-step{min-height:64px;padding-block:8px}
   .r3-process-meter{margin-bottom:8px}
@@ -228,7 +229,7 @@ html.r3-process-scroll-active .r3-process-stage{height:100svh;min-height:0;posit
   .r3-process-heading-group{padding-top:40px}
   .r3-process-heading-group h2{font-size:clamp(48px,7.8vw,78px)}
   .r3-process-heading-group>p{font-size:14px}
-  .r3-process-detail{text-align:left;align-self:flex-start;margin:10px 0 35px;max-width:470px}
+  .r3-process-detail{position:static;left:auto;top:auto;bottom:auto;transform:none;text-align:center;align-self:center;margin:10px auto 35px;width:100%;max-width:470px;min-width:0;padding:0 12px}
   .r3-process-detail h3{font-size:36px}
   .r3-process-shade{background:linear-gradient(180deg,rgba(1,12,8,.84),rgba(1,12,8,.16) 33%,rgba(1,12,8,.68) 63%,rgba(1,12,8,.97) 94%)}
   .r3-process-art img{transform:none}
@@ -238,7 +239,8 @@ html.r3-process-scroll-active .r3-process-stage{height:100svh;min-height:0;posit
 @media(max-height:649px) and (min-width:960px){
   .r3-process-track{height:auto!important}
   .r3-process-stage{height:auto!important;min-height:730px!important;position:relative!important}
-  .r3-process-story{min-height:450px}
+  .r3-process-story{min-height:450px;flex-direction:column;gap:24px}
+  .r3-process-detail{position:static;left:auto;top:auto;bottom:auto;transform:none;align-self:center;margin:0 auto 20px;width:min(540px,85vw);min-width:0}
 }
 @media(max-width:680px){
   .r3-process-stage{min-height:940px}
@@ -279,4 +281,7 @@ html.r3-process-scroll-active .r3-process-stage{height:100svh;min-height:0;posit
   .r3-process-stage{height:auto!important;min-height:900px;position:relative!important}
   .r3-process-art img{object-fit:contain;transform:none!important;will-change:auto}
   .r3-process-art-focus{opacity:0!important;mask-image:none!important;-webkit-mask-image:none!important}
+  .r3-process-story{flex-direction:column;gap:24px}
+  .r3-process-heading-group{padding-top:24px}
+  .r3-process-detail{position:static;left:auto;top:auto;bottom:auto;transform:none;align-self:center;margin:0 auto 35px;width:min(540px,86vw);max-width:540px;min-width:0}
 }
