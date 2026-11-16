@@ -1,0 +1,113 @@
+[
+  {
+    "width": 320,
+    "height": 760,
+    "pass": true,
+    "story": {
+      "static": true,
+      "manualTabs": true
+    },
+    "consoleErrors": [],
+    "overflow": false
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "pass": true,
+    "story": {
+      "static": true,
+      "manualTabs": true
+    },
+    "consoleErrors": [],
+    "overflow": false
+  },
+  {
+    "width": 768,
+    "height": 1024,
+    "pass": true,
+    "story": {
+      "static": true,
+      "manualTabs": true
+    },
+    "consoleErrors": [],
+    "overflow": false
+  },
+  {
+    "width": 960,
+    "height": 740,
+    "pass": true,
+    "story": {
+      "forward": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "reverse": true,
+      "height": 2257
+    },
+    "consoleErrors": [],
+    "overflow": false
+  },
+  {
+    "width": 1024,
+    "height": 768,
+    "pass": true,
+    "story": {
+      "forward": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "reverse": true,
+      "height": 2342
+    },
+    "consoleErrors": [],
+    "overflow": false
+  },
+  {
+    "width": 1440,
+    "height": 900,
+    "pass": true,
+    "story": {
+      "forward": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "reverse": true,
+      "height": 2745
+    },
+    "consoleErrors": [],
+    "overflow": false
+  },
+  {
+    "width": 1920,
+    "height": 1080,
+    "pass": true,
+    "story": {
+      "forward": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "reverse": true,
+      "height": 3294
+    },
+    "consoleErrors": [],
+    "overflow": false
+  },
+  {
+    "width": 1440,
+    "reducedMotion": true,
+    "pass": true
+  },
+  {
+    "width": 390,
+    "reducedMotion": true,
+    "pass": true
+  }
+]

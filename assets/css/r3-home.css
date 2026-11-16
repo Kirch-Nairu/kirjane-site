@@ -1,0 +1,84 @@
+/* R3 / M01+M02 — progressive homepage motion. No changes to inner-page UI.
+   If JavaScript is disabled or reduced motion is requested, all content stays visible.
+   Motion uses only opacity/transform and compositor-friendly CSS custom properties. */
+.home-hero{--r3-hero-p:0;}
+.home-hero .hero-media img{
+  transform-origin:57% 47%;
+  transform:translate3d(0,calc(var(--r3-hero-p)*-5.5%),0) scale(calc(1 + var(--r3-hero-p)*.095));
+  will-change:transform;
+}
+.home-hero .hero-copy{
+  transform:translate3d(0,calc(var(--r3-hero-p)*-48px),0);
+  opacity:calc(1 - var(--r3-hero-p)*.40);
+  will-change:transform,opacity;
+}
+.r3-hero-light{pointer-events:none;position:absolute;inset:0;overflow:hidden;z-index:1;mix-blend-mode:screen;}
+.r3-hero-light span{position:absolute;display:block;width:clamp(330px,52vw,850px);aspect-ratio:1;border-radius:50%;border:1px solid rgba(182,255,147,.24);box-shadow:0 0 48px rgba(103,250,138,.08),inset 0 0 45px rgba(104,254,150,.08);top:7%;right:2%;transform:rotate(-27deg) scaleX(.55);opacity:calc(.36 - var(--r3-hero-p)*.22);}
+.r3-hero-light span+span{width:clamp(280px,43vw,700px);top:15%;right:9%;border-color:rgba(182,255,147,.16);transform:rotate(34deg) scaleX(.66);box-shadow:none;opacity:.4;}
+.r3-hero-chapter{position:absolute;top:clamp(140px,19vh,205px);right:var(--gutter);z-index:3;display:flex;align-items:center;gap:12px;letter-spacing:.18em;color:rgba(231,255,220,.74);font-size:9px;pointer-events:none;}
+.r3-chapter-dash{width:25px;height:1px;background:#b6f779;opacity:.8;}
+@keyframes r3-title-enter{from{opacity:0;transform:translate3d(0,110%,0);filter:blur(5px)}to{opacity:1;transform:translate3d(0,0,0);filter:blur(0)}}
+@keyframes r3-fade-up{from{opacity:0;transform:translate3d(0,18px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
+@keyframes r3-beacon{0%,100%{box-shadow:0 0 12px rgba(196,255,104,.4)}50%{box-shadow:0 0 25px rgba(196,255,104,.85)}}
+html.r3-entered .home-hero .hero-copy h1>span{animation:r3-title-enter 1050ms cubic-bezier(.19,1,.22,1) both;}
+html.r3-entered .home-hero .hero-copy h1>span:nth-child(2){animation-delay:170ms;}
+html.r3-entered .home-hero .hero-overline{animation:r3-fade-up 700ms ease-out both;animation-delay:190ms;}
+html.r3-entered .home-hero .hero-support{animation:r3-fade-up 780ms ease-out both;animation-delay:470ms;}
+html.r3-entered .home-hero .signal{animation:r3-beacon 3200ms ease-in-out infinite;}
+
+/* Desktop Services scrollytelling stage. The track expands ONLY after JS opts in. */
+.r3-services-track{position:relative;--r3-service-p:0;}
+.r3-service-overline{display:flex;align-items:center;justify-content:space-between;gap:15px;color:#325E43;padding:13px 3px 16px;border-bottom:1px solid #C8D6CB;font-size:10px;}
+.r3-services-left{min-width:0;align-self:stretch;display:flex;flex-direction:column;}
+.r3-services-left .service-tabs{flex:1;border-top:0;}
+.r3-service-meter{height:2px;background:#c1d0c1;margin-top:12px;overflow:hidden;}
+.r3-service-meter>span{height:100%;display:block;background:#2A7344;transform-origin:left;transform:scaleX(var(--r3-service-p));will-change:transform;}
+.r3-service-instruction{font-size:9px;color:#67806d;margin:19px 0 0;display:flex;justify-content:space-between;letter-spacing:.12em;}
+.r3-service-instruction span{margin-left:8px;}
+.r3-service-visuals{position:absolute;inset:0;z-index:0;overflow:hidden;}
+.r3-service-visuals img{width:100%;height:100%;object-fit:cover;object-position:68% center;position:absolute;inset:0;opacity:0;transform:scale(1.07);transition:opacity 850ms cubic-bezier(.2,.65,.3,1),transform 1300ms cubic-bezier(.18,.78,.22,1);}
+.r3-service-visuals img.is-current{opacity:1;transform:scale(1);}
+.r3-service-preview:after{z-index:1;}
+.r3-service-preview .service-preview-caption{position:relative;z-index:3;}
+.r3-service-preview .visual-disclosure{z-index:4;}
+.r3-service-glare{position:absolute;inset:-30%;z-index:2;pointer-events:none;background:linear-gradient(113deg,transparent 26%,rgba(193,255,145,.04) 45%,transparent 60%);transform:translate3d(calc(var(--r3-service-p)*18%),0,0);}
+.r3-service-stage-footer{position:absolute;bottom:11px;right:19px;left:20px;z-index:3;display:flex;justify-content:space-between;gap:15px;letter-spacing:.1em;font-size:8px;color:rgba(220,250,226,.5);}
+.r3-service-preview .service-preview-caption{padding-bottom:55px;}
+html.r3-scroll-active .r3-services-track{height:clamp(1950px,305svh,3400px);}
+html.r3-scroll-active .r3-services-stage{position:sticky;top:clamp(30px,10vh,105px);min-height:480px;}
+html.r3-scroll-active .r3-service-preview{height:min(59vh,550px);min-height:465px;}
+html.r3-scroll-active .r3-services-stage .service-row{min-height:96px;}
+html.r3-scroll-active .r3-services-track:after{content:"";position:absolute;left:50%;bottom:2.5%;width:1px;height:5%;background:linear-gradient(to bottom,#9fba9e,transparent);pointer-events:none;opacity:.6;}
+@media(max-width:1100px){
+  .r3-hero-chapter{right:var(--gutter);top:125px;}
+  html.r3-scroll-active .r3-services-stage .service-row{min-height:88px;}
+  html.r3-scroll-active .r3-service-preview{min-height:430px;height:55vh;}
+}
+@media(max-width:959px){
+  .r3-hero-chapter{display:none;}
+  .home-hero .hero-media img{transform:none!important;will-change:auto;}
+  .home-hero .hero-copy{transform:none!important;opacity:1!important;will-change:auto;}
+  .r3-hero-light{opacity:.45;}
+  .r3-hero-light span{width:55vw;top:14%;right:-17%;}
+  .r3-services-track{height:auto!important;}
+  .r3-services-stage{position:static!important;}
+  .r3-service-instruction{display:none;}
+  .r3-service-meter{display:none;}
+}
+@media(max-width:680px){
+  .r3-hero-light{opacity:.3;}
+  .r3-hero-light span{top:5%;right:-34%;width:70vw;}
+  .r3-service-overline{font-size:8px;padding:0 0 14px;}
+  .r3-service-preview .service-preview-caption{padding-bottom:42px;}
+  .r3-service-stage-footer{font-size:7px;bottom:9px;}
+}
+@media(prefers-reduced-motion:reduce){
+  .home-hero .hero-media img,.home-hero .hero-copy{transform:none!important;opacity:1!important;will-change:auto!important;}
+  .r3-hero-light{display:none;}
+  .r3-services-track{height:auto!important;}
+  .r3-services-stage{position:static!important;}
+  .r3-service-visuals img{transform:none!important;transition:none!important;}
+  .r3-service-glare{display:none;}
+  .r3-service-instruction,.r3-service-meter{display:none;}
+  html.r3-entered .home-hero .hero-copy h1>span,html.r3-entered .home-hero .hero-overline,html.r3-entered .home-hero .hero-support,html.r3-entered .home-hero .signal{animation:none!important;}
+}

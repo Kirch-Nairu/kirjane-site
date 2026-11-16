@@ -49,13 +49,15 @@ def footer():
 
 def layout(page,title,desc,body,hero_preload=None):
     preload=(f'<link rel="preload" as="image" href="{ASSET}{hero_preload}.webp" fetchpriority="high">' if hero_preload else '')
+    r3_css='<link rel="stylesheet" href="/assets/css/r3-home.css">' if page=='Home' else ''
+    r3_js='<script src="/assets/js/r3-home.js" defer></script>' if page=='Home' else ''
     return f'''<!doctype html><html lang="en"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="dark light">
 <title>{escape(title)} | Kirjane IT Solutions</title><meta name="description" content="{escape(desc,quote=True)}">
 <meta property="og:title" content="{escape(title,quote=True)} — Kirjane IT Solutions"><meta property="og:description" content="{escape(desc,quote=True)}"><meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-{preload}<link rel="stylesheet" href="/assets/css/site.css"><script src="/assets/js/site.js" defer></script>
+{preload}<link rel="stylesheet" href="/assets/css/site.css">{r3_css}<script src="/assets/js/site.js" defer></script>{r3_js}
 </head><body data-page="{escape(page)}"><a class="skip-link" href="#main-content">Skip to main content</a><div class="scroll-progress" aria-hidden="true"></div>
 {header(page)}<main id="main-content">{body}</main>{footer()}</body></html>'''
 
@@ -65,12 +67,14 @@ def inner_hero(index,eyebrow,title,sub,visual=None,mobile=None):
 
 home_hero=f'''<section class="home-hero" aria-labelledby="hero-title">
   {picture('h01-hero-desktop',cls='hero-media',mobile='h02-hero-mobile',priority=True)}
+  <div class="r3-hero-light" aria-hidden="true"><span></span><span></span></div>
   <div class="hero-grain" aria-hidden="true"></div>
   <div class="shell hero-contents"><div class="hero-topline mono"><span><b class="signal"></b>SOFTWARE ENGINEERING / AUTOMATION</span><span class="hero-edition">KIRJANE / 2026</span></div>
     <div class="hero-copy"><p class="mono hero-overline" data-reveal>INDEPENDENT THINKING. ENGINEERED RESULTS.</p>
       <h1 class="display" id="hero-title"><span>THE WORK.</span><span class="hero-title-accent">COMES FIRST<span class="hero-stop">.</span></span></h1>
       <div class="hero-support"><div class="hero-support-left"><p class="hero-service">Custom software.<br><span>Workflow automation.</span></p></div><div class="hero-support-right"><p>We develop applications and connected systems around how businesses and organizations actually work.</p><div class="hero-links">{link('Explore our work','/projects/','solid')}{link('What we do','/services/')}</div></div></div>
     </div>
+    <div class="r3-hero-chapter mono" aria-hidden="true"><span>01 / 07</span><span class="r3-chapter-dash"></span><span>THE INTRODUCTION</span></div>
     <div class="hero-baseline"><span class="mono">ADAPT. AUTOMATE. EVOLVE.</span><a href="#home-services" class="scroll-invite mono">SCROLL TO EXPLORE {ICON_DOWN}</a><span class="mono hero-foot-right">01 — INTRODUCTION</span></div>
   </div>
 </section>'''
@@ -79,7 +83,23 @@ services_rows=''.join(f'''<button class="service-row {"active" if i==0 else ""}"
 home_services=f'''<section class="services-home section-light" id="home-services">
 <div class="shell">{section_head('02','EXPERTISE / WHAT WE BUILD','01 — 04')}
 <div class="section-intro-grid"><h2 class="display section-heading dark">LESS FRICTION.<br><span class="ink-green">MORE FUNCTION.</span></h2><div class="section-aside"><p>Powerful technology isn't always complicated technology. We build around the workflows, decisions, and constraints that matter to your organization.</p>{link('View all services','/services/')}</div></div>
-<div class="services-stage"><div class="service-tabs" role="tablist" aria-label="Service disciplines">{services_rows}</div><div class="service-preview" id="service-preview" role="tabpanel" tabindex="0" aria-labelledby="service-tab-1"><img src="{ASSET}s01-development.webp" alt="" loading="lazy" data-service-image><div class="service-preview-caption"><span class="mono">FOCUS / 001</span><p data-service-focus>Architecture, interfaces, operational tooling</p><span class="service-preview-arrow">↗</span></div><div class="visual-disclosure">CONCEPTUAL VISUAL / NOT A CLIENT SCREENSHOT</div></div></div>
+<div class="r3-services-track" data-r3-services-track>
+  <div class="services-stage r3-services-stage">
+    <div class="r3-services-left">
+      <div class="r3-service-overline mono"><span>CHAPTER 02 / THE CAPABILITIES</span><span data-r3-count>01 / 04</span></div>
+      <div class="service-tabs" role="tablist" aria-label="Service disciplines">{services_rows}</div>
+      <div class="r3-service-meter" aria-hidden="true"><span></span></div>
+      <p class="r3-service-instruction mono">SCROLL TO EXPLORE <span aria-hidden="true">↘</span> / OR SELECT A DISCIPLINE</p>
+    </div>
+    <div class="service-preview r3-service-preview" id="service-preview" role="tabpanel" tabindex="0" aria-labelledby="service-tab-1">
+      <div class="r3-service-visuals" aria-hidden="true">{''.join(f'<img src="{ASSET}{im}.webp" alt="" decoding="async" loading="lazy" data-service-scene="{i}" class="{"is-current" if i==0 else ""}">' for i,(no,title,desc,im,focus) in enumerate(SERVICES))}</div>
+      <div class="r3-service-glare" aria-hidden="true"></div>
+      <div class="service-preview-caption"><span class="mono">FOCUS / 001</span><p data-service-focus>Architecture, interfaces, operational tooling</p><span class="service-preview-arrow">↗</span></div>
+      <div class="visual-disclosure">CONCEPTUAL VISUAL / NOT A CLIENT SCREENSHOT</div>
+      <div class="r3-service-stage-footer mono" aria-hidden="true"><span>ENGINEERED AROUND THE WORK</span><span>R3 / LUMINOUS</span></div>
+    </div>
+  </div>
+</div>
 </div></section>'''
 
 home_manifest=f'''<section class="manifest-band"><div class="shell manifest-inner"><p>NOT SOFTWARE FOR SOFTWARE'S SAKE.</p><div class="manifest-line"><span>RETHINK THE PROCESS.</span><i aria-hidden="true">✳</i><span>CONNECT THE SYSTEM.</span><i aria-hidden="true">✳</i><span>MAKE IT WORK.</span></div></div></section>'''
