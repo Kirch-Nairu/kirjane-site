@@ -80,27 +80,31 @@ home_hero=f'''<section class="home-hero" aria-labelledby="hero-title">
 </section>'''
 
 services_rows=''.join(f'''<button class="service-row {"active" if i==0 else ""}" type="button" role="tab" aria-selected="{"true" if i==0 else "false"}" id="service-tab-{i+1}" aria-controls="service-preview" data-service-select="{i}"><span class="service-id">{no}</span><span class="service-row-body"><strong>{title}</strong><small>{desc}</small></span><span class="service-north">↗</span></button>''' for i,(no,title,desc,im,focus) in enumerate(SERVICES))
-home_services=f'''<section class="services-home section-light" id="home-services">
-<div class="shell">{section_head('02','EXPERTISE / WHAT WE BUILD','01 — 04')}
-<div class="section-intro-grid"><h2 class="display section-heading dark">LESS FRICTION.<br><span class="ink-green">MORE FUNCTION.</span></h2><div class="section-aside"><p>Powerful technology isn't always complicated technology. We build around the workflows, decisions, and constraints that matter to your organization.</p>{link('View all services','/services/')}</div></div>
-<div class="r3-services-track" data-r3-services-track>
-  <div class="services-stage r3-services-stage">
-    <div class="r3-services-left">
-      <div class="r3-service-overline mono"><span>CHAPTER 02 / THE CAPABILITIES</span><span data-r3-count>01 / 04</span></div>
-      <div class="service-tabs" role="tablist" aria-label="Service disciplines">{services_rows}</div>
-      <div class="r3-service-meter" aria-hidden="true"><span></span></div>
-      <p class="r3-service-instruction mono">SCROLL TO EXPLORE <span aria-hidden="true">↘</span> / OR SELECT A DISCIPLINE</p>
-    </div>
-    <div class="service-preview r3-service-preview" id="service-preview" role="tabpanel" tabindex="0" aria-labelledby="service-tab-1">
+home_services=f'''<section class="services-home r3-services-fullbleed" id="home-services" aria-labelledby="r3-services-heading">
+  <div class="r3-services-track" data-r3-services-track>
+    <div class="r3-services-stage">
       <div class="r3-service-visuals" aria-hidden="true">{''.join(f'<img src="{ASSET}{im}.webp" alt="" decoding="async" loading="lazy" data-service-scene="{i}" class="{"is-current" if i==0 else ""}">' for i,(no,title,desc,im,focus) in enumerate(SERVICES))}</div>
-      <div class="r3-service-glare" aria-hidden="true"></div>
-      <div class="service-preview-caption"><span class="mono">FOCUS / 001</span><p data-service-focus>Architecture, interfaces, operational tooling</p><span class="service-preview-arrow">↗</span></div>
-      <div class="visual-disclosure">CONCEPTUAL VISUAL / NOT A CLIENT SCREENSHOT</div>
-      <div class="r3-service-stage-footer mono" aria-hidden="true"><span>ENGINEERED AROUND THE WORK</span><span>R3 / LUMINOUS</span></div>
+      <div class="r3-service-shade" aria-hidden="true"></div>
+      <div class="shell r3-services-layer">
+        <div class="r3-service-overline mono"><span>02 / EXPERTISE — WHAT WE BUILD</span><span>CHAPTER 02 <span class="r3-service-divider" aria-hidden="true">/</span> <span data-r3-count>01 / 04</span></span></div>
+        <div class="r3-service-layout">
+          <div class="r3-services-left">
+            <h2 class="display r3-services-title" id="r3-services-heading">LESS FRICTION.<br><em>MORE FUNCTION.</em></h2>
+            <p class="r3-services-intro">Custom software and connected systems designed around the work that matters.</p>
+            <div class="service-tabs" role="tablist" aria-label="Service disciplines">{services_rows}</div>
+          </div>
+          <div class="r3-service-detail" id="service-preview" role="tabpanel" tabindex="0" aria-labelledby="service-tab-1">
+            <div class="service-preview-caption"><span class="mono">FOCUS / 001</span><p data-service-focus>Architecture, interfaces, operational tooling</p></div>
+            <span class="r3-detail-disclosure mono">CONCEPTUAL VISUAL / NOT A CLIENT SCREENSHOT</span>
+          </div>
+        </div>
+        <div class="r3-service-footer"><div class="r3-service-meter" aria-hidden="true"><span></span></div>
+          <div class="r3-service-footer-line mono"><span>SCROLL TO EXPLORE <span aria-hidden="true">↓</span> <span class="r3-selection-hint">/ OR SELECT A DISCIPLINE</span></span><a href="/services/">EXPLORE ALL SERVICES <span aria-hidden="true">↗</span></a></div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-</div></section>'''
+</section>'''
 
 home_manifest=f'''<section class="manifest-band"><div class="shell manifest-inner"><p>NOT SOFTWARE FOR SOFTWARE'S SAKE.</p><div class="manifest-line"><span>RETHINK THE PROCESS.</span><i aria-hidden="true">✳</i><span>CONNECT THE SYSTEM.</span><i aria-hidden="true">✳</i><span>MAKE IT WORK.</span></div></div></section>'''
 
