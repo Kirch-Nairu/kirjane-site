@@ -290,3 +290,74 @@ html.r3-process-scroll-active .r3-process-stage{height:100svh;min-height:0;posit
 /* R3 M03 R4: the intro de-emphasis is only for the pinned cinematic journey. */
 html:not(.r3-process-scroll-active) .r3-process-heading-group{opacity:1!important}
 @media(prefers-reduced-motion:reduce){.r3-process-heading-group{opacity:1!important}}
+
+
+/* R3 M04 — asymmetric Projects exhibition. Natural scroll, no pinned stage.
+   Approved W01/W02 imagery; all interaction text is semantic HTML. */
+.r3-gallery-home{padding-bottom:clamp(80px,9vw,160px);overflow:clip}
+.r3-gallery-intro{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(260px,.55fr);align-items:end;gap:clamp(30px,6vw,100px);padding:clamp(62px,8vw,126px) 0 clamp(60px,7vw,108px)}
+.r3-gallery-eyebrow{color:#356646;font-size:10px;margin-bottom:22px}
+.r3-gallery-intro h2{font-size:clamp(62px,7.5vw,132px);line-height:.9}
+.r3-gallery-intro-aside{max-width:350px;padding-bottom:8px}
+.r3-gallery-intro-aside p{font-size:clamp(14px,1.08vw,17px);line-height:1.7;color:#536157;margin-bottom:32px}
+.r3-gallery-intro-aside .link-arrow{border-color:#79987a}
+.r3-gallery{display:flex;flex-direction:column;gap:clamp(66px,8vw,132px);isolation:isolate}
+.r3-gallery-piece{min-width:0;width:88%;position:relative;transition:opacity 500ms ease}
+.r3-gallery-piece-first{margin-right:auto}
+.r3-gallery-piece-second{width:78%;margin-left:auto}
+.r3-gallery-image{position:relative;overflow:hidden;isolation:isolate;background:#071b12;aspect-ratio:1.92;clip-path:inset(0 0 0 0);transition:clip-path 950ms cubic-bezier(.2,.72,.2,1)}
+.r3-gallery-piece-second .r3-gallery-image{aspect-ratio:1.78}
+.r3-gallery-art,.r3-gallery-art img{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.r3-gallery-art img{transition:transform 950ms cubic-bezier(.2,.72,.2,1);transform:scale(1.015)}
+.r3-gallery-image::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,15,10,.32),transparent 38%,rgba(2,11,9,.12) 55%,rgba(2,11,9,.87) 100%);pointer-events:none}
+.r3-gallery-image-copy{position:absolute;inset:0;z-index:1;padding:clamp(22px,3.2vw,53px);display:flex;flex-direction:column;align-items:flex-start;color:#f9fff6;pointer-events:none}
+.r3-gallery-image-kicker{color:#d2fb8e;font-size:clamp(9px,.7vw,11px)}
+.r3-gallery-image-copy h3{font-family:'Space Grotesk',Arial,sans-serif;font-size:clamp(39px,5.8vw,100px);line-height:.94;letter-spacing:-.075em;font-weight:700;margin:auto 0 0;max-width:92%;color:#fafff8;text-shadow:0 3px 26px rgba(0,0,0,.34)}
+.r3-gallery-image-arrow{font-size:clamp(26px,3vw,45px);color:#cefc79;align-self:flex-end;line-height:1;transform:translateY(-4px)}
+.r3-gallery-disclosure{border-bottom:1px solid #adbdaf}
+.r3-gallery-disclosure summary{list-style:none;min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 0;font:500 11px 'DM Mono',ui-monospace,monospace;letter-spacing:.12em;color:#255d38;cursor:pointer}
+.r3-gallery-disclosure summary::-webkit-details-marker{display:none}
+.r3-gallery-disclosure summary:hover,.r3-gallery-disclosure summary:focus-visible{color:#0b2e19}
+.r3-gallery-disclosure summary:focus-visible{outline:2px solid #296f41;outline-offset:4px}
+.r3-gallery-disclosure-symbol{font:400 29px 'Space Grotesk',Arial,sans-serif;line-height:1;transition:transform 330ms ease}
+.r3-gallery-disclosure[open] .r3-gallery-disclosure-symbol{transform:rotate(45deg)}
+.r3-gallery-explanation{padding:0 0 33px;max-width:min(550px,100%)}
+.r3-gallery-explanation p{color:#324838;font-size:clamp(15px,1.16vw,18px);line-height:1.7;margin:0 0 23px}
+.r3-gallery-explanation .mono{display:block;color:#587463;font-size:10px}
+.r3-gallery[data-r3-gallery-selected] .r3-gallery-piece:not(.is-selected){opacity:.76}
+.r3-gallery-piece:hover .r3-gallery-art img,.r3-gallery-piece:focus-within .r3-gallery-art img,.r3-gallery-piece.is-selected .r3-gallery-art img{transform:scale(1.045)}
+.r3-gallery-footer{border-top:1px solid #c4cec4;display:flex;align-items:start;justify-content:space-between;gap:30px;margin-top:clamp(65px,7vw,120px);padding-top:20px}
+.r3-gallery-footer .disclaimer{margin:0;max-width:620px;line-height:1.6}
+.r3-gallery-footer>.mono{font-size:9px;color:#677666;text-align:right}
+/* Enhance only if IntersectionObserver is actually installed. When JS is absent,
+   content and native <details> controls are visible and usable. */
+html.r3-gallery-motion-enabled .r3-gallery-piece:not(.is-revealed) .r3-gallery-image{clip-path:inset(0 0 100% 0)}
+html.r3-gallery-motion-enabled .r3-gallery-piece:not(.is-revealed) .r3-gallery-image-copy{opacity:0;transform:translate3d(0,22px,0)}
+.r3-gallery-image-copy{transition:opacity 550ms ease 250ms,transform 700ms cubic-bezier(.2,.72,.2,1) 200ms}
+@media(max-width:850px){
+  .r3-gallery-intro{grid-template-columns:1fr;gap:30px;padding:60px 0 54px}
+  .r3-gallery-intro-aside{max-width:580px}
+  .r3-gallery-piece{width:94%}
+  .r3-gallery-piece-second{width:90%}
+  .r3-gallery-image-copy h3{font-size:clamp(45px,7vw,74px)}
+}
+@media(max-width:680px){
+  .r3-gallery-home{padding-bottom:80px}
+  .r3-gallery-intro{padding:50px 0 48px}
+  .r3-gallery-intro h2{font-size:clamp(46px,11vw,72px)}
+  .r3-gallery-intro-aside p{font-size:14px;margin-bottom:22px}
+  .r3-gallery{gap:50px}
+  .r3-gallery-piece,.r3-gallery-piece-second{width:100%;margin:0}
+  .r3-gallery-image,.r3-gallery-piece-second .r3-gallery-image{aspect-ratio:4/4.55}
+  .r3-gallery-art img{object-position:60% center}
+  .r3-gallery-image-copy{padding:19px}
+  .r3-gallery-image-copy h3{font-size:clamp(40px,10.6vw,62px);max-width:100%}
+  .r3-gallery-disclosure summary{font-size:10px;min-height:64px;letter-spacing:.06em}
+  .r3-gallery-footer{margin-top:65px;flex-direction:column;gap:12px}
+  .r3-gallery-footer>.mono{text-align:left}
+}
+@media(max-width:360px){.r3-gallery-image-copy h3{font-size:38px}.r3-gallery-image-copy{padding:15px}}
+@media(prefers-reduced-motion:reduce){
+  .r3-gallery-piece,.r3-gallery-image,.r3-gallery-image-copy,.r3-gallery-art img,.r3-gallery-disclosure-symbol{transition:none!important;transform:none!important;clip-path:none!important}
+  .r3-gallery-piece:not(.is-revealed) .r3-gallery-image-copy{opacity:1!important}
+}

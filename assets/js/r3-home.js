@@ -259,4 +259,37 @@
     setProcessStep(0);
     syncProcess();
   }
+  // M04 Projects: free-scrolling editorial exhibition, never a pinned story.
+  // Native <details> remains functional if JS is disabled or fails.
+  const gallery = document.querySelector('[data-r3-gallery]');
+  if (gallery) {
+    const pieces = Array.from(gallery.querySelectorAll('[data-r3-gallery-piece]'));
+    const disclosures = pieces.map(piece => piece.querySelector('[data-r3-gallery-disclosure]'));
+    const syncSelection = () => {
+      let selected = -1;
+      disclosures.forEach((node,i) => { if (node?.open) selected = i; });
+      pieces.forEach((piece,i) => piece.classList.toggle('is-selected',i === selected));
+      if (selected >= 0) gallery.setAttribute('data-r3-gallery-selected',String(selected));
+      else gallery.removeAttribute('data-r3-gallery-selected');
+    };
+    disclosures.forEach((node,i) => node?.addEventListener('toggle',() => {
+      // Keep one expanded perspective at a time without overriding the native
+      // keyboard/Space/Enter activation of the corresponding summary.
+      if (node.open) disclosures.forEach((other,j) => { if (i !== j && other?.open) other.open = false; });
+      syncSelection();
+    }));
+    syncSelection();
+    if ('IntersectionObserver' in window && !reduce.matches) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-revealed');
+          observer.unobserve(entry.target);
+        });
+      }, { rootMargin: '0px 0px -8% 0px', threshold: .08 });
+      pieces.forEach(piece => observer.observe(piece));
+      // Only enable the masked entry state after observation has been set up.
+      doc.classList.add('r3-gallery-motion-enabled');
+    }
+  }
 })();

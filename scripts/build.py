@@ -137,10 +137,34 @@ home_workflow=f'''<section class="workflow-home r3-process-home" id="home-proces
   </div>
 </section>'''
 
-home_projects=f'''<section class="projects-home section-light"><div class="shell">{section_head('04','WORK / SYSTEMS IN CONTEXT','PROJECT PERSPECTIVE')}
-<div class="section-intro-grid"><h2 class="display section-heading dark">BEYOND<br><span class="ink-green">THE INTERFACE.</span></h2><div class="section-aside"><p>Every useful system begins with a problem worth solving. We examine the work behind the screen—from information flow to operational decisions.</p>{link('Explore project thinking','/projects/')}</div></div>
-<div class="project-grid"><article class="project-feature">{picture('w01-operations',cls='project-visual')}<div class="project-visual-overlay"><span class="mono">01 / CONCEPT EXAMPLE</span><h3>CONNECTED<br>OPERATIONS</h3><span class="project-arrow">↗</span></div></article><article class="project-feature">{picture('w02-decisions',cls='project-visual')}<div class="project-visual-overlay"><span class="mono">02 / CONCEPT EXAMPLE</span><h3>DECISIONS,<br>MADE VISIBLE.</h3><span class="project-arrow">↗</span></div></article></div>
-<p class="disclaimer">Conceptual capability illustrations only. Public client case studies and measured outcomes will be added after verification and permission.</p>
+home_projects=f'''<section class="projects-home section-light r3-gallery-home" id="home-projects" aria-labelledby="r3-gallery-heading"><div class="shell">{section_head('04','WORK / SYSTEMS IN CONTEXT','PROJECT PERSPECTIVE')}
+  <div class="r3-gallery-intro">
+    <div><p class="mono r3-gallery-eyebrow">ENGINEERING PERSPECTIVES / 02 CONCEPT STUDIES</p><h2 class="display section-heading dark" id="r3-gallery-heading">BEYOND<br><span class="ink-green">THE INTERFACE.</span></h2></div>
+    <div class="r3-gallery-intro-aside"><p>Every useful system begins with a problem worth solving. We examine the work behind the screen—from information flow to operational decisions.</p>{link('Explore project thinking','/projects/')}</div>
+  </div>
+  <div class="r3-gallery" data-r3-gallery aria-label="Conceptual engineering perspectives">
+    <article class="r3-gallery-piece r3-gallery-piece-first" data-r3-gallery-piece>
+      <div class="r3-gallery-image">
+        {picture('w01-operations',cls='r3-gallery-art')}
+        <div class="r3-gallery-image-copy"><span class="mono r3-gallery-image-kicker">01 / SYSTEMS</span><h3>CONNECTED<br>OPERATIONS.</h3><span class="r3-gallery-image-arrow" aria-hidden="true">↗</span></div>
+      </div>
+      <details class="r3-gallery-disclosure" data-r3-gallery-disclosure>
+        <summary><span>EXPLORE THE SYSTEM THINKING</span><span aria-hidden="true" class="r3-gallery-disclosure-symbol">+</span></summary>
+        <div class="r3-gallery-explanation"><p>Follow information from an incoming request through the work that follows. Clear handoffs, ownership, and status can help disconnected tasks become a dependable operation.</p><span class="mono">CONCEPT STUDY / INTAKE · HANDOFF · STATUS</span></div>
+      </details>
+    </article>
+    <article class="r3-gallery-piece r3-gallery-piece-second" data-r3-gallery-piece>
+      <div class="r3-gallery-image">
+        {picture('w02-decisions',cls='r3-gallery-art')}
+        <div class="r3-gallery-image-copy"><span class="mono r3-gallery-image-kicker">02 / VISIBILITY</span><h3>DECISIONS,<br>MADE VISIBLE.</h3><span class="r3-gallery-image-arrow" aria-hidden="true">↗</span></div>
+      </div>
+      <details class="r3-gallery-disclosure" data-r3-gallery-disclosure>
+        <summary><span>EXPLORE THE DECISION PATH</span><span aria-hidden="true" class="r3-gallery-disclosure-symbol">+</span></summary>
+        <div class="r3-gallery-explanation"><p>Make responsibilities, review points, and next actions easier to understand. The goal is not more dashboards: it is enough visibility for people to make the next decision confidently.</p><span class="mono">CONCEPT STUDY / REVIEW · OWNERSHIP · NEXT STEP</span></div>
+      </details>
+    </article>
+  </div>
+  <div class="r3-gallery-footer"><p class="disclaimer">Conceptual capability illustrations only. These are not client case studies or measured outcomes.</p><span class="mono">EXPLORATION, NOT A CLIENT DELIVERABLE / 01—02</span></div>
 </div></section>'''
 
 home_about=f'''<section class="about-home"><div class="shell">{section_head('05','OUR PHILOSOPHY','ABOUT KIRJANE')}

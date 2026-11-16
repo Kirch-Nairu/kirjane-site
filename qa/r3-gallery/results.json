@@ -1,0 +1,116 @@
+{
+  "total": 11,
+  "passed": 11,
+  "tests": [
+    {
+      "viewport": "320x760",
+      "mode": "motion",
+      "pass": true,
+      "nonPinned": true,
+      "asymmetric": false,
+      "imgLoaded": true,
+      "controlsKeyboard": true,
+      "consoleErrors": []
+    },
+    {
+      "viewport": "390x844",
+      "mode": "motion",
+      "pass": true,
+      "nonPinned": true,
+      "asymmetric": false,
+      "imgLoaded": true,
+      "controlsKeyboard": true,
+      "consoleErrors": []
+    },
+    {
+      "viewport": "768x1024",
+      "mode": "motion",
+      "pass": true,
+      "nonPinned": true,
+      "asymmetric": false,
+      "imgLoaded": true,
+      "controlsKeyboard": true,
+      "consoleErrors": []
+    },
+    {
+      "viewport": "1024x768",
+      "mode": "motion",
+      "pass": true,
+      "nonPinned": true,
+      "asymmetric": true,
+      "imgLoaded": true,
+      "controlsKeyboard": true,
+      "consoleErrors": []
+    },
+    {
+      "viewport": "1440x900",
+      "mode": "motion",
+      "pass": true,
+      "nonPinned": true,
+      "asymmetric": true,
+      "imgLoaded": true,
+      "controlsKeyboard": true,
+      "consoleErrors": []
+    },
+    {
+      "viewport": "1920x1080",
+      "mode": "motion",
+      "pass": true,
+      "nonPinned": true,
+      "asymmetric": true,
+      "imgLoaded": true,
+      "controlsKeyboard": true,
+      "consoleErrors": []
+    },
+    {
+      "viewport": "1440x600",
+      "mode": "motion",
+      "pass": true,
+      "nonPinned": true,
+      "asymmetric": true,
+      "imgLoaded": true,
+      "controlsKeyboard": true,
+      "consoleErrors": []
+    },
+    {
+      "viewport": "390x844",
+      "mode": "reduce",
+      "pass": true,
+      "nonPinned": true,
+      "asymmetric": false,
+      "imgLoaded": true,
+      "controlsKeyboard": true,
+      "consoleErrors": []
+    },
+    {
+      "viewport": "1440x900",
+      "mode": "reduce",
+      "pass": true,
+      "nonPinned": true,
+      "asymmetric": true,
+      "imgLoaded": true,
+      "controlsKeyboard": true,
+      "consoleErrors": []
+    },
+    {
+      "viewport": "390x844",
+      "mode": "nojs",
+      "pass": true,
+      "nonPinned": true,
+      "asymmetric": false,
+      "imgLoaded": true,
+      "controlsKeyboard": true,
+      "consoleErrors": []
+    },
+    {
+      "viewport": "1440x900",
+      "mode": "nojs",
+      "pass": true,
+      "nonPinned": true,
+      "asymmetric": true,
+      "imgLoaded": true,
+      "controlsKeyboard": true,
+      "consoleErrors": []
+    }
+  ]
+}
