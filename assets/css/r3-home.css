@@ -157,3 +157,117 @@ html.r3-scroll-active .r3-services-stage{position:sticky;top:0;height:100svh;min
   .r3-hero-separator .manifest-line span:last-child{margin-bottom:0}
   .r3-hero-separator .manifest-line i{display:none}
 }
+
+/* R3-M03 — Five-stage engineering journey. Original P01 imagery only.
+   No new SVG, particles, or generated art. The duplicated SAME asset is
+   used solely to recover original luminosity around each pillar. */
+.workflow-home.r3-process-home{padding:0;background:#03120c;color:#f8fff5;position:relative;isolation:isolate}
+.r3-process-track{position:relative;--r3-process-p:0;--r3-process-x:13%;--r3-process-y:68%;--r3-process-shift:0%;background:#03120c}
+.r3-process-stage{position:relative;isolation:isolate;min-height:790px;height:100svh;overflow:hidden;background:#03120c}
+.r3-process-art,.r3-process-shade{position:absolute;inset:0;pointer-events:none}
+.r3-process-art{z-index:0;overflow:hidden}
+.r3-process-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transform:scale(1.035) translate3d(calc(var(--r3-process-p)*-1.6%),calc(var(--r3-process-p)*.9%),0);will-change:transform}
+.r3-process-art-base{filter:brightness(.73) saturate(.91)}
+.r3-process-art-focus{filter:brightness(1.23) saturate(1.13);opacity:.85;-webkit-mask-image:radial-gradient(ellipse 18% 31% at var(--r3-process-x) var(--r3-process-y),#000 10%,transparent 85%);mask-image:radial-gradient(ellipse 18% 31% at var(--r3-process-x) var(--r3-process-y),#000 10%,transparent 85%)}
+.r3-process-shade{z-index:1;background:linear-gradient(180deg,rgba(2,13,8,.75) 0%,rgba(2,13,8,.14) 29%,rgba(2,13,8,.05) 45%,rgba(2,13,8,.62) 77%,rgba(2,13,8,.96) 100%),linear-gradient(90deg,rgba(1,12,8,.62) 0%,transparent 65%)}
+.r3-process-layer{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;padding-top:clamp(25px,4.3svh,57px);padding-bottom:clamp(23px,3.5svh,45px)}
+.r3-process-overline{display:flex;justify-content:space-between;align-items:center;gap:20px;padding-bottom:clamp(14px,2svh,24px);border-bottom:1px solid rgba(226,255,212,.27);font-size:10px;letter-spacing:.15em;color:#c4d9c2}
+.r3-process-overline>span:last-child{color:#d1fb8a}
+.r3-process-overline>span:last-child>span:first-child{padding-inline:7px;color:#739874}
+.r3-process-story{min-height:0;flex:1;display:flex;justify-content:space-between;align-items:stretch;gap:38px}
+.r3-process-heading-group{align-self:flex-start;padding-top:clamp(33px,6svh,104px);max-width:790px}
+.r3-process-eyebrow{color:#c9f779;font-size:10px;letter-spacing:.14em;display:block;margin-bottom:clamp(20px,2.8svh,36px)}
+.r3-process-heading-group h2{font-size:clamp(52px,6.2vw,102px);font-weight:700;letter-spacing:-.075em;line-height:.92;margin:0 0 22px;color:#fbfff8;text-shadow:0 2px 28px rgba(0,0,0,.25)}
+.r3-process-heading-group h2 em{font-style:normal;color:#d0f676}
+.r3-process-heading-group>p{max-width:490px;font-size:clamp(13px,1.15vw,16px);line-height:1.6;color:#c3d2c4;margin:0;text-shadow:0 2px 10px #011509}
+.r3-process-detail{align-self:flex-end;text-align:right;margin-bottom:clamp(40px,6svh,98px);max-width:360px;min-width:245px}
+.r3-process-detail-index{font-size:10px;color:#d0fa84;letter-spacing:.14em}
+.r3-process-detail h3{font-family:'Space Grotesk',sans-serif;font-size:clamp(32px,3.35vw,57px);font-weight:600;letter-spacing:-.06em;line-height:1;margin:14px 0;color:white;text-shadow:0 2px 26px rgba(0,0,0,.68)}
+.r3-process-detail>p{font-size:clamp(13px,1.05vw,16px);line-height:1.55;color:#e1eedf;margin:0;text-shadow:0 2px 19px rgba(0,0,0,.75)}
+.r3-process-bottom{flex:none}
+.r3-process-meter{height:2px;background:rgba(219,248,207,.3);overflow:hidden;margin-bottom:16px}
+.r3-process-meter>span{display:block;height:100%;width:100%;background:#d0f676;transform-origin:left;transform:scaleX(var(--r3-process-p));will-change:transform}
+.r3-process-steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));list-style:none;margin:0;padding:0;gap:11px}
+.r3-process-step-item{min-width:0}
+.r3-process-step{position:relative;text-align:left;width:100%;min-height:80px;padding:12px 7px 13px 0;color:#aabbac;background:transparent;border:0;border-top:1px solid rgba(225,249,216,.3);display:flex;flex-direction:column;align-items:flex-start;gap:7px;cursor:pointer;transition:color .3s,background .3s,transform .3s}
+.r3-process-step:before{position:absolute;content:"";height:2px;top:-1px;left:0;width:0;background:#d0f676;transition:width .4s ease}
+.r3-process-step.is-active,.r3-process-step:hover{color:#fff}
+.r3-process-step.is-active:before{width:100%}
+.r3-process-step:focus-visible{outline:2px solid #d0f676;outline-offset:3px}
+.r3-process-step-number{font-size:10px;color:#9bbb83;letter-spacing:.14em}
+.r3-process-step.is-active .r3-process-step-number{color:#d0f676}
+.r3-process-step strong{font-size:clamp(12px,1.18vw,18px);line-height:1.25;letter-spacing:-.045em;font-weight:600}
+.r3-process-navigation{display:flex;justify-content:space-between;gap:20px;align-items:center;font-size:9px;letter-spacing:.12em;color:#bdcdbd;padding-top:10px}
+.r3-process-navigation a{color:#d1fa87;border-bottom:1px solid rgba(208,250,135,.5);padding-bottom:3px;white-space:nowrap}
+.r3-process-navigation a:hover{color:white}
+html.r3-process-scroll-active .r3-process-track{height:clamp(2450px,410svh,5000px)}
+html.r3-process-scroll-active .r3-process-stage{height:100svh;min-height:0;position:sticky;top:0}
+@media(max-width:1200px){
+  .r3-process-heading-group h2{font-size:clamp(47px,5.6vw,75px)}
+  .r3-process-detail{max-width:285px;min-width:220px}
+  .r3-process-detail h3{font-size:36px}
+  .r3-process-step strong{font-size:clamp(11px,1.3vw,15px)}
+}
+@media(max-height:790px) and (min-width:960px){
+  .r3-process-layer{padding-block:20px}
+  .r3-process-heading-group{padding-top:23px}
+  .r3-process-heading-group h2{font-size:clamp(42px,5vw,73px);margin-bottom:12px}
+  .r3-process-eyebrow{margin-bottom:16px}
+  .r3-process-detail{margin-bottom:27px}
+  .r3-process-detail h3{font-size:32px;margin:9px 0}
+  .r3-process-step{min-height:64px;padding-block:8px}
+  .r3-process-meter{margin-bottom:8px}
+}
+/* Touch and mobile: original art remains full-bleed, but the chapter does
+   not trap scroll. All five steps stay available and selectable. */
+@media(max-width:959px){
+  .r3-process-track{height:auto!important}
+  .r3-process-stage{height:auto!important;min-height:870px;position:relative!important}
+  .r3-process-layer{padding-block:28px}
+  .r3-process-story{flex-direction:column;gap:36px}
+  .r3-process-heading-group{padding-top:40px}
+  .r3-process-heading-group h2{font-size:clamp(48px,7.8vw,78px)}
+  .r3-process-heading-group>p{font-size:14px}
+  .r3-process-detail{text-align:left;align-self:flex-start;margin:10px 0 35px;max-width:470px}
+  .r3-process-detail h3{font-size:36px}
+  .r3-process-shade{background:linear-gradient(180deg,rgba(1,12,8,.84),rgba(1,12,8,.16) 33%,rgba(1,12,8,.68) 63%,rgba(1,12,8,.97) 94%)}
+  .r3-process-art img{transform:none}
+  .r3-process-art-focus{-webkit-mask-image:none;mask-image:none;opacity:0}
+  .r3-process-step strong{font-size:13px}
+}
+@media(max-height:649px) and (min-width:960px){
+  .r3-process-track{height:auto!important}
+  .r3-process-stage{height:auto!important;min-height:730px!important;position:relative!important}
+  .r3-process-story{min-height:450px}
+}
+@media(max-width:680px){
+  .r3-process-stage{min-height:940px}
+  .r3-process-layer{padding-block:25px}
+  .r3-process-overline{font-size:8px;letter-spacing:.06em;gap:8px}
+  .r3-process-heading-group{padding-top:35px}
+  .r3-process-eyebrow{font-size:8px;margin-bottom:19px}
+  .r3-process-heading-group h2{font-size:clamp(42px,10.5vw,64px)}
+  .r3-process-heading-group>p{font-size:12px;max-width:310px}
+  .r3-process-detail{margin:0 0 20px}
+  .r3-process-detail h3{font-size:34px}
+  .r3-process-detail>p{font-size:12px}
+  .r3-process-steps{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 11px}
+  .r3-process-step{min-height:46px;padding:6px 2px 7px;gap:3px}
+  .r3-process-step strong{font-size:12px}
+  .r3-process-step-number{font-size:8px}
+  .r3-process-navigation{font-size:8px;letter-spacing:0;gap:12px}
+  .r3-process-select-hint{display:none}
+  .r3-process-art img{object-position:57% center}
+}
+@media(max-width:360px){
+  .r3-process-overline{font-size:7px}
+  .r3-process-heading-group h2{font-size:39px}
+  .r3-process-navigation{font-size:7px}
+}
+@media(prefers-reduced-motion:reduce){
+  .r3-process-track{height:auto!important}
+  .r3-process-stage{position:relative!important;height:auto!important;min-height:830px}
+  .r3-process-art img{transform:none!important;will-change:auto!important}
+  .r3-process-art-focus{-webkit-mask-image:none!important;mask-image:none!important;opacity:0!important}
+  .r3-process-step,.r3-process-step:before{transition:none!important}
+}

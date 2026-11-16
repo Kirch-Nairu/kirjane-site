@@ -108,11 +108,34 @@ home_services=f'''<section class="services-home r3-services-fullbleed" id="home-
 
 home_manifest=f'''<section class="manifest-band"><div class="shell manifest-inner"><p>NOT SOFTWARE FOR SOFTWARE'S SAKE.</p><div class="manifest-line"><span>RETHINK THE PROCESS.</span><i aria-hidden="true">✳</i><span>CONNECT THE SYSTEM.</span><i aria-hidden="true">✳</i><span>MAKE IT WORK.</span></div></div></section>'''
 
-home_workflow=f'''<section class="workflow-home" id="home-process"><div class="shell">{section_head('03','HOW WE APPROACH THE WORK','OUR PROCESS')}
-<div class="workflow-heading"><h2 class="display section-heading">FROM A HANDOFF<br>TO A <em>SYSTEM.</em></h2><p>A clear path from scattered steps to connected operations. The goal is visibility, accountability, and a system people can actually use.</p></div>
-<div class="workflow-showcase">{picture('p01-process',cls='workflow-picture')}<div class="workflow-overlay"><p class="mono">THE ENGINEERING JOURNEY / FIVE STAGES</p><ol class="workflow-steps">{''.join(f'<li><span>{no}</span><strong>{name}</strong></li>' for no,name,desc in STEPS)}</ol></div></div>
-<div class="workflow-bottom"><p>Discover → Plan & Design → Develop → Validate → Deliver & Support.</p>{link('See our process','/process/')}</div>
-</div></section>'''
+process_steps=''.join(f'''<li class="r3-process-step-item"><button type="button" class="r3-process-step {"is-active" if i==0 else ""}" data-r3-process-step="{i}" aria-current="{"step" if i==0 else "false"}" aria-controls="r3-process-detail"><span class="r3-process-step-number mono">{num}</span><strong>{label}</strong></button></li>''' for i,(num,label,desc) in enumerate(STEPS))
+home_workflow=f'''<section class="workflow-home r3-process-home" id="home-process" aria-labelledby="r3-process-heading">
+  <div class="r3-process-track" data-r3-process-track>
+    <div class="r3-process-stage">
+      <div class="r3-process-art" aria-hidden="true">
+        <img class="r3-process-art-base" src="{ASSET}p01-process.webp" alt="" decoding="async" loading="lazy">
+        <img class="r3-process-art-focus" src="{ASSET}p01-process.webp" alt="" decoding="async" loading="lazy">
+      </div>
+      <div class="r3-process-shade" aria-hidden="true"></div>
+      <div class="shell r3-process-layer">
+        <div class="r3-process-overline mono"><span>03 / HOW WE APPROACH THE WORK</span><span>CHAPTER 03 <span aria-hidden="true">/</span> <span data-r3-process-count>01 / 05</span></span></div>
+        <div class="r3-process-story">
+          <div class="r3-process-heading-group"><span class="mono r3-process-eyebrow">THE ENGINEERING JOURNEY / FIVE STAGES</span><h2 class="display" id="r3-process-heading">FROM A HANDOFF<br>TO A <em>SYSTEM.</em></h2><p>From scattered tasks to dependable systems. Follow the decisions that turn a problem into something people can use.</p></div>
+          <div class="r3-process-detail" id="r3-process-detail" aria-label="Current engineering stage">
+            <span class="r3-process-detail-index mono">STAGE <span data-r3-process-number>01</span> / 05</span>
+            <h3 data-r3-process-title>Discover</h3>
+            <p data-r3-process-description>Understand the real work, the people and the constraints.</p>
+          </div>
+        </div>
+        <div class="r3-process-bottom">
+          <div class="r3-process-meter" aria-hidden="true"><span></span></div>
+          <ol class="r3-process-steps" aria-label="Five engineering stages">{process_steps}</ol>
+          <div class="r3-process-navigation mono"><span>SCROLL TO FOLLOW THE JOURNEY <span aria-hidden="true">↓</span> <span class="r3-process-select-hint">/ OR SELECT A STAGE</span></span><a href="/process/">SEE OUR PROCESS <span aria-hidden="true">↗</span></a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>''' 
 
 home_projects=f'''<section class="projects-home section-light"><div class="shell">{section_head('04','WORK / SYSTEMS IN CONTEXT','PROJECT PERSPECTIVE')}
 <div class="section-intro-grid"><h2 class="display section-heading dark">BEYOND<br><span class="ink-green">THE INTERFACE.</span></h2><div class="section-aside"><p>Every useful system begins with a problem worth solving. We examine the work behind the screen—from information flow to operational decisions.</p>{link('Explore project thinking','/projects/')}</div></div>
