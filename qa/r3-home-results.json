@@ -44,10 +44,10 @@
         3
       ],
       "reverse": true,
-      "height": 2257,
-      "stageHeight": 677.09375,
-      "stageTop": 37,
-      "visualHeight": 677.09375
+      "height": 2331,
+      "stageHeight": 740,
+      "stageTop": 0,
+      "visualHeight": 740
     },
     "consoleErrors": [],
     "overflow": false
@@ -64,10 +64,10 @@
         3
       ],
       "reverse": true,
-      "height": 2342,
-      "stageHeight": 702.71875,
-      "stageTop": 38.4,
-      "visualHeight": 702.71875
+      "height": 2419,
+      "stageHeight": 768,
+      "stageTop": 0,
+      "visualHeight": 768
     },
     "consoleErrors": [],
     "overflow": false
@@ -84,10 +84,10 @@
         3
       ],
       "reverse": true,
-      "height": 1983,
-      "stageHeight": 594.75,
-      "stageTop": 32.5,
-      "visualHeight": 594.75
+      "height": 2048,
+      "stageHeight": 650,
+      "stageTop": 0,
+      "visualHeight": 650
     },
     "consoleErrors": [],
     "overflow": false
@@ -104,10 +104,10 @@
         3
       ],
       "reverse": true,
-      "height": 2745,
-      "stageHeight": 823.5,
-      "stageTop": 45,
-      "visualHeight": 823.5
+      "height": 2835,
+      "stageHeight": 900,
+      "stageTop": 0,
+      "visualHeight": 900
     },
     "consoleErrors": [],
     "overflow": false
@@ -124,10 +124,10 @@
         3
       ],
       "reverse": true,
-      "height": 3294,
-      "stageHeight": 988.1875,
-      "stageTop": 54,
-      "visualHeight": 988.1875
+      "height": 3402,
+      "stageHeight": 1080,
+      "stageTop": 0,
+      "visualHeight": 1080
     },
     "consoleErrors": [],
     "overflow": false

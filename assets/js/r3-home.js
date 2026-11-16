@@ -143,9 +143,9 @@
         // A new stage can arrive before the previous reveal completes.
         node.getAnimations?.().forEach(animation => animation.cancel());
         if (shouldAnimate && node.animate) node.animate([
-          {opacity:.35,transform:'translate3d(0,8px,0)'},
+          {opacity:.66,transform:'translate3d(0,9px,0)'},
           {opacity:1,transform:'translate3d(0,0,0)'}
-        ],{duration:300,easing:'cubic-bezier(.19,1,.22,1)'});
+        ],{duration:360,easing:'cubic-bezier(.19,1,.22,1)'});
       }
     };
 

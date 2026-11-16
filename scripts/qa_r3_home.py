@@ -22,9 +22,8 @@ def inline_html():
 SITE_HTML=inline_html()
 def mount(page):
     page.set_content(SITE_HTML,wait_until='domcontentloaded')
-    # Preserve the real logic while rewiring only the dynamic tab src fallback to inlined assets.
+    # R3-A1 uses four pre-rendered full-bleed images; never patch production JS.
     script=(ROOT/'assets/js/site.js').read_text(encoding='utf-8')
-    script=script.replace("art.src='/assets/visuals/'+item[0];", "art.src=window.__qa_images[item[0]]||'/assets/visuals/'+item[0];")
     scripts=(ROOT/'assets/js/r3-home.js').read_text(encoding='utf-8')
     # Visual layers are already inlined and never modified, so no dynamic asset requests occur.
     page.evaluate(script)
@@ -53,14 +52,14 @@ with sync_playwright() as p:
                 const offset=parseFloat(getComputedStyle(s).top)||0;
                 const start=t.getBoundingClientRect().top+scrollY-offset;
                 const end=t.getBoundingClientRect().top+scrollY+t.offsetHeight-s.offsetHeight-offset;
-                const visual=s.querySelector('.r3-service-preview').getBoundingClientRect();
+                const visual=s.querySelector('.r3-service-visuals').getBoundingClientRect();
                 const cards=Array.from(s.querySelectorAll('.service-row')).map(x=>x.getBoundingClientRect().height);
                 return {start,end,trackHeight:t.offsetHeight,sticky:getComputedStyle(s).position,
                     stageHeight:rect.height,stageTop:offset,visualHeight:visual.height,cards};
             }''')
             assert geo['sticky']=='sticky',geo
-            # Full-screen chapter should occupy the entire usable viewport.
-            assert abs(geo['stageHeight']-(height-geo['stageTop']-max(18,min(height*.035,40))))<4,geo
+            # R3-A1 changed to an actual full-viewport background, not a split visual panel.
+            assert abs(geo['stageHeight']-height)<4 and abs(geo['stageTop'])<2,geo
             assert abs(geo['visualHeight']-geo['stageHeight'])<4,geo
             assert all(h>55 for h in geo['cards']),geo
             indexes=[]
