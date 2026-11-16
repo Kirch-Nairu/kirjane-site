@@ -46,3 +46,11 @@ All browser tests used the actual rendered HTML/CSS/JS/WebP content in an inline
 - **PENDING:** GitHub-hosted CI result and administrative ruleset requiring the status check; adding a workflow does not assert it has run or is required.
 
 **Verdict:** `SELF_REVIEW_PASS_OWNER_QA_PENDING`. Keep PR draft and `main` unchanged.
+
+## Hosted QA negative findings and correction
+
+First GitHub Actions CI exposed historical trailing whitespace in a larger PR diff; seven whitespace-only findings were corrected in review notes and the build generator. Generated site pages remained byte-identical. The runner then exposed an environment mismatch: `ubuntu-latest` had moved to Ubuntu 26.04, unsupported by our pinned Playwright 1.57 Chromium installer. The workflow was pinned to Ubuntu 24.04.
+
+The first supported hosted Chromium run then found a **1920×1080 font-metric collision** between the intro and active stage (6px overlap). The desktop active-stage anchor has been adjusted from `top:58%` to `top:62%` for wide/tall views, retaining the smaller-screen overrides. The QA collision assertion remains in force. A subsequent hosted green check is still required; do not count a local PASS as hosted verification.
+
+**Local repeat-run note:** After the wide-screen 62% adjustment, targeted R4 Process polish **8/8 PASS** and centered-layout **12/12 PASS**. A combined legacy regression invocation and an independent repeat of the long stabilization suite timed out in the local browser sandbox; these attempts are **not** reported as new passes. The previous 72/72 result belongs to the prior R4 candidate. The final SHA requires a fresh GitHub-hosted multi-suite result and Windows owner inspection.
