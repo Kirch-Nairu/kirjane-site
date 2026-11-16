@@ -13,6 +13,7 @@
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
   const wide = window.matchMedia('(min-width: 960px)');
   const touch = window.matchMedia('(pointer: coarse)');
+  const tall = window.matchMedia('(min-height: 650px)');
   if (!hero || !track || !stage || tabs.length !== 4) return;
 
   let mode = false;
@@ -21,8 +22,12 @@
   let geometry = null;
   const clamp = x => Math.min(1, Math.max(0, x));
   const measure = () => {
-    const start = track.getBoundingClientRect().top + window.scrollY - Math.min(105, Math.max(30, window.innerHeight * .1));
-    const end = track.getBoundingClientRect().top + window.scrollY + track.offsetHeight - stage.offsetHeight - Math.min(105, Math.max(30, window.innerHeight * .1));
+    // Resolve the real CSS sticky offset so the scroll timeline matches the
+    // viewport-fitted chapter at every viewport height and zoom level.
+    const stickyTop = Number.parseFloat(window.getComputedStyle(stage).top) || 0;
+    const absoluteTop = track.getBoundingClientRect().top + window.scrollY;
+    const start = absoluteTop - stickyTop;
+    const end = absoluteTop + track.offsetHeight - stage.offsetHeight - stickyTop;
     geometry = { start, range: Math.max(1, end - start) };
   };
   const update = () => {
@@ -49,7 +54,7 @@
     window.requestAnimationFrame(update);
   };
   const syncMode = () => {
-    mode = wide.matches && !reduce.matches && !touch.matches;
+    mode = wide.matches && tall.matches && !reduce.matches && !touch.matches;
     doc.classList.toggle('r3-scroll-active', mode);
     track.style.removeProperty('--r3-service-p');
     if (mode) {
@@ -81,7 +86,7 @@
   });
   window.addEventListener('scroll', request, { passive: true });
   window.addEventListener('resize', () => { syncMode(); });
-  [wide, reduce, touch].forEach(q => q.addEventListener?.('change', syncMode));
+  [wide, tall, reduce, touch].forEach(q => q.addEventListener?.('change', syncMode));
   // Image size changes and font loads can move the sticky track.
   document.fonts?.ready?.then(() => { if (mode) measure(); request(); });
   window.addEventListener('load', () => { if (mode) measure(); request(); }, { once: true });

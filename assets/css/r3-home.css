@@ -44,15 +44,51 @@ html.r3-entered .home-hero .signal{animation:r3-beacon 3200ms ease-in-out infini
 .r3-service-glare{position:absolute;inset:-30%;z-index:2;pointer-events:none;background:linear-gradient(113deg,transparent 26%,rgba(193,255,145,.04) 45%,transparent 60%);transform:translate3d(calc(var(--r3-service-p)*18%),0,0);}
 .r3-service-stage-footer{position:absolute;bottom:11px;right:19px;left:20px;z-index:3;display:flex;justify-content:space-between;gap:15px;letter-spacing:.1em;font-size:8px;color:rgba(220,250,226,.5);}
 .r3-service-preview .service-preview-caption{padding-bottom:55px;}
-html.r3-scroll-active .r3-services-track{height:clamp(1950px,305svh,3400px);}
-html.r3-scroll-active .r3-services-stage{position:sticky;top:clamp(30px,10vh,105px);min-height:480px;}
-html.r3-scroll-active .r3-service-preview{height:min(59vh,550px);min-height:465px;}
-html.r3-scroll-active .r3-services-stage .service-row{min-height:96px;}
+/* Viewport-composed chapter: the scroll TRACK drives four beats, but the pinned
+   STAGE itself fills one screen. The bottom breathing room is intentional and small.
+   All four service choices remain visible while the artwork changes in place. */
+html.r3-scroll-active .r3-services-track{
+  --r3-stage-top:clamp(24px,5svh,64px);
+  --r3-stage-bottom:clamp(18px,3.5svh,40px);
+  height:clamp(1950px,305svh,3400px);
+}
+html.r3-scroll-active .r3-services-stage{
+  position:sticky;
+  top:var(--r3-stage-top);
+  height:calc(100svh - var(--r3-stage-top) - var(--r3-stage-bottom));
+  min-height:0;
+  align-items:stretch;
+}
+html.r3-scroll-active .r3-services-left{min-height:0;}
+html.r3-scroll-active .r3-services-left .service-tabs{
+  min-height:0;
+  display:grid;
+  grid-template-rows:repeat(4,minmax(0,1fr));
+}
+html.r3-scroll-active .r3-services-stage .service-row{
+  min-height:0;
+  height:100%;
+  align-content:center;
+  align-items:center;
+  padding-block:clamp(11px,1.45svh,23px);
+}
+html.r3-scroll-active .r3-service-preview{
+  height:100%;
+  min-height:0;
+}
+html.r3-scroll-active .r3-service-preview .service-preview-caption p{
+  font-size:clamp(23px,2.3vw,38px);
+}
 html.r3-scroll-active .r3-services-track:after{content:"";position:absolute;left:50%;bottom:2.5%;width:1px;height:5%;background:linear-gradient(to bottom,#9fba9e,transparent);pointer-events:none;opacity:.6;}
 @media(max-width:1100px){
   .r3-hero-chapter{right:var(--gutter);top:125px;}
-  html.r3-scroll-active .r3-services-stage .service-row{min-height:88px;}
-  html.r3-scroll-active .r3-service-preview{min-height:430px;height:55vh;}
+  html.r3-scroll-active .r3-services-stage .service-row{
+    min-height:0;
+    padding-block:clamp(8px,1.1svh,17px);
+  }
+  html.r3-scroll-active .r3-service-preview{min-height:0;height:100%;}
+  html.r3-scroll-active .r3-services-stage .service-row-body strong{font-size:clamp(15px,1.5vw,20px);}
+  html.r3-scroll-active .r3-services-stage .service-row-body small{font-size:12px;}
 }
 @media(max-width:959px){
   .r3-hero-chapter{display:none;}
@@ -64,6 +100,16 @@ html.r3-scroll-active .r3-services-track:after{content:"";position:absolute;left
   .r3-services-stage{position:static!important;}
   .r3-service-instruction{display:none;}
   .r3-service-meter{display:none;}
+}
+/* Short desktop windows and landscape devices keep accessible normal scrolling.
+   Never squeeze four text-heavy rows into a 500px chapter. */
+@media(max-height:649px){
+  .r3-services-track{height:auto!important;}
+  .r3-services-stage{position:static!important;height:auto!important;min-height:0!important;}
+  .r3-services-left .service-tabs{display:block!important;}
+  .r3-services-stage .service-row{min-height:96px!important;height:auto!important;}
+  .r3-service-preview{height:460px!important;min-height:0!important;}
+  .r3-service-instruction,.r3-service-meter{display:none!important;}
 }
 @media(max-width:680px){
   .r3-hero-light{opacity:.3;}

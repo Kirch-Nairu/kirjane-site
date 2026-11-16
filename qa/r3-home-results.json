@@ -44,7 +44,10 @@
         3
       ],
       "reverse": true,
-      "height": 2257
+      "height": 2257,
+      "stageHeight": 677.09375,
+      "stageTop": 37,
+      "visualHeight": 677.09375
     },
     "consoleErrors": [],
     "overflow": false
@@ -61,7 +64,30 @@
         3
       ],
       "reverse": true,
-      "height": 2342
+      "height": 2342,
+      "stageHeight": 702.71875,
+      "stageTop": 38.4,
+      "visualHeight": 702.71875
+    },
+    "consoleErrors": [],
+    "overflow": false
+  },
+  {
+    "width": 1280,
+    "height": 650,
+    "pass": true,
+    "story": {
+      "forward": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "reverse": true,
+      "height": 1983,
+      "stageHeight": 594.75,
+      "stageTop": 32.5,
+      "visualHeight": 594.75
     },
     "consoleErrors": [],
     "overflow": false
@@ -78,7 +104,10 @@
         3
       ],
       "reverse": true,
-      "height": 2745
+      "height": 2745,
+      "stageHeight": 823.5,
+      "stageTop": 45,
+      "visualHeight": 823.5
     },
     "consoleErrors": [],
     "overflow": false
@@ -95,7 +124,21 @@
         3
       ],
       "reverse": true,
-      "height": 3294
+      "height": 3294,
+      "stageHeight": 988.1875,
+      "stageTop": 54,
+      "visualHeight": 988.1875
+    },
+    "consoleErrors": [],
+    "overflow": false
+  },
+  {
+    "width": 1440,
+    "height": 600,
+    "pass": true,
+    "story": {
+      "static": true,
+      "manualTabs": true
     },
     "consoleErrors": [],
     "overflow": false

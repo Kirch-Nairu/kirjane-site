@@ -33,7 +33,7 @@ def mount(page):
 rows=[]
 with sync_playwright() as p:
     browser=p.chromium.launch(executable_path='/usr/bin/chromium',headless=True,args=['--no-sandbox','--disable-dev-shm-usage'])
-    for width,height in [(320,760),(390,844),(768,1024),(960,740),(1024,768),(1440,900),(1920,1080)]:
+    for width,height in [(320,760),(390,844),(768,1024),(960,740),(1024,768),(1280,650),(1440,900),(1920,1080),(1440,600)]:
         page=browser.new_page(viewport={'width':width,'height':height}, reduced_motion='no-preference')
         errors=[]
         page.on('pageerror',lambda e:errors.append(str(e)))
@@ -42,12 +42,27 @@ with sync_playwright() as p:
         initial=page.evaluate('''() => ({width:document.documentElement.scrollWidth, viewport:innerWidth, hero:!!document.querySelector('.home-hero'), story:!!document.querySelector('[data-r3-services-track]'), imageCount:document.querySelectorAll('[data-service-scene]').length, enabled:document.documentElement.classList.contains('r3-scroll-active'), h1:document.querySelectorAll('h1').length, images:Array.from(document.images).filter(i=>i.complete&&!i.naturalWidth).map(i=>i.src)})''')
         assert initial['hero'] and initial['story'] and initial['h1']==1 and initial['imageCount']==4, (width,initial)
         assert initial['width']<=width and not initial['images'], (width,initial)
-        expected=width>=960
+        expected=width>=960 and height>=650
         assert initial['enabled']==expected, (width,initial)
         story=None
         if expected:
-            geo=page.evaluate('''() => {const t=document.querySelector('[data-r3-services-track]'), s=document.querySelector('.r3-services-stage');const off=Math.min(105,Math.max(30,innerHeight*.1));const start=t.getBoundingClientRect().top+scrollY-off;const end=t.getBoundingClientRect().top+scrollY+t.offsetHeight-s.offsetHeight-off;return {start,end,trackHeight:t.offsetHeight,sticky:getComputedStyle(s).position};}''')
+            geo=page.evaluate('''() => {
+                const t=document.querySelector('[data-r3-services-track]');
+                const s=document.querySelector('.r3-services-stage');
+                const rect=s.getBoundingClientRect();
+                const offset=parseFloat(getComputedStyle(s).top)||0;
+                const start=t.getBoundingClientRect().top+scrollY-offset;
+                const end=t.getBoundingClientRect().top+scrollY+t.offsetHeight-s.offsetHeight-offset;
+                const visual=s.querySelector('.r3-service-preview').getBoundingClientRect();
+                const cards=Array.from(s.querySelectorAll('.service-row')).map(x=>x.getBoundingClientRect().height);
+                return {start,end,trackHeight:t.offsetHeight,sticky:getComputedStyle(s).position,
+                    stageHeight:rect.height,stageTop:offset,visualHeight:visual.height,cards};
+            }''')
             assert geo['sticky']=='sticky',geo
+            # Full-screen chapter should occupy the entire usable viewport.
+            assert abs(geo['stageHeight']-(height-geo['stageTop']-max(18,min(height*.035,40))))<4,geo
+            assert abs(geo['visualHeight']-geo['stageHeight'])<4,geo
+            assert all(h>55 for h in geo['cards']),geo
             indexes=[]
             for beat in range(4):
                 point=geo['start'] + ((beat+.4)/4)*(geo['end']-geo['start'])
@@ -64,7 +79,7 @@ with sync_playwright() as p:
                 page.wait_for_timeout(150)
                 idx=page.locator('[data-service-select][aria-selected="true"]').get_attribute('data-service-select')
                 assert idx==str(beat),(width,'reverse',beat,idx)
-            story={'forward':indexes,'reverse':True,'height':geo['trackHeight']}
+            story={'forward':indexes,'reverse':True,'height':geo['trackHeight'],'stageHeight':geo['stageHeight'],'stageTop':geo['stageTop'],'visualHeight':geo['visualHeight']}
         else:
             assert page.evaluate("getComputedStyle(document.querySelector('.r3-services-stage')).position")!='sticky'
             page.locator('[data-service-select="3"]').click()
