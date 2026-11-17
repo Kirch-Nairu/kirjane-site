@@ -1,7 +1,7 @@
 # Kirjane R3 M04 — Original chameleon watermark / two-pass self-review
 
-**Repository:** `Kirch-Nairu/kirjane-site` · draft PR #8  
-**Frozen predecessor:** `003394003353240e0f5ff7248d4adf9fdee6960d`  
+**Repository:** `Kirch-Nairu/kirjane-site` · draft PR #8
+**Frozen predecessor:** `003394003353240e0f5ff7248d4adf9fdee6960d`
 **Change:** gallery watermark only. This is **not** a merge or deployment authorization.
 
 ## Approved source and strict boundary
