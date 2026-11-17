@@ -1,7 +1,7 @@
 # KIRJANE R3 M04 R2 — Responsive Chameleon Brand Treatment / Two-Pass Self-Review
 
-**Repository:** `Kirch-Nairu/kirjane-site`, existing draft PR #8  
-**Predecessor:** `a9ef8744a985adf51a0115f70d4be73edaa4a4d6`  
+**Repository:** `Kirch-Nairu/kirjane-site`, existing draft PR #8
+**Predecessor:** `a9ef8744a985adf51a0115f70d4be73edaa4a4d6`
 **Change scope:** Chapter 04 decorative chameleon placement and its QA. No merge, installer, preview deployment, or production deployment.
 
 ## Visual brief
