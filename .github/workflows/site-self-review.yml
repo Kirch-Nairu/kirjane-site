@@ -57,6 +57,7 @@ jobs:
           python scripts/qa_r3_fullbleed.py
           python scripts/qa_r3_home.py
           python scripts/qa_r3_gallery.py
+          python scripts/qa_r3_chameleon.py
       - name: Upload browser evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -70,4 +71,5 @@ jobs:
             qa/r3-fullbleed/
             qa/r3-home-results.json
             qa/r3-gallery/
+            qa/r3-chameleon/
           if-no-files-found: ignore

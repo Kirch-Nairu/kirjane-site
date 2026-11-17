@@ -7,6 +7,7 @@ source tree are inlined. A Windows real-host acceptance check remains mandatory.
 from pathlib import Path
 import base64, hashlib, json, re
 from playwright.sync_api import sync_playwright
+from qa_inline_assets import inline_logo_asset
 
 ROOT=Path(__file__).resolve().parent.parent
 OUT=ROOT/'qa'/'r3-m03-stabilization'
@@ -23,6 +24,7 @@ for name in set(re.findall(r'/assets/visuals/([a-z0-9-]+\.webp)',html)):
     raw=(ROOT/'assets/visuals'/name).read_bytes()
     html=html.replace('/assets/visuals/'+name, 'data:image/webp;base64,'+base64.b64encode(raw).decode())
 
+html = inline_logo_asset(html, ROOT)
 JS=[(ROOT/'assets/js'/x).read_text() for x in ('site.js','r3-home.js')]
 rows=[]
 with sync_playwright() as pw:

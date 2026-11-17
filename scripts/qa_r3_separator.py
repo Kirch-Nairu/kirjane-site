@@ -1,5 +1,6 @@
 from pathlib import Path
 from playwright.sync_api import sync_playwright
+from qa_inline_assets import inline_logo_asset
 import re,base64,json
 ROOT=Path(__file__).resolve().parent.parent
 OUT=ROOT/'qa'/'r3-separator'
@@ -15,6 +16,7 @@ for js in ('site.js','r3-home.js'):
 for name in set(re.findall(r'/assets/visuals/([a-z0-9-]+\.webp)',html)):
  uri='data:image/webp;base64,'+base64.b64encode((ROOT/'assets/visuals'/name).read_bytes()).decode()
  html=html.replace('/assets/visuals/'+name,uri)
+html = inline_logo_asset(html, ROOT)
 rows=[]
 with sync_playwright() as pw:
  b=pw.chromium.launch(executable_path='/usr/bin/chromium',headless=True,args=['--no-sandbox','--disable-dev-shm-usage'])

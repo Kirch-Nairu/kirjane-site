@@ -4,6 +4,7 @@ Browser sandbox blocks localhost; inline HTML CSS JS WebP for browser.
 """
 from pathlib import Path
 from playwright.sync_api import sync_playwright
+from qa_inline_assets import inline_logo_asset
 import re, base64, json, hashlib
 ROOT=Path(__file__).resolve().parent.parent
 OUT=ROOT/'qa'/'r3-process'
@@ -19,6 +20,7 @@ for rel in ('site.js','r3-home.js'):
 for name in set(re.findall(r'/assets/visuals/([a-z0-9-]+\.webp)',html)):
     raw=(ROOT/'assets/visuals'/name).read_bytes()
     html=html.replace('/assets/visuals/'+name,'data:image/webp;base64,'+base64.b64encode(raw).decode())
+html = inline_logo_asset(html, ROOT)
 results=[]
 with sync_playwright() as p:
     browser=p.chromium.launch(executable_path='/usr/bin/chromium',headless=True,args=['--no-sandbox','--disable-dev-shm-usage'])

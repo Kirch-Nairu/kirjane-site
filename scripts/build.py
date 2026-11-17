@@ -137,7 +137,9 @@ home_workflow=f'''<section class="workflow-home r3-process-home" id="home-proces
   </div>
 </section>'''
 
-home_projects=f'''<section class="projects-home section-light r3-gallery-home" id="home-projects" aria-labelledby="r3-gallery-heading"><div class="shell">{section_head('04','WORK / SYSTEMS IN CONTEXT','PROJECT PERSPECTIVE')}
+home_projects=f'''<section class="projects-home section-light r3-gallery-home" id="home-projects" aria-labelledby="r3-gallery-heading">
+  <div class="r3-gallery-chameleon-watermark" aria-hidden="true"><img src="/assets/brand/kirjane-logo-green-original.jpg" alt="" decoding="async" loading="eager" fetchpriority="low"></div>
+  <div class="shell">{section_head('04','WORK / SYSTEMS IN CONTEXT','PROJECT PERSPECTIVE')}
   <div class="r3-gallery-intro">
     <div><p class="mono r3-gallery-eyebrow">ENGINEERING PERSPECTIVES / 02 CONCEPT STUDIES</p><h2 class="display section-heading dark" id="r3-gallery-heading">BEYOND<br><span class="ink-green">THE INTERFACE.</span></h2></div>
     <div class="r3-gallery-intro-aside"><p>Every useful system begins with a problem worth solving. We examine the work behind the screen—from information flow to operational decisions.</p>{link('Explore project thinking','/projects/')}</div>

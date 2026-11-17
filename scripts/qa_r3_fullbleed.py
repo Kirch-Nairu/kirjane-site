@@ -3,6 +3,7 @@
 Browser sandbox denies localhost, so these are not live HTTP browser tests."""
 from pathlib import Path
 from playwright.sync_api import sync_playwright
+from qa_inline_assets import inline_logo_asset
 import re, json, base64, hashlib
 ROOT=Path(__file__).resolve().parent.parent
 OUT=ROOT/'qa'/'r3-fullbleed'
@@ -21,7 +22,7 @@ def prepare():
     for name in set(re.findall(r'/assets/visuals/([a-z0-9-]+\.webp)',html)):
         uri='data:image/webp;base64,'+base64.b64encode((ASSETS/name).read_bytes()).decode()
         html=html.replace('/assets/visuals/'+name,uri)
-    return html
+    return inline_logo_asset(html, ROOT)
 
 html=prepare()
 rows=[]

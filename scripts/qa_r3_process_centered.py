@@ -6,6 +6,7 @@ Browser network policy denies localhost access; this is rendered-source QA, not 
 from pathlib import Path
 import re, base64, json
 from playwright.sync_api import sync_playwright
+from qa_inline_assets import inline_logo_asset
 
 ROOT=Path(__file__).resolve().parent.parent
 OUT=ROOT/'qa'/'r3-process-centered'
@@ -21,6 +22,7 @@ for js in ('site.js','r3-home.js'):
 for name in set(re.findall(r'/assets/visuals/([a-z0-9-]+\.webp)',html)):
     raw=(ROOT/'assets/visuals'/name).read_bytes()
     html=html.replace('/assets/visuals/'+name, 'data:image/webp;base64,'+base64.b64encode(raw).decode())
+html = inline_logo_asset(html, ROOT)
 JS=[(ROOT/'assets/js'/name).read_text() for name in ('site.js','r3-home.js')]
 
 sizes=[(320,760),(390,844),(768,1024),(960,740),(1024,768),(1280,720),(1440,900),(1536,864),(1920,1080),(1440,600)]

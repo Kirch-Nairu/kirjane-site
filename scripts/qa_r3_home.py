@@ -4,6 +4,7 @@ import re
 import base64
 from pathlib import Path
 from playwright.sync_api import sync_playwright
+from qa_inline_assets import inline_logo_asset
 ROOT = Path(__file__).resolve().parent.parent
 URL = 'inline-browser-harness (localhost is blocked by browser sandbox)'
 def inline_html():
@@ -18,7 +19,7 @@ def inline_html():
     for name in set(re.findall(r'/assets/visuals/([a-z0-9-]+\.webp)', html)):
         b=(ROOT/'assets/visuals'/name).read_bytes()
         html=html.replace('/assets/visuals/'+name, 'data:image/webp;base64,'+base64.b64encode(b).decode())
-    return html
+    return inline_logo_asset(html, ROOT)
 SITE_HTML=inline_html()
 def mount(page):
     page.set_content(SITE_HTML,wait_until='domcontentloaded')

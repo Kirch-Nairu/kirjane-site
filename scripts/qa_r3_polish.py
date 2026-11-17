@@ -9,6 +9,7 @@ import json
 import re
 from pathlib import Path
 from playwright.sync_api import sync_playwright
+from qa_inline_assets import inline_logo_asset
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / 'qa' / 'r3-process-polish'
@@ -24,6 +25,7 @@ for js in ('site.js', 'r3-home.js'):
 for name in set(re.findall(r'/assets/visuals/([a-z0-9-]+\.webp)', html)):
     raw = (ROOT / 'assets/visuals' / name).read_bytes()
     html = html.replace('/assets/visuals/' + name, 'data:image/webp;base64,' + base64.b64encode(raw).decode())
+html = inline_logo_asset(html, ROOT)
 scripts = [(ROOT / 'assets/js' / f).read_text() for f in ('site.js', 'r3-home.js')]
 rows = []
 

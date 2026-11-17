@@ -7,6 +7,7 @@ from __future__ import annotations
 import base64, json, re
 from pathlib import Path
 from playwright.sync_api import sync_playwright
+from qa_inline_assets import inline_logo_asset
 
 ROOT=Path(__file__).resolve().parent.parent
 OUT=ROOT/'qa/r3-gallery'
@@ -23,6 +24,7 @@ for filename in set(re.findall(r'/assets/visuals/([a-z0-9-]+\.webp)',html)):
     raw=(ROOT/'assets/visuals'/filename).read_bytes()
     html=html.replace('/assets/visuals/'+filename,'data:image/webp;base64,'+base64.b64encode(raw).decode())
 
+html = inline_logo_asset(html, ROOT)
 js_scripts=[(ROOT/'assets/js'/s).read_text(encoding='utf-8') for s in ('site.js','r3-home.js')]
 results=[]
 
