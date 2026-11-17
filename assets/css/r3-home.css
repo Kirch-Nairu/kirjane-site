@@ -391,8 +391,3 @@ html.r3-gallery-motion-enabled .r3-gallery-piece:not(.is-revealed) .r3-gallery-i
  .r3-gallery-chameleon-watermark img{width:82%;left:-17%;top:clamp(660px,calc(80vw + 370px),1010px);opacity:.11}
 }
 
-/* Ultra-compact home-only safeguard. At 280px the pre-existing footer
-   wordmark caused document overflow; do not change the five inner routes. */
-@media(max-width:319px){
-  body[data-page="Home"] .footer-wordmark{font-size:clamp(42px,16vw,50px)}
-}
