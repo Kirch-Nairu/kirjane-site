@@ -77,3 +77,25 @@ jobs:
             qa/r3-chameleon-viewports/
             qa/global-viewports/
           if-no-files-found: ignore
+
+  mobile-native-http-qa:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Chromium
+        run: |
+          python -m pip install playwright==1.57.0
+          python -m playwright install --with-deps chromium
+      - name: Test real served pages with mobile touch input
+        run: python scripts/qa_mobile_native.py
+      - name: Upload mobile screenshots and results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mobile-native-http-qa
+          path: qa/mobile-native/
+          if-no-files-found: warn
