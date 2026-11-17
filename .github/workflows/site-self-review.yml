@@ -58,6 +58,7 @@ jobs:
           python scripts/qa_r3_home.py
           python scripts/qa_r3_gallery.py
           python scripts/qa_r3_chameleon.py
+          python scripts/qa_r3_chameleon_viewports.py
       - name: Upload browser evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -72,4 +73,5 @@ jobs:
             qa/r3-home-results.json
             qa/r3-gallery/
             qa/r3-chameleon/
+            qa/r3-chameleon-viewports/
           if-no-files-found: ignore

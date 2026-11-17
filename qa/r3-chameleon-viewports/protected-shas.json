@@ -1,0 +1,25 @@
+{
+  "count": 20,
+  "originalSHA256": {
+    "assets/visuals/a01-about.webp": "5854358e400dfcf49fddbc073cb95150f8a24d397ec6794ba7ec5336d975b918",
+    "assets/visuals/c01-contact-desktop.webp": "723fec20ad042e72fd29c76a6e6c51ac1f46d7581fbb621528c9b802248529ca",
+    "assets/visuals/c02-contact-mobile.webp": "93c7577a10a7699383ecbc982985ea021ec2a84f7a67936ff7eee3f74330252a",
+    "assets/visuals/h01-hero-desktop.webp": "9a5bf732204f0a4dfed12cff3584b69ed8f4f9358dd4c2003870235cae80f96e",
+    "assets/visuals/h02-hero-mobile.webp": "978814d147fe8df48949c3aee4123c26f7841a9f2f1cd52ef85d0db5fc9d5885",
+    "assets/visuals/p01-process.webp": "4c7679e96039154b1ef1b3e9fffbf42972b5f5f32535016c67a9ef73b7d1b190",
+    "assets/visuals/s01-development.webp": "750f72f29697dccd6604ae9ad7f0d089deb18834a5cdbb4b5b8c271d3e11e7b7",
+    "assets/visuals/s02-automation.webp": "b2351c0ad19737b7af572dd1c5ca5ebcf808246b55fe1878258ea448af043f80",
+    "assets/visuals/s03-integration.webp": "8749e99924e828b4593bc7ac3658c30bb1bc8c8b7901e7dd950e00cbbd34628b",
+    "assets/visuals/s04-infrastructure.webp": "ac18f36c2db9504b21971b440c5fc9732623768bc41a911180116f1dd13ece21",
+    "assets/visuals/w01-operations.webp": "4a5defbbc3afeed4d2b1587c83a6a2cb88739033e613085f5d8299e28a542d84",
+    "assets/visuals/w02-decisions.webp": "28b89b19147f0ed8d3ba1842e6ac56f3416e73a5b9b98142bce124352be58567",
+    "services/index.html": "44641cf94cc53f921edc0edc878dfe6811e743212f9b279f57b210dcaf1f10d2",
+    "projects/index.html": "50ea416482dfe87848276082623d7c95c15b4211eb279eef55b535cc229d6ad4",
+    "about/index.html": "a9a21349633b982bd52ddd60af5e377c1d44ef7a9a23d1e95bc09c32485feaea",
+    "process/index.html": "324bf5693de0d0335ed970013bb63fd79dab5f273d022a6ff1bc3fc94a8f61c8",
+    "contact/index.html": "e6c9fff3e66f520f2d8e7e8dae794fee5b2f6b500f25aca5a661e099860c909a",
+    "404.html": "cf9c7ea46fe13f76804a0f55a7c1b380aab62201ed77bae624a97beb72e0e66d",
+    "assets/css/site.css": "37f8ff5edb8f58035f37ca1e6c7128a0463f6d030d3396408fa0cdbff65eafa9",
+    "assets/js/site.js": "00d3e04736d47810f8af8a69af54e5c5793e11f2244ef50c29e9cf5e4ed0b15f"
+  }
+}

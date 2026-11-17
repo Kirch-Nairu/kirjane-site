@@ -362,11 +362,37 @@ html.r3-gallery-motion-enabled .r3-gallery-piece:not(.is-revealed) .r3-gallery-i
   .r3-gallery-piece:not(.is-revealed) .r3-gallery-image-copy{opacity:1!important}
 }
 
-/* R3-M04 brand watermark: owner-approved source JPG, used unchanged and
-   clipped strictly through CSS. No SVG, generated art, or extra motion. */
+/* R3-M04 R2: anchored, responsive brand identity in the negative space.
+   Original, unmodified Kirjane green JPG; CSS only, no drawn SVG art.
+   The gallery shell is the positioning reference (not the browser width).
+   The emblem is cropped before the wordmark and gently fades at its edges. */
 .r3-gallery-home{position:relative;isolation:isolate}
-.r3-gallery-home>.shell{position:relative;z-index:1}
-.r3-gallery-chameleon-watermark{position:absolute;inset:0;overflow:hidden;z-index:0;pointer-events:none}
-.r3-gallery-chameleon-watermark img{position:absolute;display:block;width:min(96vw,1290px);max-width:none;height:auto;left:-15%;top:clamp(430px,43vw,640px);opacity:.16;mix-blend-mode:multiply;clip-path:inset(0 0 47% 0)}
-@media(max-width:850px){.r3-gallery-chameleon-watermark img{width:124vw;left:-30%;top:480px;opacity:.105}}
-@media(max-width:680px){.r3-gallery-chameleon-watermark img{width:162vw;left:-50%;top:500px;opacity:.052}}
+.r3-gallery-home>.shell{position:relative;z-index:1;isolation:isolate}
+.r3-gallery-chameleon-watermark{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none;user-select:none}
+.r3-gallery-chameleon-watermark img{
+ position:absolute;display:block;max-width:none;height:auto;
+ width:min(60%,780px);left:-7%;top:clamp(600px,52vw,840px);
+ opacity:.18;mix-blend-mode:multiply;clip-path:inset(0 0 33% 0);
+ -webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 14%,#000 57%,transparent 67%);
+ mask-image:linear-gradient(to bottom,transparent 0%,#000 14%,#000 57%,transparent 67%);
+}
+/* On ultrawide monitors, use the otherwise empty left side margin as a
+   restrained brand signature, rather than showing a chopped sliver of art. */
+@media(min-width:2200px){
+ .r3-gallery-chameleon-watermark{overflow:visible}
+ .r3-gallery-chameleon-watermark img{
+   width:450px;left:calc(223px - 25vw);top:430px;opacity:.16;
+ }
+}
+@media(max-width:850px){
+ .r3-gallery-chameleon-watermark img{width:min(82%,630px);left:-13%;top:clamp(600px,76vw,750px);opacity:.14}
+}
+@media(max-width:680px){
+ .r3-gallery-chameleon-watermark img{width:82%;left:-17%;top:clamp(660px,calc(80vw + 370px),1010px);opacity:.11}
+}
+
+/* Ultra-compact home-only safeguard. At 280px the pre-existing footer
+   wordmark caused document overflow; do not change the five inner routes. */
+@media(max-width:319px){
+  body[data-page="Home"] .footer-wordmark{font-size:clamp(42px,16vw,50px)}
+}

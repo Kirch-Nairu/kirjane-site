@@ -62,7 +62,7 @@ with sync_playwright() as tools:
             aria:deco.getAttribute('aria-hidden'), alt:img.getAttribute('alt'),
             pictureCount:sec.querySelectorAll('[data-r3-gallery-piece] img').length,
             clip:cs.clipPath, opacity:parseFloat(cs.opacity),position:getComputedStyle(deco).position,
-            pointerEvents:getComputedStyle(deco).pointerEvents,zDecor:getComputedStyle(deco).zIndex,zShell:getComputedStyle(shell).zIndex,
+            pointerEvents:getComputedStyle(deco).pointerEvents,zDecor:getComputedStyle(deco).zIndex,zShell:getComputedStyle(shell).zIndex,logoInShell:deco.parentElement===shell,
             image:rect(img),heading:rect(heading),section:rect(sec),
             bodyOverflow:document.documentElement.scrollWidth>innerWidth+1,
             naturalFlow:getComputedStyle(sec).position!=='fixed',
@@ -72,9 +72,9 @@ with sync_playwright() as tools:
         assert not info['bodyOverflow'],(w,h,mode,'horizontal overflow',info)
         assert info['imageOK'] and info['aria']=='true' and info['alt']=='',(w,h,mode,'image',info)
         assert info['pictureCount']==2 and info['state']==2,(w,h,mode,'gallery structure',info)
-        assert info['pointerEvents']=='none' and info['zDecor']=='0' and info['zShell']=='1',(w,h,mode,'layering',info)
+        assert info['pointerEvents']=='none' and info['zDecor']=='-1' and info['zShell']=='1' and info['logoInShell'],(w,h,mode,'layering',info)
         assert info['position']=='absolute' and info['clip'].startswith('inset('),(w,h,mode,'crop',info)
-        expected=.052 if w<=680 else (.105 if w<=850 else .16)
+        expected=.11 if w<=680 else (.14 if w<=850 else .18)
         assert abs(info['opacity']-expected)<.002,(w,h,mode,'opacity',info)
         assert info['naturalFlow'],(w,h,mode,'scroll flow')
         assert not errors,(w,h,mode,'exceptions',errors)
