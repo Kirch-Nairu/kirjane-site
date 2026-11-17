@@ -49,13 +49,15 @@ def footer():
 
 def layout(page,title,desc,body,hero_preload=None):
     preload=(f'<link rel="preload" as="image" href="{ASSET}{hero_preload}.webp" fetchpriority="high">' if hero_preload else '')
+    r3_css='<link rel="stylesheet" href="/assets/css/r3-home.css">' if page=='Home' else ''
+    r3_js='<script src="/assets/js/r3-home.js" defer></script>' if page=='Home' else ''
     return f'''<!doctype html><html lang="en"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="dark light">
 <title>{escape(title)} | Kirjane IT Solutions</title><meta name="description" content="{escape(desc,quote=True)}">
 <meta property="og:title" content="{escape(title,quote=True)} — Kirjane IT Solutions"><meta property="og:description" content="{escape(desc,quote=True)}"><meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-{preload}<link rel="stylesheet" href="/assets/css/site.css"><script src="/assets/js/site.js" defer></script>
+{preload}<link rel="stylesheet" href="/assets/css/site.css">{r3_css}<script src="/assets/js/site.js" defer></script>{r3_js}
 </head><body data-page="{escape(page)}"><a class="skip-link" href="#main-content">Skip to main content</a><div class="scroll-progress" aria-hidden="true"></div>
 {header(page)}<main id="main-content">{body}</main>{footer()}</body></html>'''
 
@@ -65,35 +67,107 @@ def inner_hero(index,eyebrow,title,sub,visual=None,mobile=None):
 
 home_hero=f'''<section class="home-hero" aria-labelledby="hero-title">
   {picture('h01-hero-desktop',cls='hero-media',mobile='h02-hero-mobile',priority=True)}
+  <div class="r3-hero-light" aria-hidden="true"><span></span><span></span></div>
   <div class="hero-grain" aria-hidden="true"></div>
   <div class="shell hero-contents"><div class="hero-topline mono"><span><b class="signal"></b>SOFTWARE ENGINEERING / AUTOMATION</span><span class="hero-edition">KIRJANE / 2026</span></div>
     <div class="hero-copy"><p class="mono hero-overline" data-reveal>INDEPENDENT THINKING. ENGINEERED RESULTS.</p>
       <h1 class="display" id="hero-title"><span>THE WORK.</span><span class="hero-title-accent">COMES FIRST<span class="hero-stop">.</span></span></h1>
       <div class="hero-support"><div class="hero-support-left"><p class="hero-service">Custom software.<br><span>Workflow automation.</span></p></div><div class="hero-support-right"><p>We develop applications and connected systems around how businesses and organizations actually work.</p><div class="hero-links">{link('Explore our work','/projects/','solid')}{link('What we do','/services/')}</div></div></div>
     </div>
+    <div class="r3-hero-chapter mono" aria-hidden="true"><span>01 / 07</span><span class="r3-chapter-dash"></span><span>THE INTRODUCTION</span></div>
     <div class="hero-baseline"><span class="mono">ADAPT. AUTOMATE. EVOLVE.</span><a href="#home-services" class="scroll-invite mono">SCROLL TO EXPLORE {ICON_DOWN}</a><span class="mono hero-foot-right">01 — INTRODUCTION</span></div>
   </div>
 </section>'''
 
 services_rows=''.join(f'''<button class="service-row {"active" if i==0 else ""}" type="button" role="tab" aria-selected="{"true" if i==0 else "false"}" id="service-tab-{i+1}" aria-controls="service-preview" data-service-select="{i}"><span class="service-id">{no}</span><span class="service-row-body"><strong>{title}</strong><small>{desc}</small></span><span class="service-north">↗</span></button>''' for i,(no,title,desc,im,focus) in enumerate(SERVICES))
-home_services=f'''<section class="services-home section-light" id="home-services">
-<div class="shell">{section_head('02','EXPERTISE / WHAT WE BUILD','01 — 04')}
-<div class="section-intro-grid"><h2 class="display section-heading dark">LESS FRICTION.<br><span class="ink-green">MORE FUNCTION.</span></h2><div class="section-aside"><p>Powerful technology isn't always complicated technology. We build around the workflows, decisions, and constraints that matter to your organization.</p>{link('View all services','/services/')}</div></div>
-<div class="services-stage"><div class="service-tabs" role="tablist" aria-label="Service disciplines">{services_rows}</div><div class="service-preview" id="service-preview" role="tabpanel" tabindex="0" aria-labelledby="service-tab-1"><img src="{ASSET}s01-development.webp" alt="" loading="lazy" data-service-image><div class="service-preview-caption"><span class="mono">FOCUS / 001</span><p data-service-focus>Architecture, interfaces, operational tooling</p><span class="service-preview-arrow">↗</span></div><div class="visual-disclosure">CONCEPTUAL VISUAL / NOT A CLIENT SCREENSHOT</div></div></div>
-</div></section>'''
+home_services=f'''<section class="services-home r3-services-fullbleed" id="home-services" aria-labelledby="r3-services-heading">
+  <div class="r3-services-track" data-r3-services-track>
+    <div class="r3-services-stage">
+      <div class="r3-service-visuals" aria-hidden="true">{''.join(f'<img src="{ASSET}{im}.webp" alt="" decoding="async" loading="lazy" data-service-scene="{i}" class="{"is-current" if i==0 else ""}">' for i,(no,title,desc,im,focus) in enumerate(SERVICES))}</div>
+      <div class="r3-service-shade" aria-hidden="true"></div>
+      <div class="shell r3-services-layer">
+        <div class="r3-service-overline mono"><span>02 / EXPERTISE — WHAT WE BUILD</span><span>CHAPTER 02 <span class="r3-service-divider" aria-hidden="true">/</span> <span data-r3-count>01 / 04</span></span></div>
+        <div class="r3-service-layout">
+          <div class="r3-services-left">
+            <h2 class="display r3-services-title" id="r3-services-heading">LESS FRICTION.<br><em>MORE FUNCTION.</em></h2>
+            <p class="r3-services-intro">Custom software and connected systems designed around the work that matters.</p>
+            <div class="service-tabs" role="tablist" aria-label="Service disciplines">{services_rows}</div>
+          </div>
+          <div class="r3-service-detail" id="service-preview" role="tabpanel" tabindex="0" aria-labelledby="service-tab-1">
+            <div class="service-preview-caption"><span class="mono">FOCUS / 001</span><p data-service-focus>Architecture, interfaces, operational tooling</p></div>
+            <span class="r3-detail-disclosure mono">CONCEPTUAL VISUAL / NOT A CLIENT SCREENSHOT</span>
+          </div>
+        </div>
+        <div class="r3-service-footer"><div class="r3-service-meter" aria-hidden="true"><span></span></div>
+          <div class="r3-service-footer-line mono"><span>SCROLL TO EXPLORE <span aria-hidden="true">↓</span> <span class="r3-selection-hint">/ OR SELECT A DISCIPLINE</span></span><a href="/services/">EXPLORE ALL SERVICES <span aria-hidden="true">↗</span></a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>'''
 
 home_manifest=f'''<section class="manifest-band"><div class="shell manifest-inner"><p>NOT SOFTWARE FOR SOFTWARE'S SAKE.</p><div class="manifest-line"><span>RETHINK THE PROCESS.</span><i aria-hidden="true">✳</i><span>CONNECT THE SYSTEM.</span><i aria-hidden="true">✳</i><span>MAKE IT WORK.</span></div></div></section>'''
 
-home_workflow=f'''<section class="workflow-home" id="home-process"><div class="shell">{section_head('03','HOW WE APPROACH THE WORK','OUR PROCESS')}
-<div class="workflow-heading"><h2 class="display section-heading">FROM A HANDOFF<br>TO A <em>SYSTEM.</em></h2><p>A clear path from scattered steps to connected operations. The goal is visibility, accountability, and a system people can actually use.</p></div>
-<div class="workflow-showcase">{picture('p01-process',cls='workflow-picture')}<div class="workflow-overlay"><p class="mono">THE ENGINEERING JOURNEY / FIVE STAGES</p><ol class="workflow-steps">{''.join(f'<li><span>{no}</span><strong>{name}</strong></li>' for no,name,desc in STEPS)}</ol></div></div>
-<div class="workflow-bottom"><p>Discover → Plan & Design → Develop → Validate → Deliver & Support.</p>{link('See our process','/process/')}</div>
-</div></section>'''
+process_steps=''.join(f'''<li class="r3-process-step-item"><button type="button" class="r3-process-step {"is-active" if i==0 else ""}" data-r3-process-step="{i}" aria-current="{"step" if i==0 else "false"}" aria-controls="r3-process-detail"><span class="r3-process-step-number mono">{num}</span><strong>{label}</strong></button></li>''' for i,(num,label,desc) in enumerate(STEPS))
+home_workflow=f'''<section class="workflow-home r3-process-home" id="home-process" aria-labelledby="r3-process-heading">
+  <div class="r3-process-track" data-r3-process-track>
+    <div class="r3-process-stage">
+      <div class="r3-process-art" aria-hidden="true">
+        <img class="r3-process-art-base" src="{ASSET}p01-process.webp" alt="" decoding="async" loading="lazy">
+        <img class="r3-process-art-focus" src="{ASSET}p01-process.webp" alt="" decoding="async" loading="lazy">
+      </div>
+      <div class="r3-process-shade" aria-hidden="true"></div>
+      <div class="shell r3-process-layer">
+        <div class="r3-process-overline mono"><span>03 / HOW WE APPROACH THE WORK</span><span>CHAPTER 03 <span aria-hidden="true">/</span> <span data-r3-process-count>01 / 05</span></span></div>
+        <div class="r3-process-story">
+          <div class="r3-process-heading-group"><span class="mono r3-process-eyebrow">THE ENGINEERING JOURNEY / FIVE STAGES</span><h2 class="display" id="r3-process-heading">FROM A HANDOFF<br>TO A <em>SYSTEM.</em></h2><p>From scattered tasks to dependable systems. Follow the decisions that turn a problem into something people can use.</p></div>
+          <div class="r3-process-detail" id="r3-process-detail" aria-label="Current engineering stage">
+            <span class="r3-process-detail-index mono">STAGE <span data-r3-process-number>01</span> / 05</span>
+            <h3 data-r3-process-title>Discover</h3>
+            <p data-r3-process-description>Understand the real work, the people and the constraints.</p>
+          </div>
+        </div>
+        <div class="r3-process-bottom">
+          <div class="r3-process-meter" aria-hidden="true"><span></span></div>
+          <ol class="r3-process-steps" aria-label="Five engineering stages">{process_steps}</ol>
+          <div class="r3-process-navigation mono"><span>SCROLL TO FOLLOW THE JOURNEY <span aria-hidden="true">↓</span> <span class="r3-process-select-hint">/ OR SELECT A STAGE</span></span><a href="/process/">SEE OUR PROCESS <span aria-hidden="true">↗</span></a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>'''
 
-home_projects=f'''<section class="projects-home section-light"><div class="shell">{section_head('04','WORK / SYSTEMS IN CONTEXT','PROJECT PERSPECTIVE')}
-<div class="section-intro-grid"><h2 class="display section-heading dark">BEYOND<br><span class="ink-green">THE INTERFACE.</span></h2><div class="section-aside"><p>Every useful system begins with a problem worth solving. We examine the work behind the screen—from information flow to operational decisions.</p>{link('Explore project thinking','/projects/')}</div></div>
-<div class="project-grid"><article class="project-feature">{picture('w01-operations',cls='project-visual')}<div class="project-visual-overlay"><span class="mono">01 / CONCEPT EXAMPLE</span><h3>CONNECTED<br>OPERATIONS</h3><span class="project-arrow">↗</span></div></article><article class="project-feature">{picture('w02-decisions',cls='project-visual')}<div class="project-visual-overlay"><span class="mono">02 / CONCEPT EXAMPLE</span><h3>DECISIONS,<br>MADE VISIBLE.</h3><span class="project-arrow">↗</span></div></article></div>
-<p class="disclaimer">Conceptual capability illustrations only. Public client case studies and measured outcomes will be added after verification and permission.</p>
+home_projects=f'''<section class="projects-home section-light r3-gallery-home" id="home-projects" aria-labelledby="r3-gallery-heading">
+  <div class="shell">
+  <div class="r3-gallery-chameleon-watermark" aria-hidden="true"><img src="/assets/brand/kirjane-logo-green-original.jpg" alt="" decoding="async" loading="eager" fetchpriority="low"></div>
+  {section_head('04','WORK / SYSTEMS IN CONTEXT','PROJECT PERSPECTIVE')}
+  <div class="r3-gallery-intro">
+    <div><p class="mono r3-gallery-eyebrow">ENGINEERING PERSPECTIVES / 02 CONCEPT STUDIES</p><h2 class="display section-heading dark" id="r3-gallery-heading">BEYOND<br><span class="ink-green">THE INTERFACE.</span></h2></div>
+    <div class="r3-gallery-intro-aside"><p>Every useful system begins with a problem worth solving. We examine the work behind the screen—from information flow to operational decisions.</p>{link('Explore project thinking','/projects/')}</div>
+  </div>
+  <div class="r3-gallery" data-r3-gallery aria-label="Conceptual engineering perspectives">
+    <article class="r3-gallery-piece r3-gallery-piece-first" data-r3-gallery-piece>
+      <div class="r3-gallery-image">
+        {picture('w01-operations',cls='r3-gallery-art')}
+        <div class="r3-gallery-image-copy"><span class="mono r3-gallery-image-kicker">01 / SYSTEMS</span><h3>CONNECTED<br>OPERATIONS.</h3><span class="r3-gallery-image-arrow" aria-hidden="true">↗</span></div>
+      </div>
+      <details class="r3-gallery-disclosure" data-r3-gallery-disclosure>
+        <summary><span>EXPLORE THE SYSTEM THINKING</span><span aria-hidden="true" class="r3-gallery-disclosure-symbol">+</span></summary>
+        <div class="r3-gallery-explanation"><p>Follow information from an incoming request through the work that follows. Clear handoffs, ownership, and status can help disconnected tasks become a dependable operation.</p><span class="mono">CONCEPT STUDY / INTAKE · HANDOFF · STATUS</span></div>
+      </details>
+    </article>
+    <article class="r3-gallery-piece r3-gallery-piece-second" data-r3-gallery-piece>
+      <div class="r3-gallery-image">
+        {picture('w02-decisions',cls='r3-gallery-art')}
+        <div class="r3-gallery-image-copy"><span class="mono r3-gallery-image-kicker">02 / VISIBILITY</span><h3>DECISIONS,<br>MADE VISIBLE.</h3><span class="r3-gallery-image-arrow" aria-hidden="true">↗</span></div>
+      </div>
+      <details class="r3-gallery-disclosure" data-r3-gallery-disclosure>
+        <summary><span>EXPLORE THE DECISION PATH</span><span aria-hidden="true" class="r3-gallery-disclosure-symbol">+</span></summary>
+        <div class="r3-gallery-explanation"><p>Make responsibilities, review points, and next actions easier to understand. The goal is not more dashboards: it is enough visibility for people to make the next decision confidently.</p><span class="mono">CONCEPT STUDY / REVIEW · OWNERSHIP · NEXT STEP</span></div>
+      </details>
+    </article>
+  </div>
+  <div class="r3-gallery-footer"><p class="disclaimer">Conceptual capability illustrations only. These are not client case studies or measured outcomes.</p><span class="mono">EXPLORATION, NOT A CLIENT DELIVERABLE / 01—02</span></div>
 </div></section>'''
 
 home_about=f'''<section class="about-home"><div class="shell">{section_head('05','OUR PHILOSOPHY','ABOUT KIRJANE')}
@@ -102,7 +176,16 @@ home_about=f'''<section class="about-home"><div class="shell">{section_head('05'
 
 contact_cta=f'''<section class="closing-cta"><picture class="cta-media"><source media="(max-width: 680px)" srcset="{ASSET}c02-contact-mobile.webp" type="image/webp"><img src="{ASSET}c01-contact-desktop.webp" alt="" loading="lazy" decoding="async"></picture><div class="shell cta-grid"><div><p class="mono eyebrow">06 / HAVE A CHALLENGE?</p><h2 class="display">LET'S BUILD<br><em>WHAT'S NEXT.</em></h2><p>Tell us what needs to change. We'll start with the right questions.</p>{link('Contact Kirjane','/contact/','acid')}</div><span class="mono cta-corner">THE NEXT SYSTEM STARTS HERE. ↗</span></div></section>'''
 
-home=home_hero+home_services+home_manifest+home_workflow+home_projects+home_about+contact_cta
+# R3: editorial chapter divider between Hero and the Services story. Reuses
+# the existing chartreuse manifesto band visual treatment; HTML typography only.
+home_hero_separator=f'''<section class="manifest-band r3-hero-separator" aria-label="From the work to the solution">
+  <div class="shell manifest-inner">
+    <p>FROM AN IDEA TO A SYSTEM THAT WORKS.</p>
+    <div class="manifest-line"><span>UNDERSTAND THE WORK.</span><i aria-hidden="true">✳</i><span>ENGINEER THE ANSWER.</span><i aria-hidden="true">✳</i><span>BUILD WHAT MATTERS.</span></div>
+  </div>
+</section>'''
+
+home=home_hero+home_hero_separator+home_services+home_manifest+home_workflow+home_projects+home_about+contact_cta
 
 # SERVICES
 service_cards=''.join(f'''<article class="discipline" id="service-{i+1}" data-reveal><div class="discipline-text"><div class="discipline-line mono"><span>{no} / 04</span><span>THE PRACTICE</span></div><h2>{title}</h2><p>{desc}</p><p class="discipline-focus"><span>FOCUS</span>{focus}</p></div>{picture(img,cls='discipline-art')}<span class="discipline-num">{no}</span></article>''' for i,(no,title,desc,img,focus) in enumerate(SERVICES))

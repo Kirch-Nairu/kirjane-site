@@ -1,0 +1,156 @@
+[
+  {
+    "width": 320,
+    "height": 760,
+    "pass": true,
+    "story": {
+      "static": true,
+      "manualTabs": true
+    },
+    "consoleErrors": [],
+    "overflow": false
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "pass": true,
+    "story": {
+      "static": true,
+      "manualTabs": true
+    },
+    "consoleErrors": [],
+    "overflow": false
+  },
+  {
+    "width": 768,
+    "height": 1024,
+    "pass": true,
+    "story": {
+      "static": true,
+      "manualTabs": true
+    },
+    "consoleErrors": [],
+    "overflow": false
+  },
+  {
+    "width": 960,
+    "height": 740,
+    "pass": true,
+    "story": {
+      "forward": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "reverse": true,
+      "height": 2331,
+      "stageHeight": 740,
+      "stageTop": 0,
+      "visualHeight": 740
+    },
+    "consoleErrors": [],
+    "overflow": false
+  },
+  {
+    "width": 1024,
+    "height": 768,
+    "pass": true,
+    "story": {
+      "forward": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "reverse": true,
+      "height": 2419,
+      "stageHeight": 768,
+      "stageTop": 0,
+      "visualHeight": 768
+    },
+    "consoleErrors": [],
+    "overflow": false
+  },
+  {
+    "width": 1280,
+    "height": 650,
+    "pass": true,
+    "story": {
+      "forward": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "reverse": true,
+      "height": 2048,
+      "stageHeight": 650,
+      "stageTop": 0,
+      "visualHeight": 650
+    },
+    "consoleErrors": [],
+    "overflow": false
+  },
+  {
+    "width": 1440,
+    "height": 900,
+    "pass": true,
+    "story": {
+      "forward": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "reverse": true,
+      "height": 2835,
+      "stageHeight": 900,
+      "stageTop": 0,
+      "visualHeight": 900
+    },
+    "consoleErrors": [],
+    "overflow": false
+  },
+  {
+    "width": 1920,
+    "height": 1080,
+    "pass": true,
+    "story": {
+      "forward": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "reverse": true,
+      "height": 3402,
+      "stageHeight": 1080,
+      "stageTop": 0,
+      "visualHeight": 1080
+    },
+    "consoleErrors": [],
+    "overflow": false
+  },
+  {
+    "width": 1440,
+    "height": 600,
+    "pass": true,
+    "story": {
+      "static": true,
+      "manualTabs": true
+    },
+    "consoleErrors": [],
+    "overflow": false
+  },
+  {
+    "width": 1440,
+    "reducedMotion": true,
+    "pass": true
+  },
+  {
+    "width": 390,
+    "reducedMotion": true,
+    "pass": true
+  }
+]

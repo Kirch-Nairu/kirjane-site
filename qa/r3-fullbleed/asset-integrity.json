@@ -1,0 +1,37 @@
+{
+  "imageSha256": {
+    "s01-development.webp": {
+      "bytes": 109366,
+      "sha256": "750f72f29697dccd6604ae9ad7f0d089deb18834a5cdbb4b5b8c271d3e11e7b7",
+      "unchanged": true
+    },
+    "s02-automation.webp": {
+      "bytes": 146548,
+      "sha256": "b2351c0ad19737b7af572dd1c5ca5ebcf808246b55fe1878258ea448af043f80",
+      "unchanged": true
+    },
+    "s03-integration.webp": {
+      "bytes": 112072,
+      "sha256": "8749e99924e828b4593bc7ac3658c30bb1bc8c8b7901e7dd950e00cbbd34628b",
+      "unchanged": true
+    },
+    "s04-infrastructure.webp": {
+      "bytes": 103750,
+      "sha256": "ac18f36c2db9504b21971b440c5fc9732623768bc41a911180116f1dd13ece21",
+      "unchanged": true
+    }
+  },
+  "unchangedOtherPages": {
+    "services/index.html": true,
+    "projects/index.html": true,
+    "about/index.html": true,
+    "process/index.html": true,
+    "contact/index.html": true,
+    "404.html": true,
+    "assets/js/site.js": true,
+    "assets/js/r3-home.js": true,
+    "assets/css/site.css": true
+  },
+  "sourceBranchBase": "34f47eb6013700cd80f27ef69497ca9cff1d4050",
+  "notes": "All approved WebP bytes identical. No SVG/Canvas injected into Services."
+}

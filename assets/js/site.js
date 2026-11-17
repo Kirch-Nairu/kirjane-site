@@ -20,14 +20,18 @@
   const tabs=Array.from(document.querySelectorAll('[data-service-select]'));
   const panel=document.querySelector('#service-preview');
   const art=document.querySelector('[data-service-image]');
+  const sceneImages=Array.from(document.querySelectorAll('[data-service-scene]'));
   const focus=document.querySelector('[data-service-focus]');
   const activate=i=>{
-    if(!panel||!art||!focus)return;
+    if(!panel||!focus||(!art && !sceneImages.length))return;
     const item=services[i];if(!item)return;
     tabs.forEach((b,index)=>{b.classList.toggle('active',index===i);b.setAttribute('aria-selected',String(index===i));b.tabIndex=index===i?0:-1;});
-    art.src='/assets/visuals/'+item[0];focus.textContent=item[1];
+    if(art)art.src='/assets/visuals/'+item[0];
+    sceneImages.forEach((img,j)=>img.classList.toggle('is-current',j===i));
+    focus.textContent=item[1];
     panel.setAttribute('aria-labelledby','service-tab-'+(i+1));
     const label=panel.querySelector('.service-preview-caption .mono');if(label)label.textContent='FOCUS / 00'+(i+1);
+    const counter=document.querySelector('[data-r3-count]');if(counter)counter.textContent=String(i+1).padStart(2,'0')+' / 04';
   };
   tabs.forEach((btn,i)=>{
     btn.addEventListener('click',()=>activate(i));

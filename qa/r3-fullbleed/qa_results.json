@@ -1,0 +1,904 @@
+[
+  {
+    "width": 320,
+    "height": 760,
+    "pass": true,
+    "metrics": {
+      "width": 320,
+      "viewport": 320,
+      "stage": {
+        "x": 0,
+        "y": 760,
+        "width": 320,
+        "height": 918.8125,
+        "bottom": 1678.8125,
+        "right": 320
+      },
+      "image": {
+        "x": 0,
+        "y": 760,
+        "width": 320,
+        "height": 918.8125,
+        "bottom": 1678.8125,
+        "right": 320
+      },
+      "left": {
+        "x": 22,
+        "y": 816.796875,
+        "width": 276,
+        "height": 558,
+        "bottom": 1374.796875,
+        "right": 298
+      },
+      "detail": {
+        "x": 22,
+        "y": 1399.796875,
+        "width": 276,
+        "height": 205,
+        "bottom": 1604.796875,
+        "right": 298
+      },
+      "head": {
+        "x": 22,
+        "y": 788,
+        "width": 276,
+        "height": 28.796875,
+        "bottom": 816.796875,
+        "right": 298
+      },
+      "footer": {
+        "x": 22,
+        "y": 1604.796875,
+        "width": 276,
+        "height": 46.015625,
+        "bottom": 1650.8125,
+        "right": 298
+      },
+      "sticky": "relative",
+      "active": false,
+      "imageFit": "cover",
+      "background": "rgb(3, 19, 12)",
+      "trackHeight": 919,
+      "imageCount": 4,
+      "rows": [
+        {
+          "y": 1032.484375,
+          "bottom": 1112.484375,
+          "height": 80
+        },
+        {
+          "y": 1112.484375,
+          "bottom": 1192.484375,
+          "height": 80
+        },
+        {
+          "y": 1192.484375,
+          "bottom": 1283.640625,
+          "height": 91.15625
+        },
+        {
+          "y": 1283.640625,
+          "bottom": 1374.796875,
+          "height": 91.15625
+        }
+      ],
+      "hasSvg": false,
+      "hasCanvas": false,
+      "title": "LESS FRICTION.MORE FUNCTION.",
+      "broken": 0,
+      "h1": 1,
+      "stageBackgroundVisible": "1"
+    },
+    "story": {
+      "static": true,
+      "manual": true
+    }
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "pass": true,
+    "metrics": {
+      "width": 390,
+      "viewport": 390,
+      "stage": {
+        "x": 0,
+        "y": 844,
+        "width": 390,
+        "height": 900,
+        "bottom": 1744,
+        "right": 390
+      },
+      "image": {
+        "x": 0,
+        "y": 844,
+        "width": 390,
+        "height": 900,
+        "bottom": 1744,
+        "right": 390
+      },
+      "left": {
+        "x": 22,
+        "y": 902.1875,
+        "width": 346,
+        "height": 488.203125,
+        "bottom": 1390.390625,
+        "right": 368
+      },
+      "detail": {
+        "x": 22,
+        "y": 1415.390625,
+        "width": 346,
+        "height": 174.265625,
+        "bottom": 1589.65625,
+        "right": 368
+      },
+      "head": {
+        "x": 22,
+        "y": 872,
+        "width": 346,
+        "height": 30.1875,
+        "bottom": 902.1875,
+        "right": 368
+      },
+      "footer": {
+        "x": 22,
+        "y": 1589.65625,
+        "width": 346,
+        "height": 48.875,
+        "bottom": 1638.53125,
+        "right": 368
+      },
+      "sticky": "relative",
+      "active": false,
+      "imageFit": "cover",
+      "background": "rgb(3, 19, 12)",
+      "trackHeight": 900,
+      "imageCount": 4,
+      "rows": [
+        {
+          "y": 1087.84375,
+          "bottom": 1164.359375,
+          "height": 76.515625
+        },
+        {
+          "y": 1164.359375,
+          "bottom": 1240.875,
+          "height": 76.515625
+        },
+        {
+          "y": 1240.875,
+          "bottom": 1313.875,
+          "height": 73
+        },
+        {
+          "y": 1313.875,
+          "bottom": 1390.390625,
+          "height": 76.515625
+        }
+      ],
+      "hasSvg": false,
+      "hasCanvas": false,
+      "title": "LESS FRICTION.MORE FUNCTION.",
+      "broken": 0,
+      "h1": 1,
+      "stageBackgroundVisible": "1"
+    },
+    "story": {
+      "static": true,
+      "manual": true
+    }
+  },
+  {
+    "width": 768,
+    "height": 1024,
+    "pass": true,
+    "metrics": {
+      "width": 768,
+      "viewport": 768,
+      "stage": {
+        "x": 0,
+        "y": 1024,
+        "width": 768,
+        "height": 880,
+        "bottom": 1904,
+        "right": 768
+      },
+      "image": {
+        "x": 0,
+        "y": 1024,
+        "width": 768,
+        "height": 880,
+        "bottom": 1904,
+        "right": 768
+      },
+      "left": {
+        "x": 40.3125,
+        "y": 1092.546875,
+        "width": 687.375,
+        "height": 486.1875,
+        "bottom": 1578.734375,
+        "right": 727.6875
+      },
+      "detail": {
+        "x": 40.3125,
+        "y": 1603.734375,
+        "width": 687.375,
+        "height": 207.59375,
+        "bottom": 1811.328125,
+        "right": 727.6875
+      },
+      "head": {
+        "x": 40.3125,
+        "y": 1054,
+        "width": 687.375,
+        "height": 38.546875,
+        "bottom": 1092.546875,
+        "right": 727.6875
+      },
+      "footer": {
+        "x": 40.3125,
+        "y": 1811.328125,
+        "width": 687.375,
+        "height": 56.390625,
+        "bottom": 1867.71875,
+        "right": 727.6875
+      },
+      "sticky": "relative",
+      "active": false,
+      "imageFit": "cover",
+      "background": "rgb(3, 19, 12)",
+      "trackHeight": 880,
+      "imageCount": 4,
+      "rows": [
+        {
+          "y": 1317.734375,
+          "bottom": 1381.734375,
+          "height": 64
+        },
+        {
+          "y": 1381.734375,
+          "bottom": 1445.734375,
+          "height": 64
+        },
+        {
+          "y": 1445.734375,
+          "bottom": 1509.734375,
+          "height": 64
+        },
+        {
+          "y": 1509.734375,
+          "bottom": 1573.734375,
+          "height": 64
+        }
+      ],
+      "hasSvg": false,
+      "hasCanvas": false,
+      "title": "LESS FRICTION.MORE FUNCTION.",
+      "broken": 0,
+      "h1": 1,
+      "stageBackgroundVisible": "1"
+    },
+    "story": {
+      "static": true,
+      "manual": true
+    }
+  },
+  {
+    "width": 960,
+    "height": 740,
+    "pass": true,
+    "metrics": {
+      "width": 960,
+      "viewport": 960,
+      "stage": {
+        "x": 0,
+        "y": 790,
+        "width": 960,
+        "height": 740,
+        "bottom": 1530,
+        "right": 960
+      },
+      "image": {
+        "x": 0,
+        "y": 790,
+        "width": 960,
+        "height": 740,
+        "bottom": 1530,
+        "right": 960
+      },
+      "left": {
+        "x": 50.390625,
+        "y": 836,
+        "width": 433.78125,
+        "height": 634,
+        "bottom": 1470,
+        "right": 484.171875
+      },
+      "detail": {
+        "x": 509.171875,
+        "y": 836,
+        "width": 400.421875,
+        "height": 634,
+        "bottom": 1470,
+        "right": 909.59375
+      },
+      "head": {
+        "x": 50.390625,
+        "y": 808,
+        "width": 859.21875,
+        "height": 28,
+        "bottom": 836,
+        "right": 909.609375
+      },
+      "footer": {
+        "x": 50.390625,
+        "y": 1470,
+        "width": 859.21875,
+        "height": 42,
+        "bottom": 1512,
+        "right": 909.609375
+      },
+      "sticky": "sticky",
+      "active": true,
+      "imageFit": "cover",
+      "background": "rgb(3, 19, 12)",
+      "trackHeight": 2331,
+      "imageCount": 4,
+      "rows": [
+        {
+          "y": 1104.953125,
+          "bottom": 1160.953125,
+          "height": 56
+        },
+        {
+          "y": 1160.953125,
+          "bottom": 1222.109375,
+          "height": 61.15625
+        },
+        {
+          "y": 1222.109375,
+          "bottom": 1278.109375,
+          "height": 56
+        },
+        {
+          "y": 1278.109375,
+          "bottom": 1334.109375,
+          "height": 56
+        }
+      ],
+      "hasSvg": false,
+      "hasCanvas": false,
+      "title": "LESS FRICTION.MORE FUNCTION.",
+      "broken": 0,
+      "h1": 1,
+      "stageBackgroundVisible": "1"
+    },
+    "story": {
+      "states": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "reverse": true,
+      "manual": true
+    }
+  },
+  {
+    "width": 1280,
+    "height": 720,
+    "pass": true,
+    "metrics": {
+      "width": 1280,
+      "viewport": 1280,
+      "stage": {
+        "x": 0,
+        "y": 790,
+        "width": 1280,
+        "height": 720,
+        "bottom": 1510,
+        "right": 1280
+      },
+      "image": {
+        "x": 0,
+        "y": 790,
+        "width": 1280,
+        "height": 720,
+        "bottom": 1510,
+        "right": 1280
+      },
+      "left": {
+        "x": 67.1875,
+        "y": 836,
+        "width": 491.65625,
+        "height": 614,
+        "bottom": 1450,
+        "right": 558.84375
+      },
+      "detail": {
+        "x": 635.640625,
+        "y": 836,
+        "width": 577.171875,
+        "height": 614,
+        "bottom": 1450,
+        "right": 1212.8125
+      },
+      "head": {
+        "x": 67.1875,
+        "y": 808,
+        "width": 1145.625,
+        "height": 28,
+        "bottom": 836,
+        "right": 1212.8125
+      },
+      "footer": {
+        "x": 67.1875,
+        "y": 1450,
+        "width": 1145.625,
+        "height": 42,
+        "bottom": 1492,
+        "right": 1212.8125
+      },
+      "sticky": "sticky",
+      "active": true,
+      "imageFit": "cover",
+      "background": "rgb(3, 19, 12)",
+      "trackHeight": 2268,
+      "imageCount": 4,
+      "rows": [
+        {
+          "y": 1110.46875,
+          "bottom": 1166.46875,
+          "height": 56
+        },
+        {
+          "y": 1166.46875,
+          "bottom": 1222.46875,
+          "height": 56
+        },
+        {
+          "y": 1222.46875,
+          "bottom": 1278.46875,
+          "height": 56
+        },
+        {
+          "y": 1278.46875,
+          "bottom": 1334.46875,
+          "height": 56
+        }
+      ],
+      "hasSvg": false,
+      "hasCanvas": false,
+      "title": "LESS FRICTION.MORE FUNCTION.",
+      "broken": 0,
+      "h1": 1,
+      "stageBackgroundVisible": "1"
+    },
+    "story": {
+      "states": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "reverse": true,
+      "manual": true
+    }
+  },
+  {
+    "width": 1366,
+    "height": 768,
+    "pass": true,
+    "metrics": {
+      "width": 1366,
+      "viewport": 1366,
+      "stage": {
+        "x": 0,
+        "y": 790,
+        "width": 1366,
+        "height": 768,
+        "bottom": 1558,
+        "right": 1366
+      },
+      "image": {
+        "x": 0,
+        "y": 790,
+        "width": 1366,
+        "height": 768,
+        "bottom": 1558,
+        "right": 1366
+      },
+      "left": {
+        "x": 71.703125,
+        "y": 836,
+        "width": 524.6875,
+        "height": 662,
+        "bottom": 1498,
+        "right": 596.390625
+      },
+      "detail": {
+        "x": 678.34375,
+        "y": 836,
+        "width": 615.953125,
+        "height": 662,
+        "bottom": 1498,
+        "right": 1294.296875
+      },
+      "head": {
+        "x": 71.703125,
+        "y": 808,
+        "width": 1222.59375,
+        "height": 28,
+        "bottom": 836,
+        "right": 1294.296875
+      },
+      "footer": {
+        "x": 71.703125,
+        "y": 1498,
+        "width": 1222.59375,
+        "height": 42,
+        "bottom": 1540,
+        "right": 1294.296875
+      },
+      "sticky": "sticky",
+      "active": true,
+      "imageFit": "cover",
+      "background": "rgb(3, 19, 12)",
+      "trackHeight": 2419,
+      "imageCount": 4,
+      "rows": [
+        {
+          "y": 1139.109375,
+          "bottom": 1195.109375,
+          "height": 56
+        },
+        {
+          "y": 1195.109375,
+          "bottom": 1251.109375,
+          "height": 56
+        },
+        {
+          "y": 1251.109375,
+          "bottom": 1307.109375,
+          "height": 56
+        },
+        {
+          "y": 1307.109375,
+          "bottom": 1363.109375,
+          "height": 56
+        }
+      ],
+      "hasSvg": false,
+      "hasCanvas": false,
+      "title": "LESS FRICTION.MORE FUNCTION.",
+      "broken": 0,
+      "h1": 1,
+      "stageBackgroundVisible": "1"
+    },
+    "story": {
+      "states": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "reverse": true,
+      "manual": true
+    }
+  },
+  {
+    "width": 1440,
+    "height": 900,
+    "pass": true,
+    "metrics": {
+      "width": 1440,
+      "viewport": 1440,
+      "stage": {
+        "x": 0,
+        "y": 900,
+        "width": 1440,
+        "height": 900,
+        "bottom": 1800,
+        "right": 1440
+      },
+      "image": {
+        "x": 0,
+        "y": 900,
+        "width": 1440,
+        "height": 900,
+        "bottom": 1800,
+        "right": 1440
+      },
+      "left": {
+        "x": 75.59375,
+        "y": 974.375,
+        "width": 553.109375,
+        "height": 740.546875,
+        "bottom": 1714.921875,
+        "right": 628.703125
+      },
+      "detail": {
+        "x": 715.09375,
+        "y": 974.375,
+        "width": 649.3125,
+        "height": 740.546875,
+        "bottom": 1714.921875,
+        "right": 1364.40625
+      },
+      "head": {
+        "x": 75.59375,
+        "y": 938.6875,
+        "width": 1288.8125,
+        "height": 35.6875,
+        "bottom": 974.375,
+        "right": 1364.40625
+      },
+      "footer": {
+        "x": 75.59375,
+        "y": 1714.921875,
+        "width": 1288.8125,
+        "height": 53.578125,
+        "bottom": 1768.5,
+        "right": 1364.40625
+      },
+      "sticky": "sticky",
+      "active": true,
+      "imageFit": "cover",
+      "background": "rgb(3, 19, 12)",
+      "trackHeight": 2835,
+      "imageCount": 4,
+      "rows": [
+        {
+          "y": 1354.890625,
+          "bottom": 1422.890625,
+          "height": 68
+        },
+        {
+          "y": 1422.890625,
+          "bottom": 1490.890625,
+          "height": 68
+        },
+        {
+          "y": 1490.890625,
+          "bottom": 1558.890625,
+          "height": 68
+        },
+        {
+          "y": 1558.890625,
+          "bottom": 1626.890625,
+          "height": 68
+        }
+      ],
+      "hasSvg": false,
+      "hasCanvas": false,
+      "title": "LESS FRICTION.MORE FUNCTION.",
+      "broken": 0,
+      "h1": 1,
+      "stageBackgroundVisible": "1"
+    },
+    "story": {
+      "states": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "reverse": true,
+      "manual": true
+    }
+  },
+  {
+    "width": 1920,
+    "height": 1080,
+    "pass": true,
+    "metrics": {
+      "width": 1920,
+      "viewport": 1920,
+      "stage": {
+        "x": 0,
+        "y": 1080,
+        "width": 1920,
+        "height": 1080,
+        "bottom": 2160,
+        "right": 1920
+      },
+      "image": {
+        "x": 0,
+        "y": 1080,
+        "width": 1920,
+        "height": 1080,
+        "bottom": 2160,
+        "right": 1920
+      },
+      "left": {
+        "x": 152,
+        "y": 1166.265625,
+        "width": 690.359375,
+        "height": 896.234375,
+        "bottom": 2062.5,
+        "right": 842.359375
+      },
+      "detail": {
+        "x": 957.546875,
+        "y": 1166.265625,
+        "width": 810.453125,
+        "height": 896.234375,
+        "bottom": 2062.5,
+        "right": 1768
+      },
+      "head": {
+        "x": 152,
+        "y": 1126.4375,
+        "width": 1616,
+        "height": 39.828125,
+        "bottom": 1166.265625,
+        "right": 1768
+      },
+      "footer": {
+        "x": 152,
+        "y": 2062.5,
+        "width": 1616,
+        "height": 59.703125,
+        "bottom": 2122.203125,
+        "right": 1768
+      },
+      "sticky": "sticky",
+      "active": true,
+      "imageFit": "cover",
+      "background": "rgb(3, 19, 12)",
+      "trackHeight": 3402,
+      "imageCount": 4,
+      "rows": [
+        {
+          "y": 1602.65625,
+          "bottom": 1672.609375,
+          "height": 69.953125
+        },
+        {
+          "y": 1672.609375,
+          "bottom": 1742.5625,
+          "height": 69.953125
+        },
+        {
+          "y": 1742.5625,
+          "bottom": 1812.515625,
+          "height": 69.953125
+        },
+        {
+          "y": 1812.515625,
+          "bottom": 1882.46875,
+          "height": 69.953125
+        }
+      ],
+      "hasSvg": false,
+      "hasCanvas": false,
+      "title": "LESS FRICTION.MORE FUNCTION.",
+      "broken": 0,
+      "h1": 1,
+      "stageBackgroundVisible": "1"
+    },
+    "story": {
+      "states": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "reverse": true,
+      "manual": true
+    }
+  },
+  {
+    "width": 1440,
+    "height": 600,
+    "pass": true,
+    "metrics": {
+      "width": 1440,
+      "viewport": 1440,
+      "stage": {
+        "x": 0,
+        "y": 790,
+        "width": 1440,
+        "height": 750,
+        "bottom": 1540,
+        "right": 1440
+      },
+      "image": {
+        "x": 0,
+        "y": 790,
+        "width": 1440,
+        "height": 750,
+        "bottom": 1540,
+        "right": 1440
+      },
+      "left": {
+        "x": 75.59375,
+        "y": 836,
+        "width": 553.109375,
+        "height": 630,
+        "bottom": 1466,
+        "right": 628.703125
+      },
+      "detail": {
+        "x": 715.09375,
+        "y": 836,
+        "width": 649.3125,
+        "height": 630,
+        "bottom": 1466,
+        "right": 1364.40625
+      },
+      "head": {
+        "x": 75.59375,
+        "y": 808,
+        "width": 1288.8125,
+        "height": 28,
+        "bottom": 836,
+        "right": 1364.40625
+      },
+      "footer": {
+        "x": 75.59375,
+        "y": 1466,
+        "width": 1288.8125,
+        "height": 42,
+        "bottom": 1508,
+        "right": 1364.40625
+      },
+      "sticky": "relative",
+      "active": false,
+      "imageFit": "cover",
+      "background": "rgb(3, 19, 12)",
+      "trackHeight": 750,
+      "imageCount": 4,
+      "rows": [
+        {
+          "y": 1127.109375,
+          "bottom": 1183.109375,
+          "height": 56
+        },
+        {
+          "y": 1183.109375,
+          "bottom": 1239.109375,
+          "height": 56
+        },
+        {
+          "y": 1239.109375,
+          "bottom": 1295.109375,
+          "height": 56
+        },
+        {
+          "y": 1295.109375,
+          "bottom": 1351.109375,
+          "height": 56
+        }
+      ],
+      "hasSvg": false,
+      "hasCanvas": false,
+      "title": "LESS FRICTION.MORE FUNCTION.",
+      "broken": 0,
+      "h1": 1,
+      "stageBackgroundVisible": "1"
+    },
+    "story": {
+      "static": true,
+      "manual": true
+    }
+  },
+  {
+    "width": 1440,
+    "height": 900,
+    "reducedMotion": true,
+    "pass": true
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "reducedMotion": true,
+    "pass": true
+  },
+  {
+    "width": 1440,
+    "noJS": true,
+    "pass": true
+  }
+]

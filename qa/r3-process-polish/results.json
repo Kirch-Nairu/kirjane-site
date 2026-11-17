@@ -1,0 +1,174 @@
+[
+  {
+    "viewport": "1280x720",
+    "pass": true,
+    "mode": "pinned",
+    "stages": [
+      {
+        "title": "Discover",
+        "introOpacity": 0.948
+      },
+      {
+        "title": "Plan & Design",
+        "introOpacity": 0.844
+      },
+      {
+        "title": "Develop",
+        "introOpacity": 0.74
+      },
+      {
+        "title": "Validate",
+        "introOpacity": 0.74
+      },
+      {
+        "title": "Deliver & Support",
+        "introOpacity": 0.74
+      }
+    ]
+  },
+  {
+    "viewport": "1440x900",
+    "pass": true,
+    "mode": "pinned",
+    "stages": [
+      {
+        "title": "Discover",
+        "introOpacity": 0.948
+      },
+      {
+        "title": "Plan & Design",
+        "introOpacity": 0.844
+      },
+      {
+        "title": "Develop",
+        "introOpacity": 0.74
+      },
+      {
+        "title": "Validate",
+        "introOpacity": 0.74
+      },
+      {
+        "title": "Deliver & Support",
+        "introOpacity": 0.74
+      }
+    ]
+  },
+  {
+    "viewport": "1920x1080",
+    "pass": true,
+    "mode": "pinned",
+    "stages": [
+      {
+        "title": "Discover",
+        "introOpacity": 0.948
+      },
+      {
+        "title": "Plan & Design",
+        "introOpacity": 0.844
+      },
+      {
+        "title": "Develop",
+        "introOpacity": 0.74
+      },
+      {
+        "title": "Validate",
+        "introOpacity": 0.74
+      },
+      {
+        "title": "Deliver & Support",
+        "introOpacity": 0.74
+      }
+    ]
+  },
+  {
+    "viewport": "390x844",
+    "pass": true,
+    "mode": "fallback",
+    "stages": [
+      {
+        "title": "Discover",
+        "introOpacity": 1
+      },
+      {
+        "title": "Plan & Design",
+        "introOpacity": 1
+      },
+      {
+        "title": "Develop",
+        "introOpacity": 1
+      },
+      {
+        "title": "Validate",
+        "introOpacity": 1
+      },
+      {
+        "title": "Deliver & Support",
+        "introOpacity": 1
+      }
+    ]
+  },
+  {
+    "viewport": "960x740",
+    "pass": true,
+    "mode": "fallback",
+    "stages": [
+      {
+        "title": "Discover",
+        "introOpacity": 1
+      },
+      {
+        "title": "Plan & Design",
+        "introOpacity": 1
+      },
+      {
+        "title": "Develop",
+        "introOpacity": 1
+      },
+      {
+        "title": "Validate",
+        "introOpacity": 1
+      },
+      {
+        "title": "Deliver & Support",
+        "introOpacity": 1
+      }
+    ]
+  },
+  {
+    "viewport": "1440x600",
+    "pass": true,
+    "mode": "fallback",
+    "stages": [
+      {
+        "title": "Discover",
+        "introOpacity": 1
+      },
+      {
+        "title": "Plan & Design",
+        "introOpacity": 1
+      },
+      {
+        "title": "Develop",
+        "introOpacity": 1
+      },
+      {
+        "title": "Validate",
+        "introOpacity": 1
+      },
+      {
+        "title": "Deliver & Support",
+        "introOpacity": 1
+      }
+    ]
+  },
+  {
+    "mode": "reduce",
+    "javascript": true,
+    "pass": true
+  },
+  {
+    "mode": "no-preference",
+    "javascript": false,
+    "pass": true
+  }
+]

@@ -1,0 +1,408 @@
+[
+  {
+    "viewport": "320x760",
+    "pass": true,
+    "layout": {
+      "width": 320,
+      "stage": {
+        "w": 320,
+        "h": 940
+      },
+      "art": {
+        "x": 0,
+        "w": 320,
+        "h": 940
+      },
+      "sticky": "relative",
+      "enabled": false,
+      "processSteps": 5,
+      "broken": 0,
+      "hasSvg": false,
+      "hasCanvas": false,
+      "h1": 1,
+      "stepsTop": 2592.78125,
+      "focusBottom": 2554.78125,
+      "headingBottom": 2399.59375,
+      "overlineBottom": 2147.21875,
+      "headingTop": 2147.21875
+    },
+    "story": {
+      "active": false,
+      "manual": true
+    }
+  },
+  {
+    "viewport": "390x844",
+    "pass": true,
+    "layout": {
+      "width": 390,
+      "stage": {
+        "w": 390,
+        "h": 940
+      },
+      "art": {
+        "x": 0,
+        "w": 390,
+        "h": 940
+      },
+      "sticky": "relative",
+      "enabled": false,
+      "processSteps": 5,
+      "broken": 0,
+      "hasSvg": false,
+      "hasCanvas": false,
+      "h1": 1,
+      "stepsTop": 2562.578125,
+      "focusBottom": 2524.578125,
+      "headingBottom": 2387.984375,
+      "overlineBottom": 2165.984375,
+      "headingTop": 2165.984375
+    },
+    "story": {
+      "active": false,
+      "manual": true
+    }
+  },
+  {
+    "viewport": "768x1024",
+    "pass": true,
+    "layout": {
+      "width": 768,
+      "stage": {
+        "w": 768,
+        "h": 870
+      },
+      "art": {
+        "x": 0,
+        "w": 768,
+        "h": 870
+      },
+      "sticky": "relative",
+      "enabled": false,
+      "processSteps": 5,
+      "broken": 0,
+      "hasSvg": false,
+      "hasCanvas": false,
+      "h1": 1,
+      "stepsTop": 2811.875,
+      "focusBottom": 2758.875,
+      "headingBottom": 2608.734375,
+      "overlineBottom": 2349.0625,
+      "headingTop": 2349.0625
+    },
+    "story": {
+      "active": false,
+      "manual": true
+    }
+  },
+  {
+    "viewport": "960x740",
+    "pass": true,
+    "layout": {
+      "width": 960,
+      "stage": {
+        "w": 960,
+        "h": 740
+      },
+      "art": {
+        "x": 0,
+        "w": 960,
+        "h": 740
+      },
+      "sticky": "sticky",
+      "enabled": true,
+      "processSteps": 5,
+      "broken": 0,
+      "hasSvg": false,
+      "hasCanvas": false,
+      "h1": 1,
+      "stepsTop": 4137.09375,
+      "focusBottom": 4100.09375,
+      "headingBottom": 3752.390625,
+      "overlineBottom": 3557.484375,
+      "headingTop": 3557.484375
+    },
+    "story": {
+      "active": true,
+      "steps": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "reverse": true,
+      "focuses": [
+        {
+          "x": "19.84%",
+          "y": "65.40%"
+        },
+        {
+          "x": "35.04%",
+          "y": "57.40%"
+        },
+        {
+          "x": "50.25%",
+          "y": "49.40%"
+        },
+        {
+          "x": "65.45%",
+          "y": "40.63%"
+        },
+        {
+          "x": "80.63%",
+          "y": "31.29%"
+        }
+      ],
+      "servicesRegression": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "viewport": "1280x720",
+    "pass": true,
+    "layout": {
+      "width": 1280,
+      "stage": {
+        "w": 1280,
+        "h": 720
+      },
+      "art": {
+        "x": 0,
+        "w": 1280,
+        "h": 720
+      },
+      "sticky": "sticky",
+      "enabled": true,
+      "processSteps": 5,
+      "broken": 0,
+      "hasSvg": false,
+      "hasCanvas": false,
+      "h1": 1,
+      "stepsTop": 4083.6875,
+      "focusBottom": 4046.6875,
+      "headingBottom": 3753.515625,
+      "overlineBottom": 3523.671875,
+      "headingTop": 3523.671875
+    },
+    "story": {
+      "active": true,
+      "steps": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "reverse": true,
+      "focuses": [
+        {
+          "x": "19.83%",
+          "y": "65.40%"
+        },
+        {
+          "x": "35.05%",
+          "y": "57.39%"
+        },
+        {
+          "x": "50.24%",
+          "y": "49.40%"
+        },
+        {
+          "x": "65.43%",
+          "y": "40.65%"
+        },
+        {
+          "x": "80.65%",
+          "y": "31.27%"
+        }
+      ],
+      "servicesRegression": null
+    }
+  },
+  {
+    "viewport": "1440x900",
+    "pass": true,
+    "layout": {
+      "width": 1440,
+      "stage": {
+        "w": 1440,
+        "h": 900
+      },
+      "art": {
+        "x": 0,
+        "w": 1440,
+        "h": 900
+      },
+      "sticky": "sticky",
+      "enabled": true,
+      "processSteps": 5,
+      "broken": 0,
+      "hasSvg": false,
+      "hasCanvas": false,
+      "h1": 1,
+      "stepsTop": 4927.96875,
+      "focusBottom": 4855.96875,
+      "headingBottom": 4568.375,
+      "overlineBottom": 4237.75,
+      "headingTop": 4237.75
+    },
+    "story": {
+      "active": true,
+      "steps": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "reverse": true,
+      "focuses": [
+        {
+          "x": "19.84%",
+          "y": "65.40%"
+        },
+        {
+          "x": "35.04%",
+          "y": "57.40%"
+        },
+        {
+          "x": "50.24%",
+          "y": "49.40%"
+        },
+        {
+          "x": "65.44%",
+          "y": "40.64%"
+        },
+        {
+          "x": "80.64%",
+          "y": "31.28%"
+        }
+      ],
+      "servicesRegression": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "viewport": "1920x1080",
+    "pass": true,
+    "layout": {
+      "width": 1920,
+      "stage": {
+        "w": 1920,
+        "h": 1080
+      },
+      "art": {
+        "x": 0,
+        "w": 1920,
+        "h": 1080
+      },
+      "sticky": "sticky",
+      "enabled": true,
+      "processSteps": 5,
+      "broken": 0,
+      "hasSvg": false,
+      "hasCanvas": false,
+      "h1": 1,
+      "stepsTop": 5880.609375,
+      "focusBottom": 5797.8125,
+      "headingBottom": 5491.734375,
+      "overlineBottom": 5028.03125,
+      "headingTop": 5028.03125
+    },
+    "story": {
+      "active": true,
+      "steps": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "reverse": true,
+      "focuses": [
+        {
+          "x": "19.83%",
+          "y": "65.40%"
+        },
+        {
+          "x": "35.04%",
+          "y": "57.40%"
+        },
+        {
+          "x": "50.25%",
+          "y": "49.39%"
+        },
+        {
+          "x": "65.44%",
+          "y": "40.64%"
+        },
+        {
+          "x": "80.65%",
+          "y": "31.28%"
+        }
+      ],
+      "servicesRegression": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "viewport": "1440x600",
+    "pass": true,
+    "layout": {
+      "width": 1440,
+      "stage": {
+        "w": 1440,
+        "h": 730
+      },
+      "art": {
+        "x": 0,
+        "w": 1440,
+        "h": 730
+      },
+      "sticky": "relative",
+      "enabled": false,
+      "processSteps": 5,
+      "broken": 0,
+      "hasSvg": false,
+      "hasCanvas": false,
+      "h1": 1,
+      "stepsTop": 2480.0625,
+      "focusBottom": 2443.0625,
+      "headingBottom": 2268.71875,
+      "overlineBottom": 2020.0625,
+      "headingTop": 2020.0625
+    },
+    "story": {
+      "active": false,
+      "manual": true
+    }
+  },
+  {
+    "viewport": "390x844",
+    "reducedMotion": true,
+    "pass": true
+  },
+  {
+    "viewport": "1440x900",
+    "reducedMotion": true,
+    "pass": true
+  },
+  {
+    "viewport": "1440x900",
+    "noJS": true,
+    "pass": true
+  }
+]

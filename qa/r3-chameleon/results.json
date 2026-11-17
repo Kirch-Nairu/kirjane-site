@@ -1,0 +1,105 @@
+{
+  "total": 9,
+  "passed": 9,
+  "cases": [
+    {
+      "viewport": "320x760",
+      "mode": "motion",
+      "pass": true,
+      "image": true,
+      "logoSHA256": "66d782ac8fb372d61bc8f74abb76821254ea5adf4d2c6926f0424fcb04ac666a",
+      "opacity": 0.052,
+      "noHorizontalOverflow": true,
+      "keyboardPass": true,
+      "errors": []
+    },
+    {
+      "viewport": "390x844",
+      "mode": "motion",
+      "pass": true,
+      "image": true,
+      "logoSHA256": "66d782ac8fb372d61bc8f74abb76821254ea5adf4d2c6926f0424fcb04ac666a",
+      "opacity": 0.052,
+      "noHorizontalOverflow": true,
+      "keyboardPass": true,
+      "errors": []
+    },
+    {
+      "viewport": "768x1024",
+      "mode": "motion",
+      "pass": true,
+      "image": true,
+      "logoSHA256": "66d782ac8fb372d61bc8f74abb76821254ea5adf4d2c6926f0424fcb04ac666a",
+      "opacity": 0.105,
+      "noHorizontalOverflow": true,
+      "keyboardPass": true,
+      "errors": []
+    },
+    {
+      "viewport": "1024x768",
+      "mode": "motion",
+      "pass": true,
+      "image": true,
+      "logoSHA256": "66d782ac8fb372d61bc8f74abb76821254ea5adf4d2c6926f0424fcb04ac666a",
+      "opacity": 0.16,
+      "noHorizontalOverflow": true,
+      "keyboardPass": true,
+      "errors": []
+    },
+    {
+      "viewport": "1440x900",
+      "mode": "motion",
+      "pass": true,
+      "image": true,
+      "logoSHA256": "66d782ac8fb372d61bc8f74abb76821254ea5adf4d2c6926f0424fcb04ac666a",
+      "opacity": 0.16,
+      "noHorizontalOverflow": true,
+      "keyboardPass": true,
+      "errors": []
+    },
+    {
+      "viewport": "1920x1080",
+      "mode": "motion",
+      "pass": true,
+      "image": true,
+      "logoSHA256": "66d782ac8fb372d61bc8f74abb76821254ea5adf4d2c6926f0424fcb04ac666a",
+      "opacity": 0.16,
+      "noHorizontalOverflow": true,
+      "keyboardPass": true,
+      "errors": []
+    },
+    {
+      "viewport": "390x844",
+      "mode": "reduce",
+      "pass": true,
+      "image": true,
+      "logoSHA256": "66d782ac8fb372d61bc8f74abb76821254ea5adf4d2c6926f0424fcb04ac666a",
+      "opacity": 0.052,
+      "noHorizontalOverflow": true,
+      "keyboardPass": true,
+      "errors": []
+    },
+    {
+      "viewport": "1440x900",
+      "mode": "reduce",
+      "pass": true,
+      "image": true,
+      "logoSHA256": "66d782ac8fb372d61bc8f74abb76821254ea5adf4d2c6926f0424fcb04ac666a",
+      "opacity": 0.16,
+      "noHorizontalOverflow": true,
+      "keyboardPass": true,
+      "errors": []
+    },
+    {
+      "viewport": "390x844",
+      "mode": "nojs",
+      "pass": true,
+      "image": true,
+      "logoSHA256": "66d782ac8fb372d61bc8f74abb76821254ea5adf4d2c6926f0424fcb04ac666a",
+      "opacity": 0.052,
+      "noHorizontalOverflow": true,
+      "keyboardPass": true,
+      "errors": []
+    }
+  ]
+}

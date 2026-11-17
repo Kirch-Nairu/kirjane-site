@@ -1,0 +1,101 @@
+name: Kirjane Site — self-review and QA
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, edited, ready_for_review]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  self-review-and-qa:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify self-review evidence fields
+        run: python scripts/check_review_gate.py --event "$GITHUB_EVENT_PATH"
+      - name: Check generator parity and syntax
+        run: |
+          python scripts/build.py
+          git diff --exit-code -- index.html
+          if [ -n "$GITHUB_BASE_REF" ]; then
+            git diff --check "$(git merge-base HEAD "origin/$GITHUB_BASE_REF")" HEAD
+          fi
+          python -m compileall -q scripts
+          node --check assets/js/site.js
+          node --check assets/js/r3-home.js
+      - name: Install Chromium test environment
+        run: |
+          python -m pip install playwright==1.57.0
+          python -m playwright install --with-deps chromium
+          python - <<'PY'
+          from playwright.sync_api import sync_playwright
+          from pathlib import Path
+          with sync_playwright() as browser_tools:
+              target = Path(browser_tools.chromium.executable_path)
+          assert target.exists(), f'Chromium unavailable: {target}'
+          Path('/tmp/chromium-test-path').write_text(str(target))
+          PY
+          sudo ln -sf "$(cat /tmp/chromium-test-path)" /usr/bin/chromium
+      - name: Run Chromium motion, accessibility fallback, and regression checks
+        run: |
+          python scripts/qa_r3_polish.py
+          python scripts/qa_r3_m03_stabilization.py
+          python scripts/qa_r3_process_centered.py
+          python scripts/qa_r3_process.py
+          python scripts/qa_r3_separator.py
+          python scripts/qa_r3_fullbleed.py
+          python scripts/qa_r3_home.py
+          python scripts/qa_r3_gallery.py
+          python scripts/qa_r3_chameleon.py
+          python scripts/qa_r3_chameleon_viewports.py
+          python scripts/qa_global_viewports.py
+      - name: Upload browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kirjane-motion-qa
+          path: |
+            qa/r3-process-polish/
+            qa/r3-m03-stabilization/
+            qa/r3-process-centered/
+            qa/r3-process/
+            qa/r3-fullbleed/
+            qa/r3-home-results.json
+            qa/r3-gallery/
+            qa/r3-chameleon/
+            qa/r3-chameleon-viewports/
+            qa/global-viewports/
+          if-no-files-found: ignore
+
+  mobile-native-http-qa:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Chromium
+        run: |
+          python -m pip install playwright==1.57.0
+          python -m playwright install --with-deps chromium
+      - name: Test real served pages with mobile touch input
+        run: python scripts/qa_mobile_native.py
+      - name: Upload mobile screenshots and results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mobile-native-http-qa
+          path: qa/mobile-native/
+          if-no-files-found: warn
