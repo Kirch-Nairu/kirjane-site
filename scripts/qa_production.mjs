@@ -35,6 +35,15 @@ try{
   check(phase+' teardown',!state.overlay&&!state.inert&&!state.animations&&state.opacity==='1'&&(phase!=='complete'||state.opening.completed),state);
   await page.locator('header a[data-page=salryn]').click();await page.waitForURL('**/salryn/');await page.waitForFunction(()=>window.__SITE_READY__);check(phase+' navigation',await page.locator('h1').isVisible());await ctx.close();
  }
+ {
+  const drawerContext=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true});const drawerPage=await drawerContext.newPage();await drawerPage.goto(origin+'/');
+  await drawerPage.waitForFunction(()=>document.querySelector('.brand-opening')?.dataset.phase==='assembly');await drawerPage.locator('#btn-mobile-menu').click();
+  await drawerPage.waitForFunction(()=>!window.__KIRJANE_OPENING__.active);
+  const drawer=await drawerPage.locator('#mobile-drawer').evaluate(el=>({inert:el.inert,hidden:el.getAttribute('aria-hidden')}));
+  check('drawer opened during assembly remains interactive',!drawer.inert&&drawer.hidden==='false',drawer);
+  await drawerPage.locator('#btn-drawer-close').click();check('assembly drawer Close works',await drawerPage.locator('#mobile-drawer').getAttribute('aria-hidden')==='true');
+  await drawerContext.close();
+ }
  const ctx=await browser.newContext({reducedMotion:'reduce'});const page=await ctx.newPage();await page.goto(origin+'/salryn/');await page.waitForFunction(()=>window.__SITE_READY__);await page.locator('#cfg-industry').selectOption('Manufacturing');await page.locator('#btn-cfg-contact').click();await page.waitForURL(url=>url.pathname==='/contact/'&&url.search.length>0);await page.waitForFunction(()=>window.__SITE_READY__);check('Contact handoff',(await page.locator('#c-scope').inputValue()).includes('Manufacturing'));
  const query=new URL(page.url()).search;await page.locator('#c-name').fill('Verification visitor');await page.locator('a.skip-link').focus();await page.keyboard.press('Enter');
  check('Contact Skip retains query and form state',new URL(page.url()).search===query&&await page.locator('#c-name').inputValue()==='Verification visitor');await ctx.close();

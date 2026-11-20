@@ -189,6 +189,9 @@ export function initEditorialOpening({treatment = 'optical', study = false} = {}
         stage.setAttribute('role','region');
         telemetry.stages.push({stage:'assembly',ms:Math.round(elapsed),wallMs:Math.round(now-start)});
         inertStates.forEach((wasInert,element)=>{element.inert=wasInert;});
+        // Interaction now belongs to the page (including an open mobile drawer).
+        // Do not reapply stale entry states when the remaining film completes.
+        inertStates.clear();
       }
       animations.forEach(item=>{
         if (item.settled || elapsed < item.at) return;

@@ -167,8 +167,8 @@
     "Live production host not tested"
   ],
   "productionBuild": {
-    "passed": 59,
-    "total": 59,
+    "passed": 61,
+    "total": 61,
     "includes": [
       "all seven directory routes at 1440, 390, 280 CSS pixels",
       "seven-page axe",
@@ -178,7 +178,8 @@
       "real Skip links on seven routes",
       "non-empty same-route fragment checks",
       "query and input retention after Contact Skip",
-      "one Twitter card per page"
+      "one Twitter card per page",
+      "mobile drawer opened during assembly remains interactive after completion"
     ]
   },
   "dedicatedOpening": {
