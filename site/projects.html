@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Software concept studies | Kirjane Labs</title>
+  <meta name="description" content="Explore conceptual software studies by Kirjane Labs, including branch purchasing, public records, automation and field operations. These are illustrative concepts, not client case studies." />
+  <meta name="theme-color" content="#08110D" />
+  <link rel="icon" type="image/png" href="./assets/brand/favicon.png" sizes="64x64" />
+  <meta property="og:title" content="Software concept studies | Kirjane Labs" />
+  <meta property="og:description" content="Explore conceptual software studies by Kirjane Labs, including branch purchasing, public records, automation and field operations. These are illustrative concepts, not client case studies." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Kirjane Labs" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preload" href="./assets/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="./css/topography.css" />
+  <link rel="stylesheet" href="./css/editorial.css" />
+  <link rel="stylesheet" href="./css/ascension-projects-about.css" />
+</head>
+<body data-editorial="projects">
+  <a href="#main" class="skip-link">Skip to content</a>
+  <canvas id="living-topography-bg" aria-hidden="true"></canvas>
+
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a href="./index.html" class="wordmark" aria-label="Kirjane Home">
+        <img class="wordmark-mark official-brand-mark" src="./assets/brand/kirjane-mark-white.webp" alt="" width="40" height="31" />
+        <span><img class="official-brand-word" src="./assets/brand/kirjane-word-white.webp" alt="Kirjane" width="112" height="20" /></span>
+      </a>
+      <nav class="primary-nav" aria-label="Primary navigation">
+        <a href="./salryn.html" class="nav-salryn" data-page="salryn">Salryn</a>
+        <a href="./services.html" data-page="services">Services</a>
+        <a href="./projects.html" data-page="projects">Projects</a>
+        <a href="./process.html" data-page="process">Process</a>
+        <a href="./about.html" data-page="about">About</a>
+        <a href="./contact.html" data-page="contact">Contact</a>
+      </nav>
+      <button type="button" class="mobile-menu-btn" id="btn-mobile-menu" aria-expanded="false" aria-controls="mobile-drawer">Menu</button>
+    </div>
+  </header>
+
+  <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true" role="dialog" aria-label="Site Navigation">
+    <div class="drawer-head">
+      <span class="wordmark">Kirjane</span>
+      <button type="button" class="mobile-menu-btn" id="btn-drawer-close" style="display:inline-flex;">Close</button>
+    </div>
+    <nav class="drawer-links" aria-label="All Pages">
+      <a href="./index.html" data-page="home">Home <span>Overview</span></a>
+      <a href="./salryn.html" data-page="salryn">Salryn <span>Flagship Product</span></a>
+      <a href="./services.html" data-page="services">Services <span>Capabilities</span></a>
+      <a href="./projects.html" data-page="projects">Projects <span>Exhibition</span></a>
+      <a href="./process.html" data-page="process">Our Process <span>Methodology</span></a>
+      <a href="./about.html" data-page="about">About <span>Company</span></a>
+      <a href="./contact.html" data-page="contact">Contact <span>Start a Brief</span></a>
+    </nav>
+    <div class="drawer-foot">Kirjane Labs &middot; Adapt. Automate. Evolve.</div>
+  </div>
+
+  <div class="page-shell">
+    <noscript><p class="noscript-note">JavaScript is disabled. The page content remains available below.</p></noscript>
+    <main id="main" class="project-index" tabindex="-1">
+      <section class="project-cover">
+        <div class="wrap project-cover-grid">
+          <h1 class="display-xl">Software<br /><em>concept studies.</em></h1>
+          <p class="lead">See how approvals, records, and day-to-day decisions could work in purpose-built software. These are illustrative scenarios.</p>
+          <div class="project-filters" id="projects-filter-tabs" role="group" aria-label="Filter projects" hidden></div>
+        </div>
+      </section>
+      <section aria-label="Project studies" class="projects-gallery">
+        <div id="exhibitions-mount">
+          <div class="wrap project-fallback">
+            <article id="exhibition-enterprise-ledger">
+              <h2 class="display-md">Purchasing across branches</h2>
+              <p>Let branches request supplies, track decisions, and reconcile orders in one place.</p>
+            </article>
+            <article id="exhibition-institutional-records">
+              <h2 class="display-md">Public records case registry</h2>
+              <p>Give residents a way to submit documents and give reviewers one record of what was received, who reviewed it, and why a decision was made.</p>
+            </article>
+            <article id="exhibition-workflow-automation">
+              <h2 class="display-md">Approvals across teams</h2>
+              <p>Route routine requests to the right person and give exceptional requests a named reviewer.</p>
+            </article>
+            <article id="exhibition-custom-application">
+              <h2 class="display-md">Field dispatch and equipment</h2>
+              <p>Help dispatchers schedule crews and let supervisors record which equipment left the depot and when it came back.</p>
+            </article>
+          </div>
+        </div>
+        <p id="project-match-count" class="project-screen-reader" role="status"></p>
+      </section>
+      <section class="project-close">
+        <div class="wrap project-close-grid">
+          <h2 class="display-lg">What work should run <em>better?</em></h2>
+          <a href="./contact.html" class="link-editorial">Start a project brief <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </section>
+    </main>
+    <template id="project-study-template">
+      <article class="project-study">
+        <div class="wrap study-grid">
+          <div class="study-copy">
+            <p class="study-category"></p>
+            <h2 class="display-lg"></h2>
+            <p class="study-summary body-copy"></p>
+            <details class="study-inspection">
+              <summary>Explore the proposed workspace</summary>
+              <div class="study-controls" role="group" aria-label="Workspace views"></div>
+              <section class="study-context" aria-live="polite"></section>
+            </details>
+          </div>
+          <figure class="study-art">
+            <img alt="" />
+          </figure>
+        </div>
+      </article>
+    </template>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <span class="wordmark">Kirjane Labs</span>
+            <p>Software engineering, process automation, systems integration, technical infrastructure, and the Salryn business software ecosystem.</p>
+          </div>
+          <div class="footer-col">
+            <h4>Product &amp; Practice</h4>
+            <ul>
+              <li><a href="./salryn.html">Salryn Ecosystem</a></li>
+              <li><a href="./services.html">Services</a></li>
+              <li><a href="./projects.html">Selected Work</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="./process.html">Our Process</a></li>
+              <li><a href="./about.html">About Kirjane</a></li>
+              <li><a href="./contact.html">Contact Studio</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Ethos</h4>
+            <ul>
+              <li style="color:var(--alabaster);font-size:0.88rem;">Adapt. Automate. Evolve.</li>
+              <li style="color:var(--subtle);font-size:0.84rem;">Concept studies</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>Kirjane Labs &middot; Projects</span>
+          <span>Software concept studies</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <nav class="mobile-dock" aria-label="Quick navigation">
+    <a href="./index.html" data-page="home">Home</a>
+    <a href="./salryn.html" data-page="salryn">Salryn</a>
+    <a href="./projects.html" data-page="projects">Work</a>
+    <a href="./contact.html" data-page="contact">Contact</a>
+  </nav>
+
+  <script type="module" src="./js/ascension-projects-about.js"></script>
+</body>
+</html>

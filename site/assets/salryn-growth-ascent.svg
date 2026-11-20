@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 620" role="img" aria-labelledby="growth-title growth-desc">
+  <title id="growth-title">Salryn Business Growth Diagonal Progression</title>
+  <desc id="growth-desc">Bottom-left to upper-right diagonal ascent showing capability expansion on one unified kernel without replatforming.</desc>
+  <defs>
+    <linearGradient id="ascent-stroke" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#167B55"/>
+      <stop offset="55%" stop-color="#29B682"/>
+      <stop offset="100%" stop-color="#D3F66B"/>
+    </linearGradient>
+    <linearGradient id="ascent-area" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#103D2B" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#167B55" stop-opacity="0.28"/>
+    </linearGradient>
+  </defs>
+  <rect width="1240" height="620" fill="none"/>
+  <path d="M 40 505 C 360 445, 690 295, 1200 75" fill="none" stroke="rgba(22,123,85,0.26)" stroke-width="1.15"/>
+  <path d="M 40 549 C 360 489, 690 339, 1200 119" fill="none" stroke="rgba(22,123,85,0.23)" stroke-width="1.15"/>
+  <path d="M 40 593 C 360 533, 690 383, 1200 163" fill="none" stroke="rgba(22,123,85,0.20)" stroke-width="1.15"/>
+  <path d="M 40 637 C 360 577, 690 427, 1200 207" fill="none" stroke="rgba(22,123,85,0.17)" stroke-width="1.15"/>
+  <path d="M 40 681 C 360 621, 690 471, 1200 251" fill="none" stroke="rgba(22,123,85,0.14)" stroke-width="1.15"/>
+  <path d="M 40 725 C 360 665, 690 515, 1200 295" fill="none" stroke="rgba(22,123,85,0.11)" stroke-width="1.15"/>
+  <path d="M 170 505 C 310 462, 360 426, 450 395 C 570 355, 645 312, 745 275 C 865 228, 955 198, 1045 168 L 1045 565 L 170 565 Z" fill="url(#ascent-area)"/>
+  <path id="growth-ascent-path" d="M 170 505 C 310 462, 360 426, 450 395 C 570 355, 645 312, 745 275 C 865 228, 955 198, 1045 168" fill="none" stroke="url(#ascent-stroke)" stroke-width="3.2" stroke-linecap="round"/>
+  <g class="growth-node" data-stage="0">
+    <line x1="170" y1="505" x2="170" y2="565" stroke="rgba(243,245,237,0.14)" stroke-dasharray="3 5"/>
+    <circle cx="170" cy="505" r="24" fill="rgba(22,123,85,0.16)" stroke="rgba(211,246,107,0.45)" stroke-width="1.2"/>
+    <circle cx="170" cy="505" r="9" fill="#0B1913" stroke="#D3F66B" stroke-width="2.2"/>
+    <circle cx="170" cy="505" r="3.5" fill="#D3F66B"/>
+    <text x="170" y="465" text-anchor="middle" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="16" font-weight="600">Single-Site Core</text>
+    <text x="170" y="551" text-anchor="middle" fill="rgba(243,245,237,0.74)" font-family="Segoe UI, sans-serif" font-size="12">Commerce, Inventory &amp; Security active on one local foundation</text>
+  </g>
+  <g class="growth-node" data-stage="1">
+    <line x1="450" y1="395" x2="450" y2="565" stroke="rgba(243,245,237,0.14)" stroke-dasharray="3 5"/>
+    <circle cx="450" cy="395" r="30" fill="rgba(22,123,85,0.16)" stroke="rgba(211,246,107,0.45)" stroke-width="1.2"/>
+    <circle cx="450" cy="395" r="9" fill="#0B1913" stroke="#D3F66B" stroke-width="2.2"/>
+    <circle cx="450" cy="395" r="3.5" fill="#D3F66B"/>
+    <text x="450" y="349" text-anchor="middle" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="16" font-weight="600">Procurement &amp; Stock</text>
+    <text x="450" y="447" text-anchor="middle" fill="rgba(243,245,237,0.74)" font-family="Segoe UI, sans-serif" font-size="12">Supplier purchasing, receiving &amp; multi-unit stock custody</text>
+  </g>
+  <g class="growth-node" data-stage="2">
+    <line x1="745" y1="275" x2="745" y2="565" stroke="rgba(243,245,237,0.14)" stroke-dasharray="3 5"/>
+    <circle cx="745" cy="275" r="36" fill="rgba(22,123,85,0.16)" stroke="rgba(211,246,107,0.45)" stroke-width="1.2"/>
+    <circle cx="745" cy="275" r="9" fill="#0B1913" stroke="#D3F66B" stroke-width="2.2"/>
+    <circle cx="745" cy="275" r="3.5" fill="#D3F66B"/>
+    <text x="745" y="223" text-anchor="middle" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="16" font-weight="600">Financial &amp; Workforce</text>
+    <text x="745" y="333" text-anchor="middle" fill="rgba(243,245,237,0.74)" font-family="Segoe UI, sans-serif" font-size="12">Minor-unit ledgers, shift custody &amp; approval governance</text>
+  </g>
+  <g class="growth-node" data-stage="3">
+    <line x1="1045" y1="168" x2="1045" y2="565" stroke="rgba(243,245,237,0.14)" stroke-dasharray="3 5"/>
+    <circle cx="1045" cy="168" r="42" fill="rgba(22,123,85,0.16)" stroke="rgba(211,246,107,0.45)" stroke-width="1.2"/>
+    <circle cx="1045" cy="168" r="9" fill="#0B1913" stroke="#D3F66B" stroke-width="2.2"/>
+    <circle cx="1045" cy="168" r="3.5" fill="#D3F66B"/>
+    <text x="1045" y="110" text-anchor="middle" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="16" font-weight="600">Multi-Station Scale</text>
+    <text x="1045" y="232" text-anchor="middle" fill="rgba(243,245,237,0.74)" font-family="Segoe UI, sans-serif" font-size="12">Additional workstations &amp; connected multi-location horizons</text>
+  </g>
+</svg>

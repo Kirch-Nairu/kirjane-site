@@ -1,0 +1,32 @@
+name: Production source verification
+on:
+  pull_request:
+  push:
+    branches: [feat/living-topography-production-r1]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm ci --ignore-scripts
+      - run: npx playwright install --with-deps chromium
+      - run: python scripts/build.py
+      - run: python scripts/build.py --preview --output dist/preview
+      - run: npm test
+      - run: git diff --check origin/main...HEAD
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: exact-sha-verification-${{ github.sha }}
+          path: dist/evidence/

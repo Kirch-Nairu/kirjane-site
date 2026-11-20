@@ -1,0 +1,10 @@
+{
+  "scene": "home-complexity-to-clarity",
+  "variant": "desktop",
+  "width": 1280,
+  "height": 720,
+  "frameCount": 72,
+  "poster": "poster.webp",
+  "pattern": "frame-{index}.webp",
+  "pad": 4
+}

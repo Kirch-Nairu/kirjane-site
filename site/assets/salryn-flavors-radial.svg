@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" role="img" aria-labelledby="flav-title flav-desc">
+  <title id="flav-title">Salryn Twelve Industry Families Radial Constellation</title>
+  <desc id="flav-desc">Radial branching diagram showing all twelve illustrative industry families connected to the shared Salryn kernel and eight core engines.</desc>
+  <defs>
+    <radialGradient id="flav-halo" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#1A8E62" stop-opacity="0.34"/>
+      <stop offset="60%" stop-color="#103D2B" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#08110D" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="960" height="560" fill="none"/>
+  <circle cx="480" cy="280" r="260" fill="url(#flav-halo)"/>
+  <circle cx="480" cy="280" r="185" fill="none" stroke="rgba(22,123,85,0.34)" stroke-width="1.2" stroke-dasharray="4 6"/>
+  <circle cx="480" cy="280" r="112" fill="none" stroke="rgba(211,246,107,0.42)" stroke-width="1.4"/>
+  <g class="radial-flavor-item" data-family="0">
+    <path class="radial-flavor-arc" d="M 480.0 168.0 Q 503.0 131.5 480.0 92.0" fill="none" stroke="rgba(28,162,110,0.45)" stroke-width="1.4"/>
+    <circle class="radial-flavor-dot" cx="480.0" cy="92.0" r="8" fill="#0B1913" stroke="#1EA070" stroke-width="1.8"/>
+    <circle cx="480.0" cy="92.0" r="3" fill="#D3F66B"/>
+    <text x="480.0" y="76.0" text-anchor="middle" fill="#F3F5ED" font-family="Segoe UI, sans-serif" font-size="15" font-weight="600">Retail</text>
+  </g>
+  <g class="radial-flavor-item" data-family="1">
+    <path class="radial-flavor-arc" d="M 536.0 183.0 Q 581.6 161.8 586.0 117.2" fill="none" stroke="rgba(28,162,110,0.45)" stroke-width="1.4"/>
+    <circle class="radial-flavor-dot" cx="586.0" cy="117.2" r="8" fill="#0B1913" stroke="#1EA070" stroke-width="1.8"/>
+    <circle cx="586.0" cy="117.2" r="3" fill="#D3F66B"/>
+    <text x="600.0" y="101.2" text-anchor="start" fill="#F3F5ED" font-family="Segoe UI, sans-serif" font-size="15" font-weight="600">Food &amp; Beverage</text>
+  </g>
+  <g class="radial-flavor-item" data-family="2">
+    <path class="radial-flavor-arc" d="M 577.0 224.0 Q 633.0 223.9 663.6 186.0" fill="none" stroke="rgba(28,162,110,0.45)" stroke-width="1.4"/>
+    <circle class="radial-flavor-dot" cx="663.6" cy="186.0" r="8" fill="#0B1913" stroke="#1EA070" stroke-width="1.8"/>
+    <circle cx="663.6" cy="186.0" r="3" fill="#D3F66B"/>
+    <text x="677.6" y="190.0" text-anchor="start" fill="#F3F5ED" font-family="Segoe UI, sans-serif" font-size="15" font-weight="600">Hardware &amp; Supply</text>
+  </g>
+  <g class="radial-flavor-item" data-family="3">
+    <path class="radial-flavor-arc" d="M 592.0 280.0 Q 643.4 300.9 692.0 280.0" fill="none" stroke="rgba(28,162,110,0.45)" stroke-width="1.4"/>
+    <circle class="radial-flavor-dot" cx="692.0" cy="280.0" r="8" fill="#0B1913" stroke="#1EA070" stroke-width="1.8"/>
+    <circle cx="692.0" cy="280.0" r="3" fill="#D3F66B"/>
+    <text x="706.0" y="284.0" text-anchor="start" fill="#F3F5ED" font-family="Segoe UI, sans-serif" font-size="15" font-weight="600">Healthcare &amp; Wellness</text>
+  </g>
+  <g class="radial-flavor-item" data-family="4">
+    <path class="radial-flavor-arc" d="M 577.0 336.0 Q 610.0 372.4 663.6 374.0" fill="none" stroke="rgba(28,162,110,0.45)" stroke-width="1.4"/>
+    <circle class="radial-flavor-dot" cx="663.6" cy="374.0" r="8" fill="#0B1913" stroke="#1EA070" stroke-width="1.8"/>
+    <circle cx="663.6" cy="374.0" r="3" fill="#D3F66B"/>
+    <text x="677.6" y="378.0" text-anchor="start" fill="#F3F5ED" font-family="Segoe UI, sans-serif" font-size="15" font-weight="600">Services</text>
+  </g>
+  <g class="radial-flavor-item" data-family="5">
+    <path class="radial-flavor-arc" d="M 536.0 377.0 Q 541.8 419.1 586.0 442.8" fill="none" stroke="rgba(28,162,110,0.45)" stroke-width="1.4"/>
+    <circle class="radial-flavor-dot" cx="586.0" cy="442.8" r="8" fill="#0B1913" stroke="#1EA070" stroke-width="1.8"/>
+    <circle cx="586.0" cy="442.8" r="3" fill="#D3F66B"/>
+    <text x="600.0" y="466.8" text-anchor="start" fill="#F3F5ED" font-family="Segoe UI, sans-serif" font-size="15" font-weight="600">Hospitality</text>
+  </g>
+  <g class="radial-flavor-item" data-family="6">
+    <path class="radial-flavor-arc" d="M 480.0 392.0 Q 457.0 428.5 480.0 468.0" fill="none" stroke="rgba(28,162,110,0.45)" stroke-width="1.4"/>
+    <circle class="radial-flavor-dot" cx="480.0" cy="468.0" r="8" fill="#0B1913" stroke="#1EA070" stroke-width="1.8"/>
+    <circle cx="480.0" cy="468.0" r="3" fill="#D3F66B"/>
+    <text x="480.0" y="492.0" text-anchor="middle" fill="#F3F5ED" font-family="Segoe UI, sans-serif" font-size="15" font-weight="600">Rental</text>
+  </g>
+  <g class="radial-flavor-item" data-family="7">
+    <path class="radial-flavor-arc" d="M 424.0 377.0 Q 378.4 398.2 374.0 442.8" fill="none" stroke="rgba(28,162,110,0.45)" stroke-width="1.4"/>
+    <circle class="radial-flavor-dot" cx="374.0" cy="442.8" r="8" fill="#0B1913" stroke="#1EA070" stroke-width="1.8"/>
+    <circle cx="374.0" cy="442.8" r="3" fill="#D3F66B"/>
+    <text x="360.0" y="466.8" text-anchor="end" fill="#F3F5ED" font-family="Segoe UI, sans-serif" font-size="15" font-weight="600">Distribution</text>
+  </g>
+  <g class="radial-flavor-item" data-family="8">
+    <path class="radial-flavor-arc" d="M 383.0 336.0 Q 327.0 336.1 296.4 374.0" fill="none" stroke="rgba(28,162,110,0.45)" stroke-width="1.4"/>
+    <circle class="radial-flavor-dot" cx="296.4" cy="374.0" r="8" fill="#0B1913" stroke="#1EA070" stroke-width="1.8"/>
+    <circle cx="296.4" cy="374.0" r="3" fill="#D3F66B"/>
+    <text x="282.4" y="378.0" text-anchor="end" fill="#F3F5ED" font-family="Segoe UI, sans-serif" font-size="15" font-weight="600">Automotive</text>
+  </g>
+  <g class="radial-flavor-item" data-family="9">
+    <path class="radial-flavor-arc" d="M 368.0 280.0 Q 316.6 259.1 268.0 280.0" fill="none" stroke="rgba(28,162,110,0.45)" stroke-width="1.4"/>
+    <circle class="radial-flavor-dot" cx="268.0" cy="280.0" r="8" fill="#0B1913" stroke="#1EA070" stroke-width="1.8"/>
+    <circle cx="268.0" cy="280.0" r="3" fill="#D3F66B"/>
+    <text x="254.0" y="284.0" text-anchor="end" fill="#F3F5ED" font-family="Segoe UI, sans-serif" font-size="15" font-weight="600">Manufacturing</text>
+  </g>
+  <g class="radial-flavor-item" data-family="10">
+    <path class="radial-flavor-arc" d="M 383.0 224.0 Q 350.0 187.6 296.4 186.0" fill="none" stroke="rgba(28,162,110,0.45)" stroke-width="1.4"/>
+    <circle class="radial-flavor-dot" cx="296.4" cy="186.0" r="8" fill="#0B1913" stroke="#1EA070" stroke-width="1.8"/>
+    <circle cx="296.4" cy="186.0" r="3" fill="#D3F66B"/>
+    <text x="282.4" y="190.0" text-anchor="end" fill="#F3F5ED" font-family="Segoe UI, sans-serif" font-size="15" font-weight="600">Agriculture</text>
+  </g>
+  <g class="radial-flavor-item" data-family="11">
+    <path class="radial-flavor-arc" d="M 424.0 183.0 Q 418.2 140.9 374.0 117.2" fill="none" stroke="rgba(28,162,110,0.45)" stroke-width="1.4"/>
+    <circle class="radial-flavor-dot" cx="374.0" cy="117.2" r="8" fill="#0B1913" stroke="#1EA070" stroke-width="1.8"/>
+    <circle cx="374.0" cy="117.2" r="3" fill="#D3F66B"/>
+    <text x="360.0" y="101.2" text-anchor="end" fill="#F3F5ED" font-family="Segoe UI, sans-serif" font-size="15" font-weight="600">Enterprise</text>
+  </g>
+  <circle cx="480" cy="280" r="66" fill="#0B1E16" stroke="#D3F66B" stroke-width="1.6"/>
+  <text x="480" y="274" text-anchor="middle" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="16" font-weight="600" letter-spacing="2">SALRYN</text>
+  <text x="480" y="294" text-anchor="middle" fill="#D3F66B" font-family="Segoe UI, sans-serif" font-size="10.5" font-weight="600">12 FAMILIES</text>
+</svg>

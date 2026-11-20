@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 740" role="img" aria-labelledby="anat-title anat-desc">
+  <title id="anat-title">Salryn Eight-Engine Exploded Anatomy</title>
+  <desc id="anat-desc">Isometric eight-layer diagram showing Salryn engines stacked from Infrastructure and mandatory Security foundation up through Operations, Workforce, Financial, Procurement, Inventory, and Commerce.</desc>
+  <defs>
+    <linearGradient id="slab-emerald" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1A8A60" stop-opacity="0.34"/>
+      <stop offset="100%" stop-color="#0C261B" stop-opacity="0.88"/>
+    </linearGradient>
+    <linearGradient id="slab-security" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D3F66B" stop-opacity="0.30"/>
+      <stop offset="55%" stop-color="#167B55" stop-opacity="0.52"/>
+      <stop offset="100%" stop-color="#0B2117" stop-opacity="0.92"/>
+    </linearGradient>
+  </defs>
+  <rect width="980" height="740" fill="none"/>
+  <line x1="490" y1="68" x2="490" y2="682" stroke="rgba(211,246,107,0.22)" stroke-width="1.2" stroke-dasharray="4 6"/>
+  <g class="anatomy-layer" id="anatomy-layer-7" data-engine="7">
+    <polygon points="262.0,626.0 490.0,684.0 490.0,695.0 262.0,637.0" fill="rgba(6, 17, 12, 0.9)" stroke="rgba(28, 150, 104, 0.72)" stroke-opacity="0.35" stroke-width="1"/>
+    <polygon points="718.0,626.0 490.0,684.0 490.0,695.0 718.0,637.0" fill="rgba(12, 34, 24, 0.9)" stroke="rgba(28, 150, 104, 0.72)" stroke-opacity="0.45" stroke-width="1"/>
+    <polygon points="490.0,568.0 718.0,626.0 490.0,684.0 262.0,626.0" fill="url(#slab-emerald)" stroke="rgba(28, 150, 104, 0.72)" stroke-width="1.35"/>
+    <circle cx="490.0" cy="626.0" r="5" fill="#1EA070"/>
+    <line x1="677.0" y1="626.0" x2="754.0" y2="626.0" stroke="rgba(28, 150, 104, 0.72)" stroke-opacity="0.65" stroke-width="1.2"/>
+    <circle cx="754.0" cy="626.0" r="3.5" fill="rgba(28, 150, 104, 0.72)"/>
+    <text x="766.0" y="624.0" text-anchor="start" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="15.5" font-weight="600">Infrastructure</text>
+    <text x="766.0" y="642.0" text-anchor="start" fill="rgba(243,245,237,0.72)" font-family="Segoe UI, sans-serif" font-size="11.5">Offline-first store, print vouchers &amp; device runtime</text>
+  </g>
+  <g class="anatomy-layer" id="anatomy-layer-6" data-engine="6">
+    <polygon points="268.0,554.0 490.0,612.0 490.0,623.0 268.0,565.0" fill="rgba(6, 17, 12, 0.9)" stroke="#D3F66B" stroke-opacity="0.35" stroke-width="1"/>
+    <polygon points="712.0,554.0 490.0,612.0 490.0,623.0 712.0,565.0" fill="rgba(12, 34, 24, 0.9)" stroke="#D3F66B" stroke-opacity="0.45" stroke-width="1"/>
+    <polygon points="490.0,496.0 712.0,554.0 490.0,612.0 268.0,554.0" fill="url(#slab-security)" stroke="#D3F66B" stroke-width="2.2"/>
+    <circle cx="490.0" cy="554.0" r="5" fill="#D3F66B"/>
+    <line x1="308.0" y1="554.0" x2="232.0" y2="554.0" stroke="#D3F66B" stroke-opacity="0.65" stroke-width="1.2"/>
+    <circle cx="232.0" cy="554.0" r="3.5" fill="#D3F66B"/>
+    <text x="220.0" y="552.0" text-anchor="end" fill="#D3F66B" font-family="Segoe UI, sans-serif" font-size="15.5" font-weight="600">Security</text>
+    <text x="220.0" y="570.0" text-anchor="end" fill="rgba(243,245,237,0.72)" font-family="Segoe UI, sans-serif" font-size="11.5">Mandatory Core Foundation</text>
+  </g>
+  <g class="anatomy-layer" id="anatomy-layer-5" data-engine="5">
+    <polygon points="274.0,482.0 490.0,540.0 490.0,551.0 274.0,493.0" fill="rgba(6, 17, 12, 0.9)" stroke="rgba(28, 150, 104, 0.72)" stroke-opacity="0.35" stroke-width="1"/>
+    <polygon points="706.0,482.0 490.0,540.0 490.0,551.0 706.0,493.0" fill="rgba(12, 34, 24, 0.9)" stroke="rgba(28, 150, 104, 0.72)" stroke-opacity="0.45" stroke-width="1"/>
+    <polygon points="490.0,424.0 706.0,482.0 490.0,540.0 274.0,482.0" fill="url(#slab-emerald)" stroke="rgba(28, 150, 104, 0.72)" stroke-width="1.35"/>
+    <circle cx="490.0" cy="482.0" r="5" fill="#1EA070"/>
+    <line x1="667.1" y1="482.0" x2="742.0" y2="482.0" stroke="rgba(28, 150, 104, 0.72)" stroke-opacity="0.65" stroke-width="1.2"/>
+    <circle cx="742.0" cy="482.0" r="3.5" fill="rgba(28, 150, 104, 0.72)"/>
+    <text x="754.0" y="480.0" text-anchor="start" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="15.5" font-weight="600">Operations</text>
+    <text x="754.0" y="498.0" text-anchor="start" fill="rgba(243,245,237,0.72)" font-family="Segoe UI, sans-serif" font-size="11.5">Daily workflows, task queues &amp; approvals</text>
+  </g>
+  <g class="anatomy-layer" id="anatomy-layer-4" data-engine="4">
+    <polygon points="280.0,410.0 490.0,468.0 490.0,479.0 280.0,421.0" fill="rgba(6, 17, 12, 0.9)" stroke="rgba(28, 150, 104, 0.72)" stroke-opacity="0.35" stroke-width="1"/>
+    <polygon points="700.0,410.0 490.0,468.0 490.0,479.0 700.0,421.0" fill="rgba(12, 34, 24, 0.9)" stroke="rgba(28, 150, 104, 0.72)" stroke-opacity="0.45" stroke-width="1"/>
+    <polygon points="490.0,352.0 700.0,410.0 490.0,468.0 280.0,410.0" fill="url(#slab-emerald)" stroke="rgba(28, 150, 104, 0.72)" stroke-width="1.35"/>
+    <circle cx="490.0" cy="410.0" r="5" fill="#1EA070"/>
+    <line x1="317.8" y1="410.0" x2="244.0" y2="410.0" stroke="rgba(28, 150, 104, 0.72)" stroke-opacity="0.65" stroke-width="1.2"/>
+    <circle cx="244.0" cy="410.0" r="3.5" fill="rgba(28, 150, 104, 0.72)"/>
+    <text x="232.0" y="408.0" text-anchor="end" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="15.5" font-weight="600">Workforce</text>
+    <text x="232.0" y="426.0" text-anchor="end" fill="rgba(243,245,237,0.72)" font-family="Segoe UI, sans-serif" font-size="11.5">Schedules, roles, shift accountability &amp; custody</text>
+  </g>
+  <g class="anatomy-layer" id="anatomy-layer-3" data-engine="3">
+    <polygon points="286.0,338.0 490.0,396.0 490.0,407.0 286.0,349.0" fill="rgba(6, 17, 12, 0.9)" stroke="rgba(28, 150, 104, 0.72)" stroke-opacity="0.35" stroke-width="1"/>
+    <polygon points="694.0,338.0 490.0,396.0 490.0,407.0 694.0,349.0" fill="rgba(12, 34, 24, 0.9)" stroke="rgba(28, 150, 104, 0.72)" stroke-opacity="0.45" stroke-width="1"/>
+    <polygon points="490.0,280.0 694.0,338.0 490.0,396.0 286.0,338.0" fill="url(#slab-emerald)" stroke="rgba(28, 150, 104, 0.72)" stroke-width="1.35"/>
+    <circle cx="490.0" cy="338.0" r="5" fill="#1EA070"/>
+    <line x1="657.3" y1="338.0" x2="730.0" y2="338.0" stroke="rgba(28, 150, 104, 0.72)" stroke-opacity="0.65" stroke-width="1.2"/>
+    <circle cx="730.0" cy="338.0" r="3.5" fill="rgba(28, 150, 104, 0.72)"/>
+    <text x="742.0" y="336.0" text-anchor="start" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="15.5" font-weight="600">Financial</text>
+    <text x="742.0" y="354.0" text-anchor="start" fill="rgba(243,245,237,0.72)" font-family="Segoe UI, sans-serif" font-size="11.5">Minor-unit ledgers, cash &amp; settlement records</text>
+  </g>
+  <g class="anatomy-layer" id="anatomy-layer-2" data-engine="2">
+    <polygon points="292.0,266.0 490.0,324.0 490.0,335.0 292.0,277.0" fill="rgba(6, 17, 12, 0.9)" stroke="rgba(28, 150, 104, 0.72)" stroke-opacity="0.35" stroke-width="1"/>
+    <polygon points="688.0,266.0 490.0,324.0 490.0,335.0 688.0,277.0" fill="rgba(12, 34, 24, 0.9)" stroke="rgba(28, 150, 104, 0.72)" stroke-opacity="0.45" stroke-width="1"/>
+    <polygon points="490.0,208.0 688.0,266.0 490.0,324.0 292.0,266.0" fill="url(#slab-emerald)" stroke="rgba(28, 150, 104, 0.72)" stroke-width="1.35"/>
+    <circle cx="490.0" cy="266.0" r="5" fill="#1EA070"/>
+    <line x1="327.6" y1="266.0" x2="256.0" y2="266.0" stroke="rgba(28, 150, 104, 0.72)" stroke-opacity="0.65" stroke-width="1.2"/>
+    <circle cx="256.0" cy="266.0" r="3.5" fill="rgba(28, 150, 104, 0.72)"/>
+    <text x="244.0" y="264.0" text-anchor="end" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="15.5" font-weight="600">Procurement</text>
+    <text x="244.0" y="282.0" text-anchor="end" fill="rgba(243,245,237,0.72)" font-family="Segoe UI, sans-serif" font-size="11.5">Requisitions, purchasing &amp; supplier receiving</text>
+  </g>
+  <g class="anatomy-layer" id="anatomy-layer-1" data-engine="1">
+    <polygon points="298.0,194.0 490.0,252.0 490.0,263.0 298.0,205.0" fill="rgba(6, 17, 12, 0.9)" stroke="rgba(28, 150, 104, 0.72)" stroke-opacity="0.35" stroke-width="1"/>
+    <polygon points="682.0,194.0 490.0,252.0 490.0,263.0 682.0,205.0" fill="rgba(12, 34, 24, 0.9)" stroke="rgba(28, 150, 104, 0.72)" stroke-opacity="0.45" stroke-width="1"/>
+    <polygon points="490.0,136.0 682.0,194.0 490.0,252.0 298.0,194.0" fill="url(#slab-emerald)" stroke="rgba(28, 150, 104, 0.72)" stroke-width="1.35"/>
+    <circle cx="490.0" cy="194.0" r="5" fill="#1EA070"/>
+    <line x1="647.4" y1="194.0" x2="718.0" y2="194.0" stroke="rgba(28, 150, 104, 0.72)" stroke-opacity="0.65" stroke-width="1.2"/>
+    <circle cx="718.0" cy="194.0" r="3.5" fill="rgba(28, 150, 104, 0.72)"/>
+    <text x="730.0" y="192.0" text-anchor="start" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="15.5" font-weight="600">Inventory</text>
+    <text x="730.0" y="210.0" text-anchor="start" fill="rgba(243,245,237,0.72)" font-family="Segoe UI, sans-serif" font-size="11.5">Stock custody, lot tracking &amp; movement ledger</text>
+  </g>
+  <g class="anatomy-layer" id="anatomy-layer-0" data-engine="0">
+    <polygon points="304.0,122.0 490.0,180.0 490.0,191.0 304.0,133.0" fill="rgba(6, 17, 12, 0.9)" stroke="rgba(28, 150, 104, 0.72)" stroke-opacity="0.35" stroke-width="1"/>
+    <polygon points="676.0,122.0 490.0,180.0 490.0,191.0 676.0,133.0" fill="rgba(12, 34, 24, 0.9)" stroke="rgba(28, 150, 104, 0.72)" stroke-opacity="0.45" stroke-width="1"/>
+    <polygon points="490.0,64.0 676.0,122.0 490.0,180.0 304.0,122.0" fill="url(#slab-emerald)" stroke="rgba(28, 150, 104, 0.72)" stroke-width="1.35"/>
+    <circle cx="490.0" cy="122.0" r="5" fill="#1EA070"/>
+    <line x1="337.5" y1="122.0" x2="268.0" y2="122.0" stroke="rgba(28, 150, 104, 0.72)" stroke-opacity="0.65" stroke-width="1.2"/>
+    <circle cx="268.0" cy="122.0" r="3.5" fill="rgba(28, 150, 104, 0.72)"/>
+    <text x="256.0" y="120.0" text-anchor="end" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="15.5" font-weight="600">Commerce</text>
+    <text x="256.0" y="138.0" text-anchor="end" fill="rgba(243,245,237,0.72)" font-family="Segoe UI, sans-serif" font-size="11.5">Point of sale, orders &amp; customer transactions</text>
+  </g>
+</svg>

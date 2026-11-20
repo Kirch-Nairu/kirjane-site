@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 180" width="1440" height="180" role="img" aria-labelledby="hz-title hz-desc">
+  <title id="hz-title">Living Topography Chapter Horizon Field</title>
+  <desc id="hz-desc">Parametric multi-strata contour waves connecting narrative chapters into one continuous computational terrain.</desc>
+  <defs>
+    <linearGradient id="hz-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#08110D" stop-opacity="0"/>
+      <stop offset="22%" stop-color="#167B55" stop-opacity="0.72"/>
+      <stop offset="50%" stop-color="#D3F66B" stop-opacity="0.92"/>
+      <stop offset="78%" stop-color="#167B55" stop-opacity="0.72"/>
+      <stop offset="100%" stop-color="#08110D" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <g id="hz-strata">
+    <path class="hz-contour-line" d="M 0 26.0 C 260 26.0, 480 44.0, 720 68.0 S 1180 8.0, 1440 26.0" fill="none" stroke="#167B55" stroke-opacity="0.22" stroke-width="0.75"/>
+    <path class="hz-contour-line" d="M 0 38.8 C 260 32.0, 480 54.8, 720 72.4 S 1180 22.8, 1440 38.8" fill="none" stroke="#167B55" stroke-opacity="0.30" stroke-width="0.75"/>
+    <path class="hz-contour-line" d="M 0 51.6 C 260 38.7, 480 62.2, 720 76.8 S 1180 41.0, 1440 51.6" fill="none" stroke="#167B55" stroke-opacity="0.37" stroke-width="0.75"/>
+    <path class="hz-contour-line" d="M 0 64.4 C 260 46.6, 480 67.2, 720 81.2 S 1180 61.6, 1440 64.4" fill="none" stroke="url(#hz-grad)" stroke-opacity="0.95" stroke-width="1.25"/>
+    <path class="hz-contour-line" d="M 0 77.2 C 260 56.3, 480 71.6, 720 85.6 S 1180 82.8, 1440 77.2" fill="none" stroke="#167B55" stroke-opacity="0.46" stroke-width="0.75"/>
+    <path class="hz-contour-line" d="M 0 90.0 C 260 68.0, 480 77.3, 720 90.0 S 1180 102.7, 1440 90.0" fill="none" stroke="url(#hz-grad)" stroke-opacity="0.95" stroke-width="1.8"/>
+    <path class="hz-contour-line" d="M 0 102.8 C 260 81.9, 480 85.7, 720 94.4 S 1180 119.9, 1440 102.8" fill="none" stroke="#167B55" stroke-opacity="0.46" stroke-width="0.75"/>
+    <path class="hz-contour-line" d="M 0 115.6 C 260 97.8, 480 97.8, 720 98.8 S 1180 133.4, 1440 115.6" fill="none" stroke="url(#hz-grad)" stroke-opacity="0.95" stroke-width="1.25"/>
+    <path class="hz-contour-line" d="M 0 128.4 C 260 115.5, 480 113.8, 720 103.2 S 1180 143.0, 1440 128.4" fill="none" stroke="#167B55" stroke-opacity="0.37" stroke-width="0.75"/>
+    <path class="hz-contour-line" d="M 0 141.2 C 260 134.4, 480 133.0, 720 107.6 S 1180 149.4, 1440 141.2" fill="none" stroke="#167B55" stroke-opacity="0.30" stroke-width="0.75"/>
+    <path class="hz-contour-line" d="M 0 154.0 C 260 154.0, 480 154.0, 720 112.0 S 1180 154.0, 1440 154.0" fill="none" stroke="#167B55" stroke-opacity="0.22" stroke-width="0.75"/>
+    <circle cx="360" cy="90" r="4" fill="#08110D" stroke="#D3F66B" stroke-width="1.8"/>
+    <circle cx="720" cy="90" r="6" fill="#08110D" stroke="#D3F66B" stroke-width="1.8"/>
+    <circle cx="1080" cy="90" r="4" fill="#08110D" stroke="#D3F66B" stroke-width="1.8"/>
+  </g>
+</svg>

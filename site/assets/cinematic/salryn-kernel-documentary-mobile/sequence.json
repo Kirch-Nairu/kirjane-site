@@ -1,0 +1,10 @@
+{
+  "scene": "salryn-kernel-documentary",
+  "variant": "mobile",
+  "width": 540,
+  "height": 720,
+  "frameCount": 48,
+  "poster": "poster.webp",
+  "pattern": "frame-{index}.webp",
+  "pad": 4
+}

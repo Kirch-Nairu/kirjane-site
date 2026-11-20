@@ -1,0 +1,344 @@
+{
+  "baseline": {
+    "browser": "159.0.8154.6",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "startupMs": 7329,
+    "startupTransferredBytes": 1915410,
+    "sustained": {
+      "index": {
+        "elapsedMs": 24417.8,
+        "frameCount": 1432,
+        "p50Ms": 16.7,
+        "p95Ms": 16.7,
+        "p99Ms": 16.8,
+        "framesOver33ms": 2,
+        "longTasks": [],
+        "TaskDurationMs": 6030.9,
+        "ScriptDurationMs": 896.97,
+        "LayoutDurationMs": 533.29,
+        "RecalcStyleDurationMs": 799.9,
+        "before": {
+          "usedBytes": 11861728,
+          "documents": 13,
+          "nodes": 4027,
+          "jsEventListeners": 131
+        },
+        "after": {
+          "usedBytes": 10637576,
+          "documents": 1,
+          "nodes": 1808,
+          "jsEventListeners": 90
+        },
+        "layoutShift": 0.028812331211419753,
+        "sequenceTraffic": {
+          "requests": 216,
+          "transferredBytes": 1365990,
+          "encodedBytes": 3599290
+        },
+        "sequences": {
+          "home-complexity-to-clarity": {
+            "id": "home-complexity-to-clarity",
+            "frameCount": 72,
+            "variant": "desktop",
+            "cacheSize": 32,
+            "maxCache": 32,
+            "maxInflight": 4,
+            "decodedPixelBytes": 117964800,
+            "inflightCount": 0,
+            "targetIndex": 68,
+            "lastDrawnIndex": 68,
+            "posterReady": true,
+            "hasValidMedia": true,
+            "reducedMotion": false,
+            "hits": 319,
+            "misses": 2,
+            "evictions": 211,
+            "failedRequests": 0,
+            "abortedRequests": 0,
+            "drawnFrames": 320
+          }
+        }
+      },
+      "salryn": {
+        "elapsedMs": 48330.6,
+        "frameCount": 2886,
+        "p50Ms": 16.7,
+        "p95Ms": 16.7,
+        "p99Ms": 16.8,
+        "framesOver33ms": 2,
+        "longTasks": [],
+        "TaskDurationMs": 10162.19,
+        "ScriptDurationMs": 1641.29,
+        "LayoutDurationMs": 542.72,
+        "RecalcStyleDurationMs": 691.77,
+        "before": {
+          "usedBytes": 12342356,
+          "documents": 6,
+          "nodes": 4487,
+          "jsEventListeners": 124
+        },
+        "after": {
+          "usedBytes": 11830072,
+          "documents": 1,
+          "nodes": 2165,
+          "jsEventListeners": 124
+        },
+        "layoutShift": 0.1214958970560454,
+        "sequenceTraffic": {
+          "requests": 216,
+          "transferredBytes": 2216916,
+          "encodedBytes": 4943246
+        },
+        "sequences": {
+          "salryn-kernel-documentary": {
+            "id": "salryn-kernel-documentary",
+            "frameCount": 96,
+            "variant": "desktop",
+            "cacheSize": 32,
+            "maxCache": 32,
+            "maxInflight": 4,
+            "decodedPixelBytes": 117964800,
+            "inflightCount": 0,
+            "targetIndex": 95,
+            "lastDrawnIndex": 95,
+            "posterReady": true,
+            "hasValidMedia": true,
+            "reducedMotion": false,
+            "hits": 430,
+            "misses": 5,
+            "evictions": 318,
+            "failedRequests": 0,
+            "abortedRequests": 0,
+            "drawnFrames": 433
+          }
+        }
+      }
+    },
+    "disposal": {
+      "before": {
+        "salryn-kernel-documentary": {
+          "id": "salryn-kernel-documentary",
+          "frameCount": 96,
+          "variant": "desktop",
+          "cacheSize": 32,
+          "maxCache": 32,
+          "maxInflight": 4,
+          "decodedPixelBytes": 117964800,
+          "inflightCount": 0,
+          "targetIndex": 95,
+          "lastDrawnIndex": 95,
+          "posterReady": true,
+          "hasValidMedia": true,
+          "reducedMotion": false,
+          "hits": 430,
+          "misses": 5,
+          "evictions": 318,
+          "failedRequests": 0,
+          "abortedRequests": 0,
+          "drawnFrames": 433
+        }
+      },
+      "registryAfter": {},
+      "allDestroyed": true,
+      "closedBitmaps": true
+    },
+    "repeatedNavigation": [
+      {
+        "usedBytes": 4507004,
+        "documents": 1,
+        "nodes": 2166,
+        "jsEventListeners": 124
+      },
+      {
+        "usedBytes": 4377152,
+        "documents": 1,
+        "nodes": 2166,
+        "jsEventListeners": 124
+      },
+      {
+        "usedBytes": 4384844,
+        "documents": 1,
+        "nodes": 2166,
+        "jsEventListeners": 124
+      }
+    ],
+    "errors": []
+  },
+  "candidate": {
+    "browser": "159.0.8154.6",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "startupMs": 7199,
+    "startupTransferredBytes": 1245754,
+    "sustained": {
+      "index": {
+        "elapsedMs": 24275,
+        "frameCount": 1439,
+        "p50Ms": 16.7,
+        "p95Ms": 16.8,
+        "p99Ms": 16.8,
+        "framesOver33ms": 1,
+        "longTasks": [],
+        "TaskDurationMs": 6662.11,
+        "ScriptDurationMs": 1047.03,
+        "LayoutDurationMs": 531.67,
+        "RecalcStyleDurationMs": 877.32,
+        "before": {
+          "usedBytes": 23844248,
+          "documents": 49,
+          "nodes": 15665,
+          "jsEventListeners": 683
+        },
+        "after": {
+          "usedBytes": 10872624,
+          "documents": 1,
+          "nodes": 2034,
+          "jsEventListeners": 90
+        },
+        "layoutShift": 0.028812331211419753,
+        "sequenceTraffic": {
+          "requests": 216,
+          "transferredBytes": 1365990,
+          "encodedBytes": 3635782
+        },
+        "sequences": {
+          "home-complexity-to-clarity": {
+            "id": "home-complexity-to-clarity",
+            "frameCount": 72,
+            "variant": "desktop",
+            "cacheSize": 22,
+            "maxCache": 32,
+            "maxInflight": 4,
+            "decodedPixelBytes": 81100800,
+            "maxDecodedBytes": 83886080,
+            "singleFrameOverBudget": false,
+            "inflightCount": 0,
+            "targetIndex": 68,
+            "lastDrawnIndex": 68,
+            "posterReady": true,
+            "hasValidMedia": true,
+            "reducedMotion": false,
+            "hits": 320,
+            "misses": 1,
+            "evictions": 240,
+            "failedRequests": 0,
+            "abortedRequests": 0,
+            "drawnFrames": 320
+          }
+        }
+      },
+      "salryn": {
+        "elapsedMs": 48323.6,
+        "frameCount": 2898,
+        "p50Ms": 16.7,
+        "p95Ms": 16.8,
+        "p99Ms": 16.8,
+        "framesOver33ms": 0,
+        "longTasks": [],
+        "TaskDurationMs": 12021.32,
+        "ScriptDurationMs": 2067.04,
+        "LayoutDurationMs": 721.75,
+        "RecalcStyleDurationMs": 910.13,
+        "before": {
+          "usedBytes": 11791644,
+          "documents": 5,
+          "nodes": 3020,
+          "jsEventListeners": 124
+        },
+        "after": {
+          "usedBytes": 11619188,
+          "documents": 1,
+          "nodes": 2183,
+          "jsEventListeners": 124
+        },
+        "layoutShift": 0.12148756287709479,
+        "sequenceTraffic": {
+          "requests": 216,
+          "transferredBytes": 2216916,
+          "encodedBytes": 4909378
+        },
+        "sequences": {
+          "salryn-kernel-documentary": {
+            "id": "salryn-kernel-documentary",
+            "frameCount": 96,
+            "variant": "desktop",
+            "cacheSize": 22,
+            "maxCache": 32,
+            "maxInflight": 4,
+            "decodedPixelBytes": 81100800,
+            "maxDecodedBytes": 83886080,
+            "singleFrameOverBudget": false,
+            "inflightCount": 0,
+            "targetIndex": 95,
+            "lastDrawnIndex": 95,
+            "posterReady": true,
+            "hasValidMedia": true,
+            "reducedMotion": false,
+            "hits": 435,
+            "misses": 1,
+            "evictions": 350,
+            "failedRequests": 0,
+            "abortedRequests": 0,
+            "drawnFrames": 432
+          }
+        }
+      }
+    },
+    "disposal": {
+      "before": {
+        "salryn-kernel-documentary": {
+          "id": "salryn-kernel-documentary",
+          "frameCount": 96,
+          "variant": "desktop",
+          "cacheSize": 22,
+          "maxCache": 32,
+          "maxInflight": 4,
+          "decodedPixelBytes": 81100800,
+          "maxDecodedBytes": 83886080,
+          "singleFrameOverBudget": false,
+          "inflightCount": 0,
+          "targetIndex": 95,
+          "lastDrawnIndex": 95,
+          "posterReady": true,
+          "hasValidMedia": true,
+          "reducedMotion": false,
+          "hits": 435,
+          "misses": 1,
+          "evictions": 350,
+          "failedRequests": 0,
+          "abortedRequests": 0,
+          "drawnFrames": 432
+        }
+      },
+      "registryAfter": {},
+      "allDestroyed": true,
+      "closedBitmaps": true
+    },
+    "repeatedNavigation": [
+      {
+        "usedBytes": 4505088,
+        "documents": 1,
+        "nodes": 2184,
+        "jsEventListeners": 124
+      },
+      {
+        "usedBytes": 4376848,
+        "documents": 1,
+        "nodes": 2184,
+        "jsEventListeners": 124
+      },
+      {
+        "usedBytes": 4385600,
+        "documents": 1,
+        "nodes": 2184,
+        "jsEventListeners": 124
+      }
+    ],
+    "errors": []
+  }
+}

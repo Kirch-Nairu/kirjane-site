@@ -1,55 +1,17 @@
-# Kirjane IT Solutions — Luminous Architecture R2
+# Kirjane — Living Topography
 
-**Status: OWNER-APPROVED DEVELOPMENT BASELINE on `main` (2026-11-16).**  
-**This is not a production deployment or certification of release readiness.**
+Canonical source custody for the accepted seven-page website and verified production hardening. Official origin: https://kirjane.tech. This branch is review preparation, not deployment authority.
 
-Promoted from [PR #7](https://github.com/Kirch-Nairu/kirjane-site/pull/7) at candidate SHA `75122edbf01dbef710ea931bf91960d704fddbdf`. The approved visual system and current implementation are the starting point for all subsequent website changes. Preserve the six-page structure and 12 approved artworks unless KIRCH authorizes changes.
+## Build and local verification
 
-## Pages and assets
+Runtime source is `site/`. Run `python scripts/build.py`, then `python -m http.server 4173 --directory dist/public --bind 127.0.0.1` and open http://127.0.0.1:4173/. Requires Python 3.9+; no frontend runtime package installation is needed. Each build requires a fresh output directory; use `--output dist/new-name` for repeat builds. Browser tests require Node 22+, `npm ci`, and `npx playwright install chromium`; run `npm test`.
 
-Six pre-rendered routes: `/`, `/services/`, `/projects/`, `/about/`, `/process/`, `/contact/`, plus `404.html`.
+Routes: `/`, `/salryn/`, `/services/`, `/projects/`, `/process/`, `/about/`, `/contact/`. Previous directory routes remain usable. Direct `.html` routes remain compatible but canonicalize to directory URLs. The complete runtime is copied locally; there are no CDN dependencies. Contact briefs remain local copy/download interactions and do not submit data to a server.
 
-- 12 owner-approved Luminous Architecture R2 cinematic WebP assets in `assets/visuals/`; high-resolution PNG masters and provenance remain in the Kirjane Drive asset library.
-- Separate desktop/mobile artwork for the homepage and contact page.
-- Semantic HTML content, mobile navigation, interactive service selection, keyboard focus styles, reduced-motion accommodation.
-- Projects artwork is illustrative; no fictitious client testimonials, team biographies, performance numbers, or real-client screenshots.
-- The contact form is intentionally disabled until a verified communication channel, privacy/data-handling measures, and spam protection are tested.
+## Custody and hosting safeguards
 
-## Local development — primary workflow
+Work on a branch, use a Draft PR, publish exact-SHA evidence, and obtain independent review. Never push directly to main, force-push, merge or deploy as part of testing. Localhost is for development; Vercel is staging/preview only; Hostinger is production only after separate authorization. Vercel configuration always applies noindex response headers, noindex HTML and disallow-all robots. `python scripts/build.py --preview` reproduces this locally. Production canonical/social URLs point to the confirmed official origin, including during preview.
 
-Requires Python 3, no package manager or frontend build server.
+The earlier R2 root files and generator are preserved under `legacy/r2/` and `scripts/build_luminous_r2.py`; they are excluded from public build output. The generator is isolated to that legacy directory. Existing historical docs/QA remain historical. Draft PR #8 is the separate earlier R3 proposal and is not merged or closed by this integration.
 
-```powershell
-git clone https://github.com/Kirch-Nairu/kirjane-site.git
-cd kirjane-site
-git switch main
-py -m http.server 8000
-```
-
-Open **http://localhost:8000/**.
-
-On Linux/macOS use `python3 -m http.server 8000`. If editing the content generator, run `python3 scripts/build.py` before previewing, then inspect its changes.
-
-## Hosting policy
-
-| Environment | Destination | Status |
-| --- | --- | --- |
-| Local inspection | localhost | Available immediately |
-| Preview / staging | **Vercel** | Not deployed by this baseline promotion |
-| Public production | **Hostinger** | Not deployed; requires separate go-live authorization |
-
-**Do not use Netlify** for this project. No production deployment is implied by merging into `main`.
-
-## QA evidence and outstanding release gates
-
-- Historical local QA: Python generator PASS, JavaScript syntax PASS, Chromium inline DOM tests **30/30 PASS** across 6 routes × 5 widths. See `docs/QA_REPORT.md`. These were *not* Vercel/Hostinger real-host tests, full accessibility certification, or multi-browser production checks.
-- The original architectural specification proposed React + Vite + TypeScript + Tailwind/React Router. The owner-approved visual baseline is currently dependency-free static HTML/CSS/JavaScript. Treat framework migration as a separate explicit technical decision; it is **not required for localhost visual review**.
-- Before public release: verify official Kirjane logo/colors; audit WCAG 2.2 AA, browsers, SEO, performance, and security; complete rights/provenance review; configure a real contact method and privacy/data retention; verify live host routes and HTTPS; publish real case studies/team details only with authorization.
-- Work on branches from `main`, submit focused PRs, and keep the approved cinematic design intact.
-
-## Source of authority
-
-- Repository: https://github.com/Kirch-Nairu/kirjane-site
-- Initial baseline PR: https://github.com/Kirch-Nairu/kirjane-site/pull/7
-- Visual system: Kirjane Luminous Architecture R2, **12/12 artworks visually approved** by KIRCH
-- Hosting: **localhost → Vercel previews → Hostinger production**. Vercel and Hostinger remain separate from this repository promotion.
+See `docs/PRODUCTION_INTEGRATION.md`, `docs/THIRD_PARTY_NOTICES.md`, and `CONTRIBUTING.md`. No DNS, hosting or production deployment is performed by this build or CI.

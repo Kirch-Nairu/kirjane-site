@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 920" role="img" aria-labelledby="salryn-eco-title salryn-eco-desc">
+  <title id="salryn-eco-title">Salryn Unified Kernel, Eight Engines, and Twelve Industry Families</title>
+  <desc id="salryn-eco-desc">Radial Living Topography architectural diagram showing the unified Salryn kernel surrounded by eight core engines and twelve illustrative industry adaptation families.</desc>
+  <defs>
+    <radialGradient id="eco-bg-glow" cx="50%" cy="50%" r="52%">
+      <stop offset="0%" stop-color="#167B55" stop-opacity="0.34"/>
+      <stop offset="52%" stop-color="#103D2B" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#08110D" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="eco-core-grad" cx="38%" cy="34%" r="68%">
+      <stop offset="0%" stop-color="#22A877"/>
+      <stop offset="52%" stop-color="#104933"/>
+      <stop offset="100%" stop-color="#07130E"/>
+    </radialGradient>
+    <linearGradient id="eco-lime-arc" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D3F66B" stop-opacity="0.92"/>
+      <stop offset="100%" stop-color="#167B55" stop-opacity="0.45"/>
+    </linearGradient>
+  </defs>
+  <rect width="1440" height="920" fill="#08110D"/>
+  <circle cx="720" cy="460" r="440" fill="url(#eco-bg-glow)"/>
+  <g id="salryn-topography-shells">
+    <path id="salryn-shell-outer" d="M 1099.00 460.00 C 1101.19 483.65 1101.21 486.13 1098.88 509.88 C 1096.54 533.63 1095.85 535.98 1089.27 558.95 C 1082.69 581.91 1081.52 583.97 1071.45 605.58 C 1061.38 627.18 1060.03 628.95 1047.30 648.97 C 1034.58 668.99 1033.24 670.61 1018.42 688.98 C 1003.59 707.36 1002.28 708.97 985.54 725.54 C 968.81 742.12 967.37 743.73 948.70 758.05 C 930.03 772.36 928.30 773.82 907.75 785.19 C 887.20 796.56 885.14 797.62 863.08 805.42 C 841.02 813.21 838.73 813.67 815.83 817.66 C 792.94 821.65 790.67 821.49 767.66 822.05 C 744.66 822.61 742.61 822.03 720.00 820.00 C 697.39 817.97 695.61 817.30 673.45 813.60 C 651.29 809.90 649.64 809.43 627.67 804.60 C 605.69 799.76 603.93 799.58 581.87 793.47 C 559.81 787.35 557.75 787.28 535.75 779.13 C 513.75 770.98 511.38 770.68 490.19 759.50 C 469.00 748.31 466.56 747.44 447.46 732.54 C 428.35 717.65 426.23 716.04 410.57 697.43 C 394.91 678.83 393.47 676.58 382.20 655.03 C 370.92 633.48 370.31 630.91 363.60 607.63 C 356.89 584.34 356.98 581.81 354.23 558.01 C 351.48 534.20 351.95 531.95 352.14 508.43 C 352.32 484.91 352.81 482.96 355.00 460.00 C 357.19 437.04 357.49 435.24 361.24 412.77 C 364.99 390.30 365.14 388.44 370.62 366.38 C 376.10 344.33 376.32 342.32 384.08 320.86 C 391.85 299.40 392.40 297.32 402.98 276.97 C 413.56 256.62 414.61 254.67 428.16 236.06 C 441.72 217.46 443.23 215.84 459.46 199.46 C 475.68 183.07 477.47 181.85 495.78 167.79 C 514.09 153.73 515.93 152.81 535.75 140.87 C 555.57 128.93 557.35 128.10 578.36 118.05 C 599.36 108.00 601.15 107.08 623.27 99.01 C 645.40 90.94 647.34 89.94 670.55 84.42 C 693.77 78.89 696.00 78.03 720.00 76.00 C 744.00 73.97 746.50 73.58 770.56 75.97 C 794.61 78.35 797.18 78.72 820.23 85.95 C 843.27 93.18 845.58 94.37 866.59 106.10 C 887.60 117.83 889.39 119.65 907.75 134.81 C 926.11 149.96 927.32 152.04 943.11 169.24 C 958.90 186.44 959.69 188.39 973.54 206.46 C 987.40 224.52 988.11 226.14 1000.83 244.51 C 1013.54 262.89 1014.49 264.22 1026.52 283.03 C 1038.55 301.85 1039.84 303.13 1050.97 322.91 C 1062.09 342.69 1063.57 344.23 1072.88 365.45 C 1082.19 386.66 1083.50 388.63 1089.77 411.32 C 1096.04 434.01 1096.81 436.35 1099.00 460.00 Z" fill="rgba(16,61,43,0.08)" stroke="rgba(243,245,237,0.16)" stroke-width="1.2"/>
+    <path id="salryn-shell-mid" d="M 985.21 460.00 C 984.90 476.54 984.51 478.24 981.07 494.37 C 977.63 510.50 976.86 511.99 970.88 527.22 C 964.91 542.45 963.94 543.68 956.18 557.83 C 948.42 571.98 947.45 573.00 938.54 586.18 C 929.63 599.36 928.78 600.29 919.06 612.74 C 909.34 625.19 908.59 626.18 898.04 638.04 C 887.50 649.90 886.75 651.02 875.11 662.15 C 863.47 673.27 862.58 674.49 849.55 684.38 C 836.52 694.28 835.35 695.45 820.81 703.38 C 806.27 711.30 804.79 712.22 788.97 717.40 C 773.15 722.57 771.43 723.06 754.88 724.93 C 738.33 726.81 736.54 726.75 720.00 725.21 C 703.46 723.67 701.79 723.10 685.97 718.50 C 670.14 713.91 668.73 712.98 654.07 706.05 C 639.41 699.13 638.30 698.05 624.88 689.65 C 611.46 681.25 610.57 680.22 598.15 671.04 C 585.74 661.86 584.93 661.01 573.14 651.39 C 561.35 641.78 560.46 641.09 549.03 630.97 C 537.60 620.85 536.54 620.21 525.52 609.23 C 514.50 598.25 513.28 597.49 503.12 585.22 C 492.95 572.95 491.72 571.91 483.16 558.10 C 474.59 544.29 473.56 542.93 467.43 527.68 C 461.31 512.42 460.67 510.78 457.63 494.54 C 454.60 478.30 454.48 476.54 454.79 460.00 C 455.10 443.46 455.49 441.76 458.93 425.63 C 462.37 409.50 463.14 408.01 469.12 392.78 C 475.09 377.55 476.06 376.32 483.82 362.17 C 491.58 348.02 492.55 347.00 501.46 333.82 C 510.37 320.64 511.22 319.71 520.94 307.26 C 530.66 294.81 531.41 293.82 541.96 281.96 C 552.50 270.10 553.25 268.98 564.89 257.85 C 576.53 246.73 577.42 245.51 590.45 235.62 C 603.48 225.72 604.65 224.55 619.19 216.62 C 633.73 208.70 635.21 207.78 651.03 202.60 C 666.85 197.43 668.57 196.94 685.12 195.07 C 701.67 193.19 703.46 193.25 720.00 194.79 C 736.54 196.33 738.21 196.90 754.03 201.50 C 769.86 206.09 771.27 207.02 785.93 213.95 C 800.59 220.87 801.70 221.95 815.12 230.35 C 828.54 238.75 829.43 239.78 841.85 248.96 C 854.26 258.14 855.07 258.99 866.86 268.61 C 878.65 278.22 879.54 278.91 890.97 289.03 C 902.40 299.15 903.46 299.79 914.48 310.77 C 925.50 321.75 926.72 322.51 936.88 334.78 C 947.05 347.05 948.28 348.09 956.84 361.90 C 965.41 375.71 966.44 377.07 972.57 392.32 C 978.69 407.58 979.33 409.22 982.37 425.46 C 985.40 441.70 985.52 443.46 985.21 460.00 Z" fill="rgba(22,123,85,0.10)" stroke="rgba(22,123,85,0.52)" stroke-width="1.5"/>
+    <path id="salryn-shell-inner" d="M 863.12 460.00 C 864.08 468.98 864.23 469.80 864.11 478.97 C 864.00 488.15 864.04 489.02 862.66 498.22 C 861.28 507.43 861.16 508.33 858.36 517.31 C 855.57 526.29 855.27 527.19 851.00 535.63 C 846.73 544.08 846.25 544.91 840.56 552.51 C 834.88 560.11 834.23 560.82 827.31 567.31 C 820.39 573.79 819.61 574.35 811.72 579.54 C 803.83 584.73 802.98 585.10 794.44 588.93 C 785.89 592.76 785.02 592.97 776.12 595.48 C 767.22 597.99 766.36 598.06 757.35 599.39 C 748.34 600.72 747.53 600.70 738.57 601.02 C 729.60 601.34 728.84 601.26 720.00 600.73 C 711.16 600.21 710.43 600.10 701.72 598.84 C 693.01 597.57 692.30 597.45 683.70 595.46 C 675.11 593.48 674.38 593.33 665.92 590.57 C 657.45 587.81 656.70 587.61 648.44 583.95 C 640.18 580.29 639.40 580.00 631.51 575.32 C 623.62 570.64 622.85 570.23 615.57 564.43 C 608.29 558.64 607.56 558.08 601.18 551.17 C 594.81 544.26 594.18 543.56 589.00 535.63 C 583.82 527.71 583.34 526.88 579.60 518.15 C 575.86 509.43 575.57 508.51 573.41 499.28 C 571.26 490.04 571.17 489.09 570.62 479.67 C 570.07 470.24 570.16 469.31 571.12 460.00 C 572.08 450.69 572.34 449.82 574.61 440.86 C 576.89 431.90 577.25 431.12 580.61 422.65 C 583.96 414.18 584.39 413.49 588.59 405.57 C 592.79 397.64 593.25 397.03 598.12 389.63 C 603.00 382.24 603.45 381.66 608.90 374.75 C 614.35 367.84 614.82 367.28 620.83 360.83 C 626.85 354.38 627.34 353.83 633.97 347.88 C 640.59 341.93 641.14 341.37 648.44 336.05 C 655.74 330.73 656.37 330.20 664.37 325.71 C 672.37 321.22 673.12 320.75 681.78 317.34 C 690.43 313.94 691.28 313.58 700.45 311.52 C 709.63 309.45 710.55 309.26 720.00 308.73 C 729.45 308.21 730.41 308.21 739.84 309.33 C 749.26 310.46 750.20 310.66 759.28 313.41 C 768.36 316.16 769.22 316.56 777.66 320.80 C 786.10 325.03 786.85 325.58 794.44 331.07 C 802.02 336.56 802.65 337.21 809.27 343.66 C 815.90 350.11 816.39 350.82 822.04 357.96 C 827.70 365.10 828.08 365.81 832.84 373.41 C 837.60 381.01 837.91 381.71 841.88 389.63 C 845.85 397.55 846.11 398.23 849.38 406.41 C 852.64 414.59 852.89 415.27 855.46 423.70 C 858.04 432.14 858.28 432.84 860.12 441.55 C 861.96 450.26 862.16 451.02 863.12 460.00 Z" fill="rgba(16,61,43,0.18)" stroke="url(#eco-lime-arc)" stroke-width="1.75"/>
+  </g>
+  <g id="salryn-family-filaments" fill="none">
+    <path class="family-filament" data-family="0" data-engine="0" d="M 720.0 222.0 Q 720.0 156.0 720.0 95.0" stroke="rgba(22,123,85,0.42)" stroke-width="1.2"/>
+    <path class="family-filament" data-family="1" data-engine="1" d="M 888.3 291.7 Q 912.4 218.8 916.0 143.9" stroke="rgba(22,123,85,0.42)" stroke-width="1.2"/>
+    <path class="family-filament" data-family="2" data-engine="2" d="M 958.0 460.0 Q 1025.2 381.3 1059.5 277.5" stroke="rgba(22,123,85,0.42)" stroke-width="1.2"/>
+    <path class="family-filament" data-family="3" data-engine="3" d="M 888.3 628.3 Q 1011.9 576.3 1112.0 460.0" stroke="rgba(22,123,85,0.42)" stroke-width="1.2"/>
+    <path class="family-filament" data-family="4" data-engine="4" d="M 720.0 698.0 Q 878.0 723.3 1059.5 642.5" stroke="rgba(22,123,85,0.42)" stroke-width="1.2"/>
+    <path class="family-filament" data-family="5" data-engine="5" d="M 551.7 628.3 Q 678.8 761.4 916.0 776.1" stroke="rgba(22,123,85,0.42)" stroke-width="1.2"/>
+    <path class="family-filament" data-family="6" data-engine="6" d="M 482.0 460.0 Q 496.6 675.0 720.0 825.0" stroke="rgba(22,123,85,0.42)" stroke-width="1.2"/>
+    <path class="family-filament" data-family="7" data-engine="7" d="M 551.7 291.7 Q 406.7 499.7 524.0 776.1" stroke="rgba(22,123,85,0.42)" stroke-width="1.2"/>
+    <path class="family-filament" data-family="8" data-engine="0" d="M 720.0 222.0 Q 993.7 612.0 380.5 642.5" stroke="rgba(22,123,85,0.42)" stroke-width="1.2"/>
+    <path class="family-filament" data-family="9" data-engine="1" d="M 888.3 291.7 Q 840.9 740.9 328.0 460.0" stroke="rgba(22,123,85,0.42)" stroke-width="1.2"/>
+    <path class="family-filament" data-family="10" data-engine="2" d="M 958.0 460.0 Q 638.2 753.6 380.5 277.5" stroke="rgba(22,123,85,0.42)" stroke-width="1.2"/>
+    <path class="family-filament" data-family="11" data-engine="3" d="M 888.3 628.3 Q 469.3 645.1 524.0 143.9" stroke="rgba(22,123,85,0.42)" stroke-width="1.2"/>
+  </g>
+  <g id="salryn-engine-spokes" fill="none">
+    <line class="engine-spoke" data-engine="0" x1="720.0" y1="364.0" x2="720.0" y2="222.0" stroke="rgba(243,245,237,0.28)" stroke-width="1.25"/>
+    <line class="engine-spoke" data-engine="1" x1="787.9" y1="392.1" x2="888.3" y2="291.7" stroke="rgba(243,245,237,0.28)" stroke-width="1.25"/>
+    <line class="engine-spoke" data-engine="2" x1="816.0" y1="460.0" x2="958.0" y2="460.0" stroke="rgba(243,245,237,0.28)" stroke-width="1.25"/>
+    <line class="engine-spoke" data-engine="3" x1="787.9" y1="527.9" x2="888.3" y2="628.3" stroke="rgba(243,245,237,0.28)" stroke-width="1.25"/>
+    <line class="engine-spoke" data-engine="4" x1="720.0" y1="556.0" x2="720.0" y2="698.0" stroke="rgba(243,245,237,0.28)" stroke-width="1.25"/>
+    <line class="engine-spoke" data-engine="5" x1="652.1" y1="527.9" x2="551.7" y2="628.3" stroke="rgba(243,245,237,0.28)" stroke-width="1.25"/>
+    <line class="engine-spoke" data-engine="6" x1="624.0" y1="460.0" x2="482.0" y2="460.0" stroke="#D3F66B" stroke-width="1.8"/>
+    <line class="engine-spoke" data-engine="7" x1="652.1" y1="392.1" x2="551.7" y2="291.7" stroke="rgba(243,245,237,0.28)" stroke-width="1.25"/>
+  </g>
+  <g id="salryn-family-nodes">
+    <g class="family-node" data-family="0">
+      <circle cx="720.0" cy="95.0" r="6.5" fill="#0B1913" stroke="#167B55" stroke-width="1.8"/>
+      <circle cx="720.0" cy="95.0" r="2.4" fill="#D3F66B"/>
+      <text x="720.0" y="79.0" text-anchor="middle" fill="#F3F5ED" font-family="Segoe UI, sans-serif" font-size="13.5" font-weight="500">Retail</text>
+    </g>
+    <g class="family-node" data-family="1">
+      <circle cx="916.0" cy="143.9" r="6.5" fill="#0B1913" stroke="#167B55" stroke-width="1.8"/>
+      <circle cx="916.0" cy="143.9" r="2.4" fill="#D3F66B"/>
+      <text x="932.0" y="127.9" text-anchor="start" fill="#F3F5ED" font-family="Segoe UI, sans-serif" font-size="13.5" font-weight="500">Food &amp; Beverage</text>
+    </g>
+    <g class="family-node" data-family="2">
+      <circle cx="1059.5" cy="277.5" r="6.5" fill="#0B1913" stroke="#167B55" stroke-width="1.8"/>
+      <circle cx="1059.5" cy="277.5" r="2.4" fill="#D3F66B"/>
+      <text x="1075.5" y="282.5" text-anchor="start" fill="#F3F5ED" font-family="Segoe UI, sans-serif" font-size="13.5" font-weight="500">Hardware &amp; Supply</text>
+    </g>
+    <g class="family-node" data-family="3">
+      <circle cx="1112.0" cy="460.0" r="6.5" fill="#0B1913" stroke="#167B55" stroke-width="1.8"/>
+      <circle cx="1112.0" cy="460.0" r="2.4" fill="#D3F66B"/>
+      <text x="1128.0" y="465.0" text-anchor="start" fill="#F3F5ED" font-family="Segoe UI, sans-serif" font-size="13.5" font-weight="500">Healthcare &amp; Wellness</text>
+    </g>
+    <g class="family-node" data-family="4">
+      <circle cx="1059.5" cy="642.5" r="6.5" fill="#0B1913" stroke="#167B55" stroke-width="1.8"/>
+      <circle cx="1059.5" cy="642.5" r="2.4" fill="#D3F66B"/>
+      <text x="1075.5" y="647.5" text-anchor="start" fill="#F3F5ED" font-family="Segoe UI, sans-serif" font-size="13.5" font-weight="500">Services</text>
+    </g>
+    <g class="family-node" data-family="5">
+      <circle cx="916.0" cy="776.1" r="6.5" fill="#0B1913" stroke="#167B55" stroke-width="1.8"/>
+      <circle cx="916.0" cy="776.1" r="2.4" fill="#D3F66B"/>
+      <text x="932.0" y="800.1" text-anchor="start" fill="#F3F5ED" font-family="Segoe UI, sans-serif" font-size="13.5" font-weight="500">Hospitality</text>
+    </g>
+    <g class="family-node" data-family="6">
+      <circle cx="720.0" cy="825.0" r="6.5" fill="#0B1913" stroke="#167B55" stroke-width="1.8"/>
+      <circle cx="720.0" cy="825.0" r="2.4" fill="#D3F66B"/>
+      <text x="720.0" y="849.0" text-anchor="middle" fill="#F3F5ED" font-family="Segoe UI, sans-serif" font-size="13.5" font-weight="500">Rental</text>
+    </g>
+    <g class="family-node" data-family="7">
+      <circle cx="524.0" cy="776.1" r="6.5" fill="#0B1913" stroke="#167B55" stroke-width="1.8"/>
+      <circle cx="524.0" cy="776.1" r="2.4" fill="#D3F66B"/>
+      <text x="508.0" y="800.1" text-anchor="end" fill="#F3F5ED" font-family="Segoe UI, sans-serif" font-size="13.5" font-weight="500">Distribution</text>
+    </g>
+    <g class="family-node" data-family="8">
+      <circle cx="380.5" cy="642.5" r="6.5" fill="#0B1913" stroke="#167B55" stroke-width="1.8"/>
+      <circle cx="380.5" cy="642.5" r="2.4" fill="#D3F66B"/>
+      <text x="364.5" y="647.5" text-anchor="end" fill="#F3F5ED" font-family="Segoe UI, sans-serif" font-size="13.5" font-weight="500">Automotive</text>
+    </g>
+    <g class="family-node" data-family="9">
+      <circle cx="328.0" cy="460.0" r="6.5" fill="#0B1913" stroke="#167B55" stroke-width="1.8"/>
+      <circle cx="328.0" cy="460.0" r="2.4" fill="#D3F66B"/>
+      <text x="312.0" y="465.0" text-anchor="end" fill="#F3F5ED" font-family="Segoe UI, sans-serif" font-size="13.5" font-weight="500">Manufacturing</text>
+    </g>
+    <g class="family-node" data-family="10">
+      <circle cx="380.5" cy="277.5" r="6.5" fill="#0B1913" stroke="#167B55" stroke-width="1.8"/>
+      <circle cx="380.5" cy="277.5" r="2.4" fill="#D3F66B"/>
+      <text x="364.5" y="282.5" text-anchor="end" fill="#F3F5ED" font-family="Segoe UI, sans-serif" font-size="13.5" font-weight="500">Agriculture</text>
+    </g>
+    <g class="family-node" data-family="11">
+      <circle cx="524.0" cy="143.9" r="6.5" fill="#0B1913" stroke="#167B55" stroke-width="1.8"/>
+      <circle cx="524.0" cy="143.9" r="2.4" fill="#D3F66B"/>
+      <text x="508.0" y="127.9" text-anchor="end" fill="#F3F5ED" font-family="Segoe UI, sans-serif" font-size="13.5" font-weight="500">Enterprise</text>
+    </g>
+  </g>
+  <g id="salryn-engine-nodes">
+    <g class="engine-node" data-engine="0">
+      <rect x="658.0" y="205.0" width="124" height="34" rx="17" fill="rgba(9, 22, 16, 0.92)" stroke="#1EA070" stroke-width="1.25"/>
+      <text x="720.0" y="226.5" text-anchor="middle" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="13" font-weight="600">Commerce</text>
+    </g>
+    <g class="engine-node" data-engine="1">
+      <rect x="826.3" y="274.7" width="124" height="34" rx="17" fill="rgba(9, 22, 16, 0.92)" stroke="#1EA070" stroke-width="1.25"/>
+      <text x="888.3" y="296.2" text-anchor="middle" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="13" font-weight="600">Inventory</text>
+    </g>
+    <g class="engine-node" data-engine="2">
+      <rect x="896.0" y="443.0" width="124" height="34" rx="17" fill="rgba(9, 22, 16, 0.92)" stroke="#1EA070" stroke-width="1.25"/>
+      <text x="958.0" y="464.5" text-anchor="middle" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="13" font-weight="600">Procurement</text>
+    </g>
+    <g class="engine-node" data-engine="3">
+      <rect x="826.3" y="611.3" width="124" height="34" rx="17" fill="rgba(9, 22, 16, 0.92)" stroke="#1EA070" stroke-width="1.25"/>
+      <text x="888.3" y="632.8" text-anchor="middle" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="13" font-weight="600">Financial</text>
+    </g>
+    <g class="engine-node" data-engine="4">
+      <rect x="658.0" y="681.0" width="124" height="34" rx="17" fill="rgba(9, 22, 16, 0.92)" stroke="#1EA070" stroke-width="1.25"/>
+      <text x="720.0" y="702.5" text-anchor="middle" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="13" font-weight="600">Workforce</text>
+    </g>
+    <g class="engine-node" data-engine="5">
+      <rect x="489.7" y="611.3" width="124" height="34" rx="17" fill="rgba(9, 22, 16, 0.92)" stroke="#1EA070" stroke-width="1.25"/>
+      <text x="551.7" y="632.8" text-anchor="middle" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="13" font-weight="600">Operations</text>
+    </g>
+    <g class="engine-node" data-engine="6">
+      <rect x="420.0" y="443.0" width="124" height="34" rx="17" fill="rgba(18, 42, 30, 0.94)" stroke="#D3F66B" stroke-width="1.8"/>
+      <text x="482.0" y="464.5" text-anchor="middle" fill="#D3F66B" font-family="Segoe UI, sans-serif" font-size="13" font-weight="600">Security</text>
+    </g>
+    <g class="engine-node" data-engine="7">
+      <rect x="489.7" y="274.7" width="124" height="34" rx="17" fill="rgba(9, 22, 16, 0.92)" stroke="#1EA070" stroke-width="1.25"/>
+      <text x="551.7" y="296.2" text-anchor="middle" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="13" font-weight="600">Infrastructure</text>
+    </g>
+  </g>
+  <g id="salryn-kernel-core">
+    <circle cx="720" cy="460" r="96" fill="url(#eco-core-grad)" stroke="#D3F66B" stroke-width="1.6"/>
+    <circle cx="720" cy="460" r="82" fill="none" stroke="rgba(243,245,237,0.22)" stroke-width="1" stroke-dasharray="4 5"/>
+    <text x="720" y="452" text-anchor="middle" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="22" font-weight="500" letter-spacing="3">SALRYN</text>
+    <text x="720" y="476" text-anchor="middle" fill="#D3F66B" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="600" letter-spacing="1.8">UNIFIED KERNEL</text>
+    <text x="720" y="496" text-anchor="middle" fill="rgba(243,245,237,0.74)" font-family="Segoe UI, sans-serif" font-size="11">8 Engines · 12 Families</text>
+  </g>
+</svg>

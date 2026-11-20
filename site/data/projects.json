@@ -1,0 +1,185 @@
+{
+  "schemaNote": "Replaceable exhibition manifest. Preserve a study ID to keep existing links working.",
+  "disclosure": "Illustrative software concepts.",
+  "categories": [
+    { "id": "all", "label": "All studies" },
+    { "id": "enterprise", "label": "Branch purchasing" },
+    { "id": "institutional", "label": "Public records" },
+    { "id": "automation", "label": "Automation" },
+    { "id": "custom", "label": "Field operations" }
+  ],
+  "exhibitions": [
+    {
+      "id": "exhibition-enterprise-ledger",
+      "placeholderStatus": "Conceptual Demonstration",
+      "category": "enterprise",
+      "categoryLabel": "Multi-branch operations",
+      "title": "Purchasing across branches",
+      "summary": "Let branches request supplies, track decisions, and reconcile orders in one place.",
+      "visualPlate": "./assets/cinematic/ascension-branch-purchasing-1440.webp",
+      "originalPlate": "./assets/d02-membrane-study.jpg",
+      "visualSources": [
+        { "src": "./assets/cinematic/ascension-branch-purchasing-640.webp", "width": 640 },
+        { "src": "./assets/cinematic/ascension-branch-purchasing-1440.webp", "width": 1200 }
+      ],
+      "visualAlt": "Sculpted emerald laminar strata over dark basalt representing layered enterprise records",
+      "architectureNotes": [
+        "Keep each branch’s records separate while giving finance the access it needs for reconciliation.",
+        "Allow staff to request purchases and require a separate approval before funds can be released.",
+        "Export matching records to the accounting system without re-entering the purchase."
+      ],
+      "interfacePreview": {
+        "surfaceTitle": "Branch purchasing workspace",
+        "views": [
+          {
+            "tab": "Requests",
+            "heading": "From request to order",
+            "rows": [
+              { "name": "Request supplies", "detail": "A branch employee selects items and submits a purchase request.", "state": "Requested", "accent": false },
+              { "name": "Review spending", "detail": "An approver checks the request against the budget and leaves a reason for the decision.", "state": "In review", "accent": true },
+              { "name": "Send the order", "detail": "Purchasing issues the order and the receiving branch records what arrives.", "state": "Ready to order", "accent": false }
+            ]
+          },
+          {
+            "tab": "Reconciliation",
+            "heading": "Trace a purchase back to its records",
+            "rows": [
+              { "name": "Match the receipt", "detail": "Finance checks the delivered quantities against the order and supplier invoice.", "state": "Received", "accent": true },
+              { "name": "Resolve a difference", "detail": "A short delivery stays open for review before payment is released.", "state": "Needs review", "accent": false },
+              { "name": "Close the transaction", "detail": "The linked records stay available after the accounting period closes.", "state": "For reconciliation", "accent": false }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "exhibition-institutional-records",
+      "placeholderStatus": "Conceptual Demonstration",
+      "category": "institutional",
+      "categoryLabel": "Public records",
+      "title": "Public records case registry",
+      "summary": "Give residents a way to submit documents and give reviewers one record of what was received, who reviewed it, and why a decision was made.",
+      "visualPlate": "./assets/cinematic/ascension-public-records-1440.webp",
+      "originalPlate": "./assets/about-horizon-refraction.png",
+      "visualSources": [
+        { "src": "./assets/cinematic/ascension-public-records-640.webp", "width": 640 },
+        { "src": "./assets/cinematic/ascension-public-records-1440.webp", "width": 1440 }
+      ],
+      "visualAlt": "Concentric obsidian and emerald glass strata representing structured institutional records",
+      "architectureNotes": [
+        "Separate the public submission form from internal case review and give each role the access it needs.",
+        "Record the reviewer, time, and reason each time a case advances.",
+        "Verify that records can be restored from backup and protect sensitive files from unnecessary access."
+      ],
+      "interfacePreview": {
+        "surfaceTitle": "Case registry workspace",
+        "views": [
+          {
+            "tab": "Case review",
+            "heading": "Follow a submission through review",
+            "rows": [
+              { "name": "Receive a permit renewal", "detail": "Intake staff confirm the documents are complete and send the case to a reviewer.", "state": "In review", "accent": false },
+              { "name": "Review an annual filing", "detail": "A reviewer checks the filing against the archive and records the outcome.", "state": "Reviewed", "accent": true },
+              { "name": "Escalate a transfer request", "detail": "A designated second reviewer can sign off when the rules require it.", "state": "Needs sign-off", "accent": false }
+            ]
+          },
+          {
+            "tab": "Records",
+            "heading": "Control access to the case history",
+            "rows": [
+              { "name": "Verify the file", "detail": "Compare the stored fingerprint with the original submission when integrity is questioned.", "state": "For verification", "accent": true },
+              { "name": "Limit sensitive data", "detail": "Show only the fields each reviewer needs.", "state": "Restricted access", "accent": false },
+              { "name": "Restore a copy", "detail": "Test a restore away from the live records before relying on the backup.", "state": "Recovery test", "accent": false }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "exhibition-workflow-automation",
+      "placeholderStatus": "Conceptual Demonstration",
+      "category": "automation",
+      "categoryLabel": "Workflow automation",
+      "title": "Approvals across teams",
+      "summary": "Route routine requests to the right person and give exceptional requests a named reviewer.",
+      "visualPlate": "./assets/cinematic/ascension-request-routing-1440.webp",
+      "originalPlate": "./assets/services-optical-conduit.png",
+      "visualSources": [
+        { "src": "./assets/cinematic/ascension-request-routing-640.webp", "width": 640 },
+        { "src": "./assets/cinematic/ascension-request-routing-1440.webp", "width": 1440 }
+      ],
+      "visualAlt": "Flowing blown-emerald optical wave conduits representing automated workflow paths",
+      "architectureNotes": [
+        "Record every step so staff can see where a request is and why it moved.",
+        "Give requests outside the normal rules a clear path to human judgment.",
+        "Retry interrupted transfers without creating a second approval or order."
+      ],
+      "interfacePreview": {
+        "surfaceTitle": "Request routing workspace",
+        "views": [
+          {
+            "tab": "Routing",
+            "heading": "Move a request to the right person",
+            "rows": [
+              { "name": "Check required information", "detail": "Ask for the missing cost center before the request moves forward.", "state": "Needs information", "accent": true },
+              { "name": "Find the approver", "detail": "Route requests by department and spending limits.", "state": "Ready to route", "accent": false },
+              { "name": "Hand off an exception", "detail": "Give requests outside policy to a named reviewer with the original details attached.", "state": "Human review", "accent": false }
+            ]
+          },
+          {
+            "tab": "Recovery",
+            "heading": "Keep interrupted requests visible",
+            "rows": [
+              { "name": "Hold an outgoing update", "detail": "Store the update while the receiving system is unavailable.", "state": "Queued", "accent": true },
+              { "name": "Retry safely", "detail": "When the connection returns, check whether the update has already arrived.", "state": "Ready to retry", "accent": false },
+              { "name": "Tell the operator", "detail": "Explain which request needs attention and why.", "state": "Needs attention", "accent": false }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "exhibition-custom-application",
+      "placeholderStatus": "Conceptual Demonstration",
+      "category": "custom",
+      "categoryLabel": "Field operations",
+      "title": "Field dispatch and equipment",
+      "summary": "Help dispatchers schedule crews and let supervisors record which equipment left the depot and when it came back.",
+      "visualPlate": "./assets/cinematic/ascension-field-dispatch-1440.webp",
+      "originalPlate": "./assets/d02-prism-study.jpg",
+      "visualSources": [
+        { "src": "./assets/cinematic/ascension-field-dispatch-640.webp", "width": 640 },
+        { "src": "./assets/cinematic/ascension-field-dispatch-1440.webp", "width": 1200 }
+      ],
+      "visualAlt": "Refractive emerald optical prism casting calibrated light beams over dark slate",
+      "architectureNotes": [
+        "Give dispatchers and field staff interfaces suited to what each team has to do.",
+        "Keep a history of equipment handovers, with the responsible person and condition recorded each time.",
+        "Allow field notes to wait locally for a connection and make any unresolved synchronization visible."
+      ],
+      "interfacePreview": {
+        "surfaceTitle": "Field dispatch workspace",
+        "views": [
+          {
+            "tab": "Dispatch",
+            "heading": "Prepare a crew for the day",
+            "rows": [
+              { "name": "Assign the job", "detail": "Confirm the crew and equipment before releasing the schedule.", "state": "Scheduled", "accent": true },
+              { "name": "Check out the equipment", "detail": "Record its condition and which supervisor takes responsibility.", "state": "Signed out", "accent": false },
+              { "name": "Reconcile the return", "detail": "Record the return condition and note any damage before closing the assignment.", "state": "For review", "accent": false }
+            ]
+          },
+          {
+            "tab": "System connections",
+            "heading": "Work across depot and field systems",
+            "rows": [
+              { "name": "Check stock availability", "detail": "Read the current equipment list from the depot records.", "state": "Stock check", "accent": true },
+              { "name": "Capture notes on location", "detail": "Keep field updates locally when a connection is unavailable.", "state": "Saved locally", "accent": false },
+              { "name": "Export the daily summary", "detail": "Prepare a report from the same records the dispatcher uses.", "state": "Ready to export", "accent": false }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
