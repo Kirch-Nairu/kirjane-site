@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Our Process | How Kirjane builds software | Kirjane Labs</title>
+  <meta name="description" content="Discover how Kirjane Labs approaches software engineering, from understanding business operations and architecture to implementation, verification and handover." />
+  <meta name="theme-color" content="#08110D" />
+  <link rel="icon" type="image/png" href="./assets/brand/favicon.png" sizes="64x64" />
+  <meta property="og:title" content="Our Process | How Kirjane builds software | Kirjane Labs" />
+  <meta property="og:description" content="Discover how Kirjane Labs approaches software engineering, from understanding business operations and architecture to implementation, verification and handover." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Kirjane Labs" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preload" href="./assets/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="./css/topography.css" />
+  <link rel="stylesheet" href="./css/editorial.css" />
+  <link rel="stylesheet" href="./css/ascension-services-process.css" />
+</head>
+<body data-editorial="process">
+  <a href="#main" class="skip-link">Skip to content</a>
+  <canvas id="living-topography-bg" aria-hidden="true"></canvas>
+
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a href="./index.html" class="wordmark" aria-label="Kirjane Home">
+        <img class="wordmark-mark official-brand-mark" src="./assets/brand/kirjane-mark-white.webp" alt="" width="40" height="31" />
+        <span><img class="official-brand-word" src="./assets/brand/kirjane-word-white.webp" alt="Kirjane" width="112" height="20" /></span>
+      </a>
+      <nav class="primary-nav" aria-label="Primary navigation">
+        <a href="./salryn.html" class="nav-salryn" data-page="salryn">Salryn</a>
+        <a href="./services.html" data-page="services">Services</a>
+        <a href="./projects.html" data-page="projects">Projects</a>
+        <a href="./process.html" data-page="process">Process</a>
+        <a href="./about.html" data-page="about">About</a>
+        <a href="./contact.html" data-page="contact">Contact</a>
+      </nav>
+      <button type="button" class="mobile-menu-btn" id="btn-mobile-menu" aria-expanded="false" aria-controls="mobile-drawer">Menu</button>
+    </div>
+  </header>
+
+  <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true" role="dialog" aria-label="Site Navigation">
+    <div class="drawer-head">
+      <span class="wordmark">Kirjane</span>
+      <button type="button" class="mobile-menu-btn" id="btn-drawer-close" style="display:inline-flex;">Close</button>
+    </div>
+    <nav class="drawer-links" aria-label="All Pages">
+      <a href="./index.html" data-page="home">Home <span>Overview</span></a>
+      <a href="./salryn.html" data-page="salryn">Salryn <span>Flagship Product</span></a>
+      <a href="./services.html" data-page="services">Services <span>Capabilities</span></a>
+      <a href="./projects.html" data-page="projects">Projects <span>Exhibition</span></a>
+      <a href="./process.html" data-page="process">Our Process <span>Methodology</span></a>
+      <a href="./about.html" data-page="about">About <span>Company</span></a>
+      <a href="./contact.html" data-page="contact">Contact <span>Start a Brief</span></a>
+    </nav>
+    <div class="drawer-foot">Kirjane Labs &middot; Adapt. Automate. Evolve.</div>
+  </div>
+
+  <div class="page-shell">
+    <noscript>
+      <div class="noscript-note" style="margin-top:74px;">
+        JavaScript is disabled. You are viewing all five engineering methodology stages in static semantic flow.
+      </div>
+    </noscript>
+    <main id="main" tabindex="-1">
+      <section class="asc-process-hero" data-asc-field>
+        <div class="wrap asc-process-cover">
+          <h1 class="display-xl">Start with the work. <em>Build from there.</em></h1>
+          <p class="lead">We follow a real task from start to finish, then build and test software around what people need to do. Each stage gives your team something concrete to review.</p>
+          <a class="link-editorial" href="#process-journey">Explore the process <span aria-hidden="true">↓</span></a>
+        </div>
+      </section>
+
+      <section class="asc-section asc-paper asc-process-journey" id="process-journey">
+        <div class="wrap asc-process-spread">
+          <div class="asc-process-graphic">
+            <figure class="asc-process-map">
+              <div id="proc-topo-mount" data-status="poster">
+                <img src="./assets/organism-topology.svg" width="1400" height="860" alt="" decoding="async">
+              </div>
+              <figcaption id="proc-active-label" aria-hidden="true">Discovery</figcaption>
+            </figure>
+            <nav class="asc-process-index" aria-label="Jump to a process stage">
+              <a href="#stage-0" data-jump="0">Discovery</a>
+              <a href="#stage-1" data-jump="1">Architecture</a>
+              <a href="#stage-2" data-jump="2">Build</a>
+              <a href="#stage-3" data-jump="3">Verification</a>
+              <a href="#stage-4" data-jump="4">Handover</a>
+            </nav>
+          </div>
+
+          <div class="asc-process-chapters">
+            <article class="stage-chapter" data-step="0" id="stage-0" tabindex="-1" aria-labelledby="stage-heading-0">
+              <h2 class="display-lg" id="stage-heading-0">Understand the work.</h2>
+              <p class="body-copy">We talk to the people doing the work and follow a task through the tools, records, and approvals it touches. Together we agree on the first problem to solve.</p>
+              <p class="asc-deliverable"><strong>What you review</strong><span>A map of the current workflow and an agreed scope.</span></p>
+            </article>
+
+            <article class="stage-chapter" data-step="1" id="stage-1" tabindex="-1" aria-labelledby="stage-heading-1">
+              <h2 class="display-lg" id="stage-heading-1">Decide how it fits.</h2>
+              <p class="body-copy">We work out which systems and people own each record, who can act on it, and which existing tools need to stay connected. We discuss trade-offs with the team that will run the system.</p>
+              <p class="asc-deliverable"><strong>What you review</strong><span>A system outline, access rules, and the plan for connecting existing software.</span></p>
+            </article>
+
+            <article class="stage-chapter" data-step="2" id="stage-2" tabindex="-1" aria-labelledby="stage-heading-2">
+              <h2 class="display-lg" id="stage-heading-2">Build a working slice.</h2>
+              <p class="body-copy">We build a complete path through one useful workflow. Your staff can try it with representative tasks, point out gaps, and help shape what we build next.</p>
+              <p class="asc-deliverable"><strong>What you review</strong><span>Working software you can try and give feedback on.</span></p>
+            </article>
+
+            <article class="stage-chapter" data-step="3" id="stage-3" tabindex="-1" aria-labelledby="stage-heading-3">
+              <h2 class="display-lg" id="stage-heading-3">Test the everyday and the exceptions.</h2>
+              <p class="body-copy">We check routine work alongside cases like a duplicate request, a denied approval, or a lost connection. Your team can see what passed and what needs attention before rollout.</p>
+              <p class="asc-deliverable"><strong>What you review</strong><span>Test results, open issues, and what has been verified for release.</span></p>
+            </article>
+
+            <article class="stage-chapter" data-step="4" id="stage-4" tabindex="-1" aria-labelledby="stage-heading-4">
+              <h2 class="display-lg" id="stage-heading-4">Hand over the system.</h2>
+              <p class="body-copy">We walk your team through setup, support, and recovery. We document how the software is maintained and agree on how changes can be introduced as your operations evolve.</p>
+              <p class="asc-deliverable"><strong>What you review</strong><span>Operating guides, ownership responsibilities, and the maintenance plan.</span></p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="asc-section asc-process-outro asc-practice-close" data-asc-field>
+        <div class="wrap asc-practice-close-grid">
+          <div><h2 class="display-lg">Let's start with <em>one workflow.</em></h2><p class="body-copy">Tell us what your team needs to do, where it slows down, and how you would know that it works better.</p></div>
+          <a href="./contact.html" class="link-editorial">Prepare a project brief <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <span class="wordmark">Kirjane Labs</span>
+            <p>Software engineering, process automation, systems integration, technical infrastructure, and the Salryn business software ecosystem.</p>
+          </div>
+          <div class="footer-col">
+            <h4>Product &amp; Practice</h4>
+            <ul>
+              <li><a href="./salryn.html">Salryn Ecosystem</a></li>
+              <li><a href="./services.html">Services</a></li>
+              <li><a href="./projects.html">Selected Work</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="./process.html">Our Process</a></li>
+              <li><a href="./about.html">About Kirjane</a></li>
+              <li><a href="./contact.html">Contact Studio</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Ethos</h4>
+            <ul>
+              <li style="color:var(--alabaster);font-size:0.88rem;">Adapt. Automate. Evolve.</li>
+              <li style="color:var(--subtle);font-size:0.84rem;">How Kirjane builds software</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>Kirjane Labs &middot; Engineering Methodology</span>
+          <span>Local review prototype</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <nav class="mobile-dock" aria-label="Quick navigation">
+    <a href="./index.html" data-page="home">Home</a>
+    <a href="./salryn.html" data-page="salryn">Salryn</a>
+    <a href="./projects.html" data-page="projects">Work</a>
+    <a href="./contact.html" data-page="contact">Contact</a>
+  </nav>
+
+  <script type="module" src="./js/ascension-services-process.js"></script>
+</body>
+</html>

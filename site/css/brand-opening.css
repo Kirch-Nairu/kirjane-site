@@ -1,0 +1,146 @@
+.brand-opening {
+  --ignition-ink:#f3f5ed;
+  --ignition-ground:#08110d;
+  position:fixed;
+  inset:0;
+  z-index:1000;
+  isolation:isolate;
+  overflow:hidden;
+  background:transparent;
+  color:var(--ignition-ink);
+  font-family:Manrope,"Segoe UI",sans-serif;
+  perspective:1000px;
+}
+.brand-opening[data-tone="ivory"] { --ignition-ink:#103d2b; --ignition-ground:#f3f5ed; }
+.brand-opening:focus { outline:none; }
+.brand-opening[data-tone="forest"] { --ignition-ground:#103d2b; --ignition-ink:#dce5df; }
+.ignition-ground,.ignition-art,.ignition-light,.ignition-contours { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
+.ignition-ground { background:var(--ignition-ground); }
+.ignition-art { left:18%; width:82%; opacity:.35; mix-blend-mode:luminosity; }
+.ignition-art :is(picture,img) { display:block; width:100%; height:100%; object-fit:cover; object-position:right center; }
+.brand-opening[data-tone="ivory"] .ignition-art { opacity:.08; }
+.ignition-contours { fill:none; stroke:currentColor; stroke-width:.7; opacity:.22; }
+.ignition-contours path:nth-child(4n) { stroke-width:1.8; }
+.ignition-light {
+  inset:-20%;
+  width:140%;
+  height:140%;
+  background:linear-gradient(115deg,transparent 38%,rgba(220,229,223,.11) 49%,transparent 60%);
+  transform:translateX(-15%);
+}
+.ignition-glyph {
+  position:absolute;
+  inset:4% 0 8%;
+  display:grid;
+  place-items:center;
+  font-weight:750;
+  font-size:min(77vh,76vw);
+  font-size:min(77svh,76vw);
+  line-height:.82;
+  letter-spacing:-.07em;
+  padding-right:.07em;
+  transform-origin:50% 60%;
+  perspective:900px;
+}
+.ignition-glyph span { grid-area:1/1; }
+.glyph-outline { color:transparent; -webkit-text-stroke:1px var(--ignition-ink); }
+.glyph-solid { color:var(--ignition-ink); }
+.brand-opening[data-phase="atmosphere"] .ignition-glyph { visibility:hidden; }
+.brand-opening:is([data-phase="resolution"],[data-phase="outro"],[data-phase="assembly"]) .ignition-glyph { display:none; }
+.ignition-resolution {
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  visibility:hidden;
+}
+.brand-opening:is([data-phase="resolution"],[data-phase="outro"],[data-phase="assembly"]) .ignition-resolution { visibility:visible; }
+.ignition-word {
+  width:min(65vw,850px);
+  font-size:clamp(2rem,13.5vw,15rem);
+  font-weight:750;
+  line-height:1;
+  letter-spacing:.035em;
+  transform-origin:top left;
+}
+.ignition-word img { display:block; width:100%; height:auto; }
+.ignition-emblem { width:clamp(100px,13vw,170px); height:auto; margin-bottom:2rem; transform-origin:top left; }
+.brand-opening[data-phase="exit"] .ignition-emblem { opacity:0; transition:opacity .2s ease; }
+.ignition-philosophy { margin:1.8rem 0 0; color:#dce5df; font-size:clamp(.95rem,1.55vw,1.35rem); letter-spacing:.1em; }
+.ignition-cue {
+  position:absolute;
+  bottom:calc(2.8rem + env(safe-area-inset-bottom));
+  left:var(--gutter,5.3vw);
+  display:flex;
+  gap:1rem;
+  font-size:.9rem;
+  opacity:0;
+}
+.brand-opening[data-phase="resolution"] .ignition-cue { opacity:1; transition:opacity .3s ease; }
+.ignition-skip {
+  position:absolute;
+  right:calc(2rem + env(safe-area-inset-right));
+  bottom:calc(2rem + env(safe-area-inset-bottom));
+  min-height:44px;
+  padding:.55rem .15rem;
+  display:flex;
+  align-items:center;
+  gap:1rem;
+  border:0;
+  border-bottom:1px solid currentColor;
+  border-radius:0;
+  background:transparent;
+  color:inherit;
+  font:600 .86rem/1.5 Manrope,"Segoe UI",sans-serif;
+  cursor:pointer;
+}
+.ignition-skip:focus-visible { outline:2px solid currentColor; outline-offset:5px; }
+.brand-opening:is([data-phase="outro"],[data-phase="assembly"]) { pointer-events:none; }
+.brand-opening .ignition-skip { pointer-events:auto; }
+.brand-opening:is([data-phase="outro"],[data-phase="assembly"]) :is(.ignition-philosophy,.ignition-cue) { visibility:hidden; }
+.brand-opening[data-phase="exit"] :is(.ignition-philosophy,.ignition-cue,.ignition-contours,.ignition-light) { opacity:0; transition:opacity .25s ease; }
+.brand-opening[data-phase="exit"] .ignition-art { opacity:1; mix-blend-mode:normal; }
+.brand-opening[data-phase="resolution"] .ignition-art { opacity:.4; mix-blend-mode:normal; }
+.brand-opening[data-phase="resolution"] .ignition-contours { opacity:.12; }
+.brand-opening[data-treatment="optical"] .glyph-solid {
+  background:linear-gradient(125deg,var(--ignition-ink) 28%,#a2b8ac 48%,var(--ignition-ink) 63%);
+  background-clip:text;
+  -webkit-background-clip:text;
+  color:transparent;
+}
+.brand-opening[data-treatment="contour"] .glyph-solid {
+  background-image:repeating-linear-gradient(12deg,var(--ignition-ink) 0 1px,transparent 1px 6px);
+  background-clip:text;
+  -webkit-background-clip:text;
+  color:transparent;
+}
+.brand-opening[data-treatment="contour"] .ignition-contours { opacity:.48; }
+.brand-opening[data-treatment="editorial"] .ignition-glyph { font-weight:550; justify-items:start; padding:0 9vw; font-size:min(68svh,72vw); }
+.brand-opening[data-treatment="editorial"] .ignition-contours { opacity:.08; }
+@media(max-width:700px) {
+  .ignition-glyph {
+    inset:12% 0 13%;
+    font-size:min(74svh,140vw);
+    font-weight:750;
+    line-height:1;
+  }
+  .ignition-word { width:80vw; font-size:clamp(1.8rem,14.7vw,6.5rem); letter-spacing:.005em; }
+  .ignition-resolution { padding-bottom:9svh; }
+  .ignition-philosophy { margin-top:1.45rem; font-size:.9rem; letter-spacing:.04em; }
+  .ignition-skip { right:calc(1.25rem + env(safe-area-inset-right)); bottom:calc(5rem + env(safe-area-inset-bottom)); }
+  .ignition-cue { left:1.25rem; bottom:calc(3rem + env(safe-area-inset-bottom)); }
+  .ignition-art { left:0; width:100%; }
+  .ignition-art img { object-position:center; }
+  .brand-opening[data-treatment="editorial"] .ignition-glyph { padding:0 10vw; font-size:min(62svh,105vw); }
+}
+@media(max-height:500px) and (min-width:701px) {
+  .ignition-emblem { width:75px; margin-bottom:.7rem; }
+  .ignition-word { width:42vw; }
+  .ignition-glyph { font-size:76svh; }
+  .ignition-word { font-size:min(13vw,24svh); }
+  .ignition-philosophy { margin-top:1rem; }
+  .ignition-cue { bottom:1.25rem; }
+}
+@media(prefers-reduced-motion:reduce) { .brand-opening { display:none; } }

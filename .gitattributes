@@ -1,0 +1,6 @@
+# Preserve upstream vendor source bytes and notices; upstream formatting is not project-authored code.
+site/vendor/** whitespace=-blank-at-eol,-blank-at-eof,-space-before-tab
+*.webp binary
+*.png binary
+*.jpg binary
+*.woff2 binary

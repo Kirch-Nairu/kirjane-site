@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Contact | Prepare a project brief | Kirjane Labs</title>
+  <meta name="description" content="Prepare a local project brief to discuss your business software and operational requirements with Kirjane Labs. This prototype does not transmit inquiries." />
+  <meta name="theme-color" content="#08110D" />
+  <link rel="icon" type="image/png" href="./assets/brand/favicon.png" sizes="64x64" />
+  <meta property="og:title" content="Contact | Prepare a project brief | Kirjane Labs" />
+  <meta property="og:description" content="Prepare a local project brief to discuss your business software and operational requirements with Kirjane Labs. This prototype does not transmit inquiries." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Kirjane Labs" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preload" href="./assets/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="./css/topography.css" />
+  <link rel="stylesheet" href="./css/editorial.css" />
+  <link rel="stylesheet" href="./css/ascension-contact.css" />
+</head>
+<body data-editorial="contact">
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a href="./index.html" class="wordmark" aria-label="Kirjane Home">
+        <img class="wordmark-mark official-brand-mark" src="./assets/brand/kirjane-mark-white.webp" alt="" width="40" height="31" />
+        <span><img class="official-brand-word" src="./assets/brand/kirjane-word-white.webp" alt="Kirjane" width="112" height="20" /></span>
+      </a>
+      <nav class="primary-nav" aria-label="Primary navigation">
+        <a href="./salryn.html" class="nav-salryn" data-page="salryn">Salryn</a>
+        <a href="./services.html" data-page="services">Services</a>
+        <a href="./projects.html" data-page="projects">Projects</a>
+        <a href="./process.html" data-page="process">Process</a>
+        <a href="./about.html" data-page="about">About</a>
+        <a href="./contact.html" data-page="contact">Contact</a>
+      </nav>
+      <button type="button" class="mobile-menu-btn" id="btn-mobile-menu" aria-expanded="false" aria-controls="mobile-drawer">Menu</button>
+    </div>
+  </header>
+
+  <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true" role="dialog" aria-label="Site Navigation">
+    <div class="drawer-head">
+      <span class="wordmark">Kirjane</span>
+      <button type="button" class="mobile-menu-btn" id="btn-drawer-close" style="display:inline-flex;">Close</button>
+    </div>
+    <nav class="drawer-links" aria-label="All Pages">
+      <a href="./index.html" data-page="home">Home <span>Overview</span></a>
+      <a href="./salryn.html" data-page="salryn">Salryn <span>Flagship Product</span></a>
+      <a href="./services.html" data-page="services">Services <span>Capabilities</span></a>
+      <a href="./projects.html" data-page="projects">Projects <span>Exhibition</span></a>
+      <a href="./process.html" data-page="process">Our Process <span>Methodology</span></a>
+      <a href="./about.html" data-page="about">About <span>Company</span></a>
+      <a href="./contact.html" data-page="contact">Contact <span>Start a Brief</span></a>
+    </nav>
+    <div class="drawer-foot">Kirjane Labs &middot; Adapt. Automate. Evolve.</div>
+  </div>
+
+  <div class="page-shell">
+    <main id="main" class="contact-main" tabindex="-1">
+      <section class="contact-intro wrap" aria-labelledby="contact-title">
+        <h1 class="display-xl" id="contact-title">Tell us how <em>your team works.</em></h1>
+        <div class="contact-intro-note">
+          <p class="lead">Have a workflow to improve or a system to build? Put the essentials in a project brief so the first conversation can start with the work itself.</p>
+          <a class="link-editorial" href="#prepare-brief">Prepare a brief <span aria-hidden="true">↓</span></a>
+        </div>
+      </section>
+
+      <div id="prepare-brief" class="contact-workspace wrap">
+        <section class="contact-brief" aria-labelledby="brief-title">
+          <h2 class="display-md" id="brief-title">Prepare a project brief</h2>
+          <p class="contact-instruction">Your draft stays on this page. Copy or download it when you are ready to share.</p>
+          <noscript>
+            <div class="noscript-note">
+              <p>The brief composer requires JavaScript. You can still prepare the same information in a text document.</p>
+              <ul>
+                <li>Note the areas you want to discuss, such as Salryn, custom software, workflow automation, systems integration or infrastructure.</li>
+                <li>Describe the current workflow, where it breaks down, and what a better outcome would look like.</li>
+                <li>Include your name and any organization context you want to share.</li>
+              </ul>
+            </div>
+          </noscript>
+          <form id="contact-brief-form" hidden novalidate>
+            <fieldset class="contact-form-group" id="c-topic-group" aria-describedby="c-topic-hint">
+              <legend>What would you like to discuss? <span class="contact-required">Required</span></legend>
+              <p class="contact-hint" id="c-topic-hint">Choose all that apply.</p>
+              <div class="contact-topics">
+                <label><input type="checkbox" name="topic" value="Salryn" data-scope="salryn" id="chk-salryn" /> Salryn</label>
+                <label><input type="checkbox" name="topic" value="Custom software" data-scope="software" id="chk-software" checked /> Custom software</label>
+                <label><input type="checkbox" name="topic" value="Workflow automation" data-scope="automation" /> Workflow automation</label>
+                <label><input type="checkbox" name="topic" value="Integration and infrastructure" data-scope="integration" /> Integration and infrastructure</label>
+              </div>
+              <p class="contact-phone-summary" aria-hidden="true"><strong>In your brief:</strong> <span id="c-phone-summary">Custom software</span></p>
+              <p class="contact-error" id="c-topic-error" hidden>Choose at least one discussion topic.</p>
+            </fieldset>
+
+            <div class="contact-form-group">
+              <label for="c-scope">What is slowing your team down? <span class="contact-required">Required</span></label>
+              <p class="contact-hint" id="c-scope-hint">Tell us how the work happens today and what you want to change.</p>
+              <textarea id="c-scope" rows="5" required aria-describedby="c-scope-hint"></textarea>
+              <p class="contact-error" id="c-scope-error" hidden>Describe your current workflow or the change you want to make.</p>
+            </div>
+
+            <fieldset class="contact-form-group">
+              <legend>Who is this for?</legend>
+              <div class="contact-fields">
+                <div>
+                  <label for="c-name">Your name <span class="contact-required">Required</span></label>
+                <input id="c-name" type="text" autocomplete="name" required />
+                  <p class="contact-error" id="c-name-error" hidden>Enter your name.</p>
+                </div>
+                <div>
+                  <label for="c-org">Organization <span class="contact-required">Optional</span></label>
+                  <input id="c-org" type="text" autocomplete="organization" />
+                </div>
+              </div>
+              <label for="c-sector">Organization type <span class="contact-required">Optional</span></label>
+              <select id="c-sector">
+                <option value="">Select organization type</option>
+                <option value="Business">Business</option>
+                <option value="Public institution">Public institution</option>
+                <option value="Corporate partner">Corporate partner</option>
+              </select>
+            </fieldset>
+
+            <p class="contact-error" id="c-error" role="alert" hidden></p>
+            <button type="submit" class="contact-button" id="btn-compose-brief">Create brief <span aria-hidden="true">↗</span></button>
+          </form>
+
+          <section class="brief-result" id="c-result" aria-labelledby="brief-result-title" hidden>
+            <h3 id="brief-result-title" tabindex="-1">Your brief is ready</h3>
+            <p>Copy or download this draft to share it yourself.</p>
+            <pre id="c-brief-pre"></pre>
+            <div class="contact-actions">
+              <button type="button" class="contact-button" id="btn-c-copy">Copy brief</button>
+              <button type="button" class="contact-button contact-button-secondary" id="btn-c-dl">Download text</button>
+            </div>
+            <p id="c-copy-note" role="status"></p>
+          </section>
+        </section>
+
+        <aside class="contact-aside" aria-labelledby="contact-scope-title">
+          <figure id="contact-scope-diagram" class="contact-scope">
+            <svg viewBox="0 0 480 270" width="480" height="270" aria-hidden="true">
+              <defs>
+                <radialGradient id="contact-scope-glow" cx="74%" cy="48%" r="62%">
+                  <stop offset="0" stop-color="#255842"/>
+                  <stop offset="1" stop-color="#102a20"/>
+                </radialGradient>
+              </defs>
+              <rect width="480" height="270" fill="url(#contact-scope-glow)" />
+              <g class="contact-contours" fill="none">
+                <path d="M487 3 C451 -25 414 -13 374 12 C312 51 224 24 180 88 C151 130 171 190 229 215 C295 244 356 215 417 246 C441 258 468 274 491 278" />
+                <path d="M493 17 C467 -9 426 5 387 31 C334 67 245 42 200 96 C172 132 186 175 239 201 C302 228 358 201 425 231 C446 240 469 255 489 261" />
+                <path d="M491 35 C464 18 433 22 398 49 C352 83 272 58 221 105 C194 133 210 165 251 186 C307 213 363 187 427 213 C449 222 474 238 489 243" />
+                <path d="M488 59 C464 40 434 42 415 66 C374 111 284 75 240 112 C219 130 224 152 263 169 C315 193 373 176 435 195 C454 201 469 218 485 223" />
+                <path d="M489 77 C465 59 443 58 428 83 C398 131 305 91 262 121 C244 133 258 147 277 153 C328 174 383 163 440 179 C463 185 475 199 490 203" />
+                <path d="M486 97 C468 80 448 79 444 100 C436 139 349 115 295 126 C273 130 278 138 301 143 C351 153 414 156 449 163 C466 168 479 186 488 186" />
+              </g>
+              <g class="scope-node" data-scope-node="salryn" transform="translate(36 49)">
+                <path d="M0 0 C116 0 143 95 265 86" />
+                <rect x="-4" y="-4" width="8" height="8" rx="4" />
+              </g>
+              <g class="scope-node" data-scope-node="software" transform="translate(36 103)">
+                <path d="M0 0 C126 0 164 35 265 32" />
+                <rect x="-4" y="-4" width="8" height="8" rx="4" />
+              </g>
+              <g class="scope-node" data-scope-node="automation" transform="translate(36 157)">
+                <path d="M0 0 C127 0 164 -16 265 -22" />
+                <rect x="-4" y="-4" width="8" height="8" rx="4" />
+              </g>
+              <g class="scope-node" data-scope-node="integration" transform="translate(36 211)">
+                <path d="M0 0 C102 0 146 -66 265 -76" />
+                <rect x="-4" y="-4" width="8" height="8" rx="4" />
+              </g>
+              <circle cx="302" cy="135" r="13" fill="none" stroke="#9ebba8" stroke-opacity=".46" />
+              <circle cx="302" cy="135" r="4" fill="#f3f5ed" />
+            </svg>
+            <figcaption>
+              <h2 id="contact-scope-title">In your brief</h2>
+              <p id="c-scope-summary">Identify the areas your project needs.</p>
+            </figcaption>
+          </figure>
+          <div class="contact-guide">
+            <h3>A useful starting point</h3>
+            <p>Walk us through one real task. Who starts it? Where does the work wait, get repeated, or go missing?</p>
+            <a class="link-editorial" href="./process.html">See how we work <span aria-hidden="true">↗</span></a>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <span class="wordmark">Kirjane Labs</span>
+            <p>Software engineering, process automation, systems integration, technical infrastructure, and the Salryn business software ecosystem.</p>
+          </div>
+          <div class="footer-col">
+            <h4>Product &amp; Practice</h4>
+            <ul>
+              <li><a href="./salryn.html">Salryn Ecosystem</a></li>
+              <li><a href="./services.html">Services</a></li>
+              <li><a href="./projects.html">Selected Work</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="./process.html">Our Process</a></li>
+              <li><a href="./about.html">About Kirjane</a></li>
+              <li><a href="./contact.html">Contact Studio</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Ethos</h4>
+            <ul>
+              <li style="color:var(--alabaster);font-size:0.88rem;">Adapt. Automate. Evolve.</li>
+              <li style="color:var(--subtle);font-size:0.84rem;">Local review prototype</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>Kirjane Labs &middot; Contact</span>
+          <span>Local project brief</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <nav class="mobile-dock" aria-label="Quick navigation">
+    <a href="./index.html" data-page="home">Home</a>
+    <a href="./salryn.html" data-page="salryn">Salryn</a>
+    <a href="./projects.html" data-page="projects">Work</a>
+    <a href="./contact.html" data-page="contact">Contact</a>
+  </nav>
+
+  <script type="module" src="./js/ascension-contact.js"></script>
+</body>
+</html>

@@ -1,0 +1,189 @@
+{
+  "environment": "Windows Chromium over local HTTP; desktop and mobile viewports",
+  "isolatedCacheTests": {
+    "passed": 9,
+    "total": 9
+  },
+  "inheritedFocused": {
+    "passed": 49,
+    "total": 49
+  },
+  "sevenPageMatrix": {
+    "passed": 30,
+    "total": 30
+  },
+  "axe": [
+    {
+      "page": "index",
+      "totalViolations": 0,
+      "seriousOrCritical": 0,
+      "violations": []
+    },
+    {
+      "page": "salryn",
+      "totalViolations": 0,
+      "seriousOrCritical": 0,
+      "violations": []
+    },
+    {
+      "page": "services",
+      "totalViolations": 0,
+      "seriousOrCritical": 0,
+      "violations": []
+    },
+    {
+      "page": "projects",
+      "totalViolations": 0,
+      "seriousOrCritical": 0,
+      "violations": []
+    },
+    {
+      "page": "process",
+      "totalViolations": 0,
+      "seriousOrCritical": 0,
+      "violations": []
+    },
+    {
+      "page": "about",
+      "totalViolations": 0,
+      "seriousOrCritical": 0,
+      "violations": []
+    },
+    {
+      "page": "contact",
+      "totalViolations": 0,
+      "seriousOrCritical": 0,
+      "violations": []
+    }
+  ],
+  "resilience": {
+    "reducedMotion": {
+      "ok": true,
+      "tier": "static",
+      "activeLoops": 0,
+      "sceneAPos": "relative",
+      "directorMotion": "reduced"
+    },
+    "webglOff": {
+      "ok": true,
+      "tier": "static",
+      "errs": []
+    },
+    "noJavascript": {
+      "ok": true,
+      "pages": [
+        {
+          "page": "index",
+          "ok": true,
+          "hasH1": true,
+          "hasNoscriptBanner": true,
+          "textLen": 3721
+        },
+        {
+          "page": "salryn",
+          "ok": true,
+          "hasH1": true,
+          "hasNoscriptBanner": true,
+          "textLen": 4650
+        },
+        {
+          "page": "services",
+          "ok": true,
+          "hasH1": true,
+          "hasNoscriptBanner": true,
+          "textLen": 2997
+        },
+        {
+          "page": "projects",
+          "ok": true,
+          "hasH1": true,
+          "hasNoscriptBanner": true,
+          "textLen": 1424
+        },
+        {
+          "page": "process",
+          "ok": true,
+          "hasH1": true,
+          "hasNoscriptBanner": true,
+          "textLen": 2564
+        },
+        {
+          "page": "about",
+          "ok": true,
+          "hasH1": true,
+          "hasNoscriptBanner": true,
+          "textLen": 1955
+        },
+        {
+          "page": "contact",
+          "ok": true,
+          "hasH1": true,
+          "hasNoscriptBanner": true,
+          "textLen": 1504
+        }
+      ]
+    },
+    "abortedFrameRecovery": {
+      "ok": true,
+      "pageErrs": [],
+      "telemetry": {
+        "id": "salryn-kernel-documentary",
+        "frameCount": 96,
+        "variant": "desktop",
+        "cacheSize": 13,
+        "maxCache": 32,
+        "maxInflight": 4,
+        "decodedPixelBytes": 47923200,
+        "maxDecodedBytes": 83886080,
+        "singleFrameOverBudget": false,
+        "inflightCount": 0,
+        "targetIndex": 75,
+        "lastDrawnIndex": 76,
+        "posterReady": true,
+        "hasValidMedia": true,
+        "reducedMotion": false,
+        "hits": 0,
+        "misses": 20,
+        "evictions": 0,
+        "failedRequests": 39,
+        "abortedRequests": 1,
+        "drawnFrames": 7
+      }
+    },
+    "webglContextLoss": {
+      "ok": true,
+      "lostTriggered": true,
+      "errs": []
+    },
+    "mobileDrawer": {
+      "ok": true,
+      "opened": "false",
+      "closed": "true"
+    }
+  },
+  "limitations": [
+    "Physical Safari/iOS not run",
+    "Screen-reader speech output not run",
+    "Live production host not tested"
+  ],
+  "productionBuild": {
+    "passed": 61,
+    "total": 61,
+    "includes": [
+      "all seven directory routes at 1440, 390, 280 CSS pixels",
+      "seven-page axe",
+      "complete opening, outro/assembly interruption and navigation",
+      "Contact handoff",
+      "canonical sitemap and preview noindex",
+      "real Skip links on seven routes",
+      "non-empty same-route fragment checks",
+      "query and input retention after Contact Skip",
+      "one Twitter card per page",
+      "mobile drawer opened during assembly remains interactive after completion"
+    ]
+  },
+  "dedicatedOpening": {
+    "passed": 53,
+    "total": 53
+  }
+}

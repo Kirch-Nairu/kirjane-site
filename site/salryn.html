@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Salryn | One kernel, many industries | Kirjane Labs</title>
+  <meta name="description" content="Explore Salryn, Kirjane Labs’ modular business management kernel, its eight architectural engines, industry-specific Flavors and capability-based configuration philosophy." />
+  <meta name="theme-color" content="#08110D" />
+  <link rel="icon" type="image/png" href="./assets/brand/favicon.png" sizes="64x64" />
+  <meta property="og:title" content="Salryn | One kernel, many industries | Kirjane Labs" />
+  <meta property="og:description" content="Explore Salryn, Kirjane Labs’ modular business management kernel, its eight architectural engines, industry-specific Flavors and capability-based configuration philosophy." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Kirjane Labs" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preload" href="./assets/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="./css/topography.css" />
+  <link rel="stylesheet" href="./css/editorial.css" />
+  <noscript>
+    <style>
+      .cinematic-scrub-section,.exhibition-scroll-wrapper,.diagonal-growth-wrapper,.anatomy-scroll-wrapper{height:auto!important;}
+      .cinematic-sticky-stage,.exhibition-sticky,.diagonal-sticky-stage,.anatomy-sticky-stage{position:relative!important;height:auto!important;min-height:480px;}
+      .beat-stack{min-height:auto!important;display:flex!important;flex-direction:column!important;gap:1.15rem!important;}
+      .beat-card{position:relative!important;opacity:1!important;transform:none!important;pointer-events:auto!important;}
+      .exhibition-rail{flex-wrap:wrap!important;transform:none!important;}
+      .beat-card{visibility:visible!important;}
+      .configurator-grid,.chapter-rail,.sequence-details{display:none!important;}
+    </style>
+  </noscript>
+  <style>
+    .salryn-hero {
+      position: relative;
+      min-height: 94vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      border-bottom: 1px solid var(--hairline);
+    }
+    .salryn-hero-stage { position: absolute; inset: 0; z-index: 1; }
+    .salryn-fallback-art { position: absolute; inset: 0; z-index: 1; }
+    .salryn-fallback-art picture, .salryn-fallback-art img {
+      width: 100%; height: 100%; object-fit: cover; object-position: right center; display: block; opacity: 0.94;
+    }
+    #salryn-3d-canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 2; display: block; }
+    .salryn-hero-scrim {
+      position: absolute; inset: 0; z-index: 3; pointer-events: none;
+      background: linear-gradient(90deg, rgba(8, 17, 13, 0.94) 0%, rgba(8, 17, 13, 0.72) 45%, rgba(8, 17, 13, 0.08) 100%);
+    }
+    .salryn-hero-content { position: relative; z-index: 5; width: 100%; padding: 118px 0 64px 0; }
+    .salryn-hero-copy { max-width: 630px; }
+    .salryn-hero-copy h1 { margin-bottom: 1.35rem; }
+    .salryn-hero-copy .lead { margin-bottom: 2rem; }
+
+    .scene-jump-strip {
+      margin-top: 2.15rem;
+      padding-top: 1.1rem;
+      border-top: 1px solid var(--hairline);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.48rem;
+    }
+    .scene-jump-strip a {
+      text-decoration: none;
+      font-size: 0.78rem;
+      color: rgba(243, 245, 237, 0.82);
+      border: 1px solid rgba(243, 245, 237, 0.18);
+      padding: 0.42rem 0.82rem;
+      border-radius: 999px;
+      background: rgba(8, 17, 13, 0.76);
+      min-height: 36px;
+      display: inline-flex;
+      align-items: center;
+      transition: border-color 0.2s ease, color 0.2s ease;
+    }
+    .scene-jump-strip a:hover, .scene-jump-strip a:focus-visible {
+      border-color: var(--lime);
+      color: var(--lime);
+      outline: 2px solid var(--lime);
+      outline-offset: 2px;
+    }
+
+    .doc-band {
+      padding: clamp(4.75rem, 8.5vw, 7.75rem) 0;
+      border-bottom: 1px solid var(--hairline);
+      background: rgba(7, 15, 11, 0.90);
+    }
+    .doc-band.deep-band {
+      background: radial-gradient(circle at 28% 35%, rgba(16, 61, 43, 0.22), rgba(5, 11, 8, 0.96) 72%);
+    }
+    .doc-head {
+      max-width: 780px;
+      margin-bottom: clamp(1.75rem, 3.5vw, 2.75rem);
+    }
+
+    .engine-detail-panel {
+      background: rgba(10, 21, 16, 0.94);
+      border: 1px solid var(--hairline-emerald);
+      border-radius: 10px;
+      padding: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.72rem;
+    }
+    .engine-detail-meta { font-size: 0.78rem; font-weight: 600; color: var(--lime); letter-spacing: 0.04em; }
+    .engine-detail-panel h3 { font-family: var(--display); font-weight: 400; font-size: 1.62rem; color: var(--white); }
+    .engine-linked-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.25rem; }
+    .engine-linked-tags span {
+      font-size: 0.74rem; color: rgba(243, 245, 237, 0.86);
+      padding: 0.22rem 0.6rem; border: 1px solid rgba(243, 245, 237, 0.16); border-radius: 999px;
+      background: rgba(16, 61, 43, 0.24);
+    }
+
+    .activation-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+      gap: clamp(1.75rem, 3.8vw, 3.25rem);
+      align-items: start;
+    }
+    .activation-svg-panel {
+      background: rgba(5, 11, 8, 0.92);
+      border: 1px solid var(--hairline-emerald);
+      border-radius: 10px;
+      padding: 0.85rem;
+    }
+    #salryn-activation-svg { aspect-ratio: 1440 / 920; width: 100%; }
+    #salryn-activation-svg svg { width: 100%; height: auto; display: block; }
+    .security-notice {
+      margin-top: 1rem;
+      padding: 0.9rem 1.05rem;
+      border-left: 2px solid var(--lime);
+      background: rgba(22, 123, 85, 0.16);
+      font-size: 0.86rem;
+      color: rgba(243, 245, 237, 0.88);
+    }
+
+    .offline-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+      gap: clamp(1.75rem, 4vw, 3.25rem);
+      align-items: center;
+    }
+    .offline-diagram-frame {
+      background: rgba(5, 11, 8, 0.92);
+      border: 1px solid var(--hairline-emerald);
+      border-radius: 12px;
+      padding: 0.85rem;
+      overflow: hidden;
+    }
+    .offline-diagram-frame svg, .offline-diagram-frame img { width: 100%; height: auto; display: block; }
+
+    .config-field { display: flex; flex-direction: column; gap: 0.45rem; margin-bottom: 1.15rem; }
+    .config-field label { font-size: 0.84rem; color: var(--white); font-weight: 500; }
+    .config-field select, .config-field textarea {
+      width: 100%;
+      padding: 0.78rem 0.9rem;
+      background: rgba(8, 17, 13, 0.92);
+      border: 1px solid rgba(243, 245, 237, 0.22);
+      border-radius: 8px;
+      color: var(--white);
+      font-family: var(--body);
+      font-size: 0.92rem;
+    }
+    .config-field select:focus, .config-field textarea:focus {
+      outline: 2px solid var(--lime);
+      border-color: var(--lime);
+    }
+    .config-cap-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .config-cap-pill {
+      padding: 0.48rem 0.82rem;
+      min-height: 40px;
+      border-radius: 999px;
+      border: 1px solid rgba(243, 245, 237, 0.20);
+      background: rgba(10, 20, 16, 0.88);
+      color: var(--alabaster);
+      font-size: 0.82rem;
+      cursor: pointer;
+    }
+    .config-cap-pill[aria-pressed="true"] {
+      border-color: var(--lime);
+      background: rgba(22, 123, 85, 0.28);
+      color: var(--lime);
+      font-weight: 600;
+    }
+    .config-cap-pill.locked {
+      border-color: var(--lime);
+      background: rgba(211, 246, 107, 0.14);
+      color: var(--lime);
+      cursor: default;
+    }
+
+    @media (max-width: 1040px) {
+      .activation-layout, .offline-layout { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 900px) {
+      .salryn-hero { min-height: 92svh; align-items: flex-end; }
+      .salryn-hero-scrim { background: linear-gradient(180deg, rgba(8, 17, 13, 0.08) 0%, rgba(8, 17, 13, 0.34) 32%, rgba(8, 17, 13, 0.94) 54%, rgba(8, 17, 13, 0.99) 100%); }
+      .salryn-hero-content { padding: 14rem 0 5.25rem 0; }
+      .scene-jump-strip { gap: 0.4rem; }
+      .doc-band { padding: 3.1rem 0; }
+    }
+  </style>
+</head>
+<body data-editorial="salryn" data-page="salryn">
+  <a href="#main" class="skip-link">Skip to content</a>
+  <canvas id="living-topography-bg" aria-hidden="true"></canvas>
+
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a href="./index.html" class="wordmark" aria-label="Kirjane Home">
+        <img class="wordmark-mark official-brand-mark" src="./assets/brand/kirjane-mark-white.webp" alt="" width="40" height="31" />
+        <span><img class="official-brand-word" src="./assets/brand/kirjane-word-white.webp" alt="Kirjane" width="112" height="20" /></span>
+      </a>
+      <nav class="primary-nav" aria-label="Primary navigation">
+        <a href="./salryn.html" class="nav-salryn" data-page="salryn">Salryn</a>
+        <a href="./services.html" data-page="services">Services</a>
+        <a href="./projects.html" data-page="projects">Projects</a>
+        <a href="./process.html" data-page="process">Process</a>
+        <a href="./about.html" data-page="about">About</a>
+        <a href="./contact.html" data-page="contact">Contact</a>
+      </nav>
+      <button type="button" class="mobile-menu-btn" id="btn-mobile-menu" aria-expanded="false" aria-controls="mobile-drawer">Menu</button>
+    </div>
+  </header>
+
+  <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true" role="dialog" aria-label="Site Navigation">
+    <div class="drawer-head">
+      <span class="wordmark">Kirjane</span>
+      <button type="button" class="mobile-menu-btn" id="btn-drawer-close" style="display:inline-flex;">Close</button>
+    </div>
+    <nav class="drawer-links" aria-label="All Pages">
+      <a href="./index.html" data-page="home">Home <span>Overview</span></a>
+      <a href="./salryn.html" data-page="salryn">Salryn <span>Flagship Product</span></a>
+      <a href="./services.html" data-page="services">Services <span>Capabilities</span></a>
+      <a href="./projects.html" data-page="projects">Projects <span>Exhibition</span></a>
+      <a href="./process.html" data-page="process">Our Process <span>Methodology</span></a>
+      <a href="./about.html" data-page="about">About <span>Company</span></a>
+      <a href="./contact.html" data-page="contact">Contact <span>Start a Brief</span></a>
+    </nav>
+    <div class="drawer-foot">Kirjane Labs &middot; Adapt. Automate. Evolve.</div>
+  </div>
+
+  <div class="page-shell">
+    <noscript>
+      <div class="noscript-note" style="margin-top:74px;">
+        JavaScript is disabled. You are viewing the static semantic documentary of Salryn's kernel, eight core engines, and twelve industry families.
+      </div>
+    </noscript>
+
+    <main id="main" tabindex="-1">
+      <!-- OPENING HERO: BESPOKE 3D STUDIO PLATE + LIVE FRESNEL ORGANISM DEPTH TRAVERSAL + KIRJANE CREST -->
+      <section class="salryn-hero">
+        <div class="salryn-hero-stage">
+          <div class="salryn-fallback-art">
+            <picture>
+              <source media="(max-width: 900px)" srcset="./assets/cinematic/salryn-hero-master-mobile.webp" />
+              <img src="./assets/cinematic/salryn-hero-master-desktop.webp" alt="Salryn translucent blown-emerald kernel sculpture ringed by mandatory lime security band and eight crystalline engines" />
+            </picture>
+          </div>
+          <canvas id="salryn-3d-canvas" aria-hidden="true"></canvas>
+        </div>
+        <div class="salryn-hero-scrim" aria-hidden="true"></div>
+
+        <div class="salryn-hero-content">
+          <div class="wrap">
+            <div class="salryn-hero-copy">
+              <p class="product-name">Salryn</p>
+              <h1 class="display-xl">One kernel.<br><em>Many industries.</em></h1>
+              <p class="lead">Salryn is Kirjane’s modular business management kernel. Start with a shared foundation and configure it around the work your business does.</p>
+              <div class="actions-row">
+                <a href="#scene-a-kernel" class="link-editorial">Meet the kernel &darr;</a>
+                <a href="#scene-g-configuration" class="link-editorial">Plan a configuration &rarr;</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="salryn-editorial-intro">
+        <div class="wrap">
+          <nav class="scene-jump-strip" aria-label="Salryn chapters">
+            <a href="#scene-a-kernel">Kernel</a>
+            <a href="#scene-b-anatomy">Engines</a>
+            <a href="#scene-c-flavors">Industries</a>
+            <a href="#scene-d-activation">Capabilities</a>
+            <a href="#scene-e-growth">Growth</a>
+            <a href="#scene-f-independence">Offline operation</a>
+            <a href="#scene-g-configuration">Configuration</a>
+          </nav>
+          <div class="editorial-spread">
+            <h2 class="display-lg">Every business operates <em>differently.</em></h2>
+            <p class="lead">A shop sells goods, a restaurant routes orders, and a supplier receives stock. Each team works differently. All three need reliable records, clear permissions, and software that reflects how they operate.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SCENE A: MEET THE KERNEL (96 DESKTOP / 48 MOBILE CGI DEPTH TRAVERSAL + CALLOUT PINS) -->
+      <section class="cinematic-scrub-section" id="scene-a-kernel" aria-label="The Salryn kernel">
+        <div class="cinematic-sticky-stage">
+          <picture>
+            <source media="(max-width: 900px)" srcset="./assets/cinematic/salryn-kernel-documentary-mobile/poster.webp" />
+            <img class="cinematic-poster-fallback" src="./assets/cinematic/salryn-kernel-documentary-desktop/poster.webp" alt="Blown-emerald glass shell parting to reveal the Salryn central kernel, locked Security ring, eight engines, and twelve industry filaments" />
+          </picture>
+          <canvas id="salryn-kernel-canvas" class="cinematic-canvas-layer" aria-hidden="true"></canvas>
+          <div class="cinematic-stage-scrim" aria-hidden="true"></div>
+
+          <div class="cinematic-stage-hud">
+            <div>
+
+              <div class="beat-stack" id="salryn-kernel-beats" aria-live="polite">
+                <article class="beat-card is-active" data-beat="approach">
+                  <h2>Different operations. One foundation.</h2>
+                  <p>Salryn starts with common business operations, then shapes each workspace around its industry.</p>
+                </article>
+                <article class="beat-card" data-beat="reveal">
+                  <h2>Different workspaces, shared records.</h2>
+                  <p>Each workspace can serve a different team while drawing from the same underlying records.</p>
+                </article>
+                <article class="beat-card" data-beat="security-core">
+                  <h2>Security comes built in.</h2>
+                  <p>Sign-in, role permissions, approval limits, and audit records are part of the shared foundation.</p>
+                </article>
+                <article class="beat-card" data-beat="engines">
+                  <h2>Eight engines work together.</h2>
+                  <p>The same foundation connects sales, stock, purchasing, finance, staffing, and day-to-day workflows.</p>
+                </article>
+                <article class="beat-card" data-beat="modular">
+                  <h2>One foundation leaves room to specialize.</h2>
+                  <p>A retailer and a manufacturer can use different workflows built on the same core.</p>
+                </article>
+              </div>
+
+              <div class="scrub-progress-track" aria-hidden="true">
+                <div class="scrub-progress-fill" id="salryn-kernel-progress"></div>
+              </div>
+
+              <div class="chapter-rail" role="group" aria-label="Jump to kernel documentary beat">
+                <button type="button" class="chapter-pill" data-kernel-jump="0.04" data-beat-target="approach" aria-current="step">Approach</button>
+                <button type="button" class="chapter-pill" data-kernel-jump="0.30" data-beat-target="reveal" aria-current="false">Workspaces</button>
+                <button type="button" class="chapter-pill" data-kernel-jump="0.52" data-beat-target="security-core" aria-current="false">Security</button>
+                <button type="button" class="chapter-pill" data-kernel-jump="0.72" data-beat-target="engines" aria-current="false">Eight Engines</button>
+                <button type="button" class="chapter-pill" data-kernel-jump="0.95" data-beat-target="modular" aria-current="false">Industries</button>
+              </div>
+
+              <details class="sequence-details"><summary>Explore the sequence</summary><div class="callout-pin-row" id="salryn-hotspot-pins" role="group" aria-label="Spatial optical callout pins">
+                <button type="button" class="callout-pin is-active" data-kernel-jump="0.16" data-pin-idx="0">Shared records</button>
+                <button type="button" class="callout-pin" data-kernel-jump="0.52" data-pin-idx="1">Built-in security</button>
+                <button type="button" class="callout-pin" data-kernel-jump="0.72" data-pin-idx="2">Business engines</button>
+                <button type="button" class="callout-pin" data-kernel-jump="0.95" data-pin-idx="3">Industry examples</button>
+              </div></details>
+            </div>
+            <div aria-hidden="true"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCENE B: UNDERSTAND THE ARCHITECTURE & EXPLORE THE 8 ENGINES (SCROLL-DRIVEN SPLIT STAGE + 3D STACK PLATE) -->
+      <section class="anatomy-scroll-wrapper" id="scene-b-anatomy" aria-label="Salryn engines">
+        <div class="anatomy-sticky-stage">
+          <div class="wrap">
+            <div class="doc-head" style="margin-bottom:1.5rem;">
+
+              <h2 class="display-lg" style="margin-bottom:0.55rem;">Eight engines. One shared foundation.</h2>
+              <p class="body-copy">Choose an engine to see what it does. Security and Infrastructure are part of every configuration.</p>
+            </div>
+
+            <div class="anatomy-grid">
+              <div class="anatomy-visual-stack">
+                <figure class="engine-plate">
+                  <img class="anatomy-bg-plate" src="./assets/cinematic/ascension-kernel-stack.webp" width="1160" height="870" alt="Eight separated strata expose the shared foundations of the kernel" decoding="async" />
+                  <span class="engine-plate-marker" aria-hidden="true"></span>
+                </figure>
+                <details class="anatomy-diagram"><summary>Open layer diagram</summary><div class="anatomy-svg-overlay" id="salryn-anatomy-mount">
+                  <img src="./assets/salryn-anatomy-exploded.svg" alt="Isometric eight-layer diagram showing Salryn engines from Infrastructure and Security up to Commerce" />
+                </div></details>
+              </div>
+
+              <div>
+                <div class="engine-selector-list" id="anatomy-engine-buttons" role="group" aria-label="Select one of Salryn's eight engines">
+                  <p>Commerce, Inventory, Procurement, Financial, Workforce, Operations, Security, and Infrastructure.</p>
+                </div>
+
+                <article class="engine-detail-panel" id="anatomy-detail-card" aria-live="polite">
+                  <div class="engine-detail-meta" id="anatomy-layer-label">Foundational</div>
+                  <h3 id="anatomy-engine-name">Security</h3>
+                  <p class="body-copy" id="anatomy-engine-summary">Set access and approval limits and keep an audit record.</p>
+                  <div>
+                    <details><summary>Related industry examples</summary><p class="engine-linked-tags" id="anatomy-engine-families"></p></details>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCENE C: TWELVE INDUSTRY FLAVORS (RADIAL CONSTELLATION + HORIZONTAL DESKTOP TRACK + VERTICAL MOBILE) -->
+      <section class="exhibition-scroll-wrapper" id="scene-c-flavors" aria-label="Industry examples" style="border-bottom:1px solid var(--hairline);">
+        <div class="exhibition-sticky">
+          <div class="industry-layout wrap">
+            <div class="industry-intro">
+              <h2 class="display-lg">Built around <em>your industry.</em></h2>
+              <p class="body-copy">A Flavor configures the shared kernel for an industry. Explore twelve possible applications. Availability depends on project scope.</p>
+              <div class="industry-picker" hidden>
+                <label for="industry-profile">Choose an industry</label>
+                <select id="industry-profile"></select>
+              </div>
+            </div>
+            <div class="flavors-radial-frame">
+              <img class="constellation-bg" src="./assets/cinematic/editorial-salryn-flavors-constellation.webp" alt="" />
+              <details class="radial-diagram"><summary>Open industry diagram</summary>
+                <div class="radial-svg-host" id="salryn-radial-host">
+                  <img src="./assets/salryn-flavors-radial.svg" alt="Twelve industry families around the Salryn kernel" />
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="exhibition-viewport wrap" aria-live="polite">
+            <div class="exhibition-rail" id="salryn-flavors-rail">
+              <noscript>
+                <div class="exhibition-card"><p>Twelve illustrative industry families on one unified Salryn kernel: Retail, Food &amp; Beverage, Hardware &amp; Supply, Healthcare &amp; Wellness, Services, Hospitality, Rental, Distribution, Automotive, Manufacturing, Agriculture, and Enterprise.</p></div>
+              </noscript>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCENE D: CAPABILITY-BASED ACTIVATION (SIDE-BY-SIDE COMPARATIVE BASELINE + SECURITY LOCKED CORE) -->
+      <section class="doc-band deep-band" id="scene-d-activation" aria-label="Capability selection">
+        <div class="wrap">
+          <div class="doc-head" data-reveal>
+
+            <h2 class="display-lg" style="margin-bottom:0.85rem;">What you need today. More when you need it.</h2>
+            <p class="body-copy">Start with the capabilities your team needs. Entitlements define which modules are available in a configuration, while Security and Infrastructure form the foundation.</p>
+          </div>
+
+          <div class="comparator-bar" style="margin-bottom:1.65rem;">
+            <div class="compare-cell">
+              <strong>Included in every configuration</strong>
+              Security and Infrastructure are included.
+            </div>
+            <div class="compare-cell is-kirjane" aria-live="polite">
+              <strong>Your selection</strong>
+              <span id="scene-d-compare-summary">Commerce + Inventory active alongside mandatory Security &amp; Infrastructure (4 / 8 engines illuminated).</span>
+            </div>
+          </div>
+
+          <div class="activation-layout">
+            <div>
+              <div class="capability-grid" id="scene-d-cap-grid">
+                <p>Optional capabilities cover Commerce, Inventory, Procurement, Financial, Workforce, and Operations.</p>
+              </div>
+              <div class="security-notice" id="scene-d-live-status" aria-live="polite">
+                <strong>Mandatory Core Locked:</strong> Security &amp; Permission Foundation and Offline-First Infrastructure are always built into Salryn and cannot be deactivated.
+              </div>
+              <p class="disclosure-note" style="margin-top:0.85rem;">
+                Explore the licensing approach with an illustrative configuration.
+              </p>
+            </div>
+
+            <div class="activation-svg-panel">
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:0.4rem 0.5rem 0.75rem;border-bottom:1px solid var(--hairline);margin-bottom:0.5rem;">
+                <strong style="font-size:0.88rem;color:var(--white);">How capabilities fit together</strong>
+                <span id="scene-d-count" style="font-size:0.8rem;color:var(--lime);font-weight:600;">4 / 8 Engines Illuminated</span>
+              </div>
+              <div id="salryn-activation-svg">
+                <img src="./assets/salryn-ecosystem-architecture.svg" alt="Salryn unified kernel capability map" style="width:100%;height:auto;display:block;" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCENE E: BUSINESS GROWTH (EXACT 2:1 DIAGONAL ASCENT OVER 3D GLASS RIDGE TOPOGRAPHY) -->
+      <section class="diagonal-growth-wrapper" id="scene-e-growth" aria-label="Business growth" style="border-bottom:1px solid var(--hairline);">
+        <div class="diagonal-sticky-stage">
+          <div style="max-width:var(--max-w);width:100%;margin:0 auto 1.1rem;">
+
+            <h2 class="display-lg">Your software should grow with your business.</h2>
+          </div>
+
+          <div class="diagonal-canvas-box">
+            <img class="diagonal-3d-plate" src="./assets/cinematic/editorial-salryn-growth-topography.webp" alt="A rising ridge with four successive stages" />
+            <div class="diagonal-beacon" id="growth-beacon" style="left:3.5%;top:81%;" aria-hidden="true"></div>
+          </div>
+
+          <div class="diagonal-stage-cards" id="growth-stage-cards">
+            <noscript>
+              <div class="growth-stage-card is-active"><strong>Single-Site Core to Multi-Site Expansion</strong><span>Start with Commerce, Inventory, mandatory Security, and offline-first Infrastructure, then activate Procurement, Financial, Workforce, and Operations on the exact same foundation as operations scale.</span></div>
+            </noscript>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCENE F: OPERATIONAL INDEPENDENCE (3-STATE OFFLINE-FIRST SIMULATOR) -->
+      <section class="doc-band" id="scene-f-independence" aria-label="Offline operation" data-field-warp="0.94" data-field-energy="0.46">
+        <div class="wrap">
+          <div class="doc-head" data-reveal>
+
+            <h2 class="display-lg" style="margin-bottom:0.85rem;">Built for work beyond the internet.</h2>
+            <p class="body-copy">See how a shop could handle an outage, exchange records, or run more than one workstation.</p>
+          </div>
+
+          <div class="offline-layout">
+            <div>
+              <div class="sim-mode-bar" role="group" aria-label="Operational continuity state simulator">
+                <button type="button" class="chapter-pill" data-sim-mode="local" aria-current="step">During an outage</button>
+                <button type="button" class="chapter-pill" data-sim-mode="exchange" aria-current="false">When the connection returns</button>
+                <button type="button" class="chapter-pill" data-sim-mode="multi" aria-current="false">Across local workstations</button>
+              </div>
+              <div class="offline-diagram-frame" id="offline-sim-frame">
+                <img src="./assets/salryn-offline-first.svg" alt="Architectural diagram showing local site kernel continuity, local workstations, and optional external connectivity paths" />
+              </div>
+            </div>
+
+            <div>
+              <div class="engine-detail-panel" aria-live="polite" style="margin-bottom:1.25rem;">
+                <h3 id="sim-mode-title">During an outage</h3>
+                <p class="body-copy" id="sim-mode-desc">A shop can record a sale and print a receipt on its local system during an internet outage. Tasks that use external services wait for the connection.</p>
+              </div>
+              <p class="disclosure-note" style="margin-top:1.2rem;">
+                These scenarios illustrate the design. Local availability depends on the equipment, network, and workflows in your deployment.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCENE G: YOUR CONFIGURATION (GUIDED CONCEPTUAL INQUIRY COMPOSER + LIVE BLUEPRINT BADGES) -->
+      <section class="doc-band deep-band" id="scene-g-configuration" aria-label="Configuration inquiry">
+        <div class="wrap">
+          <div class="doc-head" data-reveal>
+
+            <h2 class="display-lg" style="margin-bottom:0.85rem;">Make Salryn yours.</h2>
+            <p class="body-copy">Choose an industry and the capabilities you want to discuss. The preview builds a summary you can copy or download.</p>
+            <noscript><p>Open the interactive page with JavaScript to prepare a local brief, or <a class="link-editorial" href="./contact.html?topic=salryn">go to contact</a>.</p></noscript>
+          </div>
+
+          <div class="configurator-grid">
+            <div>
+              <div class="config-field">
+                <label for="cfg-industry">Industry</label>
+                <select id="cfg-industry"></select>
+              </div>
+
+              <div class="config-field">
+                <p id="cfg-cap-label">Capabilities to discuss</p>
+                <div class="config-cap-pills" id="cfg-cap-pills" role="group" aria-labelledby="cfg-cap-label"></div>
+              </div>
+
+              <div class="config-field">
+                <label for="cfg-scale">Sites and workstations</label>
+                <select id="cfg-scale">
+                  <option value="Single site / single workstation">Single site / single workstation</option>
+                  <option value="Single site / multiple workstations">Single site / multiple workstations</option>
+                  <option value="Growing toward multiple sites">Growing toward multiple sites</option>
+                  <option value="Multi-branch / enterprise assessment">Multi-branch / enterprise assessment</option>
+                </select>
+              </div>
+
+              <div class="config-field">
+                <label for="cfg-note">What should the system help with? (optional)</label>
+                <textarea id="cfg-note" rows="3" placeholder="Example: Replacing spreadsheets for inventory custody and supplier receiving while keeping counter sales working offline."></textarea>
+              </div>
+            </div>
+
+            <div class="config-summary-box">
+
+              <h3 class="display-md" style="font-size:1.35rem;margin-bottom:0.65rem;">Your inquiry</h3>
+              <p class="disclosure-note">This local preview prepares a discussion brief. Pricing and availability are determined separately.</p>
+              <pre class="config-summary-pre" id="cfg-output"></pre>
+              <div class="actions-row" style="gap:0.7rem;">
+                <button type="button" class="btn-outline" id="btn-cfg-copy">Copy summary</button>
+                <button type="button" class="btn-outline" id="btn-cfg-download">Download summary</button>
+                <a href="./contact.html?topic=salryn" class="btn-lime" id="btn-cfg-contact">Continue to contact &rarr;</a>
+              </div>
+              <div id="cfg-feedback" aria-live="polite" style="margin-top:0.75rem;font-size:0.82rem;color:var(--lime);min-height:1.2rem;"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <span class="wordmark">Kirjane Labs</span>
+            <p>Software engineering, process automation, systems integration, technical infrastructure, and the Salryn business software ecosystem.</p>
+          </div>
+          <div class="footer-col">
+            <h4>Product &amp; Practice</h4>
+            <ul>
+              <li><a href="./salryn.html">Salryn Ecosystem</a></li>
+              <li><a href="./services.html">Services</a></li>
+              <li><a href="./projects.html">Selected Work</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="./process.html">Our Process</a></li>
+              <li><a href="./about.html">About Kirjane</a></li>
+              <li><a href="./contact.html">Contact Studio</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Ethos</h4>
+            <ul>
+              <li style="color:var(--alabaster);font-size:0.88rem;">Adapt. Automate. Evolve.</li>
+              <li style="color:var(--subtle);font-size:0.84rem;">Commercial Enterprises, Government Institutions, Corporate Partners</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>Kirjane Labs &middot; Living Topography Edition</span>
+          <span>Local review prototype &middot; Salryn architectural documentary &middot; No invented pricing or guarantees</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <nav class="mobile-dock" aria-label="Quick navigation">
+    <a href="./index.html" data-page="home">Home</a>
+    <a href="./salryn.html" data-page="salryn">Salryn</a>
+    <a href="./projects.html" data-page="projects">Work</a>
+    <a href="./contact.html" data-page="contact">Contact</a>
+  </nav>
+
+  <script type="module">
+    import { initTopographyField } from './js/topography-canvas.js';
+    import { initSiteShell, initLivingMotion, isReducedMotion } from './js/motion-system.js';
+    import { mountSalryn3DHero } from './js/salryn-3d-organism.js';
+    import { MasterSceneDirector } from './js/scene-director.js';
+    import { FrameSequencePlayer } from './js/frame-sequence-player.js';
+    import {
+      SALRYN_ENGINES_8,
+      SALRYN_FAMILIES_12,
+      SALRYN_CAPABILITIES,
+      SALRYN_GROWTH_STAGES
+    } from './js/salryn-organism.js';
+
+    initSiteShell('salryn');
+    const bgField = initTopographyField({ warp: 0.94, density: 12.2, energy: 0.52, focusX: 0.56, focusY: 0.46, visibleAt:'#scene-f-independence' });
+    initLivingMotion();
+
+    const reduced = isReducedMotion();
+    const isMobile = window.innerWidth <= 900;
+    const director = new MasterSceneDirector({ pageId: 'salryn' });
+
+    const threeHero = mountSalryn3DHero({
+      canvas: document.getElementById('salryn-3d-canvas'),
+      sectionEl: document.querySelector('.salryn-hero'),
+      fallbackEl: document.querySelector('.salryn-fallback-art'),
+      initialProfile: { spread: 0.16, twist: 0.16, ringScale: 1.0, pulse: 0.75 }
+    });
+    if (threeHero.getRenderStats) window.__KIRJANE_PERF__.readSalrynHero = threeHero.getRenderStats;
+
+    // =========================================================================
+    // SCENE A: MEET THE KERNEL (96 DESKTOP / 48 MOBILE CGI SEQUENCE + PINS)
+    // =========================================================================
+    const kernelCanvas = document.getElementById('salryn-kernel-canvas');
+    const kernelProgress = document.getElementById('salryn-kernel-progress');
+    const kernelBeats = Array.from(document.querySelectorAll('#salryn-kernel-beats .beat-card'));
+    const kernelJumpBtns = Array.from(document.querySelectorAll('[data-kernel-jump]'));
+    const hotspotPins = Array.from(document.querySelectorAll('#salryn-hotspot-pins .callout-pin'));
+
+    const shortCinematic = matchMedia('(max-height: 610px) and (max-width: 900px)');
+    const kernelPlayer = new FrameSequencePlayer({
+      id: 'salryn-kernel-documentary',
+      canvas: kernelCanvas,
+      basePath: './assets/cinematic/salryn-kernel-documentary-desktop',
+      mobileBasePath: './assets/cinematic/salryn-kernel-documentary-mobile',
+      desktopFrames: 96,
+      mobileFrames: 48,
+      isMobile,
+      reducedMotion: reduced,
+      onFrameDrawn: (idx) => director.setCurrentFrame(idx)
+    });
+
+    director.registerScene({
+      id: 'salryn-kernel',
+      el: document.getElementById('scene-a-kernel'),
+      chapters: [
+        { id: 'approach', start: 0.0, end: 0.20 },
+        { id: 'reveal', start: 0.20, end: 0.42 },
+        { id: 'security-core', start: 0.42, end: 0.62 },
+        { id: 'engines', start: 0.62, end: 0.82 },
+        { id: 'modular', start: 0.82, end: 1.0 }
+      ],
+      onUpdate: ({ smooth, direction, activeChapter, inView, isReduced }) => {
+        if (inView && scrollY > 8 && !shortCinematic.matches) kernelPlayer.setProgress(smooth, direction);
+        if (kernelProgress) kernelProgress.style.transform = `scaleX(${isReduced ? 1 : smooth})`;
+        if (!isReduced) {
+          kernelBeats.forEach((b) => b.classList.toggle('is-active', b.dataset.beat === activeChapter));
+        }
+        kernelJumpBtns.forEach((btn) => {
+          if (btn.dataset.beatTarget) {
+            btn.setAttribute('aria-current', btn.dataset.beatTarget === activeChapter ? 'step' : 'false');
+          }
+        });
+        const pinIdx = smooth < 0.35 ? 0 : smooth < 0.60 ? 1 : smooth < 0.82 ? 2 : 3;
+        hotspotPins.forEach((p, i) => p.classList.toggle('is-active', i === pinIdx));
+      },
+      onResize: () => kernelPlayer.resize(window.innerWidth <= 900)
+    });
+
+    kernelJumpBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        director.jumpToSceneProgress('salryn-kernel', parseFloat(btn.dataset.kernelJump));
+      });
+    });
+
+    // =========================================================================
+    // SCENE B: ANATOMY OF SALRYN (SCROLL-DRIVEN SPLIT STAGE + 8 CLICKABLE ENGINES)
+    // =========================================================================
+    const anatomyMount = document.getElementById('salryn-anatomy-mount');
+    const engineBtnWrap = document.getElementById('anatomy-engine-buttons');
+    let activeEngineIdx = 6; // Highlight mandatory Security first
+
+    engineBtnWrap.innerHTML = SALRYN_ENGINES_8.map((eng) => `
+      <button type="button" class="engine-select-btn" data-engine-btn="${eng.idx}" aria-pressed="${eng.idx === activeEngineIdx}">
+        <span>${eng.name}</span>
+        ${eng.mandatory ? '<span class="engine-lock-tag">Core</span>' : ''}
+      </button>
+    `).join('');
+
+    function selectEngine(idx, owner = 'user') {
+      activeEngineIdx = idx;
+      const eng = SALRYN_ENGINES_8[idx];
+      director.setSelectedInfoState(`engine:${eng.id}`, owner);
+
+      engineBtnWrap.querySelectorAll('[data-engine-btn]').forEach((b) => {
+        b.setAttribute('aria-pressed', String(parseInt(b.dataset.engineBtn, 10) === idx));
+      });
+
+      document.getElementById('anatomy-layer-label').textContent = eng.mandatory ? 'Foundational' : '';
+      document.getElementById('anatomy-engine-name').textContent = eng.name;
+      document.querySelector('.engine-plate').style.setProperty('--selected-layer', `${[20,27,36,45,55,64,74,81][idx]}%`);
+      document.getElementById('anatomy-engine-summary').textContent = [
+        'Record sales, returns, and orders in a shared system.',
+        'Track stock, transfers, and adjustments across locations.',
+        'Connect purchase requests, orders, receipts, and supplier bills.',
+        'Reconcile cash and track what customers and suppliers owe.',
+        'Assign staff and keep track of shift handovers.',
+        'Route work to the right people and record approvals.',
+        'Set access and approval limits and keep an audit record.',
+        'Support local storage, receipt printing, and backup recovery.'
+      ][idx];
+      document.getElementById('anatomy-engine-families').textContent = eng.linkedFamilies
+        .map((fi) => SALRYN_FAMILIES_12[fi].name)
+        .join(', ');
+
+      const svg = anatomyMount.querySelector('svg');
+      if (svg) {
+        svg.querySelectorAll('.anatomy-layer').forEach((layer) => {
+          const lIdx = parseInt(layer.dataset.engine, 10);
+          const isSelected = lIdx === idx;
+          layer.style.opacity = isSelected ? '1' : '0.38';
+          layer.style.transform = isSelected && !reduced ? 'translateY(-6px)' : 'translateY(0)';
+        });
+      }
+      if (owner === 'user' && threeHero && typeof threeHero.setMorphTarget === 'function') {
+        threeHero.setMorphTarget({ spread: 0.25 + idx * 0.06, twist: idx * 0.35, ringScale: 1.05, pulse: eng.mandatory ? 1.0 : 0.8 });
+      }
+    }
+
+    selectEngine(activeEngineIdx, 'init');
+    fetch('./assets/salryn-anatomy-exploded.svg')
+      .then((r) => r.text())
+      .then((txt) => {
+        anatomyMount.innerHTML = txt;
+        const svg = anatomyMount.querySelector('svg');
+        if (svg) {
+          svg.querySelectorAll('.anatomy-layer').forEach((layer) => {
+            layer.addEventListener('click', () => selectEngine(parseInt(layer.dataset.engine, 10), 'user'));
+          });
+        }
+        selectEngine(activeEngineIdx, 'init');
+      })
+      .catch(() => {});
+
+    engineBtnWrap.querySelectorAll('[data-engine-btn]').forEach((btn) => {
+      btn.addEventListener('click', () => selectEngine(parseInt(btn.dataset.engineBtn, 10), 'user'));
+    });
+
+    // Couple scroll progression smoothly across engines 0..7 when user scrolls Scene B
+    const engineOrderScroll = [7, 6, 5, 4, 3, 2, 1, 0];
+    let lastScrollEng = -1;
+    director.registerScene({
+      id: 'salryn-anatomy',
+      el: document.getElementById('scene-b-anatomy'),
+      onUpdate: ({ exact, inView, isReduced }) => {
+        if (!isReduced && window.innerWidth > 900 && inView && !engineBtnWrap.contains(document.activeElement) &&
+          director.state.interactionOwner === 'scroll' && exact > 0.03 && exact < 0.98) {
+          const slot = Math.min(7, Math.floor(exact * 8));
+          const engIdx = engineOrderScroll[slot];
+          if (engIdx !== lastScrollEng) {
+            lastScrollEng = engIdx;
+            selectEngine(engIdx, 'scroll');
+          }
+        }
+      }
+    });
+
+    // =========================================================================
+    // SCENE C: TWELVE INDUSTRY FLAVORS (RADIAL CONSTELLATION + HORIZONTAL TRACK)
+    // =========================================================================
+    const flavorsRail = document.getElementById('salryn-flavors-rail');
+    const radialHost = document.getElementById('salryn-radial-host');
+
+    const industrySelect = document.getElementById('industry-profile');
+    const industryExamples = [
+      'Link checkout, stock counts, and cash at shift close.',
+      'Connect order queues with ingredient stock and staffing.',
+      'Track goods sold by different units, from counter orders to yard dispatch.',
+      'Coordinate intake, appointments, supplies, and billing by role.',
+      'Assign jobs, record client approvals, and invoice completed work.',
+      'Connect front desk, housekeeping, and purchasing across shifts.',
+      'Track equipment on hire, return condition, and deposits.',
+      'Connect purchasing, warehouse transfers, and wholesale orders.',
+      'Tie work orders to technicians, parts, and billing.',
+      'Follow materials into production and record quality checks.',
+      'Track harvest lots, input purchases, and seasonal crews.',
+      'Coordinate approvals and records across departments and sites.'
+    ];
+    flavorsRail.innerHTML = SALRYN_FAMILIES_12.map((fam) => `<article class="industry-profile" data-flavor-card="${fam.idx}">
+      <h3>${fam.name}</h3>
+      <p>${industryExamples[fam.idx]}</p>
+      <p class="industry-related">Relevant engines: ${fam.engines.filter((index) => !SALRYN_ENGINES_8[index].mandatory)
+        .map((index) => SALRYN_ENGINES_8[index].name).join(', ')}.</p>
+    </article>`).join('');
+    SALRYN_FAMILIES_12.forEach((fam) => industrySelect.add(new Option(fam.name, fam.idx)));
+    industrySelect.parentElement.hidden = false;
+
+    const flavorCards = Array.from(flavorsRail.children);
+    let activeFamily = 0;
+    let familyManuallySelected = false;
+    function selectFamily(index) {
+      activeFamily = index;
+      industrySelect.value = String(index);
+      flavorCards.forEach((card, i) => {
+        card.classList.toggle('is-highlighted', i === index);
+        card.inert = i !== index;
+      });
+      flavorsRail.style.setProperty('--industry-offset', `${-index * 100}%`);
+      radialHost.querySelectorAll('.radial-flavor-item').forEach((item) => {
+        const selected = Number(item.dataset.family) === index;
+        item.classList.toggle('is-active', selected);
+        item.style.opacity = selected ? '1' : '0.45';
+      });
+    }
+    function chooseFamily(index) {
+      familyManuallySelected = true;
+      selectFamily(index);
+    }
+    industrySelect.addEventListener('change', () => chooseFamily(Number(industrySelect.value)));
+    const releaseFamilySelection = () => { familyManuallySelected = false; };
+    window.addEventListener('wheel', releaseFamilySelection, {passive:true});
+    window.addEventListener('touchmove', releaseFamilySelection, {passive:true});
+    window.addEventListener('keydown', (event) => {
+      if (event.target.closest('input,select,textarea,button,[contenteditable]')) return;
+      if (['ArrowDown','ArrowUp','PageDown','PageUp','Home','End',' '].includes(event.key)) releaseFamilySelection();
+    });
+    selectFamily(0);
+
+    fetch('./assets/salryn-flavors-radial.svg')
+      .then((r) => r.text())
+      .then((txt) => {
+        radialHost.innerHTML = txt;
+        radialHost.querySelectorAll('.radial-flavor-item').forEach((item) => {
+          item.addEventListener('click', () => chooseFamily(Number(item.dataset.family)));
+        });
+        selectFamily(activeFamily);
+      });
+
+    let lastFlavorProgress = 0;
+    director.registerScene({
+      id: 'salryn-flavors',
+      el: document.getElementById('scene-c-flavors'),
+      onUpdate: ({ exact, inView, isReduced }) => {
+        if (!inView || isReduced || familyManuallySelected || window.innerWidth <= 900) return;
+        if (Math.abs(exact - lastFlavorProgress) < .001) return;
+        lastFlavorProgress = exact;
+        const index = Math.round(exact * (flavorCards.length - 1));
+        if (index !== activeFamily) selectFamily(index);
+      }
+    });
+
+    // =========================================================================
+    // SCENE D: FEATURE ACTIVATION (FOCUS-PRESERVED TOGGLES + SECURITY LOCK + COMPARATIVE SUMMARY)
+    // =========================================================================
+    const activeCapIds = new Set(['security-core', 'infra-core', 'cap-commerce', 'cap-inventory']);
+    const capGrid = document.getElementById('scene-d-cap-grid');
+    const actSvgMount = document.getElementById('salryn-activation-svg');
+    const actCountEl = document.getElementById('scene-d-count');
+    const actStatusEl = document.getElementById('scene-d-live-status');
+    const compareSummaryEl = document.getElementById('scene-d-compare-summary');
+
+    function initCapControls() {
+      capGrid.innerHTML = SALRYN_CAPABILITIES.map((cap) => {
+        const isOn = cap.mandatory || activeCapIds.has(cap.id);
+        return `
+          <button
+            type="button"
+            class="cap-toggle ${cap.mandatory ? 'is-locked' : ''}"
+            data-cap-id="${cap.id}"
+            data-locked="${cap.mandatory ? 'true' : 'false'}"
+            aria-pressed="${isOn ? 'true' : 'false'}"
+          >
+            <div class="cap-toggle-head">
+              <strong>${cap.name}</strong>
+              <span class="cap-status-pill">${cap.mandatory ? 'Mandatory Core' : (isOn ? 'Active' : 'Optional')}</span>
+            </div>
+            <span style="font-size:0.82rem;color:rgba(243,245,237,0.74);line-height:1.45;">${cap.note}</span>
+          </button>
+        `;
+      }).join('');
+
+      capGrid.querySelectorAll('.cap-toggle').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const id = btn.dataset.capId;
+          const locked = btn.dataset.locked === 'true';
+          if (locked) {
+            actStatusEl.innerHTML = '<strong>Security &amp; Infrastructure Locked:</strong> Core permissions, audit custody, and offline-first infrastructure are mandatory foundations and cannot be switched off.';
+            return;
+          }
+          if (activeCapIds.has(id)) activeCapIds.delete(id);
+          else activeCapIds.add(id);
+          activeCapIds.add('security-core');
+          activeCapIds.add('infra-core');
+          syncCapControlsInPlace();
+          syncCfgPillsInPlace();
+          syncActivationSvg();
+          syncGuidedSummary();
+        });
+      });
+    }
+
+    function syncCapControlsInPlace() {
+      capGrid.querySelectorAll('.cap-toggle').forEach((btn) => {
+        const id = btn.dataset.capId;
+        const locked = btn.dataset.locked === 'true';
+        const isOn = locked || activeCapIds.has(id);
+        btn.setAttribute('aria-pressed', isOn ? 'true' : 'false');
+        const pill = btn.querySelector('.cap-status-pill');
+        if (pill) pill.textContent = locked ? 'Mandatory Core' : (isOn ? 'Active' : 'Optional');
+      });
+    }
+
+    function syncActivationSvg() {
+      const activeEngines = new Set([6, 7]);
+      const optNames = [];
+      SALRYN_CAPABILITIES.forEach((cap) => {
+        if (cap.mandatory || activeCapIds.has(cap.id)) {
+          activeEngines.add(cap.engineIdx);
+          if (!cap.mandatory) optNames.push(SALRYN_ENGINES_8[cap.engineIdx].name);
+        }
+      });
+      actCountEl.textContent = `${activeEngines.size} / 8 Engines Illuminated`;
+      if (compareSummaryEl) {
+        compareSummaryEl.textContent = `${optNames.length ? optNames.join(' + ') : 'Core foundation only'} alongside mandatory Security & Infrastructure (${activeEngines.size} / 8 engines illuminated).`;
+      }
+
+      const svg = actSvgMount.querySelector('svg');
+      if (!svg) return;
+      svg.querySelectorAll('.engine-node, .engine-spoke').forEach((el) => {
+        const ei = parseInt(el.dataset.engine, 10);
+        el.style.transition = 'opacity 0.28s ease';
+        el.style.opacity = activeEngines.has(ei) ? '1' : '0.22';
+      });
+      svg.querySelectorAll('.family-node, .family-filament').forEach((el) => {
+        const fi = parseInt(el.dataset.family, 10);
+        const fam = SALRYN_FAMILIES_12[fi];
+        const matchCount = fam ? fam.engines.filter((ei) => activeEngines.has(ei)).length : 0;
+        el.style.transition = 'opacity 0.28s ease';
+        el.style.opacity = matchCount >= 3 ? '1' : '0.26';
+      });
+    }
+
+    fetch('./assets/salryn-ecosystem-architecture.svg')
+      .then((r) => r.text())
+      .then((txt) => {
+        actSvgMount.innerHTML = txt;
+        syncActivationSvg();
+      });
+    initCapControls();
+
+    // =========================================================================
+    // SCENE E: BUSINESS GROWTH (EXACT 2:1 BOTTOM-LEFT -> UPPER-RIGHT ASCENT)
+    // =========================================================================
+    const growthBeacon = document.getElementById('growth-beacon');
+    const growthCardsWrap = document.getElementById('growth-stage-cards');
+    growthCardsWrap.innerHTML = SALRYN_GROWTH_STAGES.map((g) => `
+      <button type="button" class="growth-stage-card ${g.idx === 0 ? 'is-active' : ''}" data-growth-idx="${g.idx}">
+        <strong>${g.stage}</strong>
+        <span>${[
+          'Start with sales and stock on a single workstation.',
+          'Add purchasing and receiving as supplier orders grow.',
+          'Add reconciliation, shift handovers, and approvals as your teams grow.',
+          'Plan for more workstations or branches on the same foundation.'
+        ][g.idx]}</span>
+      </button>
+    `).join('');
+
+    const growthCardEls = Array.from(growthCardsWrap.querySelectorAll('[data-growth-idx]'));
+    const beaconWaypoints = [
+      { x: 3.5, y: 81 },
+      { x: 33, y: 60 },
+      { x: 63, y: 37 },
+      { x: 94, y: 15 }
+    ];
+
+    function setGrowthVisual(u) {
+      const clamped = Math.max(0, Math.min(1, u));
+      const seg = clamped * (beaconWaypoints.length - 1);
+      const i0 = Math.min(beaconWaypoints.length - 2, Math.floor(seg));
+      const frac = seg - i0;
+      const x = beaconWaypoints[i0].x + (beaconWaypoints[i0 + 1].x - beaconWaypoints[i0].x) * frac;
+      const y = beaconWaypoints[i0].y + (beaconWaypoints[i0 + 1].y - beaconWaypoints[i0].y) * frac;
+      growthBeacon.style.left = `${x.toFixed(2)}%`;
+      growthBeacon.style.top = `${y.toFixed(2)}%`;
+
+      const activeStage = Math.min(3, Math.round(seg));
+      growthCardEls.forEach((card, i) => {
+        card.classList.toggle('is-active', i === activeStage);
+        card.setAttribute('aria-current', i === activeStage ? 'step' : 'false');
+      });
+    }
+
+    director.registerScene({
+      id: 'salryn-growth',
+      el: document.getElementById('scene-e-growth'),
+      chapters: [
+        { id: '0', start: 0.0, end: 0.25 },
+        { id: '1', start: 0.25, end: 0.55 },
+        { id: '2', start: 0.55, end: 0.82 },
+        { id: '3', start: 0.82, end: 1.0 }
+      ],
+      onUpdate: ({ smooth, isReduced }) => {
+        if (!isReduced && window.innerWidth > 900) {
+          setGrowthVisual(smooth);
+        }
+      }
+    });
+
+    growthCardEls.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const idx = parseInt(btn.dataset.growthIdx, 10);
+        const u = idx / 3;
+        setGrowthVisual(u);
+        if (!reduced && window.innerWidth > 900) {
+          director.jumpToSceneProgress('salryn-growth', u);
+        }
+      });
+    });
+
+    // =========================================================================
+    // SCENE F: OPERATIONAL INDEPENDENCE (3-STATE CONTINUITY SIMULATOR)
+    // =========================================================================
+    const SIM_MODES = {
+      local: {
+        title: 'During an outage',
+        desc: 'A shop can record a sale and print a receipt on its local system during an internet outage. Tasks that use external services wait for the connection.'
+      },
+      exchange: {
+        title: 'When the connection returns',
+        desc: 'When internet access returns, authorized staff can export the records they need for external systems.'
+      },
+      multi: {
+        title: 'Across local workstations',
+        desc: 'A counter and back-office desk can use the same local system over the shop’s network. Each role has its own access.'
+      }
+    };
+
+    const simFrame = document.getElementById('offline-sim-frame');
+    const simButtons = Array.from(document.querySelectorAll('[data-sim-mode]'));
+
+    let activeSimMode = 'local';
+    function setSimMode(mode) {
+      activeSimMode = mode;
+      const m = SIM_MODES[mode] || SIM_MODES.local;
+      document.getElementById('sim-mode-title').textContent = m.title;
+      document.getElementById('sim-mode-desc').textContent = m.desc;
+      simButtons.forEach((b) => b.setAttribute('aria-current', b.dataset.simMode === mode ? 'step' : 'false'));
+      const svg = simFrame.querySelector('svg');
+      if (svg) {
+        const paths = svg.querySelectorAll('path');
+        paths.forEach((p) => {
+          p.style.transition = 'opacity 0.25s ease, stroke 0.25s ease';
+          p.style.opacity = mode === 'local' ? '0.28' : '0.95';
+          p.style.stroke = mode === 'exchange' ? '#D3F66B' : 'rgba(243,245,237,0.48)';
+        });
+        svg.querySelectorAll('rect[rx="18"]').forEach((r) => {
+          r.style.transition = 'stroke 0.25s ease, stroke-width 0.25s ease';
+          r.style.stroke = mode === 'multi' ? '#D3F66B' : '#1E9F6F';
+          r.style.strokeWidth = mode === 'multi' ? '2.2' : '1.4';
+        });
+      }
+    }
+
+    fetch('./assets/salryn-offline-first.svg')
+      .then((r) => r.text())
+      .then((txt) => {
+        simFrame.innerHTML = txt;
+        setSimMode(activeSimMode);
+      });
+
+    simButtons.forEach((b) => {
+      b.addEventListener('click', () => setSimMode(b.dataset.simMode));
+    });
+
+    // =========================================================================
+    // SCENE G: GUIDED CONCEPTUAL CONFIGURATION COMPOSER + VISUAL BADGE STRIP
+    // =========================================================================
+    const cfgIndustry = document.getElementById('cfg-industry');
+    const cfgPills = document.getElementById('cfg-cap-pills');
+    const cfgScale = document.getElementById('cfg-scale');
+    const cfgNote = document.getElementById('cfg-note');
+    const cfgOutput = document.getElementById('cfg-output');
+    const cfgContactLink = document.getElementById('btn-cfg-contact');
+    const cfgFeedback = document.getElementById('cfg-feedback');
+
+    cfgIndustry.innerHTML = SALRYN_FAMILIES_12.map((f) => `<option value="${f.name}">${f.name}</option>`).join('');
+
+    function initCfgPills() {
+      cfgPills.innerHTML = SALRYN_CAPABILITIES.map((cap) => {
+        const isOn = cap.mandatory || activeCapIds.has(cap.id);
+        return `
+          <button type="button" class="config-cap-pill ${cap.mandatory ? 'locked' : ''}" data-cfg-cap="${cap.id}" aria-pressed="${isOn ? 'true' : 'false'}">
+            ${cap.mandatory ? `${cap.name} (Locked Core)` : cap.name}
+          </button>
+        `;
+      }).join('');
+
+      cfgPills.querySelectorAll('[data-cfg-cap]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const id = btn.dataset.cfgCap;
+          const cap = SALRYN_CAPABILITIES.find((c) => c.id === id);
+          if (!cap || cap.mandatory) {
+            cfgFeedback.textContent = 'Security and offline-first Infrastructure remain included in every Salryn configuration.';
+            return;
+          }
+          if (activeCapIds.has(id)) activeCapIds.delete(id);
+          else activeCapIds.add(id);
+          syncCapControlsInPlace();
+          syncCfgPillsInPlace();
+          syncActivationSvg();
+          syncGuidedSummary();
+        });
+      });
+    }
+
+    function syncCfgPillsInPlace() {
+      cfgPills.querySelectorAll('[data-cfg-cap]').forEach((btn) => {
+        const id = btn.dataset.cfgCap;
+        const cap = SALRYN_CAPABILITIES.find((c) => c.id === id);
+        const isOn = Boolean(cap && (cap.mandatory || activeCapIds.has(id)));
+        btn.setAttribute('aria-pressed', isOn ? 'true' : 'false');
+      });
+    }
+
+    function syncGuidedSummary() {
+      const industry = cfgIndustry.value || 'Retail';
+      const scale = cfgScale.value;
+      const note = cfgNote.value.trim();
+      const selectedCaps = SALRYN_CAPABILITIES.filter((c) => c.mandatory || activeCapIds.has(c.id));
+      const selectedNames = selectedCaps.map((c) => c.name);
+
+      const text = [
+        'Salryn inquiry',
+        `Industry: ${industry}`,
+        `Sites and workstations: ${scale}`,
+        'Included: Security and Infrastructure',
+        `Additional capabilities: ${selectedCaps.filter((cap) => !cap.mandatory).map((cap) => cap.name).join(', ') || 'None selected'}`,
+        note && `Priorities: ${note}`
+      ].filter(Boolean).join('\n');
+
+      cfgOutput.textContent = text;
+      const qs = new URLSearchParams({
+        topic: 'salryn',
+        industry,
+        scale,
+        caps: selectedNames.join(', ')
+      });
+      cfgContactLink.href = `./contact.html?${qs.toString()}`;
+    }
+
+    initCfgPills();
+    cfgIndustry.addEventListener('change', syncGuidedSummary);
+    cfgScale.addEventListener('change', syncGuidedSummary);
+    cfgNote.addEventListener('input', syncGuidedSummary);
+    syncGuidedSummary();
+
+    document.getElementById('btn-cfg-copy').addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(cfgOutput.textContent);
+        cfgFeedback.textContent = 'Conceptual inquiry summary copied to clipboard.';
+      } catch (_) {
+        cfgFeedback.textContent = 'Copy unavailable in this browser context; you can download the .txt summary or continue directly to Contact.';
+      }
+    });
+
+    document.getElementById('btn-cfg-download').addEventListener('click', () => {
+      const blob = new Blob([cfgOutput.textContent], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'salryn-conceptual-inquiry.txt';
+      a.click();
+      setTimeout(() => URL.revokeObjectURL(url), 500);
+      cfgFeedback.textContent = 'Downloaded salryn-conceptual-inquiry.txt locally.';
+    });
+
+    document.fonts.ready.then(() => director.measureAll());
+    window.addEventListener('pagehide', (event) => {
+      if (event.persisted) return;
+      kernelPlayer.destroy();
+      bgField.dispose();
+      director.destroy();
+      if (threeHero && typeof threeHero.dispose === 'function') threeHero.dispose();
+    });
+
+    window.__SITE_READY__ = true;
+  </script>
+</body>
+</html>

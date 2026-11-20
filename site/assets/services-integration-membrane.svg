@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1320 620" width="1320" height="620" role="img" aria-labelledby="svc-mem-title svc-mem-desc">
+  <title id="svc-mem-title">Kirjane Adaptive Integration Membrane</title>
+  <desc id="svc-mem-desc">Continuous emerald streamlines unifying legacy databases, validation contracts, and modern business software.</desc>
+  <defs>
+    <linearGradient id="svc-bg" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#08110D"/>
+      <stop offset="50%" stop-color="#0C1F17"/>
+      <stop offset="100%" stop-color="#08110D"/>
+    </linearGradient>
+    <radialGradient id="svc-core-glow" cx="50%" cy="50%" r="48%">
+      <stop offset="0%" stop-color="#D3F66B" stop-opacity="0.35"/>
+      <stop offset="55%" stop-color="#167B55" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#08110D" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1320" height="620" fill="url(#svc-bg)"/>
+  <ellipse cx="660" cy="310" rx="280" ry="230" fill="url(#svc-core-glow)"/>
+  <g id="svc-streamlines">
+    <path class="svc-flow-path" d="M 40 70.0 C 320 70.0, 460 165.0, 660 165.0 S 1000 70.0, 1280 70.0" fill="none" stroke="#1D9B6B" stroke-opacity="0.74" stroke-width="1.35"/>
+    <path class="svc-flow-path" d="M 40 87.8 C 320 87.8, 460 180.5, 660 180.5 S 1000 87.8, 1280 87.8" fill="none" stroke="#135D40" stroke-opacity="0.74" stroke-width="1.0"/>
+    <path class="svc-flow-path" d="M 40 105.6 C 320 105.6, 460 195.5, 660 195.5 S 1000 105.6, 1280 105.6" fill="none" stroke="#1D9B6B" stroke-opacity="0.74" stroke-width="1.0"/>
+    <path class="svc-flow-path" d="M 40 123.3 C 320 123.3, 460 209.3, 660 209.3 S 1000 123.3, 1280 123.3" fill="none" stroke="#135D40" stroke-opacity="0.74" stroke-width="1.35"/>
+    <path class="svc-flow-path" d="M 40 141.1 C 320 141.1, 460 221.8, 660 221.8 S 1000 141.1, 1280 141.1" fill="none" stroke="#1D9B6B" stroke-opacity="0.74" stroke-width="1.0"/>
+    <path class="svc-flow-path" d="M 40 158.9 C 320 158.9, 460 232.5, 660 232.5 S 1000 158.9, 1280 158.9" fill="none" stroke="#D3F66B" stroke-opacity="0.92" stroke-width="2.1"/>
+    <path class="svc-flow-path" d="M 40 176.7 C 320 176.7, 460 241.6, 660 241.6 S 1000 176.7, 1280 176.7" fill="none" stroke="#1D9B6B" stroke-opacity="0.74" stroke-width="1.35"/>
+    <path class="svc-flow-path" d="M 40 194.4 C 320 194.4, 460 249.2, 660 249.2 S 1000 194.4, 1280 194.4" fill="none" stroke="#135D40" stroke-opacity="0.74" stroke-width="1.0"/>
+    <path class="svc-flow-path" d="M 40 212.2 C 320 212.2, 460 255.7, 660 255.7 S 1000 212.2, 1280 212.2" fill="none" stroke="#1D9B6B" stroke-opacity="0.74" stroke-width="1.0"/>
+    <path class="svc-flow-path" d="M 40 230.0 C 320 230.0, 460 261.7, 660 261.7 S 1000 230.0, 1280 230.0" fill="none" stroke="#135D40" stroke-opacity="0.74" stroke-width="1.35"/>
+    <path class="svc-flow-path" d="M 40 247.8 C 320 247.8, 460 267.6, 660 267.6 S 1000 247.8, 1280 247.8" fill="none" stroke="#1D9B6B" stroke-opacity="0.74" stroke-width="1.0"/>
+    <path class="svc-flow-path" d="M 40 265.6 C 320 265.6, 460 274.1, 660 274.1 S 1000 265.6, 1280 265.6" fill="none" stroke="#D3F66B" stroke-opacity="0.92" stroke-width="2.1"/>
+    <path class="svc-flow-path" d="M 40 283.3 C 320 283.3, 460 281.8, 660 281.8 S 1000 283.3, 1280 283.3" fill="none" stroke="#1D9B6B" stroke-opacity="0.74" stroke-width="1.35"/>
+    <path class="svc-flow-path" d="M 40 301.1 C 320 301.1, 460 290.8, 660 290.8 S 1000 301.1, 1280 301.1" fill="none" stroke="#135D40" stroke-opacity="0.74" stroke-width="1.0"/>
+    <path class="svc-flow-path" d="M 40 318.9 C 320 318.9, 460 301.6, 660 301.6 S 1000 318.9, 1280 318.9" fill="none" stroke="#1D9B6B" stroke-opacity="0.74" stroke-width="1.0"/>
+    <path class="svc-flow-path" d="M 40 336.7 C 320 336.7, 460 314.0, 660 314.0 S 1000 336.7, 1280 336.7" fill="none" stroke="#135D40" stroke-opacity="0.74" stroke-width="1.35"/>
+    <path class="svc-flow-path" d="M 40 354.4 C 320 354.4, 460 327.9, 660 327.9 S 1000 354.4, 1280 354.4" fill="none" stroke="#D3F66B" stroke-opacity="0.92" stroke-width="2.1"/>
+    <path class="svc-flow-path" d="M 40 372.2 C 320 372.2, 460 342.8, 660 342.8 S 1000 372.2, 1280 372.2" fill="none" stroke="#135D40" stroke-opacity="0.74" stroke-width="1.0"/>
+    <path class="svc-flow-path" d="M 40 390.0 C 320 390.0, 460 358.3, 660 358.3 S 1000 390.0, 1280 390.0" fill="none" stroke="#1D9B6B" stroke-opacity="0.74" stroke-width="1.35"/>
+    <path class="svc-flow-path" d="M 40 407.8 C 320 407.8, 460 373.9, 660 373.9 S 1000 407.8, 1280 407.8" fill="none" stroke="#135D40" stroke-opacity="0.74" stroke-width="1.0"/>
+    <path class="svc-flow-path" d="M 40 425.6 C 320 425.6, 460 388.8, 660 388.8 S 1000 425.6, 1280 425.6" fill="none" stroke="#1D9B6B" stroke-opacity="0.74" stroke-width="1.0"/>
+    <path class="svc-flow-path" d="M 40 443.3 C 320 443.3, 460 402.7, 660 402.7 S 1000 443.3, 1280 443.3" fill="none" stroke="#135D40" stroke-opacity="0.74" stroke-width="1.35"/>
+    <path class="svc-flow-path" d="M 40 461.1 C 320 461.1, 460 415.1, 660 415.1 S 1000 461.1, 1280 461.1" fill="none" stroke="#D3F66B" stroke-opacity="0.92" stroke-width="2.1"/>
+    <path class="svc-flow-path" d="M 40 478.9 C 320 478.9, 460 425.8, 660 425.8 S 1000 478.9, 1280 478.9" fill="none" stroke="#135D40" stroke-opacity="0.74" stroke-width="1.0"/>
+    <path class="svc-flow-path" d="M 40 496.7 C 320 496.7, 460 434.9, 660 434.9 S 1000 496.7, 1280 496.7" fill="none" stroke="#1D9B6B" stroke-opacity="0.74" stroke-width="1.35"/>
+    <path class="svc-flow-path" d="M 40 514.4 C 320 514.4, 460 442.5, 660 442.5 S 1000 514.4, 1280 514.4" fill="none" stroke="#135D40" stroke-opacity="0.74" stroke-width="1.0"/>
+    <path class="svc-flow-path" d="M 40 532.2 C 320 532.2, 460 449.0, 660 449.0 S 1000 532.2, 1280 532.2" fill="none" stroke="#1D9B6B" stroke-opacity="0.74" stroke-width="1.0"/>
+    <path class="svc-flow-path" d="M 40 550.0 C 320 550.0, 460 455.0, 660 455.0 S 1000 550.0, 1280 550.0" fill="none" stroke="#135D40" stroke-opacity="0.74" stroke-width="1.35"/>
+  </g>
+  <g id="svc-markers">
+    <line x1="165" y1="68" x2="165" y2="510" stroke="#167B55" stroke-opacity="0.28" stroke-width="1"/>
+    <circle cx="165" cy="310" r="8" fill="#08110D" stroke="#D3F66B" stroke-width="2.2"/>
+    <circle cx="165" cy="310" r="3.0" fill="#D3F66B"/>
+    <text x="165" y="552" text-anchor="middle" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="16" font-weight="500">Existing Systems</text>
+    <text x="165" y="576" text-anchor="middle" fill="#9BBBA9" font-family="Segoe UI, sans-serif" font-size="12.5">Legacy ERP, SQL records, and files</text>
+    <line x1="660" y1="68" x2="660" y2="510" stroke="#167B55" stroke-opacity="0.28" stroke-width="1"/>
+    <circle cx="660" cy="310" r="12" fill="#08110D" stroke="#D3F66B" stroke-width="2.2"/>
+    <circle cx="660" cy="310" r="4.6" fill="#D3F66B"/>
+    <text x="660" y="552" text-anchor="middle" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="16" font-weight="500">Contract Membrane</text>
+    <text x="660" y="576" text-anchor="middle" fill="#9BBBA9" font-family="Segoe UI, sans-serif" font-size="12.5">Validation, routing, and retry isolation</text>
+    <line x1="1155" y1="68" x2="1155" y2="510" stroke="#167B55" stroke-opacity="0.28" stroke-width="1"/>
+    <circle cx="1155" cy="310" r="8" fill="#08110D" stroke="#D3F66B" stroke-width="2.2"/>
+    <circle cx="1155" cy="310" r="3.0" fill="#D3F66B"/>
+    <text x="1155" y="552" text-anchor="middle" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="16" font-weight="500">Modern Interfaces</text>
+    <text x="1155" y="576" text-anchor="middle" fill="#9BBBA9" font-family="Segoe UI, sans-serif" font-size="12.5">Web apps, portals, and reporting</text>
+  </g>
+</svg>

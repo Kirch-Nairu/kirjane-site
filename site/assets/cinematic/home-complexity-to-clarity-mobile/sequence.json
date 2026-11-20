@@ -1,0 +1,10 @@
+{
+  "scene": "home-complexity-to-clarity",
+  "variant": "mobile",
+  "width": 540,
+  "height": 720,
+  "frameCount": 36,
+  "poster": "poster.webp",
+  "pattern": "frame-{index}.webp",
+  "pad": 4
+}

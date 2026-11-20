@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Kirjane Labs | Software built around the way you work</title>
+  <meta name="description" content="Kirjane Labs engineers custom business software, workflow automation, integrated systems and technical infrastructure. Explore Salryn, our flagship modular business management platform." />
+  <meta name="theme-color" content="#08110D" />
+  <link rel="icon" type="image/png" href="./assets/brand/favicon.png" sizes="64x64" />
+  <meta property="og:title" content="Kirjane Labs | Software built around the way you work" />
+  <meta property="og:description" content="Kirjane Labs engineers custom business software, workflow automation, integrated systems and technical infrastructure. Explore Salryn, our flagship modular business management platform." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Kirjane Labs" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preload" href="./assets/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" as="image" href="./assets/d02-hero-desktop.webp" media="(min-width:901px)" fetchpriority="high" />
+  <link rel="preload" as="image" href="./assets/d02-hero-mobile.webp" media="(max-width:900px)" fetchpriority="high" />
+  <script>
+    try {
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches && !location.hash && !new URLSearchParams(location.search).has('reduce') && !sessionStorage.getItem('kirjane-cinematic-opening-r2')) {
+        document.documentElement.dataset.brandEntry = 'pending';
+        window.__brandEntryTimer = setTimeout(() => { delete document.documentElement.dataset.brandEntry; window.__brandEntryExpired = true; }, 1200);
+      }
+    } catch {}
+  </script>
+  <style>html[data-brand-entry="pending"]::after{content:"";position:fixed;inset:0;background:#08110d;z-index:999;pointer-events:none}</style>
+  <link rel="stylesheet" href="./css/topography.css" />
+  <link rel="stylesheet" href="./css/editorial.css" />
+  <link rel="stylesheet" href="./css/brand-opening.css" />
+  <link rel="modulepreload" href="./js/editorial-opening.js" />
+  <noscript>
+    <style>
+      .cinematic-scrub-section,.cinematic-scrub-section.compact-scrub,.exhibition-scroll-wrapper{height:auto!important;}
+      .cinematic-sticky-stage,.exhibition-sticky{position:relative!important;height:auto!important;min-height:480px;}
+      .beat-stack{min-height:auto!important;display:flex!important;flex-direction:column!important;gap:1.15rem!important;}
+      .beat-card{position:relative!important;opacity:1!important;transform:none!important;pointer-events:auto!important;}
+      .beat-card{visibility:visible!important;}
+      .chapter-rail,.sequence-details{display:none!important;}
+      .cap-theatre-viewport .exhibition-rail{flex-direction:column!important;}
+    </style>
+  </noscript>
+  <style>
+    .home-hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero-sculpture-layer { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+    .hero-sculpture-layer picture, .hero-sculpture-layer img {
+      width: 100%; height: 100%; object-fit: cover; object-position: right center; display: block; opacity: 0.94;
+    }
+    .hero-scrim {
+      position: absolute; inset: 0; z-index: 2; pointer-events: none;
+      background: linear-gradient(90deg, rgba(8, 17, 13, 0.92) 0%, rgba(8, 17, 13, 0.66) 44%, rgba(8, 17, 13, 0.14) 100%);
+    }
+    .home-hero-inner { position: relative; z-index: 4; width: 100%; padding: 118px 0 72px 0; }
+    .hero-copy-col { max-width: 650px; }
+    .hero-copy-col h1 { margin-bottom: 1.55rem; }
+    .hero-copy-col .lead { margin-bottom: 2.2rem; }
+    .hero-ethos {
+      margin-top: 3rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(243, 245, 237, 0.14);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 2.25rem;
+      font-size: 0.86rem;
+      color: var(--subtle);
+    }
+    .hero-ethos strong { color: var(--alabaster); font-weight: 500; }
+
+    /* SALRYN FLAGSHIP PRODUCT EXHIBITION (HOMEPAGE CENTERPIECE) */
+    .salryn-band {
+      padding: clamp(5.5rem, 9.5vw, 9rem) 0;
+      border-top: 1px solid rgba(211, 246, 107, 0.24);
+      border-bottom: 1px solid var(--hairline);
+      background: radial-gradient(circle at 50% 25%, rgba(16, 61, 43, 0.26) 0%, rgba(5, 11, 8, 0.94) 68%);
+    }
+    .salryn-intro-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: clamp(2rem, 5vw, 4.5rem);
+      align-items: end;
+      margin-bottom: 2.25rem;
+    }
+    .salryn-pillar-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.9rem;
+      margin-bottom: 2rem;
+    }
+    .salryn-pillar-note {
+      padding: 0.85rem 1.05rem;
+      background: rgba(9, 20, 15, 0.82);
+      border: 1px solid var(--hairline);
+      border-left: 2px solid var(--emerald);
+      border-radius: 6px;
+      font-size: 0.84rem;
+      color: rgba(243, 245, 237, 0.80);
+    }
+    .salryn-pillar-note strong {
+      display: block;
+      color: var(--white);
+      font-size: 0.88rem;
+      margin-bottom: 0.2rem;
+    }
+    .salryn-stage {
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1.32fr) minmax(0, 0.92fr);
+      gap: clamp(1.75rem, 4vw, 3.25rem);
+      align-items: start;
+    }
+    .salryn-organism-canvas {
+      background: rgba(5, 11, 8, 0.86);
+      border: 1px solid var(--hairline-emerald);
+      border-radius: 8px;
+      padding: 0.75rem;
+      overflow: hidden;
+    }
+    #home-salryn-svg { aspect-ratio: 1440 / 920; width: 100%; }
+    #home-salryn-svg svg { width: 100%; height: auto; display: block; }
+
+    .salryn-detail-col { display: flex; flex-direction: column; gap: 1.4rem; }
+    .salryn-state-meta { font-size: 0.8rem; font-weight: 500; color: var(--lime); margin-bottom: 0.4rem; }
+    .salryn-ui-rows { display: grid; gap: 0.6rem; }
+    .salryn-ui-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.75rem;
+      align-items: center;
+      padding: 0.75rem 0.9rem;
+      background: rgba(243, 245, 237, 0.03);
+      border: 1px solid rgba(243, 245, 237, 0.09);
+      border-radius: 4px;
+    }
+    .salryn-ui-row.accent-row {
+      border-color: rgba(211, 246, 107, 0.36);
+      background: rgba(16, 61, 43, 0.25);
+    }
+    .salryn-ui-row strong { display: block; font-size: 0.88rem; font-weight: 500; color: var(--white); }
+    .salryn-ui-row span { font-size: 0.78rem; color: var(--subtle); }
+    .salryn-ui-state {
+      font-style: normal;
+      font-size: 0.74rem;
+      font-weight: 600;
+      padding: 0.24rem 0.55rem;
+      border-radius: 3px;
+      border: 1px solid rgba(243, 245, 237, 0.16);
+      color: var(--alabaster);
+      white-space: nowrap;
+    }
+    .salryn-ui-state.lime { background: var(--lime); color: var(--obsidian); border-color: var(--lime); }
+
+    /* CAPABILITIES R3 THEATRE (PINNED 3D PLATE STAGE + HORIZONTAL RAIL) */
+    .cap-theatre-body {
+      max-width: var(--max-w);
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+      gap: clamp(1.25rem, 3vw, 2.5rem);
+      align-items: center;
+    }
+    .cap-theatre-viewport {
+      overflow: hidden;
+      width: 100%;
+    }
+    .cap-theatre-viewport .exhibition-rail {
+      padding-right: 4vw;
+    }
+    .cap-theatre-viewport .exhibition-card {
+      flex: 0 0 clamp(290px, 28vw, 370px);
+    }
+    .cap-compare-row {
+      margin-top: 0.65rem;
+      padding-top: 0.65rem;
+      border-top: 1px solid rgba(243, 245, 237, 0.10);
+      font-size: 0.8rem;
+      color: rgba(243, 245, 237, 0.76);
+    }
+
+    /* SELECTED WORK PREVIEW */
+    .work-band {
+      padding: clamp(5rem, 8.5vw, 8rem) 0;
+      background: rgba(6, 13, 10, 0.92);
+      border-top: 1px solid var(--hairline);
+      border-bottom: 1px solid var(--hairline);
+    }
+    .work-head {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+    .work-preview-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 2rem; }
+    .work-exhibit-card {
+      background: rgba(11, 22, 17, 0.88);
+      border: 1px solid var(--hairline);
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.22s ease;
+    }
+    .work-exhibit-card:hover { border-color: var(--emerald); }
+    .work-exhibit-media { aspect-ratio: 16 / 10; overflow: hidden; }
+    .work-exhibit-media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.65s ease; }
+    .work-exhibit-card:hover .work-exhibit-media img { transform: scale(1.03); }
+    .work-exhibit-body { padding: 1.5rem; display: flex; flex-direction: column; gap: 0.7rem; flex: 1; }
+    .work-exhibit-meta { display: flex; justify-content: space-between; gap: 0.75rem; font-size: 0.78rem; color: var(--lime); }
+    .work-exhibit-meta span:last-child { color: var(--subtle); }
+    .work-exhibit-body h3 { font-family: var(--display); font-size: 1.5rem; font-weight: 300; color: var(--white); line-height: 1.2; }
+    .work-exhibit-body p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+    .work-mode-tabs {
+      display: flex;
+      gap: 0.45rem;
+      margin-top: 0.4rem;
+    }
+    .work-mode-btn {
+      background: transparent;
+      border: 1px solid rgba(243, 245, 237, 0.16);
+      color: rgba(243, 245, 237, 0.76);
+      font-size: 0.76rem;
+      padding: 0.34rem 0.72rem;
+      border-radius: 999px;
+      cursor: pointer;
+    }
+    .work-mode-btn[aria-selected="true"] {
+      border-color: var(--lime);
+      color: var(--lime);
+      background: rgba(22, 123, 85, 0.24);
+      font-weight: 600;
+    }
+    .work-mode-panel {
+      margin-top: 0.65rem;
+      padding: 0.8rem 0.9rem;
+      border-radius: 6px;
+      background: rgba(5, 11, 8, 0.72);
+      border: 1px solid rgba(243, 245, 237, 0.10);
+      font-size: 0.83rem;
+      color: rgba(243, 245, 237, 0.82);
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    /* PROCESS TOPOLOGY HORIZON & CLOSING */
+    .process-band { padding: clamp(5rem, 8.5vw, 8rem) 0; background: rgba(8, 17, 13, 0.90); }
+    .process-head {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 2rem;
+      margin-bottom: 2.25rem;
+    }
+    .topology-grid {
+      display: grid;
+      grid-template-columns: 1.55fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      margin-bottom: 4.5rem;
+    }
+    #home-topo-svg { aspect-ratio: 1400 / 860; width: 100%; }
+    #home-topo-svg svg { width: 100%; height: auto; display: block; }
+    .stage-panel { border-top: 1px solid rgba(243, 245, 237, 0.22); padding-top: 1.6rem; }
+    .stage-deliverable {
+      margin-top: 0.85rem;
+      padding: 0.8rem 1rem;
+      border-left: 2px solid var(--lime);
+      background: rgba(16, 61, 43, 0.20);
+      font-size: 0.84rem;
+      color: rgba(243, 245, 237, 0.86);
+    }
+    .closing-horizon {
+      border-top: 1px solid var(--hairline);
+      padding-top: 4rem;
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 3rem;
+      align-items: end;
+    }
+
+    @media (max-width: 1060px) {
+      .salryn-stage, .topology-grid, .cap-theatre-body { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 900px) {
+      .home-hero { min-height: 92svh; align-items: flex-end; }
+      .hero-sculpture-layer img { object-position: 82% top; opacity: 0.88; }
+      .hero-scrim { background: linear-gradient(180deg, rgba(8, 17, 13, 0.08) 0%, rgba(8, 17, 13, 0.42) 34%, rgba(8, 17, 13, 0.92) 58%, rgba(8, 17, 13, 0.99) 100%); }
+      .home-hero-inner { padding: 13.5rem 0 4.5rem 0; }
+      .hero-ethos { display: none; }
+      .salryn-intro-grid, .salryn-pillar-strip, .work-preview-grid, .closing-horizon { grid-template-columns: 1fr; gap: 1.35rem; }
+      .salryn-ui-row { grid-template-columns: 1fr; gap: 0.45rem; }
+      .salryn-ui-state { justify-self: start; }
+      .work-exhibit-meta { flex-direction: column; gap: 0.2rem; }
+      .cap-theatre-viewport .exhibition-rail { padding-right: 0; }
+      .cap-theatre-viewport .exhibition-card { flex: none; width: 100%; }
+    }
+  </style>
+</head>
+<body data-editorial="index" data-page="home">
+  <a href="#main" class="skip-link">Skip to content</a>
+  <canvas id="living-topography-bg" aria-hidden="true"></canvas>
+
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a href="./index.html" class="wordmark" aria-label="Kirjane Home">
+        <img class="wordmark-mark official-brand-mark" src="./assets/brand/kirjane-mark-white.webp" alt="" width="40" height="31" />
+        <span><img class="official-brand-word" src="./assets/brand/kirjane-word-white.webp" alt="Kirjane" width="112" height="20" /></span>
+      </a>
+      <nav class="primary-nav" aria-label="Primary navigation">
+        <a href="./salryn.html" class="nav-salryn" data-page="salryn">Salryn</a>
+        <a href="./services.html" data-page="services">Services</a>
+        <a href="./projects.html" data-page="projects">Projects</a>
+        <a href="./process.html" data-page="process">Process</a>
+        <a href="./about.html" data-page="about">About</a>
+        <a href="./contact.html" data-page="contact">Contact</a>
+      </nav>
+      <button type="button" class="mobile-menu-btn" id="btn-mobile-menu" aria-expanded="false" aria-controls="mobile-drawer">Menu</button>
+    </div>
+  </header>
+
+  <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true" inert role="dialog" aria-label="Site Navigation">
+    <div class="drawer-head">
+      <span class="wordmark">Kirjane</span>
+      <button type="button" class="mobile-menu-btn" id="btn-drawer-close" style="display:inline-flex;">Close</button>
+    </div>
+    <nav class="drawer-links" aria-label="All Pages">
+      <a href="./index.html" data-page="home">Home <span>Overview</span></a>
+      <a href="./salryn.html" data-page="salryn">Salryn <span>Flagship Product</span></a>
+      <a href="./services.html" data-page="services">Services <span>Capabilities</span></a>
+      <a href="./projects.html" data-page="projects">Projects <span>Exhibition</span></a>
+      <a href="./process.html" data-page="process">Our Process <span>Methodology</span></a>
+      <a href="./about.html" data-page="about">About <span>Company</span></a>
+      <a href="./contact.html" data-page="contact">Contact <span>Start a Brief</span></a>
+    </nav>
+    <div class="drawer-foot">Kirjane Labs &middot; Adapt. Automate. Evolve.</div>
+  </div>
+
+  <div class="page-shell">
+    <noscript>
+      <div class="noscript-note" style="margin-top:74px;">
+        JavaScript is disabled. You are viewing Kirjane's complete static semantic edition with full visual posters and architecture documentation.
+      </div>
+    </noscript>
+
+    <main id="main" tabindex="-1">
+      <!-- BEAT 1: OPENING LIVING TOPOGRAPHY + KIRJANE SIGNATURE REVEAL CREST -->
+      <section class="home-hero">
+        <div class="hero-sculpture-layer">
+          <picture>
+            <source media="(max-width: 900px)" srcset="./assets/d02-hero-mobile.webp" />
+            <img src="./assets/d02-hero-desktop.webp" alt="Sculpted translucent emerald glass and dark obsidian laminar vessel illuminated by fine acid-lime internal contours" data-parallax="0.08" fetchpriority="high" />
+          </picture>
+        </div>
+        <div class="hero-scrim" aria-hidden="true"></div>
+
+        <div class="home-hero-inner">
+          <div class="wrap">
+            <div class="hero-copy-col">
+              <div class="editorial-identity" data-editorial-identity aria-hidden="true">
+                <span class="identity-letter"></span><span class="identity-word">KIRJANE</span>
+              </div>
+              <h1 class="display-xl">Software built around <em class="hero-lockup">the way you work.</em></h1>
+              <p class="lead">We build business software that connects teams, automates routine work, and makes complex operations easier to manage.</p>
+              <a href="#complexity-clarity-scene" class="explore-cue"><span class="cue-desktop">Scroll to explore</span><span class="cue-mobile">Swipe up to explore</span> <span aria-hidden="true">↓</span></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BEAT 2: COMPLEXITY INTO CLARITY (72 DESKTOP / 36 MOBILE DETERMINISTIC CGI SEQUENCE + HOTSPOT PINS) -->
+      <section class="cinematic-scrub-section compact-scrub" id="complexity-clarity-scene" aria-label="Complexity into Clarity interactive sequence">
+        <div class="cinematic-sticky-stage">
+          <picture>
+            <source media="(max-width: 900px)" srcset="./assets/cinematic/home-complexity-to-clarity-mobile/poster.webp" />
+            <img class="cinematic-poster-fallback" src="./assets/cinematic/home-complexity-to-clarity-desktop/poster.webp" alt="Faceted blown-emerald architectural crystal surrounded by calibrated topographic rings" />
+          </picture>
+          <canvas id="home-clarity-canvas" class="cinematic-canvas-layer" aria-hidden="true"></canvas>
+          <div class="cinematic-stage-scrim" aria-hidden="true"></div>
+
+          <div class="cinematic-stage-hud">
+            <div>
+
+              <div class="beat-stack" id="home-clarity-beats" aria-live="polite">
+                <article class="beat-card is-active" data-beat="complexity">
+                  <h2>Complexity lives in the handoffs.</h2>
+                  <p>A request changes hands. Someone confirms the details. The next team needs the right record to keep moving.</p>
+                </article>
+                <article class="beat-card" data-beat="alignment">
+                  <h2>Trace the work before writing code.</h2>
+                  <p>We map who submits, reviews, and approves the work, then give each decision a place in the system.</p>
+                </article>
+                <article class="beat-card" data-beat="clarity">
+                  <h2>Make the next step clear.</h2>
+                  <p>Give each team the records it needs and a clear way to move work forward. That same principle shapes Salryn.</p>
+                </article>
+              </div>
+
+              <div class="scrub-progress-track" aria-hidden="true">
+                <div class="scrub-progress-fill" id="home-clarity-progress"></div>
+              </div>
+
+              <div class="chapter-rail" role="group" aria-label="Jump to sequence chapter">
+                <button type="button" class="chapter-pill" data-clarity-jump="0.06" data-beat-target="complexity" aria-current="step">Complexity</button>
+                <button type="button" class="chapter-pill" data-clarity-jump="0.50" data-beat-target="alignment" aria-current="false">Alignment</button>
+                <button type="button" class="chapter-pill" data-clarity-jump="0.92" data-beat-target="clarity" aria-current="false">Clarity</button>
+              </div>
+
+              <details class="sequence-details"><summary>Explore the sequence</summary><div class="callout-pin-row" id="clarity-callout-pins" role="group" aria-label="Transformation state checkpoints">
+                <button type="button" class="callout-pin is-active" data-clarity-jump="0.10" data-pin-idx="0">Workarounds</button>
+                <button type="button" class="callout-pin" data-clarity-jump="0.52" data-pin-idx="1">Rules and approvals</button>
+                <button type="button" class="callout-pin" data-clarity-jump="0.92" data-pin-idx="2">Shared system</button>
+              </div></details>
+            </div>
+            <div aria-hidden="true"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BEAT 3: INTRODUCING SALRYN (AUTHORITATIVE 8 ENGINES & 12 INDUSTRY FAMILIES) -->
+      <section class="salryn-band" id="salryn-exhibition">
+        <div class="wrap">
+          <div class="flagship-spread">
+          <div class="salryn-intro-grid">
+            <div>
+
+              <h2 class="display-xl">
+                Meet Salryn.<br/><em>One kernel.<br/>Many industries.</em>
+              </h2>
+            </div>
+            <div>
+              <p class="body-copy">
+                Salryn brings the records, decisions, and day-to-day work of a business onto a shared foundation. Configure it around the work your team does.
+              </p>
+              <a href="./salryn.html" class="link-editorial">Explore Salryn &rarr;</a>
+            </div>
+          </div>
+
+          <picture class="flagship-art">
+            <source media="(max-width: 700px)" srcset="./assets/cinematic/ascension-kernel-mobile.webp" width="680" height="740" />
+            <img class="flagship-plate" src="./assets/cinematic/ascension-kernel-landscape.webp" width="1500" height="900" alt="Eight translucent strata aligned on two green foundation layers" decoding="async" />
+          </picture>
+          </div>
+          <details class="product-detail">
+            <summary>See how Salryn fits together</summary>
+          <div class="hairline-tabs" id="home-salryn-tabs" role="tablist" aria-label="Salryn kernel and illustrative industry groupings"></div>
+
+          <div class="salryn-stage">
+            <div class="salryn-organism-canvas" data-reveal>
+              <div id="home-salryn-svg" data-status="loading">
+                <img src="./assets/salryn-ecosystem-architecture.svg" alt="Salryn unified kernel surrounded by eight engines and twelve industry families" style="width:100%;height:auto;display:block;" />
+              </div>
+            </div>
+
+            <div class="salryn-detail-col" aria-live="polite" data-reveal>
+              <div>
+                <h3 class="display-md" id="home-salryn-title">Keep a common foundation.</h3>
+                <p class="body-copy" id="home-salryn-desc">Sales, stock, purchasing, finance, staffing, and operations share one foundation. Security and Infrastructure are included throughout.</p>
+              </div>
+
+              <p class="disclosure-note">
+                Conceptual architectural preview illustrating Salryn's eight core engines and twelve potential industry families. Availability and exact deployment scope are confirmed directly with Kirjane.
+              </p>
+            </div>
+          </div>
+          </details>
+        </div>
+      </section>
+
+      <!-- BEAT 4: SCROLL-ACTIVATED CAPABILITY REVEAL THEATRE (3D STUDIO PLATES + HORIZONTAL RAIL + COMPARATOR) -->
+      <section class="exhibition-scroll-wrapper" id="capabilities-exhibition" aria-label="Engineering Capabilities Reveal System">
+        <div class="exhibition-sticky">
+          <div class="exhibition-header" style="margin-bottom:1.15rem;">
+            <div>
+
+              <h2 class="display-lg">What we build.</h2>
+            </div>
+            <div class="chapter-rail" style="margin-top:0;" role="group" aria-label="Select engineering discipline">
+              <button type="button" class="chapter-pill" data-cap-jump="0.02" data-cap-idx="0" aria-current="step">Custom Software</button>
+              <button type="button" class="chapter-pill" data-cap-jump="0.34" data-cap-idx="1" aria-current="false">Automation</button>
+              <button type="button" class="chapter-pill" data-cap-jump="0.66" data-cap-idx="2" aria-current="false">Integration</button>
+              <button type="button" class="chapter-pill" data-cap-jump="0.96" data-cap-idx="3" aria-current="false">Infrastructure</button>
+            </div>
+          </div>
+
+          <div class="cap-theatre-body">
+            <div>
+              <div class="studio-plate-stage" id="home-cap-plate-stage">
+                <img class="is-visible" data-plate-idx="0" src="./assets/cinematic/editorial-cap-01-custom-software.webp" alt="Three-dimensional blown-emerald glass monoliths representing custom business software architecture" />
+                <img data-plate-idx="1" src="./assets/cinematic/editorial-cap-02-process-automation.webp" alt="Illuminated spline conduits passing through lime approval gates representing process automation" />
+                <img data-plate-idx="2" src="./assets/cinematic/editorial-cap-03-systems-integration.webp" alt="Translucent emerald optical contract membrane bridging legacy obsidian blocks and modern modules" />
+                <img data-plate-idx="3" src="./assets/cinematic/editorial-cap-04-technical-infrastructure.webp" alt="Concentric protective glass domes around a local-first vault core representing technical infrastructure" />
+              </div>
+
+              <div class="comparator-bar" aria-live="polite" style="margin-top:0.85rem;">
+                <div class="compare-cell">
+                  <strong>The problem</strong>
+                  <span id="home-cap-before">Staff keep separate spreadsheets to handle exceptions.</span>
+                </div>
+                <div class="compare-cell is-kirjane">
+                  <strong>What we build</strong>
+                  <span id="home-cap-after">A shared record with clear roles and approval limits.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="cap-theatre-viewport">
+              <div class="exhibition-rail" id="home-cap-rail">
+                <article class="exhibition-card is-highlighted" data-cap-card="0">
+                  <div>
+
+                    <h3>Custom business software</h3>
+                    <p style="margin-top:0.65rem;">Build applications around the records, permissions, and approvals your teams use every day.</p>
+                  </div>
+
+                  <div class="card-meta"><a href="./services.html#custom-software" style="color:var(--white);text-decoration:underline;">Read about this service &rarr;</a></div>
+                </article>
+
+                <article class="exhibition-card" data-cap-card="1">
+                  <div>
+
+                    <h3>Workflow automation</h3>
+                    <p style="margin-top:0.65rem;">Route routine work automatically and bring people in when a decision needs their judgment.</p>
+                  </div>
+
+                  <div class="card-meta"><a href="./services.html#process-automation" style="color:var(--white);text-decoration:underline;">Read about this service &rarr;</a></div>
+                </article>
+
+                <article class="exhibition-card" data-cap-card="2">
+                  <div>
+
+                    <h3>Systems integration</h3>
+                    <p style="margin-top:0.65rem;">Connect existing databases, devices, and applications so teams can work with the same information.</p>
+                  </div>
+
+                  <div class="card-meta"><a href="./services.html#systems-integration" style="color:var(--white);text-decoration:underline;">Read about this service &rarr;</a></div>
+                </article>
+
+                <article class="exhibition-card" data-cap-card="3">
+                  <div>
+
+                    <h3>Technical infrastructure</h3>
+                    <p style="margin-top:0.65rem;">Plan local hosting, repeatable installation, and backup recovery around your operating needs.</p>
+                  </div>
+
+                  <div class="card-meta"><a href="./services.html#infrastructure" style="color:var(--white);text-decoration:underline;">Read about this service &rarr;</a></div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BEAT 5: SELECTED WORK EXHIBITION (INTERACTIVE 2-MODE SPATIAL PREVIEWS FROM PROJECTS.JSON) -->
+      <section class="work-band">
+        <div class="wrap">
+          <div class="work-head" data-reveal>
+            <div>
+
+              <h2 class="display-lg">Selected work</h2>
+            </div>
+            <a href="./projects.html" class="link-editorial">See all concepts &rarr;</a>
+          </div>
+
+          <div class="work-preview-grid" id="home-projects-preview" data-reveal-group>
+            <noscript>
+              <div class="work-exhibit-card">
+                <div class="work-exhibit-body">
+                  <h3>Operational Systems &amp; Integration Demonstrations</h3>
+                  <p>Visit <a href="./projects.html" style="color:var(--lime);">Projects</a> to inspect our replaceable architectural exhibition entries.</p>
+                </div>
+              </div>
+            </noscript>
+          </div>
+
+          <p class="disclosure-note" style="margin-top:1.5rem;">
+            These anonymous software concepts illustrate the kinds of problems we design for.
+          </p>
+        </div>
+      </section>
+
+      <!-- BEAT 6 & 7: PROGRESSIVE PROCESS CONSTRUCTION & CALM CONVERSION RESOLUTION -->
+      <section class="process-band" id="home-process-section" data-field-warp="0.91" data-field-energy="0.44">
+        <div class="wrap">
+          <div class="process-head">
+            <h2 class="display-lg">From complexity<br>to <em>clarity.</em></h2>
+            <p class="lead">A clear path from the way your business works today to software your team can build on.</p>
+          </div>
+          <div class="process-scene">
+            <div class="topology-grid">
+              <div class="process-art">
+                <div id="home-topo-svg" data-status="loading" aria-hidden="true">
+                  <img src="./assets/organism-topology.svg" alt="" width="1400" height="860" />
+                </div>
+                <p class="process-art-caption"><span id="home-stage-visual-label">Discovery</span><span>Each decision shapes what comes next.</span></p>
+              </div>
+              <div class="stage-panel" id="home-stage-panel" role="tabpanel" aria-labelledby="process-tab-0" aria-live="polite" tabindex="0">
+                <p class="process-stage-name" id="home-stage-name">Discovery</p>
+                <h3 id="home-stage-title">We begin with the real operation.</h3>
+                <p class="body-copy" id="home-stage-desc">Before writing code, we study the routines, constraints, approvals, and bottlenecks that shape daily work.</p>
+                <p class="stage-deliverable"><strong>What you take forward</strong><span id="home-stage-deliverable">A verified workflow map and implementation scope.</span></p>
+                <a href="./process.html" class="link-editorial">Explore our approach &rarr;</a>
+              </div>
+            </div>
+            <div class="process-progression" role="tablist" aria-label="Delivery stages">
+              <button type="button" id="process-tab-0" role="tab" data-stage="0" aria-controls="home-stage-panel" aria-selected="true" tabindex="0"><span>Discovery</span><small>Understand the operation</small></button>
+              <button type="button" id="process-tab-1" role="tab" data-stage="1" aria-controls="home-stage-panel" aria-selected="false" tabindex="-1"><span>Architecture</span><small>Define the foundation</small></button>
+              <button type="button" id="process-tab-2" role="tab" data-stage="2" aria-controls="home-stage-panel" aria-selected="false" tabindex="-1"><span>Engineering</span><small>Build around the work</small></button>
+              <button type="button" id="process-tab-3" role="tab" data-stage="3" aria-controls="home-stage-panel" aria-selected="false" tabindex="-1"><span>Verification</span><small>Test the real conditions</small></button>
+              <button type="button" id="process-tab-4" role="tab" data-stage="4" aria-controls="home-stage-panel" aria-selected="false" tabindex="-1"><span>Handover</span><small>Put your team in control</small></button>
+            </div>
+          </div>
+          <div class="process-conclusion">
+            <div><p class="process-invitation">Every useful system starts with understanding the work.</p><h2>Let’s build<br><em>something useful.</em></h2></div>
+            <div><p>Tell us where the work gets complicated. We’ll start by understanding what needs to change.</p><a href="./contact.html" class="btn-lime">Start a conversation &rarr;</a></div>
+          </div>
+          <noscript>
+            <p>After Discovery, Architecture defines the system and rollout plan. Engineering turns the agreed workflows into software. Verification checks everyday work and exceptions. Handover prepares your team with operating guidance and a support plan.</p>
+          </noscript>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <span class="wordmark">Kirjane Labs</span>
+            <p>Software engineering, process automation, systems integration, technical infrastructure, and the Salryn business software ecosystem.</p>
+          </div>
+          <div class="footer-col">
+            <h4>Product &amp; Practice</h4>
+            <ul>
+              <li><a href="./salryn.html">Salryn Ecosystem</a></li>
+              <li><a href="./services.html">Services</a></li>
+              <li><a href="./projects.html">Selected Work</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="./process.html">Our Process</a></li>
+              <li><a href="./about.html">About Kirjane</a></li>
+              <li><a href="./contact.html">Contact Studio</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Ethos</h4>
+            <ul>
+              <li style="color:var(--alabaster);font-size:0.88rem;">Adapt. Automate. Evolve.</li>
+              <li style="color:var(--subtle);font-size:0.84rem;">Commercial Enterprises, Government Institutions, Corporate Partners</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>Kirjane Labs &middot; Living Topography Edition</span>
+          <span>Local review prototype &middot; No production claims or fabricated client metrics</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <nav class="mobile-dock" aria-label="Quick navigation">
+    <a href="./index.html" data-page="home">Home</a>
+    <a href="./salryn.html" data-page="salryn">Salryn</a>
+    <a href="./projects.html" data-page="projects">Work</a>
+    <a href="./contact.html" data-page="contact">Contact</a>
+  </nav>
+
+  <script type="module">
+    import('./js/editorial-opening.js').then(({initEditorialOpening}) => initEditorialOpening()).catch(() => { delete document.documentElement.dataset.brandEntry; clearTimeout(window.__brandEntryTimer); });
+  </script>
+  <script type="module">
+    import { initTopographyField } from './js/topography-canvas.js';
+    import { initSiteShell, initLivingMotion, isReducedMotion } from './js/motion-system.js';
+    import { mountSalrynExplorer } from './js/salryn-organism.js';
+    import { MasterSceneDirector } from './js/scene-director.js';
+    import { FrameSequencePlayer } from './js/frame-sequence-player.js';
+
+    initSiteShell('home');
+    // Compile the offscreen environment near its scene, keeping GPU startup out
+    // of the opening's letter beats. Retain profiles selected before activation.
+    let fieldInstance;
+    let pendingFieldProfile;
+    const field = {
+      setProfile(profile) { pendingFieldProfile = profile; fieldInstance?.setProfile(profile); },
+      dispose() { fieldObserver?.disconnect(); fieldInstance?.dispose(); }
+    };
+    function activateField() {
+      if (fieldInstance) return;
+      fieldInstance = initTopographyField({ warp: 0.84, density: 10.5, energy: 0.42, focusX: 0.68, focusY: 0.48, visibleAt:'#home-process-section' });
+      if (pendingFieldProfile) fieldInstance.setProfile(pendingFieldProfile);
+    }
+    const fieldObserver = typeof IntersectionObserver === 'function' ? new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) { activateField(); fieldObserver.disconnect(); }
+    }, {rootMargin:'300px'}) : null;
+    if (fieldObserver) fieldObserver.observe(document.getElementById('home-process-section'));
+    else activateField();
+    initLivingMotion();
+
+    const reduced = isReducedMotion();
+    const isMobile = window.innerWidth <= 900;
+    const director = new MasterSceneDirector({ pageId: 'home' });
+
+    // =========================================================================
+    // BEAT 2: COMPLEXITY INTO CLARITY (72/36 CGI SEQUENCE + CALLOUT PINS)
+    // =========================================================================
+    const clarityCanvas = document.getElementById('home-clarity-canvas');
+    const clarityProgress = document.getElementById('home-clarity-progress');
+    const clarityBeatEls = Array.from(document.querySelectorAll('#home-clarity-beats .beat-card'));
+    const clarityJumpBtns = Array.from(document.querySelectorAll('[data-clarity-jump]'));
+    const clarityPins = Array.from(document.querySelectorAll('#clarity-callout-pins .callout-pin'));
+
+    const shortCinematic = matchMedia('(max-height: 610px) and (max-width: 900px)');
+    const clarityPlayer = new FrameSequencePlayer({
+      id: 'home-complexity-to-clarity',
+      canvas: clarityCanvas,
+      basePath: './assets/cinematic/home-complexity-to-clarity-desktop',
+      mobileBasePath: './assets/cinematic/home-complexity-to-clarity-mobile',
+      desktopFrames: 72,
+      mobileFrames: 36,
+      isMobile,
+      reducedMotion: reduced,
+      onFrameDrawn: (idx) => director.setCurrentFrame(idx)
+    });
+
+    director.registerScene({
+      id: 'home-clarity',
+      el: document.getElementById('complexity-clarity-scene'),
+      chapters: [
+        { id: 'complexity', start: 0.0, end: 0.34 },
+        { id: 'alignment', start: 0.34, end: 0.68 },
+        { id: 'clarity', start: 0.68, end: 1.0 }
+      ],
+      onUpdate: ({ smooth, direction, activeChapter, inView, isReduced }) => {
+        if (inView && scrollY > 8 && !shortCinematic.matches) clarityPlayer.setProgress(smooth, direction);
+        if (clarityProgress) clarityProgress.style.transform = `scaleX(${isReduced ? 1 : smooth})`;
+        if (!isReduced) {
+          clarityBeatEls.forEach((card) => card.classList.toggle('is-active', card.dataset.beat === activeChapter));
+        }
+        clarityJumpBtns.forEach((btn) => {
+          if (btn.dataset.beatTarget) {
+            btn.setAttribute('aria-current', btn.dataset.beatTarget === activeChapter ? 'step' : 'false');
+          }
+        });
+        const pinIdx = smooth < 0.34 ? 0 : smooth < 0.68 ? 1 : 2;
+        clarityPins.forEach((p, i) => p.classList.toggle('is-active', i === pinIdx));
+      },
+      onResize: () => clarityPlayer.resize(window.innerWidth <= 900)
+    });
+
+    clarityJumpBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        director.jumpToSceneProgress('home-clarity', parseFloat(btn.dataset.clarityJump));
+      });
+    });
+
+    // =========================================================================
+    // BEAT 3: INTRODUCING SALRYN (8 ENGINES & 12 INDUSTRY FAMILIES)
+    // =========================================================================
+    mountSalrynExplorer({
+      svgMount: document.getElementById('home-salryn-svg'),
+      tabsContainer: document.getElementById('home-salryn-tabs'),
+      fieldController: field,
+      detailEls: {},
+      onStateChange(_state, index) {
+        const [heading, summary] = [
+          ['Keep a common foundation.', 'Sales, stock, purchasing, finance, staffing, and operations share one foundation. Security and Infrastructure are included throughout.'],
+          ['Connect the counter and the stockroom.', 'A sale can affect available stock and inform what the purchasing team needs to order.'],
+          ['Give each service team its own workspace.', 'A booking, a shift, and the supplies a team uses can be managed in the same environment.'],
+          ['Carry records across a growing operation.', 'Production, approvals, and finance can draw on the same business records as teams or locations expand.']
+        ][index];
+        document.getElementById('home-salryn-title').textContent = heading;
+        document.getElementById('home-salryn-desc').textContent = summary;
+      }
+    });
+
+    // =========================================================================
+    // BEAT 4: SCROLL-ACTIVATED CAPABILITY THEATRE (3D PLATES + COMPARATOR)
+    // =========================================================================
+    const CAP_COMPARE = [
+      {
+        before: 'Staff keep separate spreadsheets to handle exceptions.',
+        after: 'A shared record with clear roles and approval limits.'
+      },
+      {
+        before: 'Approvals and handoffs get buried in messages.',
+        after: 'A workflow that routes requests and pauses for sign-off.'
+      },
+      {
+        before: 'Manual exports can leave incomplete or duplicate records.',
+        after: 'Schema-validated transfers with clear retry behavior.'
+      },
+      {
+        before: 'Daily work depends on an internet connection and untested backups.',
+        after: 'Local operation with a recovery plan the team can test.'
+      }
+    ];
+
+    const capRail = document.getElementById('home-cap-rail');
+    const capCards = Array.from(document.querySelectorAll('[data-cap-card]'));
+    const capJumpBtns = Array.from(document.querySelectorAll('[data-cap-jump]'));
+    const plateStageImgs = Array.from(document.querySelectorAll('#home-cap-plate-stage img'));
+    const capBeforeEl = document.getElementById('home-cap-before');
+    const capAfterEl = document.getElementById('home-cap-after');
+
+    function syncCapabilityVisual(idx) {
+      const clamped = Math.max(0, Math.min(3, idx));
+      plateStageImgs.forEach((im) => im.classList.toggle('is-visible', parseInt(im.dataset.plateIdx, 10) === clamped));
+      const hasTrack = !reduced && window.innerWidth > 900;
+      capCards.forEach((c, i) => {
+        c.classList.toggle('is-highlighted', i === clamped);
+        c.inert = hasTrack && i !== clamped;
+      });
+      capJumpBtns.forEach((b, i) => b.setAttribute('aria-current', i === clamped ? 'step' : 'false'));
+      capRail.style.transform = hasTrack ? `translate3d(${-clamped * 100}%, 0, 0)` : 'none';
+      if (capBeforeEl) capBeforeEl.textContent = CAP_COMPARE[clamped].before;
+      if (capAfterEl) capAfterEl.textContent = CAP_COMPARE[clamped].after;
+    }
+
+    director.registerScene({
+      id: 'home-capabilities',
+      el: document.getElementById('capabilities-exhibition'),
+      chapters: [
+        { id: '0', start: 0.0, end: 0.25 },
+        { id: '1', start: 0.25, end: 0.52 },
+        { id: '2', start: 0.52, end: 0.78 },
+        { id: '3', start: 0.78, end: 1.0 }
+      ],
+      onUpdate: ({ activeChapter, inView, isReduced }) => {
+        if (isReduced || window.innerWidth <= 900 || !inView) return;
+        const activeIdx = parseInt(activeChapter || '0', 10);
+        syncCapabilityVisual(activeIdx);
+      },
+      onResize: () => syncCapabilityVisual(capCards.findIndex((card) => card.classList.contains('is-highlighted')))
+    });
+    syncCapabilityVisual(0);
+
+    capJumpBtns.forEach((btn) => {
+      btn.addEventListener('click', (event) => {
+        const idx = parseInt(btn.dataset.capIdx, 10);
+        syncCapabilityVisual(idx);
+        if (!reduced && window.innerWidth > 900) {
+          director.jumpToSceneProgress('home-capabilities', parseFloat(btn.dataset.capJump));
+        } else {
+          if (event.detail === 0) {
+            const heading = capCards[idx].querySelector('h3');
+            heading.tabIndex = -1;
+            heading.scrollIntoView({behavior:'instant',block:'center'});
+            heading.focus({preventScroll:true});
+          } else {
+            capCards[idx].scrollIntoView({behavior:reduced ? 'auto' : 'smooth',block:'center'});
+          }
+        }
+      });
+    });
+
+    capCards.forEach((card) => {
+      card.addEventListener('click', () => {
+        const idx = parseInt(card.dataset.capCard, 10);
+        syncCapabilityVisual(idx);
+      });
+    });
+
+    // =========================================================================
+    // BEAT 5: SELECTED WORK SPATIAL PREVIEWS (2-MODE INSPECTION TABS)
+    // =========================================================================
+    fetch('./data/projects.json').then((r) => r.json()).then((data) => {
+      const mount = document.getElementById('home-projects-preview');
+      const featured = [data.exhibitions[1], data.exhibitions[2]].filter(Boolean);
+      mount.innerHTML = featured.map((ex, idx) => {
+        const sources = ex.visualSources?.map(({src,width}) => `${src} ${width}w`).join(', ');
+        const view0 = ex.interfacePreview && ex.interfacePreview.views && ex.interfacePreview.views[0];
+        const previewRows = view0
+          ? view0.rows.map((r) => `<span><strong>${r.name}:</strong> ${r.detail} (${r.state})</span>`).join('')
+          : '<span>Operational workspace preview configured cleanly per engagement.</span>';
+        const archNotes = (ex.architectureNotes || []).map((n) => `<span>&middot; ${n}</span>`).join('');
+        return `
+        <article class="work-exhibit-card" data-reveal-item>
+          <div class="work-exhibit-media">
+            <img src="${ex.visualPlate}" ${sources ? `srcset="${sources}" sizes="(max-width: 900px) 89vw, 43vw"` : ''} alt="${ex.visualAlt}" />
+          </div>
+          <div class="work-exhibit-body">
+
+            <h3>${ex.title}</h3>
+            <p>${ex.summary}</p>
+            <details class="work-detail"><summary>Explore this concept</summary>
+            <div class="work-mode-tabs" role="tablist" aria-label="${ex.title} preview mode">
+              <button type="button" class="work-mode-btn" role="tab" data-wcard="${idx}" data-wmode="arch" aria-selected="true">Architecture</button>
+              <button type="button" class="work-mode-btn" role="tab" data-wcard="${idx}" data-wmode="surface" aria-selected="false">Workflow</button>
+            </div>
+            <div class="work-mode-panel" id="wpanel-${idx}-arch">${archNotes}</div>
+            <div class="work-mode-panel" id="wpanel-${idx}-surface" hidden>${previewRows}</div>
+            </details>
+            <a href="./projects.html#${ex.id}" class="link-editorial" style="margin-top:0.35rem;">View full project concept &rarr;</a>
+          </div>
+        </article>`;
+      }).join('');
+      director.measureAll();
+
+      mount.querySelectorAll('.work-mode-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const ci = btn.dataset.wcard;
+          const mode = btn.dataset.wmode;
+          mount.querySelectorAll(`.work-mode-btn[data-wcard="${ci}"]`).forEach((b) => {
+            b.setAttribute('aria-selected', String(b.dataset.wmode === mode));
+          });
+          document.getElementById(`wpanel-${ci}-arch`).hidden = mode !== 'arch';
+          document.getElementById(`wpanel-${ci}-surface`).hidden = mode !== 'surface';
+        });
+      });
+    });
+
+    // =========================================================================
+    // BEAT 6: ENGINEERING PROCESS — SCROLL-COUPLED + CLICKABLE CUMULATIVE ASSEMBLY
+    // =========================================================================
+    const STAGES = [
+      {name:'Discovery', title:'We begin with the real operation.', desc:'Before writing code, we study the routines, constraints, approvals, and bottlenecks that shape daily work.', deliverable:'A verified workflow map and implementation scope.'},
+      {name:'Architecture', title:'Give every part a clear purpose.', desc:'We define how records, permissions, and integrations fit together, then plan a practical route from your existing tools to the new system.', deliverable:'A system design, data model, and phased implementation plan.'},
+      {name:'Engineering', title:'Build around the work that matters.', desc:'We turn the agreed workflows into working software, reviewing the details with your team as each part takes shape.', deliverable:'Working software ready for operational testing.'},
+      {name:'Verification', title:'Test the everyday and the exceptions.', desc:'We check real user journeys, approval limits, failed connections, and recovery. Your team can see what passed and what needs attention.', deliverable:'Test results, resolved issues, and a rollout checklist.'},
+      {name:'Handover', title:'Put your team in control.', desc:'We prepare your team to run and maintain the system, with clear documentation, recovery procedures, and a plan for its next stage.', deliverable:'An operating guide, source handover, and support plan.'}
+    ];
+    const topoMount = document.getElementById('home-topo-svg');
+    const stageButtons = [...document.querySelectorAll('button[data-stage]')];
+    const stagePanel = document.getElementById('home-stage-panel');
+    let activeProcIdx = 0;
+    function syncStage(idx) {
+      activeProcIdx = idx;
+      const stage = STAGES[idx];
+      document.getElementById('home-stage-title').textContent = stage.title;
+      document.getElementById('home-stage-desc').textContent = stage.desc;
+      document.getElementById('home-stage-deliverable').textContent = stage.deliverable;
+      document.getElementById('home-stage-name').textContent = stage.name;
+      document.getElementById('home-stage-visual-label').textContent = stage.name;
+      stagePanel.setAttribute('aria-labelledby', stageButtons[idx].id);
+      stageButtons.forEach((button, i) => {
+        button.setAttribute('aria-selected', String(i === idx));
+        button.tabIndex = i === idx ? 0 : -1;
+        button.classList.toggle('is-complete', i < idx);
+      });
+      const svg = topoMount.querySelector('svg');
+      if (svg) {
+        svg.querySelectorAll('[id^="d02-nucleus-"]').forEach((node, i) => {
+          node.style.opacity = i === idx ? '1' : i < idx ? '.65' : '.16';
+        });
+        svg.querySelectorAll('[id^="d02-synapse-bridge-"]').forEach((path, i) => {
+          path.style.opacity = i < idx ? '.9' : '.12';
+        });
+      }
+    }
+    fetch('./assets/organism-topology.svg').then((response) => {
+      if (!response.ok) throw new Error('Process illustration unavailable');
+      return response.text();
+    }).then((source) => {
+      topoMount.innerHTML = source;
+      topoMount.dataset.status = 'ready';
+      syncStage(activeProcIdx);
+    }).catch(() => { topoMount.dataset.status = 'fallback'; });
+    stageButtons.forEach((button, index) => {
+      button.addEventListener('click', () => syncStage(index));
+      button.addEventListener('keydown', (event) => {
+        const targets = {ArrowRight:(index + 1) % 5, ArrowLeft:(index + 4) % 5, Home:0, End:4};
+        if (!(event.key in targets)) return;
+        event.preventDefault();
+        const next = targets[event.key];
+        syncStage(next);
+        stageButtons[next].focus();
+      });
+    });
+
+    document.fonts.ready.then(() => director.measureAll());
+    window.addEventListener('pagehide', (event) => {
+      if (event.persisted) return;
+      clarityPlayer.destroy();
+      field.dispose();
+      director.destroy();
+    });
+
+    window.__SITE_READY__ = true;
+  </script>
+</body>
+</html>

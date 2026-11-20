@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" role="img" aria-labelledby="off-title off-desc">
+  <title id="off-title">Salryn Offline-First Operational Independence Architecture</title>
+  <desc id="off-desc">Diagram showing local operational continuity on site, local data custody boundary, and optional external connectivity paths.</desc>
+  <defs>
+    <radialGradient id="local-halo" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#188C61" stop-opacity="0.34"/>
+      <stop offset="65%" stop-color="#103D2B" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#08110D" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1120" height="560" fill="#08110D"/>
+  <circle cx="400" cy="280" r="245" fill="url(#local-halo)"/>
+  <circle cx="400" cy="280" r="206" fill="rgba(11,24,18,0.68)" stroke="#167B55" stroke-width="2" stroke-dasharray="10 6"/>
+  <circle cx="400" cy="280" r="126" fill="rgba(16,61,43,0.42)" stroke="#D3F66B" stroke-width="1.8"/>
+  <text x="400" y="262" text-anchor="middle" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="20" font-weight="600">Local Site Kernel</text>
+  <text x="400" y="288" text-anchor="middle" fill="#D3F66B" font-family="Segoe UI, sans-serif" font-size="12.5" font-weight="600">Continuous Local Operations</text>
+  <text x="400" y="310" text-anchor="middle" fill="rgba(243,245,237,0.74)" font-family="Segoe UI, sans-serif" font-size="11.5">Local ledger · Security · Print custody</text>
+  <line x1="400" y1="280" x2="252" y2="170" stroke="rgba(211,246,107,0.45)" stroke-width="1.4"/>
+  <rect x="178" y="152" width="148" height="36" rx="18" fill="#0B1913" stroke="#1E9F6F" stroke-width="1.4"/>
+  <text x="252" y="174" text-anchor="middle" fill="#F3F5ED" font-family="Segoe UI, sans-serif" font-size="12.5" font-weight="500">Counter Station</text>
+  <line x1="400" y1="280" x2="244" y2="384" stroke="rgba(211,246,107,0.45)" stroke-width="1.4"/>
+  <rect x="170" y="366" width="148" height="36" rx="18" fill="#0B1913" stroke="#1E9F6F" stroke-width="1.4"/>
+  <text x="244" y="388" text-anchor="middle" fill="#F3F5ED" font-family="Segoe UI, sans-serif" font-size="12.5" font-weight="500">Back-Office Desk</text>
+  <line x1="400" y1="280" x2="524" y2="412" stroke="rgba(211,246,107,0.45)" stroke-width="1.4"/>
+  <rect x="450" y="394" width="148" height="36" rx="18" fill="#0B1913" stroke="#1E9F6F" stroke-width="1.4"/>
+  <text x="524" y="416" text-anchor="middle" fill="#F3F5ED" font-family="Segoe UI, sans-serif" font-size="12.5" font-weight="500">Local Store &amp; Backup</text>
+  <path d="M 606 280 C 700 280, 680 148, 750 148" fill="none" stroke="rgba(243,245,237,0.34)" stroke-width="1.5" stroke-dasharray="6 6"/>
+  <rect x="750" y="114" width="320" height="68" rx="12" fill="rgba(11,22,17,0.88)" stroke="rgba(243,245,237,0.18)" stroke-width="1.2"/>
+  <circle cx="772" cy="148" r="5" fill="#167B55" stroke="#D3F66B" stroke-width="1.4"/>
+  <text x="788" y="144" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="14" font-weight="600">External Network (Optional)</text>
+  <text x="788" y="164" fill="rgba(243,245,237,0.70)" font-family="Segoe UI, sans-serif" font-size="11.5">Intermittent links never halt local counter workflows</text>
+  <path d="M 606 280 C 700 280, 680 280, 750 280" fill="none" stroke="rgba(243,245,237,0.34)" stroke-width="1.5" stroke-dasharray="6 6"/>
+  <rect x="750" y="246" width="320" height="68" rx="12" fill="rgba(11,22,17,0.88)" stroke="rgba(243,245,237,0.18)" stroke-width="1.2"/>
+  <circle cx="772" cy="280" r="5" fill="#167B55" stroke="#D3F66B" stroke-width="1.4"/>
+  <text x="788" y="276" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="14" font-weight="600">Connected Branch Horizons</text>
+  <text x="788" y="296" fill="rgba(243,245,237,0.70)" font-family="Segoe UI, sans-serif" font-size="11.5">Architectural direction for multi-site coordination</text>
+  <path d="M 606 280 C 700 280, 680 412, 750 412" fill="none" stroke="rgba(243,245,237,0.34)" stroke-width="1.5" stroke-dasharray="6 6"/>
+  <rect x="750" y="378" width="320" height="68" rx="12" fill="rgba(11,22,17,0.88)" stroke="rgba(243,245,237,0.18)" stroke-width="1.2"/>
+  <circle cx="772" cy="412" r="5" fill="#167B55" stroke="#D3F66B" stroke-width="1.4"/>
+  <text x="788" y="408" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="14" font-weight="600">Controlled Exports &amp; Reports</text>
+  <text x="788" y="428" fill="rgba(243,245,237,0.70)" font-family="Segoe UI, sans-serif" font-size="11.5">Structured operational records under local custody</text>
+  <text x="400" y="46" text-anchor="middle" fill="rgba(243,245,237,0.68)" font-family="Segoe UI, sans-serif" font-size="12" letter-spacing="1.6">RESILIENT LOCAL OPERATIONAL BOUNDARY</text>
+</svg>

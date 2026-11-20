@@ -1,8 +1,9 @@
+# Historical R2 inline harness; current browser verification is qa_production.mjs.
 from pathlib import Path
 import json
 import re,base64
 from playwright.sync_api import sync_playwright
-ROOT=Path(__file__).resolve().parent.parent
+ROOT=Path(__file__).resolve().parent.parent / "legacy" / "r2"
 URL='local-inline'
 def inline_html(route):
     f=ROOT / route.strip('/') / 'index.html' if route!='/' else ROOT / 'index.html'

@@ -1,0 +1,22 @@
+import assert from 'node:assert/strict';
+import { FrameSequencePlayer } from '../site/js/frame-sequence-player.js';
+const tests=[];
+const check=(name,fn)=>{fn();tests.push({name,result:'PASS'});};
+const proto=FrameSequencePlayer.prototype;
+const resize=proto._resizeCanvas, poster=proto._loadPoster;
+// Isolate cache algorithms from the browser. Do not represent this as render QA.
+proto._resizeCanvas=function(){};proto._loadPoster=function(){};
+const make=(overrides={})=>new FrameSequencePlayer({id:Math.random().toString(),canvas:null,basePath:'./frames',reducedMotion:true,...overrides});
+const bitmap=(w=1280,h=720)=>({width:w,height:h,closed:0,close(){this.closed++;this.width=this.height=0;}});
+const MiB=1024*1024;
+check('desktop decoded bound and exact eviction release',()=>{let p=make(),all=[];for(let i=0;i<32;i++){let m=bitmap();all.push(m);p._putInCache(i,m,true);}assert.equal(p.cache.size,22);assert.equal(p.cacheBytes,22*1280*720*4);assert.ok(p.cacheBytes<=80*MiB);assert.equal(all.filter(x=>x.closed===1).length,10);assert.equal(all.filter(x=>x.closed>1).length,0);p.destroy();assert.equal(p.cacheBytes,0);assert.ok(all.every(x=>x.closed===1));});
+check('mobile count and budget',()=>{let p=make({isMobile:true});for(let i=0;i<25;i++)p._putInCache(i,bitmap(540,720),true);assert.equal(p.cache.size,18);assert.ok(p.cacheBytes<=32*MiB);p.destroy();});
+check('displayed frame retained when possible',()=>{let p=make({maxCache:2,maxDecodedBytes:8*MiB});let a=bitmap(),b=bitmap(),c=bitmap();p._putInCache(0,a,true);p.lastValidMedia=a;p._putInCache(1,b,true);p._putInCache(2,c,true);assert.equal(a.closed,0);assert.equal(b.closed,1);assert.ok(p.cache.has(0));p.destroy();});
+check('large single frame remains usable',()=>{let p=make({maxDecodedBytes:1});let b=bitmap();p._putInCache(0,b,true);assert.equal(p.cache.size,1);assert.equal(p.getTelemetry().singleFrameOverBudget,true);p.destroy();assert.equal(b.closed,1);});
+check('replacing existing key disposes old pixels',()=>{let p=make();let a=bitmap(),b=bitmap();p._putInCache(0,a,true);p._putInCache(0,b,true);assert.equal(a.closed,1);assert.equal(p.cacheBytes,1280*720*4);p.destroy();});
+check('variant resize resets accounting and uses mobile budget',()=>{let p=make();let a=bitmap();p._putInCache(0,a,true);p.resize(true);assert.equal(a.closed,1);assert.equal(p.cacheBytes,0);assert.equal(p.maxDecodedBytes,32*MiB);assert.equal(p.frameBytesEstimate,0);p.destroy();});
+check('explicit cache cap stays intact on resize',()=>{let p=make({maxCache:4,maxDecodedBytes:4*MiB});p.resize(true);assert.equal(p.maxCache,4);assert.equal(p.maxDecodedBytes,4*MiB);p.destroy();});
+check('bounded prefetch target prioritized',()=>{let p=make({reducedMotion:false,maxDecodedBytes:5*MiB});p.frameBytesEstimate=1280*720*4;const wanted=[];p._requestFrame=i=>wanted.push(i);p._prefetchWindow(15,1);assert.deepEqual(wanted,[15]);p.destroy();});
+check('out-of-window displayed frame does not cause prefetch churn',()=>{let p=make({maxCache:2,maxDecodedBytes:8*MiB});let a=bitmap(),b=bitmap(),c=bitmap();p._putInCache(0,a,true);p.lastValidMedia=a;p._putInCache(8,b,true);p.prefetchSet=new Set([8,9]);p._putInCache(9,c,true);assert.equal(a.closed,1);assert.deepEqual([...p.cache.keys()],[8,9]);p.destroy();});
+proto._resizeCanvas=resize;proto._loadPoster=poster;
+console.log(JSON.stringify({kind:'node isolated cache tests; no live browser',tests},null,2));
