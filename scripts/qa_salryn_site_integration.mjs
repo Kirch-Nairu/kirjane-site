@@ -48,6 +48,9 @@ try{
    page.on('request',x=>{if(/\/api\/|\/license|\/activate|\/sales\/checkout/.test(x.url()))apis.push(x.url());});
    try{
      await mount(page);
+     // The introductory shot deliberately has no operator window. Seek to a
+     // real checkout action before asserting that the POS screen is present.
+     await seek(page,7,.851);
      const state=await page.evaluate(()=>{
        const host=document.getElementById('salryn-cinema-experience'),shadow=host.shadowRoot;
        return {main:document.querySelectorAll('main').length,
