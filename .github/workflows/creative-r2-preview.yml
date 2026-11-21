@@ -3,6 +3,9 @@ on:
   push:
     branches:
       - experiment/creative-forge-immersive-r2
+  pull_request:
+    branches:
+      - experiment/creative-forge-motion-arsenal-r1
   workflow_dispatch:
 permissions:
   contents: write
@@ -35,7 +38,9 @@ jobs:
           npm ci --ignore-scripts
           npx playwright install --with-deps chromium
       - name: Detect real React Bits bundle startup failure early
-        run: node scripts/qa_immersive_smoke.mjs
+        run: |
+          node -e "const fs=require('fs');let s=fs.readFileSync('site/js/forge-immersive-r2.js','utf8');console.log('R2 BUNDLE SIZE',s.length,'R2 BUNDLE TAIL',s.slice(-350))"
+          node scripts/qa_immersive_smoke.mjs
       - name: Upload complete inspectable static preview
         if: always()
         uses: actions/upload-artifact@v4
