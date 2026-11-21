@@ -146,9 +146,19 @@ try {
     pass(after.exceptions.length===0,'No opt-in runtime exception: '+pageName,after.exceptions.join(' | '));
     await after.page.close();
   }
+  // Cold, isolated browser contexts per variant: do not compare a first-load
+  // baseline against a warmed candidate HTTP cache. ABBA ordering reduces drift.
   for (const route of ['/','/salryn/']) {
-    await profile((await desktop.newPage()),route,'baseline-motion');
-    await profile((await desktop.newPage()),route+'?creative=1','candidate-motion');
+    for (const variant of ['baseline-motion','candidate-motion','candidate-motion','baseline-motion']) {
+      const isolated = await browser.newContext({viewport:{width:1440,height:900},deviceScaleFactor:1});
+      await isolated.addInitScript(() => sessionStorage.setItem('kirjane-cinematic-opening-r2','1'));
+      const probe = await isolated.newPage();
+      try {
+        await profile(probe, route+(variant==='candidate-motion'?'?creative=1':''), variant);
+      } finally {
+        await isolated.close();
+      }
+    }
   }
   await desktop.close(); await mobile.close();
 } catch(e) {
@@ -158,9 +168,22 @@ try {
   server.kill();
   const result={mission:'KIRJANE-ADVANCED-MOTION-INTEGRATION-R1',
     runAt:new Date().toISOString(),
-    note:'Headless Chromium observations, synthetic frame loop; NOT field CWV, real GPU-memory instrumentation, or independent QA.',
-    assertions,performanceRecords,errors,pass:errors.length===0};
+    note:'Cold-context ABBA headless Chromium observations, synthetic frame loop; NOT field CWV, real GPU-memory instrumentation, or independent QA.',
+    assertions,performanceRecords,
+    comparisons:['/','/salryn/'].map(route=>{
+      const samples=performanceRecords.filter(x=>x.route.split('?')[0]===route);
+      const median = (values) => {
+        const arr=values.filter(x=>Number.isFinite(x)).toSorted((a,b)=>a-b);
+        if(!arr.length) return null;
+        return (arr[Math.floor((arr.length-1)/2)]+arr[Math.ceil((arr.length-1)/2)])/2;
+      };
+      const base=median(samples.filter(x=>x.variant==='baseline-motion').map(x=>x.frameMsP95));
+      const candidate=median(samples.filter(x=>x.variant==='candidate-motion').map(x=>x.frameMsP95));
+      const ratio=base>0?Math.round(candidate/base*1000)/1000:null;
+      return {route,baselineP95MedianMs:base,candidateP95MedianMs:candidate,
+        ratio,holdForPerformance:ratio===null||ratio>1.2};
+    }),errors,pass:errors.length===0};
   writeFileSync(resolve(out,'motion-qa-results.json'),JSON.stringify(result,null,2));
-  console.log(JSON.stringify({pass:result.pass,checks:assertions.length,failures:errors,profiles:performanceRecords.length,performanceRecords:performanceRecords.map(({route,variant,frameMsP95,frameMsP99,longTasksCount})=>({route,variant,frameMsP95,frameMsP99,longTasksCount}))},null,2));
+  console.log(JSON.stringify({pass:result.pass,checks:assertions.length,failures:errors,profiles:performanceRecords.length,comparisons:result.comparisons,performanceRecords:performanceRecords.map(({route,variant,frameMsP95,frameMsP99,longTasksCount})=>({route,variant,frameMsP95,frameMsP99,longTasksCount}))},null,2));
 }
 if(errors.length) process.exitCode=1;
