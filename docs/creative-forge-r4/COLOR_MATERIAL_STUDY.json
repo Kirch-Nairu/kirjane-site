@@ -1,0 +1,77 @@
+{
+  "version": "R4_PROPOSED_STUDY_NOT_OFFICIAL_BRAND_REPLACEMENT",
+  "anchor": {
+    "pine": "#102721",
+    "field_green": "#257B5C",
+    "adaptive_lime": "#C6EB69"
+  },
+  "neutral": {
+    "paper": "#F3F0E8",
+    "mist": "#EEF2EE",
+    "porcelain": "#FFFFFF",
+    "graphite": "#171D23",
+    "charcoal": "#273039",
+    "titanium": "#AAB6BF"
+  },
+  "accent": {
+    "software_cobalt": "#4A6FED",
+    "automation_amber": "#EFAC4C",
+    "integration_cyan": "#38BED8",
+    "infrastructure_blue": "#7097B8",
+    "process_copper": "#DD855B",
+    "finance_violet": "#9B87DA",
+    "incident_coral": "#D96053"
+  },
+  "rules": [
+    "Working accent suggestions only; official logo/chameleon colors remain unchanged.",
+    "Do not apply a global palette recolor to branded raster masters.",
+    "Use neutral chapters to create contrast; green stays an identity anchor not all scene lighting.",
+    "Materials communicate logic: ceramic=durable records; metal=structure; translucent=interfaces; accent emission=state.",
+    "Test accessible contrast against final pixels; proposed hexes are not prequalified.",
+    "Distinct service and module colors must also have shape/text labels; never rely only on color."
+  ],
+  "route_use": {
+    "home": [
+      "paper",
+      "graphite",
+      "pine",
+      "software_cobalt"
+    ],
+    "services": [
+      "mist",
+      "titanium",
+      "software_cobalt",
+      "integration_cyan",
+      "automation_amber"
+    ],
+    "process": [
+      "paper",
+      "graphite",
+      "automation_amber",
+      "process_copper"
+    ],
+    "salryn": [
+      "charcoal",
+      "titanium",
+      "software_cobalt",
+      "finance_violet",
+      "adaptive_lime"
+    ],
+    "projects": [
+      "porcelain",
+      "graphite",
+      "software_cobalt"
+    ],
+    "about": [
+      "paper",
+      "pine",
+      "process_copper"
+    ],
+    "contact": [
+      "porcelain",
+      "graphite",
+      "integration_cyan",
+      "automation_amber"
+    ]
+  }
+}
