@@ -14,14 +14,16 @@ Read these in order:
 1. docs/CODEX_CINEMATIC_R3_BRIEF.md — full owner directive.
 2. docs/codex-r3/START_HERE.md — execution stages and resume protocol.
 3. docs/codex-r3/SHOT_MAP.md — ten owner-identified visual problems, specific source IDs, success criteria.
-3a. docs/codex-r3/BASELINE_VISUAL_AUDIT.md — actual generated desktop/mobile evidence and critical defects.
+3a. docs/codex-r3/BASELINE_VISUAL_AUDIT.md — historic pre-R5 baseline, NOT Codex proof.
+3b. docs/codex-r3/INTEGRATION_CONTRACT.md — mandatory existing 23-shot film, accessibility, sound and native-scroll QA contract.
 4. docs/codex-r3/MOTION_ARCHITECTURE.md — ownership, scene graph, page transitions and technical gates.
 5. docs/codex-r3/QA_EVIDENCE.md — visual/performance/accessibility acceptance matrix.
 6. docs/IMMERSIVE_R2.md and docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv — source and rights.
 7. Existing scripts/build_immersive_r2.py, scripts/qa_immersive_r2.mjs, scripts/qa_production.mjs and creative/src/main.jsx.
 8. Existing site/index.html, site/salryn.html and site/process.html.
+9. Existing R5 film `creative/film/src/App.tsx`, `creative/film/entry.tsx`, `creative/film/src/director/`, and `site/js/forge-salryn-cinema-loader.js`.
 
-Then run git status, git log, baseline build, local HTTP render and screenshot capture. Do not guess file paths or cite nonexistent screenshots. The user's ten screenshot originals are NOT committed to this repository; their exact visual observations are transcribed into SHOT_MAP.md. Reproduce equivalent screenshots directly with the browser. If separate user-supplied images become accessible, treat them as authoritative design evidence rather than public assets.
+Then run git status, git log, baseline build, local HTTP render and screenshot capture. Do not guess file paths or cite nonexistent screenshots. Ten numbered owner-reference JPGs ARE committed under docs/01-*.jpg through docs/10-*.jpg (exact original-byte provenance unverified); SHOT_MAP.md records the review observations. Reproduce equivalent screenshots directly with the browser. If separate user-supplied images become accessible, treat them as authoritative design evidence rather than public assets.
 
 ## Role and result
 
@@ -39,6 +41,8 @@ Explicit owner directive: "go all out" on creative direction; remove obviously w
 - You may remove/replace obsolete R2 experiments within your branch.
 - Preserve the official Kirjane emblem and wordmark.
 - Preserve the seven canonical semantic routes, SEO metadata, working navigation, contact links, forms, reduced motion and graceful no-JS fallbacks.
+- Preserve integrated Salryn R5 film (23 scenes, native scroll, one Shadow DOM island, real synthetic cursor/ripple, sound off by default, no API, accessible controls). Improve the film, never detach it or turn it into a second SPA.
+- Baseline from R5 PR #13 at `d9bdf2324b861e3f4f6f71a0438afa65b2eb1c07`, NOT from earlier abandoned candidate. Required regression floors: 61/61 production, 79/79 R2 axe, 68/68 integrated film, 27/27 mathematical.
 - No blanket migration of the seven-page HTML site to a React SPA.
 
 ## DO, not merely describe

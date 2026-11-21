@@ -1,6 +1,6 @@
 # KIRION CREATIVE FORGE × CODEX — CINEMATIC WEBSITE R3
 
-> **R3 self-contained agent entrypoint:** Read `AGENTS.md` and `docs/codex-r3/START_HERE.md` first, followed by `docs/codex-r3/SHOT_MAP.md`, `MOTION_ARCHITECTURE.md` and `QA_EVIDENCE.md`. The original owner's ten screenshot files are **not committed to this repository** and cannot be dragged into Codex's chat. Generate equivalent baseline screenshots using `scripts/codex_r3_capture.mjs` and inspect them, rather than pretending the upload is available. This mission document is the creative scope; the R3 playbook governs actual implementation and proof. The source branch is `experiment/codex-cinematic-overhaul-r3` only.
+> **R3 self-contained agent entrypoint:** Read `AGENTS.md` and `docs/codex-r3/START_HERE.md` first, followed by `docs/codex-r3/SHOT_MAP.md`, `MOTION_ARCHITECTURE.md` and `QA_EVIDENCE.md`. Ten labeled reference JPGs are committed in `docs/01-*.jpg` through `docs/10-*.jpg` (original byte identity unverified). Generate equivalent baseline screenshots using `scripts/codex_r3_capture.mjs` and inspect them, rather than pretending the upload is available. This mission starts on the combined seven-page R2 and integrated Salryn Cinema R5 site; this mission document is the creative scope; the R3 playbook governs actual implementation and proof. The source branch is `experiment/codex-cinematic-overhaul-r3` only.
 
 **Mission:** `KIRJANE-CODEX-CINEMATIC-OVERHAUL-R3`  
 **Repository:** `Kirch-Nairu/kirjane-site`  
@@ -20,7 +20,7 @@ This is a high-end flagship for a software engineering company. A visitor should
 ## Source and reconnaissance (mandatory first phase)
 
 1. Read `docs/IMMERSIVE_R2.md`, `docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv`, `docs/MOTION_ARSENAL_R1.md`, `creative/package.json`, `scripts/build_immersive_r2.py`, existing `site/` and `creative/src/` code. Read the existing root `AGENTS.md` and the complete `docs/codex-r3/` operating documents BEFORE coding.
-2. Verify HEAD descends from the frozen R2 source and that working branch is `experiment/codex-cinematic-overhaul-r3`. Do not check out main or rewrite R2 PR #11.
+2. Verify HEAD descends from the frozen R2 source and that working branch is `experiment/codex-cinematic-overhaul-r3`. Do not check out main or rewrite R2 PR #11 or integrated Salryn R5 PR #13.
 3. Run baseline build and smoke tests. Serve over HTTP. Capture screenshots/videos of the seven pages and key scroll stages at 1440×900, 768×1024, 390×844 and 320×700. Compare the screenshots with the explicit defects below.
 4. Audit available locally committed CGI/GFX/VFX, CSS, raster/video, SVG, procedural meshes and third-party code before importing more assets. The original user's Windows creative-lab asset archive is NOT automatically part of this repository: never claim it was reviewed if absent. Verify upstream license and source for every new vendor component or downloaded artifact; do not execute unknown scripts.
 5. Establish visual diagnosis with evidence before redesign. Do not let the existing test suite's pass status substitute for a creative quality verdict.
@@ -104,3 +104,8 @@ Commit and push to `experiment/codex-cinematic-overhaul-r3`. Open a **Draft PR**
 Do not change `main`, canonical PR #11, deployed site, hosting configuration, production secrets or other agents' work. No merge or deployment. A passing browser test is necessary but does not mean aesthetic approval. If GPU/render/browser access is limited, still deliver verified code and describe precisely what could not be tested. Do not invent footage or benchmark numbers.
 
 **START:** Inspect source, run baseline, map the ten targets and then begin implementing. Do not stop at a design proposal or ask generic creative questions. The owner has authorized broad creative experimentation in this branch.
+
+
+## Existing R5 Cinema is now mandatory scope
+
+The full website already contains the **23-shot Salryn scroll film** after its hero, before the original product architecture chapters. Improve film visual quality, screen-to-screen transitions, measured cursor accuracy, ripple timing, viewport framing and subtle opt-in audio while keeping deterministic reversible scroll math, single document scrollbar, Shadow DOM CSS isolation, and muted-by-default Web Audio. The film uses fictional source-inspired UI only; no POS backend or booking calls. Read `docs/codex-r3/INTEGRATION_CONTRACT.md` and qualify 61 production + 79 R2 axe + 68 on-site film + 27 R5 math checks. Ten original owner screenshots plus five new R5 film frames require current-source capture and creative review; old pre-R5 captures are historical, not current QA.

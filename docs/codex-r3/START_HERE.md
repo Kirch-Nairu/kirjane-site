@@ -1,7 +1,7 @@
 # R3 EXECUTION PLAYBOOK — START HERE
 
 **Mission:** KIRJANE-CODEX-CINEMATIC-OVERHAUL-R3
-**Engineer:** Codex Coder, isolated cloud workspace, real code modification required
+**Engineer:** Codex implementation agent; real browser review and code modifications required
 **Repository:** Kirch-Nairu/kirjane-site
 **Working branch:** experiment/codex-cinematic-overhaul-r3
 **Frozen integrated R2 + R5 baseline:** d9bdf2324b861e3f4f6f71a0438afa65b2eb1c07
@@ -11,7 +11,7 @@
 ## Definition of done (the actual deliverable)
 
 The work is complete ONLY when all of the following exist:
-- A tested site with seven functioning canonical static HTML routes.
+- A tested site with seven functioning canonical static HTML routes AND the inherited 23-scene Salryn R5 film.
 - Original implemented cinematic experiences for all five priority fixes (owner shots 03, 04, 08, 09, 10).
 - Visible visual/story continuity upgrades to the other five shots (01, 02, 05, 06, 07).
 - Usable touch/mouse/keyboard controls, actual responsive and reduced-motion alternatives.
@@ -59,8 +59,12 @@ Use the existing source pipeline. First run:
 npm ci --ignore-scripts --no-audit --no-fund
 (cd creative && npm ci --ignore-scripts --no-audit --no-fund)
 npx playwright install chromium
-python3 scripts/build_immersive_r2.py --output dist/codex-r3-baseline-001
-FORGE_DIST=dist/codex-r3-baseline-001 FORGE_EVIDENCE=dist/codex-r3-evidence/baseline node scripts/qa_immersive_r2.mjs
+python3 scripts/build_immersive_r2.py --output dist/cinema-integration
+node --test creative/film/src/director/*.test.mjs
+node scripts/qa_salryn_site_integration.mjs
+FORGE_DIST=dist/cinema-integration FORGE_EVIDENCE=dist/codex-r3-evidence/r2 node scripts/qa_immersive_r2.mjs
+CODEX_R3_DIST=dist/cinema-integration CODEX_R3_SHOTS=dist/codex-r3-evidence/baseline node scripts/codex_r3_capture.mjs
+python3 scripts/build.py --output dist/codex-production-verify
 npm test
 \`\`\`
 
@@ -127,6 +131,10 @@ Every milestone has a DESIGN REVIEW at commit. Finish one before the next, and t
 \`site/salryn.html#scene-f-independence\`. Create clear normal/outage/recovery operational states, with waiting external actions and local continuity. **Gate:** three state snapshots, replay/previous/next, keyboard and touch, no false completed external action during outage. Preserve architectural dependency qualifiers. Never claim all installations guarantee offline availability.
 
 **Milestone close:** commit bounded code, run focused tests, save real visual evidence (or explicit blocker), update corrections, then move on. Avoid gigantic single commits.
+
+### Additional milestone — integrated Salryn Cinema R5 polish
+
+The embedded 23-scene film already ships in the experimental baseline. Preserve and improve its full-screen narrative, cursor precision, deterministic click/ripple/audio, mobile/tall 2880×1800 framing, reduced motion, Shadow DOM boundary and single scroll owner. Add five dedicated source-rendered film captures in addition to the ten owner shots. Read `docs/codex-r3/INTEGRATION_CONTRACT.md`; tests must stay green. Do not convert the film to a looping video or iframe. No real POS API calls or fabricated client evidence.
 
 ## Stage 4 — amplify the good CGI [Shots 01,02,05,06,07]
 
