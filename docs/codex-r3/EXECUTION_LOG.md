@@ -59,3 +59,6 @@ The headless/software-to-static quality experiment made the Home and Salryn docu
 
 ### Separate production-workflow gate
 The R3 qualification passed at 6e4b92f, but the separate Production source verification workflow failed its final git diff --check gate on ten trailing spaces in the newly authored industry/resilience modules. Browser tests were not the cause. Removed the whitespace; retained the unchanged check. A later successful run is required before calling all branch checks green.
+
+### Final phone composition correction
+Actual mobile comparison review showed that Home Process still inherited a horizontally crowded desktop stage rail. Composed five full-width touch choices as a two-column phone grid with a full-width final step, preserving roving tab/arrow behavior and the existing explanation panel. Also split mandatory labels in the optical engine fallback onto their own lines to remove decorative clipping. These are bounded presentation corrections, not a change to canonical capabilities.

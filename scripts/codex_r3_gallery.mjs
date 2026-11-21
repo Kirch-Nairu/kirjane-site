@@ -1,6 +1,6 @@
 import {readFile,writeFile,mkdir,readdir} from 'node:fs/promises';
 import {chromium} from 'playwright';
-const before='dist/codex-r3-evidence/baseline-controlled',after='dist/codex-r3-evidence/final-controlled-17';
+const before='dist/codex-r3-evidence/baseline-controlled',after='dist/codex-r3-evidence/final-controlled-18';
 const out='docs/codex-r3/evidence';await mkdir(out,{recursive:true});
 const htmlOut='dist/codex-r3-evidence/comparison-html';await mkdir(htmlOut,{recursive:true});
 const a=JSON.parse(await readFile(before+'/manifest.json','utf8'));
