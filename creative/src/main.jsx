@@ -290,13 +290,13 @@ function DecryptLine({ host }) {
 function GlareAction({host}) {
   const reduced=useReducedMotion();
   useEffect(()=>{host.dataset.forgeReady='true';return()=>{delete host.dataset.forgeReady;};},[host]);
-  if(reduced) return <a className="forge-glare-link" href="#prepare-brief">Start a project brief <span aria-hidden="true">↗</span></a>;
+  if(reduced) return <a className="forge-glare-link" href={location.pathname + location.search + '#prepare-brief'}>Start a project brief <span aria-hidden="true">↗</span></a>;
   return <GlareHover className="forge-glare-shell" width="100%" height="100%"
     background="#112c1f" borderColor="#8fae6a" borderRadius="2px"
     glareColor="#d3f66b" glareOpacity={.45} glareAngle={-48}
     glareSize={30} softness={.5} variant="sheen" blendMode="screen"
     mode="hover" intro={false} playOnce={false}>
-    <a className="forge-glare-link" href="#prepare-brief">Start a project brief <span aria-hidden="true">↗</span></a>
+    <a className="forge-glare-link" href={location.pathname + location.search + '#prepare-brief'}>Start a project brief <span aria-hidden="true">↗</span></a>
   </GlareHover>;
 }
 const roots = new Map();
