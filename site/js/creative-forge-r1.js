@@ -4,6 +4,9 @@ const lab = /\/motion-lab\/?(?:index\.html)?$/.test(current.pathname);
 const optIn = current.searchParams.get('creative') === '1';
 if (lab || optIn) {
   import('./creative-studies-r1.js').then(({ startCreativeStudies }) => {
+    window.addEventListener('pageshow', (event) => {
+      if (event.persisted) startCreativeStudies();
+    });
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', startCreativeStudies, { once: true });
     } else {
