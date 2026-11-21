@@ -1,5 +1,8 @@
 # KIRION ATELIER — R4 EXISTING-ASSET CONTINUITY REMASTER
 
+**CONNECTION GATE G-1 (MUST PASS BEFORE M00):** Read [BLENDER_MCP_BOOTSTRAP.md](BLENDER_MCP_BOOTSTRAP.md). Connect Codex to the existing local `uvx mcp-for-blender` server, prove `get_scene_info`/`look` from the actual Blender viewport, and record `BLENDER_MCP_CONNECTED` or `BLENDER_MCP_BLOCKED`. Do not author assets without proof.
+
+
 Mission: `KIRJANE-R4-CONTINUITY-ASSET-REMASTER`
 Executor: Codex (Blender automation + code + browser operator)
 Maintainer/art direction: ChatGPT under Kirch

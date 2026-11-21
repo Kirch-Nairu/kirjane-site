@@ -1,5 +1,8 @@
 # Kirjane Creative Forge R4 — continuity-first asset remaster
 
+**FIRST, CONNECT CODEX TO BLENDER:** [BLENDER_MCP_BOOTSTRAP.md](BLENDER_MCP_BOOTSTRAP.md). Do not start any R4 art work until the local MCP connection is demonstrated with actual live Blender scene inspection and viewport proof.
+
+
 **Owner:** Kirch
 **Maintainer / senior design critic:** ChatGPT
 **Dedicated maker / integration worker:** Codex (Blender 5.3 + local mcp-for-blender / scripts)

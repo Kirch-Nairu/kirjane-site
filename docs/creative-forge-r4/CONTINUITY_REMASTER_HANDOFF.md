@@ -1,5 +1,8 @@
 # KIRJANE CREATIVE FORGE R4 — CODEX CONTINUITY REMASTER HANDOFF
 
+**CRITICAL PRE-MISSION GATE:** Before any source audit, Blender modeling, renders or artwork edits, follow [BLENDER_MCP_BOOTSTRAP.md](BLENDER_MCP_BOOTSTRAP.md) in full. The Blender add-on is installed and Codex MCP registered, but neither proves an active connection. Codex must call live Blender tools and verify actual scene/viewport before writing. No tool access → report `BLENDER_MCP_BLOCKED`, not a made-up render.
+
+
 **MISSION:** `KIRJANE-R4-CONTINUITY-ASSET-REMASTER`
 **EXECUTOR:** Codex (dedicated Blender / source / browser implementation worker)
 **ART DIRECTOR + MAINTAINER:** ChatGPT, acting under Kirch's creative authority
