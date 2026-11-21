@@ -37,6 +37,19 @@ jobs:
           for page in index salryn services projects process about contact; do test -s dist/cinema-integration/$page.html; done
       - name: Browser QA full site, cinema and mobile
         run: node scripts/qa_salryn_site_integration.mjs
+      - name: Re-run inherited R2 seven-page cinematic and axe qualification
+        env:
+          FORGE_DIST: dist/cinema-integration
+          FORGE_EVIDENCE: dist/cinema-integration-r2-evidence
+        run: node scripts/qa_immersive_r2.mjs
+      - name: Preserve inherited R2 browser and accessibility evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: original-r2-on-integrated-r5-regression
+          path: dist/cinema-integration-r2-evidence/
+          retention-days: 14
+          if-no-files-found: warn
       - name: Preserve QA screenshots
         if: always()
         uses: actions/upload-artifact@v4
