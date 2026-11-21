@@ -1,11 +1,11 @@
-# SUPERSEDED — Historical ChatGPT-only handoff
+# Historical document — superseded R4 instructions
 
-This file is retained only for provenance of the earlier mistaken execution decision.
+This document is intentionally retained for traceability only.
 
-**DO NOT EXECUTE ITS ORIGINAL INSTRUCTIONS.**
+**DO NOT EXECUTE THIS DOCUMENT AS A STANDALONE MISSION.**
 
-The active creative brief is [CONTINUITY_REMASTER_HANDOFF.md](CONTINUITY_REMASTER_HANDOFF.md), with Codex as the dedicated Blender + code implementation worker and ChatGPT as the senior art director/maintainer.
+The single authoritative assignment is [FINAL_CODEX_HANDOFF.md](FINAL_CODEX_HANDOFF.md).
 
-The user explicitly required improvements to **CURRENTLY USED assets and EXISTING animation rhythm**, not new design concepts or a ChatGPT-only implementation arrangement. The original official 2D chameleon remains immutable.
+Key correction: Codex does not create new concepts for existing site scenes. Remaster the current asset subject and established R3 scroll rhythm; use Blender for surface, camera, light, compositing and motion craftsmanship. Codex has freedom over craft, not unilateral authority over the website's visual identity. Original official 2D chameleon and logo remain immutable.
 
-Canonical mission: `KIRJANE-R4-CONTINUITY-ASSET-REMASTER`.
+This file previously contributed to overlapping or contradictory handoffs and is now an archived redirect.
