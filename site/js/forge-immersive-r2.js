@@ -41497,7 +41497,7 @@ function pM({ host: e }) {
 		delete e.dataset.forgeReady;
 	}), [e]), t ? /* @__PURE__ */ (0, Q.jsxs)("a", {
 		className: "forge-glare-link",
-		href: "#prepare-brief",
+		href: location.pathname + location.search + "#prepare-brief",
 		children: ["Start a project brief ", /* @__PURE__ */ (0, Q.jsx)("span", {
 			"aria-hidden": "true",
 			children: "↗"
@@ -41521,7 +41521,7 @@ function pM({ host: e }) {
 		playOnce: !1,
 		children: /* @__PURE__ */ (0, Q.jsxs)("a", {
 			className: "forge-glare-link",
-			href: "#prepare-brief",
+			href: location.pathname + location.search + "#prepare-brief",
 			children: ["Start a project brief ", /* @__PURE__ */ (0, Q.jsx)("span", {
 				"aria-hidden": "true",
 				children: "↗"
