@@ -1,0 +1,35 @@
+name: Creative Forge R1 - offline motion qualification
+on:
+  push:
+    branches:
+      - experiment/creative-forge-motion-arsenal-r1
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  motion-offline-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Build noindex-only experiment
+        run: python scripts/build.py --preview --output dist/motion-qa
+      - name: Run browser checks, captures and paired profiling
+        run: node scripts/qa_motion_r1.mjs
+      - name: Preserve raw desktop/mobile evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: motion-r1-evidence
+          path: dist/motion-evidence/
+          retention-days: 14
+          if-no-files-found: warn
