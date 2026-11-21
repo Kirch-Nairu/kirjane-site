@@ -1,5 +1,7 @@
 # KIRION CREATIVE FORGE × QWEN — CINEMATIC WEBSITE R3
 
+> **R3 self-contained agent entrypoint:** Read `AGENTS.md` and `docs/qwen-r3/START_HERE.md` first, followed by `docs/qwen-r3/SHOT_MAP.md`, `MOTION_ARCHITECTURE.md` and `QA_EVIDENCE.md`. The original owner's ten screenshot files are **not committed to this repository** and cannot be dragged into Qwen's chat. Generate equivalent baseline screenshots using `scripts/qwen_r3_capture.mjs` and inspect them, rather than pretending the upload is available. This mission document is the creative scope; the R3 playbook governs actual implementation and proof. The source branch is `experiment/qwen-cinematic-overhaul-r3` only.
+
 **Mission:** `KIRJANE-QWEN-CINEMATIC-OVERHAUL-R3`  
 **Repository:** `Kirch-Nairu/kirjane-site`  
 **Authorized working branch:** `experiment/qwen-cinematic-overhaul-r3`  
@@ -17,7 +19,7 @@ This is a high-end flagship for a software engineering company. A visitor should
 
 ## Source and reconnaissance (mandatory first phase)
 
-1. Read `docs/IMMERSIVE_R2.md`, `docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv`, `docs/MOTION_ARSENAL_R1.md`, `creative/package.json`, `scripts/build_immersive_r2.py`, existing `site/` and `creative/src/` code. Check `AGENTS.md` and any repository instructions if present.
+1. Read `docs/IMMERSIVE_R2.md`, `docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv`, `docs/MOTION_ARSENAL_R1.md`, `creative/package.json`, `scripts/build_immersive_r2.py`, existing `site/` and `creative/src/` code. Read the existing root `AGENTS.md` and the complete `docs/qwen-r3/` operating documents BEFORE coding.
 2. Verify HEAD descends from the frozen R2 source and that working branch is `experiment/qwen-cinematic-overhaul-r3`. Do not check out main or rewrite R2 PR #11.
 3. Run baseline build and smoke tests. Serve over HTTP. Capture screenshots/videos of the seven pages and key scroll stages at 1440×900, 768×1024, 390×844 and 320×700. Compare the screenshots with the explicit defects below.
 4. Audit available locally committed CGI/GFX/VFX, CSS, raster/video, SVG, procedural meshes and third-party code before importing more assets. The original user's Windows creative-lab asset archive is NOT automatically part of this repository: never claim it was reviewed if absent. Verify upstream license and source for every new vendor component or downloaded artifact; do not execute unknown scripts.
