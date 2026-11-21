@@ -86,3 +86,7 @@
 .contact-intro-note:has(.forge-r2-glare[data-forge-ready="true"]) > .link-editorial {display:none}
 .forge-r2-glare .glare-hover{display:grid}
 .forge-r2-glare .glare-hover__content{position:relative;z-index:3}
+
+/* Intentional fallback: software WebGL shows the optical kernel title instead of the old flat SVG art. */
+#scene-d-activation .activation-svg-panel:has([data-forge-static="true"]) #salryn-activation-svg {display:none!important}
+#study-10 .study-demo-display:has([data-forge-static="true"]) > img {display:none}
