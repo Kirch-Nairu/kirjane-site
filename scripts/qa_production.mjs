@@ -22,9 +22,12 @@ try{
     const fragments=await page.evaluate(()=>[...document.querySelectorAll('a[href*="#"]')].filter(a=>{const raw=a.getAttribute('href');return a.hasAttribute('data-local-fragment')||raw.startsWith('#')||raw.startsWith('./'+location.pathname.split('/')[1]+'/#');}).map(a=>({href:a.href,path:new URL(a.href).pathname,expected:location.pathname})));
     check(`${route||'home'} local fragments`,fragments.length>0&&fragments.every(a=>a.path===a.expected),fragments);
     await page.locator('a.skip-link').focus();await page.keyboard.press('Enter');
+    // A real keyboard activation may cross a microtask/scroll restoration boundary.
+    // Wait for the observed URL mutation; do not accept a mere click as success.
+    await page.waitForURL(url=>url.hash==='#main'&&url.pathname==='/'+(route?route+'/':''),{timeout:2500}).catch(()=>{});
     check(`${route||'home'} real Skip link`,new URL(page.url()).pathname==='/'+(route?route+'/':'')&&new URL(page.url()).hash==='#main');
     check(`${route||'home'} one Twitter card`,await page.locator('meta[name="twitter:card"]').count()===1&&await page.locator('meta[name="twitter:card"]').getAttribute('content')==='summary_large_image');
-    const axe=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze();check(`${route||'home'} axe`,axe.violations.length===0,axe.violations.map(v=>({id:v.id,impact:v.impact})));}page.off('pageerror',onError);
+    const axe=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze();check(`${route||'home'} axe`,axe.violations.length===0,axe.violations.map(v=>({id:v.id,impact:v.impact,nodes:v.nodes.slice(0,8).map(n=>({target:n.target,summary:n.failureSummary}))})));}page.off('pageerror',onError);
   }await ctx.close();
  }
  for(const phase of ['complete','outro','assembly']){

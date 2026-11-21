@@ -1,0 +1,132 @@
+/* Kirjane Creative Forge / R2 cinematic editorial system.
+ * Built on existing Living Topography tones; opt-in source branch, not deployed.
+ */
+:root{--forge-lime:#d3f66b;--forge-charcoal:#06120e;--forge-mist:#ebf0e9;--forge-ink:#0c2318}
+.forge-immersive-r2 body{background:#07120d}
+.forge-page-track{position:fixed;z-index:1002;left:0;top:0;height:100svh;width:3px;pointer-events:none;background:#0b180e66}
+.forge-page-track-fill{display:block;transform:scaleY(0);transform-origin:top;height:100%;width:100%;background:linear-gradient(#e7ffac,#58d98d,#11513d)}
+.forge-page-chapter{position:fixed;right:clamp(1.2rem,2vw,3rem);bottom:clamp(1rem,2vw,3rem);display:flex;gap:.65rem;align-items:baseline;color:#d3f66b95;z-index:80;pointer-events:none;font:700 .65rem system-ui;letter-spacing:.24em;text-shadow:0 2px 9px #06120e}
+.forge-page-chapter span{font-size:1.5rem;font-weight:400;letter-spacing:-.04em}
+.forge-scene-index{position:absolute;z-index:5;top:1.1rem;left:max(var(--gutter,1rem),3vw);display:flex;align-items:center;gap:.65rem;color:#d3f66b;pointer-events:none;font:650 .61rem/1.3 system-ui;letter-spacing:.16em;opacity:.7;white-space:nowrap}
+.forge-scene-index i{width:24px;height:1px;background:currentColor}
+.forge-scene-index b{font:inherit}
+.home-hero.forge-hero{isolation:isolate;min-height:105svh}
+.home-hero.forge-hero:after{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;background:repeating-linear-gradient(0deg,transparent 0 22px,#d0f7b40a 22px 23px);mask-image:linear-gradient(180deg,transparent 8%,black 50%,transparent 100%);mix-blend-mode:screen}
+.home-hero.forge-hero .hero-copy-col{max-width:800px}
+.home-hero.forge-hero h1{font-size:clamp(4.5rem,8.6vw,10.8rem);font-weight:460;line-height:.94;letter-spacing:-.074em;text-wrap:balance;position:relative}
+.home-hero.forge-hero .hero-copy-col .lead{font-size:clamp(1.02rem,1.5vw,1.4rem);max-width:520px}
+.forge-hero-lettering{display:block;font:700 .73rem/1.1 system-ui;letter-spacing:.36em;color:#d3f66b;margin:1rem 0 1.7rem}
+.home-hero.forge-hero .explore-cue{display:inline-flex;align-items:center;gap:1rem;border-top:1px solid #c2f68466;padding-top:1rem;letter-spacing:.08em}
+#salryn-exhibition{background:radial-gradient(ellipse at 70% 30%,#173a27 0,#060d09 67%)!important}
+#salryn-exhibition .flagship-art{filter:drop-shadow(0 40px 60px #000a);transform-style:preserve-3d}
+#capabilities-exhibition{isolation:isolate}
+#capabilities-exhibition .exhibition-card{border:0!important;background:linear-gradient(145deg,#12261c,#08120d)!important;box-shadow:0 15px 60px #0008}
+#scene-d-activation .activation-svg-panel{padding:0;background:transparent;border:0;position:relative;overflow:visible}
+#scene-d-activation #salryn-activation-svg{aspect-ratio:auto;min-height:0}
+#scene-d-activation .activation-svg-panel:has([data-forge-ready="true"]) #salryn-activation-svg{display:none!important}
+#scene-d-activation .activation-layout{align-items:center}
+#scene-d-activation .forge-live-kernel{min-height:540px;box-shadow:0 22px 100px #020d0a99}
+#scene-d-activation .cap-toggle{transition:border-color .2s,box-shadow .25s;transform-style:preserve-3d}
+#scene-d-activation .cap-toggle[aria-pressed="true"]{box-shadow:inset 0 0 0 1px #b4ec8540}
+#scene-d-activation .security-notice{border-radius:0}
+#scene-b-anatomy .engine-plate{filter:drop-shadow(0 30px 50px #0009)}
+.asc-service-hero{position:relative;isolation:isolate}
+.asc-service-hero:after{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(circle at 20% 15%,#d5e3cc77,transparent 38%);mix-blend-mode:multiply}
+.asc-service-intro{position:relative;z-index:2}
+.asc-service-intro-copy h1{letter-spacing:-.068em;font-size:clamp(4rem,8vw,9.5rem);line-height:.95}
+.asc-workflow-scene{position:relative;isolation:isolate}
+.forge-flow-circuit{position:absolute;inset:0;z-index:5;width:100%;height:100%;pointer-events:none;filter:drop-shadow(0 0 12px #49efad88)}
+.forge-flow-circuit .forge-signal-dot{filter:drop-shadow(0 0 6px #cff9a3)}
+.project-cover{background:radial-gradient(ellipse at 88% 10%,#234a35 0%,#07120d 64%)!important;color:#edf4eb!important}
+.project-cover h1{font-size:clamp(4.5rem,9.2vw,10.8rem)!important;line-height:.88;letter-spacing:-.08em!important}
+.project-cover .lead{color:#c0d2c5}
+.projects-gallery{background:#e4ece1;color:#0c2318;padding-block:clamp(2rem,4vw,4rem)}
+.project-study{border:0!important;box-shadow:0 18px 55px #0c201b1e;overflow:hidden}
+.project-study .study-art{isolation:isolate}
+.project-study .study-art img{transition:transform .8s cubic-bezier(.18,.7,.2,1),filter .7s;filter:saturate(1.1)}
+.project-study:hover .study-art img{transform:scale(1.045);filter:saturate(1.22)}
+.asc-process-hero{background:radial-gradient(ellipse at 65% 25%,#1b4f37,#07150e 70%)!important}
+.asc-process-hero h1{font-size:clamp(3.3rem,7vw,9rem);line-height:.94}
+.asc-process-map{filter:drop-shadow(0 18px 48px #163b2333)}
+.asc-process-chapters .stage-chapter{border-top-width:2px;transition:border-color .25s,background .25s}
+.asc-process-chapters .stage-chapter:target{border-color:#648d4d;background:#e1edda}
+.about-essay-cover{position:relative;overflow:hidden}
+.about-essay-cover h1{font-size:clamp(4.5rem,9vw,10.8rem);letter-spacing:-.085em;line-height:.93;max-width:12ch}
+.about-reading{background:#f1f2ea;color:#13231b}
+.about-ethos{background:#06130d;color:#e7f0e5}
+.about-ethos dt{font-size:clamp(3rem,6vw,6rem);letter-spacing:-.065em;color:#d3f66b}
+.contact-main{isolation:isolate;background:radial-gradient(circle at 85% 15%,#e6f5e7,transparent 35%),#f0f2e9;color:#142419}
+.contact-intro h1{font-size:clamp(4rem,8vw,10rem);letter-spacing:-.073em;line-height:.96}
+.contact-brief{box-shadow:0 20px 70px #10271916}
+.forge-r2-tagline{font-size:clamp(1.35rem,2.4vw,2.45rem);letter-spacing:-.045em;line-height:1.06;font-weight:460;color:var(--forge-lime);margin:1.2rem 0 0;max-width:700px}
+.forge-r2-tagline[data-forge-react-island="blur"]{min-height:2em}
+#salryn-activation-svg img{background:#05120b}
+#study-10 .study-demo-display{position:relative;padding:0;background:#07160e!important}
+#study-10 .study-demo-display:has([data-forge-ready="true"])>img{display:none}
+#study-10 [data-forge-react-island="kernel"]{min-height:490px}
+#study-10 .forge-kernel-visual{height:350px}
+#study-10 .forge-narrative{display:none}
+.motion-lab-root #study-10{background:#07180f}
+.motion-lab-root #study-10 .lab-study-header h2{font-size:clamp(3rem,7.5vw,8rem)}
+@media(max-width:900px){
+ .forge-page-chapter{display:none}
+ .home-hero.forge-hero{min-height:97svh}
+ .home-hero.forge-hero h1{font-size:clamp(3.35rem,12vw,6.5rem)}
+ .asc-service-intro-copy h1,.project-cover h1,.about-essay-cover h1,.contact-intro h1{font-size:clamp(3.3rem,11vw,7rem)!important}
+ #scene-d-activation .activation-layout{grid-template-columns:1fr}
+ #scene-d-activation .forge-live-kernel{min-height:440px}
+ .forge-scene-index{font-size:.56rem;left:1rem}
+}
+@media(prefers-reduced-motion:reduce){
+ .forge-flow-circuit .forge-signal-route{stroke-dasharray:none!important;stroke-dashoffset:0!important}
+ .forge-page-track-fill{display:none}
+}
+
+/* Once the visual CTA is ready, remove its redundant static sibling, not the working fallback. */
+.contact-intro-note:has(.forge-r2-glare[data-forge-ready="true"]) > .link-editorial {display:none}
+.forge-r2-glare .glare-hover{display:grid}
+.forge-r2-glare .glare-hover__content{position:relative;z-index:3}
+
+/* Intentional fallback: software WebGL shows the optical kernel title instead of the old flat SVG art. */
+#scene-d-activation .activation-svg-panel:has([data-forge-static="true"]) #salryn-activation-svg {display:none!important}
+#study-10 .study-demo-display:has([data-forge-static="true"]) > img {display:none}
+
+/* Contrast repair: bright chapter indices were unreadable on pale Salryn anatomy. */
+#scene-b-anatomy .forge-scene-index { color: #143e29; opacity: 1; }
+#scene-b-anatomy .forge-scene-index i { background: #143e29; }
+
+/* R2 creative critique: remove the original boxed-toggle treatment.
+   The capabilities should read as an engineered list, not eight dashboard cards. */
+#scene-d-activation .capability-grid {gap:0 1.25rem!important}
+#scene-d-activation .cap-toggle {
+  display:block;border:0!important;border-bottom:1px solid rgba(187,222,193,.26)!important;
+  border-radius:0!important;background:transparent!important;box-shadow:none!important;
+  padding:1.2rem .55rem 1.25rem!important;text-align:left;
+}
+#scene-d-activation .cap-toggle[aria-pressed="true"]{
+  background:linear-gradient(90deg,rgba(78,157,111,.12),transparent 82%)!important;
+  border-bottom-color:rgba(211,246,107,.65)!important;
+}
+#scene-d-activation .cap-toggle:hover,
+#scene-d-activation .cap-toggle:focus-visible{
+  background:rgba(86,153,99,.10)!important;
+  box-shadow:inset 3px 0 0 var(--forge-lime)!important;
+}
+#scene-d-activation .cap-status-pill {
+  border:0!important;border-radius:0!important;background:none!important;
+  font-weight:650;letter-spacing:.045em;
+}
+#scene-d-activation .cap-toggle-head strong{line-height:1.15}
+html[data-forge-page="contact"] .forge-page-chapter,
+html[data-forge-page="services"] .forge-page-chapter{
+  color:#194833;text-shadow:0 2px 6px rgba(255,255,255,.4)
+}
+
+/* Exact production axe evidence: chapter captions on pale panels require ink. */
+#capabilities-exhibition .forge-scene-index,
+#infrastructure .forge-scene-index { color: #173f29!important; opacity:1!important; }
+#capabilities-exhibition .forge-scene-index i,
+#infrastructure .forge-scene-index i { background:#173f29!important; }
+html[data-forge-page="process"] .forge-page-chapter {
+  color:#143c28!important;text-shadow:0 2px 8px rgba(255,255,255,.5)!important;
+}
