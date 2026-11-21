@@ -1,0 +1,46 @@
+name: Creative Forge R2 - inspectable noindex website artifact
+on:
+  push:
+    branches:
+      - experiment/creative-forge-immersive-r2
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build-preview-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile React Bits Three Fiber Lenis
+        run: python scripts/build_immersive_r2.py --output dist/immersive-preview
+      - name: Check bundled library and seven source routes
+        run: |
+          test -s dist/immersive-preview/js/forge-immersive-r2.js
+          test -s dist/immersive-preview/js/forge-immersive-r2.css
+          for page in index salryn services projects process about contact; do
+            test -s "dist/immersive-preview/$page.html"
+          done
+          grep -q 'noindex' dist/immersive-preview/index.html
+          grep -q 'noindex' dist/immersive-preview/motion-lab/index.html
+      - name: Upload complete inspectable static preview
+        uses: actions/upload-artifact@v4
+        with:
+          name: kirjane-immersive-r2-static-noindex
+          path: dist/immersive-preview/
+          retention-days: 7
+          if-no-files-found: error
+      - name: Upload exact generated package lock for dependency review
+        uses: actions/upload-artifact@v4
+        with:
+          name: kirjane-immersive-r2-package-lock
+          path: creative/package-lock.json
+          retention-days: 14
+          if-no-files-found: warn
