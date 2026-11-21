@@ -200,6 +200,7 @@
   </style>
   <link rel="stylesheet" href="./css/forge-immersive-r2.css" />
   <link rel="stylesheet" href="./css/salryn-cinema-integration.css" />
+  <link rel="stylesheet" href="./css/forge-cinematic-r3.css" />
 </head>
 <body data-editorial="salryn" data-page="salryn">
   <a href="#main" class="skip-link">Skip to content</a>
@@ -534,9 +535,9 @@
           <div class="offline-layout">
             <div>
               <div class="sim-mode-bar" role="group" aria-label="Operational continuity state simulator">
-                <button type="button" class="chapter-pill" data-sim-mode="local" aria-current="step">During an outage</button>
-                <button type="button" class="chapter-pill" data-sim-mode="exchange" aria-current="false">When the connection returns</button>
-                <button type="button" class="chapter-pill" data-sim-mode="multi" aria-current="false">Across local workstations</button>
+                <button type="button" class="chapter-pill" data-sim-mode="local" aria-current="step">Outage</button>
+                <button type="button" class="chapter-pill" data-sim-mode="exchange" aria-current="false">Recovery</button>
+                <button type="button" class="chapter-pill" data-sim-mode="normal" aria-current="false">Normal operation</button>
               </div>
               <div class="offline-diagram-frame" id="offline-sim-frame">
                 <img src="./assets/salryn-offline-first.svg" alt="Architectural diagram showing local site kernel continuity, local workstations, and optional external connectivity paths" />
@@ -660,6 +661,8 @@
   <script type="module">
     import { initTopographyField } from './js/topography-canvas.js';
     import { initSiteShell, initLivingMotion, isReducedMotion } from './js/motion-system.js';
+    import { createResilienceScene } from './js/forge-resilience-scene.js';
+    import { createIndustryStory } from './js/forge-industry-story.js';
     import { mountSalryn3DHero } from './js/salryn-3d-organism.js';
     import { MasterSceneDirector } from './js/scene-director.js';
     import { FrameSequencePlayer } from './js/frame-sequence-player.js';
@@ -866,8 +869,11 @@
     const flavorCards = Array.from(flavorsRail.children);
     let activeFamily = 0;
     let familyManuallySelected = false;
+    const industryStory=createIndustryStory(document.querySelector('.flavors-radial-frame'),SALRYN_FAMILIES_12,SALRYN_ENGINES_8,()=>{familyManuallySelected=true;});
+    window.addEventListener('pagehide',e=>{if(!e.persisted)industryStory.dispose();});
     function selectFamily(index) {
       activeFamily = index;
+      industryStory.selectFamily(index);
       industrySelect.value = String(index);
       flavorCards.forEach((card, i) => {
         card.classList.toggle('is-highlighted', i === index);
@@ -893,16 +899,6 @@
       if (['ArrowDown','ArrowUp','PageDown','PageUp','Home','End',' '].includes(event.key)) releaseFamilySelection();
     });
     selectFamily(0);
-
-    fetch('./assets/salryn-flavors-radial.svg')
-      .then((r) => r.text())
-      .then((txt) => {
-        radialHost.innerHTML = txt;
-        radialHost.querySelectorAll('.radial-flavor-item').forEach((item) => {
-          item.addEventListener('click', () => chooseFamily(Number(item.dataset.family)));
-        });
-        selectFamily(activeFamily);
-      });
 
     let lastFlavorProgress = 0;
     director.registerScene({
@@ -1089,6 +1085,7 @@
     // SCENE F: OPERATIONAL INDEPENDENCE (3-STATE CONTINUITY SIMULATOR)
     // =========================================================================
     const SIM_MODES = {
+      normal: {title:'Normal operation',desc:'Local workstations use their shared host over the local network. Optional external services remain dependent on connectivity.'},
       local: {
         title: 'During an outage',
         desc: 'A shop can record a sale and print a receipt on its local system during an internet outage. Tasks that use external services wait for the connection.'
@@ -1106,9 +1103,12 @@
     const simFrame = document.getElementById('offline-sim-frame');
     const simButtons = Array.from(document.querySelectorAll('[data-sim-mode]'));
 
-    let activeSimMode = 'local';
+    const resilience=createResilienceScene(simFrame);
+    window.addEventListener('pagehide',e=>{if(!e.persisted)resilience.dispose();});
+    let activeSimMode = 'normal';
     function setSimMode(mode) {
       activeSimMode = mode;
+      resilience.select(mode);
       const m = SIM_MODES[mode] || SIM_MODES.local;
       document.getElementById('sim-mode-title').textContent = m.title;
       document.getElementById('sim-mode-desc').textContent = m.desc;
@@ -1129,12 +1129,7 @@
       }
     }
 
-    fetch('./assets/salryn-offline-first.svg')
-      .then((r) => r.text())
-      .then((txt) => {
-        simFrame.innerHTML = txt;
-        setSimMode(activeSimMode);
-      });
+    setSimMode('normal');
 
     simButtons.forEach((b) => {
       b.addEventListener('click', () => setSimMode(b.dataset.simMode));

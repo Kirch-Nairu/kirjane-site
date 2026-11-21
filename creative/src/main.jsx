@@ -7,7 +7,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { Color, MathUtils } from 'three';
+import { Color, MathUtils, Vector3, Quaternion } from 'three';
 import Lenis from 'lenis';
 import BlurText from './vendor/BlurText.jsx';
 import DecryptedText from './vendor/DecryptedText.jsx';
@@ -84,10 +84,10 @@ function KernelObject({ active, selected, reduced, gsap }) {
       core.current.rotation.x = -.08;
     } else {
       const time = state.clock.elapsedTime;
-      const desired = time * .055 + motionRef.current.x * .10;
+      const desired = -.22 + motionRef.current.x * .10;
       core.current.rotation.y = MathUtils.damp(core.current.rotation.y, desired, .6, Math.min(delta,.05));
       core.current.rotation.x = MathUtils.damp(core.current.rotation.x, -.12 + motionRef.current.y * .07, 1.5, Math.min(delta,.05));
-      if (midRing.current) midRing.current.rotation.z = time * -.065;
+      if (midRing.current) midRing.current.rotation.z = selected * Math.PI / 8;
     }
   });
   useEffect(() => {
@@ -120,6 +120,15 @@ function KernelObject({ active, selected, reduced, gsap }) {
         <torusGeometry args={[1.83,.018,8,128]}/>
         <meshBasicMaterial color="#7fc3b3" transparent opacity={.62}/>
       </mesh>
+      {active.map((enabled,i)=>{
+        const angle=i/8*Math.PI*2-Math.PI/2;
+        const end=new Vector3(Math.cos(angle)*2.38,i%2?-.20:.20,Math.sin(angle)*2.38);
+        const orientation=new Quaternion().setFromUnitVectors(new Vector3(0,1,0),end.clone().normalize());
+        return <mesh key={'link'+i} position={end.clone().multiplyScalar(.65)} quaternion={orientation}>
+          <cylinderGeometry args={[selected===i?.024:.012,selected===i?.024:.012,end.length()*.7,6]}/>
+          <meshBasicMaterial color={enabled?'#a4d778':'#345446'} transparent opacity={enabled?.8:.24}/>
+        </mesh>;
+      })}
       {active.map((enabled,i)=>(
         <OpticalNode key={i} index={i} selected={selected} active={enabled} reduced={reduced}/>
       ))}
@@ -144,6 +153,20 @@ function Tick({ active, reduced, gsap }) {
   }, [active,reduced,gsap,invalidate]);
   return null;
 }
+function InspectionCamera({selected,reduced}) {
+  const {camera,invalidate}=useThree();
+  const target=useRef(new Vector3());
+  useEffect(()=>{invalidate();},[selected,invalidate]);
+  useFrame((_,delta)=>{
+    const angle=selected/8*Math.PI*2-Math.PI/2;
+    const focus=new Vector3(Math.cos(angle)*.55,0,Math.sin(angle)*.35);
+    const alpha=reduced?1:1-Math.exp(-5*Math.min(delta,.05));
+    target.current.lerp(focus,alpha);
+    camera.position.lerp(new Vector3(Math.cos(angle)*.5,1.7,6.8),alpha);
+    camera.lookAt(target.current);
+  });
+  return null;
+}
 function KernelScene({ active, selected, reduced, visible, gsap, onCreated }) {
   return (
     <Canvas
@@ -155,7 +178,8 @@ function KernelScene({ active, selected, reduced, visible, gsap, onCreated }) {
       onCreated={onCreated}
       fallback={<div className="forge-r3f-fallback">A static architecture view is available.</div>}
     >
-      <ambientLight intensity={1.3}/>
+      <InspectionCamera selected={selected} reduced={reduced}/>
+      <ambientLight intensity={1.5}/>
       <hemisphereLight args={['#d3f66b','#0b3e2b',1.3]}/>
       <pointLight position={[2,4,3]} intensity={45} color="#c4ffc2"/>
       <pointLight position={[-4,-2,-2]} intensity={38} color="#2ebc91"/>
@@ -177,7 +201,9 @@ function KernelIsland({ host, gsap, isLab }) {
   const [active,setActive] = useState(getSelectedCapabilities);
   const [selected,setSelected] = useState(6);
   const [chapter,setChapter] = useState(0);
-  const [visible,setVisible] = useState(true);
+  const [inViewport,setInViewport] = useState(false);
+  const [documentVisible,setDocumentVisible] = useState(!document.hidden);
+  const visible=inViewport && documentVisible;
   const [ready,setReady] = useState(false);
   const [contextLost,setContextLost] = useState(false);
   useEffect(() => {
@@ -188,10 +214,10 @@ function KernelIsland({ host, gsap, isLab }) {
     return () => obs.disconnect();
   }, []);
   useEffect(() => {
-    const observer = new IntersectionObserver(entries => setVisible(entries.some(e=>e.isIntersecting)),
+    const observer = new IntersectionObserver(entries => setInViewport(entries.some(e=>e.isIntersecting)),
       {rootMargin:'150px 0px'});
     observer.observe(host);
-    const gone=()=>setVisible(!document.hidden);
+    const gone=()=>setDocumentVisible(!document.hidden);
     document.addEventListener('visibilitychange', gone);
     return ()=>{observer.disconnect();document.removeEventListener('visibilitychange',gone);};
   },[host]);
@@ -201,7 +227,7 @@ function KernelIsland({ host, gsap, isLab }) {
     canvas?.addEventListener('webglcontextlost',contextLostHandler);
     return ()=>canvas?.removeEventListener('webglcontextlost',contextLostHandler);
   },[ready,host]);
-  useEffect(() => { host.dataset.forgeReady = ready ? 'true' : 'false'; },[ready,host]);
+  useEffect(() => { host.dataset.forgeReady = ready ? 'true' : 'false'; host.dataset.selectedEngine=selected; host.dataset.enabledEngines=active.map((x,i)=>x?i:null).filter(x=>x!==null).join(','); },[ready,host,selected,active]);
   const count=active.filter(Boolean).length;
   // Headless CI uses SwiftShader: preserve a clean optical fallback instead
   // of claiming software-rendered frames qualify hardware R3F performance.
@@ -240,7 +266,9 @@ function KernelIsland({ host, gsap, isLab }) {
                 setContextLost(false);
               }
             }}/>
-        ) : <div className="forge-kernel-static" aria-hidden="true">SALRYN <small>ONE FOUNDATION</small></div>}
+        ) : <div className="forge-kernel-static" aria-hidden="true">SALRYN <small>ONE FOUNDATION / OPTICAL FALLBACK</small>
+          <div className="forge-static-engines">{ENGINE_NAMES.map((name,i)=><span key={name} className={(active[i]?'is-powered ':'')+(selected===i?'is-selected':'')} style={{'--engine-angle':(i*45)+'deg'}}><b>{String(i+1).padStart(2,'0')}</b>{name}{i>=6&&<small>MANDATORY</small>}</span>)}</div>
+        </div>}
         <span className="forge-kernel-glow" aria-hidden="true"></span>
       </div>
       <div className="forge-kernel-legend">
@@ -250,7 +278,7 @@ function KernelIsland({ host, gsap, isLab }) {
             <button key={name} type="button" className={selected===i?'is-current':''}
               onClick={()=>setSelected(i)} aria-pressed={selected===i}
               aria-label={String(i+1).padStart(2,'0')+' Inspect '+name+' engine'} title={name}>
-              <span>{String(i+1).padStart(2,'0')}</span>
+              <span>{String(i+1).padStart(2,'0')} {name}</span>
             </button>
           ))}
         </div>
