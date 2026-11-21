@@ -41152,12 +41152,13 @@ function oM({ active: e, selected: t, reduced: n, gsap: r }) {
 		x: 0,
 		y: 0
 	});
-	return B_((e, t) => {
+	return B_((e, r) => {
 		if (i.current) {
 			if (n) i.current.rotation.y = 0, i.current.rotation.x = -.08;
 			else {
-				let n = e.clock.elapsedTime, r = n * .055 + o.current.x * .1;
-				i.current.rotation.y = In.damp(i.current.rotation.y, r, .6, Math.min(t, .05)), i.current.rotation.x = In.damp(i.current.rotation.x, -.12 + o.current.y * .07, 1.5, Math.min(t, .05)), a.current && (a.current.rotation.z = n * -.065);
+				e.clock.elapsedTime;
+				let n = -.22 + o.current.x * .1;
+				i.current.rotation.y = In.damp(i.current.rotation.y, n, .6, Math.min(r, .05)), i.current.rotation.x = In.damp(i.current.rotation.x, -.12 + o.current.y * .07, 1.5, Math.min(r, .05)), a.current && (a.current.rotation.z = t * Math.PI / 8);
 			}
 		}
 	}), (0, v.useEffect)(() => {
@@ -41230,6 +41231,23 @@ function oM({ active: e, selected: t, reduced: n, gsap: r }) {
 					opacity: .62
 				})]
 			}),
+			e.map((e, n) => {
+				let r = n / 8 * Math.PI * 2 - Math.PI / 2, i = new W(Math.cos(r) * 2.38, n % 2 ? -.2 : .2, Math.sin(r) * 2.38), a = new Ln().setFromUnitVectors(new W(0, 1, 0), i.clone().normalize());
+				return /* @__PURE__ */ (0, Q.jsxs)("mesh", {
+					position: i.clone().multiplyScalar(.65),
+					quaternion: a,
+					children: [/* @__PURE__ */ (0, Q.jsx)("cylinderGeometry", { args: [
+						t === n ? .024 : .012,
+						t === n ? .024 : .012,
+						i.length() * .7,
+						6
+					] }), /* @__PURE__ */ (0, Q.jsx)("meshBasicMaterial", {
+						color: e ? "#a4d778" : "#345446",
+						transparent: !0,
+						opacity: e ? .8 : .24
+					})]
+				}, "link" + n);
+			}),
 			e.map((e, r) => /* @__PURE__ */ (0, Q.jsx)(aM, {
 				index: r,
 				selected: t,
@@ -41257,7 +41275,16 @@ function sM({ active: e, reduced: t, gsap: n }) {
 		r
 	]), null;
 }
-function cM({ active: e, selected: t, reduced: n, visible: r, gsap: i, onCreated: a }) {
+function cM({ selected: e, reduced: t }) {
+	let { camera: n, invalidate: r } = z_(), i = (0, v.useRef)(new W());
+	return (0, v.useEffect)(() => {
+		r();
+	}, [e, r]), B_((r, a) => {
+		let o = e / 8 * Math.PI * 2 - Math.PI / 2, s = new W(Math.cos(o) * .55, 0, Math.sin(o) * .35), c = t ? 1 : 1 - Math.exp(-5 * Math.min(a, .05));
+		i.current.lerp(s, c), n.position.lerp(new W(Math.cos(o) * .5, 1.7, 6.8), c), n.lookAt(i.current);
+	}), null;
+}
+function lM({ active: e, selected: t, reduced: n, visible: r, gsap: i, onCreated: a }) {
 	return /* @__PURE__ */ (0, Q.jsxs)(dy, {
 		"aria-hidden": "true",
 		camera: {
@@ -41283,7 +41310,11 @@ function cM({ active: e, selected: t, reduced: n, visible: r, gsap: i, onCreated
 			children: "A static architecture view is available."
 		}),
 		children: [
-			/* @__PURE__ */ (0, Q.jsx)("ambientLight", { intensity: 1.3 }),
+			/* @__PURE__ */ (0, Q.jsx)(cM, {
+				selected: t,
+				reduced: n
+			}),
+			/* @__PURE__ */ (0, Q.jsx)("ambientLight", { intensity: 1.5 }),
 			/* @__PURE__ */ (0, Q.jsx)("hemisphereLight", { args: [
 				"#d3f66b",
 				"#0b3e2b",
@@ -41321,16 +41352,16 @@ function cM({ active: e, selected: t, reduced: n, visible: r, gsap: i, onCreated
 		]
 	});
 }
-function lM() {
+function uM() {
 	let e = nM.map((e, t) => t >= 6 || document.querySelector("[data-cap-id=\"" + e + "\"]")?.getAttribute("aria-pressed") === "true");
 	return document.querySelector("#scene-d-cap-grid") ? e : Array(8).fill(!0);
 }
-function uM({ host: e, gsap: t, isLab: n }) {
-	let r = iM(), [i, a] = (0, v.useState)(lM), [o, s] = (0, v.useState)(6), [c, l] = (0, v.useState)(0), [u, d] = (0, v.useState)(!0), [f, p] = (0, v.useState)(!1), [m, h] = (0, v.useState)(!1);
+function dM({ host: e, gsap: t, isLab: n }) {
+	let r = iM(), [i, a] = (0, v.useState)(uM), [o, s] = (0, v.useState)(6), [c, l] = (0, v.useState)(0), [u, d] = (0, v.useState)(!1), [f, p] = (0, v.useState)(!document.hidden), m = u && f, [h, g] = (0, v.useState)(!1), [_, y] = (0, v.useState)(!1);
 	(0, v.useEffect)(() => {
 		let e = document.getElementById("scene-d-cap-grid");
 		if (!e) return;
-		let t = new MutationObserver(() => a(lM()));
+		let t = new MutationObserver(() => a(uM()));
 		return t.observe(e, {
 			attributes: !0,
 			attributeFilter: ["aria-pressed"],
@@ -41339,22 +41370,27 @@ function uM({ host: e, gsap: t, isLab: n }) {
 	}, []), (0, v.useEffect)(() => {
 		let t = new IntersectionObserver((e) => d(e.some((e) => e.isIntersecting)), { rootMargin: "150px 0px" });
 		t.observe(e);
-		let n = () => d(!document.hidden);
+		let n = () => p(!document.hidden);
 		return document.addEventListener("visibilitychange", n), () => {
 			t.disconnect(), document.removeEventListener("visibilitychange", n);
 		};
 	}, [e]), (0, v.useEffect)(() => {
 		let t = (e) => {
-			e.preventDefault(), h(!0), p(!1);
+			e.preventDefault(), y(!0), g(!1);
 		}, n = e.querySelector("canvas");
 		return n?.addEventListener("webglcontextlost", t), () => n?.removeEventListener("webglcontextlost", t);
-	}, [f, e]), (0, v.useEffect)(() => {
-		e.dataset.forgeReady = f ? "true" : "false";
-	}, [f, e]);
-	let g = i.filter(Boolean).length, _ = navigator.userAgent.includes("HeadlessChrome") && new URLSearchParams(location.search).get("force3d") !== "1" || navigator.deviceMemory && navigator.deviceMemory <= 2 || matchMedia("(prefers-reduced-motion: reduce)").matches, y = !m && !_;
+	}, [h, e]), (0, v.useEffect)(() => {
+		e.dataset.forgeReady = h ? "true" : "false", e.dataset.selectedEngine = o, e.dataset.enabledEngines = i.map((e, t) => e ? t : null).filter((e) => e !== null).join(",");
+	}, [
+		h,
+		e,
+		o,
+		i
+	]);
+	let b = i.filter(Boolean).length, x = navigator.userAgent.includes("HeadlessChrome") && new URLSearchParams(location.search).get("force3d") !== "1" || navigator.deviceMemory && navigator.deviceMemory <= 2 || matchMedia("(prefers-reduced-motion: reduce)").matches, S = !_ && !x;
 	return (0, v.useEffect)(() => {
-		y ? delete e.dataset.forgeStatic : e.dataset.forgeStatic = "true";
-	}, [e, y]), /* @__PURE__ */ (0, Q.jsxs)("div", {
+		S ? delete e.dataset.forgeStatic : e.dataset.forgeStatic = "true";
+	}, [e, S]), /* @__PURE__ */ (0, Q.jsxs)("div", {
 		className: "forge-kernel-shell",
 		children: [
 			/* @__PURE__ */ (0, Q.jsxs)("div", {
@@ -41362,7 +41398,7 @@ function uM({ host: e, gsap: t, isLab: n }) {
 				children: [
 					/* @__PURE__ */ (0, Q.jsx)("span", { children: "CORE / 001" }),
 					/* @__PURE__ */ (0, Q.jsx)("span", { children: "INTERACTIVE ARCHITECTURE" }),
-					/* @__PURE__ */ (0, Q.jsxs)("span", { children: [g.toString().padStart(2, "0"), " / 08"] })
+					/* @__PURE__ */ (0, Q.jsxs)("span", { children: [b.toString().padStart(2, "0"), " / 08"] })
 				]
 			}),
 			/* @__PURE__ */ (0, Q.jsxs)("div", {
@@ -41378,20 +41414,35 @@ function uM({ host: e, gsap: t, isLab: n }) {
 						className: "forge-kernel-orbit forge-orbit-b",
 						"aria-hidden": "true"
 					}),
-					y ? /* @__PURE__ */ (0, Q.jsx)(cM, {
+					S ? /* @__PURE__ */ (0, Q.jsx)(lM, {
 						active: i,
 						selected: o,
 						reduced: r,
-						visible: u,
+						visible: m,
 						gsap: t,
 						onCreated: ({ gl: t }) => {
 							let n = t.getContext(), r = n?.getExtension?.("WEBGL_debug_renderer_info"), i = r ? n.getParameter(r.UNMASKED_RENDERER_WEBGL) : n?.getParameter?.(n.RENDERER);
-							/swiftshader|llvmpipe|software|mesa x11/i.test(String(i || "")) || navigator.userAgent.includes("HeadlessChrome") ? (e.dataset.forgeStatic = "true", h(!0), p(!1)) : (p(!0), h(!1));
+							/swiftshader|llvmpipe|software|mesa x11/i.test(String(i || "")) || navigator.userAgent.includes("HeadlessChrome") ? (e.dataset.forgeStatic = "true", y(!0), g(!1)) : (g(!0), y(!1));
 						}
 					}) : /* @__PURE__ */ (0, Q.jsxs)("div", {
 						className: "forge-kernel-static",
 						"aria-hidden": "true",
-						children: ["SALRYN ", /* @__PURE__ */ (0, Q.jsx)("small", { children: "ONE FOUNDATION" })]
+						children: [
+							"SALRYN ",
+							/* @__PURE__ */ (0, Q.jsx)("small", { children: "ONE FOUNDATION / OPTICAL FALLBACK" }),
+							/* @__PURE__ */ (0, Q.jsx)("div", {
+								className: "forge-static-engines",
+								children: tM.map((e, t) => /* @__PURE__ */ (0, Q.jsxs)("span", {
+									className: (i[t] ? "is-powered " : "") + (o === t ? "is-selected" : ""),
+									style: { "--engine-angle": t * 45 + "deg" },
+									children: [
+										/* @__PURE__ */ (0, Q.jsx)("b", { children: String(t + 1).padStart(2, "0") }),
+										e,
+										t >= 6 && /* @__PURE__ */ (0, Q.jsx)("small", { children: "MANDATORY" })
+									]
+								}, e))
+							})
+						]
 					}),
 					/* @__PURE__ */ (0, Q.jsx)("span", {
 						className: "forge-kernel-glow",
@@ -41417,9 +41468,13 @@ function uM({ host: e, gsap: t, isLab: n }) {
 						className: o === t ? "is-current" : "",
 						onClick: () => s(t),
 						"aria-pressed": o === t,
-						"aria-label": String(t + 1).padStart(2, "0") + " Inspect " + e + " engine",
+						"aria-label": String(t + 1).padStart(2, "0") + " " + e + " engine: inspect",
 						title: e,
-						children: /* @__PURE__ */ (0, Q.jsx)("span", { children: String(t + 1).padStart(2, "0") })
+						children: /* @__PURE__ */ (0, Q.jsxs)("span", { children: [
+							String(t + 1).padStart(2, "0"),
+							" ",
+							e
+						] })
 					}, e))
 				})]
 			}),
@@ -41457,7 +41512,7 @@ function uM({ host: e, gsap: t, isLab: n }) {
 		]
 	});
 }
-function dM({ host: e }) {
+function fM({ host: e }) {
 	let t = e.getAttribute("data-forge-text") || e.textContent.trim() || "Built beyond the ordinary.";
 	return iM() ? /* @__PURE__ */ (0, Q.jsx)("p", {
 		className: "forge-bits-plain",
@@ -41473,7 +41528,7 @@ function dM({ host: e }) {
 		className: "forge-bits-line"
 	});
 }
-function fM({ host: e }) {
+function pM({ host: e }) {
 	let t = e.getAttribute("data-forge-text") || "SYSTEMS THAT EVOLVE.";
 	return iM() ? /* @__PURE__ */ (0, Q.jsx)("p", {
 		className: "forge-bits-plain",
@@ -41491,7 +41546,7 @@ function fM({ host: e }) {
 		encryptedClassName: "forge-decrypt-glyph"
 	});
 }
-function pM({ host: e }) {
+function mM({ host: e }) {
 	let t = iM();
 	return (0, v.useEffect)(() => (e.dataset.forgeReady = "true", () => {
 		delete e.dataset.forgeReady;
@@ -41529,24 +41584,24 @@ function pM({ host: e }) {
 		})
 	});
 }
-var mM = /* @__PURE__ */ new Map(), hM = null, gM = null, _M = !1, vM = null, yM = null, bM = null;
-function xM({ gsap: e, ScrollTrigger: t }) {
-	if (_M) return;
-	_M = !0, document.documentElement.dataset.forgeImmersive = "r2", matchMedia("(prefers-reduced-motion: reduce)").matches;
+var hM = /* @__PURE__ */ new Map(), gM = null, _M = null, vM = !1, yM = null, bM = null, xM = null;
+function SM({ gsap: e, ScrollTrigger: t }) {
+	if (vM) return;
+	vM = !0, document.documentElement.dataset.forgeImmersive = "r2", matchMedia("(prefers-reduced-motion: reduce)").matches;
 	let n = () => window.WebGL2RenderingContext !== void 0 && !(navigator.deviceMemory && navigator.deviceMemory <= 2), r = Array.from(document.querySelectorAll("[data-forge-react-island]"));
-	vM = new IntersectionObserver((t) => {
+	yM = new IntersectionObserver((t) => {
 		t.forEach(({ target: t, isIntersecting: r }) => {
-			if (!r || mM.has(t)) return;
+			if (!r || hM.has(t)) return;
 			let i = t.dataset.forgeReactIsland;
 			i === "kernel" && !n() && (t.dataset.forgeStatic = "true");
 			let a = (0, y.createRoot)(t);
-			mM.set(t, a), a.render(i === "kernel" ? /* @__PURE__ */ (0, Q.jsx)(uM, {
+			hM.set(t, a), a.render(i === "kernel" ? /* @__PURE__ */ (0, Q.jsx)(dM, {
 				host: t,
 				gsap: e,
 				isLab: !!document.querySelector("[data-motion-lab]")
-			}) : i === "decrypt" ? /* @__PURE__ */ (0, Q.jsx)(fM, { host: t }) : i === "glare" ? /* @__PURE__ */ (0, Q.jsx)(pM, { host: t }) : /* @__PURE__ */ (0, Q.jsx)(dM, { host: t }));
+			}) : i === "decrypt" ? /* @__PURE__ */ (0, Q.jsx)(pM, { host: t }) : i === "glare" ? /* @__PURE__ */ (0, Q.jsx)(mM, { host: t }) : /* @__PURE__ */ (0, Q.jsx)(fM, { host: t }));
 		});
-	}, { rootMargin: "250px 0px" }), r.forEach((e) => vM.observe(e));
+	}, { rootMargin: "250px 0px" }), r.forEach((e) => yM.observe(e));
 	let i = document.body.dataset.page;
 	if ([
 		"services",
@@ -41554,7 +41609,7 @@ function xM({ gsap: e, ScrollTrigger: t }) {
 		"about",
 		"contact"
 	].includes(i) && matchMedia("(min-width: 1100px) and (pointer: fine) and (prefers-reduced-motion: no-preference)").matches && !new URLSearchParams(location.search).has("reduce") && !window.__KIRJANE_LENIS_INSTANCE__) try {
-		hM = new Ey({
+		gM = new Ey({
 			autoRaf: !1,
 			smoothWheel: !0,
 			syncTouch: !1,
@@ -41562,24 +41617,24 @@ function xM({ gsap: e, ScrollTrigger: t }) {
 			lerp: .085,
 			wheelMultiplier: .86,
 			touchMultiplier: 1
-		}), window.__KIRJANE_LENIS_INSTANCE__ = hM, hM.on("scroll", t.update), gM = (e) => hM?.raf(e * 1e3), e.ticker.add(gM), t.refresh();
+		}), window.__KIRJANE_LENIS_INSTANCE__ = gM, gM.on("scroll", t.update), _M = (e) => gM?.raf(e * 1e3), e.ticker.add(_M), t.refresh();
 	} catch (e) {
-		console.warn("[Forge R2] Lenis skipped:", e), hM?.destroy(), hM = null;
+		console.warn("[Forge R2] Lenis skipped:", e), gM?.destroy(), gM = null;
 	}
-	yM = (e) => {
+	bM = (e) => {
 		let t = e.target.closest?.("a[href^=\"#\"]");
-		if (!t || !hM) return;
+		if (!t || !gM) return;
 		let n = decodeURIComponent(t.hash.slice(1)), r = document.getElementById(n);
-		r && (e.preventDefault(), hM.scrollTo(r, { offset: -88 }), history.pushState(null, "", "#" + n));
-	}, document.addEventListener("click", yM), bM = () => SM({ gsap: e }), window.addEventListener("pagehide", bM, { once: !0 }), window.__KIRJANE_R2__ = {
+		r && (e.preventDefault(), gM.scrollTo(r, { offset: -88 }), history.pushState(null, "", "#" + n));
+	}, document.addEventListener("click", bM), xM = () => CM({ gsap: e }), window.addEventListener("pagehide", xM, { once: !0 }), window.__KIRJANE_R2__ = {
 		version: "R2",
 		reactBits: "upstream BlurText, DecryptedText, GlareHover",
 		r3f: !0,
-		lenis: !!hM,
-		dispose: bM
+		lenis: !!gM,
+		dispose: xM
 	};
 }
-function SM({ gsap: e }) {
-	vM?.disconnect(), vM = null, document.removeEventListener("click", yM), bM && window.removeEventListener("pagehide", bM), gM &&= (e.ticker.remove(gM), null), hM?.destroy(), hM = null, delete window.__KIRJANE_LENIS_INSTANCE__, mM.forEach((e) => e.unmount()), mM.clear(), delete document.documentElement.dataset.forgeImmersive, delete window.__KIRJANE_R2__, _M = !1;
+function CM({ gsap: e }) {
+	yM?.disconnect(), yM = null, document.removeEventListener("click", bM), xM && window.removeEventListener("pagehide", xM), _M &&= (e.ticker.remove(_M), null), gM?.destroy(), gM = null, delete window.__KIRJANE_LENIS_INSTANCE__, hM.forEach((e) => e.unmount()), hM.clear(), delete document.documentElement.dataset.forgeImmersive, delete window.__KIRJANE_R2__, vM = !1;
 }
-export { SM as disposeImmersive, xM as mountImmersive };
+export { CM as disposeImmersive, SM as mountImmersive };

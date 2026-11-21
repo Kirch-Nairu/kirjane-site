@@ -1,0 +1,22 @@
+{
+  "js/forge-immersive-r2.js": {
+    "baselineBytes": 1696045,
+    "candidateBytes": 1698053,
+    "deltaBytes": 2008
+  },
+  "js/forge-salryn-cinema-r1.js": {
+    "baselineBytes": 376602,
+    "candidateBytes": 377411,
+    "deltaBytes": 809
+  },
+  "js/forge-immersive-r2.css": {
+    "baselineBytes": 5970,
+    "candidateBytes": 7914,
+    "deltaBytes": 1944
+  },
+  "originalNativeSourceBytes": 38121,
+  "previewZip": {
+    "bytes": 12226242,
+    "sha256": "4a9aa3e8bc2107a8e391fe10c6aa9da4ceda968ea72dc3caac11e754e9cb06ae"
+  }
+}

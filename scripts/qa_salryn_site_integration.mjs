@@ -1,8 +1,9 @@
+import {httpReady} from './http-ready.mjs';
 import {chromium} from 'playwright';
 import {spawn} from 'node:child_process';
 import {mkdirSync,writeFileSync} from 'node:fs';
 import {resolve} from 'node:path';
-const port=41941,origin='http://127.0.0.1:'+port,dir='dist/cinema-integration',evidence=resolve('dist/cinema-integration-evidence');
+const port=41941,origin='http://127.0.0.1:'+port,dir=process.env.FORGE_DIST||'dist/cinema-integration',evidence=resolve(process.env.FORGE_EVIDENCE||'dist/cinema-integration-evidence');
 mkdirSync(evidence,{recursive:true});
 const python=process.platform==='win32'?'python':'python3';
 const server=spawn(python,['-m','http.server',String(port),'--bind','127.0.0.1','--directory',dir],{stdio:'ignore'});
@@ -30,7 +31,7 @@ async function mount(page){
 }
 try{
  let ready=false;
- for(let i=0;i<90;i++){try{if((await fetch(origin+'/salryn/')).ok){ready=true;break;}}catch{}await new Promise(r=>setTimeout(r,150));}
+ for(let i=0;i<90;i++){try{if(await httpReady(origin+'/salryn/')){ready=true;break;}}catch{}await new Promise(r=>setTimeout(r,150));}
  if(!ready)throw Error('Local static server failed');
  browser=await chromium.launch({headless:true,args:['--disable-gpu-sandbox']});
  const baseline=await browser.newContext({viewport:{width:1440,height:900}});

@@ -55,12 +55,12 @@ export function pointerAt(shot, local, measured, reduced = false) {
   if (entry) {
     if (p < .36) {
       const from=[Math.max(0,entry[0]-11),Math.min(100,entry[1]+14)];
-      xy=cursorBetween(from,entry,smootherstep(clamp01((p-.08)/.28)));
+      xy=cursorBetween(from,entry,clamp01((p-.08)/.28));
     } else if (p < .66) xy=entry;
-    else xy=cursorBetween(entry,destination,smootherstep(clamp01((p-.66)/.11)));
+    else xy=cursorBetween(entry,destination,clamp01((p-.66)/.11));
   } else {
     const from=[Math.max(0,destination[0]-12), Math.min(100,destination[1]+14)];
-    xy=cursorBetween(from,destination,smootherstep(clamp01((p-.12)/.35)));
+    xy=cursorBetween(from,destination,clamp01((p-.12)/.35));
   }
   // Deliberate click only on explicit CLICK or TYPE_CLICK actions.
   const canClick=action.kind==="CLICK" || action.kind==="TYPE_CLICK";
@@ -83,7 +83,11 @@ export function cameraPoseAt(index, local, film, viewport, reduced = false) {
   const isPhone = viewport.w < 720;
   const baseZoom=isPhone?1.11:1.055;
   // Shot-specific target zoom is optional but must resolve continuously.
-  const zoom=baseZoom;
+  // Reading shots breathe out; action shots move closer. Endpoint equality
+  // preserves reverse-scroll joins, and the click stays DOM-calibrated.
+  const lens={receipt:-.025,inventory:-.015,stockin:-.015,adjust:-.015,audit:-.025,reports:-.02,'shift-gate':.015,'checkout-review':.02};
+  const from=lens[shot.screen]||0,to=lens[next.screen]||0;
+  const zoom=baseZoom+(isPhone?.5:1)*(from*(1-u)+to*u);
   const camera=cameraForViewport(viewport.w,viewport.h,focus,zoom);
   return Object.freeze({ ...camera,focus,zoom,blend:u});
 }

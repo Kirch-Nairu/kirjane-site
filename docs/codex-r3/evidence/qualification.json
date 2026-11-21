@@ -1,0 +1,28 @@
+{
+  "sourceSha": "2b7e146d699d15709495b68a9680a2664497939f",
+  "r3Run": "https://github.com/Kirch-Nairu/kirjane-site/actions/runs/44924104883",
+  "r3Conclusion": "success",
+  "productionRun": "https://github.com/Kirch-Nairu/kirjane-site/actions/runs/44924109216",
+  "productionConclusion": "success",
+  "ciChecks": {
+    "production": 61,
+    "r2": 79,
+    "film": 68,
+    "math": 30,
+    "focused": 233,
+    "routesAtSourceRun": 44,
+    "adversarial": 6,
+    "captures": 20
+  },
+  "localAddedAssetChecks": 7,
+  "localRouteTotal": 51,
+  "artifact": {
+    "expires_at": "2026-12-05T16:25:54Z",
+    "id": 14715515621,
+    "name": "codex-r3-candidate-captures",
+    "size_in_bytes": 47732032
+  },
+  "independentReview": "REVIEW_BLOCKED",
+  "physicalGpu": "NOT_RUN",
+  "ownerCreativeAcceptance": false
+}

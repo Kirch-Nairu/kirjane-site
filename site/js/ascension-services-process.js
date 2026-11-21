@@ -1,3 +1,4 @@
+import {createProcessField} from './forge-process-field.js';
 import { initTopographyField } from './topography-canvas.js';
 import { animateSvgConduits, initSiteShell, isReducedMotion } from './motion-system.js';
 
@@ -79,44 +80,38 @@ function initProcess() {
   const caption = document.getElementById('proc-active-label');
   const chapters = [...document.querySelectorAll('.asc-process-chapters [data-step]')];
   const links = [...document.querySelectorAll('.asc-process-index [data-jump]')];
+  const processField=createProcessField(mount,isReducedMotion());
+  window.addEventListener('pagehide',e=>{if(!e.persisted)processField.dispose();});
   let active = -1;
+  let manualHold = false;
   let pendingFrame = 0;
-  let nuclei = [];
-  let bridges = [];
-
-  function paintIllustration() {
-    nuclei.forEach((node, index) => {
-      node.style.opacity = index === active ? '1' : index < active ? '.72' : '.16';
-    });
-    bridges.forEach((bridge, index) => {
-      bridge.style.opacity = index < active ? '.88' : '.13';
-    });
-  }
-
   function setChapter(index) {
     if (index === active) return;
     active = index;
+    processField.select(index);
     links.forEach((link, i) => {
       if (i === active) link.setAttribute('aria-current', 'step');
       else link.removeAttribute('aria-current');
     });
     chapters.forEach((chapter, i) => chapter.classList.toggle('active', i === active));
     caption.textContent = links[active].textContent;
-    paintIllustration();
   }
 
   function applyLocation(event) {
     const index = chapters.findIndex((chapter) => `#${chapter.id}` === location.hash);
     if (index === -1) {
+      manualHold=false;
       scheduleSync();
       return;
     }
+    manualHold=true;
     setChapter(index);
     if (event?.type === 'hashchange') chapters[index].focus({preventScroll:true});
   }
 
   function syncChapter() {
     pendingFrame = 0;
+    if(manualHold)return;
     // Resolve the visible chapter in either scroll direction without writing to history.
     const readingLine = Math.min(176, innerHeight * 0.38);
     let visible = 0;
@@ -132,19 +127,19 @@ function initProcess() {
 
   window.addEventListener('scroll', scheduleSync, { passive: true });
   window.addEventListener('resize', scheduleSync, { passive: true });
+  const releaseHold=()=>{manualHold=false;scheduleSync();};
+  window.addEventListener('wheel',event=>{if(Math.abs(event.deltaY)>2)releaseHold();},{passive:true});
+  window.addEventListener('touchmove',releaseHold,{passive:true});
+  window.addEventListener('keydown',event=>{
+    if(event.target.closest('input,select,textarea,button,[contenteditable]'))return;
+    if(['ArrowDown','ArrowUp','PageDown','PageUp','Home','End',' '].includes(event.key))releaseHold();
+  });
   window.addEventListener('hashchange', applyLocation);
   window.addEventListener('pageshow', applyLocation);
   setChapter(0);
   applyLocation();
 
-  if (!isReducedMotion()) {
-    mountIllustration(mount, './assets/organism-topology.svg').then((svg) => {
-      if (!svg) return;
-      nuclei = [...svg.querySelectorAll('[id^="d02-nucleus-"]')];
-      bridges = [...svg.querySelectorAll('[id^="d02-synapse-bridge-"]')];
-      paintIllustration();
-    });
-  }
+
 }
 
 if (currentPage === 'services') initServices();

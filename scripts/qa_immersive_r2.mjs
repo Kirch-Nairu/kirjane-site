@@ -1,3 +1,4 @@
+import {httpReady} from './http-ready.mjs';
 /* R2 immersive browser evidence. This script never uploads or publishes a site.
  * npm ci at repository root, then python scripts/build_immersive_r2.py.
  */
@@ -22,7 +23,7 @@ mkdirSync(resolve(evidence,'video'),{recursive:true});
 const server=spawn(process.env.PYTHON||'python',['-m','http.server',String(port),'--bind','127.0.0.1','--directory',dist],{stdio:'ignore'});
 let browser;
 async function waitServer(){
- for(let i=0;i<80;i++){try{if((await fetch(origin+'/motion-lab/')).ok)return;}catch{}
+ for(let i=0;i<80;i++){try{if(await httpReady(origin+'/motion-lab/'))return;}catch{}
   await new Promise(r=>setTimeout(r,150));}
  throw Error('Isolated preview server is not responsive');
 }
@@ -72,7 +73,7 @@ async function audit(page,name){
 }
 try{
  await waitServer();
- browser=await chromium.launch({headless:true,args:['--enable-webgl','--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
+ browser=await chromium.launch({headless:true,args:process.platform==='win32'?[]:['--enable-webgl','--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
  const desktop=await browser.newContext({viewport:{width:1440,height:900},
   deviceScaleFactor:1,recordVideo:{dir:resolve(evidence,'video'),size:{width:960,height:600}}});
  await desktop.addInitScript(()=>sessionStorage.setItem('kirjane-cinematic-opening-r2','1'));

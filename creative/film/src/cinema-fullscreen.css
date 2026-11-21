@@ -502,3 +502,8 @@ html, body { overscroll-behavior-y: auto; }
   .cinema-click-impact { display:none; }
   .cinema-sticky .cinema-cursor-arrow { will-change:auto; }
 }
+
+/* R3: bounded editorial measure at wide/tall aspect ratios. */
+@media(min-width:2000px){.cinema-narrative{width:min(850px,42vw)}.cinema-narrative h2{font-size:clamp(80px,4.5vw,132px)}}
+@media(min-height:1200px) and (min-width:900px){.cinema-narrative{bottom:20vh}.cinema-overlay-shade{background:linear-gradient(90deg,#030e10ed, #030e10a8 35%,transparent 72%),linear-gradient(0deg,#020a0ee6,transparent 55%)}}
+@media(max-width:430px){.cinema-narrative p{max-width:31ch}.cinema-topline{letter-spacing:.1em}}
