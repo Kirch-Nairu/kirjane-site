@@ -814,6 +814,29 @@
     const capCards = Array.from(document.querySelectorAll('[data-cap-card]'));
     const capJumpBtns = Array.from(document.querySelectorAll('[data-cap-jump]'));
     const plateStageImgs = Array.from(document.querySelectorAll('#home-cap-plate-stage img'));
+    // Owner-only opt-in Blender poster study; original R3 remains the normal site artwork.
+    const r4AutomationStudy = new URLSearchParams(location.search).get('r4art') === 'automation';
+    const r4AutomationPlate = plateStageImgs.find(im => im.dataset.plateIdx === '1');
+    if (r4AutomationStudy && r4AutomationPlate) {
+      const originalSrc = r4AutomationPlate.getAttribute('src');
+      const originalAlt = r4AutomationPlate.alt;
+      const mobileMedia = window.matchMedia('(max-width: 600px)');
+      const swapAutomationArtwork = () => {
+        r4AutomationPlate.src = mobileMedia.matches
+          ? './assets/cinematic/creative-r4/services-automation-flow-switch-A2-v2-mobile.webp'
+          : './assets/cinematic/creative-r4/services-automation-flow-switch-A2-v2-desktop.webp';
+        r4AutomationPlate.alt = 'Machined automation switch: intake routes pass through a human approval gate; approved outcomes enter recorded custody while an exception diverts for review.';
+        r4AutomationPlate.dataset.r4Study = 'blender-a2';
+      };
+      r4AutomationPlate.addEventListener('error', () => {
+        r4AutomationPlate.src = originalSrc;
+        r4AutomationPlate.alt = originalAlt;
+        r4AutomationPlate.dataset.r4Study = 'fallback-r3';
+      }, { once: true });
+      swapAutomationArtwork();
+      mobileMedia.addEventListener('change', swapAutomationArtwork);
+      window.addEventListener('pagehide', () => mobileMedia.removeEventListener('change', swapAutomationArtwork), { once: true });
+    }
     const capBeforeEl = document.getElementById('home-cap-before');
     const capAfterEl = document.getElementById('home-cap-after');
 
@@ -838,6 +861,10 @@
         if(servicesDisposed)return;
         serviceScene=createServiceScene(document.getElementById("home-cap-plate-stage"),reduced);
         serviceScene.select(Math.max(0,serviceMode));
+        if (r4AutomationStudy && serviceMode === 1) {
+          const r4Canvas = document.querySelector('#home-cap-plate-stage canvas');
+          if (r4Canvas) r4Canvas.style.display = 'none';
+        }
       }).catch(()=>{});
     },{rootMargin:'200px'});
     serviceObserver.observe(document.getElementById('home-cap-plate-stage'));
@@ -847,6 +874,11 @@
       if(clamped !== serviceMode){ serviceMode=clamped;serviceScene?.select(clamped); }
       document.getElementById("capabilities-exhibition").dataset.mode=String(clamped);
       plateStageImgs.forEach((im) => im.classList.toggle('is-visible', parseInt(im.dataset.plateIdx, 10) === clamped));
+      // Preserve all four modes. Only the explicit R4 image comparison hides the R3 canvas on Automation.
+      if (r4AutomationStudy) {
+        const r4Canvas = document.querySelector('#home-cap-plate-stage canvas');
+        if (r4Canvas) r4Canvas.style.display = clamped === 1 ? 'none' : '';
+      }
       const hasTrack = !reduced && window.innerWidth > 900;
       capCards.forEach((c, i) => {
         c.classList.toggle('is-highlighted', i === clamped);
