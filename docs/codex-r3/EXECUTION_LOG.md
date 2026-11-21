@@ -47,3 +47,6 @@ Never overwrite past gate results or claim a screenshot that was not saved.
 - Explicit optical fallback on automated/software hosts avoids unsupported GPU claims. `force3d=1` is diagnostic only; actual hardware qualification remains pending.
 - Service WebGL honors reduced motion and `webgl=off`; original decoded plates remain the deliberate alternative. No animation loops added to fallback.
 - New math checks cover monotonicity, endpoints, reverse re-seeking and malformed input for the causal frame phase map.
+
+## M08 final adversarial correction — Process deep-link ownership
+The combined focused runner passed 180/183: the three dedicated Process direct-link checks failed. Reproduction showed #stage-3 at 180px while the reading line was 176px after header-clearance CSS; automatic scroll synchronization selected stage 2. Repaired ownership rather than changing the assertion: explicit hashes hold their stage through layout shifts, released only by deliberate wheel (>2px), touch scroll or scroll-key intent. Fresh candidate required; previous 61/79/68/29 gates remain source-predecessor observations until affected reruns.

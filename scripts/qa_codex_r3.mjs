@@ -82,6 +82,14 @@ try{
    check(await host.getAttribute('data-selected-engine')===String(i),width+' selected engine '+i);
   }
   check((await host.getAttribute('data-enabled-engines')).includes('6,7'),width+' mandatory foundations active');
+  for(const [i,id] of ['cap-commerce','cap-inventory','cap-procurement','cap-financial','cap-workforce','cap-operations'].entries()){
+   const toggle=page.locator('[data-cap-id="'+id+'"]');const original=await toggle.getAttribute('aria-pressed');
+   await toggle.click();await page.waitForTimeout(80);
+   const enabled=(await host.getAttribute('data-enabled-engines')).split(',');
+   check(enabled.includes(String(i))===(original!=='true'),width+' optional module mirrors scene '+id);
+   await toggle.click();await page.waitForTimeout(80);
+  }
+
   await host.screenshot({path:join(out,width+'-kernel.png')});
   const a=await new AxeBuilder({page}).include('#scene-c-flavors').withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();
   check(!a.violations.length,width+' industry axe',a.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>n.target)})));

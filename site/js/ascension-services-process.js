@@ -83,6 +83,7 @@ function initProcess() {
   const processField=createProcessField(mount,isReducedMotion());
   window.addEventListener('pagehide',e=>{if(!e.persisted)processField.dispose();});
   let active = -1;
+  let manualHold = false;
   let pendingFrame = 0;
   let nuclei = [];
   let bridges = [];
@@ -112,15 +113,18 @@ function initProcess() {
   function applyLocation(event) {
     const index = chapters.findIndex((chapter) => `#${chapter.id}` === location.hash);
     if (index === -1) {
+      manualHold=false;
       scheduleSync();
       return;
     }
+    manualHold=true;
     setChapter(index);
     if (event?.type === 'hashchange') chapters[index].focus({preventScroll:true});
   }
 
   function syncChapter() {
     pendingFrame = 0;
+    if(manualHold)return;
     // Resolve the visible chapter in either scroll direction without writing to history.
     const readingLine = Math.min(176, innerHeight * 0.38);
     let visible = 0;
@@ -136,6 +140,13 @@ function initProcess() {
 
   window.addEventListener('scroll', scheduleSync, { passive: true });
   window.addEventListener('resize', scheduleSync, { passive: true });
+  const releaseHold=()=>{manualHold=false;scheduleSync();};
+  window.addEventListener('wheel',event=>{if(Math.abs(event.deltaY)>2)releaseHold();},{passive:true});
+  window.addEventListener('touchmove',releaseHold,{passive:true});
+  window.addEventListener('keydown',event=>{
+    if(event.target.closest('input,select,textarea,button,[contenteditable]'))return;
+    if(['ArrowDown','ArrowUp','PageDown','PageUp','Home','End',' '].includes(event.key))releaseHold();
+  });
   window.addEventListener('hashchange', applyLocation);
   window.addEventListener('pageshow', applyLocation);
   setChapter(0);

@@ -26,7 +26,7 @@ jobs:
       - name: Build integrated seven-page R2 and Salryn Cinema R5 candidate
         run: python3 scripts/build_immersive_r2.py --output dist/cinema-integration
       - name: Qualify embedded R5 director math
-        run: node --test creative/film/src/director/*.test.mjs
+        run: node --test creative/film/src/director/*.test.mjs scripts/codex_r3_motion.test.mjs
       - name: Verify R5 integration and original R2 accessibility
         run: |
           node scripts/qa_salryn_site_integration.mjs
@@ -36,6 +36,13 @@ jobs:
           python3 scripts/build.py
           python3 scripts/build.py --preview --output dist/preview
           npm test
+      - name: Verify R3 chapter controls and fallback routes
+        env:
+          FORGE_DIST: dist/cinema-integration
+        run: |
+          FORGE_EVIDENCE=dist/codex-r3-evidence/focused node scripts/qa_codex_r3.mjs
+          R3_ROUTES_ONLY=1 FORGE_EVIDENCE=dist/codex-r3-evidence/routes node scripts/qa_codex_r3.mjs
+          node scripts/codex_r3_adversarial.mjs
       - name: Generate 10 owner-target, 5 mobile and 5 R5 film captures
         run: |
           CODEX_R3_DIST=dist/cinema-integration \
@@ -46,6 +53,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: codex-r3-candidate-captures
-          path: dist/codex-r3-evidence/candidate/
+          path: |
+            dist/codex-r3-evidence/
+            dist/cinema-integration-evidence/
+            dist/evidence/
           retention-days: 14
           if-no-files-found: warn
