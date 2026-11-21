@@ -257,7 +257,7 @@ export function mountImmersive({gsap,ScrollTrigger}) {
   document.documentElement.dataset.forgeImmersive = 'r2';
   const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
   const canLoad3D=()=>{
-    const capable=!!document.createElement('canvas').getContext('webgl2');
+    const capable=typeof window.WebGL2RenderingContext !== 'undefined';
     return capable && !(navigator.deviceMemory && navigator.deviceMemory <= 2);
   };
   const hosts=Array.from(document.querySelectorAll('[data-forge-react-island]'));
