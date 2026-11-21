@@ -79,7 +79,7 @@ try{
   add(await page.locator('main').count()===1,'Semantic main retained '+route);
   add(await page.locator('h1').count()>=1,'Hero h1 retained '+route);
   add(await page.locator('img.official-brand-word').count()>=1,'Official brand retained '+route);
-  await page.waitForFunction(()=>!!window.__KIRJANE_R2__,{timeout:8000}).catch(()=>{});
+  await page.waitForFunction(()=>!!window.__KIRJANE_R2__,null,{timeout:8000}).catch(()=>{});
   add(await page.evaluate(()=>!!window.__KIRJANE_R2__),'React Bits/R3F bundle loaded '+route,
     await page.evaluate(()=>JSON.stringify({loader:window.__KIRJANE_R2_LOADER__,
       stub:document.documentElement.dataset.forgeIslands,
