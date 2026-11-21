@@ -41417,7 +41417,7 @@ function uM({ host: e, gsap: t, isLab: n }) {
 						className: o === t ? "is-current" : "",
 						onClick: () => s(t),
 						"aria-pressed": o === t,
-						"aria-label": "Inspect " + e + " engine",
+						"aria-label": String(t + 1).padStart(2, "0") + " Inspect " + e + " engine",
 						title: e,
 						children: /* @__PURE__ */ (0, Q.jsx)("span", { children: String(t + 1).padStart(2, "0") })
 					}, e))
