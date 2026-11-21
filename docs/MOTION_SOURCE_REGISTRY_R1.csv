@@ -1,0 +1,14 @@
+id,source,origin,role,license_status,integration_status,provenance_or_action
+PACK-R1,KIRJANE-MOTION-ARSENAL-R1.zip,user-provided upload,reference specification,user provided for study,reference only,SHA256 ce8e227ccf17bbd0a724316aa75ddec5e8c904f67459b7e3c4d62dd1e2d1ff3b
+STILLS-01,scroll-effects-1.jpg,reference archive,effect storyboard,rights not established,inspection only,SHA256 d9041071b14431d4aa3cd98daef7cad825f8d7989b83e1075908e1b19e6b855c
+STILLS-02,scroll-effects-2.jpg,reference archive,effect storyboard,rights not established,inspection only,SHA256 ac66fbcb48925a6e07dbdf0930c109b41cd437fcc3cef9626a3b94369c15adb9
+STILLS-03,library-reel.jpg,reference archive,library storyboard,rights not established,inspection only,SHA256 b04e0fd40627e02889636ab444fe96019806eaf214e3d8a782e053c1cddbaa30
+BASE-R3,Living Topography website,Kirch-Nairu/kirjane-site PR 9,existing site and assets,existing notices retained,source used unchanged,Base SHA 4c59ba9fd9e65354fa0820725589e594cba08d29
+GSAP,https://github.com/greensock/gsap,already vendored,ScrollTrigger and choreography,standard no-charge license,used existing vendor import,no extra downloads
+LENIS,https://github.com/darkroomengineering/lenis,upstream,optional scroll smoothing,MIT per supplied manifest; pinned audit required,NOT INTEGRATED,No duplicate RAF or scroll owner
+REACTBITS,https://github.com/DavidHDev/react-bits,upstream,optional React island,MIT plus Commons Clause,NOT INTEGRATED,Component rights need review
+R3F,https://github.com/pmndrs/react-three-fiber,upstream,optional Salryn 3D,version-specific license pending,NOT INTEGRATED,Existing CGI used as 2.5D proxy
+LIQUIDGLASS,https://github.com/dashersw/liquid-glass-js,upstream,material technique,MIT per manifest; pinned audit required,NOT INTEGRATED,No unnecessary blur overlay
+SHADERGRADIENT,https://github.com/ruucm/shadergradient,upstream,optional shader material,MIT in upstream README,NOT INTEGRATED,Single GPU scene gate
+LIQUIDLOGO,https://github.com/paper-design/liquid-logo,upstream,optional shader research,PolyForm Shield License 1.0.0 per upstream LICENSE; legal review required,NOT INTEGRATED,Official emblem geometry must remain unchanged
+CGLIB,existing Creative Forge local CGI/GFX/VFX/procedural libraries,Windows creative-lab workstation,creative asset masters,not available for direct audit,NOT INTEGRATED,Review actual library files before reuse
