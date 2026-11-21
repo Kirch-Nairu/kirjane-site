@@ -23,12 +23,13 @@ export function playCinematicClick(ctx: AudioContext) {
   highpass.type = "highpass";
   highpass.frequency.setValueAtTime(1450, t);
   const noiseGain = ctx.createGain();
-  noiseGain.gain.value = 0.048;
+  noiseGain.gain.value = 0.035;
   tick.connect(highpass);
   highpass.connect(noiseGain);
   noiseGain.connect(ctx.destination);
   tick.start(t);
   tick.stop(t + 0.034);
+  tick.onended=()=>{tick.disconnect();highpass.disconnect();noiseGain.disconnect();};
 
   const body = ctx.createOscillator();
   body.type = "triangle";
@@ -42,4 +43,5 @@ export function playCinematicClick(ctx: AudioContext) {
   bodyGain.connect(ctx.destination);
   body.start(t);
   body.stop(t + 0.075);
+  body.onended=()=>{body.disconnect();bodyGain.disconnect();};
 }

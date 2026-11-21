@@ -132,7 +132,7 @@ const GLASS_FRAGMENT_GLSL = `
     float diff2 = max(dot(N, L2), 0.0);
     float spec = pow(max(dot(N, H1), 0.0), 42.0);
 
-    vec3 cDeep  = vec3(0.025, 0.105, 0.072);
+    vec3 cDeep  = vec3(0.045, 0.155, 0.105);
     vec3 cEmer  = vec3(0.075, 0.450, 0.305);
     vec3 cLime  = vec3(0.827, 0.965, 0.420);
     vec3 cWhite = vec3(0.955, 0.968, 0.935);
@@ -141,7 +141,9 @@ const GLASS_FRAGMENT_GLSL = `
     vec3 col = mix(cDeep, cEmer, 0.28 + 0.46 * diff1 + 0.22 * diff2);
     col = mix(col, cEmer * 1.24, fresnel * 0.85);
     col += cLime * (fresnel * travel * (0.22 + 0.18 * u_pulse));
-    col += cWhite * (spec * 0.65);
+    col += cWhite * (spec * 0.55);
+    // Broad rim softbox separates emerald surfaces from the night ground.
+    col += vec3(0.20,0.39,0.28) * pow(1.0-ndv,4.0) * 0.32;
 
     float alpha = clamp(0.78 + fresnel * 0.18 + spec * 0.20, 0.76, 0.96);
     gl_FragColor = vec4(col, alpha);
@@ -438,18 +440,18 @@ export function mountSalryn3DHero({ canvas, sectionEl, fallbackEl, initialProfil
       ptrX += (targetPtrX - ptrX) * k;
       ptrY += (targetPtrY - ptrY) * k;
 
-      rig.rotation.y = elapsed * 0.16 + cur3d.twist * 0.42 + ptrX + scrollDepth * 0.38;
+      rig.rotation.y = cur3d.twist * 0.42 + ptrX + scrollDepth * 0.38;
       rig.rotation.x = ptrY + scrollDepth * 0.12;
       rig.position.z = scrollDepth * 2.1;
 
-      sharedUniforms.u_time.value = elapsed;
+      sharedUniforms.u_time.value = scrollDepth * 3.0 + cur3d.twist;
       sharedUniforms.u_spread.value = cur3d.spread;
       sharedUniforms.u_twist.value = cur3d.twist;
       sharedUniforms.u_ringScale.value = cur3d.ringScale;
       sharedUniforms.u_pulse.value = cur3d.pulse;
       coreMat.uniforms.u_pulse.value = cur3d.pulse;
 
-      updateSatellites(elapsed);
+      updateSatellites(scrollDepth * 3.0 + cur3d.twist);
       renderer.render(scene, camera);
     }
   });

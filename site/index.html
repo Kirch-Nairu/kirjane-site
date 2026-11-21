@@ -682,6 +682,7 @@
     import('./js/editorial-opening.js').then(({initEditorialOpening}) => initEditorialOpening()).catch(() => { delete document.documentElement.dataset.brandEntry; clearTimeout(window.__brandEntryTimer); });
   </script>
   <script type="module">
+    import { clarityPhase } from './js/forge-cinematic-tokens.js';
     import { initTopographyField } from './js/topography-canvas.js';
     import { initSiteShell, initLivingMotion, isReducedMotion } from './js/motion-system.js';
     import { mountSalrynExplorer } from './js/salryn-organism.js';
@@ -744,7 +745,7 @@
         { id: 'clarity', start: 0.68, end: 1.0 }
       ],
       onUpdate: ({ smooth, direction, activeChapter, inView, isReduced }) => {
-        if (inView && scrollY > 8 && !shortCinematic.matches) clarityPlayer.setProgress(smooth, direction);
+        if (inView && scrollY > 8 && !shortCinematic.matches) clarityPlayer.setProgress(clarityPhase(smooth), direction);
         if (clarityProgress) clarityProgress.style.transform = `scaleX(${isReduced ? 1 : smooth})`;
         if (!isReduced) {
           clarityBeatEls.forEach((card) => card.classList.toggle('is-active', card.dataset.beat === activeChapter));
@@ -825,11 +826,18 @@
     window.addEventListener("keydown", e => {
       if (!e.target.closest("button,input,select,textarea") && ["PageDown","PageUp","ArrowDown","ArrowUp"," "].includes(e.key)) releaseCapability();
     });
-    import("./js/forge-service-scene.js").then(({createServiceScene}) => {
-      serviceScene = createServiceScene(document.getElementById("home-cap-plate-stage"), reduced);
-      serviceScene.select(Math.max(0,serviceMode));
-    }).catch(() => {});
-    window.addEventListener("pagehide", e => {if(!e.persisted)serviceScene?.dispose();});
+    let servicesDisposed=false;
+    const serviceObserver=new IntersectionObserver(entries=>{
+      if(!entries.some(e=>e.isIntersecting))return;
+      serviceObserver.disconnect();
+      import("./js/forge-service-scene.js").then(({createServiceScene}) => {
+        if(servicesDisposed)return;
+        serviceScene=createServiceScene(document.getElementById("home-cap-plate-stage"),reduced);
+        serviceScene.select(Math.max(0,serviceMode));
+      }).catch(()=>{});
+    },{rootMargin:'200px'});
+    serviceObserver.observe(document.getElementById('home-cap-plate-stage'));
+    window.addEventListener('pagehide', e => {if(!e.persisted){servicesDisposed=true;serviceObserver.disconnect();serviceScene?.dispose();}});
     function syncCapabilityVisual(idx) {
       const clamped = Math.max(0, Math.min(3, idx));
       if(clamped !== serviceMode){ serviceMode=clamped;serviceScene?.select(clamped); }

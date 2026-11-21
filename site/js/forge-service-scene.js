@@ -1,5 +1,6 @@
 import * as THREE from '../vendor/three/three.module.js';
 import gsap from '../vendor/gsap/index.js';
+import {CINEMATIC} from './forge-cinematic-tokens.js';
 
 // Original four-pose engineering sculpture. One renderer; transitions own time.
 export function createServiceScene(host, reduced) {
@@ -57,7 +58,7 @@ export function createServiceScene(host, reduced) {
     const timeline=gsap.timeline({onUpdate:()=>{dirty=true;draw();}});tween=timeline;
     nodes.forEach((node,i)=>{
       const [x,y,z]=target(i,index);
-      timeline.to(node.position,{x,y,z,duration:reduced?0:1.05,ease:'power3.inOut'},i*.012);
+      timeline.to(node.position,{x,y,z,duration:reduced?0:CINEMATIC.settle,ease:'power3.inOut'},i*.012);
       timeline.to(node.rotation,{x:index===1?.15:0,y:index===2?Math.PI/4:0,z:index===3?i*.15:0,duration:reduced?0:.85},0);
     });
     timeline.to(group.rotation,{y:index===2?-.25:index===3?.2:0,duration:reduced?0:1},0);

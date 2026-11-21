@@ -117,3 +117,5 @@ body[data-editorial] :is(button,a,input,select,textarea):focus-visible{outline:2
 body[data-editorial] :is(.asc-service-intro-copy,.about-reading,.contact-brief) p{max-width:65ch;text-wrap:pretty}
 body[data-editorial] .project-study .study-art{background:#133a29}
 @media(max-width:600px){body[data-editorial] :is(.actions-row,.contact-actions){flex-wrap:wrap}body[data-editorial] :is(.asc-service-intro-copy,.about-reading,.contact-brief){min-width:0}}
+
+body[data-editorial] :is(#home-clarity-canvas,#salryn-kernel-canvas){filter:brightness(1.13) saturate(.94)}

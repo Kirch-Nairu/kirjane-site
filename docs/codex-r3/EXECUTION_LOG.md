@@ -34,3 +34,10 @@ Never overwrite past gate results or claim a screenshot that was not saved.
 - Resilience scene now exposes Normal / Outage / Recovery with local/external paths and explicit waiting state. Recovery requires two operator-review steps; does not claim actual export or synchronization.
 - Immutable candidate-006 focused QA: 99/99 across 1440/390/320 for dedicated Process deep links, twelve options, 3 industries × 5 steps, replay, inquiry handoff, resilience including negative outage check, inspection, mandatory core, axe and overflow.
 - Evidence dist/codex-r3-evidence/scenes-6. Self-review only: controls and record semantics clear; visual treatment remains diagrammatic and has not met owner creative acceptance. No physical GPU or independent review claim.
+
+## M06/M07 — continuity, integrated film, site clearance
+- Home frame timing now follows an original monotonic four-key causal phase map with exact endpoints. Inherited CGI retained, not rebuilt from the failed attempt. Salryn hero no longer spins independently of scroll: shell/node orientation derives from scroll depth and profile; emerald rim shader separates dark surfaces.
+- Film: removed duplicated cursor easing before arc-length interpolation; click phase and DOM calibration unchanged. Added shot-specific readable camera lenses with continuous joins. Audio noise is softer and synthesized graph nodes disconnect on completion; remains off by default. Wide/tall caption measure refined. Math 27/27 after changes.
+- Global native anchor/focus clearance and responsive text measures applied to all seven pages. Service renderer now loads only near its chapter.
+- All changes are self-authored within existing licensed dependencies. No additional packages, artwork downloads, API access or logo changes.
+- Creative status: FIX_REQUIRED until full matched captures, physical GPU checks and owner review. Frame retiming and contrast are incremental; no claim of remastering the baked CGI geometry.
