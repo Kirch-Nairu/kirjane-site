@@ -35,7 +35,7 @@ Run from repo root on an authorized development machine with Node 22, Python 3.1
 
 A build generates creative/package-lock.json if not already committed. For canonical stability, commit the generated verified lock only after a dependency audit. The full R2 Vite build replaces the safe checked-in JS/CSS stub under site/js in the ephemeral working copy. A conventional static build continues to serve fallback content without importing third-party CDN scripts.
 
-Do not publish to Hostinger or Vercel; the generated preview is marked noindex and the branch is not merged. A shell in ChatGPT cannot directly modify C:\\Users\\arane\\KirionLabs\\kirjane-creative-lab; the repository branch is the deliverable.
+Do not publish to Hostinger or Vercel; the generated preview is marked noindex and the branch is not merged. The separate local creative workspace was not accessible from this environment; the repository branch is the deliverable.
 
 ## Rendering and interaction guarantees
 
