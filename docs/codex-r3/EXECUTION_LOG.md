@@ -65,3 +65,6 @@ Actual mobile comparison review showed that Home Process still inherited a horiz
 
 ## Final industry event progression
 Source review found the first industry implementation stopped at a responsibility list. Expanded its fourth chapter into five independently inspectable events with current/earlier/next state, an engine focus and distinct explanations for Retail, Food & Beverage and Manufacturing. Optional playback traverses events and respects pause/replay; reading scroll no longer silently changes the chosen industry. Added browser checks for all event selections, retained inquiry notes and paused/scroll-held narrative state. No transactions or license entitlements are executed by these illustrative events.
+
+## Shared CGI camera/optical keys
+Added bounded, reversible camera and exposure keys to the inherited Home and Salryn frame canvases: stronger focus through alignment/workspaces, a quieter specialization framing and separately bounded phone offsets. Existing director phase owns all transforms. No new RAF/context or baked-geometry replacement. The Salryn hero shader remains the separate inherited real-time renderer with its scroll-based orientation and rim-light refinement. New safety assertions cover camera bounds and history-independent seeking. Actual comparison captures and source qualification must match this revision.

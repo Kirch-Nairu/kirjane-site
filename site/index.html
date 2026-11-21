@@ -682,7 +682,7 @@
     import('./js/editorial-opening.js').then(({initEditorialOpening}) => initEditorialOpening()).catch(() => { delete document.documentElement.dataset.brandEntry; clearTimeout(window.__brandEntryTimer); });
   </script>
   <script type="module">
-    import { clarityPhase } from './js/forge-cinematic-tokens.js';
+    import { clarityPhase, gradeSceneCanvas } from './js/forge-cinematic-tokens.js';
     import { initTopographyField } from './js/topography-canvas.js';
     import { initSiteShell, initLivingMotion, isReducedMotion } from './js/motion-system.js';
     import { mountSalrynExplorer } from './js/salryn-organism.js';
@@ -746,6 +746,7 @@
       ],
       onUpdate: ({ smooth, direction, activeChapter, inView, isReduced }) => {
         if (inView && scrollY > 8 && !shortCinematic.matches) clarityPlayer.setProgress(clarityPhase(smooth), direction);
+        gradeSceneCanvas(clarityCanvas,smooth,{kind:'home',mobile:window.innerWidth<=900,reduced:isReduced});
         if (clarityProgress) clarityProgress.style.transform = `scaleX(${isReduced ? 1 : smooth})`;
         if (!isReduced) {
           clarityBeatEls.forEach((card) => card.classList.toggle('is-active', card.dataset.beat === activeChapter));

@@ -661,6 +661,7 @@
   <script type="module">
     import { initTopographyField } from './js/topography-canvas.js';
     import { initSiteShell, initLivingMotion, isReducedMotion } from './js/motion-system.js';
+    import { gradeSceneCanvas } from './js/forge-cinematic-tokens.js';
     import { createResilienceScene } from './js/forge-resilience-scene.js';
     import { createIndustryStory } from './js/forge-industry-story.js';
     import { mountSalryn3DHero } from './js/salryn-3d-organism.js';
@@ -723,6 +724,7 @@
       ],
       onUpdate: ({ smooth, direction, activeChapter, inView, isReduced }) => {
         if (inView && scrollY > 8 && !shortCinematic.matches) kernelPlayer.setProgress(smooth, direction);
+        gradeSceneCanvas(kernelCanvas,smooth,{kind:'kernel',mobile:window.innerWidth<=900,reduced:isReduced});
         if (kernelProgress) kernelProgress.style.transform = `scaleX(${isReduced ? 1 : smooth})`;
         if (!isReduced) {
           kernelBeats.forEach((b) => b.classList.toggle('is-active', b.dataset.beat === activeChapter));

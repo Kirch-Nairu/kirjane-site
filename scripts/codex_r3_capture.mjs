@@ -135,6 +135,7 @@ async function record(scene){
       reduced:matchMedia('(prefers-reduced-motion: reduce)').matches,
       selectedIndustry:document.querySelector('#industry-profile')?.value,
       storyStep:document.querySelector('.r3-industry-story')?.dataset.storyStep,
+      workflowEvent:document.querySelector('.r3-industry-story')?.dataset.workflowEvent,
       networkMode:document.querySelector('#offline-sim-frame')?.dataset.networkMode,
       forgeRuntime:!!window.__KIRJANE_R2__,loadingError:window.__KIRJANE_R2_ERROR__?.slice(0,180)||null
     };

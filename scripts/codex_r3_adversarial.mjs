@@ -24,9 +24,20 @@ try{
   results.push({name:width+'x'+height+' native forward/reverse film',ok:!errors.length&&overflow<=1,errors,overflow});
   await ctx.close();
  }
- const ctx=await browser.newContext({viewport:{width:1440,height:900}});const page=await ctx.newPage();
+ const ctx=await browser.newContext({viewport:{width:1440,height:900},recordVideo:{dir:out+'/video',size:{width:1440,height:900}}});const page=await ctx.newPage();
  await ctx.addInitScript(()=>sessionStorage.setItem('kirjane-cinematic-opening-r2','1'));
  await page.goto(server.origin+'/',{waitUntil:'domcontentloaded'});
+ await page.waitForFunction(()=>window.__SITE_READY__);
+ const homeErrors=[];page.on('pageerror',error=>homeErrors.push(error.message));
+ for(const progress of [0,.15,.45,.75,1,.6,.2,0]){
+  await page.evaluate(async progress=>{
+   const el=document.getElementById('complexity-clarity-scene'),rect=el.getBoundingClientRect();
+   const start=scrollY,target=rect.top+scrollY+Math.max(0,rect.height-innerHeight)*progress;
+   for(let i=1;i<=16;i++){scrollTo({top:start+(target-start)*i/16,behavior:'instant'});await new Promise(requestAnimationFrame);}
+  },progress);await page.waitForTimeout(280);
+ }
+ results.push({name:'Home causal frame sequence forward/reverse',ok:!homeErrors.length,errors:homeErrors});
+ await page.screenshot({path:out+'/home-reverse.png'});
  await page.locator('#home-cap-plate-stage').scrollIntoViewIfNeeded();await page.waitForTimeout(1500);
  const loss=await page.evaluate(()=>{
   const host=document.getElementById('home-cap-plate-stage'),canvas=host.querySelector('canvas');
