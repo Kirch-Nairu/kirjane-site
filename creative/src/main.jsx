@@ -10,6 +10,9 @@ import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Color, MathUtils } from 'three';
 import Lenis from 'lenis';
 import BlurText from './vendor/BlurText.jsx';
+import DecryptedText from './vendor/DecryptedText.jsx';
+import GlareHover from './vendor/GlareHover.jsx';
+import './vendor/GlareHover.css';
 import './islands.css';
 
 const ENGINE_NAMES = [
@@ -243,6 +246,28 @@ function BlurLine({ host }) {
     effect="blur" blur={13} distance={38}
     className="forge-bits-line" />;
 }
+
+function DecryptLine({ host }) {
+  const text=host.getAttribute('data-forge-text')||'SYSTEMS THAT EVOLVE.';
+  const reduced=useReducedMotion();
+  return reduced ? <p className="forge-bits-plain">{text}</p> :
+    <DecryptedText text={text} animateOn="view" speed={22} maxIterations={13}
+      sequential revealDirection="start" effect="scramble"
+      className="forge-decrypt-line" parentClassName="forge-decrypt-wrap"
+      encryptedClassName="forge-decrypt-glyph" />;
+}
+function GlareAction({host}) {
+  const reduced=useReducedMotion();
+  useEffect(()=>{host.dataset.forgeReady='true';return()=>{delete host.dataset.forgeReady;};},[host]);
+  if(reduced) return <a className="forge-glare-link" href="#prepare-brief">Start a project brief <span aria-hidden="true">↗</span></a>;
+  return <GlareHover className="forge-glare-shell" width="100%" height="100%"
+    background="#112c1f" borderColor="#8fae6a" borderRadius="2px"
+    glareColor="#d3f66b" glareOpacity={.45} glareAngle={-48}
+    glareSize={30} softness={.5} variant="sheen" blendMode="screen"
+    mode="hover" intro={false} playOnce={false}>
+    <a className="forge-glare-link" href="#prepare-brief">Start a project brief <span aria-hidden="true">↗</span></a>
+  </GlareHover>;
+}
 const roots = new Map();
 let smooth=null;
 let smoothTick=null;
@@ -272,6 +297,8 @@ export function mountImmersive({gsap,ScrollTrigger}) {
       roots.set(target,root);
       root.render(type==='kernel'
         ? <KernelIsland host={target} gsap={gsap} isLab={!!document.querySelector('[data-motion-lab]')}/>
+        : type==='decrypt' ? <DecryptLine host={target}/>
+        : type==='glare' ? <GlareAction host={target}/>
         : <BlurLine host={target}/>);
     });
   },{rootMargin:'250px 0px'});
@@ -304,7 +331,7 @@ export function mountImmersive({gsap,ScrollTrigger}) {
   document.addEventListener('click',anchorHandler);
   pagehideHandler=()=>disposeImmersive({gsap});
   window.addEventListener('pagehide',pagehideHandler,{once:true});
-  window.__KIRJANE_R2__={version:'R2',reactBits:'upstream BlurText',r3f:true,lenis:!!smooth,dispose:pagehideHandler};
+  window.__KIRJANE_R2__={version:'R2',reactBits:'upstream BlurText, DecryptedText, GlareHover',r3f:true,lenis:!!smooth,dispose:pagehideHandler};
 }
 export function disposeImmersive({gsap}) {
   intersection?.disconnect();
