@@ -5,7 +5,7 @@ on:
       - experiment/creative-forge-immersive-r2
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
   build-preview-only:
     runs-on: ubuntu-latest
@@ -44,3 +44,14 @@ jobs:
           path: creative/package-lock.json
           retention-days: 14
           if-no-files-found: warn
+      - name: Save reproducible bundle and lock to isolated experiment branch
+        if: github.event_name == 'push' && github.ref_name == 'experiment/creative-forge-immersive-r2'
+        continue-on-error: true
+        run: |
+          git config user.name 'kirjane-creative-build[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add creative/package-lock.json site/js/forge-immersive-r2.js site/js/forge-immersive-r2.css
+          if ! git diff --cached --quiet; then
+            git commit -m "build(immersive): preserve audited R2 bundles and dependency lock"
+            git push origin HEAD:experiment/creative-forge-immersive-r2
+          fi
