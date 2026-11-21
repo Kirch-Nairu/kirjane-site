@@ -36,7 +36,8 @@ try{
    for(let i=1;i<=16;i++){scrollTo({top:start+(target-start)*i/16,behavior:'instant'});await new Promise(requestAnimationFrame);}
   },progress);await page.waitForTimeout(280);
  }
- results.push({name:'Home causal frame sequence forward/reverse',ok:!homeErrors.length,errors:homeErrors});
+ const homeOverflow=await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth);
+ results.push({name:'Home causal frame sequence forward/reverse',ok:!homeErrors.length&&homeOverflow<=1,errors:homeErrors,overflow:homeOverflow});
  await page.screenshot({path:out+'/home-reverse.png'});
  await page.locator('#home-cap-plate-stage').scrollIntoViewIfNeeded();await page.waitForTimeout(1500);
  const loss=await page.evaluate(()=>{

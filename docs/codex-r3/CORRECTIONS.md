@@ -1,24 +1,33 @@
-# CODEX R3 — Correction Register
+# R3 correction and review register
 
-All observations are owner-supplied or baseline-source-derived. **No corrections are yet verified in R3.**
+Product source: `2b7e146d699d15709495b68a9680a2664497939f`. Engineering candidate; owner creative acceptance remains pending. All reviews below are author self-review. PASS in the implementation column describes observed browser behavior, not independent or owner acceptance.
 
-| ID | Shot | Observation | Priority | Target fix | Implemented commit | Evidence | Disposition |
-|---|---|---|---|---|---|---|---|
-| R3-001 | 03 | Home services white dead space, tiny CGI, unreadable card | P0 | Four-mode integrated software exhibition | — | — | OPEN |
-| R3-002 | 04 | Process flat topology graphic feels detached | P0 | Responsive living five-stage field | — | — | OPEN |
-| R3-003 | 08 | Industry selector has no five-part guided story | P0 | Core-to-industry-to-engines-to-workflow-to-inquiry | — | — | OPEN |
-| R3-004 | 09 | Engine controls/3D scene too small and detached | P0 | Large synchronized configurator and meaningful camera focus | — | — | OPEN |
-| R3-005 | 10 | Offline-first static SVG not communicating resilience | P0 | Normal/outage/recovery visual state machine | — | — | OPEN |
-| R3-006 | 01 | Home fragments arbitrary, not causal | P1 | Choreographed convergence | — | — | OPEN |
-| R3-007 | 02 | Home resolved core transitions not fully continuous | P1 | Camera, material and text synchronization | — | — | OPEN |
-| R3-008 | 05 | Salryn opening needs lighting/camera refinement | P1 | Signature kernel continuity | — | — | OPEN |
-| R3-009 | 06 | Shared-workspace sphere too dark | P1 | Spatial/material contrast and state meaning | — | — | OPEN |
-| R3-010 | 07 | Specialization detail visually cluttered | P1 | Hierarchical clear modular constellation | — | — | OPEN |
-| R3-011 | Global | GPU hardware quality not established by headless QA | Gate | Physical-browser evidence and reliable fallback | — | — | QA_BLOCKED |
-| R3-012 | Global | New external assets/licenses are not yet reviewed | Gate | Exact source registry and license audit | — | — | OPEN |
+| Shot | Implemented change | Implementation | Creative disposition / remaining limit | Visual proof |
+|---|---|---|---|---|
+| 01 | Original causal frame timing and bounded Home camera/exposure keys | PASS | REVIEW_BLOCKED: inherited CGI preserved; owner motion judgment pending | [Desktop pairs](evidence/shots-comparison.png) |
+| 02 | Lattice-to-core hold, consistent optical grade and reversible framing | PASS | REVIEW_BLOCKED: actual stills and reverse film require owner judgment | [Desktop pairs](evidence/shots-comparison.png) |
+| 03 | One original Three.js sculpture with four finite authored poses, manual ownership and readable chapter | PASS | REVIEW_BLOCKED: geometry is deliberately schematic; material polish needs hardware review | [Services pair](evidence/services-comparison.png), [phone](evidence/mobile-comparison.png) |
+| 04 | Procedural five-stage terrain, lit trail, exception branch, native deep-link hold and phone control grid | PASS | REVIEW_BLOCKED: field is original CPU canvas, not a 3D terrain claim | [Desktop](evidence/shots-comparison.png), [phone](evidence/mobile-comparison.png) |
+| 05 | Scroll-derived hero shell orientation and emerald rim shader | PASS source/runtime | BLOCKED: software-LOD render cannot qualify physical GPU material fidelity | [Desktop pairs](evidence/shots-comparison.png) |
+| 06 | Workspace-specific camera key and lifted emerald exposure | PASS | REVIEW_BLOCKED: baked geometry retained; no claim of a new mesh render | [Desktop pairs](evidence/shots-comparison.png) |
+| 07 | Quieter specialization framing and shared lighting family | PASS | REVIEW_BLOCKED: owner must assess hierarchy in full motion | [Desktop pairs](evidence/shots-comparison.png) |
+| 08 | Twelve industries, five narrative chapters, five inspectable workflow events, engine focus, pause/replay and preserved inquiry notes | PASS | REVIEW_BLOCKED: diagrams are illustrative; no live backend or deployed workflow is claimed | [Desktop](evidence/shots-comparison.png), [phone](evidence/mobile-comparison.png) |
+| 09 | Larger R3F inspection, physical spokes, selected camera, named controls and stateful optical alternative | PASS controls/fallback | BLOCKED: hardware R3F appearance remains unverified | [Desktop](evidence/shots-comparison.png), [phone](evidence/mobile-comparison.png) |
+| 10 | Normal/outage/recovery scene, pending external work and explicit operator review steps | PASS | REVIEW_BLOCKED: simulation conveys availability boundaries, not universal offline guarantees | [Desktop](evidence/shots-comparison.png), [phone](evidence/mobile-comparison.png) |
+| R5 film | Single Shadow DOM island, 23 preserved scenes, single scroll owner, calibrated cursor, camera lenses, softer opt-in audio and audio-node cleanup | PASS automated gates | REVIEW_BLOCKED: physical devices, spoken screen reader and owner film review pending | [Five film pairs](evidence/film-comparison.png) |
 
-After each bounded correction, update the cause, implementation SHA, actual screenshots/video and a test result. Allowed dispositions: OPEN, FIX_REQUIRED, PASS, QA_BLOCKED, PERFORMANCE_HOLD, LICENSE_HOLD, REVIEW_BLOCKED.
+## Defects actually found and corrected
 
-### Local source checkpoint M01/M02
-R3-001: substantive WebGL replacement; interaction gate 33/33, later combined 66/66. Source self-review only; creative disposition FIX_REQUIRED pending full comparative review.
-R3-002: primary SVG replaced by parametric terrain on both routes; five Home states and keyboard verified. Dedicated-route proof pending. FIX_REQUIRED.
+- Node 24 Undici readiness assertion: consumed HTTP/1 probes through node:http; no test assertions removed.
+- Services cascade and aspect ratio: fixed unreadable inherited colors and a 416px mobile stage width.
+- Static services rail: scoped selected-card ownership and natural static height; no-JS keeps all descriptions.
+- Expanded button names: corrected axe label-content-name mismatches.
+- Industry inquiry: retained the current directory route through its base URL and preserved existing notes.
+- Dedicated Process deep links: stopped incidental layout/reading-line updates from stealing an explicit stage.
+- Overbroad software fallback experiment: rejected after screenshots exposed stacked cinematic copy; restored inherited adaptive quality.
+- Optical fallback: wrapped mandatory labels; phone composition puts inspection before the long capability list.
+- Phone Process rail: replaced the crowded horizontal rail with five visible touch choices.
+- First industry implementation was a responsibility list: added actual event progression and industry-specific explanations; document scroll no longer changes the chosen industry.
+- Separate production CI whitespace gate: removed ten trailing spaces; retained the gate.
+
+Historical failures and exact source checkpoints remain in [EXECUTION_LOG.md](EXECUTION_LOG.md). No issue is described as independently accepted.

@@ -124,7 +124,15 @@ try{
     await page.waitForFunction(()=>window.__SITE_READY__);await page.waitForTimeout(150);
     const state=await page.evaluate(()=>({h1:document.querySelectorAll('h1').length,main:document.querySelectorAll('main').length,overflow:document.documentElement.scrollWidth-innerWidth}));
     check(response.ok()&&state.h1===1&&state.main===1&&state.overflow<=1&&!errors.length,width+' route '+(route||'home'),{state,errors});
-    if(width===390)await page.screenshot({path:join(out,'route-'+(route||'home')+'.png'),fullPage:true});
+    if(width===390){
+     const broken=await page.evaluate(async()=>{
+      await document.fonts.ready;const images=[...document.images];images.forEach(im=>{im.loading='eager';});
+      await Promise.all(images.map(im=>im.decode().catch(()=>null)));
+      return images.filter(im=>im.getAttribute('src')&&(!im.complete||!im.naturalWidth)).map(im=>im.getAttribute('src'));
+     });
+     check(!broken.length,'Full-page assets decode '+(route||'home'),broken);
+     await page.screenshot({path:join(out,'route-'+(route||'home')+'.png'),fullPage:true});
+    }
     page.off('pageerror',error);
    }await ctx.close();
   }

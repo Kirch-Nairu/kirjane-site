@@ -1,0 +1,750 @@
+{
+  "mission": "KIRJANE-CODEX-CINEMATIC-OVERHAUL-R3",
+  "generatedAt": "2026-11-21T15:45:06.093Z",
+  "dist": "C:\\Users\\arane\\KirionLabs\\kirjane-creative-lab\\cinematic-r3\\dist\\codex-r3-baseline-001",
+  "origin": "http://127.0.0.1:42348",
+  "sourceSha": "4c1f58f8183501621f90d66256b72e020940d9e3",
+  "captureHarnessSha": "6e4b92fca130a198fd3d8c51393c9eeb469fc8ae",
+  "workingTree": "M scripts/codex_r3_capture.mjs\n M scripts/codex_r3_gallery.mjs\n?? docs/codex-r3/evidence/",
+  "disclaimer": "Captured on this Playwright environment. Not the original owner image files. Software GPU may differ from Windows hardware. See SHOT_MAP.md.",
+  "captures": [
+    {
+      "id": "01",
+      "label": "Home \u00e2\u20ac\u201d fragments / complexity",
+      "file": "01-home-fragments-complexity.png",
+      "path": "/",
+      "selector": "#complexity-clarity-scene",
+      "requestedPhase": 0.14,
+      "viewport": [
+        1440,
+        900
+      ],
+      "geometry": {
+        "top": 1058.515625,
+        "height": 2430,
+        "range": 1530,
+        "target": 1272.715625,
+        "phase": 0.14
+      },
+      "state": {
+        "sceneRect": {
+          "x": 0,
+          "y": -214.484375,
+          "w": 1440,
+          "h": 2430
+        },
+        "scrollY": 1273,
+        "scrollWidth": 1440,
+        "innerWidth": 1440,
+        "reduced": false,
+        "forgeRuntime": true,
+        "loadingError": null
+      },
+      "errors": [],
+      "warning": "Approximation of owner screenshot from local browser source; not original uploaded image."
+    },
+    {
+      "id": "02",
+      "label": "Home \u00e2\u20ac\u201d clarity / resolved core",
+      "file": "02-home-clarity-resolved-core.png",
+      "path": "/",
+      "selector": "#complexity-clarity-scene",
+      "requestedPhase": 0.87,
+      "viewport": [
+        1440,
+        900
+      ],
+      "geometry": {
+        "top": 1058.515625,
+        "height": 2430,
+        "range": 1530,
+        "target": 2389.615625,
+        "phase": 0.87
+      },
+      "state": {
+        "sceneRect": {
+          "x": 0,
+          "y": -1331.484375,
+          "w": 1440,
+          "h": 2430
+        },
+        "scrollY": 2390,
+        "scrollWidth": 1440,
+        "innerWidth": 1440,
+        "reduced": false,
+        "forgeRuntime": true,
+        "loadingError": null
+      },
+      "errors": [],
+      "warning": "Approximation of owner screenshot from local browser source; not original uploaded image."
+    },
+    {
+      "id": "03",
+      "label": "Home \u00e2\u20ac\u201d engineering capability exhibition",
+      "file": "03-home-engineering-capability-exhibition.png",
+      "path": "/",
+      "selector": "#capabilities-exhibition",
+      "requestedPhase": 0.24,
+      "viewport": [
+        1440,
+        900
+      ],
+      "geometry": {
+        "top": 4282.890625,
+        "height": 2250,
+        "range": 1350,
+        "target": 4606.890625,
+        "phase": 0.24
+      },
+      "state": {
+        "sceneRect": {
+          "x": 0,
+          "y": -324.109375,
+          "w": 1440,
+          "h": 2250
+        },
+        "scrollY": 4607,
+        "scrollWidth": 1440,
+        "innerWidth": 1440,
+        "reduced": false,
+        "forgeRuntime": true,
+        "loadingError": null
+      },
+      "errors": [],
+      "warning": "Approximation of owner screenshot from local browser source; not original uploaded image."
+    },
+    {
+      "id": "04",
+      "label": "Home \u00e2\u20ac\u201d process from complexity to clarity",
+      "file": "04-home-process-from-complexity-to-clarity.png",
+      "path": "/",
+      "selector": "#home-process-section",
+      "requestedPhase": 0.32,
+      "viewport": [
+        1440,
+        900
+      ],
+      "geometry": {
+        "top": 7600.78125,
+        "height": 1206.59375,
+        "range": 306.59375,
+        "target": 7698.89125,
+        "phase": 0.32
+      },
+      "state": {
+        "sceneRect": {
+          "x": 0,
+          "y": -98.21875,
+          "w": 1440,
+          "h": 1206.59375
+        },
+        "scrollY": 7699,
+        "scrollWidth": 1440,
+        "innerWidth": 1440,
+        "reduced": false,
+        "forgeRuntime": true,
+        "loadingError": null
+      },
+      "errors": [],
+      "warning": "Approximation of owner screenshot from local browser source; not original uploaded image."
+    },
+    {
+      "id": "05",
+      "label": "Salryn \u00e2\u20ac\u201d hero core introduction",
+      "file": "05-salryn-hero-core-introduction.png",
+      "path": "/salryn/",
+      "selector": ".salryn-hero",
+      "requestedPhase": 0.12,
+      "viewport": [
+        1440,
+        900
+      ],
+      "geometry": {
+        "top": 0,
+        "height": 900,
+        "range": 0,
+        "target": 0,
+        "phase": 0.12
+      },
+      "state": {
+        "sceneRect": {
+          "x": 0,
+          "y": 0,
+          "w": 1440,
+          "h": 900
+        },
+        "scrollY": 0,
+        "scrollWidth": 1440,
+        "innerWidth": 1440,
+        "reduced": false,
+        "selectedIndustry": "0",
+        "forgeRuntime": true,
+        "loadingError": null
+      },
+      "errors": [],
+      "warning": "Approximation of owner screenshot from local browser source; not original uploaded image."
+    },
+    {
+      "id": "06",
+      "label": "Salryn \u00e2\u20ac\u201d different workspaces shared records",
+      "file": "06-salryn-different-workspaces-shared-records.png",
+      "path": "/salryn/",
+      "selector": "#scene-a-kernel",
+      "requestedPhase": 0.31,
+      "viewport": [
+        1440,
+        900
+      ],
+      "geometry": {
+        "top": 16836.078125,
+        "height": 2970,
+        "range": 2070,
+        "target": 17477.778125,
+        "phase": 0.31
+      },
+      "state": {
+        "sceneRect": {
+          "x": 0,
+          "y": -641.921875,
+          "w": 1440,
+          "h": 2970
+        },
+        "scrollY": 17478,
+        "scrollWidth": 1440,
+        "innerWidth": 1440,
+        "reduced": false,
+        "selectedIndustry": "0",
+        "forgeRuntime": true,
+        "loadingError": null
+      },
+      "errors": [],
+      "warning": "Approximation of owner screenshot from local browser source; not original uploaded image."
+    },
+    {
+      "id": "07",
+      "label": "Salryn \u00e2\u20ac\u201d specialization evolution",
+      "file": "07-salryn-specialization-evolution.png",
+      "path": "/salryn/",
+      "selector": "#scene-a-kernel",
+      "requestedPhase": 0.9,
+      "viewport": [
+        1440,
+        900
+      ],
+      "geometry": {
+        "top": 16836.078125,
+        "height": 2970,
+        "range": 2070,
+        "target": 18699.078125,
+        "phase": 0.9
+      },
+      "state": {
+        "sceneRect": {
+          "x": 0,
+          "y": -1862.921875,
+          "w": 1440,
+          "h": 2970
+        },
+        "scrollY": 18699,
+        "scrollWidth": 1440,
+        "innerWidth": 1440,
+        "reduced": false,
+        "selectedIndustry": "0",
+        "forgeRuntime": true,
+        "loadingError": null
+      },
+      "errors": [],
+      "warning": "Approximation of owner screenshot from local browser source; not original uploaded image."
+    },
+    {
+      "id": "08",
+      "label": "Salryn \u00e2\u20ac\u201d industry/flavor selection",
+      "file": "08-salryn-industry-flavor-selection.png",
+      "path": "/salryn/",
+      "selector": "#scene-c-flavors",
+      "requestedPhase": 0.18,
+      "viewport": [
+        1440,
+        900
+      ],
+      "geometry": {
+        "top": 21741.078125,
+        "height": 2250,
+        "range": 1350,
+        "target": 21984.078125,
+        "phase": 0.18
+      },
+      "state": {
+        "sceneRect": {
+          "x": 0,
+          "y": -242.921875,
+          "w": 1440,
+          "h": 2250
+        },
+        "scrollY": 21984,
+        "scrollWidth": 1440,
+        "innerWidth": 1440,
+        "reduced": false,
+        "selectedIndustry": "1",
+        "forgeRuntime": true,
+        "loadingError": null
+      },
+      "errors": [],
+      "warning": "Approximation of owner screenshot from local browser source; not original uploaded image."
+    },
+    {
+      "id": "09",
+      "label": "Salryn \u00e2\u20ac\u201d eight-engine capability activation",
+      "file": "09-salryn-eight-engine-capability-activation.png",
+      "path": "/salryn/",
+      "selector": "#scene-d-activation",
+      "requestedPhase": 0.24,
+      "viewport": [
+        1440,
+        900
+      ],
+      "geometry": {
+        "top": 23991.078125,
+        "height": 1562.78125,
+        "range": 662.78125,
+        "target": 24150.145625,
+        "phase": 0.24
+      },
+      "state": {
+        "sceneRect": {
+          "x": 0,
+          "y": -158.921875,
+          "w": 1440,
+          "h": 1207.1875
+        },
+        "scrollY": 24150,
+        "scrollWidth": 1440,
+        "innerWidth": 1440,
+        "reduced": false,
+        "selectedIndustry": "11",
+        "forgeRuntime": true,
+        "loadingError": null
+      },
+      "errors": [],
+      "warning": "Approximation of owner screenshot from local browser source; not original uploaded image."
+    },
+    {
+      "id": "10",
+      "label": "Salryn \u00e2\u20ac\u201d offline-first simulation",
+      "file": "10-salryn-offline-first-simulation.png",
+      "path": "/salryn/",
+      "selector": "#scene-f-independence",
+      "requestedPhase": 0.18,
+      "viewport": [
+        1440,
+        900
+      ],
+      "geometry": {
+        "top": 27873.703125,
+        "height": 928.125,
+        "range": 28.125,
+        "target": 27878.765625,
+        "phase": 0.18
+      },
+      "state": {
+        "sceneRect": {
+          "x": 0,
+          "y": -5.296875,
+          "w": 1440,
+          "h": 928.125
+        },
+        "scrollY": 27879,
+        "scrollWidth": 1440,
+        "innerWidth": 1440,
+        "reduced": false,
+        "selectedIndustry": "0",
+        "forgeRuntime": true,
+        "loadingError": null
+      },
+      "errors": [],
+      "warning": "Approximation of owner screenshot from local browser source; not original uploaded image."
+    },
+    {
+      "id": "m03",
+      "label": "Home services at phone width",
+      "file": "m03-home-services-at-phone-width.png",
+      "path": "/",
+      "selector": "#capabilities-exhibition",
+      "requestedPhase": 0.24,
+      "viewport": [
+        390,
+        844
+      ],
+      "geometry": {
+        "top": 3195.640625,
+        "height": 1358.40625,
+        "range": 514.40625,
+        "target": 3319.098125,
+        "phase": 0.24
+      },
+      "state": {
+        "sceneRect": {
+          "x": 0,
+          "y": -123.359375,
+          "w": 390,
+          "h": 1358.40625
+        },
+        "scrollY": 3319,
+        "scrollWidth": 390,
+        "innerWidth": 390,
+        "reduced": false,
+        "forgeRuntime": true,
+        "loadingError": null
+      },
+      "errors": [],
+      "warning": "Approximation of owner screenshot from local browser source; not original uploaded image."
+    },
+    {
+      "id": "m04",
+      "label": "Home process at phone width",
+      "file": "m04-home-process-at-phone-width.png",
+      "path": "/",
+      "selector": "#home-process-section",
+      "requestedPhase": 0.32,
+      "viewport": [
+        390,
+        844
+      ],
+      "geometry": {
+        "top": 6017.671875,
+        "height": 1520.65625,
+        "range": 676.65625,
+        "target": 6234.201875,
+        "phase": 0.32
+      },
+      "state": {
+        "sceneRect": {
+          "x": 0,
+          "y": -216.328125,
+          "w": 390,
+          "h": 1520.65625
+        },
+        "scrollY": 6234,
+        "scrollWidth": 390,
+        "innerWidth": 390,
+        "reduced": false,
+        "forgeRuntime": true,
+        "loadingError": null
+      },
+      "errors": [],
+      "warning": "Approximation of owner screenshot from local browser source; not original uploaded image."
+    },
+    {
+      "id": "m08",
+      "label": "Salryn industry at phone width",
+      "file": "m08-salryn-industry-at-phone-width.png",
+      "path": "/salryn/",
+      "selector": "#scene-c-flavors",
+      "requestedPhase": 0.18,
+      "viewport": [
+        390,
+        844
+      ],
+      "geometry": {
+        "top": 18075.140625,
+        "height": 813.328125,
+        "range": 0,
+        "target": 18075.140625,
+        "phase": 0.18
+      },
+      "state": {
+        "sceneRect": {
+          "x": 0,
+          "y": 0.140625,
+          "w": 390,
+          "h": 813.328125
+        },
+        "scrollY": 18075,
+        "scrollWidth": 390,
+        "innerWidth": 390,
+        "reduced": false,
+        "selectedIndustry": "1",
+        "forgeRuntime": true,
+        "loadingError": null
+      },
+      "errors": [],
+      "warning": "Approximation of owner screenshot from local browser source; not original uploaded image."
+    },
+    {
+      "id": "m09",
+      "label": "Salryn configurator at phone width",
+      "file": "m09-salryn-configurator-at-phone-width.png",
+      "path": "/salryn/",
+      "selector": "#scene-d-activation",
+      "requestedPhase": 0.24,
+      "viewport": [
+        390,
+        844
+      ],
+      "geometry": {
+        "top": 18888.46875,
+        "height": 2242.890625,
+        "range": 1398.890625,
+        "target": 19224.2025,
+        "phase": 0.24
+      },
+      "state": {
+        "sceneRect": {
+          "x": 0,
+          "y": -335.53125,
+          "w": 390,
+          "h": 2242.890625
+        },
+        "scrollY": 19224,
+        "scrollWidth": 390,
+        "innerWidth": 390,
+        "reduced": false,
+        "selectedIndustry": "0",
+        "forgeRuntime": true,
+        "loadingError": null
+      },
+      "errors": [],
+      "warning": "Approximation of owner screenshot from local browser source; not original uploaded image."
+    },
+    {
+      "id": "m10",
+      "label": "Salryn offline at phone width",
+      "file": "m10-salryn-offline-at-phone-width.png",
+      "path": "/salryn/",
+      "selector": "#scene-f-independence",
+      "requestedPhase": 0.18,
+      "viewport": [
+        390,
+        844
+      ],
+      "geometry": {
+        "top": 21917.546875,
+        "height": 917.140625,
+        "range": 73.140625,
+        "target": 21930.7121875,
+        "phase": 0.18
+      },
+      "state": {
+        "sceneRect": {
+          "x": 0,
+          "y": -13.453125,
+          "w": 390,
+          "h": 917.140625
+        },
+        "scrollY": 21931,
+        "scrollWidth": 390,
+        "innerWidth": 390,
+        "reduced": false,
+        "selectedIndustry": "0",
+        "forgeRuntime": true,
+        "loadingError": null
+      },
+      "errors": [],
+      "warning": "Approximation of owner screenshot from local browser source; not original uploaded image."
+    },
+    {
+      "id": "f01",
+      "label": "Salryn R5 film - opening",
+      "file": "f01-salryn-r5-film-opening.png",
+      "path": "/salryn/",
+      "selector": "#salryn-cinema-experience",
+      "requestedPhase": 0.04,
+      "viewport": [
+        1440,
+        900
+      ],
+      "geometry": {
+        "top": 1346.109375,
+        "height": 14904,
+        "range": 14004,
+        "target": 1906.2693749999999,
+        "phase": 0.04
+      },
+      "state": {
+        "sceneRect": {
+          "x": 0,
+          "y": -559.890625,
+          "w": 1440,
+          "h": 14904
+        },
+        "scrollY": 1906,
+        "scrollWidth": 1440,
+        "innerWidth": 1440,
+        "reduced": false,
+        "selectedIndustry": "0",
+        "forgeRuntime": true,
+        "loadingError": null
+      },
+      "errors": [],
+      "warning": "Approximation of owner screenshot from local browser source; not original uploaded image."
+    },
+    {
+      "id": "f02",
+      "label": "Salryn R5 film - shift and checkout",
+      "file": "f02-salryn-r5-film-shift-and-checkout.png",
+      "path": "/salryn/",
+      "selector": "#salryn-cinema-experience",
+      "requestedPhase": 0.31,
+      "viewport": [
+        1440,
+        900
+      ],
+      "geometry": {
+        "top": 1346.109375,
+        "height": 14904,
+        "range": 14004,
+        "target": 5687.349375,
+        "phase": 0.31
+      },
+      "state": {
+        "sceneRect": {
+          "x": 0,
+          "y": -4340.890625,
+          "w": 1440,
+          "h": 14904
+        },
+        "scrollY": 5687,
+        "scrollWidth": 1440,
+        "innerWidth": 1440,
+        "reduced": false,
+        "selectedIndustry": "0",
+        "forgeRuntime": true,
+        "loadingError": null
+      },
+      "errors": [],
+      "warning": "Approximation of owner screenshot from local browser source; not original uploaded image."
+    },
+    {
+      "id": "f03",
+      "label": "Salryn R5 film - receipt",
+      "file": "f03-salryn-r5-film-receipt.png",
+      "path": "/salryn/",
+      "selector": "#salryn-cinema-experience",
+      "requestedPhase": 0.6,
+      "viewport": [
+        1440,
+        900
+      ],
+      "geometry": {
+        "top": 1346.109375,
+        "height": 14904,
+        "range": 14004,
+        "target": 9748.509375,
+        "phase": 0.6
+      },
+      "state": {
+        "sceneRect": {
+          "x": 0,
+          "y": -8402.890625,
+          "w": 1440,
+          "h": 14904
+        },
+        "scrollY": 9749,
+        "scrollWidth": 1440,
+        "innerWidth": 1440,
+        "reduced": false,
+        "selectedIndustry": "0",
+        "forgeRuntime": true,
+        "loadingError": null
+      },
+      "errors": [],
+      "warning": "Approximation of owner screenshot from local browser source; not original uploaded image."
+    },
+    {
+      "id": "f04",
+      "label": "Salryn R5 film - inventory movements",
+      "file": "f04-salryn-r5-film-inventory-movements.png",
+      "path": "/salryn/",
+      "selector": "#salryn-cinema-experience",
+      "requestedPhase": 0.74,
+      "viewport": [
+        1440,
+        900
+      ],
+      "geometry": {
+        "top": 1346.109375,
+        "height": 14904,
+        "range": 14004,
+        "target": 11709.069375,
+        "phase": 0.74
+      },
+      "state": {
+        "sceneRect": {
+          "x": 0,
+          "y": -10362.890625,
+          "w": 1440,
+          "h": 14904
+        },
+        "scrollY": 11709,
+        "scrollWidth": 1440,
+        "innerWidth": 1440,
+        "reduced": false,
+        "selectedIndustry": "0",
+        "forgeRuntime": true,
+        "loadingError": null
+      },
+      "errors": [],
+      "warning": "Approximation of owner screenshot from local browser source; not original uploaded image."
+    },
+    {
+      "id": "f05",
+      "label": "Salryn R5 film - audit and close",
+      "file": "f05-salryn-r5-film-audit-and-close.png",
+      "path": "/salryn/",
+      "selector": "#salryn-cinema-experience",
+      "requestedPhase": 0.92,
+      "viewport": [
+        1440,
+        900
+      ],
+      "geometry": {
+        "top": 1346.109375,
+        "height": 14904,
+        "range": 14004,
+        "target": 14229.789375,
+        "phase": 0.92
+      },
+      "state": {
+        "sceneRect": {
+          "x": 0,
+          "y": -12883.890625,
+          "w": 1440,
+          "h": 14904
+        },
+        "scrollY": 14230,
+        "scrollWidth": 1440,
+        "innerWidth": 1440,
+        "reduced": false,
+        "selectedIndustry": "0",
+        "forgeRuntime": true,
+        "loadingError": null
+      },
+      "errors": [],
+      "warning": "Approximation of owner screenshot from local browser source; not original uploaded image."
+    }
+  ],
+  "failures": [],
+  "pass": true,
+  "pngSha256": {
+    "01": "d6dbaa737d9b2b953d17015b5d0fade8e81a0c4c12e5f92b61534e15694a3df6",
+    "02": "e4d774ba2f62462167d21ff7124b645d4ddde60030ec9c9d011eed79518ea4ae",
+    "03": "d4a60b42d6ee7e67534f68776011dbc74013c37fbfd1df34bad556e27033d6ee",
+    "04": "96f687f421558686bf6c40680fcb024c8be9898aa82f5d8ce8cb6e85f980bd4e",
+    "05": "593656a6021faf2f81debe0a8e45c83f7bbaed71666b5bddc50d1ba3e279ed42",
+    "06": "77fbf6567364c453e26ec9db05f5d47424b19d5ae5a17a0f69a1f2e7ed4ad4bc",
+    "07": "24bdf6dab2722f8d6453a0e317e990e7d707ba96b56c64b1ace0a86ac4bf5f5a",
+    "08": "9a35d64b7cac20bb33901b423d9f829bc054f0e1ba27ddb97263b913793b8bd7",
+    "09": "d58e5c40efc36706536ee8722adb7ff814afa53db76706a6d38c3dc15a0cc9d5",
+    "10": "e43412f683525f21a15833f7c7749ab7b91bece6170aa4cfc260b2f257e4daeb",
+    "m03": "36b0535918f893cc1a197304b01aaadadd6cb8742d7c529e38d26d485fa24492",
+    "m04": "8e0b24106c9da8480d65a1024ef556fbb93c8fdd8215f42730711ae8f4c5c585",
+    "m08": "2702869cc8023c6b6b2de39d755695baf620937c71398f9afc352321d6132f28",
+    "m09": "290c23441f39b597578d4a7f7fb86ca5b06553816413d1264bbb5294866d7101",
+    "m10": "4707a8b1d4e9c5af2e7c577a8a063aa2caaa3b7aeb0a47b1a3209b9706200d8e",
+    "f01": "f6a399e43d7e942ed43cb6a404e0cdd1efebafe9e84d74098e038bc2aaba38e5",
+    "f02": "68f5545f2e0358619ac8ac082c15409c1b4c27916cc3935acc73a33558e0104e",
+    "f03": "6bd2dc7193000407e90fb6313fcd91045ce2486e4acc5f8aaedf5a14fd75d578",
+    "f04": "d39de141a443c2850354e857d9db34ed2b7722ef5b360a777a10355ef005a7c3",
+    "f05": "d08f1aa2883a332a97dc57ee60be396e81f4357153bf08873630f28aef3f551e"
+  }
+}

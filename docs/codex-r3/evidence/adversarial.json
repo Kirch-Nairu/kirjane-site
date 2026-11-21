@@ -1,0 +1,43 @@
+{
+  "sourceSha": "2b7e146d699d15709495b68a9680a2664497939f",
+  "results": [
+    {
+      "name": "1440x900 native forward/reverse film",
+      "ok": true,
+      "errors": [],
+      "overflow": 0
+    },
+    {
+      "name": "390x844 native forward/reverse film",
+      "ok": true,
+      "errors": [],
+      "overflow": 0
+    },
+    {
+      "name": "2880x1800 native forward/reverse film",
+      "ok": true,
+      "errors": [],
+      "overflow": 0
+    },
+    {
+      "name": "1684x1798 native forward/reverse film",
+      "ok": true,
+      "errors": [],
+      "overflow": 0
+    },
+    {
+      "name": "Home causal frame sequence forward/reverse",
+      "ok": true,
+      "errors": [],
+      "overflow": 0
+    },
+    {
+      "name": "service context loss",
+      "ok": true,
+      "loss": {
+        "available": true
+      },
+      "fallback": "poster"
+    }
+  ]
+}

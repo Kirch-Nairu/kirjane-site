@@ -1,6 +1,8 @@
 # CODEX R3 â€” Execution Log
 
-**Status:** NOT STARTED BY CODEX. Agent handoff bootstrapped; no R3 implementation claims.
+**Current status:** Implemented engineering candidate; owner creative, physical-device and independent review remain pending.
+
+**Historical handoff status:** Not started at bootstrap. The entries below retain the actual failures and qualification history.
 
 Baseline ancestry: `d9bdf2324b861e3f4f6f71a0438afa65b2eb1c07`
 Working branch: `experiment/codex-cinematic-overhaul-r3`
@@ -68,3 +70,6 @@ Source review found the first industry implementation stopped at a responsibilit
 
 ## Shared CGI camera/optical keys
 Added bounded, reversible camera and exposure keys to the inherited Home and Salryn frame canvases: stronger focus through alignment/workspaces, a quieter specialization framing and separately bounded phone offsets. Existing director phase owns all transforms. No new RAF/context or baked-geometry replacement. The Salryn hero shader remains the separate inherited real-time renderer with its scroll-based orientation and rim-light refinement. New safety assertions cover camera bounds and history-independent seeking. Actual comparison captures and source qualification must match this revision.
+
+## M09 evidence freeze — 2026-11-22 Asia/Manila
+Product source `2b7e146d699d15709495b68a9680a2664497939f` qualified in R3 CI 44924104883 and Production CI 44924109216: 61 production, 79 R2, 68 film, 30 math, 233 focused, 44 route/fallback and 6 adversarial checks; 20 source captures. Local image-decode additions extend route coverage to 51/51. Local paired captures are 20/20 before and after with zero page exceptions. Structured reports, source hashes, camera/workflow states, visual sheets and narrower reduced-motion profile are committed under docs/codex-r3/evidence. Portable preview is dist/codex-r3-candidate-022.zip; HTTP preview serves only that noindex build. Independent review and physical GPU/device validation are not obtained. Owner creative acceptance remains pending. Evidence/test-only successors do not change the frozen product tree. Next action: exact-SHA independent/hardware/owner review, with bounded corrections if requested. NO MERGE / NO DEPLOY.

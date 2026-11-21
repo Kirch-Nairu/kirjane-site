@@ -1,0 +1,553 @@
+{
+  "dist": "C:\\Users\\arane\\KirionLabs\\kirjane-creative-lab\\cinematic-r3\\dist\\codex-r3-candidate-022",
+  "results": [
+    {
+      "ok": true,
+      "name": "320 route home",
+      "detail": {
+        "state": {
+          "h1": 1,
+          "main": 1,
+          "overflow": 0
+        },
+        "errors": []
+      }
+    },
+    {
+      "ok": true,
+      "name": "320 route salryn",
+      "detail": {
+        "state": {
+          "h1": 1,
+          "main": 1,
+          "overflow": 0
+        },
+        "errors": []
+      }
+    },
+    {
+      "ok": true,
+      "name": "320 route services",
+      "detail": {
+        "state": {
+          "h1": 1,
+          "main": 1,
+          "overflow": 0
+        },
+        "errors": []
+      }
+    },
+    {
+      "ok": true,
+      "name": "320 route projects",
+      "detail": {
+        "state": {
+          "h1": 1,
+          "main": 1,
+          "overflow": 0
+        },
+        "errors": []
+      }
+    },
+    {
+      "ok": true,
+      "name": "320 route process",
+      "detail": {
+        "state": {
+          "h1": 1,
+          "main": 1,
+          "overflow": 0
+        },
+        "errors": []
+      }
+    },
+    {
+      "ok": true,
+      "name": "320 route about",
+      "detail": {
+        "state": {
+          "h1": 1,
+          "main": 1,
+          "overflow": 0
+        },
+        "errors": []
+      }
+    },
+    {
+      "ok": true,
+      "name": "320 route contact",
+      "detail": {
+        "state": {
+          "h1": 1,
+          "main": 1,
+          "overflow": 0
+        },
+        "errors": []
+      }
+    },
+    {
+      "ok": true,
+      "name": "390 route home",
+      "detail": {
+        "state": {
+          "h1": 1,
+          "main": 1,
+          "overflow": 0
+        },
+        "errors": []
+      }
+    },
+    {
+      "ok": true,
+      "name": "Full-page assets decode home",
+      "detail": []
+    },
+    {
+      "ok": true,
+      "name": "390 route salryn",
+      "detail": {
+        "state": {
+          "h1": 1,
+          "main": 1,
+          "overflow": 0
+        },
+        "errors": []
+      }
+    },
+    {
+      "ok": true,
+      "name": "Full-page assets decode salryn",
+      "detail": []
+    },
+    {
+      "ok": true,
+      "name": "390 route services",
+      "detail": {
+        "state": {
+          "h1": 1,
+          "main": 1,
+          "overflow": 0
+        },
+        "errors": []
+      }
+    },
+    {
+      "ok": true,
+      "name": "Full-page assets decode services",
+      "detail": []
+    },
+    {
+      "ok": true,
+      "name": "390 route projects",
+      "detail": {
+        "state": {
+          "h1": 1,
+          "main": 1,
+          "overflow": 0
+        },
+        "errors": []
+      }
+    },
+    {
+      "ok": true,
+      "name": "Full-page assets decode projects",
+      "detail": []
+    },
+    {
+      "ok": true,
+      "name": "390 route process",
+      "detail": {
+        "state": {
+          "h1": 1,
+          "main": 1,
+          "overflow": 0
+        },
+        "errors": []
+      }
+    },
+    {
+      "ok": true,
+      "name": "Full-page assets decode process",
+      "detail": []
+    },
+    {
+      "ok": true,
+      "name": "390 route about",
+      "detail": {
+        "state": {
+          "h1": 1,
+          "main": 1,
+          "overflow": 0
+        },
+        "errors": []
+      }
+    },
+    {
+      "ok": true,
+      "name": "Full-page assets decode about",
+      "detail": []
+    },
+    {
+      "ok": true,
+      "name": "390 route contact",
+      "detail": {
+        "state": {
+          "h1": 1,
+          "main": 1,
+          "overflow": 0
+        },
+        "errors": []
+      }
+    },
+    {
+      "ok": true,
+      "name": "Full-page assets decode contact",
+      "detail": []
+    },
+    {
+      "ok": true,
+      "name": "768 route home",
+      "detail": {
+        "state": {
+          "h1": 1,
+          "main": 1,
+          "overflow": 0
+        },
+        "errors": []
+      }
+    },
+    {
+      "ok": true,
+      "name": "768 route salryn",
+      "detail": {
+        "state": {
+          "h1": 1,
+          "main": 1,
+          "overflow": 0
+        },
+        "errors": []
+      }
+    },
+    {
+      "ok": true,
+      "name": "768 route services",
+      "detail": {
+        "state": {
+          "h1": 1,
+          "main": 1,
+          "overflow": 0
+        },
+        "errors": []
+      }
+    },
+    {
+      "ok": true,
+      "name": "768 route projects",
+      "detail": {
+        "state": {
+          "h1": 1,
+          "main": 1,
+          "overflow": 0
+        },
+        "errors": []
+      }
+    },
+    {
+      "ok": true,
+      "name": "768 route process",
+      "detail": {
+        "state": {
+          "h1": 1,
+          "main": 1,
+          "overflow": 0
+        },
+        "errors": []
+      }
+    },
+    {
+      "ok": true,
+      "name": "768 route about",
+      "detail": {
+        "state": {
+          "h1": 1,
+          "main": 1,
+          "overflow": 0
+        },
+        "errors": []
+      }
+    },
+    {
+      "ok": true,
+      "name": "768 route contact",
+      "detail": {
+        "state": {
+          "h1": 1,
+          "main": 1,
+          "overflow": 0
+        },
+        "errors": []
+      }
+    },
+    {
+      "ok": true,
+      "name": "1024 route home",
+      "detail": {
+        "state": {
+          "h1": 1,
+          "main": 1,
+          "overflow": 0
+        },
+        "errors": []
+      }
+    },
+    {
+      "ok": true,
+      "name": "1024 route salryn",
+      "detail": {
+        "state": {
+          "h1": 1,
+          "main": 1,
+          "overflow": 0
+        },
+        "errors": []
+      }
+    },
+    {
+      "ok": true,
+      "name": "1024 route services",
+      "detail": {
+        "state": {
+          "h1": 1,
+          "main": 1,
+          "overflow": 0
+        },
+        "errors": []
+      }
+    },
+    {
+      "ok": true,
+      "name": "1024 route projects",
+      "detail": {
+        "state": {
+          "h1": 1,
+          "main": 1,
+          "overflow": 0
+        },
+        "errors": []
+      }
+    },
+    {
+      "ok": true,
+      "name": "1024 route process",
+      "detail": {
+        "state": {
+          "h1": 1,
+          "main": 1,
+          "overflow": 0
+        },
+        "errors": []
+      }
+    },
+    {
+      "ok": true,
+      "name": "1024 route about",
+      "detail": {
+        "state": {
+          "h1": 1,
+          "main": 1,
+          "overflow": 0
+        },
+        "errors": []
+      }
+    },
+    {
+      "ok": true,
+      "name": "1024 route contact",
+      "detail": {
+        "state": {
+          "h1": 1,
+          "main": 1,
+          "overflow": 0
+        },
+        "errors": []
+      }
+    },
+    {
+      "ok": true,
+      "name": "1440 route home",
+      "detail": {
+        "state": {
+          "h1": 1,
+          "main": 1,
+          "overflow": 0
+        },
+        "errors": []
+      }
+    },
+    {
+      "ok": true,
+      "name": "1440 route salryn",
+      "detail": {
+        "state": {
+          "h1": 1,
+          "main": 1,
+          "overflow": 0
+        },
+        "errors": []
+      }
+    },
+    {
+      "ok": true,
+      "name": "1440 route services",
+      "detail": {
+        "state": {
+          "h1": 1,
+          "main": 1,
+          "overflow": 0
+        },
+        "errors": []
+      }
+    },
+    {
+      "ok": true,
+      "name": "1440 route projects",
+      "detail": {
+        "state": {
+          "h1": 1,
+          "main": 1,
+          "overflow": 0
+        },
+        "errors": []
+      }
+    },
+    {
+      "ok": true,
+      "name": "1440 route process",
+      "detail": {
+        "state": {
+          "h1": 1,
+          "main": 1,
+          "overflow": 0
+        },
+        "errors": []
+      }
+    },
+    {
+      "ok": true,
+      "name": "1440 route about",
+      "detail": {
+        "state": {
+          "h1": 1,
+          "main": 1,
+          "overflow": 0
+        },
+        "errors": []
+      }
+    },
+    {
+      "ok": true,
+      "name": "1440 route contact",
+      "detail": {
+        "state": {
+          "h1": 1,
+          "main": 1,
+          "overflow": 0
+        },
+        "errors": []
+      }
+    },
+    {
+      "ok": true,
+      "name": "1920 route home",
+      "detail": {
+        "state": {
+          "h1": 1,
+          "main": 1,
+          "overflow": 0
+        },
+        "errors": []
+      }
+    },
+    {
+      "ok": true,
+      "name": "1920 route salryn",
+      "detail": {
+        "state": {
+          "h1": 1,
+          "main": 1,
+          "overflow": 0
+        },
+        "errors": []
+      }
+    },
+    {
+      "ok": true,
+      "name": "1920 route services",
+      "detail": {
+        "state": {
+          "h1": 1,
+          "main": 1,
+          "overflow": 0
+        },
+        "errors": []
+      }
+    },
+    {
+      "ok": true,
+      "name": "1920 route projects",
+      "detail": {
+        "state": {
+          "h1": 1,
+          "main": 1,
+          "overflow": 0
+        },
+        "errors": []
+      }
+    },
+    {
+      "ok": true,
+      "name": "1920 route process",
+      "detail": {
+        "state": {
+          "h1": 1,
+          "main": 1,
+          "overflow": 0
+        },
+        "errors": []
+      }
+    },
+    {
+      "ok": true,
+      "name": "1920 route about",
+      "detail": {
+        "state": {
+          "h1": 1,
+          "main": 1,
+          "overflow": 0
+        },
+        "errors": []
+      }
+    },
+    {
+      "ok": true,
+      "name": "1920 route contact",
+      "detail": {
+        "state": {
+          "h1": 1,
+          "main": 1,
+          "overflow": 0
+        },
+        "errors": []
+      }
+    },
+    {
+      "ok": true,
+      "name": "Services visible no JS"
+    },
+    {
+      "ok": true,
+      "name": "Services visible GPU denied"
+    }
+  ],
+  "sourceSha": "2b7e146d699d15709495b68a9680a2664497939f"
+}

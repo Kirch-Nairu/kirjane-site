@@ -1,65 +1,51 @@
+# R3 implementation evidence
 
-## New verified Codex combined-site baseline
+Product-source freeze: `2b7e146d699d15709495b68a9680a2664497939f`. Branch: `experiment/codex-cinematic-overhaul-r3`. Starting source: `4c1f58f8183501621f90d66256b72e020940d9e3`; integrated R5 ancestry retained. Evidence-only successors may add reports or test coverage without changing site/creative source.
 
-- [Codex integrated baseline run #44915981078](https://github.com/Kirch-Nairu/kirjane-site/actions/runs/44915981078) at `c428cab6054ec2756f3916fdffffbd752a774f80`: **PASS**.
-- Artifact `codex-r3-baseline-captures` ID `14711442379`: **20/20** source-rendered stills (10 numbered + 5 phone + 5 Salryn R5 film), no capture errors.
-- Same run: 27/27 R5 math, 68/68 on-site film checks and 79/79 inherited R2/axe checks.
-- No creative improvements by Codex are represented by this before-capture run. New candidate after-shots must be generated per milestone.
+[Draft PR #15](https://github.com/Kirch-Nairu/kirjane-site/pull/15) remains against `experiment/salryn-cinema-site-integration-r1`. Disposition: DRAFT / OWNER CREATIVE REVIEW / NO MERGE / NO DEPLOY.
 
-# CODEX R3 — Evidence Index
+## Actual visual comparisons
 
-**No Codex R3 redesign is implemented at handoff.** New Codex combined-site baseline successfully captured 20 frames at exact SHA `c428cab6054ec2756f3916fdffffbd752a774f80`. These are before shots, NOT evidence of a finished redesign. Historical pre-R5 capture run #44894320712 had only 15 frames and must not be presented as the current baseline.
+- [Services before/after](evidence/services-comparison.png)
+- [Ten desktop shot pairs](evidence/shots-comparison.png)
+- [Five phone shot pairs](evidence/mobile-comparison.png)
+- [Five integrated R5 film pairs](evidence/film-comparison.png)
+- [Committed owner references inspected](evidence/owner-references.png) � exact original-upload byte identity is unverified.
 
-## Baseline screenshot generation
+Each pair comes from actual HTTP Chromium captures at the same viewport, selector and requested phase. Industry captures explicitly select Food & Beverage and the workflow chapter; outage captures explicitly select the local/outage state. Workspaces uses phase .31, not the old approximate .52 Security beat. Camera retiming intentionally changes the visual frame at a matching document phase.
 
-Build a noindex preview, then run:
+[Before manifest](evidence/baseline-manifest.json) and [candidate manifest](evidence/candidate-manifest.json) record source/harness SHA, actual geometry, control state, errors and PNG hashes. Both sets contain 20/20 captures and zero recorded page exceptions. Raw local PNGs are under `dist/codex-r3-evidence/baseline-controlled/` and `final-controlled-22/`.
 
-```bash
-python3 scripts/build_immersive_r2.py --output dist/codex-r3-baseline-001
-CODEX_R3_DIST=dist/codex-r3-baseline-001 CODEX_R3_SHOTS=dist/codex-r3-evidence/baseline node scripts/codex_r3_capture.mjs
-```
+## Qualification
 
-Open `dist/codex-r3-evidence/baseline/index.html` over a local HTTP server for the generated visual index. The script records 10 owner-shot approximations, 5 phone states and 5 integrated R5 cinema states, with viewport/phase metadata.
+| Gate | Observed result | Evidence |
+|---|---|---|
+| Production browser + source whitespace gate | 61/61 and diff check passed | [Production CI](https://github.com/Kirch-Nairu/kirjane-site/actions/runs/44924109216) |
+| Inherited R2 / axe | 79/79 | [R3 CI](https://github.com/Kirch-Nairu/kirjane-site/actions/runs/44924104883) |
+| Integrated 23-scene film | 68/68 | same exact-source R3 CI |
+| Film math + phase/camera safety | 30/30 (original 27 retained) | same exact-source R3 CI |
+| R3 controls, workflows, note preservation, deep links, inspection, outage/recovery | 233/233 | [Structured local report](evidence/focused-browser.json), same CI |
+| Seven routes at 320/390/768/1024/1440/1920 + no JS / GPU denied | 44/44 CI; 51/51 local including seven new full-page image-decode checks | [Structured route report](evidence/routes-browser.json) |
+| Four film viewports, Home forward/reverse, actual WebGL context loss | 6/6 | [Structured report](evidence/adversarial.json) |
+| Owner / phone / film still capture | 20/20 | [Manifest](evidence/candidate-manifest.json) |
+| React Bits/compiled-island smoke | passed | local `dist/final-smoke-22.log` |
 
-**Important:** these are source-generated Chromium screenshots, not the original user's Windows screenshot files. Compare with the owner descriptions in `SHOT_MAP.md` and capture additional manual browser shots when the scene is not aligned.
+[Machine-readable provenance](evidence/qualification.json). Source CI artifact `codex-r3-candidate-captures`, ID **14715515621**, includes raw captures, full-page routes, videos, axe/test reports and integrated-film evidence. [Download through its run](https://github.com/Kirch-Nairu/kirjane-site/actions/runs/44924104883); expiry reported as 2026-12-05 16:25:54 UTC. The committed sheets/manifests remain durable after artifact expiry. Latest evidence-only HEAD checks appear on the PR separately.
 
-For candidate comparison:
+## Preview and reproduction
 
-```bash
-python3 scripts/build_immersive_r2.py --output dist/codex-r3-candidate-001
-CODEX_R3_DIST=dist/codex-r3-candidate-001 CODEX_R3_SHOTS=dist/codex-r3-evidence/candidate node scripts/codex_r3_capture.mjs
-```
+Local noindex preview: `http://127.0.0.1:42730/`. Portable package: `dist/codex-r3-candidate-022.zip` (12,226,242 bytes); digest in [payload.json](evidence/payload.json). Serve its extracted root over HTTP. [Reproduction commands and exact scene recipes](REPRO_RECIPES.md).
 
-The preview build modifies generated JS/CSS files in the worktree; run `git status` and do not accidentally commit unrelated build outputs without reviewing them.
+## Measured costs and limits
 
-## Historical pre-R5 R2 captures — archival only
+[Raw profile](evidence/frame-profile.json): same Windows host and Chromium; 1440�900; reduced motion plus webgl=off; three warmups and three scored 90-frame samples. Median p50/p95/p99 intervals: baseline **16.7/17.9/18.2 ms**, candidate **16.7/18/18.4 ms**. This is synthetic idle pacing, not a full-motion scroll/GPU benchmark or field INP.
 
-- **GitHub Actions run:** https://github.com/Kirch-Nairu/kirjane-site/actions/runs/44894320712
-- **Historical workflow:** prior experiment's baseline, not the current Codex workflow
-- **Run source commit:** `3cacb893ae3d9c35b416a3291e63bd983dbcf8ce`
-- **Artifact:** `historical pre-R5 R2 baseline artifact` (GitHub artifact ID `14703327568`, 5.15 MB, retention 14 days)
-- **Result:** PASS, 15/15 captures, 0 missing selectors, 0 reported page errors; includes `manifest.json` and `index.html`.
-- **Codex CLI retrieval** (if `gh` is authenticated and installed):
+ResourceTiming resource-transfer-size sums were 3,079,203 and 2,954,766 bytes; navigation bytes are excluded. Reported heap is rounded to 10,000,000 bytes for both and does not prove leak freedom. No hardware performance conclusion is drawn.
 
-  ```bash
-  gh run download 44894320712 --repo Kirch-Nairu/kirjane-site --dir dist/codex-r3-evidence/baseline-ci
-  ```
+Compiled JS deltas are +2,008 bytes for islands and +809 bytes for film; compiled island CSS delta +1,944 bytes. Original native scene/token/CSS source totals 38,121 bytes. Home additionally lazy-loads the existing Three vendor near its service chapter in normal motion; this GPU path is excluded from the reduced-motion profile. No npm dependencies or external raster/video assets were added.
 
-  Otherwise use the GitHub Actions run's **Artifacts** download in the connected account. No Codex chat upload is required.
+[New-source hashes and rights ledger](ASSET_LICENSES.csv); inherited package versions/licenses remain in [the R2 registry](../IMMERSIVE_R2_SOURCE_REGISTRY.csv). Official brand assets are unchanged.
 
-**Visual limitation:** this is Playwright/headless Chromium. Ten numbered owner reference JPGs are embedded under `docs/01-*.jpg` through `docs/10-*.jpg` (byte-for-byte original provenance unverified); scroll phases are *approximations*, and screenshot 06's automatically selected beat may not exactly match the owner's "Different workspaces" moment. Headless R3F deliberately uses a software-GPU fallback. Codex must manually seek the precise beats and capture real hardware-GPU footage before owner approval.
+## Review boundary
 
-## Artifact ledger
-
-| Type | SHA | Scene or route | Viewport | State/phase | Browser/GPU | Link or exact path | Verified? |
-|---|---|---|---|---|---|---|---|
-| Baseline contact sheet | TBD | shots 01–10 | 1440×900 | specified in manifest | TBD | TBD | NO |
-| Baseline mobile | TBD | 03/04/08/09/10 | 390×844 | specified in manifest | TBD | TBD | NO |
-| Candidate before/after | TBD | shots 01–10 | matched | matched | TBD | TBD | NO |
-| Desktop continuous scroll video | TBD | Home/Salryn/Process | matched | forward+reverse | TBD | TBD | NO |
-| Mobile continuous scroll video | TBD | same | matched | touch native | TBD | TBD | NO |
-| Accessibility report | TBD | all routes | matched | multiple states | TBD | TBD | NO |
-| Performance/heap study | TBD | R2 vs R3 | matched | repeated | TBD | TBD | NO |
-| Independent exact-SHA review | TBD | PR | n/a | n/a | n/a | TBD | NO |
-
-Never turn a TBD or NO into a YES without reviewing that exact output.
+All screenshots and critique are author self-review. [Per-shot implementation and creative limits](CORRECTIONS.md). R3F uses its intentional optical alternative in headless/software conditions; those images cannot qualify real GPU materials. Physical Safari/iOS/Android, spoken screen-reader behavior, hardware thermal/heap studies and a complete normal-motion performance comparison are not run. Independent exact-SHA review is REVIEW_BLOCKED pending a separate authenticated reviewer. Owner creative acceptance remains pending.
