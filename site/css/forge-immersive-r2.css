@@ -94,3 +94,30 @@
 /* Contrast repair: bright chapter indices were unreadable on pale Salryn anatomy. */
 #scene-b-anatomy .forge-scene-index { color: #143e29; opacity: 1; }
 #scene-b-anatomy .forge-scene-index i { background: #143e29; }
+
+/* R2 creative critique: remove the original boxed-toggle treatment.
+   The capabilities should read as an engineered list, not eight dashboard cards. */
+#scene-d-activation .capability-grid {gap:0 1.25rem!important}
+#scene-d-activation .cap-toggle {
+  display:block;border:0!important;border-bottom:1px solid rgba(187,222,193,.26)!important;
+  border-radius:0!important;background:transparent!important;box-shadow:none!important;
+  padding:1.2rem .55rem 1.25rem!important;text-align:left;
+}
+#scene-d-activation .cap-toggle[aria-pressed="true"]{
+  background:linear-gradient(90deg,rgba(78,157,111,.12),transparent 82%)!important;
+  border-bottom-color:rgba(211,246,107,.65)!important;
+}
+#scene-d-activation .cap-toggle:hover,
+#scene-d-activation .cap-toggle:focus-visible{
+  background:rgba(86,153,99,.10)!important;
+  box-shadow:inset 3px 0 0 var(--forge-lime)!important;
+}
+#scene-d-activation .cap-status-pill {
+  border:0!important;border-radius:0!important;background:none!important;
+  font-weight:650;letter-spacing:.045em;
+}
+#scene-d-activation .cap-toggle-head strong{line-height:1.15}
+html[data-forge-page="contact"] .forge-page-chapter,
+html[data-forge-page="services"] .forge-page-chapter{
+  color:#194833;text-shadow:0 2px 6px rgba(255,255,255,.4)
+}
