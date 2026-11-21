@@ -18,6 +18,7 @@ const run=async()=>{
     const island=await import('./forge-immersive-r2.js');
     island.mountImmersive({gsap,ScrollTrigger});
   }catch(error){
+    window.__KIRJANE_R2_ERROR__=String(error?.stack||error);
     console.warn('[Forge Immersive R2] React-island bundle unavailable; source HTML and fallback art remain usable.',error);
   }
 };
