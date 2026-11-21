@@ -62,3 +62,16 @@ Do not publish to Hostinger or Vercel; the generated preview is marked noindex a
 Home must make an instantly distinctive first impression without swallowing the readable hero. Salryn must show a living three-dimensional object, not a pale raster diagram in a rectangle. Services should visualize work pathways. Projects should be a curated art exhibition, not random template cards. Process should make its five-stage structure obvious. About should feel typographic and authored. Contact should feel polished and actionable, never a form demo detached from commercial purpose.
 
 R2 is designed to be criticized and revised against captured desktop/mobile screenshots. The mere presence of many animated libraries is not proof of design quality.
+
+## R2 independent qualification milestone — 2026-11-21
+
+The previous authored source revision passed the dedicated immersive Chromium QA (**79/79**) and inherited production browser QA (**61/61**) in separate runs. The browser-only preview build and React startup smoke test also passed. These are author-owned CI checks, not independent design approval. Software Chromium used an explicit static optical fallback; physical GPU R3F rendering remains unverified.
+
+GitHub Actions evidence:
+- Immersive: https://github.com/Kirch-Nairu/kirjane-site/actions/runs/44884732698
+- Production: https://github.com/Kirch-Nairu/kirjane-site/actions/runs/44884732671
+- Noindex artifact: https://github.com/Kirch-Nairu/kirjane-site/actions/runs/44884732669
+
+Corrections recorded: Vite browser production define resolved Node `process.env` reference; upstream React Bits components are genuinely mounted; engine-button accessible names now include visible numbered labels; exact light-panel chapter-label contrast corrected; Contact GlareHover fragment navigation preserved within the current directory route; standalone browser screenshots now skip the Home brand intro before capture.
+
+**Further gates:** independent visual criticism, real hardware GPU footage and WebGL lifecycle test, responsive mobile screenshots on actual iOS/Android devices, total transferred JS and memory budget review, and owner publishing approval. This draft remains unmerged and is not released.
