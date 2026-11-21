@@ -184,18 +184,32 @@ function setupProductDemo(root) {
   const replay = scene.querySelector('[data-demo-replay]');
   const advance = scene.querySelector('[data-demo-advance]');
   let index = 0;
+  let manualOverride = false;
+  let manualScrollOrigin = window.scrollY;
   const paint = (next, manual) => {
     index = Math.max(0, Math.min(steps.length - 1, next));
+    if (manual) {
+      // A click is authoritative until the visitor actively scrolls again.
+      manualOverride = true;
+      manualScrollOrigin = window.scrollY;
+    }
     steps.forEach((step, i) => step.classList.toggle('is-current', i === index));
     if (announce && manual) announce.textContent = 'Step ' + (index + 1) + ' of ' + steps.length + ': ' + steps[index].textContent.trim();
   };
   listen(replay, 'click', () => paint(0, true));
   listen(advance, 'click', () => paint((index + 1) % steps.length, true));
+  listen(window, 'scroll', () => {
+    if (manualOverride && Math.abs(window.scrollY - manualScrollOrigin) > 16) {
+      manualOverride = false;
+    }
+  }, { passive: true });
   paint(0, false);
   if (allowMotion()) {
     ScrollTrigger.create({
       trigger: scene, start: 'top 75%', end: 'bottom 25%',
-      onUpdate: self => paint(Math.min(steps.length - 1, Math.floor(self.progress * steps.length)), false)
+      onUpdate: self => {
+        if (!manualOverride) paint(Math.min(steps.length - 1, Math.floor(self.progress * steps.length)), false);
+      }
     });
   }
   record('10 Scroll narrative + manual replay', 'Lab');
