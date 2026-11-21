@@ -45,6 +45,13 @@ async function decode(page){
 }
 async function go(page,path){
  const response=await page.goto(origin+path,{waitUntil:'domcontentloaded'});
+ if(path==='/'||path.startsWith('/?')) {
+   const skip=page.locator('.ignition-skip');
+   try { await skip.waitFor({state:'visible',timeout:600});
+     await skip.click({timeout:1200}); } catch {}
+   await page.waitForFunction(()=>!document.querySelector('.brand-ignition-stage, .ignition-stage') ||
+     !document.querySelector('.brand-ignition-stage, .ignition-stage')?.isConnected,null,{timeout:4000}).catch(()=>{});
+ }
  await page.waitForTimeout(350);
  return response;
 }
