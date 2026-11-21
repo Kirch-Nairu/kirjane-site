@@ -1,10 +1,11 @@
+import {httpReady} from './http-ready.mjs';
 import { chromium } from 'playwright';
 import { spawn } from 'node:child_process';
 const port=41912, origin='http://127.0.0.1:'+port;
-const server=spawn('python',['-m','http.server',String(port),'--bind','127.0.0.1','--directory','dist/immersive-preview'],{stdio:'ignore'});
+const server=spawn('python',['-m','http.server',String(port),'--bind','127.0.0.1','--directory',process.env.FORGE_DIST||'dist/immersive-preview'],{stdio:'ignore'});
 let browser;
 try{
- for(let i=0;i<50;i++){try{if((await fetch(origin+'/')).ok)break;}catch{} await new Promise(r=>setTimeout(r,150));}
+ for(let i=0;i<50;i++){try{if(await httpReady(origin+'/'))break;}catch{} await new Promise(r=>setTimeout(r,150));}
  browser=await chromium.launch({headless:true});
  const page=await browser.newPage({viewport:{width:1440,height:900}});
  page.on('pageerror',e=>console.log('PAGEERROR',String(e)));

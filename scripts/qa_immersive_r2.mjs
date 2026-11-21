@@ -1,3 +1,4 @@
+import {httpReady} from './http-ready.mjs';
 /* R2 immersive browser evidence. This script never uploads or publishes a site.
  * npm ci at repository root, then python scripts/build_immersive_r2.py.
  */
@@ -22,7 +23,7 @@ mkdirSync(resolve(evidence,'video'),{recursive:true});
 const server=spawn(process.env.PYTHON||'python',['-m','http.server',String(port),'--bind','127.0.0.1','--directory',dist],{stdio:'ignore'});
 let browser;
 async function waitServer(){
- for(let i=0;i<80;i++){try{if((await fetch(origin+'/motion-lab/')).ok)return;}catch{}
+ for(let i=0;i<80;i++){try{if(await httpReady(origin+'/motion-lab/'))return;}catch{}
   await new Promise(r=>setTimeout(r,150));}
  throw Error('Isolated preview server is not responsive');
 }

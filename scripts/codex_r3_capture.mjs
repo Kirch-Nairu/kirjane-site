@@ -1,3 +1,4 @@
+import {httpReady} from './http-ready.mjs';
 /**
  * R3 owner-shot capture harness. Recreates the approximate integrated R2 + Salryn Cinema R5 states
  * from local rendered source. It does NOT claim to reproduce the user's exact
@@ -51,7 +52,7 @@ const server = spawn(python,['-m','http.server',String(port),'--bind','127.0.0.1
 let browser;
 async function waitServer(){
  for(let i=0;i<65;i++){
-   try{if((await fetch(origin+'/')).ok)return;}catch{}
+   try{if(await httpReady(origin+'/'))return;}catch{}
    await new Promise(r=>setTimeout(r,200));
  }
  throw Error('Local preview server did not start: ' + origin);
