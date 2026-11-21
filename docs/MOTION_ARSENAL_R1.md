@@ -80,6 +80,8 @@ Before any promotion: run 280, 320, 390, 768, 1024, 1440, 1920 and landscape; re
 | C-06 Liquid Logo and local asset provenance incomplete | HOLD | No imported vendor code or unknown asset |
 | C-07 Footage and independent reviewer evidence not verified | HOLD | Obtain CI artifact and independent exact-SHA review |
 | C-08 Headless profile is not hardware performance evidence | HOLD | Independent same-host baseline/candidate capture required |
+| C-09 First R1 lab axe audit found five pale folio contrast failures | CORRECTED IN SOURCE; rerun pending | Darkened paper/mist folios and increased inactive workflow label visibility |
+| C-10 First synthetic Home p95 worsened from 33.4ms to 100ms | HOLD | Cold-context repeated ABBA profile added; no promotion without comparable GPU evidence |
 
 ## Change custody
 
