@@ -5,7 +5,7 @@ import {createRequire} from 'node:module';
 const require=createRequire(import.meta.url);
 let chromium,AxeBuilder;
 try{({chromium}=await import('playwright'));({default:AxeBuilder}=await import('@axe-core/playwright'));}catch{const local=createRequire(path.resolve('../../package.json'));({chromium}=local('playwright'));AxeBuilder=local('@axe-core/playwright').default;}
-const root=path.resolve('dist/public');
+const root=path.resolve(process.env.PRODUCTION_DIST||'dist/public');
 const mime={'.html':'text/html','.js':'text/javascript','.css':'text/css','.json':'application/json','.woff2':'font/woff2','.webp':'image/webp','.png':'image/png','.svg':'image/svg+xml','.jpg':'image/jpeg'};
 const server=http.createServer(async(req,res)=>{try{let file=path.resolve(root,'.'+decodeURIComponent(new URL(req.url,'http://localhost').pathname));if(file!==root&&!file.startsWith(root+path.sep))throw Error();if((await fs.stat(file)).isDirectory())file=path.join(file,'index.html');res.setHeader('Content-Type',mime[path.extname(file)]||'application/octet-stream');res.end(await fs.readFile(file));}catch{res.writeHead(404).end();}});
 await new Promise(r=>server.listen(0,'127.0.0.1',r));const origin=`http://127.0.0.1:${server.address().port}`;
@@ -50,7 +50,7 @@ try{
  const ctx=await browser.newContext({reducedMotion:'reduce'});const page=await ctx.newPage();await page.goto(origin+'/salryn/');await page.waitForFunction(()=>window.__SITE_READY__);await page.locator('#cfg-industry').selectOption('Manufacturing');await page.locator('#btn-cfg-contact').click();await page.waitForURL(url=>url.pathname==='/contact/'&&url.search.length>0);await page.waitForFunction(()=>window.__SITE_READY__);check('Contact handoff',(await page.locator('#c-scope').inputValue()).includes('Manufacturing'));
  const query=new URL(page.url()).search;await page.locator('#c-name').fill('Verification visitor');await page.locator('a.skip-link').focus();await page.keyboard.press('Enter');
  check('Contact Skip retains query and form state',new URL(page.url()).search===query&&await page.locator('#c-name').inputValue()==='Verification visitor');await ctx.close();
- const robots=await fs.readFile(root+'/robots.txt','utf8'),sitemap=await fs.readFile(root+'/sitemap.xml','utf8'),preview=await fs.readFile('dist/preview/robots.txt','utf8'),html=await fs.readFile('dist/preview/index.html','utf8');
+ const robots=await fs.readFile(root+'/robots.txt','utf8'),sitemap=await fs.readFile(root+'/sitemap.xml','utf8'),preview=await fs.readFile(path.join(process.env.PREVIEW_DIST||'dist/preview','robots.txt'),'utf8'),html=await fs.readFile(path.join(process.env.PREVIEW_DIST||'dist/preview','index.html'),'utf8');
  check('production sitemap',robots.includes('https://kirjane.tech/sitemap.xml')&&(sitemap.match(/<loc>/g)||[]).length===7);check('preview noindex',preview.includes('Disallow: /')&&html.includes('noindex, nofollow, noarchive')&&JSON.parse(await fs.readFile('vercel.json','utf8')).headers[0].headers.some(h=>h.key==='X-Robots-Tag'&&h.value.includes('noindex')));
 }finally{await browser.close();server.close();await fs.mkdir('dist/evidence',{recursive:true});await fs.writeFile('dist/evidence/browser.json',JSON.stringify({node:process.version,results},null,2));}
 console.log(`${results.filter(r=>r.ok).length}/${results.length} production checks passed`);if(results.some(r=>!r.ok))process.exitCode=1;

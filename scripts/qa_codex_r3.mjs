@@ -18,7 +18,7 @@ const origin='http://127.0.0.1:'+server.address().port;
 const browser=await chromium.launch();const results=[];
 const check=(ok,name,detail)=>{results.push({ok,name,detail});if(!ok)console.error(name,detail);};
 try{
- for(const width of (process.env.R3_SCENES_ONLY?[]:[1440,390,320])){
+ for(const width of ((process.env.R3_SCENES_ONLY||process.env.R3_ROUTES_ONLY)?[]:[1440,390,320])){
   const context=await browser.newContext({viewport:{width,height:width===1440?900:844},recordVideo:{dir:join(out,'video')},reducedMotion:process.env.R3_REDUCE?'reduce':'no-preference'});
   await context.addInitScript(()=>sessionStorage.setItem('kirjane-cinematic-opening-r2','1'));
   const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
@@ -47,7 +47,7 @@ try{
   check(!axe.violations.length,width+' services axe',axe.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>n.target)})));
   await context.close();
  }
- for(const width of [1440,390,320]){
+ for(const width of (process.env.R3_ROUTES_ONLY?[]:[1440,390,320])){
   const ctx=await browser.newContext({viewport:{width,height:900},reducedMotion:'reduce'});
   const page=await ctx.newPage();page.setDefaultTimeout(12000);console.log('Scene checks',width);const errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto(origin+'/process/#stage-3',{waitUntil:'domcontentloaded'});await page.waitForFunction(()=>window.__SITE_READY__);
@@ -88,6 +88,29 @@ try{
   check(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),width+' Salryn overflow');
   check(!errors.length,width+' process and Salryn exceptions',errors);
   await ctx.close();
+ }
+ if(process.env.R3_ROUTES_ONLY){
+  for(const width of [320,390,768,1024,1440,1920]){
+   const ctx=await browser.newContext({viewport:{width,height:900},reducedMotion:'reduce'});
+   const page=await ctx.newPage();
+   for(const route of ['','salryn','services','projects','process','about','contact']){
+    const errors=[];const error=e=>errors.push(e.message);page.on('pageerror',error);
+    const response=await page.goto(origin+'/'+(route?route+'/':''),{waitUntil:'domcontentloaded'});
+    await page.waitForFunction(()=>window.__SITE_READY__);await page.waitForTimeout(150);
+    const state=await page.evaluate(()=>({h1:document.querySelectorAll('h1').length,main:document.querySelectorAll('main').length,overflow:document.documentElement.scrollWidth-innerWidth}));
+    check(response.ok()&&state.h1===1&&state.main===1&&state.overflow<=1&&!errors.length,width+' route '+(route||'home'),{state,errors});
+    if(width===390)await page.screenshot({path:join(out,'route-'+(route||'home')+'.png'),fullPage:true});
+    page.off('pageerror',error);
+   }await ctx.close();
+  }
+  for(const javascript of [false,true]){
+   const ctx=await browser.newContext({viewport:{width:390,height:844},javaScriptEnabled:javascript,reducedMotion:'reduce'});
+   if(javascript)await ctx.addInitScript(()=>{const original=HTMLCanvasElement.prototype.getContext;HTMLCanvasElement.prototype.getContext=function(type,...args){return /webgl/.test(type)?null:original.call(this,type,...args);};});
+   const page=await ctx.newPage();await page.goto(origin+'/',{waitUntil:'domcontentloaded'});
+   await page.locator('#capabilities-exhibition').scrollIntoViewIfNeeded();await page.waitForTimeout(800);
+   check(await page.locator('#capabilities-exhibition h3').first().isVisible(),'Services visible '+(javascript?'GPU denied':'no JS'));
+   await page.screenshot({path:join(out,javascript?'gpu-denied.png':'no-js.png')});await ctx.close();
+  }
  }
 }finally{await browser.close();server.close();await writeFile(join(out,'report.json'),JSON.stringify({dist,results},null,2));}
 console.log(JSON.stringify({passed:results.filter(x=>x.ok).length,total:results.length,out}));

@@ -41,3 +41,9 @@ Never overwrite past gate results or claim a screenshot that was not saved.
 - Global native anchor/focus clearance and responsive text measures applied to all seven pages. Service renderer now loads only near its chapter.
 - All changes are self-authored within existing licensed dependencies. No additional packages, artwork downloads, API access or logo changes.
 - Creative status: FIX_REQUIRED until full matched captures, physical GPU checks and owner review. Frame retiming and contrast are incremental; no claim of remastering the baked CGI geometry.
+
+## M08 regression correction
+- Forced SwiftShader R2 runner on Windows stalled repeatedly. Default Chromium launch (same mode as the working capture harness) completed 79 assertions: 76 passed, 3 axe label-content-name mismatches in newly expanded engine controls. Fixed accessible names to begin with the full visible number/name. All assertions preserved; Windows launch mode now platform-specific.
+- Explicit optical fallback on automated/software hosts avoids unsupported GPU claims. `force3d=1` is diagnostic only; actual hardware qualification remains pending.
+- Service WebGL honors reduced motion and `webgl=off`; original decoded plates remain the deliberate alternative. No animation loops added to fallback.
+- New math checks cover monotonicity, endpoints, reverse re-seeking and malformed input for the causal frame phase map.

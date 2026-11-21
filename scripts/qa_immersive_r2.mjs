@@ -73,7 +73,7 @@ async function audit(page,name){
 }
 try{
  await waitServer();
- browser=await chromium.launch({headless:true,args:['--enable-webgl','--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
+ browser=await chromium.launch({headless:true,args:process.platform==='win32'?[]:['--enable-webgl','--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
  const desktop=await browser.newContext({viewport:{width:1440,height:900},
   deviceScaleFactor:1,recordVideo:{dir:resolve(evidence,'video'),size:{width:960,height:600}}});
  await desktop.addInitScript(()=>sessionStorage.setItem('kirjane-cinematic-opening-r2','1'));

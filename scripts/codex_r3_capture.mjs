@@ -9,7 +9,7 @@ import {httpReady} from './http-ready.mjs';
  * CODEX_R3_DIST=dist/codex-r3-candidate-001 CODEX_R3_SHOTS=dist/codex-r3-evidence/candidate node scripts/codex_r3_capture.mjs
  */
 import { chromium } from 'playwright';
-import { spawn } from 'node:child_process';
+import { spawn, execFileSync } from 'node:child_process';
 import { resolve, join, relative } from 'node:path';
 import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
 
@@ -156,6 +156,8 @@ try{
  const report={
    mission:'KIRJANE-CODEX-CINEMATIC-OVERHAUL-R3',
    generatedAt:new Date().toISOString(),dist,origin,
+   sourceSha:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),
+   workingTree:execFileSync('git',['status','--short'],{encoding:'utf8'}).trim(),
    disclaimer:'Captured on this Playwright environment. Not the original owner image files. Software GPU may differ from Windows hardware. See SHOT_MAP.md.',
    captures,failures,pass:failures.length===0 && captures.length===all.length
  };

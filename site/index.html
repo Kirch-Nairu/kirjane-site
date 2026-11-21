@@ -830,6 +830,9 @@
     const serviceObserver=new IntersectionObserver(entries=>{
       if(!entries.some(e=>e.isIntersecting))return;
       serviceObserver.disconnect();
+      if(reduced || new URLSearchParams(location.search).get('webgl')==='off'){
+        document.getElementById('home-cap-plate-stage').dataset.render='poster';return;
+      }
       import("./js/forge-service-scene.js").then(({createServiceScene}) => {
         if(servicesDisposed)return;
         serviceScene=createServiceScene(document.getElementById("home-cap-plate-stage"),reduced);

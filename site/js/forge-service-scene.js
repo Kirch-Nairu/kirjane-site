@@ -4,6 +4,7 @@ import {CINEMATIC} from './forge-cinematic-tokens.js';
 
 // Original four-pose engineering sculpture. One renderer; transitions own time.
 export function createServiceScene(host, reduced) {
+  if(reduced || new URLSearchParams(location.search).get('webgl')==='off'){host.dataset.render='poster';return {select(){},dispose(){}};}
   let renderer;
   try { renderer = new THREE.WebGLRenderer({alpha:true, antialias:false}); }
   catch { host.dataset.render='poster'; return {select(){},dispose(){}}; }

@@ -277,7 +277,7 @@ function KernelIsland({ host, gsap, isLab }) {
           {ENGINE_NAMES.map((name,i)=>(
             <button key={name} type="button" className={selected===i?'is-current':''}
               onClick={()=>setSelected(i)} aria-pressed={selected===i}
-              aria-label={String(i+1).padStart(2,'0')+' Inspect '+name+' engine'} title={name}>
+              aria-label={String(i+1).padStart(2,'0')+' '+name+' engine: inspect'} title={name}>
               <span>{String(i+1).padStart(2,'0')} {name}</span>
             </button>
           ))}
