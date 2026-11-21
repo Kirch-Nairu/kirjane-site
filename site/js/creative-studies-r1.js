@@ -48,11 +48,17 @@ function setupLayeredParallax(root) {
 function setupPinnedHeading(root) {
   const scene = root.querySelector('[data-study="02"]');
   const heading = scene?.querySelector('.study-pin-heading');
-  if (!scene || !heading || !allowMotion() || !fine.matches || !wide.matches) return;
-  ScrollTrigger.create({
-    trigger: scene, start: 'top top+=100', end: 'bottom bottom-=100',
-    pin: heading, pinSpacing: false, anticipatePin: 1, invalidateOnRefresh: true
+  if (!scene || !heading || !allowMotion()) return;
+  // Revert pin immediately when crossing tablet/touch/reduced-motion boundaries.
+  const media = gsap.matchMedia();
+  media.add('(min-width: 960px) and (pointer: fine) and (prefers-reduced-motion: no-preference)', () => {
+    if (motionReduced()) return;
+    ScrollTrigger.create({
+      trigger: scene, start: 'top top+=100', end: 'bottom bottom-=100',
+      pin: heading, pinSpacing: false, anticipatePin: 1, invalidateOnRefresh: true
+    });
   });
+  register(() => media.revert());
   record('02 Pinned heading', 'Lab, desktop only');
 }
 function setupCutaway(root) {
@@ -270,6 +276,11 @@ export function startCreativeStudies() {
   }, document);
   window.__KIRJANE_MOTION_R1__ = { version: 'R1', scenes: sceneRecords, stop };
   listen(window, 'pagehide', stop);
+  listen(reduce, 'change', () => {
+    // Restore original styles and rebuild only the opt-in study when OS preference changes.
+    stop();
+    startCreativeStudies();
+  });
   // Do not stop the global GSAP ticker: the accepted site also uses it.
   // Browser visibility suspension is handled natively by the animation platform.
 }
