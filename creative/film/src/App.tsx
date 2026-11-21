@@ -247,7 +247,7 @@ export default function App() {
   return <div className="experience">
     {reduced ? <section id="cinema" className="cinema-reduced" aria-labelledby="reduced-film-title">
       <div className="cinema-reduced-inner"><span className="cinema-chapter">SALRYN / REDUCED MOTION EXPERIENCE</span>
-        <h1 id="reduced-film-title">From the first shift to the final report.</h1>
+        <h2 id="reduced-film-title">From the first shift to the final report.</h2>
         <p>See the complete store-day sequence as a readable documentary instead of a moving 23-shot screen film.</p>
         <a href="./salryn/#scene-a-kernel">Explore the kernel and architecture ↓</a>
         <a href="./contact/?topic=salryn">Skip to demo inquiry ↗</a>
@@ -308,7 +308,7 @@ export default function App() {
         </div>
         <div className="cinema-narrative" style={{ opacity:textAppearance, transform:"translate3d(0," + (7*(1-textAppearance)) + "px,0)" }}>
           <span className="cinema-chapter"><span className="cinema-chapter-rule" />{shot.step}</span>
-          <h1>{shot.title}</h1>
+          <h2>{shot.title}</h2>
           <p>{shot.body}</p>
           {shot.id === "end" ? <a className="cinema-conversion" href="./contact/?topic=salryn">BOOK A DEMO <span aria-hidden="true">↗</span></a> : null}
           <span className="cinema-proof">Source-inspired visual walkthrough · Fictional records · No live transactions</span>
