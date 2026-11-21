@@ -24,7 +24,7 @@ try{
     await page.locator('a.skip-link').focus();await page.keyboard.press('Enter');
     check(`${route||'home'} real Skip link`,new URL(page.url()).pathname==='/'+(route?route+'/':'')&&new URL(page.url()).hash==='#main');
     check(`${route||'home'} one Twitter card`,await page.locator('meta[name="twitter:card"]').count()===1&&await page.locator('meta[name="twitter:card"]').getAttribute('content')==='summary_large_image');
-    const axe=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze();check(`${route||'home'} axe`,axe.violations.length===0,axe.violations.map(v=>({id:v.id,impact:v.impact})));}page.off('pageerror',onError);
+    const axe=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze();check(`${route||'home'} axe`,axe.violations.length===0,axe.violations.map(v=>({id:v.id,impact:v.impact,nodes:v.nodes.slice(0,8).map(n=>({target:n.target,summary:n.failureSummary}))})));}page.off('pageerror',onError);
   }await ctx.close();
  }
  for(const phase of ['complete','outro','assembly']){
