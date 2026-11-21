@@ -233,7 +233,7 @@ function KernelIsland({ host, gsap, isLab }) {
                 setReady(true);
                 setContextLost(false);
               }
-            }}/>;
+            }}/>
         ) : <div className="forge-kernel-static" aria-hidden="true">SALRYN <small>ONE FOUNDATION</small></div>}
         <span className="forge-kernel-glow" aria-hidden="true"></span>
       </div>
