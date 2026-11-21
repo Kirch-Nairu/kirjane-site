@@ -79,6 +79,17 @@ async function profile(page, route, variant) {
     canvases:p.webglContexts,scrollHeight:p.scrollHeight
   });
 }
+async function decodeVisualEvidence(page) {
+  // Full-page screenshots alone do not warm offscreen native lazy images.
+  // Decode every artwork first so a black placeholder cannot be mistaken for design.
+  return await page.evaluate(async () => {
+    const images = Array.from(document.querySelectorAll('img'));
+    images.forEach(image => { image.loading = 'eager'; });
+    await Promise.all(images.map(image => image.decode().catch(() => null)));
+    return images.filter(image => !image.complete || image.naturalWidth === 0)
+      .map(image => image.getAttribute('src'));
+  });
+}
 async function openPage(context,url) {
   const page=await context.newPage();
   const exceptions=[];
@@ -107,13 +118,18 @@ try {
   pass((await lab.locator('[data-focus-status]').innerText()).includes('2 / 3'),'Focus next button works');
   await lab.locator('[data-demo-replay]').click();
   await lab.locator('[data-demo-advance]').click();
-  pass((await lab.locator('[data-demo-status]').innerText()).includes('Step 2'),'Workflow manual advance works');
+  await lab.waitForTimeout(300);
+  pass((await lab.locator('[data-demo-status]').innerText()).includes('Step 2'),'Workflow manual advance holds against scroll director');
+  const desktopBroken = await decodeVisualEvidence(lab);
+  pass(desktopBroken.length === 0,'All lab artwork decoded for desktop evidence',desktopBroken.join(' | '));
   await lab.screenshot({path:resolve(out,'motion-desktop.png'),fullPage:true});
   const audit=await new AxeBuilder({page:lab}).analyze();
   writeFileSync(resolve(out,'accessibility.json'),JSON.stringify({violations:audit.violations.map(({id,impact,nodes,description})=>({id,impact,description,nodes:nodes.map(n=>({target:n.target,summary:n.failureSummary,html:n.html}))}))},null,2));
   if (audit.violations.length) console.log('Axe findings:', JSON.stringify(audit.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>n.target)}))));
   pass(!audit.violations.some(v=>['critical','serious'].includes(v.impact)),'No serious or critical axe violations',audit.violations.map(x=>x.id).join(','));
   pass(labErrors.length===0,'Lab has no uncaught runtime exceptions',labErrors.join(' | '));
+  await lab.evaluate(() => window.__KIRJANE_MOTION_R1__?.stop?.());
+  pass(!await lab.evaluate(() => !!window.__KIRJANE_MOTION_R1__),'Study lifecycle disposes on demand');
   await lab.close();
 
   const mobile=await browser.newContext({
@@ -122,6 +138,8 @@ try {
   });
   const mob=await openPage(mobile,'/motion-lab/');
   pass(await mob.page.locator('[data-study]').count()===10,'All studies present on mobile');
+  const mobileBroken = await decodeVisualEvidence(mob.page);
+  pass(mobileBroken.length === 0,'All lab artwork decoded for mobile evidence',mobileBroken.join(' | '));
   await mob.page.screenshot({path:resolve(out,'motion-mobile.png'),fullPage:true});
   pass(await mob.page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'No mobile horizontal page overflow');
   pass(mob.exceptions.length===0,'Mobile lab has no uncaught runtime errors',mob.exceptions.join(' | '));
