@@ -1,10 +1,10 @@
 # CODEX R3 — integrated seven-page website + Salryn Cinema R5 contract
 
-**Owner:** Kirch / Kirjane Labs  
-**Mission:** KIRJANE-CODEX-CINEMATIC-OVERHAUL-R3  
-**Working branch:** experiment/codex-cinematic-overhaul-r3  
-**Frozen qualified parent:** d9bdf2324b861e3f4f6f71a0438afa65b2eb1c07  
-**Review base:** experiment/salryn-cinema-site-integration-r1 (Draft PR #13)  
+**Owner:** Kirch / Kirjane Labs
+**Mission:** KIRJANE-CODEX-CINEMATIC-OVERHAUL-R3
+**Working branch:** experiment/codex-cinematic-overhaul-r3
+**Frozen qualified parent:** d9bdf2324b861e3f4f6f71a0438afa65b2eb1c07
+**Review base:** experiment/salryn-cinema-site-integration-r1 (Draft PR #13)
 **Disposition:** EXPERIMENT / NO MERGE / NO DEPLOY / NO PROD SECRETS.
 
 ## Actual baseline, not an assumed plan

@@ -2,13 +2,13 @@
 
 > **R3 self-contained agent entrypoint:** Read `AGENTS.md` and `docs/codex-r3/START_HERE.md` first, followed by `docs/codex-r3/SHOT_MAP.md`, `MOTION_ARCHITECTURE.md` and `QA_EVIDENCE.md`. Ten labeled reference JPGs are committed in `docs/01-*.jpg` through `docs/10-*.jpg` (original byte identity unverified). Generate equivalent baseline screenshots using `scripts/codex_r3_capture.mjs` and inspect them, rather than pretending the upload is available. This mission starts on the combined seven-page R2 and integrated Salryn Cinema R5 site; this mission document is the creative scope; the R3 playbook governs actual implementation and proof. The source branch is `experiment/codex-cinematic-overhaul-r3` only.
 
-**Mission:** `KIRJANE-CODEX-CINEMATIC-OVERHAUL-R3`  
-**Repository:** `Kirch-Nairu/kirjane-site`  
-**Authorized working branch:** `experiment/codex-cinematic-overhaul-r3`  
-**Frozen integrated source:** `d9bdf2324b861e3f4f6f71a0438afa65b2eb1c07` (the qualified Creative Forge R2 + Salryn Cinema R5 Draft PR #13 candidate)  
-**Execution location:** Codex agent workspace  
-**Role:** autonomous creative frontend engineer, motion designer, 3D art director, QA reviewer  
-**Owner creative authority:** Kirch  
+**Mission:** `KIRJANE-CODEX-CINEMATIC-OVERHAUL-R3`
+**Repository:** `Kirch-Nairu/kirjane-site`
+**Authorized working branch:** `experiment/codex-cinematic-overhaul-r3`
+**Frozen integrated source:** `d9bdf2324b861e3f4f6f71a0438afa65b2eb1c07` (the qualified Creative Forge R2 + Salryn Cinema R5 Draft PR #13 candidate)
+**Execution location:** Codex agent workspace
+**Role:** autonomous creative frontend engineer, motion designer, 3D art director, QA reviewer
+**Owner creative authority:** Kirch
 **Status:** EXPERIMENT ONLY. Do not merge, deploy, publish, alter DNS, change production branches, or edit PR #11.
 
 ## North star

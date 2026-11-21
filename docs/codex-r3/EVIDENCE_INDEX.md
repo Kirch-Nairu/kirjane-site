@@ -40,11 +40,11 @@ The preview build modifies generated JS/CSS files in the worktree; run `git stat
 - **Artifact:** `historical pre-R5 R2 baseline artifact` (GitHub artifact ID `14703327568`, 5.15 MB, retention 14 days)
 - **Result:** PASS, 15/15 captures, 0 missing selectors, 0 reported page errors; includes `manifest.json` and `index.html`.
 - **Codex CLI retrieval** (if `gh` is authenticated and installed):
-  
+
   ```bash
   gh run download 44894320712 --repo Kirch-Nairu/kirjane-site --dir dist/codex-r3-evidence/baseline-ci
   ```
-  
+
   Otherwise use the GitHub Actions run's **Artifacts** download in the connected account. No Codex chat upload is required.
 
 **Visual limitation:** this is Playwright/headless Chromium. Ten numbered owner reference JPGs are embedded under `docs/01-*.jpg` through `docs/10-*.jpg` (byte-for-byte original provenance unverified); scroll phases are *approximations*, and screenshot 06's automatically selected beat may not exactly match the owner's "Different workspaces" moment. Headless R3F deliberately uses a software-GPU fallback. Codex must manually seek the precise beats and capture real hardware-GPU footage before owner approval.

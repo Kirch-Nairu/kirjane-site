@@ -1,9 +1,9 @@
 # CODEX R3 — Environment and Direct Activation
 
-**Repository:** Kirch-Nairu/kirjane-site  
-**Branch:** `experiment/codex-cinematic-overhaul-r3`  
-**Parent:** `experiment/salryn-cinema-site-integration-r1` @ `d9bdf2324b861e3f4f6f71a0438afa65b2eb1c07`  
-**Mission:** `KIRJANE-CODEX-CINEMATIC-OVERHAUL-R3`  
+**Repository:** Kirch-Nairu/kirjane-site
+**Branch:** `experiment/codex-cinematic-overhaul-r3`
+**Parent:** `experiment/salryn-cinema-site-integration-r1` @ `d9bdf2324b861e3f4f6f71a0438afa65b2eb1c07`
+**Mission:** `KIRJANE-CODEX-CINEMATIC-OVERHAUL-R3`
 **Owner:** Kirch. No merge, deployment, DNS change, or secrets.
 
 ## Codex workspace setup
