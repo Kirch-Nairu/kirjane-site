@@ -206,6 +206,10 @@ function KernelIsland({ host, gsap, isLab }) {
   const lowPower = (navigator.deviceMemory && navigator.deviceMemory <= 2) ||
     matchMedia('(prefers-reduced-motion: reduce)').matches;
   const canRender = !contextLost && !lowPower;
+  useEffect(() => {
+    if (!canRender) host.dataset.forgeStatic = 'true';
+    else delete host.dataset.forgeStatic;
+  }, [host, canRender]);
   return (
     <div className="forge-kernel-shell">
       <div className="forge-kernel-top"><span>CORE / 001</span><span>INTERACTIVE ARCHITECTURE</span><span>{count.toString().padStart(2,'0')} / 08</span></div>
