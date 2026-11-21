@@ -1,27 +1,21 @@
-# CREATIVE FORGE R4 — ACCEPTANCE / MAINTAINER GATES
+# KIRJANE CREATIVE FORGE R4 — CONTINUITY REMASTER ACCEPTANCE
 
-Gate G0 — PRECISE INVENTORY: Authoritative live HTTP network requests at 1440/390/320, source SHA, asset paths, use contexts, ownership, rights. Never equate repository file count with active usage.
-Gate G1 — ART DIRECTION: Each asset has a one-sentence functional proposition, a silhouette thumbnail, two competing design studies, color rationale and reason for selection. Reject green rings/cubes unless the engineering problem actually contains them.
-Gate G2 — CRAFT: physically credible scale, edge treatment, light hierarchy, materials, variation. A viewport full of primitive shapes is not accepted because it has many mesh objects. Demonstrate focal point and site-fit on both white and dark backgrounds.
-Gate G3 — INTEGRATION: replace exactly the intended existing asset at existing selector, preserve semantics/toggles/state, native scroll and cleanup. Confirm no extra WebGL contexts and no new uncontrolled RAF.
-Gate G4 — VISUAL: matched same-SHA browser before/after 1440x900 + 390x844 + 320x700; asset still on its own is insufficient. 15–30sec actual-motion recording, reverse scrub, GPU-off/reduced-motion stills. Text contrast and subject scale verified from screenshots.
-Gate G5 — ENGINEERING: source .blend; export if appropriate .glb; optimized .webp for desktop/mobile; manifest of dimensions and byte counts, triangle count, texture count, compression method, route transfer, LCP/CLS/INP measurements where available. No invented physical hardware data.
-Gate G6 — REGRESSION: R3 established 61 production, 79 R2, 68 film, 30 math, 233 focused. Maintain or explain an exact issue; independently verify film and finance simulation semantics unchanged.
-Gate G7 — RIGHTS: official logo/chameleon frozen, all third-party assets/patches pinned and licensed, no source-only unverified restrictions; save source artifacts locally and include references/hashes in ledger.
-Gate G8 — REVIEW: ChatGPT as author/maintainer cannot provide an independent review of its own work. Self-critique is NOT independent source approval. A separate authenticated reviewer/session (e.g. Nox) may review the exact SHA, and ChatGPT records visual FIX_REQUIRED / REVIEW_READY outcomes. Only Kirch accepts visual identity/publication. NO MERGE/DEPLOY.
+**G0 ACTUAL USAGE:** record which current images/animations are truly loaded in the seven routes via live HTTP and scroll states; 342 raster/SVG repo paths are only an inventory, not 342 replacement requirements.
+**G1 EXISTING ART FIDELITY:** compare same exact existing subject, motif and composition before and after. New independent concepts are FAIL by scope, even if attractive.
+**G2 VISUAL CRAFT:** source-aware material detail, light hierarchy, authentic edge softness, clean anti-alias, correct depth, legibility and polish. All assessments are page-size visual judgments. More mesh objects ≠ quality.
+**G3 RHYTHM FIDELITY:** key scene/story beats, frame order, scroll progress, Services modes, Process stages, 8-engine semantics and user controls unchanged. Micro-easing and light movement can improve only if progressive meaning preserved.
+**G4 COLOR:** green identity retained but not saturated everywhere; neutral ceramic/graphite with purposeful cobalt/cyan/amber/copper/violet material accents; original 2D chameleon/official logo/wordmark unchanged.
+**G5 FORMAT:** versioned .blend when a source-equivalent model is authored; new optimized WebP/PNG as appropriate; GLB only if actual runtime needs it. 252 current numbered frames + 4 posters identified accurately and player compatibility proven if changed.
+**G6 IN-PAGE PROOF:** before/after at same viewport and scroll phase, 1440×900, 390×844 and 320×700; normal/reduced/GPU-off fallbacks, forward/reverse 15–30s motion proof. No stand-alone beauty shots as sole acceptance.
+**G7 ENGINEERING:** R3 61 production, 79 R2 axe, 68 film, 30 math, 233 focused baseline gates, route/fallback QA; cite what was run and any blockers. Profile real GPU separately from headless software.
+**G8 RIGHTS:** original asset path, author/source and license registry, faithful reconstruction status and exact version. No unlicensed outside assets.
+**G9 REVIEW:** Codex source author self-review is not independent review. ChatGPT may review visually but cannot claim separate independent source review. Owner Kirch controls creative acceptance and merge/deploy.
 
-## Art rubric (100 points, minimum 85 to propose owner acceptance; no guarantee)
-- 25 composition & focal hierarchy (works at 320 and 1440)
-- 20 semantic engineering story (visible input -> consequence)
-- 20 material finish and intentional detail
-- 15 animation rhythm, deterministic reverse and state fidelity
-- 10 color separation and brand fit
-- 10 performance + accessible fallbacks
-- A single critical failure in official brand preservation, contrast, semantics or film controls overrides the numeric score.
+### Remaster quality threshold
+PASS means the visitor still sees the familiar Kirjane scene and animation, but cleaner, richer, less monotone green and technically stable. FIX_REQUIRED means either the existing scene was distorted, current rhythm broke, visual improvement is not obvious, the artwork looks amateurish, or the user experience regressed.
 
-## Draft exploratory budgets — measure rather than assume
-- First hero GLB candidate target <= 2MB uncompressed file size; exceed only with benchmarked reason and meaningful visual gain.
-- First hero poster target <= 150KB WebP per viewport unless strong perceptual evidence demands otherwise.
-- No routine mobile/WebGL load when offscreen or reduced-motion; avoid redundant GPU contexts.
-- CPU/Iris Xe browser measurements from a real machine are required for claims; synthetic headless tests do not count as physical QA.
-- Preserve accepted business claims, true fictional data in the 23-scene film, and sound opt-in.
+### Production budget (initial goals, not achieved measurements)
+Keep existing R3 network/CPU budgets wherever possible; measure per scene. Prefer optimized frames/posters when cheaper than added GPU contexts. Use current Blender 5.3 / Intel Iris Xe sensibly. Do not promise new GLB rigs for each section or force 60fps hardware claims.
+
+### Gates
+First produce ONE faithful Services Automation remaster and same-page comparison. Do not open multiple unrelated concept explorations. Only scale to other current assets once art-direction review of that slice is acceptable.
