@@ -18,3 +18,7 @@ All observations are owner-supplied or baseline-source-derived. **No corrections
 | R3-012 | Global | New external assets/licenses are not yet reviewed | Gate | Exact source registry and license audit | — | — | OPEN |
 
 After each bounded correction, update the cause, implementation SHA, actual screenshots/video and a test result. Allowed dispositions: OPEN, FIX_REQUIRED, PASS, QA_BLOCKED, PERFORMANCE_HOLD, LICENSE_HOLD, REVIEW_BLOCKED.
+
+### Local source checkpoint M01/M02
+R3-001: substantive WebGL replacement; interaction gate 33/33, later combined 66/66. Source self-review only; creative disposition FIX_REQUIRED pending full comparative review.
+R3-002: primary SVG replaced by parametric terrain on both routes; five Home states and keyboard verified. Dedicated-route proof pending. FIX_REQUIRED.

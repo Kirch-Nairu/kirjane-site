@@ -1,3 +1,4 @@
+import {createProcessField} from './forge-process-field.js';
 import { initTopographyField } from './topography-canvas.js';
 import { animateSvgConduits, initSiteShell, isReducedMotion } from './motion-system.js';
 
@@ -79,6 +80,8 @@ function initProcess() {
   const caption = document.getElementById('proc-active-label');
   const chapters = [...document.querySelectorAll('.asc-process-chapters [data-step]')];
   const links = [...document.querySelectorAll('.asc-process-index [data-jump]')];
+  const processField=createProcessField(mount,isReducedMotion());
+  window.addEventListener('pagehide',e=>{if(!e.persisted)processField.dispose();});
   let active = -1;
   let pendingFrame = 0;
   let nuclei = [];
@@ -96,6 +99,7 @@ function initProcess() {
   function setChapter(index) {
     if (index === active) return;
     active = index;
+    processField.select(index);
     links.forEach((link, i) => {
       if (i === active) link.setAttribute('aria-current', 'step');
       else link.removeAttribute('aria-current');
@@ -137,14 +141,7 @@ function initProcess() {
   setChapter(0);
   applyLocation();
 
-  if (!isReducedMotion()) {
-    mountIllustration(mount, './assets/organism-topology.svg').then((svg) => {
-      if (!svg) return;
-      nuclei = [...svg.querySelectorAll('[id^="d02-nucleus-"]')];
-      bridges = [...svg.querySelectorAll('[id^="d02-synapse-bridge-"]')];
-      paintIllustration();
-    });
-  }
+
 }
 
 if (currentPage === 'services') initServices();

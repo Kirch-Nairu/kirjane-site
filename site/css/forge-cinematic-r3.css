@@ -1,0 +1,54 @@
+/* R3 authored chapter composition. Loaded after inherited chapter styling. */
+body[data-editorial] #capabilities-exhibition{background:#081b15;color:#f3f5ed;height:190vh}
+body[data-editorial] #capabilities-exhibition .exhibition-sticky{padding:6rem max(5vw,20px) 2rem;gap:1.4rem}
+body[data-editorial] #capabilities-exhibition .exhibition-header{padding:0;max-width:1400px;align-items:end}
+body[data-editorial] #capabilities-exhibition h2{color:#f3f5ed;font-size:clamp(2.5rem,5vw,5rem)}
+body[data-editorial] #capabilities-exhibition .chapter-pill{color:#e0eadc;border-color:#638275;min-height:44px}
+body[data-editorial] #capabilities-exhibition .chapter-pill[aria-current=step]{background:#d3f66b;color:#081b15}
+body[data-editorial] #capabilities-exhibition .cap-theatre-body{width:100%;max-width:1400px;margin:auto;display:grid;grid-template-columns:1.25fr 1fr;gap:4vw;align-items:center;min-height:0}
+body[data-editorial] #home-cap-plate-stage{position:relative;height:min(46vh,440px);min-height:280px;background:#081b15;overflow:hidden;border-bottom:1px solid #416251}
+#home-cap-plate-stage canvas{position:absolute;inset:0;width:100%;height:100%}
+#home-cap-plate-stage[data-render=webgl] img{visibility:hidden}
+body[data-editorial] #capabilities-exhibition .cap-theatre-viewport{min-width:0;overflow:hidden;background:none}
+body[data-editorial] #capabilities-exhibition .exhibition-card{background:none!important;box-shadow:none!important;color:#f3f5ed!important;min-height:280px;padding:1rem 0}
+body[data-editorial] #capabilities-exhibition .exhibition-card h3{color:#f3f5ed;font-size:clamp(2rem,3.2vw,3.4rem)}
+body[data-editorial] #capabilities-exhibition .exhibition-card p{color:#c7d6ca;font-size:1.1rem}
+body[data-editorial] #capabilities-exhibition .compare-cell{color:#c7d6ca;background:none;border-top:1px solid #416251;padding:1rem 0}
+body[data-editorial] #capabilities-exhibition .compare-cell strong{color:#d3f66b}
+@media(max-width:900px){
+ body[data-editorial] #capabilities-exhibition{height:auto}
+ body[data-editorial] #capabilities-exhibition .exhibition-sticky{height:auto;position:relative;overflow:visible;padding:3rem 20px}
+ body[data-editorial] #capabilities-exhibition .cap-theatre-body{grid-template-columns:minmax(0,1fr);gap:1.2rem}
+ body[data-editorial] #capabilities-exhibition .exhibition-header{gap:1.2rem}
+ body[data-editorial] #home-cap-plate-stage{height:260px;min-height:0}
+ html[data-r3-services] #home-cap-rail{display:block;transform:none!important}
+ html[data-r3-services] #home-cap-rail [data-cap-card]{display:none}
+ html[data-r3-services] #home-cap-rail [data-cap-card].is-highlighted{display:flex;min-height:0}
+ body[data-editorial] #capabilities-exhibition .comparator-bar{display:grid;grid-template-columns:1fr;gap:0}
+ body[data-editorial] #capabilities-exhibition .chapter-rail{display:grid;grid-template-columns:1fr 1fr;width:100%}
+}
+@media(prefers-reduced-motion:reduce){body[data-editorial] #capabilities-exhibition{height:auto}body[data-editorial] #capabilities-exhibition .exhibition-sticky{height:auto;position:relative}}
+
+body[data-editorial] #capabilities-exhibition{background:#081b15!important;color:#f3f5ed!important}
+body[data-editorial] #capabilities-exhibition :is(h2,h3){color:#f3f5ed!important}
+body[data-editorial] #capabilities-exhibition .exhibition-card a{color:#d3f66b!important}
+body[data-editorial] #capabilities-exhibition .cap-theatre-body>div{min-width:0}
+
+body[data-editorial] #capabilities-exhibition .forge-scene-index{color:#c6d8c0;opacity:1}
+
+body[data-editorial] #home-topo-svg,body[data-editorial] #proc-topo-mount{height:clamp(260px,30vw,450px);aspect-ratio:auto;background:#0b251c;overflow:hidden}
+#home-topo-svg canvas,#proc-topo-mount canvas{display:block;width:100%;height:100%}
+body[data-editorial] #home-process-section .topology-grid{grid-template-columns:1.4fr 1fr;gap:3rem}
+@media(max-width:900px){body[data-editorial] #home-process-section .topology-grid{grid-template-columns:minmax(0,1fr);gap:1.5rem}}
+
+body[data-editorial] #home-cap-plate-stage{width:100%;aspect-ratio:auto}
+body[data-editorial] #capabilities-exhibition .cap-theatre-body{padding:0}
+body[data-editorial] #capabilities-exhibition .forge-scene-index,body[data-editorial] #capabilities-exhibition .forge-scene-index b{color:#c6d8c0!important;opacity:1!important}
+
+@media(max-width:900px){
+ body[data-editorial] #capabilities-exhibition .cap-theatre-body>div:first-child{display:contents}
+ body[data-editorial] #home-cap-plate-stage{order:0}
+ body[data-editorial] #capabilities-exhibition .cap-theatre-viewport{order:1}
+ body[data-editorial] #capabilities-exhibition .comparator-bar{order:2}
+}
+

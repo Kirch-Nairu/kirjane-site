@@ -27,6 +27,7 @@
   <link rel="stylesheet" href="./css/topography.css" />
   <link rel="stylesheet" href="./css/editorial.css" />
   <link rel="stylesheet" href="./css/brand-opening.css" />
+  <link rel="stylesheet" href="./css/forge-cinematic-r3.css" />
   <link rel="modulepreload" href="./js/editorial-opening.js" />
   <noscript>
     <style>
@@ -814,13 +815,30 @@
     const capBeforeEl = document.getElementById('home-cap-before');
     const capAfterEl = document.getElementById('home-cap-after');
 
+    let manualCapability = false;
+    let serviceScene = null;
+    let serviceMode = -1;
+    document.documentElement.dataset.r3Services = "true";
+    const releaseCapability = () => { manualCapability = false; };
+    window.addEventListener("wheel", releaseCapability, {passive:true});
+    window.addEventListener("touchmove", releaseCapability, {passive:true});
+    window.addEventListener("keydown", e => {
+      if (!e.target.closest("button,input,select,textarea") && ["PageDown","PageUp","ArrowDown","ArrowUp"," "].includes(e.key)) releaseCapability();
+    });
+    import("./js/forge-service-scene.js").then(({createServiceScene}) => {
+      serviceScene = createServiceScene(document.getElementById("home-cap-plate-stage"), reduced);
+      serviceScene.select(Math.max(0,serviceMode));
+    }).catch(() => {});
+    window.addEventListener("pagehide", e => {if(!e.persisted)serviceScene?.dispose();});
     function syncCapabilityVisual(idx) {
       const clamped = Math.max(0, Math.min(3, idx));
+      if(clamped !== serviceMode){ serviceMode=clamped;serviceScene?.select(clamped); }
+      document.getElementById("capabilities-exhibition").dataset.mode=String(clamped);
       plateStageImgs.forEach((im) => im.classList.toggle('is-visible', parseInt(im.dataset.plateIdx, 10) === clamped));
       const hasTrack = !reduced && window.innerWidth > 900;
       capCards.forEach((c, i) => {
         c.classList.toggle('is-highlighted', i === clamped);
-        c.inert = hasTrack && i !== clamped;
+        c.inert = i !== clamped;
       });
       capJumpBtns.forEach((b, i) => b.setAttribute('aria-current', i === clamped ? 'step' : 'false'));
       capRail.style.transform = hasTrack ? `translate3d(${-clamped * 100}%, 0, 0)` : 'none';
@@ -838,7 +856,7 @@
         { id: '3', start: 0.78, end: 1.0 }
       ],
       onUpdate: ({ activeChapter, inView, isReduced }) => {
-        if (isReduced || window.innerWidth <= 900 || !inView) return;
+        if (isReduced || window.innerWidth <= 900 || !inView || manualCapability) return;
         const activeIdx = parseInt(activeChapter || '0', 10);
         syncCapabilityVisual(activeIdx);
       },
@@ -849,19 +867,8 @@
     capJumpBtns.forEach((btn) => {
       btn.addEventListener('click', (event) => {
         const idx = parseInt(btn.dataset.capIdx, 10);
+        manualCapability = true;
         syncCapabilityVisual(idx);
-        if (!reduced && window.innerWidth > 900) {
-          director.jumpToSceneProgress('home-capabilities', parseFloat(btn.dataset.capJump));
-        } else {
-          if (event.detail === 0) {
-            const heading = capCards[idx].querySelector('h3');
-            heading.tabIndex = -1;
-            heading.scrollIntoView({behavior:'instant',block:'center'});
-            heading.focus({preventScroll:true});
-          } else {
-            capCards[idx].scrollIntoView({behavior:reduced ? 'auto' : 'smooth',block:'center'});
-          }
-        }
       });
     });
 
@@ -932,11 +939,15 @@
       {name:'Handover', title:'Put your team in control.', desc:'We prepare your team to run and maintain the system, with clear documentation, recovery procedures, and a plan for its next stage.', deliverable:'An operating guide, source handover, and support plan.'}
     ];
     const topoMount = document.getElementById('home-topo-svg');
+    let processField;
+    import('./js/forge-process-field.js').then(({createProcessField}) => {processField=createProcessField(topoMount,reduced);processField.select(activeProcIdx);});
+    window.addEventListener('pagehide',e=>{if(!e.persisted)processField?.dispose();});
     const stageButtons = [...document.querySelectorAll('button[data-stage]')];
     const stagePanel = document.getElementById('home-stage-panel');
     let activeProcIdx = 0;
     function syncStage(idx) {
       activeProcIdx = idx;
+      processField?.select(idx);
       const stage = STAGES[idx];
       document.getElementById('home-stage-title').textContent = stage.title;
       document.getElementById('home-stage-desc').textContent = stage.desc;
@@ -959,14 +970,6 @@
         });
       }
     }
-    fetch('./assets/organism-topology.svg').then((response) => {
-      if (!response.ok) throw new Error('Process illustration unavailable');
-      return response.text();
-    }).then((source) => {
-      topoMount.innerHTML = source;
-      topoMount.dataset.status = 'ready';
-      syncStage(activeProcIdx);
-    }).catch(() => { topoMount.dataset.status = 'fallback'; });
     stageButtons.forEach((button, index) => {
       button.addEventListener('click', () => syncStage(index));
       button.addEventListener('keydown', (event) => {
