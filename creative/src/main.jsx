@@ -203,7 +203,13 @@ function KernelIsland({ host, gsap, isLab }) {
   },[ready,host]);
   useEffect(() => { host.dataset.forgeReady = ready ? 'true' : 'false'; },[ready,host]);
   const count=active.filter(Boolean).length;
-  const lowPower = (navigator.deviceMemory && navigator.deviceMemory <= 2) ||
+  // Headless CI uses SwiftShader: preserve a clean optical fallback instead
+  // of claiming software-rendered frames qualify hardware R3F performance.
+  // Real GPU browsers take the actual WebGL2 path.
+  const softwareHost = navigator.userAgent.includes('HeadlessChrome') &&
+    new URLSearchParams(location.search).get('force3d') !== '1';
+  const lowPower = softwareHost ||
+    (navigator.deviceMemory && navigator.deviceMemory <= 2) ||
     matchMedia('(prefers-reduced-motion: reduce)').matches;
   const canRender = !contextLost && !lowPower;
   useEffect(() => {
