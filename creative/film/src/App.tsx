@@ -287,7 +287,7 @@ export default function App() {
         <SyntheticCursor pointer={pointer} camera={camera} />
         <div className="cinema-overlay-shade" aria-hidden="true" />
         <div className="cinema-horizon" aria-hidden="true"><span /></div>
-        <div className="cinema-topline" aria-hidden="true">
+        <div className="cinema-topline">
           <span className="cinema-label">SALRYN / AN OPERATIONAL STORY</span>
           <div className="cinema-topline-actions">
             <span className="cinema-topline-right">A KIRJANE PRODUCT <span className="cinema-dot" /> DEMONSTRATION</span>
