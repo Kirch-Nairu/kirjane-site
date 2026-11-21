@@ -1,0 +1,59 @@
+/* Kirjane Salryn Cinema R5 on-site mounting surface (Shadow DOM contents isolated). */
+.salryn-cinema-bridge{
+  position:relative;
+  z-index:2;
+  background:radial-gradient(ellipse at 78% 65%,#183b2e,#08150e 62%);
+  color:#f2f5ed;
+  border-top:1px solid rgba(211,246,107,.12);
+  border-bottom:1px solid rgba(211,246,107,.14);
+  padding:clamp(3.4rem,6.8vw,7rem) 0;
+}
+.salryn-cinema-bridge-inner{
+  display:grid;
+  grid-template-columns:minmax(0,1.5fr) minmax(230px,.75fr);
+  align-items:end;
+  gap:clamp(1.5rem,4vw,5rem);
+}
+.salryn-cinema-eyebrow{
+  color:#d3f66b;font:650 .73rem/1.5 system-ui;letter-spacing:.2em;
+}
+.salryn-cinema-bridge h2{
+  font-family:var(--display,system-ui);
+  font-size:clamp(3.3rem,7.4vw,9rem);line-height:.98;
+  font-weight:450;letter-spacing:-.068em;max-width:12ch;
+  margin:1.35rem 0 0;
+}
+.salryn-cinema-bridge h2 em{color:#d3f66b;}
+.salryn-cinema-bridge-aside p{font-size:clamp(.95rem,1.3vw,1.2rem);line-height:1.75;color:#cadbd0;max-width:38ch;}
+.salryn-cinema-skip{display:inline-block;color:#dbf2b1;border-bottom:1px solid #d3f66b;padding:.65rem 0;text-decoration:none;font-size:.9rem;margin-top:1rem;}
+.salryn-cinema-skip:focus-visible{outline:3px solid #d3f66b;outline-offset:5px;}
+.salryn-cinema-host{
+  position:relative;
+  display:block;
+  background:#07131a;
+  width:100%;
+  min-height:1656svh; /* preallocate 23 × 72svh; no layout shift on lazy mount */
+  isolation:isolate;
+}
+.salryn-cinema-host[data-cinema-load="error"]{
+  min-height:75svh;
+  display:grid;align-content:center;
+}
+.salryn-cinema-placeholder{
+  display:grid;place-content:center;justify-items:center;text-align:center;
+  min-height:100svh;
+  padding:clamp(2rem,7vw,7rem);
+  color:#deefdf;background:radial-gradient(ellipse at 50% 55%,#173f32,#07131a 66%);
+}
+.salryn-cinema-placeholder span{font:700 .74rem system-ui;letter-spacing:.18em;color:#c8f18d;}
+.salryn-cinema-placeholder p{font-size:clamp(1.15rem,2.4vw,2.5rem);line-height:1.3;letter-spacing:-.04em;max-width:30ch;margin:1.6rem 0;}
+.salryn-cinema-placeholder a{font:650 .9rem system-ui;color:#d3f66b;border-bottom:1px solid #d3f66b;padding:.6rem;text-decoration:none;}
+.salryn-cinema-noscript{background:#07131a;color:#e0eddc;padding:2rem;text-align:center;}
+@media(max-width:800px){
+ .salryn-cinema-bridge-inner{grid-template-columns:1fr;align-items:start;}
+ .salryn-cinema-bridge h2{font-size:clamp(3rem,13vw,5.5rem);}
+ .salryn-cinema-bridge-aside p{max-width:45ch;}
+}
+@media(prefers-reduced-motion:reduce){
+ .salryn-cinema-host{min-height:85svh;}
+}

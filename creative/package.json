@@ -4,7 +4,8 @@
   "version": "0.2.0",
   "type": "module",
   "scripts": {
-    "build": "vite build --config vite.config.mjs"
+    "build": "vite build --config vite.config.mjs",
+    "build:film": "vite build --config vite.film.config.mjs"
   },
   "dependencies": {
     "@react-three/fiber": "9.8.2",

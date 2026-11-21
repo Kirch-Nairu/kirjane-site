@@ -17,12 +17,18 @@ def build(output):
     else:
         run([npm,'install','--ignore-scripts','--no-audit','--no-fund'],CREATIVE)
     run([npm,'run','build'],CREATIVE)
+    run([npm,'run','build:film'],CREATIVE)
     binary=ROOT/'site/js/forge-immersive-r2.js'
+    film_binary=ROOT/'site/js/forge-salryn-cinema-r1.js'
+    if not film_binary.is_file() or film_binary.stat().st_size<50000:
+        raise SystemExit('Refusing placeholder: standalone Salryn Cinema R5 bundle was not built')
     if binary.stat().st_size<70000:
         raise SystemExit('Refusing fallback stub: R2 React bundle is missing or suspiciously small')
     run([sys.executable,'scripts/build.py','--preview','--output',str(output)])
     manifest=json.loads(output.with_name(output.name+'-manifest.json').read_text('utf-8'))
-    for name in ['js/forge-immersive-r2.js','js/forge-immersive-r2.css','motion-lab/index.html']:
+    for name in ['js/forge-immersive-r2.js','js/forge-immersive-r2.css',
+                 'js/forge-salryn-cinema-r1.js','js/forge-salryn-cinema-loader.js',
+                 'css/salryn-cinema-integration.css','motion-lab/index.html']:
         if name not in manifest:raise SystemExit('Missing R2 output asset: '+name)
     print('IMMERSIVE_R2_PREVIEW_BUILT files=',len(manifest),'bundleBytes=',binary.stat().st_size)
 if __name__=='__main__':

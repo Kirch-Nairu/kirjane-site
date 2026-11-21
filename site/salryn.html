@@ -199,6 +199,7 @@
     }
   </style>
   <link rel="stylesheet" href="./css/forge-immersive-r2.css" />
+  <link rel="stylesheet" href="./css/salryn-cinema-integration.css" />
 </head>
 <body data-editorial="salryn" data-page="salryn">
   <a href="#main" class="skip-link">Skip to content</a>
@@ -268,6 +269,7 @@
             <div class="forge-r2-tagline" data-forge-react-island="blur" data-forge-text="ONE CORE. ENDLESS CONFIGURATIONS."></div>
               <p class="lead">Salryn is Kirjane’s modular business management kernel. Start with a shared foundation and configure it around the work your business does.</p>
               <div class="actions-row">
+                <a href="#salryn-cinema-experience" class="link-editorial">Watch Salryn in action &darr;</a>
                 <a href="#scene-a-kernel" class="link-editorial">Meet the kernel &darr;</a>
                 <a href="#scene-g-configuration" class="link-editorial">Plan a configuration &rarr;</a>
               </div>
@@ -275,6 +277,33 @@
           </div>
         </div>
       </section>
+
+      <!-- R5 standalone cinema, now a real in-page React island rather than iframe.
+           Source is pinned to Kirjane/Dev-Salryn-General-Merchandise d21dbfc.
+           The local main document remains scroll owner, and semantic chapters follow. -->
+      <section class="salryn-cinema-bridge" aria-labelledby="salryn-cinema-bridge-heading">
+        <div class="wrap salryn-cinema-bridge-inner">
+          <div>
+            <p class="salryn-cinema-eyebrow">SALRYN / THE OPERATING DAY</p>
+            <h2 id="salryn-cinema-bridge-heading">Manage your business <em>at ease.</em></h2>
+          </div>
+          <div class="salryn-cinema-bridge-aside">
+            <p>Open a shift. Make a sale. Trace the stock. Close the books. Scroll through a fictional day in the Salryn interface, step by step.</p>
+            <a href="#scene-a-kernel" class="salryn-cinema-skip">Skip the film; explore the platform &darr;</a>
+          </div>
+        </div>
+      </section>
+      <div id="salryn-cinema-experience" class="salryn-cinema-host" data-forge-salryn-cinema data-cinema-load="pending">
+        <div class="salryn-cinema-placeholder" role="status">
+          <span>THE OPERATING DAY / 23 SCENES</span>
+          <p>Salryn Cinema follows checkout, inventory, reporting and audit using fictional records.</p>
+          <a href="#scene-a-kernel">Continue to the Salryn architecture &darr;</a>
+        </div>
+      </div>
+      <noscript>
+        <style>.salryn-cinema-host { min-height:auto!important; }</style>
+        <div class="salryn-cinema-noscript">The cinematic scroll demonstration requires JavaScript; the platform documentation remains below.</div>
+      </noscript>
 
       <div class="salryn-editorial-intro">
         <div class="wrap">
@@ -1227,5 +1256,6 @@
   <!-- Experimental loader: inert unless ?creative=1. -->
   <script type="module" src="./js/creative-forge-r1.js"></script>
   <script type="module" src="./js/forge-immersive-r2-loader.js"></script>
+  <script type="module" src="./js/forge-salryn-cinema-loader.js"></script>
 </body>
 </html>
