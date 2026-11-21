@@ -90,3 +90,7 @@
 /* Intentional fallback: software WebGL shows the optical kernel title instead of the old flat SVG art. */
 #scene-d-activation .activation-svg-panel:has([data-forge-static="true"]) #salryn-activation-svg {display:none!important}
 #study-10 .study-demo-display:has([data-forge-static="true"]) > img {display:none}
+
+/* Contrast repair: bright chapter indices were unreadable on pale Salryn anatomy. */
+#scene-b-anatomy .forge-scene-index { color: #143e29; opacity: 1; }
+#scene-b-anatomy .forge-scene-index i { background: #143e29; }
