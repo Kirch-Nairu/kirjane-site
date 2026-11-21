@@ -121,3 +121,12 @@ html[data-forge-page="contact"] .forge-page-chapter,
 html[data-forge-page="services"] .forge-page-chapter{
   color:#194833;text-shadow:0 2px 6px rgba(255,255,255,.4)
 }
+
+/* Exact production axe evidence: chapter captions on pale panels require ink. */
+#capabilities-exhibition .forge-scene-index,
+#infrastructure .forge-scene-index { color: #173f29!important; opacity:1!important; }
+#capabilities-exhibition .forge-scene-index i,
+#infrastructure .forge-scene-index i { background:#173f29!important; }
+html[data-forge-page="process"] .forge-page-chapter {
+  color:#143c28!important;text-shadow:0 2px 8px rgba(255,255,255,.5)!important;
+}
