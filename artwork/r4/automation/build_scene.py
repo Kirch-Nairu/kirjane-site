@@ -74,8 +74,8 @@ light('EDGE / warm decision highlight',(-1,-1,-4),650,(1,.78,.45),3)
 def camera(name,pos,scale):
  d=bpy.data.cameras.new(name);d.type='ORTHO';d.ortho_scale=scale
  o=bpy.data.objects.new(name,d);scene.collection.objects.link(o);o.location=pos;aim(o,(0,0,0));return o
-desktop=camera('CAMERA / desktop three gates',(0,-18,2.6),11.6)
-mobile=camera('CAMERA / compact oblique three gates',(4,-18,3.8),10.6)
+desktop=camera('CAMERA / desktop three gates',(0,-18,2.6),10.8)
+mobile=camera('CAMERA / compact oblique three gates',(4,-18,3.8),8.8)
 scene.camera=desktop
 scene['source_sha']='b8ddf2b014d39d17b78aa5ff928ad2a2e79cc47e'
 scene['source_subject']='Three standing rings and four routed conduits. No approval-machine assets used.'

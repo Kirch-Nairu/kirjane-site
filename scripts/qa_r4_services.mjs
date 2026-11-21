@@ -5,7 +5,7 @@ import {resolve,join,extname} from 'node:path';
 const root=resolve(process.env.FORGE_DIST||'dist/r4-integrated-01'),out=resolve('docs/creative-forge-r4/evidence/qa');
 await mkdir(out,{recursive:true});const checks=[];
 const check=(ok,name,detail)=>{checks.push({ok:!!ok,name,detail});if(!ok)console.error(name,detail);};
-const server=http.createServer(async(req,res)=>{try{let p=resolve(root,'.'+new URL(req.url,'http://localhost').pathname);if(!p.startsWith(root+'/')&&!p.startsWith(root+'\\'))throw Error();if((await stat(p)).isDirectory())p=join(p,'index.html');res.setHeader('Content-Type',({'.html':'text/html','.js':'text/javascript','.css':'text/css','.json':'application/json','.webp':'image/webp','.svg':'image/svg+xml','.woff2':'font/woff2'})[extname(p)]||'application/octet-stream');res.end(await readFile(p));}catch{res.writeHead(404).end();}});
+const server=http.createServer(async(req,res)=>{try{let p=resolve(root,'.'+new URL(req.url,'http://localhost').pathname);if(p!==root&&!p.startsWith(root+'/')&&!p.startsWith(root+'\\'))throw Error();if((await stat(p)).isDirectory())p=join(p,'index.html');res.setHeader('Content-Type',({'.html':'text/html','.js':'text/javascript','.css':'text/css','.json':'application/json','.webp':'image/webp','.svg':'image/svg+xml','.woff2':'font/woff2'})[extname(p)]||'application/octet-stream');res.end(await readFile(p));}catch{res.writeHead(404).end();}});
 await new Promise(r=>server.listen(0,'127.0.0.1',r));const origin='http://127.0.0.1:'+server.address().port;
 const browser=await chromium.launch();
 try{
