@@ -81,3 +81,8 @@
  .forge-flow-circuit .forge-signal-route{stroke-dasharray:none!important;stroke-dashoffset:0!important}
  .forge-page-track-fill{display:none}
 }
+
+/* Once the visual CTA is ready, remove its redundant static sibling, not the working fallback. */
+.contact-intro-note:has(.forge-r2-glare[data-forge-ready="true"]) > .link-editorial {display:none}
+.forge-r2-glare .glare-hover{display:grid}
+.forge-r2-glare .glare-hover__content{position:relative;z-index:3}
