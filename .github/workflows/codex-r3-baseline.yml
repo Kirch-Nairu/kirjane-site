@@ -1,0 +1,49 @@
+name: Codex Creative Forge R3 - reproducible baseline screenshots
+on:
+  push:
+    branches:
+      - experiment/codex-cinematic-overhaul-r3
+    paths:
+      - .github/workflows/codex-r3-baseline.yml
+      - scripts/codex_r3_capture.mjs
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  codex-r3-baseline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install root browser tooling without dependency lifecycle scripts
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Install headless Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Build integrated seven-page R2 and Salryn Cinema R5 baseline
+        run: python3 scripts/build_immersive_r2.py --output dist/cinema-integration
+      - name: Qualify embedded R5 director math
+        run: node --test creative/film/src/director/*.test.mjs
+      - name: Verify R5 integration and original R2 accessibility
+        run: |
+          node scripts/qa_salryn_site_integration.mjs
+          FORGE_DIST=dist/cinema-integration FORGE_EVIDENCE=dist/codex-r3-evidence/r2-regression node scripts/qa_immersive_r2.mjs
+      - name: Generate 10 owner-target, 5 mobile and 5 R5 film captures
+        run: |
+          CODEX_R3_DIST=dist/cinema-integration \
+          CODEX_R3_SHOTS=dist/codex-r3-evidence/baseline \
+          node scripts/codex_r3_capture.mjs
+      - name: Upload source-rendered baseline images and manifest
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: codex-r3-baseline-captures
+          path: dist/codex-r3-evidence/baseline/
+          retention-days: 14
+          if-no-files-found: warn
