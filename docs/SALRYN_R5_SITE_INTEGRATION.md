@@ -24,3 +24,13 @@ database access, installer or publication changes. All source-inspired screens
 use fictional data and remain subject to owner fidelity review.
 Current booking CTA links to the existing Kirjane Contact page.
 Hardware sound QA, Safari and independent exact-SHA review remain pending.
+
+## Green integrated qualification receipt — 2026-11-21
+
+- Built film bundle preserved as commit 2973da26f2d127b30de824d9e7768042e12e2bbb.
+- Production verification at source SHA 3e769f65e3ffaf7bbf76745bb6557676132c4705: 61/61 checks PASS, run https://github.com/Kirch-Nairu/kirjane-site/actions/runs/44914221044 .
+- Integrated R5 qualification: 27/27 pure source math tests and 68/68 browser integration checks PASS, run https://github.com/Kirch-Nairu/kirjane-site/actions/runs/44914221050 .
+- Inherited Creative Forge R2 seven-page/browser/axe checks: 79/79 PASS in the same run.
+- Accessibly named opt-in sound toggle, one corporate H1, no nested iframe, no API calls, native document scroll, mobile/tall viewport checks.
+- Full inspectable seven-page noindex artifact: kirjane-r2-salryn-r5-integrated-noindex, artifact ID 14710843552.
+- No merge or site publication. Human creative and device-audio review remains pending.
