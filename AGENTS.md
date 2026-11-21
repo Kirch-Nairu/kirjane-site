@@ -14,6 +14,7 @@ Read these in order:
 1. docs/QWEN_CINEMATIC_R3_BRIEF.md — full owner directive.
 2. docs/qwen-r3/START_HERE.md — execution stages and resume protocol.
 3. docs/qwen-r3/SHOT_MAP.md — ten owner-identified visual problems, specific source IDs, success criteria.
+3a. docs/qwen-r3/BASELINE_VISUAL_AUDIT.md — actual generated desktop/mobile evidence and critical defects.
 4. docs/qwen-r3/MOTION_ARCHITECTURE.md — ownership, scene graph, page transitions and technical gates.
 5. docs/qwen-r3/QA_EVIDENCE.md — visual/performance/accessibility acceptance matrix.
 6. docs/IMMERSIVE_R2.md and docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv — source and rights.
