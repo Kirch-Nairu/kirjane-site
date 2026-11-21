@@ -132,7 +132,13 @@ function Tick({ active, reduced, gsap }) {
     if (!active || reduced || document.hidden) { invalidate(); return; }
     // Integrates R3F demand rendering with the one owner GSAP ticker. No new
     // explicitly-owned animation interval is installed.
-    const render = () => invalidate();
+    let last = -Infinity;
+    const render = (seconds) => {
+      // One GSAP tick source; cap demand-frame requests at 30 fps.
+      if (seconds - last < 1 / 30) return;
+      last = seconds;
+      invalidate();
+    };
     gsap.ticker.add(render);
     return () => gsap.ticker.remove(render);
   }, [active,reduced,gsap,invalidate]);
@@ -208,7 +214,22 @@ function KernelIsland({ host, gsap, isLab }) {
         <div className="forge-kernel-orbit forge-orbit-b" aria-hidden="true"></div>
         {canRender ? (
           <KernelScene active={active} selected={selected} reduced={reduced} visible={visible}
-            gsap={gsap} onCreated={()=>{setReady(true);setContextLost(false);}}/>
+            gsap={gsap} onCreated={({gl})=>{
+              const raw=gl.getContext();
+              const debug=raw?.getExtension?.('WEBGL_debug_renderer_info');
+              const renderer=debug ? raw.getParameter(debug.UNMASKED_RENDERER_WEBGL) : raw?.getParameter?.(raw.RENDERER);
+              const software=/swiftshader|llvmpipe|software|mesa x11/i.test(String(renderer||'')) ||
+                navigator.userAgent.includes('HeadlessChrome');
+              if (software) {
+                // Do not spin refraction shaders on constrained/software WebGL.
+                host.dataset.forgeStatic='true';
+                setContextLost(true);
+                setReady(false);
+              } else {
+                setReady(true);
+                setContextLost(false);
+              }
+            }}/>;
         ) : <div className="forge-kernel-static" aria-hidden="true">SALRYN <small>ONE FOUNDATION</small></div>}
         <span className="forge-kernel-glow" aria-hidden="true"></span>
       </div>
