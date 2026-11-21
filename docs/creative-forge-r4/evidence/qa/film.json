@@ -1,0 +1,350 @@
+{
+  "mission": "SALRYN-R5-IN-7PAGE-KIRJANE",
+  "checks": 68,
+  "passing": 68,
+  "failures": [],
+  "cases": [
+    {
+      "ok": true,
+      "label": "Corporate route remains /",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "Cinema remains Salryn-only /",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "Corporate route remains /services/",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "Cinema remains Salryn-only /services/",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "Corporate route remains /projects/",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "Cinema remains Salryn-only /projects/",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "Corporate route remains /process/",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "Cinema remains Salryn-only /process/",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "Corporate route remains /about/",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "Cinema remains Salryn-only /about/",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "Corporate route remains /contact/",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "Cinema remains Salryn-only /contact/",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "Salryn canonical route served",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "desktop unique document main",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "desktop no nested iframe",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "desktop existing seven-scene Salryn page preserved",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "desktop source-inspired R5 POS screen",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "desktop pinned R5 source",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "desktop no horizontal overflow",
+      "detail": "{\"main\":1,\"noIframe\":true,\"company\":true,\"mounted\":true,\"bundle\":\"d21dbfcf2a4f24f8eba2547791a0164a2ca63521\",\"overflow\":0}"
+    },
+    {
+      "ok": true,
+      "label": "desktop real measured Open Shift cursor hit",
+      "detail": "{\"ready\":true,\"hit\":true,\"ripple\":0.639,\"soundOff\":true}"
+    },
+    {
+      "ok": true,
+      "label": "desktop R5 scroll-governed impact ripple",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "desktop sound is muted by default",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "desktop receipt has no phantom click",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "desktop no JavaScript exceptions",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "desktop no production backend calls",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "Salryn canonical route served",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "phone unique document main",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "phone no nested iframe",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "phone existing seven-scene Salryn page preserved",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "phone source-inspired R5 POS screen",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "phone pinned R5 source",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "phone no horizontal overflow",
+      "detail": "{\"main\":1,\"noIframe\":true,\"company\":true,\"mounted\":true,\"bundle\":\"d21dbfcf2a4f24f8eba2547791a0164a2ca63521\",\"overflow\":0}"
+    },
+    {
+      "ok": true,
+      "label": "phone real measured Open Shift cursor hit",
+      "detail": "{\"ready\":true,\"hit\":true,\"ripple\":0.632,\"soundOff\":true}"
+    },
+    {
+      "ok": true,
+      "label": "phone R5 scroll-governed impact ripple",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "phone sound is muted by default",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "phone receipt has no phantom click",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "phone no JavaScript exceptions",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "phone no production backend calls",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "Salryn canonical route served",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "small unique document main",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "small no nested iframe",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "small existing seven-scene Salryn page preserved",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "small source-inspired R5 POS screen",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "small pinned R5 source",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "small no horizontal overflow",
+      "detail": "{\"main\":1,\"noIframe\":true,\"company\":true,\"mounted\":true,\"bundle\":\"d21dbfcf2a4f24f8eba2547791a0164a2ca63521\",\"overflow\":0}"
+    },
+    {
+      "ok": true,
+      "label": "small real measured Open Shift cursor hit",
+      "detail": "{\"ready\":true,\"hit\":true,\"ripple\":0.65,\"soundOff\":true}"
+    },
+    {
+      "ok": true,
+      "label": "small R5 scroll-governed impact ripple",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "small sound is muted by default",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "small receipt has no phantom click",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "small no JavaScript exceptions",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "small no production backend calls",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "Salryn canonical route served",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "tall unique document main",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "tall no nested iframe",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "tall existing seven-scene Salryn page preserved",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "tall source-inspired R5 POS screen",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "tall pinned R5 source",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "tall no horizontal overflow",
+      "detail": "{\"main\":1,\"noIframe\":true,\"company\":true,\"mounted\":true,\"bundle\":\"d21dbfcf2a4f24f8eba2547791a0164a2ca63521\",\"overflow\":0}"
+    },
+    {
+      "ok": true,
+      "label": "tall real measured Open Shift cursor hit",
+      "detail": "{\"ready\":true,\"hit\":true,\"ripple\":0.638,\"soundOff\":true}"
+    },
+    {
+      "ok": true,
+      "label": "tall R5 scroll-governed impact ripple",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "tall sound is muted by default",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "tall receipt has no phantom click",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "tall no JavaScript exceptions",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "tall no production backend calls",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "Salryn canonical route served",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "Reduced motion static documentary",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "Reduced motion has no long pinned film",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "label": "Reduced motion preserves original Salryn kernel",
+      "detail": ""
+    }
+  ],
+  "source": "d21dbfcf2a4f24f8eba2547791a0164a2ca63521",
+  "caveat": "Headless browser only; hardware audio, Safari and real UI fidelity remain pending"
+}

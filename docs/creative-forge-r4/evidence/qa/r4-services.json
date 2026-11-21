@@ -1,0 +1,755 @@
+{
+  "root": "C:\\Users\\arane\\KirionLabs\\kirjane-creative-lab\\r4-remaster\\dist\\r4-integrated-02",
+  "checks": [
+    {
+      "ok": true,
+      "name": "1440/live keyboard reverse state 0"
+    },
+    {
+      "ok": true,
+      "name": "1440/live manual state survives resize 0"
+    },
+    {
+      "ok": true,
+      "name": "1440/live keyboard reverse state 1"
+    },
+    {
+      "ok": true,
+      "name": "1440/live manual state survives resize 1"
+    },
+    {
+      "ok": true,
+      "name": "1440/live keyboard reverse state 2"
+    },
+    {
+      "ok": true,
+      "name": "1440/live manual state survives resize 2"
+    },
+    {
+      "ok": true,
+      "name": "1440/live keyboard reverse state 3"
+    },
+    {
+      "ok": true,
+      "name": "1440/live manual state survives resize 3"
+    },
+    {
+      "ok": true,
+      "name": "1440/live keyboard reverse state 2"
+    },
+    {
+      "ok": true,
+      "name": "1440/live manual state survives resize 2"
+    },
+    {
+      "ok": true,
+      "name": "1440/live keyboard reverse state 1"
+    },
+    {
+      "ok": true,
+      "name": "1440/live manual state survives resize 1"
+    },
+    {
+      "ok": true,
+      "name": "1440/live keyboard reverse state 0"
+    },
+    {
+      "ok": true,
+      "name": "1440/live manual state survives resize 0"
+    },
+    {
+      "ok": true,
+      "name": "1440/live single renderer or static fallback"
+    },
+    {
+      "ok": true,
+      "name": "1440/live responsive export loaded",
+      "detail": {
+        "src": "http://127.0.0.1:58002/assets/cinematic/r4/automation-editorial-desktop.webp",
+        "complete": true,
+        "w": 1280
+      }
+    },
+    {
+      "ok": true,
+      "name": "1440 context loss exposes poster"
+    },
+    {
+      "ok": true,
+      "name": "1440 lost canvas hidden"
+    },
+    {
+      "ok": true,
+      "name": "1440/live no overflow"
+    },
+    {
+      "ok": true,
+      "name": "1440/live no JS exceptions",
+      "detail": []
+    },
+    {
+      "ok": true,
+      "name": "1440/reduce keyboard reverse state 0"
+    },
+    {
+      "ok": true,
+      "name": "1440/reduce manual state survives resize 0"
+    },
+    {
+      "ok": true,
+      "name": "1440/reduce keyboard reverse state 1"
+    },
+    {
+      "ok": true,
+      "name": "1440/reduce manual state survives resize 1"
+    },
+    {
+      "ok": true,
+      "name": "1440/reduce keyboard reverse state 2"
+    },
+    {
+      "ok": true,
+      "name": "1440/reduce manual state survives resize 2"
+    },
+    {
+      "ok": true,
+      "name": "1440/reduce keyboard reverse state 3"
+    },
+    {
+      "ok": true,
+      "name": "1440/reduce manual state survives resize 3"
+    },
+    {
+      "ok": true,
+      "name": "1440/reduce keyboard reverse state 2"
+    },
+    {
+      "ok": true,
+      "name": "1440/reduce manual state survives resize 2"
+    },
+    {
+      "ok": true,
+      "name": "1440/reduce keyboard reverse state 1"
+    },
+    {
+      "ok": true,
+      "name": "1440/reduce manual state survives resize 1"
+    },
+    {
+      "ok": true,
+      "name": "1440/reduce keyboard reverse state 0"
+    },
+    {
+      "ok": true,
+      "name": "1440/reduce manual state survives resize 0"
+    },
+    {
+      "ok": true,
+      "name": "1440/reduce single renderer or static fallback"
+    },
+    {
+      "ok": true,
+      "name": "1440/reduce responsive export loaded",
+      "detail": {
+        "src": "http://127.0.0.1:58002/assets/cinematic/r4/automation-editorial-desktop.webp",
+        "complete": true,
+        "w": 1280
+      }
+    },
+    {
+      "ok": true,
+      "name": "1440/reduce no overflow"
+    },
+    {
+      "ok": true,
+      "name": "1440/reduce no JS exceptions",
+      "detail": []
+    },
+    {
+      "ok": true,
+      "name": "1440/off keyboard reverse state 0"
+    },
+    {
+      "ok": true,
+      "name": "1440/off manual state survives resize 0"
+    },
+    {
+      "ok": true,
+      "name": "1440/off keyboard reverse state 1"
+    },
+    {
+      "ok": true,
+      "name": "1440/off manual state survives resize 1"
+    },
+    {
+      "ok": true,
+      "name": "1440/off keyboard reverse state 2"
+    },
+    {
+      "ok": true,
+      "name": "1440/off manual state survives resize 2"
+    },
+    {
+      "ok": true,
+      "name": "1440/off keyboard reverse state 3"
+    },
+    {
+      "ok": true,
+      "name": "1440/off manual state survives resize 3"
+    },
+    {
+      "ok": true,
+      "name": "1440/off keyboard reverse state 2"
+    },
+    {
+      "ok": true,
+      "name": "1440/off manual state survives resize 2"
+    },
+    {
+      "ok": true,
+      "name": "1440/off keyboard reverse state 1"
+    },
+    {
+      "ok": true,
+      "name": "1440/off manual state survives resize 1"
+    },
+    {
+      "ok": true,
+      "name": "1440/off keyboard reverse state 0"
+    },
+    {
+      "ok": true,
+      "name": "1440/off manual state survives resize 0"
+    },
+    {
+      "ok": true,
+      "name": "1440/off single renderer or static fallback"
+    },
+    {
+      "ok": true,
+      "name": "1440/off responsive export loaded",
+      "detail": {
+        "src": "http://127.0.0.1:58002/assets/cinematic/r4/automation-editorial-desktop.webp",
+        "complete": true,
+        "w": 1280
+      }
+    },
+    {
+      "ok": true,
+      "name": "1440/off no overflow"
+    },
+    {
+      "ok": true,
+      "name": "1440/off no JS exceptions",
+      "detail": []
+    },
+    {
+      "ok": true,
+      "name": "390/live keyboard reverse state 0"
+    },
+    {
+      "ok": true,
+      "name": "390/live manual state survives resize 0"
+    },
+    {
+      "ok": true,
+      "name": "390/live keyboard reverse state 1"
+    },
+    {
+      "ok": true,
+      "name": "390/live manual state survives resize 1"
+    },
+    {
+      "ok": true,
+      "name": "390/live keyboard reverse state 2"
+    },
+    {
+      "ok": true,
+      "name": "390/live manual state survives resize 2"
+    },
+    {
+      "ok": true,
+      "name": "390/live keyboard reverse state 3"
+    },
+    {
+      "ok": true,
+      "name": "390/live manual state survives resize 3"
+    },
+    {
+      "ok": true,
+      "name": "390/live keyboard reverse state 2"
+    },
+    {
+      "ok": true,
+      "name": "390/live manual state survives resize 2"
+    },
+    {
+      "ok": true,
+      "name": "390/live keyboard reverse state 1"
+    },
+    {
+      "ok": true,
+      "name": "390/live manual state survives resize 1"
+    },
+    {
+      "ok": true,
+      "name": "390/live keyboard reverse state 0"
+    },
+    {
+      "ok": true,
+      "name": "390/live manual state survives resize 0"
+    },
+    {
+      "ok": true,
+      "name": "390/live single renderer or static fallback"
+    },
+    {
+      "ok": true,
+      "name": "390/live responsive export loaded",
+      "detail": {
+        "src": "http://127.0.0.1:58002/assets/cinematic/r4/automation-editorial-mobile.webp",
+        "complete": true,
+        "w": 1080
+      }
+    },
+    {
+      "ok": true,
+      "name": "390 context loss exposes poster"
+    },
+    {
+      "ok": true,
+      "name": "390 lost canvas hidden"
+    },
+    {
+      "ok": true,
+      "name": "390/live no overflow"
+    },
+    {
+      "ok": true,
+      "name": "390/live no JS exceptions",
+      "detail": []
+    },
+    {
+      "ok": true,
+      "name": "390/reduce keyboard reverse state 0"
+    },
+    {
+      "ok": true,
+      "name": "390/reduce manual state survives resize 0"
+    },
+    {
+      "ok": true,
+      "name": "390/reduce keyboard reverse state 1"
+    },
+    {
+      "ok": true,
+      "name": "390/reduce manual state survives resize 1"
+    },
+    {
+      "ok": true,
+      "name": "390/reduce keyboard reverse state 2"
+    },
+    {
+      "ok": true,
+      "name": "390/reduce manual state survives resize 2"
+    },
+    {
+      "ok": true,
+      "name": "390/reduce keyboard reverse state 3"
+    },
+    {
+      "ok": true,
+      "name": "390/reduce manual state survives resize 3"
+    },
+    {
+      "ok": true,
+      "name": "390/reduce keyboard reverse state 2"
+    },
+    {
+      "ok": true,
+      "name": "390/reduce manual state survives resize 2"
+    },
+    {
+      "ok": true,
+      "name": "390/reduce keyboard reverse state 1"
+    },
+    {
+      "ok": true,
+      "name": "390/reduce manual state survives resize 1"
+    },
+    {
+      "ok": true,
+      "name": "390/reduce keyboard reverse state 0"
+    },
+    {
+      "ok": true,
+      "name": "390/reduce manual state survives resize 0"
+    },
+    {
+      "ok": true,
+      "name": "390/reduce single renderer or static fallback"
+    },
+    {
+      "ok": true,
+      "name": "390/reduce responsive export loaded",
+      "detail": {
+        "src": "http://127.0.0.1:58002/assets/cinematic/r4/automation-editorial-mobile.webp",
+        "complete": true,
+        "w": 1080
+      }
+    },
+    {
+      "ok": true,
+      "name": "390/reduce no overflow"
+    },
+    {
+      "ok": true,
+      "name": "390/reduce no JS exceptions",
+      "detail": []
+    },
+    {
+      "ok": true,
+      "name": "390/off keyboard reverse state 0"
+    },
+    {
+      "ok": true,
+      "name": "390/off manual state survives resize 0"
+    },
+    {
+      "ok": true,
+      "name": "390/off keyboard reverse state 1"
+    },
+    {
+      "ok": true,
+      "name": "390/off manual state survives resize 1"
+    },
+    {
+      "ok": true,
+      "name": "390/off keyboard reverse state 2"
+    },
+    {
+      "ok": true,
+      "name": "390/off manual state survives resize 2"
+    },
+    {
+      "ok": true,
+      "name": "390/off keyboard reverse state 3"
+    },
+    {
+      "ok": true,
+      "name": "390/off manual state survives resize 3"
+    },
+    {
+      "ok": true,
+      "name": "390/off keyboard reverse state 2"
+    },
+    {
+      "ok": true,
+      "name": "390/off manual state survives resize 2"
+    },
+    {
+      "ok": true,
+      "name": "390/off keyboard reverse state 1"
+    },
+    {
+      "ok": true,
+      "name": "390/off manual state survives resize 1"
+    },
+    {
+      "ok": true,
+      "name": "390/off keyboard reverse state 0"
+    },
+    {
+      "ok": true,
+      "name": "390/off manual state survives resize 0"
+    },
+    {
+      "ok": true,
+      "name": "390/off single renderer or static fallback"
+    },
+    {
+      "ok": true,
+      "name": "390/off responsive export loaded",
+      "detail": {
+        "src": "http://127.0.0.1:58002/assets/cinematic/r4/automation-editorial-mobile.webp",
+        "complete": true,
+        "w": 1080
+      }
+    },
+    {
+      "ok": true,
+      "name": "390/off no overflow"
+    },
+    {
+      "ok": true,
+      "name": "390/off no JS exceptions",
+      "detail": []
+    },
+    {
+      "ok": true,
+      "name": "320/live keyboard reverse state 0"
+    },
+    {
+      "ok": true,
+      "name": "320/live manual state survives resize 0"
+    },
+    {
+      "ok": true,
+      "name": "320/live keyboard reverse state 1"
+    },
+    {
+      "ok": true,
+      "name": "320/live manual state survives resize 1"
+    },
+    {
+      "ok": true,
+      "name": "320/live keyboard reverse state 2"
+    },
+    {
+      "ok": true,
+      "name": "320/live manual state survives resize 2"
+    },
+    {
+      "ok": true,
+      "name": "320/live keyboard reverse state 3"
+    },
+    {
+      "ok": true,
+      "name": "320/live manual state survives resize 3"
+    },
+    {
+      "ok": true,
+      "name": "320/live keyboard reverse state 2"
+    },
+    {
+      "ok": true,
+      "name": "320/live manual state survives resize 2"
+    },
+    {
+      "ok": true,
+      "name": "320/live keyboard reverse state 1"
+    },
+    {
+      "ok": true,
+      "name": "320/live manual state survives resize 1"
+    },
+    {
+      "ok": true,
+      "name": "320/live keyboard reverse state 0"
+    },
+    {
+      "ok": true,
+      "name": "320/live manual state survives resize 0"
+    },
+    {
+      "ok": true,
+      "name": "320/live single renderer or static fallback"
+    },
+    {
+      "ok": true,
+      "name": "320/live responsive export loaded",
+      "detail": {
+        "src": "http://127.0.0.1:58002/assets/cinematic/r4/automation-editorial-mobile.webp",
+        "complete": true,
+        "w": 1080
+      }
+    },
+    {
+      "ok": true,
+      "name": "320 context loss exposes poster"
+    },
+    {
+      "ok": true,
+      "name": "320 lost canvas hidden"
+    },
+    {
+      "ok": true,
+      "name": "320/live no overflow"
+    },
+    {
+      "ok": true,
+      "name": "320/live no JS exceptions",
+      "detail": []
+    },
+    {
+      "ok": true,
+      "name": "320/reduce keyboard reverse state 0"
+    },
+    {
+      "ok": true,
+      "name": "320/reduce manual state survives resize 0"
+    },
+    {
+      "ok": true,
+      "name": "320/reduce keyboard reverse state 1"
+    },
+    {
+      "ok": true,
+      "name": "320/reduce manual state survives resize 1"
+    },
+    {
+      "ok": true,
+      "name": "320/reduce keyboard reverse state 2"
+    },
+    {
+      "ok": true,
+      "name": "320/reduce manual state survives resize 2"
+    },
+    {
+      "ok": true,
+      "name": "320/reduce keyboard reverse state 3"
+    },
+    {
+      "ok": true,
+      "name": "320/reduce manual state survives resize 3"
+    },
+    {
+      "ok": true,
+      "name": "320/reduce keyboard reverse state 2"
+    },
+    {
+      "ok": true,
+      "name": "320/reduce manual state survives resize 2"
+    },
+    {
+      "ok": true,
+      "name": "320/reduce keyboard reverse state 1"
+    },
+    {
+      "ok": true,
+      "name": "320/reduce manual state survives resize 1"
+    },
+    {
+      "ok": true,
+      "name": "320/reduce keyboard reverse state 0"
+    },
+    {
+      "ok": true,
+      "name": "320/reduce manual state survives resize 0"
+    },
+    {
+      "ok": true,
+      "name": "320/reduce single renderer or static fallback"
+    },
+    {
+      "ok": true,
+      "name": "320/reduce responsive export loaded",
+      "detail": {
+        "src": "http://127.0.0.1:58002/assets/cinematic/r4/automation-editorial-mobile.webp",
+        "complete": true,
+        "w": 1080
+      }
+    },
+    {
+      "ok": true,
+      "name": "320/reduce no overflow"
+    },
+    {
+      "ok": true,
+      "name": "320/reduce no JS exceptions",
+      "detail": []
+    },
+    {
+      "ok": true,
+      "name": "320/off keyboard reverse state 0"
+    },
+    {
+      "ok": true,
+      "name": "320/off manual state survives resize 0"
+    },
+    {
+      "ok": true,
+      "name": "320/off keyboard reverse state 1"
+    },
+    {
+      "ok": true,
+      "name": "320/off manual state survives resize 1"
+    },
+    {
+      "ok": true,
+      "name": "320/off keyboard reverse state 2"
+    },
+    {
+      "ok": true,
+      "name": "320/off manual state survives resize 2"
+    },
+    {
+      "ok": true,
+      "name": "320/off keyboard reverse state 3"
+    },
+    {
+      "ok": true,
+      "name": "320/off manual state survives resize 3"
+    },
+    {
+      "ok": true,
+      "name": "320/off keyboard reverse state 2"
+    },
+    {
+      "ok": true,
+      "name": "320/off manual state survives resize 2"
+    },
+    {
+      "ok": true,
+      "name": "320/off keyboard reverse state 1"
+    },
+    {
+      "ok": true,
+      "name": "320/off manual state survives resize 1"
+    },
+    {
+      "ok": true,
+      "name": "320/off keyboard reverse state 0"
+    },
+    {
+      "ok": true,
+      "name": "320/off manual state survives resize 0"
+    },
+    {
+      "ok": true,
+      "name": "320/off single renderer or static fallback"
+    },
+    {
+      "ok": true,
+      "name": "320/off responsive export loaded",
+      "detail": {
+        "src": "http://127.0.0.1:58002/assets/cinematic/r4/automation-editorial-mobile.webp",
+        "complete": true,
+        "w": 1080
+      }
+    },
+    {
+      "ok": true,
+      "name": "320/off no overflow"
+    },
+    {
+      "ok": true,
+      "name": "320/off no JS exceptions",
+      "detail": []
+    },
+    {
+      "ok": true,
+      "name": "Services three-step wrap 0"
+    },
+    {
+      "ok": true,
+      "name": "Services three-step wrap 1"
+    },
+    {
+      "ok": true,
+      "name": "Services three-step wrap 2"
+    },
+    {
+      "ok": true,
+      "name": "Services three-step wrap 3"
+    },
+    {
+      "ok": true,
+      "name": "Services three-step wrap 4"
+    },
+    {
+      "ok": true,
+      "name": "Services three-step wrap 5"
+    }
+  ]
+}

@@ -1,0 +1,996 @@
+{
+  "label": "before-final",
+  "dist": "C:\\Users\\arane\\KirionLabs\\kirjane-creative-lab\\r4-remaster\\dist\\r4-baseline",
+  "captures": [
+    {
+      "id": "home-live-1440",
+      "width": 1440,
+      "height": 900,
+      "state": {
+        "mode": "1",
+        "render": "webgl",
+        "overflow": false,
+        "images": [
+          {
+            "src": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-01-custom-software.webp",
+            "visible": "hidden",
+            "opacity": "0",
+            "width": 1280,
+            "height": 800
+          },
+          {
+            "src": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-02-process-automation.webp",
+            "visible": "hidden",
+            "opacity": "1",
+            "width": 1280,
+            "height": 800
+          },
+          {
+            "src": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-03-systems-integration.webp",
+            "visible": "hidden",
+            "opacity": "0",
+            "width": 1280,
+            "height": 800
+          },
+          {
+            "src": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-04-technical-infrastructure.webp",
+            "visible": "hidden",
+            "opacity": "0",
+            "width": 1280,
+            "height": 800
+          }
+        ]
+      }
+    },
+    {
+      "id": "home-poster-1440",
+      "width": 1440,
+      "height": 900,
+      "state": {
+        "overflow": false,
+        "images": [
+          {
+            "src": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-01-custom-software.webp",
+            "visible": "visible",
+            "opacity": "1",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "src": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-02-process-automation.webp",
+            "visible": "visible",
+            "opacity": "0",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "src": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-03-systems-integration.webp",
+            "visible": "visible",
+            "opacity": "0",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "src": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-04-technical-infrastructure.webp",
+            "visible": "visible",
+            "opacity": "0",
+            "width": 0,
+            "height": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "services-live-1440",
+      "width": 1440,
+      "height": 900,
+      "state": {
+        "overflow": false,
+        "images": [
+          {
+            "src": "http://127.0.0.1:41976/assets/cinematic/cap-02-process-automation.webp",
+            "visible": "visible",
+            "opacity": "1",
+            "width": 1280,
+            "height": 800
+          }
+        ]
+      }
+    },
+    {
+      "id": "home-live-390",
+      "width": 390,
+      "height": 844,
+      "state": {
+        "mode": "1",
+        "render": "webgl",
+        "overflow": false,
+        "images": [
+          {
+            "src": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-01-custom-software.webp",
+            "visible": "hidden",
+            "opacity": "0",
+            "width": 1280,
+            "height": 800
+          },
+          {
+            "src": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-02-process-automation.webp",
+            "visible": "hidden",
+            "opacity": "1",
+            "width": 1280,
+            "height": 800
+          },
+          {
+            "src": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-03-systems-integration.webp",
+            "visible": "hidden",
+            "opacity": "0",
+            "width": 1280,
+            "height": 800
+          },
+          {
+            "src": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-04-technical-infrastructure.webp",
+            "visible": "hidden",
+            "opacity": "0",
+            "width": 1280,
+            "height": 800
+          }
+        ]
+      }
+    },
+    {
+      "id": "home-poster-390",
+      "width": 390,
+      "height": 844,
+      "state": {
+        "mode": "1",
+        "render": "poster",
+        "overflow": false,
+        "images": [
+          {
+            "src": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-01-custom-software.webp",
+            "visible": "visible",
+            "opacity": "0",
+            "width": 1280,
+            "height": 800
+          },
+          {
+            "src": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-02-process-automation.webp",
+            "visible": "visible",
+            "opacity": "1",
+            "width": 1280,
+            "height": 800
+          },
+          {
+            "src": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-03-systems-integration.webp",
+            "visible": "visible",
+            "opacity": "0",
+            "width": 1280,
+            "height": 800
+          },
+          {
+            "src": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-04-technical-infrastructure.webp",
+            "visible": "visible",
+            "opacity": "0",
+            "width": 1280,
+            "height": 800
+          }
+        ]
+      }
+    },
+    {
+      "id": "services-live-390",
+      "width": 390,
+      "height": 844,
+      "state": {
+        "overflow": false,
+        "images": [
+          {
+            "src": "http://127.0.0.1:41976/assets/cinematic/cap-02-process-automation.webp",
+            "visible": "visible",
+            "opacity": "1",
+            "width": 1280,
+            "height": 800
+          }
+        ]
+      }
+    },
+    {
+      "id": "home-live-320",
+      "width": 320,
+      "height": 700,
+      "state": {
+        "overflow": false,
+        "images": [
+          {
+            "src": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-01-custom-software.webp",
+            "visible": "visible",
+            "opacity": "1",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "src": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-02-process-automation.webp",
+            "visible": "visible",
+            "opacity": "0",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "src": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-03-systems-integration.webp",
+            "visible": "visible",
+            "opacity": "0",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "src": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-04-technical-infrastructure.webp",
+            "visible": "visible",
+            "opacity": "0",
+            "width": 0,
+            "height": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "home-poster-320",
+      "width": 320,
+      "height": 700,
+      "state": {
+        "mode": "1",
+        "render": "poster",
+        "overflow": false,
+        "images": [
+          {
+            "src": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-01-custom-software.webp",
+            "visible": "visible",
+            "opacity": "0",
+            "width": 1280,
+            "height": 800
+          },
+          {
+            "src": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-02-process-automation.webp",
+            "visible": "visible",
+            "opacity": "1",
+            "width": 1280,
+            "height": 800
+          },
+          {
+            "src": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-03-systems-integration.webp",
+            "visible": "visible",
+            "opacity": "0",
+            "width": 1280,
+            "height": 800
+          },
+          {
+            "src": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-04-technical-infrastructure.webp",
+            "visible": "visible",
+            "opacity": "0",
+            "width": 1280,
+            "height": 800
+          }
+        ]
+      }
+    },
+    {
+      "id": "services-live-320",
+      "width": 320,
+      "height": 700,
+      "state": {
+        "overflow": false,
+        "images": [
+          {
+            "src": "http://127.0.0.1:41976/assets/cinematic/cap-02-process-automation.webp",
+            "visible": "visible",
+            "opacity": "1",
+            "width": 1280,
+            "height": 800
+          }
+        ]
+      }
+    }
+  ],
+  "network": [
+    {
+      "id": "home-live-1440",
+      "loads": [
+        {
+          "url": "http://127.0.0.1:41976/assets/d02-hero-desktop.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/home-complexity-to-clarity-desktop/poster.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/ascension-kernel-landscape.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/brand/kirjane-mark-white.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/brand/kirjane-word-white.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/brand/kirjane-mark.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/salryn-ecosystem-architecture.svg",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-01-custom-software.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-02-process-automation.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-03-systems-integration.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-04-technical-infrastructure.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/organism-topology.svg",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/salryn-ecosystem-architecture.svg",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/ascension-public-records-640.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/ascension-request-routing-640.webp",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "id": "home-poster-1440",
+      "loads": [
+        {
+          "url": "http://127.0.0.1:41976/assets/d02-hero-desktop.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/brand/kirjane-word-white.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/brand/kirjane-mark.webp",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "id": "services-live-1440",
+      "loads": [
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/ascension-request-routing-1440.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/brand/kirjane-mark-white.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/brand/kirjane-word-white.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-01-custom-software.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/cap-02-process-automation.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-03-systems-integration.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-04-technical-infrastructure.webp",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "id": "home-live-390",
+      "loads": [
+        {
+          "url": "http://127.0.0.1:41976/assets/d02-hero-mobile.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/home-complexity-to-clarity-mobile/poster.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/ascension-kernel-mobile.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/salryn-ecosystem-architecture.svg",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-01-custom-software.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/brand/kirjane-mark-white.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/brand/kirjane-word-white.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-02-process-automation.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-04-technical-infrastructure.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-03-systems-integration.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/organism-topology.svg",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/brand/kirjane-mark.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/salryn-ecosystem-architecture.svg",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/ascension-public-records-640.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/ascension-request-routing-640.webp",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "id": "home-poster-390",
+      "loads": [
+        {
+          "url": "http://127.0.0.1:41976/assets/d02-hero-mobile.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/home-complexity-to-clarity-mobile/poster.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/ascension-kernel-mobile.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/salryn-ecosystem-architecture.svg",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-01-custom-software.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/brand/kirjane-mark-white.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/brand/kirjane-word-white.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-02-process-automation.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-03-systems-integration.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-04-technical-infrastructure.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/organism-topology.svg",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/brand/kirjane-mark.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/salryn-ecosystem-architecture.svg",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/ascension-public-records-640.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/ascension-request-routing-640.webp",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "id": "services-live-390",
+      "loads": [
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/ascension-request-routing-640.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/brand/kirjane-mark-white.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/brand/kirjane-word-white.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-01-custom-software.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/cap-02-process-automation.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-03-systems-integration.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-04-technical-infrastructure.webp",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "id": "home-live-320",
+      "loads": [
+        {
+          "url": "http://127.0.0.1:41976/assets/d02-hero-mobile.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/home-complexity-to-clarity-mobile/poster.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/brand/kirjane-mark.webp",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "id": "home-poster-320",
+      "loads": [
+        {
+          "url": "http://127.0.0.1:41976/assets/d02-hero-mobile.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/home-complexity-to-clarity-mobile/poster.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/ascension-kernel-mobile.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/salryn-ecosystem-architecture.svg",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-01-custom-software.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/brand/kirjane-mark-white.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/brand/kirjane-word-white.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-02-process-automation.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-03-systems-integration.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-04-technical-infrastructure.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/organism-topology.svg",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/brand/kirjane-mark.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/salryn-ecosystem-architecture.svg",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/ascension-request-routing-640.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/ascension-public-records-640.webp",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "id": "services-live-320",
+      "loads": [
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/ascension-request-routing-640.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/brand/kirjane-mark-white.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/brand/kirjane-word-white.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-01-custom-software.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/cap-02-process-automation.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-03-systems-integration.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-04-technical-infrastructure.webp",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "route": "/",
+      "loads": [
+        {
+          "url": "http://127.0.0.1:41976/assets/d02-hero-desktop.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/ascension-kernel-landscape.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/home-complexity-to-clarity-desktop/poster.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/salryn-ecosystem-architecture.svg",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-01-custom-software.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/brand/kirjane-mark-white.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/brand/kirjane-word-white.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-02-process-automation.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-03-systems-integration.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-04-technical-infrastructure.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/organism-topology.svg",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/brand/kirjane-mark.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/salryn-ecosystem-architecture.svg",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/ascension-public-records-640.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/ascension-request-routing-640.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/home-complexity-to-clarity-desktop/frame-0000.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/home-complexity-to-clarity-desktop/frame-0001.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/home-complexity-to-clarity-desktop/frame-0003.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/home-complexity-to-clarity-desktop/frame-0002.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/home-complexity-to-clarity-desktop/frame-0004.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/home-complexity-to-clarity-desktop/frame-0005.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/home-complexity-to-clarity-desktop/frame-0006.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/home-complexity-to-clarity-desktop/frame-0007.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/home-complexity-to-clarity-desktop/frame-0008.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/home-complexity-to-clarity-desktop/frame-0009.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/home-complexity-to-clarity-desktop/frame-0010.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/home-complexity-to-clarity-desktop/frame-0011.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/home-complexity-to-clarity-desktop/frame-0013.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/home-complexity-to-clarity-desktop/frame-0012.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/home-complexity-to-clarity-desktop/frame-0014.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/home-complexity-to-clarity-desktop/frame-0044.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/home-complexity-to-clarity-desktop/frame-0059.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/home-complexity-to-clarity-desktop/frame-0060.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/home-complexity-to-clarity-desktop/frame-0068.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/home-complexity-to-clarity-desktop/frame-0069.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/home-complexity-to-clarity-desktop/frame-0070.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/home-complexity-to-clarity-desktop/frame-0071.webp",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "route": "/services/",
+      "loads": [
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/ascension-request-routing-1440.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/brand/kirjane-mark-white.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/brand/kirjane-word-white.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-01-custom-software.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/cap-02-process-automation.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-03-systems-integration.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/editorial-cap-04-technical-infrastructure.webp",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "route": "/process/",
+      "loads": [
+        {
+          "url": "http://127.0.0.1:41976/assets/organism-topology.svg",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/brand/kirjane-mark-white.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/brand/kirjane-word-white.webp",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "route": "/salryn/",
+      "loads": [
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/salryn-hero-master-desktop.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/salryn-kernel-documentary-desktop/poster.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/ascension-kernel-stack.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/brand/kirjane-mark-white.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/brand/kirjane-word-white.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/salryn-ecosystem-architecture.svg",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/editorial-salryn-growth-topography.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/salryn-offline-first.svg",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "route": "/projects/",
+      "loads": [
+        {
+          "url": "http://127.0.0.1:41976/assets/brand/kirjane-mark-white.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/brand/kirjane-word-white.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/ascension-branch-purchasing-1440.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/ascension-public-records-1440.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/ascension-request-routing-1440.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/ascension-field-dispatch-1440.webp",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "route": "/about/",
+      "loads": [
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/ascension-public-records-1440.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/ascension-branch-purchasing-1440.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/cinematic/ascension-kernel-landscape.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/brand/kirjane-mark-white.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/brand/kirjane-word-white.webp",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "route": "/contact/",
+      "loads": [
+        {
+          "url": "http://127.0.0.1:41976/assets/brand/kirjane-mark-white.webp",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:41976/assets/brand/kirjane-word-white.webp",
+          "status": 200
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

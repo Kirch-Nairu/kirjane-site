@@ -1,0 +1,829 @@
+{
+  "node": "v24.22.1",
+  "results": [
+    {
+      "name": "home 1440",
+      "ok": true,
+      "evidence": {
+        "state": {
+          "overflow": 0,
+          "h1": 1,
+          "canonical": "https://kirjane.tech/",
+          "og": "https://kirjane.tech/assets/d02-hero-desktop.jpg",
+          "logo": 600
+        },
+        "errors": []
+      }
+    },
+    {
+      "name": "home local fragments",
+      "ok": true,
+      "evidence": [
+        {
+          "href": "http://127.0.0.1:60553/#main",
+          "path": "/",
+          "expected": "/"
+        },
+        {
+          "href": "http://127.0.0.1:60553/#complexity-clarity-scene",
+          "path": "/",
+          "expected": "/"
+        }
+      ]
+    },
+    {
+      "name": "home real Skip link",
+      "ok": true
+    },
+    {
+      "name": "home one Twitter card",
+      "ok": true
+    },
+    {
+      "name": "home axe",
+      "ok": true,
+      "evidence": []
+    },
+    {
+      "name": "salryn 1440",
+      "ok": true,
+      "evidence": {
+        "state": {
+          "overflow": 0,
+          "h1": 1,
+          "canonical": "https://kirjane.tech/salryn/",
+          "og": "https://kirjane.tech/assets/d02-hero-desktop.jpg",
+          "logo": 600
+        },
+        "errors": []
+      }
+    },
+    {
+      "name": "salryn local fragments",
+      "ok": true,
+      "evidence": [
+        {
+          "href": "http://127.0.0.1:60553/salryn/#main",
+          "path": "/salryn/",
+          "expected": "/salryn/"
+        },
+        {
+          "href": "http://127.0.0.1:60553/salryn/#salryn-cinema-experience",
+          "path": "/salryn/",
+          "expected": "/salryn/"
+        },
+        {
+          "href": "http://127.0.0.1:60553/salryn/#scene-a-kernel",
+          "path": "/salryn/",
+          "expected": "/salryn/"
+        },
+        {
+          "href": "http://127.0.0.1:60553/salryn/#scene-g-configuration",
+          "path": "/salryn/",
+          "expected": "/salryn/"
+        },
+        {
+          "href": "http://127.0.0.1:60553/salryn/#scene-a-kernel",
+          "path": "/salryn/",
+          "expected": "/salryn/"
+        },
+        {
+          "href": "http://127.0.0.1:60553/salryn/#scene-a-kernel",
+          "path": "/salryn/",
+          "expected": "/salryn/"
+        },
+        {
+          "href": "http://127.0.0.1:60553/salryn/#scene-a-kernel",
+          "path": "/salryn/",
+          "expected": "/salryn/"
+        },
+        {
+          "href": "http://127.0.0.1:60553/salryn/#scene-b-anatomy",
+          "path": "/salryn/",
+          "expected": "/salryn/"
+        },
+        {
+          "href": "http://127.0.0.1:60553/salryn/#scene-c-flavors",
+          "path": "/salryn/",
+          "expected": "/salryn/"
+        },
+        {
+          "href": "http://127.0.0.1:60553/salryn/#scene-d-activation",
+          "path": "/salryn/",
+          "expected": "/salryn/"
+        },
+        {
+          "href": "http://127.0.0.1:60553/salryn/#scene-e-growth",
+          "path": "/salryn/",
+          "expected": "/salryn/"
+        },
+        {
+          "href": "http://127.0.0.1:60553/salryn/#scene-f-independence",
+          "path": "/salryn/",
+          "expected": "/salryn/"
+        },
+        {
+          "href": "http://127.0.0.1:60553/salryn/#scene-g-configuration",
+          "path": "/salryn/",
+          "expected": "/salryn/"
+        }
+      ]
+    },
+    {
+      "name": "salryn real Skip link",
+      "ok": true
+    },
+    {
+      "name": "salryn one Twitter card",
+      "ok": true
+    },
+    {
+      "name": "salryn axe",
+      "ok": true,
+      "evidence": []
+    },
+    {
+      "name": "services 1440",
+      "ok": true,
+      "evidence": {
+        "state": {
+          "overflow": 0,
+          "h1": 1,
+          "canonical": "https://kirjane.tech/services/",
+          "og": "https://kirjane.tech/assets/d02-hero-desktop.jpg",
+          "logo": 600
+        },
+        "errors": []
+      }
+    },
+    {
+      "name": "services local fragments",
+      "ok": true,
+      "evidence": [
+        {
+          "href": "http://127.0.0.1:60553/services/#main",
+          "path": "/services/",
+          "expected": "/services/"
+        },
+        {
+          "href": "http://127.0.0.1:60553/services/#custom-software",
+          "path": "/services/",
+          "expected": "/services/"
+        },
+        {
+          "href": "http://127.0.0.1:60553/services/#process-automation",
+          "path": "/services/",
+          "expected": "/services/"
+        },
+        {
+          "href": "http://127.0.0.1:60553/services/#systems-integration",
+          "path": "/services/",
+          "expected": "/services/"
+        },
+        {
+          "href": "http://127.0.0.1:60553/services/#infrastructure",
+          "path": "/services/",
+          "expected": "/services/"
+        }
+      ]
+    },
+    {
+      "name": "services real Skip link",
+      "ok": true
+    },
+    {
+      "name": "services one Twitter card",
+      "ok": true
+    },
+    {
+      "name": "services axe",
+      "ok": true,
+      "evidence": []
+    },
+    {
+      "name": "projects 1440",
+      "ok": true,
+      "evidence": {
+        "state": {
+          "overflow": 0,
+          "h1": 1,
+          "canonical": "https://kirjane.tech/projects/",
+          "og": "https://kirjane.tech/assets/d02-hero-desktop.jpg",
+          "logo": 600
+        },
+        "errors": []
+      }
+    },
+    {
+      "name": "projects local fragments",
+      "ok": true,
+      "evidence": [
+        {
+          "href": "http://127.0.0.1:60553/projects/#main",
+          "path": "/projects/",
+          "expected": "/projects/"
+        }
+      ]
+    },
+    {
+      "name": "projects real Skip link",
+      "ok": true
+    },
+    {
+      "name": "projects one Twitter card",
+      "ok": true
+    },
+    {
+      "name": "projects axe",
+      "ok": true,
+      "evidence": []
+    },
+    {
+      "name": "process 1440",
+      "ok": true,
+      "evidence": {
+        "state": {
+          "overflow": 0,
+          "h1": 1,
+          "canonical": "https://kirjane.tech/process/",
+          "og": "https://kirjane.tech/assets/d02-hero-desktop.jpg",
+          "logo": 600
+        },
+        "errors": []
+      }
+    },
+    {
+      "name": "process local fragments",
+      "ok": true,
+      "evidence": [
+        {
+          "href": "http://127.0.0.1:60553/process/#main",
+          "path": "/process/",
+          "expected": "/process/"
+        },
+        {
+          "href": "http://127.0.0.1:60553/process/#process-journey",
+          "path": "/process/",
+          "expected": "/process/"
+        },
+        {
+          "href": "http://127.0.0.1:60553/process/#stage-0",
+          "path": "/process/",
+          "expected": "/process/"
+        },
+        {
+          "href": "http://127.0.0.1:60553/process/#stage-1",
+          "path": "/process/",
+          "expected": "/process/"
+        },
+        {
+          "href": "http://127.0.0.1:60553/process/#stage-2",
+          "path": "/process/",
+          "expected": "/process/"
+        },
+        {
+          "href": "http://127.0.0.1:60553/process/#stage-3",
+          "path": "/process/",
+          "expected": "/process/"
+        },
+        {
+          "href": "http://127.0.0.1:60553/process/#stage-4",
+          "path": "/process/",
+          "expected": "/process/"
+        }
+      ]
+    },
+    {
+      "name": "process real Skip link",
+      "ok": true
+    },
+    {
+      "name": "process one Twitter card",
+      "ok": true
+    },
+    {
+      "name": "process axe",
+      "ok": true,
+      "evidence": []
+    },
+    {
+      "name": "about 1440",
+      "ok": true,
+      "evidence": {
+        "state": {
+          "overflow": 0,
+          "h1": 1,
+          "canonical": "https://kirjane.tech/about/",
+          "og": "https://kirjane.tech/assets/d02-hero-desktop.jpg",
+          "logo": 600
+        },
+        "errors": []
+      }
+    },
+    {
+      "name": "about local fragments",
+      "ok": true,
+      "evidence": [
+        {
+          "href": "http://127.0.0.1:60553/about/#main",
+          "path": "/about/",
+          "expected": "/about/"
+        }
+      ]
+    },
+    {
+      "name": "about real Skip link",
+      "ok": true
+    },
+    {
+      "name": "about one Twitter card",
+      "ok": true
+    },
+    {
+      "name": "about axe",
+      "ok": true,
+      "evidence": []
+    },
+    {
+      "name": "contact 1440",
+      "ok": true,
+      "evidence": {
+        "state": {
+          "overflow": 0,
+          "h1": 1,
+          "canonical": "https://kirjane.tech/contact/",
+          "og": "https://kirjane.tech/assets/d02-hero-desktop.jpg",
+          "logo": 600
+        },
+        "errors": []
+      }
+    },
+    {
+      "name": "contact local fragments",
+      "ok": true,
+      "evidence": [
+        {
+          "href": "http://127.0.0.1:60553/contact/#main",
+          "path": "/contact/",
+          "expected": "/contact/"
+        },
+        {
+          "href": "http://127.0.0.1:60553/contact/#prepare-brief",
+          "path": "/contact/",
+          "expected": "/contact/"
+        }
+      ]
+    },
+    {
+      "name": "contact real Skip link",
+      "ok": true
+    },
+    {
+      "name": "contact one Twitter card",
+      "ok": true
+    },
+    {
+      "name": "contact axe",
+      "ok": true,
+      "evidence": []
+    },
+    {
+      "name": "home 390",
+      "ok": true,
+      "evidence": {
+        "state": {
+          "overflow": 0,
+          "h1": 1,
+          "canonical": "https://kirjane.tech/",
+          "og": "https://kirjane.tech/assets/d02-hero-desktop.jpg",
+          "logo": 600
+        },
+        "errors": []
+      }
+    },
+    {
+      "name": "salryn 390",
+      "ok": true,
+      "evidence": {
+        "state": {
+          "overflow": 0,
+          "h1": 1,
+          "canonical": "https://kirjane.tech/salryn/",
+          "og": "https://kirjane.tech/assets/d02-hero-desktop.jpg",
+          "logo": 600
+        },
+        "errors": []
+      }
+    },
+    {
+      "name": "services 390",
+      "ok": true,
+      "evidence": {
+        "state": {
+          "overflow": 0,
+          "h1": 1,
+          "canonical": "https://kirjane.tech/services/",
+          "og": "https://kirjane.tech/assets/d02-hero-desktop.jpg",
+          "logo": 600
+        },
+        "errors": []
+      }
+    },
+    {
+      "name": "projects 390",
+      "ok": true,
+      "evidence": {
+        "state": {
+          "overflow": 0,
+          "h1": 1,
+          "canonical": "https://kirjane.tech/projects/",
+          "og": "https://kirjane.tech/assets/d02-hero-desktop.jpg",
+          "logo": 600
+        },
+        "errors": []
+      }
+    },
+    {
+      "name": "process 390",
+      "ok": true,
+      "evidence": {
+        "state": {
+          "overflow": 0,
+          "h1": 1,
+          "canonical": "https://kirjane.tech/process/",
+          "og": "https://kirjane.tech/assets/d02-hero-desktop.jpg",
+          "logo": 600
+        },
+        "errors": []
+      }
+    },
+    {
+      "name": "about 390",
+      "ok": true,
+      "evidence": {
+        "state": {
+          "overflow": 0,
+          "h1": 1,
+          "canonical": "https://kirjane.tech/about/",
+          "og": "https://kirjane.tech/assets/d02-hero-desktop.jpg",
+          "logo": 600
+        },
+        "errors": []
+      }
+    },
+    {
+      "name": "contact 390",
+      "ok": true,
+      "evidence": {
+        "state": {
+          "overflow": 0,
+          "h1": 1,
+          "canonical": "https://kirjane.tech/contact/",
+          "og": "https://kirjane.tech/assets/d02-hero-desktop.jpg",
+          "logo": 600
+        },
+        "errors": []
+      }
+    },
+    {
+      "name": "home 280",
+      "ok": true,
+      "evidence": {
+        "state": {
+          "overflow": 0,
+          "h1": 1,
+          "canonical": "https://kirjane.tech/",
+          "og": "https://kirjane.tech/assets/d02-hero-desktop.jpg",
+          "logo": 600
+        },
+        "errors": []
+      }
+    },
+    {
+      "name": "salryn 280",
+      "ok": true,
+      "evidence": {
+        "state": {
+          "overflow": 0,
+          "h1": 1,
+          "canonical": "https://kirjane.tech/salryn/",
+          "og": "https://kirjane.tech/assets/d02-hero-desktop.jpg",
+          "logo": 600
+        },
+        "errors": []
+      }
+    },
+    {
+      "name": "services 280",
+      "ok": true,
+      "evidence": {
+        "state": {
+          "overflow": 0,
+          "h1": 1,
+          "canonical": "https://kirjane.tech/services/",
+          "og": "https://kirjane.tech/assets/d02-hero-desktop.jpg",
+          "logo": 600
+        },
+        "errors": []
+      }
+    },
+    {
+      "name": "projects 280",
+      "ok": true,
+      "evidence": {
+        "state": {
+          "overflow": 0,
+          "h1": 1,
+          "canonical": "https://kirjane.tech/projects/",
+          "og": "https://kirjane.tech/assets/d02-hero-desktop.jpg",
+          "logo": 600
+        },
+        "errors": []
+      }
+    },
+    {
+      "name": "process 280",
+      "ok": true,
+      "evidence": {
+        "state": {
+          "overflow": 0,
+          "h1": 1,
+          "canonical": "https://kirjane.tech/process/",
+          "og": "https://kirjane.tech/assets/d02-hero-desktop.jpg",
+          "logo": 600
+        },
+        "errors": []
+      }
+    },
+    {
+      "name": "about 280",
+      "ok": true,
+      "evidence": {
+        "state": {
+          "overflow": 0,
+          "h1": 1,
+          "canonical": "https://kirjane.tech/about/",
+          "og": "https://kirjane.tech/assets/d02-hero-desktop.jpg",
+          "logo": 600
+        },
+        "errors": []
+      }
+    },
+    {
+      "name": "contact 280",
+      "ok": true,
+      "evidence": {
+        "state": {
+          "overflow": 0,
+          "h1": 1,
+          "canonical": "https://kirjane.tech/contact/",
+          "og": "https://kirjane.tech/assets/d02-hero-desktop.jpg",
+          "logo": 600
+        },
+        "errors": []
+      }
+    },
+    {
+      "name": "complete teardown",
+      "ok": true,
+      "evidence": {
+        "opening": {
+          "active": false,
+          "treatment": "optical",
+          "stages": [
+            {
+              "stage": "K",
+              "ms": 300,
+              "wallMs": 400
+            },
+            {
+              "stage": "I",
+              "ms": 733,
+              "wallMs": 881
+            },
+            {
+              "stage": "R",
+              "ms": 1150,
+              "wallMs": 1303
+            },
+            {
+              "stage": "J",
+              "ms": 1600,
+              "wallMs": 1831
+            },
+            {
+              "stage": "A",
+              "ms": 1996,
+              "wallMs": 2247
+            },
+            {
+              "stage": "N",
+              "ms": 2412,
+              "wallMs": 2664
+            },
+            {
+              "stage": "E",
+              "ms": 2829,
+              "wallMs": 3447
+            },
+            {
+              "stage": "KIRJANE",
+              "ms": 3246,
+              "wallMs": 3863
+            },
+            {
+              "stage": "outro",
+              "ms": 4312,
+              "wallMs": 4930
+            },
+            {
+              "stage": "assembly",
+              "ms": 5112,
+              "wallMs": 5730
+            }
+          ],
+          "completed": true,
+          "reason": "complete",
+          "wallDurationMs": 7433
+        },
+        "overlay": false,
+        "opacity": "1",
+        "inert": false,
+        "animations": 0
+      }
+    },
+    {
+      "name": "complete navigation",
+      "ok": true
+    },
+    {
+      "name": "outro teardown",
+      "ok": true,
+      "evidence": {
+        "opening": {
+          "active": false,
+          "treatment": "optical",
+          "stages": [
+            {
+              "stage": "K",
+              "ms": 300,
+              "wallMs": 666
+            },
+            {
+              "stage": "I",
+              "ms": 733,
+              "wallMs": 1256
+            },
+            {
+              "stage": "R",
+              "ms": 1150,
+              "wallMs": 1671
+            },
+            {
+              "stage": "J",
+              "ms": 1583,
+              "wallMs": 2129
+            },
+            {
+              "stage": "A",
+              "ms": 1983,
+              "wallMs": 2618
+            },
+            {
+              "stage": "N",
+              "ms": 2417,
+              "wallMs": 3048
+            },
+            {
+              "stage": "E",
+              "ms": 2867,
+              "wallMs": 3918
+            },
+            {
+              "stage": "KIRJANE",
+              "ms": 3256,
+              "wallMs": 4310
+            },
+            {
+              "stage": "outro",
+              "ms": 4306,
+              "wallMs": 5560
+            }
+          ],
+          "completed": false,
+          "reason": "escape",
+          "wallDurationMs": 5614
+        },
+        "overlay": false,
+        "opacity": "1",
+        "inert": false,
+        "animations": 0
+      }
+    },
+    {
+      "name": "outro navigation",
+      "ok": true
+    },
+    {
+      "name": "assembly teardown",
+      "ok": true,
+      "evidence": {
+        "opening": {
+          "active": false,
+          "treatment": "optical",
+          "stages": [
+            {
+              "stage": "K",
+              "ms": 333,
+              "wallMs": 521
+            },
+            {
+              "stage": "I",
+              "ms": 733,
+              "wallMs": 1038
+            },
+            {
+              "stage": "R",
+              "ms": 1150,
+              "wallMs": 1453
+            },
+            {
+              "stage": "J",
+              "ms": 1583,
+              "wallMs": 1918
+            },
+            {
+              "stage": "A",
+              "ms": 1983,
+              "wallMs": 2322
+            },
+            {
+              "stage": "N",
+              "ms": 2433,
+              "wallMs": 2766
+            },
+            {
+              "stage": "E",
+              "ms": 2836,
+              "wallMs": 3188
+            },
+            {
+              "stage": "KIRJANE",
+              "ms": 3252,
+              "wallMs": 3999
+            },
+            {
+              "stage": "outro",
+              "ms": 4302,
+              "wallMs": 6082
+            },
+            {
+              "stage": "assembly",
+              "ms": 5119,
+              "wallMs": 6899
+            }
+          ],
+          "completed": false,
+          "reason": "escape",
+          "wallDurationMs": 6918
+        },
+        "overlay": false,
+        "opacity": "1",
+        "inert": false,
+        "animations": 0
+      }
+    },
+    {
+      "name": "assembly navigation",
+      "ok": true
+    },
+    {
+      "name": "drawer opened during assembly remains interactive",
+      "ok": true,
+      "evidence": {
+        "inert": false,
+        "hidden": "false"
+      }
+    },
+    {
+      "name": "assembly drawer Close works",
+      "ok": true
+    },
+    {
+      "name": "Contact handoff",
+      "ok": true
+    },
+    {
+      "name": "Contact Skip retains query and form state",
+      "ok": true
+    },
+    {
+      "name": "production sitemap",
+      "ok": true
+    },
+    {
+      "name": "preview noindex",
+      "ok": true
+    }
+  ]
+}

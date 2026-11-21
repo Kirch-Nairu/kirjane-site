@@ -1,0 +1,47 @@
+[
+  {
+    "path": "site/assets/brand/favicon.png",
+    "sha256": "cd2691ed1f17e03ad9fd92d424c6a38cd12dd203414d072fd364491dcf3240f3",
+    "identicalToStartingSHA": true
+  },
+  {
+    "path": "site/assets/brand/kirjane-mark-white.png",
+    "sha256": "b6a8c17bb0f91d4ba44a571c9d140b776c9b0401b1eb6f954b5c70dcf119a986",
+    "identicalToStartingSHA": true
+  },
+  {
+    "path": "site/assets/brand/kirjane-mark-white.webp",
+    "sha256": "23bfd391049b60b43dbedd0e120e31e2c1cbe1ec8a7b072b5c5cc885956e5dc1",
+    "identicalToStartingSHA": true
+  },
+  {
+    "path": "site/assets/brand/kirjane-mark.png",
+    "sha256": "97d49a14234147f550eef596a0227052b1f708856d0236269e43ffea1e8a85d9",
+    "identicalToStartingSHA": true
+  },
+  {
+    "path": "site/assets/brand/kirjane-mark.webp",
+    "sha256": "bceae86f8ac5df6d17942bb1b75ffc1df7e19033a5d2a88214383ec43ef873b8",
+    "identicalToStartingSHA": true
+  },
+  {
+    "path": "site/assets/brand/kirjane-word-white.png",
+    "sha256": "fc455377f503b87085a56a907406292b4b08a47bedb923eca1c543835340c4a1",
+    "identicalToStartingSHA": true
+  },
+  {
+    "path": "site/assets/brand/kirjane-word-white.webp",
+    "sha256": "8158e92250a29037b6d276df6df73197df00e612b843765575245cb160c72c27",
+    "identicalToStartingSHA": true
+  },
+  {
+    "path": "site/assets/brand/kirjane-word.png",
+    "sha256": "8beca706901f8b256e8886e5040fc6ab72e4b62ef7770a37cc515b75f39a1db3",
+    "identicalToStartingSHA": true
+  },
+  {
+    "path": "site/assets/brand/kirjane-word.webp",
+    "sha256": "861b5d657b37c238dd654492ac9e1c823ce4ce6de322cda1798fb12b1a943b54",
+    "identicalToStartingSHA": true
+  }
+]

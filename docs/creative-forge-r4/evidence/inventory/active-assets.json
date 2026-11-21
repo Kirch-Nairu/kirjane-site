@@ -1,0 +1,4197 @@
+{
+  "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+  "scope": "Two viewport network traces with 29 scroll samples per route. Loaded does not imply visible. This is an observed subset, not proof of exhaustive scene/frame coverage.",
+  "scenes": [
+    {
+      "route": "/",
+      "width": 1440,
+      "canvases": 4,
+      "observedImages": 14
+    },
+    {
+      "route": "/services/",
+      "width": 1440,
+      "canvases": 1,
+      "observedImages": 6
+    },
+    {
+      "route": "/process/",
+      "width": 1440,
+      "canvases": 1,
+      "observedImages": 3
+    },
+    {
+      "route": "/salryn/",
+      "width": 1440,
+      "canvases": 3,
+      "observedImages": 10
+    },
+    {
+      "route": "/projects/",
+      "width": 1440,
+      "canvases": 1,
+      "observedImages": 6
+    },
+    {
+      "route": "/about/",
+      "width": 1440,
+      "canvases": 1,
+      "observedImages": 3
+    },
+    {
+      "route": "/contact/",
+      "width": 1440,
+      "canvases": 0,
+      "observedImages": 2
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "canvases": 4,
+      "observedImages": 14
+    },
+    {
+      "route": "/services/",
+      "width": 390,
+      "canvases": 1,
+      "observedImages": 7
+    },
+    {
+      "route": "/process/",
+      "width": 390,
+      "canvases": 2,
+      "observedImages": 2
+    },
+    {
+      "route": "/salryn/",
+      "width": 390,
+      "canvases": 3,
+      "observedImages": 6
+    },
+    {
+      "route": "/projects/",
+      "width": 390,
+      "canvases": 1,
+      "observedImages": 6
+    },
+    {
+      "route": "/about/",
+      "width": 390,
+      "canvases": 1,
+      "observedImages": 5
+    },
+    {
+      "route": "/contact/",
+      "width": 390,
+      "canvases": 0,
+      "observedImages": 2
+    }
+  ],
+  "records": [
+    {
+      "route": "/",
+      "width": 1440,
+      "path": "/assets/d02-hero-desktop.webp",
+      "status": 200,
+      "bytes": 113240,
+      "usages": [
+        {
+          "path": "/assets/d02-hero-desktop.webp",
+          "selector": "#main img",
+          "dimensions": [
+            1376,
+            768
+          ],
+          "visible": true
+        },
+        {
+          "path": "/assets/d02-hero-desktop.webp",
+          "selector": "img[src=\"./assets/d02-hero-desktop.webp\"]",
+          "dimensions": [
+            1376,
+            768
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "4d758263e4c82ed925b07f2c79d2eab95936a603da70ff362ce962a337d5b8e1",
+      "dimensions": [
+        1376,
+        768
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "path": "/assets/cinematic/home-complexity-to-clarity-desktop/poster.webp",
+      "status": 200,
+      "bytes": 30016,
+      "usages": [
+        {
+          "path": "/assets/cinematic/home-complexity-to-clarity-desktop/poster.webp",
+          "selector": "#complexity-clarity-scene img",
+          "dimensions": [
+            1280,
+            720
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "0e4a6b8a06ec5a4013e68741a08148b4e72f3a173723f232cd74f37ce065495a",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "path": "/assets/salryn-ecosystem-architecture.svg",
+      "status": 200,
+      "bytes": 19436,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "48f6a8fc6056bd0297ae8970d8709b58e3a05e1964d753976366bc6e7e8d9623",
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "path": "/assets/cinematic/ascension-kernel-landscape.webp",
+      "status": 200,
+      "bytes": 35572,
+      "usages": [
+        {
+          "path": "/assets/cinematic/ascension-kernel-landscape.webp",
+          "selector": "#salryn-exhibition img",
+          "dimensions": [
+            1500,
+            900
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "1feb663a489f8d5bbd6f3e662667da53188f09c67c15811888684c96bf0087fe",
+      "dimensions": [
+        1500,
+        900
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "path": "/assets/cinematic/editorial-cap-01-custom-software.webp",
+      "status": 200,
+      "bytes": 22240,
+      "usages": [
+        {
+          "path": "/assets/cinematic/editorial-cap-01-custom-software.webp",
+          "selector": "#home-cap-plate-stage img",
+          "dimensions": [
+            1280,
+            800
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "ae8b5e91522f4b8c149183f3bc289db0784a531a7c8b49c6f54dc9f4f179310e",
+      "dimensions": [
+        1280,
+        800
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "Home: site/index.html syncCapabilityVisual + scene-director.js; WebGL: forge-service-scene.js. Services: ascension-services-process.js + forge-kinetics-r2.js overlay"
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "path": "/assets/brand/kirjane-mark-white.webp",
+      "status": 200,
+      "bytes": 26454,
+      "usages": [
+        {
+          "path": "/assets/brand/kirjane-mark-white.webp",
+          "selector": "#site-header img",
+          "dimensions": [
+            600,
+            469
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "23bfd391049b60b43dbedd0e120e31e2c1cbe1ec8a7b072b5c5cc885956e5dc1",
+      "dimensions": [
+        600,
+        469
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "path": "/assets/brand/kirjane-word-white.webp",
+      "status": 200,
+      "bytes": 20114,
+      "usages": [
+        {
+          "path": "/assets/brand/kirjane-word-white.webp",
+          "selector": "#site-header img",
+          "dimensions": [
+            1000,
+            179
+          ],
+          "visible": true
+        },
+        {
+          "path": "/assets/brand/kirjane-word-white.webp",
+          "selector": "img[src=\"./assets/brand/kirjane-word-white.webp\"]",
+          "dimensions": [
+            1000,
+            179
+          ],
+          "visible": false
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "8158e92250a29037b6d276df6df73197df00e612b843765575245cb160c72c27",
+      "dimensions": [
+        1000,
+        179
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "path": "/assets/cinematic/r4/automation-editorial-desktop.webp",
+      "status": 200,
+      "bytes": 30000,
+      "usages": [
+        {
+          "path": "/assets/cinematic/r4/automation-editorial-desktop.webp",
+          "selector": "#home-cap-plate-stage img",
+          "dimensions": [
+            1280,
+            800
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "REVIEW_READY",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Original authored Blender reconstruction; no third-party inputs",
+      "sha256": "f0cbdd7dd29011cd3663c1201d8f82af15bf5f86b5aed52b7418d175edee1e81",
+      "dimensions": [
+        1280,
+        800
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "artwork/r4/automation/automation-routed-rings-v01.blend",
+      "motionOwner": "Home: site/index.html syncCapabilityVisual + scene-director.js; WebGL: forge-service-scene.js. Services: ascension-services-process.js + forge-kinetics-r2.js overlay"
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "path": "/assets/cinematic/editorial-cap-03-systems-integration.webp",
+      "status": 200,
+      "bytes": 23876,
+      "usages": [
+        {
+          "path": "/assets/cinematic/editorial-cap-03-systems-integration.webp",
+          "selector": "#home-cap-plate-stage img",
+          "dimensions": [
+            1280,
+            800
+          ],
+          "visible": false
+        }
+      ],
+      "usageState": "LOADED_DOM",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "ea46e70cd23527890bf8c125e251ab4264f4b523273ae18518c94c4ff92bb1fc",
+      "dimensions": [
+        1280,
+        800
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "Home: site/index.html syncCapabilityVisual + scene-director.js; WebGL: forge-service-scene.js. Services: ascension-services-process.js + forge-kinetics-r2.js overlay"
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "path": "/assets/cinematic/editorial-cap-04-technical-infrastructure.webp",
+      "status": 200,
+      "bytes": 26894,
+      "usages": [
+        {
+          "path": "/assets/cinematic/editorial-cap-04-technical-infrastructure.webp",
+          "selector": "#home-cap-plate-stage img",
+          "dimensions": [
+            1280,
+            800
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "56bee05bff0b97e9e308e26e66381cb609d6313c69cd8f7b253f095a687b14e9",
+      "dimensions": [
+        1280,
+        800
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "Home: site/index.html syncCapabilityVisual + scene-director.js; WebGL: forge-service-scene.js. Services: ascension-services-process.js + forge-kinetics-r2.js overlay"
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "path": "/assets/organism-topology.svg",
+      "status": 200,
+      "bytes": 150465,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "4b8f2ba5fc76ad44ae47cea732ef286f0f7b148e0df9113229eb9548910ec3e3",
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "path": "/assets/brand/kirjane-mark.webp",
+      "status": 200,
+      "bytes": 76596,
+      "usages": [
+        {
+          "path": "/assets/brand/kirjane-mark.webp",
+          "selector": "img[src=\"./assets/brand/kirjane-mark.webp\"]",
+          "dimensions": [
+            600,
+            469
+          ],
+          "visible": false
+        }
+      ],
+      "usageState": "LOADED_DOM",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "bceae86f8ac5df6d17942bb1b75ffc1df7e19033a5d2a88214383ec43ef873b8",
+      "dimensions": [
+        600,
+        469
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "path": "/assets/cinematic/ascension-public-records-640.webp",
+      "status": 200,
+      "bytes": 29648,
+      "usages": [
+        {
+          "path": "/assets/cinematic/ascension-public-records-640.webp",
+          "selector": "#home-projects-preview img",
+          "dimensions": [
+            619,
+            410
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "baaa6ff205f137cdcec86dd8586deb14732b4841914610c075af78104a40ce83",
+      "dimensions": [
+        640,
+        424
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "path": "/assets/cinematic/ascension-request-routing-640.webp",
+      "status": 200,
+      "bytes": 21044,
+      "usages": [
+        {
+          "path": "/assets/cinematic/ascension-request-routing-640.webp",
+          "selector": "#home-projects-preview img",
+          "dimensions": [
+            619,
+            410
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "13add706aaabdbf3232fc8104f442a6ccc8e49f8b7c160a8be4d3b8242f99e2a",
+      "dimensions": [
+        640,
+        424
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "path": "/assets/cinematic/home-complexity-to-clarity-desktop/frame-0000.webp",
+      "status": 200,
+      "bytes": 9760,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "4c58d78abf5fe92599db3e78de101551bdcd8b16f4290079ea1eddde4fcedb64",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "path": "/assets/cinematic/home-complexity-to-clarity-desktop/frame-0003.webp",
+      "status": 200,
+      "bytes": 9676,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "729acdefedd7544b7a9bf5bf636f22cb6f572d03b57d2223bf2d06cb6757ff26",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "path": "/assets/cinematic/home-complexity-to-clarity-desktop/frame-0002.webp",
+      "status": 200,
+      "bytes": 9642,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "8723881903eceb3d4721b699c318780469d97759a9cfd81b4c0a0f74bdd4b6ed",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "path": "/assets/cinematic/home-complexity-to-clarity-desktop/frame-0001.webp",
+      "status": 200,
+      "bytes": 9660,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "503cf894975b4937d4cc4e413b792b24341bfcb9f9f09751aff5a315392b6840",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "path": "/assets/cinematic/home-complexity-to-clarity-desktop/frame-0004.webp",
+      "status": 200,
+      "bytes": 9704,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "b7bc31311b7d7ca3ef720da425fe9d0b0e858d8bffd67c8d67d48ed99f3ddd1d",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "path": "/assets/cinematic/home-complexity-to-clarity-desktop/frame-0071.webp",
+      "status": 200,
+      "bytes": 29396,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "099d36382a479abfea86502a39ce304dcf339f89fd58f702aaa353510b313ac9",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/services/",
+      "width": 1440,
+      "path": "/assets/cinematic/ascension-request-routing-1440.webp",
+      "status": 200,
+      "bytes": 57902,
+      "usages": [
+        {
+          "path": "/assets/cinematic/ascension-request-routing-1440.webp",
+          "selector": "#main img",
+          "dimensions": [
+            720,
+            477
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "2bacaa5f4bb4d625f8d5f7bb91eaf1b6b9987afd25c959c9d620eab4ca882ec4",
+      "dimensions": [
+        1440,
+        954
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/services/",
+      "width": 1440,
+      "path": "/assets/brand/kirjane-mark-white.webp",
+      "status": 200,
+      "bytes": 26454,
+      "usages": [
+        {
+          "path": "/assets/brand/kirjane-mark-white.webp",
+          "selector": "#site-header img",
+          "dimensions": [
+            600,
+            469
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "23bfd391049b60b43dbedd0e120e31e2c1cbe1ec8a7b072b5c5cc885956e5dc1",
+      "dimensions": [
+        600,
+        469
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/services/",
+      "width": 1440,
+      "path": "/assets/cinematic/editorial-cap-01-custom-software.webp",
+      "status": 200,
+      "bytes": 22240,
+      "usages": [
+        {
+          "path": "/assets/cinematic/editorial-cap-01-custom-software.webp",
+          "selector": "#custom-software img",
+          "dimensions": [
+            1280,
+            800
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "ae8b5e91522f4b8c149183f3bc289db0784a531a7c8b49c6f54dc9f4f179310e",
+      "dimensions": [
+        1280,
+        800
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "Home: site/index.html syncCapabilityVisual + scene-director.js; WebGL: forge-service-scene.js. Services: ascension-services-process.js + forge-kinetics-r2.js overlay"
+    },
+    {
+      "route": "/services/",
+      "width": 1440,
+      "path": "/assets/cinematic/r4/automation-dark-desktop.webp",
+      "status": 200,
+      "bytes": 26570,
+      "usages": [
+        {
+          "path": "/assets/cinematic/r4/automation-dark-desktop.webp",
+          "selector": "#process-automation img",
+          "dimensions": [
+            1280,
+            800
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "REVIEW_READY",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Original authored Blender reconstruction; no third-party inputs",
+      "sha256": "992b7556d6c244a67baabe82b23aec128ef9cdac3c4df4148f396929c34e840d",
+      "dimensions": [
+        1280,
+        800
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "artwork/r4/automation/automation-routed-rings-v01.blend",
+      "motionOwner": "Home: site/index.html syncCapabilityVisual + scene-director.js; WebGL: forge-service-scene.js. Services: ascension-services-process.js + forge-kinetics-r2.js overlay"
+    },
+    {
+      "route": "/services/",
+      "width": 1440,
+      "path": "/assets/cinematic/editorial-cap-03-systems-integration.webp",
+      "status": 200,
+      "bytes": 23876,
+      "usages": [
+        {
+          "path": "/assets/cinematic/editorial-cap-03-systems-integration.webp",
+          "selector": "#systems-integration img",
+          "dimensions": [
+            1280,
+            800
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "ea46e70cd23527890bf8c125e251ab4264f4b523273ae18518c94c4ff92bb1fc",
+      "dimensions": [
+        1280,
+        800
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "Home: site/index.html syncCapabilityVisual + scene-director.js; WebGL: forge-service-scene.js. Services: ascension-services-process.js + forge-kinetics-r2.js overlay"
+    },
+    {
+      "route": "/services/",
+      "width": 1440,
+      "path": "/assets/cinematic/editorial-cap-04-technical-infrastructure.webp",
+      "status": 200,
+      "bytes": 26894,
+      "usages": [
+        {
+          "path": "/assets/cinematic/editorial-cap-04-technical-infrastructure.webp",
+          "selector": "#infrastructure img",
+          "dimensions": [
+            1280,
+            800
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "56bee05bff0b97e9e308e26e66381cb609d6313c69cd8f7b253f095a687b14e9",
+      "dimensions": [
+        1280,
+        800
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "Home: site/index.html syncCapabilityVisual + scene-director.js; WebGL: forge-service-scene.js. Services: ascension-services-process.js + forge-kinetics-r2.js overlay"
+    },
+    {
+      "route": "/process/",
+      "width": 1440,
+      "path": "/assets/organism-topology.svg",
+      "status": 200,
+      "bytes": 150465,
+      "usages": [
+        {
+          "path": "/assets/organism-topology.svg",
+          "selector": "#proc-topo-mount img",
+          "dimensions": [
+            244,
+            150
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "4b8f2ba5fc76ad44ae47cea732ef286f0f7b148e0df9113229eb9548910ec3e3",
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/process/",
+      "width": 1440,
+      "path": "/assets/brand/kirjane-mark-white.webp",
+      "status": 200,
+      "bytes": 26454,
+      "usages": [
+        {
+          "path": "/assets/brand/kirjane-mark-white.webp",
+          "selector": "#site-header img",
+          "dimensions": [
+            600,
+            469
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "23bfd391049b60b43dbedd0e120e31e2c1cbe1ec8a7b072b5c5cc885956e5dc1",
+      "dimensions": [
+        600,
+        469
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/process/",
+      "width": 1440,
+      "path": "/assets/brand/kirjane-word-white.webp",
+      "status": 200,
+      "bytes": 20114,
+      "usages": [
+        {
+          "path": "/assets/brand/kirjane-word-white.webp",
+          "selector": "#site-header img",
+          "dimensions": [
+            1000,
+            179
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "8158e92250a29037b6d276df6df73197df00e612b843765575245cb160c72c27",
+      "dimensions": [
+        1000,
+        179
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/salryn/",
+      "width": 1440,
+      "path": "/assets/cinematic/salryn-hero-master-desktop.webp",
+      "status": 200,
+      "bytes": 63430,
+      "usages": [
+        {
+          "path": "/assets/cinematic/salryn-hero-master-desktop.webp",
+          "selector": "#main img",
+          "dimensions": [
+            1600,
+            960
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "9f6c3a7d88d77b1859d6235e23d34df3ff1417d763d417aad6d2277780c2cb97",
+      "dimensions": [
+        1600,
+        960
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/salryn/",
+      "width": 1440,
+      "path": "/assets/brand/kirjane-word-white.webp",
+      "status": 200,
+      "bytes": 20114,
+      "usages": [
+        {
+          "path": "/assets/brand/kirjane-word-white.webp",
+          "selector": "#site-header img",
+          "dimensions": [
+            1000,
+            179
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "8158e92250a29037b6d276df6df73197df00e612b843765575245cb160c72c27",
+      "dimensions": [
+        1000,
+        179
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/salryn/",
+      "width": 1440,
+      "path": "/assets/brand/kirjane-mark-white.webp",
+      "status": 200,
+      "bytes": 26454,
+      "usages": [
+        {
+          "path": "/assets/brand/kirjane-mark-white.webp",
+          "selector": "#site-header img",
+          "dimensions": [
+            600,
+            469
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "23bfd391049b60b43dbedd0e120e31e2c1cbe1ec8a7b072b5c5cc885956e5dc1",
+      "dimensions": [
+        600,
+        469
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/salryn/",
+      "width": 1440,
+      "path": "/assets/cinematic/salryn-kernel-documentary-desktop/poster.webp",
+      "status": 200,
+      "bytes": 26424,
+      "usages": [
+        {
+          "path": "/assets/cinematic/salryn-kernel-documentary-desktop/poster.webp",
+          "selector": "#scene-a-kernel img",
+          "dimensions": [
+            1280,
+            720
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "abbc90f6990894603a60a9670c6cd91ca8381b0775059ac0117118981d0c10a6",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/salryn/",
+      "width": 1440,
+      "path": "/assets/cinematic/ascension-kernel-stack.webp",
+      "status": 200,
+      "bytes": 23804,
+      "usages": [
+        {
+          "path": "/assets/cinematic/ascension-kernel-stack.webp",
+          "selector": "#scene-b-anatomy img",
+          "dimensions": [
+            1160,
+            870
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "6a88135465de2734235c5176f319e583d6f26e2a586bd8ffe675c8e44802c8b3",
+      "dimensions": [
+        1160,
+        870
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/salryn/",
+      "width": 1440,
+      "path": "/assets/salryn-anatomy-exploded.svg",
+      "status": 200,
+      "bytes": 10526,
+      "usages": [
+        {
+          "path": "/assets/salryn-anatomy-exploded.svg",
+          "selector": "#salryn-anatomy-mount img",
+          "dimensions": [
+            199,
+            150
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "ec7a4f226c50ef96abc5fcd0f6870c93b0623d3401bf227b150aad659630a804",
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/salryn/",
+      "width": 1440,
+      "path": "/assets/cinematic/editorial-salryn-flavors-constellation.webp",
+      "status": 200,
+      "bytes": 50582,
+      "usages": [
+        {
+          "path": "/assets/cinematic/editorial-salryn-flavors-constellation.webp",
+          "selector": "#scene-c-flavors img",
+          "dimensions": [
+            1440,
+            810
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "d4e626a6b0449dc2c60dd87020e48a7a7242b6d25e0672478123048001a28c3d",
+      "dimensions": [
+        1440,
+        810
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/salryn/",
+      "width": 1440,
+      "path": "/assets/salryn-flavors-radial.svg",
+      "status": 200,
+      "bytes": 7840,
+      "usages": [
+        {
+          "path": "/assets/salryn-flavors-radial.svg",
+          "selector": "#salryn-radial-host img",
+          "dimensions": [
+            257,
+            150
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "c8e825e1e20d789602baca02fdd6a32f6f23b8e8f7a22ae90f98022bdf658f94",
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/salryn/",
+      "width": 1440,
+      "path": "/assets/salryn-ecosystem-architecture.svg",
+      "status": 200,
+      "bytes": 19436,
+      "usages": [
+        {
+          "path": "/assets/salryn-ecosystem-architecture.svg",
+          "selector": "#salryn-activation-svg img",
+          "dimensions": [
+            235,
+            150
+          ],
+          "visible": false
+        }
+      ],
+      "usageState": "LOADED_DOM",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "48f6a8fc6056bd0297ae8970d8709b58e3a05e1964d753976366bc6e7e8d9623",
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/salryn/",
+      "width": 1440,
+      "path": "/assets/cinematic/editorial-salryn-growth-topography.webp",
+      "status": 200,
+      "bytes": 19956,
+      "usages": [
+        {
+          "path": "/assets/cinematic/editorial-salryn-growth-topography.webp",
+          "selector": "#scene-e-growth img",
+          "dimensions": [
+            1240,
+            620
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "5b9143dc403b26aee4c89662d39eafcf28c4c58753f2df08bf7e6c02f051f13b",
+      "dimensions": [
+        1240,
+        620
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/projects/",
+      "width": 1440,
+      "path": "/assets/brand/kirjane-mark-white.webp",
+      "status": 200,
+      "bytes": 26454,
+      "usages": [
+        {
+          "path": "/assets/brand/kirjane-mark-white.webp",
+          "selector": "#site-header img",
+          "dimensions": [
+            600,
+            469
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "23bfd391049b60b43dbedd0e120e31e2c1cbe1ec8a7b072b5c5cc885956e5dc1",
+      "dimensions": [
+        600,
+        469
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/projects/",
+      "width": 1440,
+      "path": "/assets/brand/kirjane-word-white.webp",
+      "status": 200,
+      "bytes": 20114,
+      "usages": [
+        {
+          "path": "/assets/brand/kirjane-word-white.webp",
+          "selector": "#site-header img",
+          "dimensions": [
+            1000,
+            179
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "8158e92250a29037b6d276df6df73197df00e612b843765575245cb160c72c27",
+      "dimensions": [
+        1000,
+        179
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/projects/",
+      "width": 1440,
+      "path": "/assets/cinematic/ascension-branch-purchasing-1440.webp",
+      "status": 200,
+      "bytes": 108540,
+      "usages": [
+        {
+          "path": "/assets/cinematic/ascension-branch-purchasing-1440.webp",
+          "selector": "#exhibition-enterprise-ledger img",
+          "dimensions": [
+            892,
+            666
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "b06459c216560b5a0b1de92cf20b41a9b30c003ade8646c7f973994275acb781",
+      "dimensions": [
+        1200,
+        896
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/projects/",
+      "width": 1440,
+      "path": "/assets/cinematic/ascension-public-records-1440.webp",
+      "status": 200,
+      "bytes": 87512,
+      "usages": [
+        {
+          "path": "/assets/cinematic/ascension-public-records-1440.webp",
+          "selector": "#exhibition-institutional-records img",
+          "dimensions": [
+            892,
+            591
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "01e71d62b3a10f317161b0d06577439fa2889caf0934fc7244f3c835ddbf3728",
+      "dimensions": [
+        1440,
+        954
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/projects/",
+      "width": 1440,
+      "path": "/assets/cinematic/ascension-request-routing-1440.webp",
+      "status": 200,
+      "bytes": 57902,
+      "usages": [
+        {
+          "path": "/assets/cinematic/ascension-request-routing-1440.webp",
+          "selector": "#exhibition-workflow-automation img",
+          "dimensions": [
+            892,
+            591
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "2bacaa5f4bb4d625f8d5f7bb91eaf1b6b9987afd25c959c9d620eab4ca882ec4",
+      "dimensions": [
+        1440,
+        954
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/projects/",
+      "width": 1440,
+      "path": "/assets/cinematic/ascension-field-dispatch-1440.webp",
+      "status": 200,
+      "bytes": 97554,
+      "usages": [
+        {
+          "path": "/assets/cinematic/ascension-field-dispatch-1440.webp",
+          "selector": "#exhibition-custom-application img",
+          "dimensions": [
+            892,
+            666
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "e91471eca6cc60d27a3f7e15c2ffe15e25727e9f5420cbab4acbca4c61754f81",
+      "dimensions": [
+        1200,
+        896
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/about/",
+      "width": 1440,
+      "path": "/assets/cinematic/ascension-public-records-1440.webp",
+      "status": 200,
+      "bytes": 87512,
+      "usages": [
+        {
+          "path": "/assets/cinematic/ascension-public-records-1440.webp",
+          "selector": "#main img",
+          "dimensions": [
+            806,
+            534
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "01e71d62b3a10f317161b0d06577439fa2889caf0934fc7244f3c835ddbf3728",
+      "dimensions": [
+        1440,
+        954
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/about/",
+      "width": 1440,
+      "path": "/assets/cinematic/ascension-kernel-landscape.webp",
+      "status": 200,
+      "bytes": 35572,
+      "usages": [
+        {
+          "path": "/assets/cinematic/ascension-kernel-landscape.webp",
+          "selector": "#main img",
+          "dimensions": [
+            1500,
+            900
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "1feb663a489f8d5bbd6f3e662667da53188f09c67c15811888684c96bf0087fe",
+      "dimensions": [
+        1500,
+        900
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/about/",
+      "width": 1440,
+      "path": "/assets/brand/kirjane-mark-white.webp",
+      "status": 200,
+      "bytes": 26454,
+      "usages": [
+        {
+          "path": "/assets/brand/kirjane-mark-white.webp",
+          "selector": "#site-header img",
+          "dimensions": [
+            600,
+            469
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "23bfd391049b60b43dbedd0e120e31e2c1cbe1ec8a7b072b5c5cc885956e5dc1",
+      "dimensions": [
+        600,
+        469
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/contact/",
+      "width": 1440,
+      "path": "/assets/brand/kirjane-mark-white.webp",
+      "status": 200,
+      "bytes": 26454,
+      "usages": [
+        {
+          "path": "/assets/brand/kirjane-mark-white.webp",
+          "selector": "#site-header img",
+          "dimensions": [
+            600,
+            469
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "23bfd391049b60b43dbedd0e120e31e2c1cbe1ec8a7b072b5c5cc885956e5dc1",
+      "dimensions": [
+        600,
+        469
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/contact/",
+      "width": 1440,
+      "path": "/assets/brand/kirjane-word-white.webp",
+      "status": 200,
+      "bytes": 20114,
+      "usages": [
+        {
+          "path": "/assets/brand/kirjane-word-white.webp",
+          "selector": "#site-header img",
+          "dimensions": [
+            1000,
+            179
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "8158e92250a29037b6d276df6df73197df00e612b843765575245cb160c72c27",
+      "dimensions": [
+        1000,
+        179
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "path": "/assets/d02-hero-mobile.webp",
+      "status": 200,
+      "bytes": 59360,
+      "usages": [
+        {
+          "path": "/assets/d02-hero-mobile.webp",
+          "selector": "#main img",
+          "dimensions": [
+            768,
+            1376
+          ],
+          "visible": true
+        },
+        {
+          "path": "/assets/d02-hero-mobile.webp",
+          "selector": "img[src=\"./assets/d02-hero-desktop.webp\"]",
+          "dimensions": [
+            768,
+            1376
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "fd9f89e598c34ecf9ebfb0feb20fb73f0082fc48ae2e62cb7caa44da08249421",
+      "dimensions": [
+        768,
+        1376
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "path": "/assets/cinematic/home-complexity-to-clarity-mobile/poster.webp",
+      "status": 200,
+      "bytes": 13522,
+      "usages": [
+        {
+          "path": "/assets/cinematic/home-complexity-to-clarity-mobile/poster.webp",
+          "selector": "#complexity-clarity-scene img",
+          "dimensions": [
+            540,
+            720
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "fa2e0d2379b437813f000479a899ce2fca42855243580e2bac2fe2a1fe6a73dd",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "path": "/assets/cinematic/ascension-kernel-mobile.webp",
+      "status": 200,
+      "bytes": 20364,
+      "usages": [
+        {
+          "path": "/assets/cinematic/ascension-kernel-mobile.webp",
+          "selector": "#salryn-exhibition img",
+          "dimensions": [
+            680,
+            740
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "c98adabc292b570e2262f5ef71b81e14c90085c88d9ae964c19afdf0cf9eb038",
+      "dimensions": [
+        680,
+        740
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "path": "/assets/salryn-ecosystem-architecture.svg",
+      "status": 200,
+      "bytes": 19436,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "48f6a8fc6056bd0297ae8970d8709b58e3a05e1964d753976366bc6e7e8d9623",
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "path": "/assets/cinematic/editorial-cap-01-custom-software.webp",
+      "status": 200,
+      "bytes": 22240,
+      "usages": [
+        {
+          "path": "/assets/cinematic/editorial-cap-01-custom-software.webp",
+          "selector": "#home-cap-plate-stage img",
+          "dimensions": [
+            1280,
+            800
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "ae8b5e91522f4b8c149183f3bc289db0784a531a7c8b49c6f54dc9f4f179310e",
+      "dimensions": [
+        1280,
+        800
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "Home: site/index.html syncCapabilityVisual + scene-director.js; WebGL: forge-service-scene.js. Services: ascension-services-process.js + forge-kinetics-r2.js overlay"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "path": "/assets/brand/kirjane-mark-white.webp",
+      "status": 200,
+      "bytes": 26454,
+      "usages": [
+        {
+          "path": "/assets/brand/kirjane-mark-white.webp",
+          "selector": "#site-header img",
+          "dimensions": [
+            600,
+            469
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "23bfd391049b60b43dbedd0e120e31e2c1cbe1ec8a7b072b5c5cc885956e5dc1",
+      "dimensions": [
+        600,
+        469
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "path": "/assets/brand/kirjane-word-white.webp",
+      "status": 200,
+      "bytes": 20114,
+      "usages": [
+        {
+          "path": "/assets/brand/kirjane-word-white.webp",
+          "selector": "#site-header img",
+          "dimensions": [
+            1000,
+            179
+          ],
+          "visible": true
+        },
+        {
+          "path": "/assets/brand/kirjane-word-white.webp",
+          "selector": "img[src=\"./assets/brand/kirjane-word-white.webp\"]",
+          "dimensions": [
+            1000,
+            179
+          ],
+          "visible": false
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "8158e92250a29037b6d276df6df73197df00e612b843765575245cb160c72c27",
+      "dimensions": [
+        1000,
+        179
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "path": "/assets/cinematic/r4/automation-editorial-mobile.webp",
+      "status": 200,
+      "bytes": 28826,
+      "usages": [
+        {
+          "path": "/assets/cinematic/r4/automation-editorial-mobile.webp",
+          "selector": "#home-cap-plate-stage img",
+          "dimensions": [
+            1080,
+            800
+          ],
+          "visible": false
+        }
+      ],
+      "usageState": "LOADED_DOM",
+      "disposition": "REVIEW_READY",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Original authored Blender reconstruction; no third-party inputs",
+      "sha256": "24be15de8f1873e10ed9559c08ffe738782710d3fda16738893fdc8a7cdbf28d",
+      "dimensions": [
+        1080,
+        800
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "artwork/r4/automation/automation-routed-rings-v01.blend",
+      "motionOwner": "Home: site/index.html syncCapabilityVisual + scene-director.js; WebGL: forge-service-scene.js. Services: ascension-services-process.js + forge-kinetics-r2.js overlay"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "path": "/assets/cinematic/editorial-cap-03-systems-integration.webp",
+      "status": 200,
+      "bytes": 23876,
+      "usages": [
+        {
+          "path": "/assets/cinematic/editorial-cap-03-systems-integration.webp",
+          "selector": "#home-cap-plate-stage img",
+          "dimensions": [
+            1280,
+            800
+          ],
+          "visible": false
+        }
+      ],
+      "usageState": "LOADED_DOM",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "ea46e70cd23527890bf8c125e251ab4264f4b523273ae18518c94c4ff92bb1fc",
+      "dimensions": [
+        1280,
+        800
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "Home: site/index.html syncCapabilityVisual + scene-director.js; WebGL: forge-service-scene.js. Services: ascension-services-process.js + forge-kinetics-r2.js overlay"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "path": "/assets/cinematic/editorial-cap-04-technical-infrastructure.webp",
+      "status": 200,
+      "bytes": 26894,
+      "usages": [
+        {
+          "path": "/assets/cinematic/editorial-cap-04-technical-infrastructure.webp",
+          "selector": "#home-cap-plate-stage img",
+          "dimensions": [
+            1280,
+            800
+          ],
+          "visible": false
+        }
+      ],
+      "usageState": "LOADED_DOM",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "56bee05bff0b97e9e308e26e66381cb609d6313c69cd8f7b253f095a687b14e9",
+      "dimensions": [
+        1280,
+        800
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "Home: site/index.html syncCapabilityVisual + scene-director.js; WebGL: forge-service-scene.js. Services: ascension-services-process.js + forge-kinetics-r2.js overlay"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "path": "/assets/organism-topology.svg",
+      "status": 200,
+      "bytes": 150465,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "4b8f2ba5fc76ad44ae47cea732ef286f0f7b148e0df9113229eb9548910ec3e3",
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "path": "/assets/brand/kirjane-mark.webp",
+      "status": 200,
+      "bytes": 76596,
+      "usages": [
+        {
+          "path": "/assets/brand/kirjane-mark.webp",
+          "selector": "img[src=\"./assets/brand/kirjane-mark.webp\"]",
+          "dimensions": [
+            600,
+            469
+          ],
+          "visible": false
+        }
+      ],
+      "usageState": "LOADED_DOM",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "bceae86f8ac5df6d17942bb1b75ffc1df7e19033a5d2a88214383ec43ef873b8",
+      "dimensions": [
+        600,
+        469
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "path": "/assets/cinematic/ascension-public-records-640.webp",
+      "status": 200,
+      "bytes": 29648,
+      "usages": [
+        {
+          "path": "/assets/cinematic/ascension-public-records-640.webp",
+          "selector": "#home-projects-preview img",
+          "dimensions": [
+            347,
+            229
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "baaa6ff205f137cdcec86dd8586deb14732b4841914610c075af78104a40ce83",
+      "dimensions": [
+        640,
+        424
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "path": "/assets/cinematic/ascension-request-routing-640.webp",
+      "status": 200,
+      "bytes": 21044,
+      "usages": [
+        {
+          "path": "/assets/cinematic/ascension-request-routing-640.webp",
+          "selector": "#home-projects-preview img",
+          "dimensions": [
+            347,
+            229
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "13add706aaabdbf3232fc8104f442a6ccc8e49f8b7c160a8be4d3b8242f99e2a",
+      "dimensions": [
+        640,
+        424
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "path": "/assets/cinematic/home-complexity-to-clarity-mobile/frame-0000.webp",
+      "status": 200,
+      "bytes": 5272,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "ea43dd691656ba4bac0030b91c367b992f398368227c1b0f080284641f363224",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "path": "/assets/cinematic/home-complexity-to-clarity-mobile/frame-0001.webp",
+      "status": 200,
+      "bytes": 5464,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "38808153af2411901407b840330eb81a3e1e1524b6d97b649860101bc71b3d0d",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "path": "/assets/cinematic/home-complexity-to-clarity-mobile/frame-0002.webp",
+      "status": 200,
+      "bytes": 5342,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "21b451a06ca9e48b0ab06fa1f8c32b5d181d65f4cdb6b82c732247dd482c8ef2",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "path": "/assets/cinematic/home-complexity-to-clarity-mobile/frame-0003.webp",
+      "status": 200,
+      "bytes": 5414,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "4f63f8c804c24845db418e55a3b8fe90267c9a23e447229d3448f7cb57285f37",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "path": "/assets/cinematic/home-complexity-to-clarity-mobile/frame-0004.webp",
+      "status": 200,
+      "bytes": 5532,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "8765a3d39da7390fd7827c95217baf7cc13fee64f95cae10094432dbff98d2d8",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "path": "/assets/cinematic/home-complexity-to-clarity-mobile/frame-0005.webp",
+      "status": 200,
+      "bytes": 5810,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "0e3653b8391ae3e44359d5e053ba010d083e667ea9e287a0631cf5cfaf5374d0",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "path": "/assets/cinematic/home-complexity-to-clarity-mobile/frame-0006.webp",
+      "status": 200,
+      "bytes": 5886,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "47a7c984e7e73fab7c83bbe3da54aa0b28fd262878a36c0ae5e97dea54a7fd6e",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "path": "/assets/cinematic/home-complexity-to-clarity-mobile/frame-0007.webp",
+      "status": 200,
+      "bytes": 5924,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "a0d9959f0fad20c58fb381597df276891a285175b094a387ac385e4816f7adb4",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "path": "/assets/cinematic/home-complexity-to-clarity-mobile/frame-0008.webp",
+      "status": 200,
+      "bytes": 6006,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "9820970726a5a2602234ab501ddf293005cbe86ceedc58cc06f4647fb80b6fb7",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "path": "/assets/cinematic/home-complexity-to-clarity-mobile/frame-0009.webp",
+      "status": 200,
+      "bytes": 6092,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "f395b3f8e4caed25f09459beca03a2d2996e0a0459a248d2c565566d9b671563",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "path": "/assets/cinematic/home-complexity-to-clarity-mobile/frame-0010.webp",
+      "status": 200,
+      "bytes": 6194,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "8f50e79d9fea10bd8d0bbe26d962d953aa44c83813925da22a343dade84bfa90",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "path": "/assets/cinematic/home-complexity-to-clarity-mobile/frame-0011.webp",
+      "status": 200,
+      "bytes": 6446,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "36800054c6a958cc1ea6c287e17a855be410cbfa85524a5bf8a9389f664c9e3f",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "path": "/assets/cinematic/home-complexity-to-clarity-mobile/frame-0012.webp",
+      "status": 200,
+      "bytes": 7076,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "11339871569465278081a8250a67516ed54de8c34eb49e24e4a0d0806912b4f0",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "path": "/assets/cinematic/home-complexity-to-clarity-mobile/frame-0013.webp",
+      "status": 200,
+      "bytes": 7132,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "7504c97f176491a27156741b75cdfa7bdfd684b995b8a91f5b0bffe8384aa355",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "path": "/assets/cinematic/home-complexity-to-clarity-mobile/frame-0014.webp",
+      "status": 200,
+      "bytes": 7180,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "e6155183459ab3f3a78f5021ce2c593dc6142c64a2073e57b9bb08f79de6c099",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "path": "/assets/cinematic/home-complexity-to-clarity-mobile/frame-0015.webp",
+      "status": 200,
+      "bytes": 7082,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "4aa2dcdd07dba656fee1c6c923512e6addc5e5bd279045449b92c6cd85f651fd",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "path": "/assets/cinematic/home-complexity-to-clarity-mobile/frame-0016.webp",
+      "status": 200,
+      "bytes": 6784,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "486b8e16d2d18fc24655d95049584e4f6ef3a60f86f04462ef3fac1e8575f284",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "path": "/assets/cinematic/home-complexity-to-clarity-mobile/frame-0017.webp",
+      "status": 200,
+      "bytes": 6948,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "31ced2a3a55fb55eba3a02ce13e71927b8d3fc8bb1d74981f97b1f09a7bb7cf4",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "path": "/assets/cinematic/home-complexity-to-clarity-mobile/frame-0018.webp",
+      "status": 200,
+      "bytes": 6928,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "270635851f277985f38e4181236361366691018294f4f54d601653e48cac3a7f",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "path": "/assets/cinematic/home-complexity-to-clarity-mobile/frame-0019.webp",
+      "status": 200,
+      "bytes": 9088,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "8d16afd6686bb75749fd3057d9952f657f8e7847293c186ffbdfaee381ed0b65",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "path": "/assets/cinematic/home-complexity-to-clarity-mobile/frame-0024.webp",
+      "status": 200,
+      "bytes": 12792,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "db68d22b5c4395c457898a2216846a0b900ae890ea50633322370d41b5bbdfd3",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "path": "/assets/cinematic/home-complexity-to-clarity-mobile/frame-0025.webp",
+      "status": 200,
+      "bytes": 13258,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "02871366766da35ada44fb6991183b79b2a84a0a12af40285eb3602724a5549f",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "path": "/assets/cinematic/home-complexity-to-clarity-mobile/frame-0026.webp",
+      "status": 200,
+      "bytes": 13108,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "f9b01faf776b3dba5e53ddadeaa5950bbd781e726544eee1c50b84de79aa6bde",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "path": "/assets/cinematic/home-complexity-to-clarity-mobile/frame-0023.webp",
+      "status": 200,
+      "bytes": 12162,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "f71c052d788c04d2a2532fb65fe27d003545b638dd128c85a5332c9fae100e0e",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "path": "/assets/cinematic/home-complexity-to-clarity-mobile/frame-0027.webp",
+      "status": 200,
+      "bytes": 13302,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "45a596c0ff35c9b467609e6cdaa1aac11828dafcde79a7af0453159b2dead8b3",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "path": "/assets/cinematic/home-complexity-to-clarity-mobile/frame-0028.webp",
+      "status": 200,
+      "bytes": 13456,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "125deb50698aec6b51e3607598b13aa83f27310f092bdabf15501bee91fa38ab",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "path": "/assets/cinematic/home-complexity-to-clarity-mobile/frame-0029.webp",
+      "status": 200,
+      "bytes": 13734,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "418f67592adfc16ce07c8caa22f0d24f891c581eff4479dc0378eee2d6c693a2",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "path": "/assets/cinematic/home-complexity-to-clarity-mobile/frame-0030.webp",
+      "status": 200,
+      "bytes": 13540,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "0580daad3da68665d5d000921e7a582f25430d28270a1adc9532d35994ea0b0d",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "path": "/assets/cinematic/home-complexity-to-clarity-mobile/frame-0033.webp",
+      "status": 200,
+      "bytes": 13590,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "af9daf715497175b7e9728980c1b5cf9c607d7b1ebc39ed370fceda8d9e59697",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "path": "/assets/cinematic/home-complexity-to-clarity-mobile/frame-0035.webp",
+      "status": 200,
+      "bytes": 13952,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "ea4c7ae6937d3d4f676f939c9938701f6b4b8516206e27e72c7cae398be6e494",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "path": "/assets/cinematic/home-complexity-to-clarity-mobile/frame-0034.webp",
+      "status": 200,
+      "bytes": 14072,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "5730672099a80f82304a982abd31d17cce664fb7629a5ee517f0cab92c62a174",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "path": "/assets/cinematic/home-complexity-to-clarity-mobile/frame-0032.webp",
+      "status": 200,
+      "bytes": 13722,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "56b978124c93d3d61f815439f022897e84e9f27017caf1ba709231b2c9b53ef8",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "path": "/assets/cinematic/home-complexity-to-clarity-mobile/frame-0031.webp",
+      "status": 200,
+      "bytes": 13522,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "fa2e0d2379b437813f000479a899ce2fca42855243580e2bac2fe2a1fe6a73dd",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/services/",
+      "width": 390,
+      "path": "/assets/cinematic/ascension-request-routing-640.webp",
+      "status": 200,
+      "bytes": 21044,
+      "usages": [
+        {
+          "path": "/assets/cinematic/ascension-request-routing-640.webp",
+          "selector": "#main img",
+          "dimensions": [
+            351,
+            232
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "13add706aaabdbf3232fc8104f442a6ccc8e49f8b7c160a8be4d3b8242f99e2a",
+      "dimensions": [
+        640,
+        424
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/services/",
+      "width": 390,
+      "path": "/assets/brand/kirjane-mark-white.webp",
+      "status": 200,
+      "bytes": 26454,
+      "usages": [
+        {
+          "path": "/assets/brand/kirjane-mark-white.webp",
+          "selector": "#site-header img",
+          "dimensions": [
+            600,
+            469
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "23bfd391049b60b43dbedd0e120e31e2c1cbe1ec8a7b072b5c5cc885956e5dc1",
+      "dimensions": [
+        600,
+        469
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/services/",
+      "width": 390,
+      "path": "/assets/brand/kirjane-word-white.webp",
+      "status": 200,
+      "bytes": 20114,
+      "usages": [
+        {
+          "path": "/assets/brand/kirjane-word-white.webp",
+          "selector": "#site-header img",
+          "dimensions": [
+            1000,
+            179
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "8158e92250a29037b6d276df6df73197df00e612b843765575245cb160c72c27",
+      "dimensions": [
+        1000,
+        179
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/services/",
+      "width": 390,
+      "path": "/assets/cinematic/editorial-cap-01-custom-software.webp",
+      "status": 200,
+      "bytes": 22240,
+      "usages": [
+        {
+          "path": "/assets/cinematic/editorial-cap-01-custom-software.webp",
+          "selector": "#custom-software img",
+          "dimensions": [
+            1280,
+            800
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "ae8b5e91522f4b8c149183f3bc289db0784a531a7c8b49c6f54dc9f4f179310e",
+      "dimensions": [
+        1280,
+        800
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "Home: site/index.html syncCapabilityVisual + scene-director.js; WebGL: forge-service-scene.js. Services: ascension-services-process.js + forge-kinetics-r2.js overlay"
+    },
+    {
+      "route": "/services/",
+      "width": 390,
+      "path": "/assets/cinematic/r4/automation-dark-mobile.webp",
+      "status": 200,
+      "bytes": 25760,
+      "usages": [
+        {
+          "path": "/assets/cinematic/r4/automation-dark-mobile.webp",
+          "selector": "#process-automation img",
+          "dimensions": [
+            1080,
+            800
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "REVIEW_READY",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Original authored Blender reconstruction; no third-party inputs",
+      "sha256": "9a4b321d91b9044337a834f46465c1e90a69fd2c77646846231ec122ed8c03a7",
+      "dimensions": [
+        1080,
+        800
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "artwork/r4/automation/automation-routed-rings-v01.blend",
+      "motionOwner": "Home: site/index.html syncCapabilityVisual + scene-director.js; WebGL: forge-service-scene.js. Services: ascension-services-process.js + forge-kinetics-r2.js overlay"
+    },
+    {
+      "route": "/services/",
+      "width": 390,
+      "path": "/assets/cinematic/editorial-cap-03-systems-integration.webp",
+      "status": 200,
+      "bytes": 23876,
+      "usages": [
+        {
+          "path": "/assets/cinematic/editorial-cap-03-systems-integration.webp",
+          "selector": "#systems-integration img",
+          "dimensions": [
+            1280,
+            800
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "ea46e70cd23527890bf8c125e251ab4264f4b523273ae18518c94c4ff92bb1fc",
+      "dimensions": [
+        1280,
+        800
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "Home: site/index.html syncCapabilityVisual + scene-director.js; WebGL: forge-service-scene.js. Services: ascension-services-process.js + forge-kinetics-r2.js overlay"
+    },
+    {
+      "route": "/services/",
+      "width": 390,
+      "path": "/assets/cinematic/editorial-cap-04-technical-infrastructure.webp",
+      "status": 200,
+      "bytes": 26894,
+      "usages": [
+        {
+          "path": "/assets/cinematic/editorial-cap-04-technical-infrastructure.webp",
+          "selector": "#infrastructure img",
+          "dimensions": [
+            1280,
+            800
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "56bee05bff0b97e9e308e26e66381cb609d6313c69cd8f7b253f095a687b14e9",
+      "dimensions": [
+        1280,
+        800
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "Home: site/index.html syncCapabilityVisual + scene-director.js; WebGL: forge-service-scene.js. Services: ascension-services-process.js + forge-kinetics-r2.js overlay"
+    },
+    {
+      "route": "/process/",
+      "width": 390,
+      "path": "/assets/organism-topology.svg",
+      "status": 200,
+      "bytes": 150465,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "4b8f2ba5fc76ad44ae47cea732ef286f0f7b148e0df9113229eb9548910ec3e3",
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/process/",
+      "width": 390,
+      "path": "/assets/brand/kirjane-mark-white.webp",
+      "status": 200,
+      "bytes": 26454,
+      "usages": [
+        {
+          "path": "/assets/brand/kirjane-mark-white.webp",
+          "selector": "#site-header img",
+          "dimensions": [
+            600,
+            469
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "23bfd391049b60b43dbedd0e120e31e2c1cbe1ec8a7b072b5c5cc885956e5dc1",
+      "dimensions": [
+        600,
+        469
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/process/",
+      "width": 390,
+      "path": "/assets/brand/kirjane-word-white.webp",
+      "status": 200,
+      "bytes": 20114,
+      "usages": [
+        {
+          "path": "/assets/brand/kirjane-word-white.webp",
+          "selector": "#site-header img",
+          "dimensions": [
+            1000,
+            179
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "8158e92250a29037b6d276df6df73197df00e612b843765575245cb160c72c27",
+      "dimensions": [
+        1000,
+        179
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/salryn/",
+      "width": 390,
+      "path": "/assets/cinematic/salryn-hero-master-mobile.webp",
+      "status": 200,
+      "bytes": 37548,
+      "usages": [
+        {
+          "path": "/assets/cinematic/salryn-hero-master-mobile.webp",
+          "selector": "#main img",
+          "dimensions": [
+            720,
+            960
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "efac8b3437f02441c5a3077524baa34524e8707bddf6626fe451b936f24c3de7",
+      "dimensions": [
+        720,
+        960
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/salryn/",
+      "width": 390,
+      "path": "/assets/cinematic/salryn-kernel-documentary-mobile/poster.webp",
+      "status": 200,
+      "bytes": 13872,
+      "usages": [
+        {
+          "path": "/assets/cinematic/salryn-kernel-documentary-mobile/poster.webp",
+          "selector": "#scene-a-kernel img",
+          "dimensions": [
+            540,
+            720
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "0527a4941ce3c4664580249bb2016dce427e7e59ba606f448f3a0377bbad20ca",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/salryn/",
+      "width": 390,
+      "path": "/assets/salryn-anatomy-exploded.svg",
+      "status": 200,
+      "bytes": 10526,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "ec7a4f226c50ef96abc5fcd0f6870c93b0623d3401bf227b150aad659630a804",
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/salryn/",
+      "width": 390,
+      "path": "/assets/cinematic/ascension-kernel-stack.webp",
+      "status": 200,
+      "bytes": 23804,
+      "usages": [
+        {
+          "path": "/assets/cinematic/ascension-kernel-stack.webp",
+          "selector": "#scene-b-anatomy img",
+          "dimensions": [
+            1160,
+            870
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "6a88135465de2734235c5176f319e583d6f26e2a586bd8ffe675c8e44802c8b3",
+      "dimensions": [
+        1160,
+        870
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/salryn/",
+      "width": 390,
+      "path": "/assets/cinematic/editorial-salryn-flavors-constellation.webp",
+      "status": 200,
+      "bytes": 50582,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "d4e626a6b0449dc2c60dd87020e48a7a7242b6d25e0672478123048001a28c3d",
+      "dimensions": [
+        1440,
+        810
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/salryn/",
+      "width": 390,
+      "path": "/assets/brand/kirjane-mark-white.webp",
+      "status": 200,
+      "bytes": 26454,
+      "usages": [
+        {
+          "path": "/assets/brand/kirjane-mark-white.webp",
+          "selector": "#site-header img",
+          "dimensions": [
+            600,
+            469
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "23bfd391049b60b43dbedd0e120e31e2c1cbe1ec8a7b072b5c5cc885956e5dc1",
+      "dimensions": [
+        600,
+        469
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/salryn/",
+      "width": 390,
+      "path": "/assets/brand/kirjane-word-white.webp",
+      "status": 200,
+      "bytes": 20114,
+      "usages": [
+        {
+          "path": "/assets/brand/kirjane-word-white.webp",
+          "selector": "#site-header img",
+          "dimensions": [
+            1000,
+            179
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "8158e92250a29037b6d276df6df73197df00e612b843765575245cb160c72c27",
+      "dimensions": [
+        1000,
+        179
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/salryn/",
+      "width": 390,
+      "path": "/assets/salryn-flavors-radial.svg",
+      "status": 200,
+      "bytes": 7840,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "c8e825e1e20d789602baca02fdd6a32f6f23b8e8f7a22ae90f98022bdf658f94",
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/salryn/",
+      "width": 390,
+      "path": "/assets/cinematic/editorial-salryn-growth-topography.webp",
+      "status": 200,
+      "bytes": 19956,
+      "usages": [
+        {
+          "path": "/assets/cinematic/editorial-salryn-growth-topography.webp",
+          "selector": "#scene-e-growth img",
+          "dimensions": [
+            1240,
+            620
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "5b9143dc403b26aee4c89662d39eafcf28c4c58753f2df08bf7e6c02f051f13b",
+      "dimensions": [
+        1240,
+        620
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/salryn/",
+      "width": 390,
+      "path": "/assets/salryn-ecosystem-architecture.svg",
+      "status": 200,
+      "bytes": 19436,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "48f6a8fc6056bd0297ae8970d8709b58e3a05e1964d753976366bc6e7e8d9623",
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/salryn/",
+      "width": 390,
+      "path": "/assets/salryn-offline-first.svg",
+      "status": 200,
+      "bytes": 4825,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "936fa5bcdca739cdb48ee7a1a0a88d3c7ebe25b717a2e46ee020d0135745a604",
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/salryn/",
+      "width": 390,
+      "path": "/assets/cinematic/salryn-kernel-documentary-mobile/frame-0000.webp",
+      "status": 200,
+      "bytes": 10966,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "e4146a1de1f95c02e0af7a035c411643ed4df1a91415aa17d74b06bbfd311987",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/salryn/",
+      "width": 390,
+      "path": "/assets/cinematic/salryn-kernel-documentary-mobile/frame-0001.webp",
+      "status": 200,
+      "bytes": 10894,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "3f9a380d722d6da6c97ceb42cf7c621a98426927c3b5da6d7aad1d7f9ff10883",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/salryn/",
+      "width": 390,
+      "path": "/assets/cinematic/salryn-kernel-documentary-mobile/frame-0002.webp",
+      "status": 200,
+      "bytes": 10642,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "274aa2a796009d850ef82612f2663c5d6316e051821a4e4167d01b01a6f4fb7d",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/salryn/",
+      "width": 390,
+      "path": "/assets/cinematic/salryn-kernel-documentary-mobile/frame-0003.webp",
+      "status": 200,
+      "bytes": 10798,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "7023ffaef467fbcb6dff7a5acb299dc972b75cd35de6dcdf15fe63da7d4c3b82",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/salryn/",
+      "width": 390,
+      "path": "/assets/cinematic/salryn-kernel-documentary-mobile/frame-0004.webp",
+      "status": 200,
+      "bytes": 10802,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "7e679d1ee4e37825ef3c5ce0611e88d1b0ed31137ad6f5685070a930d9b648d1",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/salryn/",
+      "width": 390,
+      "path": "/assets/cinematic/salryn-kernel-documentary-mobile/frame-0005.webp",
+      "status": 200,
+      "bytes": 10714,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "c1eecd8fe0aaa2ae3e119f34bbc35c094e2df1689fb6df02ba1dd8a476cc1a29",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/salryn/",
+      "width": 390,
+      "path": "/assets/cinematic/salryn-kernel-documentary-mobile/frame-0006.webp",
+      "status": 200,
+      "bytes": 10792,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "4b5edefa5776130ac3bc8a6eaffa63be554cb63f136374aac392862a1aec5eff",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/salryn/",
+      "width": 390,
+      "path": "/assets/cinematic/salryn-kernel-documentary-mobile/frame-0007.webp",
+      "status": 200,
+      "bytes": 10614,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "86fb85455283a826254ef911d2b98d037c2a5adf0e9b93beb37a30bbdf8b52cb",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/salryn/",
+      "width": 390,
+      "path": "/assets/cinematic/salryn-kernel-documentary-mobile/frame-0008.webp",
+      "status": 200,
+      "bytes": 10568,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "22f5dd434164c0387cc6adaa731c53d22bbaa7ec5fdaee3ebe2e3fcae3ef8985",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/salryn/",
+      "width": 390,
+      "path": "/assets/cinematic/salryn-kernel-documentary-mobile/frame-0009.webp",
+      "status": 200,
+      "bytes": 10644,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "1fc0ab64497e5d7717b1873c27a329df1658264a71af52ec81bfec6aa63c91fa",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/salryn/",
+      "width": 390,
+      "path": "/assets/cinematic/salryn-kernel-documentary-mobile/frame-0010.webp",
+      "status": 200,
+      "bytes": 10524,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "75e389a2ffefcf04af0874ce1f2db4005a63657cb20e09cc7e8c12af61e2162d",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/salryn/",
+      "width": 390,
+      "path": "/assets/cinematic/salryn-kernel-documentary-mobile/frame-0011.webp",
+      "status": 200,
+      "bytes": 10376,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "790a373fa6c766f887c5d9dd7acf92acf53173334f37e7c497f5a0274b190136",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/salryn/",
+      "width": 390,
+      "path": "/assets/cinematic/salryn-kernel-documentary-mobile/frame-0012.webp",
+      "status": 200,
+      "bytes": 9982,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "46e2851b7475a012225275a778d6530ba80454aec46f6f27e40e50ddcece4849",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/salryn/",
+      "width": 390,
+      "path": "/assets/cinematic/salryn-kernel-documentary-mobile/frame-0017.webp",
+      "status": 200,
+      "bytes": 11912,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "988dd8410365cc8ffc08439e510a6b052bae775e01773f2e7e3bd5543ce2dcf4",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/salryn/",
+      "width": 390,
+      "path": "/assets/cinematic/salryn-kernel-documentary-mobile/frame-0018.webp",
+      "status": 200,
+      "bytes": 12392,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "3b39106a70fb849891274752657f6060164804538648b9cb4002ecdc4c372de1",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/salryn/",
+      "width": 390,
+      "path": "/assets/cinematic/salryn-kernel-documentary-mobile/frame-0019.webp",
+      "status": 200,
+      "bytes": 12214,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "a2a09abe49382b565007841d066681ee4687f8233500bb50483ab607025ed957",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/salryn/",
+      "width": 390,
+      "path": "/assets/cinematic/salryn-kernel-documentary-mobile/frame-0020.webp",
+      "status": 200,
+      "bytes": 12406,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "6abc8f77d4ce6374dad25d1a59c1d2a7add83bd29cf85feb763bc96a70d6936c",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/salryn/",
+      "width": 390,
+      "path": "/assets/cinematic/salryn-kernel-documentary-mobile/frame-0026.webp",
+      "status": 200,
+      "bytes": 13344,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "a4a7ce8fab017c422809af051a560d643698a9a41502d2b64340d2c681b3a416",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/salryn/",
+      "width": 390,
+      "path": "/assets/cinematic/salryn-kernel-documentary-mobile/frame-0027.webp",
+      "status": 200,
+      "bytes": 13108,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "8d4f34e722ca7e53cebe38286216155b327aeda226dd8b85aaedd209d88bf8c4",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/salryn/",
+      "width": 390,
+      "path": "/assets/cinematic/salryn-kernel-documentary-mobile/frame-0028.webp",
+      "status": 200,
+      "bytes": 13540,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "bd77d46a7dc8452b43831a9af3422dc347c335b5988999e3563c76d56efb9d33",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/salryn/",
+      "width": 390,
+      "path": "/assets/cinematic/salryn-kernel-documentary-mobile/frame-0029.webp",
+      "status": 200,
+      "bytes": 13872,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "0527a4941ce3c4664580249bb2016dce427e7e59ba606f448f3a0377bbad20ca",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/salryn/",
+      "width": 390,
+      "path": "/assets/cinematic/salryn-kernel-documentary-mobile/frame-0035.webp",
+      "status": 200,
+      "bytes": 14016,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "66661783eed3a423b5b71562f6e4f3cc0531ff7c790b9ce036024d5ecaf80cbd",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/salryn/",
+      "width": 390,
+      "path": "/assets/cinematic/salryn-kernel-documentary-mobile/frame-0036.webp",
+      "status": 200,
+      "bytes": 13504,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "1aa603fb8cd91075aaa27d4c3f14a536d6f23c5f14d67c0b1406d9edbe017283",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/salryn/",
+      "width": 390,
+      "path": "/assets/cinematic/salryn-kernel-documentary-mobile/frame-0039.webp",
+      "status": 200,
+      "bytes": 13872,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "979702362a9d8db5bc7392ae6029dfc069afa1e648ed565e51d59df281137266",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/salryn/",
+      "width": 390,
+      "path": "/assets/cinematic/salryn-kernel-documentary-mobile/frame-0040.webp",
+      "status": 200,
+      "bytes": 13382,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "b8da459cbc4dc23e88942d6d0acb1275eecb0823dcfc2b05bc1d592aa2b83647",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/salryn/",
+      "width": 390,
+      "path": "/assets/cinematic/salryn-kernel-documentary-mobile/frame-0041.webp",
+      "status": 200,
+      "bytes": 13588,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "81247ba6a9edc5af53d9750a26d35728fa76904663103fe29a685e587e776cc2",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/salryn/",
+      "width": 390,
+      "path": "/assets/cinematic/salryn-kernel-documentary-mobile/frame-0042.webp",
+      "status": 200,
+      "bytes": 13768,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "5db52289d90c88a6de7f000aa2a9cc91a99807815ed642ed2bd36d88b247a759",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/salryn/",
+      "width": 390,
+      "path": "/assets/cinematic/salryn-kernel-documentary-mobile/frame-0043.webp",
+      "status": 200,
+      "bytes": 13678,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "db0cbb5ac76398e4b3c5e31257d56efaf05434ddd6735928393cc14a99b5c0c4",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/salryn/",
+      "width": 390,
+      "path": "/assets/cinematic/salryn-kernel-documentary-mobile/frame-0044.webp",
+      "status": 200,
+      "bytes": 13956,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "a7bce0fb5024322f63341b42ebcce7aae7fe8b4091792c3383dae51eb95acf1d",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/salryn/",
+      "width": 390,
+      "path": "/assets/cinematic/salryn-kernel-documentary-mobile/frame-0045.webp",
+      "status": 200,
+      "bytes": 14000,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "e0f6fc5effd9e275490bdf1de9da4241afafa6115d2bb4ff7ea6a381fcc2fdb5",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/salryn/",
+      "width": 390,
+      "path": "/assets/cinematic/salryn-kernel-documentary-mobile/frame-0046.webp",
+      "status": 200,
+      "bytes": 14002,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "f21b6e691a0a5a638bb350f7297ab80051c37ec16a21e84164d18e1e8090c8e3",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/salryn/",
+      "width": 390,
+      "path": "/assets/cinematic/salryn-kernel-documentary-mobile/frame-0047.webp",
+      "status": 200,
+      "bytes": 13804,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "f6b210bc6ecaf53266efeeca32641b122d3875162cfe5cf178ac760d70864078",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/salryn/",
+      "width": 390,
+      "path": "/assets/cinematic/salryn-kernel-documentary-mobile/frame-0037.webp",
+      "status": 200,
+      "bytes": 13182,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "68207a0eaf0e6294c23d6b9d97aaf5aa24cd08314bedfcb40d9d32f76c6b53e3",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/salryn/",
+      "width": 390,
+      "path": "/assets/cinematic/salryn-kernel-documentary-mobile/frame-0038.webp",
+      "status": 200,
+      "bytes": 13226,
+      "usages": [],
+      "usageState": "LOADED_NETWORK",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "aca7c68a3a5bf8ffb8c76b8823a4f758923f92a0fa356ab2fce02322fdfcf7c0",
+      "dimensions": [
+        540,
+        720
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "site/js/frame-sequence-player.js; native scene-director phase"
+    },
+    {
+      "route": "/projects/",
+      "width": 390,
+      "path": "/assets/brand/kirjane-mark-white.webp",
+      "status": 200,
+      "bytes": 26454,
+      "usages": [
+        {
+          "path": "/assets/brand/kirjane-mark-white.webp",
+          "selector": "#site-header img",
+          "dimensions": [
+            600,
+            469
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "23bfd391049b60b43dbedd0e120e31e2c1cbe1ec8a7b072b5c5cc885956e5dc1",
+      "dimensions": [
+        600,
+        469
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/projects/",
+      "width": 390,
+      "path": "/assets/brand/kirjane-word-white.webp",
+      "status": 200,
+      "bytes": 20114,
+      "usages": [
+        {
+          "path": "/assets/brand/kirjane-word-white.webp",
+          "selector": "#site-header img",
+          "dimensions": [
+            1000,
+            179
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "8158e92250a29037b6d276df6df73197df00e612b843765575245cb160c72c27",
+      "dimensions": [
+        1000,
+        179
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/projects/",
+      "width": 390,
+      "path": "/assets/cinematic/ascension-branch-purchasing-640.webp",
+      "status": 200,
+      "bytes": 46354,
+      "usages": [
+        {
+          "path": "/assets/cinematic/ascension-branch-purchasing-640.webp",
+          "selector": "#exhibition-enterprise-ledger img",
+          "dimensions": [
+            350,
+            261
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "24ff8b095343764d43b089712c1d158829bf3fea6341fc8132b387188128f09f",
+      "dimensions": [
+        640,
+        478
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/projects/",
+      "width": 390,
+      "path": "/assets/cinematic/ascension-field-dispatch-640.webp",
+      "status": 200,
+      "bytes": 38782,
+      "usages": [
+        {
+          "path": "/assets/cinematic/ascension-field-dispatch-640.webp",
+          "selector": "#exhibition-custom-application img",
+          "dimensions": [
+            350,
+            261
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "202279cf1732bb0366c34bf8c10dc785daad966f466eb2da3cac1d40cfc8f14f",
+      "dimensions": [
+        640,
+        478
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/projects/",
+      "width": 390,
+      "path": "/assets/cinematic/ascension-request-routing-640.webp",
+      "status": 200,
+      "bytes": 21044,
+      "usages": [
+        {
+          "path": "/assets/cinematic/ascension-request-routing-640.webp",
+          "selector": "#exhibition-workflow-automation img",
+          "dimensions": [
+            350,
+            231
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "13add706aaabdbf3232fc8104f442a6ccc8e49f8b7c160a8be4d3b8242f99e2a",
+      "dimensions": [
+        640,
+        424
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/projects/",
+      "width": 390,
+      "path": "/assets/cinematic/ascension-public-records-640.webp",
+      "status": 200,
+      "bytes": 29648,
+      "usages": [
+        {
+          "path": "/assets/cinematic/ascension-public-records-640.webp",
+          "selector": "#exhibition-institutional-records img",
+          "dimensions": [
+            350,
+            231
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "baaa6ff205f137cdcec86dd8586deb14732b4841914610c075af78104a40ce83",
+      "dimensions": [
+        640,
+        424
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/about/",
+      "width": 390,
+      "path": "/assets/cinematic/ascension-public-records-640.webp",
+      "status": 200,
+      "bytes": 29648,
+      "usages": [
+        {
+          "path": "/assets/cinematic/ascension-public-records-640.webp",
+          "selector": "#main img",
+          "dimensions": [
+            390,
+            258
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "baaa6ff205f137cdcec86dd8586deb14732b4841914610c075af78104a40ce83",
+      "dimensions": [
+        640,
+        424
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/about/",
+      "width": 390,
+      "path": "/assets/cinematic/ascension-branch-purchasing-640.webp",
+      "status": 200,
+      "bytes": 46354,
+      "usages": [
+        {
+          "path": "/assets/cinematic/ascension-branch-purchasing-640.webp",
+          "selector": "#main img",
+          "dimensions": [
+            350,
+            261
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "24ff8b095343764d43b089712c1d158829bf3fea6341fc8132b387188128f09f",
+      "dimensions": [
+        640,
+        478
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/about/",
+      "width": 390,
+      "path": "/assets/cinematic/ascension-kernel-mobile.webp",
+      "status": 200,
+      "bytes": 20364,
+      "usages": [
+        {
+          "path": "/assets/cinematic/ascension-kernel-mobile.webp",
+          "selector": "#main img",
+          "dimensions": [
+            680,
+            740
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "c98adabc292b570e2262f5ef71b81e14c90085c88d9ae964c19afdf0cf9eb038",
+      "dimensions": [
+        680,
+        740
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/about/",
+      "width": 390,
+      "path": "/assets/brand/kirjane-mark-white.webp",
+      "status": 200,
+      "bytes": 26454,
+      "usages": [
+        {
+          "path": "/assets/brand/kirjane-mark-white.webp",
+          "selector": "#site-header img",
+          "dimensions": [
+            600,
+            469
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "23bfd391049b60b43dbedd0e120e31e2c1cbe1ec8a7b072b5c5cc885956e5dc1",
+      "dimensions": [
+        600,
+        469
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/about/",
+      "width": 390,
+      "path": "/assets/brand/kirjane-word-white.webp",
+      "status": 200,
+      "bytes": 20114,
+      "usages": [
+        {
+          "path": "/assets/brand/kirjane-word-white.webp",
+          "selector": "#site-header img",
+          "dimensions": [
+            1000,
+            179
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "8158e92250a29037b6d276df6df73197df00e612b843765575245cb160c72c27",
+      "dimensions": [
+        1000,
+        179
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/contact/",
+      "width": 390,
+      "path": "/assets/brand/kirjane-mark-white.webp",
+      "status": 200,
+      "bytes": 26454,
+      "usages": [
+        {
+          "path": "/assets/brand/kirjane-mark-white.webp",
+          "selector": "#site-header img",
+          "dimensions": [
+            600,
+            469
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "23bfd391049b60b43dbedd0e120e31e2c1cbe1ec8a7b072b5c5cc885956e5dc1",
+      "dimensions": [
+        600,
+        469
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    },
+    {
+      "route": "/contact/",
+      "width": 390,
+      "path": "/assets/brand/kirjane-word-white.webp",
+      "status": 200,
+      "bytes": 20114,
+      "usages": [
+        {
+          "path": "/assets/brand/kirjane-word-white.webp",
+          "selector": "#site-header img",
+          "dimensions": [
+            1000,
+            179
+          ],
+          "visible": true
+        }
+      ],
+      "usageState": "RENDERED_IN_VIEW",
+      "disposition": "UNAUDITED",
+      "sourceSHA": "1c19aee220715c298b067f017b22a1ae4e3c296c",
+      "rights": "Inherited provenance; not requalified by network trace",
+      "sha256": "8158e92250a29037b6d276df6df73197df00e612b843765575245cb160c72c27",
+      "dimensions": [
+        1000,
+        179
+      ],
+      "provenanceRegistry": "docs/codex-r3/ASSET_LICENSES.csv; docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv",
+      "editableMaster": "NOT_ESTABLISHED",
+      "motionOwner": "NOT_YET_AUDITED"
+    }
+  ],
+  "remainingReview": "109 observed paths are not 109 independently reviewed artworks. Other assets remain UNAUDITED; no exhaustive frame coverage or full R4 acceptance claimed."
+}

@@ -29,7 +29,7 @@ try{
    await page.locator(route==='/'?'#home-cap-plate-stage':'.asc-workflow-scene').screenshot({path:out+'/'+id+'-art.png'});
    report.captures.push({id,width,height,state});
    if(route==='/'&&!fallback&&!process.env.R4_QUICK){
-    for(const idx of [0,1,2,3,2,1,0]){await page.locator(`[data-cap-idx="${idx}"]`).click();await page.waitForTimeout(1200);const mode=await page.locator('#home-cap-plate-stage').getAttribute('data-mode');if(mode!==String(idx))throw Error('Mode mismatch '+id);}
+    for(const idx of [0,1,2,3,2,1,0]){await page.locator(`[data-cap-idx="${idx}"]`).click();await page.waitForTimeout(1200);const mode=await page.locator('#capabilities-exhibition').getAttribute('data-mode');if(mode!==String(idx))throw Error('Mode mismatch '+id+' expected '+idx+' actual '+mode);}
     if(width===1440){const bounds=await page.locator(selector).evaluate(e=>({top:e.getBoundingClientRect().top+scrollY,height:e.offsetHeight}));for(const dir of [1,-1])for(let i=0;i<=30;i++){const p=dir===1?i/30:1-i/30;await page.mouse.wheel(0,dir*2);await page.evaluate(y=>scrollTo({top:y,behavior:'instant'}),bounds.top+p*(bounds.height-height));await page.waitForTimeout(90);}}
    }
    report.network.push({id,loads});const video=page.video();await context.close();
