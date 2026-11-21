@@ -145,8 +145,8 @@ try {
     await after.page.close();
   }
   for (const route of ['/','/salryn/']) {
-    await profile((await desktop.newPage()),route+'?reduce=1','baseline-no-motion');
-    await profile((await desktop.newPage()),route+'?creative=1&reduce=1','candidate-no-motion');
+    await profile((await desktop.newPage()),route,'baseline-motion');
+    await profile((await desktop.newPage()),route+'?creative=1','candidate-motion');
   }
   await desktop.close(); await mobile.close();
 } catch(e) {
