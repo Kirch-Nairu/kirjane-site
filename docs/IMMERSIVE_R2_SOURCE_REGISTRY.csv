@@ -1,0 +1,16 @@
+id,name,source,version_or_blob,license,implementation,restrictions
+01,GSAP/ScrollTrigger,site/vendor/gsap/,existing source,GSAP standard no-charge license,actual global choreography,Single authoritative ticker
+02,React Bits BlurText,DavidHDev/react-bits/src/content/TextAnimations/BlurText/BlurText.jsx,copied source at R2,MIT plus Commons Clause,actual React island,Use as part of Kirjane website only; preserve attribution
+03,React Bits DecryptedText,DavidHDev/react-bits/src/content/TextAnimations/DecryptedText/DecryptedText.jsx,copied source at R2,MIT plus Commons Clause,actual React island,No standalone resale or redistribution
+04,React Bits GlareHover,DavidHDev/react-bits/src/content/Animations/GlareHover/GlareHover.jsx,copied source at R2,MIT plus Commons Clause,actual contact CTA island,Own small RAF only during pointer interaction
+05,React,https://www.npmjs.com/package/react,19.3.1,MIT,actual island renderer,No SPA rewrite
+06,React DOM,https://www.npmjs.com/package/react-dom,19.3.1,MIT,actual island renderer,Mount on intersection
+07,React Three Fiber,https://www.npmjs.com/package/@react-three/fiber,9.8.2,MIT,actual interactive Salryn kernel,Only one React GPU scene on Salryn
+08,Three.js,https://www.npmjs.com/package/three,0.187.0,MIT,actual procedural physical materials,Reduce memory and frame rate under constraints
+09,Motion,https://www.npmjs.com/package/motion,14.14.0,MIT,actual React Bits dependency,Separate from scroll control
+10,Lenis,https://www.npmjs.com/package/lenis,1.3.27,MIT,actual selective desktop smooth scrolling,Only on four pages without pinned native film
+11,Vite,https://www.npmjs.com/package/vite,8.3.8,MIT,isolated island bundler,No third-party remote script in page
+12,Creative Forge user reference,KIRJANE-MOTION-ARSENAL-R1.zip,zip SHA256 ce8e227ccf17bbd0a724316aa75ddec5e8c904f67459b7e3c4d62dd1e2d1ff3b,user-provided reference,design specification,Original videos/CGI masters not in supplied archive
+13,Liquid Glass JS,https://github.com/dashersw/liquid-glass-js,not imported,MIT,not integrated,Future isolated material evaluation
+14,ShaderGradient,https://github.com/ruucm/shadergradient,not imported,license/version audit pending,not integrated,Avoid duplicate WebGL contexts
+15,Liquid Logo,https://github.com/paper-design/liquid-logo,not imported,PolyForm Shield 1.0.0,not integrated,Official Kirjane mark protected from deformation
