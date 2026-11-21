@@ -110,7 +110,8 @@ try {
   pass((await lab.locator('[data-demo-status]').innerText()).includes('Step 2'),'Workflow manual advance works');
   await lab.screenshot({path:resolve(out,'motion-desktop.png'),fullPage:true});
   const audit=await new AxeBuilder({page:lab}).analyze();
-  writeFileSync(resolve(out,'accessibility.json'),JSON.stringify({violations:audit.violations.map(({id,impact,nodes,description})=>({id,impact,description,nodes:nodes.length}))},null,2));
+  writeFileSync(resolve(out,'accessibility.json'),JSON.stringify({violations:audit.violations.map(({id,impact,nodes,description})=>({id,impact,description,nodes:nodes.map(n=>({target:n.target,summary:n.failureSummary,html:n.html}))}))},null,2));
+  if (audit.violations.length) console.log('Axe findings:', JSON.stringify(audit.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>n.target)}))));
   pass(!audit.violations.some(v=>['critical','serious'].includes(v.impact)),'No serious or critical axe violations',audit.violations.map(x=>x.id).join(','));
   pass(labErrors.length===0,'Lab has no uncaught runtime exceptions',labErrors.join(' | '));
   await lab.close();
@@ -160,6 +161,6 @@ try {
     note:'Headless Chromium observations, synthetic frame loop; NOT field CWV, real GPU-memory instrumentation, or independent QA.',
     assertions,performanceRecords,errors,pass:errors.length===0};
   writeFileSync(resolve(out,'motion-qa-results.json'),JSON.stringify(result,null,2));
-  console.log(JSON.stringify({pass:result.pass,checks:assertions.length,failures:errors,profiles:performanceRecords.length},null,2));
+  console.log(JSON.stringify({pass:result.pass,checks:assertions.length,failures:errors,profiles:performanceRecords.length,performanceRecords:performanceRecords.map(({route,variant,frameMsP95,frameMsP99,longTasksCount})=>({route,variant,frameMsP95,frameMsP99,longTasksCount}))},null,2));
 }
 if(errors.length) process.exitCode=1;
