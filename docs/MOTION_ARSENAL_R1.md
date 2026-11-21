@@ -47,7 +47,7 @@ GSAP/ScrollTrigger are imported from the existing locally vendored website modul
 
 Lenis is deliberately withheld pending a matched native-scroll A/B test and collision investigation. If approved later, use exactly one Lenis instance, connect its scroll callback to ScrollTrigger.update, drive Lenis RAF from the existing GSAP ticker, and disable Lenis autoRaf. Never combine Lenis with ScrollSmoother.
 
-React Bits is MIT plus Commons Clause, not simple MIT. React islands are not justified for basic CSS/GSAP motion. R3F, ShaderGradient, Liquid Glass JS and Liquid Logo each remain separate optional material experiments; no asset or vendor implementation was imported without confirmed rights and measured budget. Any future 3D island must have explicit pause, context teardown and fallback behavior. Brand geometry cannot be displaced or replaced.
+React Bits uses MIT plus Commons Clause, not simple MIT. The upstream Liquid Logo LICENSE is PolyForm Shield 1.0.0, which needs an explicit permitted-use review before any integration. React islands are not justified for basic CSS/GSAP motion. R3F, ShaderGradient, Liquid Glass JS and Liquid Logo each remain separate optional material experiments; no asset or vendor implementation was imported without confirmed rights and measured budget. Any future 3D island must have explicit pause, context teardown and fallback behavior. Brand geometry cannot be displaced or replaced.
 
 ## Reproduce (Windows PowerShell)
 
