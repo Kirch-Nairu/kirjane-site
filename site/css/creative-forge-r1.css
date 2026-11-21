@@ -111,3 +111,8 @@ html.motion-lab-root { background: var(--lab-ink); color: var(--lab-paper); }
  .study-arc-card { transform: none!important; } .study-arc-card[aria-hidden="true"] { visibility: hidden; }
  .study-demo-step { opacity: 1; } .study-demo-step.is-current { font-weight: 700; }
 }
+
+/* Fixed spatial kernel proxy, without allocating a second WebGL context. */
+[data-study="07"] { min-height: 135svh; }
+[data-study="07"] .study-kernel-stage { position: sticky; top: 13vh; }
+@media(max-width:760px) { [data-study="07"] { min-height: auto; } [data-study="07"] .study-kernel-stage { position:relative; top:auto; } }
