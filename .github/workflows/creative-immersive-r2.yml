@@ -1,0 +1,40 @@
+name: Creative Forge R2 - React Bits and R3F browser qualification
+on:
+  push:
+    branches:
+      - experiment/creative-forge-immersive-r2
+  pull_request:
+    branches:
+      - experiment/creative-forge-motion-arsenal-r1
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  immersive-browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm ci --ignore-scripts
+      - run: npx playwright install --with-deps chromium
+      - name: Build isolated noindex React Bits and R3F site
+        run: python scripts/build_immersive_r2.py --output dist/immersive-r2
+      - name: Test seven pages and actual R3F scenes on desktop/mobile
+        run: node scripts/qa_immersive_r2.mjs
+      - name: Preserve browser videos captures and generated dependency lock
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: immersive-r2-evidence
+          path: |
+            dist/immersive-r2-evidence/
+            creative/package-lock.json
+          retention-days: 14
+          if-no-files-found: warn
