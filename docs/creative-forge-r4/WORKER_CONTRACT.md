@@ -1,64 +1,58 @@
-# KIRION ATELIER — CODEX BLENDER ASSET WORKER R4
+# KIRJANE R4 — CHATGPT DIRECT BLENDER EXECUTION CONTRACT
 
-Mission ID: KIRJANE-ATELIER-BLENDER-ASSET-REMASTER-R4
-Worker: Codex running on the Kirjane creative-lab Windows machine, with the already registered local mcp-for-blender server or Blender Python as fallback.
-Role: single writer / 3D motion and texture production specialist.
-Maintainer and art direction: ChatGPT in KIRCH authority, review at exact SHA.
-Owner veto and publication authority: Kirch.
-Target working branch (created from maintainer R4 docs, not R3): experiment/codex-r4-blender-asset-worker.
-Initial visual vertical slice: Home Services AUTOMATION mode plus its active supporting WebP source.
-Do NOT work on the mascot. Existing official 2D chameleon is LOCKED, from Drive.
+**Mission:** KIRJANE-CHATGPT-DIRECT-BLENDER-REMASTER-R4
+**Executor:** ChatGPT, directly operating the authenticated Blender Bridge session, Blender 5.3 on Kirjane-creative-lab, and KIRCH GitHub.
+**Roles unified:** senior art director, visual asset author, animation director, technical exporter, browser-comparison critic and maintainer.
+**Technical/owner authority:** Kirch; owner creative acceptance and publication approval are separate.
+**No Codex or second implementation worker.** The previous Codex branch is obsolete; do not use it. For engineering verification, independent Nox may review final source in a different session; Nox does not author art.
+**Source baseline:** `7f3a3147c225aea8617820136b509306db3a143f`; Draft PR #15.
+**Maintainer direction:** `experiment/kirjane-creative-forge-r4-asset-library`, Draft PR #17.
+**Asset work:** `experiment/chatgpt-r4-blender-remaster`.
+**First target:** active Home/Services Automation scene, paired with `site/assets/cinematic/editorial-cap-02-process-automation.webp` and `site/js/forge-service-scene.js`.
 
-## Read before working
-1. docs/creative-forge-r4/DESIGN_DIRECTION.md
-2. docs/creative-forge-r4/REPLACEMENT_MATRIX.csv
-3. docs/creative-forge-r4/SOURCE_AUDIT.md and ASSET_INVENTORY_R3.csv
-4. docs/creative-forge-r4/COLOR_MATERIAL_STUDY.json
-5. docs/creative-forge-r4/QUALITY_GATES.md
-6. Existing R3 source: docs/codex-r3/INTEGRATION_CONTRACT.md; docs/codex-r3/SHOT_MAP.md; docs/codex-r3/FINAL_REVIEW.md; site/js/forge-service-scene.js; site/index.html; site/services.html; frame-sequence-player.js; creative/src/main.jsx.
-7. Confirm current branch is the worker branch and direct parent is the R4 maintainer documentation commit; record exact SHA, status and no unexpected uncommitted changes.
+## Non-negotiable brand and execution boundaries
+1. No mascot work. Official 2D chameleon and canonical logo/mark/wordmark untouched; original brand is authoritative from Drive. Do NOT trace or regenerate it.
+2. No new unrelated hero artwork or generic tech sculptures. Existing scene first. The rejected mascot and generic Engineered Core are not production assets.
+3. No Codex delegation or contingent "worker will do it" language. ChatGPT itself calls Blender Bridge and connected GitHub tools for work that they support.
+4. Work only on direct R4 asset branch, never overwrite R3 PR #15, R2, R5, main, or other engineers' open branches.
+5. Keep seven crawlable HTML pages, accessibility, SEO, contact forms, source semantics and all 23 film scenes.
+6. Film uses native scroll, deterministically interpolated camera/cursor/ripple, Shadow DOM island and sound OFF unless user opts in. No competing Lenis/GSAP/WebGL scroll or RAF ownership.
+7. No fake client work, backend functionality, offline promises, security capabilities, or production status. Film is illustrative fictional UI.
+8. No external copyrighted assets without explicit usable rights. Existing approved images and Drive assets are references; don't assert license equivalence by inference.
+9. No merge, production deployment, DNS, secrets or owner approval claims.
+10. No hidden background execution. Produce results in the active tool session or truthfully record blocked work.
 
-## Absolute boundaries
-- Never overwrite PR #15 or its code writer branch. Never modify main, R2, R5 parent or merge.
-- Never modify canonical logo, mark, wordmark or 2D chameleon. Don't design a new mascot.
-- Do not replace scene controls or edit the 23-scene film while doing first Services vertical slice.
-- Preserve all semantic text, focus controls, full keyboard behavior, seven static HTML routes, JS-off fallback, reduced motion, SEO, forms and local-first honest qualifiers.
-- No new dependencies without necessity, pinned rights audit and maintainer review.
-- Generated assets are Kirjane-specific and licensed/attributed in own ledger; do not use unlicensed external art.
-- No production deployment, secrets, account credentials, malware or model-generating paid API calls.
-- User workstation Iris Xe integrated GPU: Eevee preview, budget renders; no physical performance claim without measured data.
-- At least two visual treatment alternatives for the SAME existing subject, not an invented new subject. Discuss visual decisions and why discarded alternative is weaker.
+## The direct loop; no handoff to a different model
+**OBSERVE:** Obtain exact GitHub source at frozen SHA. Inspect current Blender scene and avoid overwriting it; create named separate scene, collection and outputs. Inspect the current site's actual frame and states; don't mistake still repo asset for runtime art. 
+**DIAGNOSE:** Record what the image/animation communicates, its focal silhouette, visible errors, palette repetition, context and interaction semantics.
+**DESIGN:** Choose two meaningfully different treatments of the SAME current asset (not unrelated fantasy). Material, form, light, camera, editorial framing and causality. Show the plan of motion in 4–6 clear states.
+**MAKE:** Using Blender Bridge `execute_blender_code` / `render_project_image` / `take_screenshot` / `save_blend_file` / `export_glb`. Favor geometry, textures, lighting, reusable camera rigs and true 3D when they materially improve the actual art; SVG remains for accessible semantic overlays and responsive diagrams.
+**CRITIQUE:** Inspect actual rendered image, not only primitive/triangle counts. Reject immediately if it looks amateurish, too green, empty, visually meaningless, cropped badly or at wrong product scale. A render existing does not imply visual quality.
+**REVISE:** Repair in Blender. Preserve versioned editable source `.blend`, 3D/animation source and variant renders. GLB only if GPU runtime value outweighs cost.
+**INTEGRATE:** Put selected exports into the actual scene on R4 branch, maintain a rollback original, keep existing state machine and scroll owner.
+**PROVE:** Same-viewport before/after captures 1440×900, 390×844, 320×700; recording of live transition and reversed scrub; reduced motion and WebGL-off alternatives. Distinguish headless Chromium from actual Intel Iris Xe measurements.
+**REVIEW:** Maintain honest FIX_REQUIRED / REVIEW_READY / ACCEPTED_EXTERNAL states. Exact SHA, browser evidence, rights and QA results. Only independent external source review and Kirch creative approval can clear release.
 
-## M00 — audited current usage and evidence
-- Trace all HTML references, scripts and CSS network requests at 1440x900, 390x844 and 320x700, plus reduced-motion GPU-off. Produce one machine-readable live_used_manifest.json (url, owner, initiator, route, size, color bias, load state, license, intentional fallback). Distinguish loaded media, dormant assets and per-scene dynamic assets.
-- Render current four Services modes and continuous interactions in a real browser. Record frame phase and exact SHA. Screenshot actual elements, not a beauty render alone.
-- Inspect existing geometry and mesh animation phases, identify essential behavior and room for substitution.
-- Capture baseline for one flagship vertical slice and match composition camera/scale so visual comparison isn't misleading.
+## Production sequence with concrete subjects
+M00 Runtime active-assets trace on seven pages across viewports; classify loaded/dormant/scene-generated and name actual element/owner.
+M01 Services Automation: current rings → functional request/approval mechanism using warm stone, titanium, cobalt and amber. Two treatments then self-reject weak treatment. Do not invent a mascot or create a random green engine.
+M02 Home Services four modes: distinct software custody system, automation review engine, integration handshake, infrastructure recovery mechanism; cohesive family but not clones.
+M03 Home 01/02: remaster EXISTING disassembly-to-architecture animation, not replace its recognizable narrative with arbitrary cubes.
+M04 Process: five stages of one physically connected operational graph and exception route, actual tabs preserved.
+M05 Salryn existing kernel: recognizable silhouette retained with better optical contrast, meaningful module architecture and restrained extras; compatible with existing film.
+M06 Flavors, configurator, local-first: differentiate states, business semantics, mobile fallbacks.
+M07 Projects, About, Contact: more deliberate editorial light, human context and photographic-style authored rendering without fake people/clients.
+M08 Across-site motion language, existing WebP frame sequences, correct last-mile controls and acceptable performance.
+M09 Review exact SHA/rights/performance/hardware/device; maintain R3 61/79/68/30 + focused tests where the change scope requires. Never mark technical tests as art approval.
 
-## M01 — Blender material and form development (single scene)
-- Author two distinct AUTOMATION artwork directions; both must show request -> conditional gate -> human approval fork -> recorded outcome.
-- Concept A: ceramic-and-titanium governance machine, warm cream environment, amber review highlights, cobalt approved route; tiny green brand bridge.
-- Concept B: documentary industrial tabletop assembly with side-lit mechanical aperture, copper exception and blue output routing.
-- NOT green rings; NOT generic robotic animal or unrelated engine; NO logo mutation.
-- Model real reusable geometry in .blend with named material slots, organized collections, cameras and action phases. Use Blender Bridge or mcp-for-blender for inspect/iterate; produce proof-of-execution render.
-- Export GLB only if live 3D adds real value. Use animation baked/scrubbed WebP frames for heavy visual effects where browser runtime is lighter. Create 390 viewport art-direction crop, not just downscale desktop.
+## Technical restrictions and physical workstation
+Blender 5.3, Intel Iris Xe, i5-1345U, ~15.7 GB RAM. Use Eevee for local previews with sensible complexity and samples, optional CPU render sparingly; WebP poster/sequence when cheaper than heavyweight runtime WebGL. Bridge directly connects this ChatGPT to the local Blender instance when it remains online; tools are not a background worker.
 
-## M02 — integration experiment
-- Make a surgical change to the existing Services asset reference/scene only on worker branch, preserve original poster as rollback candidate.
-- Use the SAME GSAP progress / manual controls already deployed. No extra scroll root or ticker; scene lifecycle must dispose GPU resources and handlers.
-- Responsive layout and accessible reduced-motion/GPU-denied fallback; no offscreen WebGL waste; lazy asset loading.
-- Compare baseline and candidate at same scene phase and fixed viewport with screenshots and 15-30s recorded transitions.
-- Scope creep outside the current slice needs maintainer issue sign-off.
-
-## M03 — adversarial self-review
-- Critique the actual browser captures, not the script or mesh count. Score composition, semantic story, finish, color restraint, motion, accessibility, frame cost; record FIX_REQUIRED and repair what looks weak.
-- Capture source manifest, triangle/material/texture count, file byte sizes, GLB import parity, disposal checks, first-load timings, on-device GPU evidence if available.
-- Run unchanged R3 regression floors 61 production, 79 R2, 68 film, 30 math plus 233 focused and route/fallback suites where practical. State which checks passed/blocked, never invent them.
-- Open Draft worker PR targeting experiment/kirjane-creative-forge-r4-asset-library with exact SHA, image links, motion clips, tests and review request.
-- Do NOT declare your own art accepted. Independent source review is separate from maintainer creative judgment and owner acceptance.
-
-## Expected handoff to maintainer
-Exact SHA; .blend source; any .glb; desktop and mobile WebP/posters; two alternative contact sheets; direct before/after site captures; interaction video; color/material breakdown; runtime budget; provenance; meaningful failures and repairs. One precise active-asset improvement before broad site redesign.
-
-## STOP condition
-If neither treatment is visibly better than current Services AUTOMATION when viewed in real site context, stop and report FIX_REQUIRED. Do not quietly swap it into the site.
+## Deliverables for every accepted asset
+1. Original asset path, route, DOM/scene selector, exact baseline SHA.
+2. Before capture and file provenance, two competing concepts and why selected one is superior.
+3. Editable .blend, cameras/rig/lights/materials and asset naming; derived GLB when needed.
+4. Desktop/mobile WebP/PNG poster or frame source, exact bytes, dimensions and performance.
+5. Integration patch only for that existing asset, fallback/reduced motion and cleanup proof.
+6. Actual webpage matched captures, transition video, runtime QA and license/copyright review.
+7. A clear conclusion: visually better or FIX_REQUIRED. If it does not pass, preserve original site unchanged.

@@ -3,10 +3,10 @@
 Status: MAINTAINER STUDY / NOT OWNER VISUAL ACCEPTANCE
 Frozen source: 7f3a3147c225aea8617820136b509306db3a143f
 Scope: existing actually referenced Kirjane assets and animations, not new brand identity.
-Owner authority: Kirch. ChatGPT role: visual asset maintainer. Dedicated writer: Codex, via local Blender 5.3 + MCP for Blender.
+Owner authority: Kirch. ChatGPT role: visual asset maintainer. Direct executor: ChatGPT itself, via connected Blender Bridge + local Blender 5.3. No Codex delegation.
 
 ## The diagnosis: source inspection + viewed samples
-The repo has 342 PNG/JPEG/WebP/SVG files, but this is repository inventory, NOT a browser usage count. The seven HTML documents, source scripts, Blender preview and R3 art review were inspected. HTML paths confirm direct asset references; separate JavaScript may select dynamic imagery. A complete runtime network trace remains the worker's M00 job.
+The repo has 342 PNG/JPEG/WebP/SVG files, but this is repository inventory, NOT a browser usage count. The seven HTML documents, source scripts, Blender preview and R3 art review were inspected. HTML paths confirm direct asset references; separate JavaScript may select dynamic imagery. A complete runtime network trace remains the ChatGPT's M00 job.
 R3's own docs/codex-r3/FINAL_REVIEW.md reports Services geometry schematic, Industry deliberately diagrammatic, Home CGI retained and physical-GPU visual acceptance still outstanding.
 Sampled actual raster artwork: salryn-hero-master-desktop.webp has same-value emerald rings, objects and background; editorial-cap-02-process-automation.webp is a set of green parallel lines through rings with little human approval logic; editorial-salryn-engines-3d-stack.webp is a stack of near-identical pale plates and doesn't teach eight engine capabilities. Services R3 before/after comparison improves hierarchy but still presents small green cubes inside a large dark region.
 

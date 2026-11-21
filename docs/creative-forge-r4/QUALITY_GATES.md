@@ -8,7 +8,7 @@ Gate G4 — VISUAL: matched same-SHA browser before/after 1440x900 + 390x844 + 3
 Gate G5 — ENGINEERING: source .blend; export if appropriate .glb; optimized .webp for desktop/mobile; manifest of dimensions and byte counts, triangle count, texture count, compression method, route transfer, LCP/CLS/INP measurements where available. No invented physical hardware data.
 Gate G6 — REGRESSION: R3 established 61 production, 79 R2, 68 film, 30 math, 233 focused. Maintain or explain an exact issue; independently verify film and finance simulation semantics unchanged.
 Gate G7 — RIGHTS: official logo/chameleon frozen, all third-party assets/patches pinned and licensed, no source-only unverified restrictions; save source artifacts locally and include references/hashes in ledger.
-Gate G8 — REVIEW: Codex self-critique is NOT independent review. Maintainer gives APPROVE / FIX_REQUIRED on creative treatment and exact SHA. Nox (different authenticated reviewer/session) handles source review. Only Kirch accepts visual identity/publication. NO MERGE/DEPLOY.
+Gate G8 — REVIEW: ChatGPT as author/maintainer cannot provide an independent review of its own work. Self-critique is NOT independent source approval. A separate authenticated reviewer/session (e.g. Nox) may review the exact SHA, and ChatGPT records visual FIX_REQUIRED / REVIEW_READY outcomes. Only Kirch accepts visual identity/publication. NO MERGE/DEPLOY.
 
 ## Art rubric (100 points, minimum 85 to propose owner acceptance; no guarantee)
 - 25 composition & focal hierarchy (works at 320 and 1440)
