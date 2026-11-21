@@ -1,6 +1,6 @@
 # QWEN R3 — Evidence Index
 
-**No R3 implementation evidence has been submitted yet.** This file is a ledger, not proof.
+**No R3 implementation evidence has been submitted yet.** The baseline capture workflow HAS completed successfully and produced 15 source-rendered PNGs (10 numbered desktop states + 5 phone snapshots) with a reproducible manifest. Baseline captures are not evidence of R3 creative changes.
 
 ## Baseline screenshot generation
 
@@ -23,6 +23,23 @@ QWEN_R3_DIST=dist/qwen-r3-candidate-001 QWEN_R3_SHOTS=dist/qwen-r3-evidence/cand
 ```
 
 The preview build modifies generated JS/CSS files in the worktree; run `git status` and do not accidentally commit unrelated build outputs without reviewing them.
+
+## Verified generated R2-source baseline — no chat upload needed
+
+- **GitHub Actions run:** https://github.com/Kirch-Nairu/kirjane-site/actions/runs/44894320712
+- **Workflow:** `.github/workflows/qwen-r3-baseline.yml`
+- **Run source commit:** `3cacb893ae3d9c35b416a3291e63bd983dbcf8ce`
+- **Artifact:** `qwen-r3-baseline-captures` (GitHub artifact ID `14703327568`, 5.15 MB, retention 14 days)
+- **Result:** PASS, 15/15 captures, 0 missing selectors, 0 reported page errors; includes `manifest.json` and `index.html`.
+- **Qwen CLI retrieval** (if `gh` is authenticated and installed):
+  
+  ```bash
+  gh run download 44894320712 --repo Kirch-Nairu/kirjane-site --name qwen-r3-baseline-captures --dir dist/qwen-r3-evidence/baseline-ci
+  ```
+  
+  Otherwise use the GitHub Actions run's **Artifacts** download in the connected account. No Qwen chat upload is required.
+
+**Visual limitation:** this is Playwright/headless Chromium. The original owner screenshot images are not embedded in the repo; scroll phases are *approximations*, and screenshot 06's automatically selected beat may not exactly match the owner's "Different workspaces" moment. Headless R3F deliberately uses a software-GPU fallback. Qwen must manually seek the precise beats and capture real hardware-GPU footage before owner approval.
 
 ## Artifact ledger
 
