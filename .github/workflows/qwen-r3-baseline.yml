@@ -1,0 +1,43 @@
+name: Qwen Creative Forge R3 - reproducible baseline screenshots
+on:
+  push:
+    branches:
+      - experiment/qwen-cinematic-overhaul-r3
+    paths:
+      - .github/workflows/qwen-r3-baseline.yml
+      - scripts/qwen_r3_capture.mjs
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  qwen-r3-baseline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install root browser tooling without dependency lifecycle scripts
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Install headless Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Build immutable R2-source baseline from the Qwen branch
+        run: python3 scripts/build_immersive_r2.py --output dist/qwen-r3-baseline-001
+      - name: Generate 10 owner-target captures and 5 mobile captures
+        run: |
+          QWEN_R3_DIST=dist/qwen-r3-baseline-001 \
+          QWEN_R3_SHOTS=dist/qwen-r3-evidence/baseline \
+          node scripts/qwen_r3_capture.mjs
+      - name: Upload source-rendered baseline images and manifest
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: qwen-r3-baseline-captures
+          path: dist/qwen-r3-evidence/baseline/
+          retention-days: 14
+          if-no-files-found: warn
