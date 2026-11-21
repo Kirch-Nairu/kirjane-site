@@ -14,7 +14,7 @@
 
 ### Scope
 Source-faithful remaster of **currently used** website images, 3D surfaces, motion effects and cinematic frames with expressive craft—NOT new unrelated art. Original 2D Drive chameleon and brand wordmark/mark must remain unchanged. Existing R3 choreography and 23-scene film remain.
- 
+
 ### Must-read support in order
 1. `BLENDER_MCP_BOOTSTRAP.md` — local Codex/Blender MCP start and read-only scene handshake.
 2. `SOURCE_AUDIT.md` and `ASSET_INVENTORY_R3.csv` — current repo inventory, not active network proof.

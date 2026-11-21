@@ -1,0 +1,38 @@
+[
+  {
+    "path": "site/assets/cinematic/r4/automation-dark-desktop.webp",
+    "dimensions": [
+      1280,
+      800
+    ],
+    "bytes": 26570,
+    "sha256": "992b7556d6c244a67baabe82b23aec128ef9cdac3c4df4148f396929c34e840d"
+  },
+  {
+    "path": "site/assets/cinematic/r4/automation-dark-mobile.webp",
+    "dimensions": [
+      1080,
+      800
+    ],
+    "bytes": 25760,
+    "sha256": "9a4b321d91b9044337a834f46465c1e90a69fd2c77646846231ec122ed8c03a7"
+  },
+  {
+    "path": "site/assets/cinematic/r4/automation-editorial-desktop.webp",
+    "dimensions": [
+      1280,
+      800
+    ],
+    "bytes": 30000,
+    "sha256": "f0cbdd7dd29011cd3663c1201d8f82af15bf5f86b5aed52b7418d175edee1e81"
+  },
+  {
+    "path": "site/assets/cinematic/r4/automation-editorial-mobile.webp",
+    "dimensions": [
+      1080,
+      800
+    ],
+    "bytes": 28826,
+    "sha256": "24be15de8f1873e10ed9559c08ffe738782710d3fda16738893fdc8a7cdbf28d"
+  }
+]

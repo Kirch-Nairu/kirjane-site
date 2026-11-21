@@ -29,6 +29,7 @@ async function waitServer(){
 }
 function guard(page,name){
  const exceptions=[];
+ page.on('requestfailed',r=>exceptions.push('REQUEST_FAILED '+r.url()+' '+r.failure()?.errorText));
  page.on('pageerror',e=>exceptions.push(String(e)));
  page.on('console',m=>{
     if(m.type()==='error'||(m.type()==='warning'&&m.text().includes('[Forge Immersive R2]')))

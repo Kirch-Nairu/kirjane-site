@@ -1,0 +1,409 @@
+{
+  "mission": "KIRJANE-IMMERSIVE-WEBSITE-R2",
+  "runAt": "2026-11-21T19:30:24.873Z",
+  "caveat": "Playwright SwiftShader synthetic observations are not Windows D3D11 field performance, Safari, screen-reader speech or device GPU-memory verification.",
+  "totalChecks": 79,
+  "passedChecks": 78,
+  "problems": [
+    "No runtime errors reduced error: Failed to load resource: net::ERR_CONNECTION_REFUSED"
+  ],
+  "cases": [
+    {
+      "pass": true,
+      "name": "Route serves /",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "Semantic main retained /",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "Hero h1 retained /",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "Official brand retained /",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "React Bits/R3F bundle loaded /",
+      "details": "{\"loader\":true,\"fault\":null}"
+    },
+    {
+      "pass": true,
+      "name": "Visual assets decode /",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "Desktop no horizontal overflow /",
+      "details": "{\"scrollWidth\":1440,\"innerWidth\":1440}"
+    },
+    {
+      "pass": true,
+      "name": "Genuine React Bits BlurText rendered on Home",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "Immersive source mode active",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "No runtime errors home",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "Route serves /salryn/",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "Semantic main retained /salryn/",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "Hero h1 retained /salryn/",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "Official brand retained /salryn/",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "React Bits/R3F bundle loaded /salryn/",
+      "details": "{\"loader\":true,\"fault\":null}"
+    },
+    {
+      "pass": true,
+      "name": "Visual assets decode /salryn/",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "Desktop no horizontal overflow /salryn/",
+      "details": "{\"scrollWidth\":1440,\"innerWidth\":1440}"
+    },
+    {
+      "pass": true,
+      "name": "R3F kernel island initialized with either hardware render or intentional software-GPU fallback",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "Eight inspectable 3D engines",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "Engine inspection changes live 3D scene label",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "Core state remains mounted after capability selection",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "Axe serious/critical salryn",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "No runtime errors salryn",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "Route serves /services/",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "Semantic main retained /services/",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "Hero h1 retained /services/",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "Official brand retained /services/",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "React Bits/R3F bundle loaded /services/",
+      "details": "{\"loader\":true,\"fault\":null}"
+    },
+    {
+      "pass": true,
+      "name": "Desktop no horizontal overflow /services/",
+      "details": "{\"scrollWidth\":1440,\"innerWidth\":1440}"
+    },
+    {
+      "pass": true,
+      "name": "No runtime errors services",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "Route serves /projects/",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "Semantic main retained /projects/",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "Hero h1 retained /projects/",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "Official brand retained /projects/",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "React Bits/R3F bundle loaded /projects/",
+      "details": "{\"loader\":true,\"fault\":null}"
+    },
+    {
+      "pass": true,
+      "name": "Desktop no horizontal overflow /projects/",
+      "details": "{\"scrollWidth\":1440,\"innerWidth\":1440}"
+    },
+    {
+      "pass": true,
+      "name": "No runtime errors projects",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "Route serves /process/",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "Semantic main retained /process/",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "Hero h1 retained /process/",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "Official brand retained /process/",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "React Bits/R3F bundle loaded /process/",
+      "details": "{\"loader\":true,\"fault\":null}"
+    },
+    {
+      "pass": true,
+      "name": "Desktop no horizontal overflow /process/",
+      "details": "{\"scrollWidth\":1440,\"innerWidth\":1440}"
+    },
+    {
+      "pass": true,
+      "name": "No runtime errors process",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "Route serves /about/",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "Semantic main retained /about/",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "Hero h1 retained /about/",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "Official brand retained /about/",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "React Bits/R3F bundle loaded /about/",
+      "details": "{\"loader\":true,\"fault\":null}"
+    },
+    {
+      "pass": true,
+      "name": "Desktop no horizontal overflow /about/",
+      "details": "{\"scrollWidth\":1440,\"innerWidth\":1440}"
+    },
+    {
+      "pass": true,
+      "name": "No runtime errors about",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "Route serves /contact/",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "Semantic main retained /contact/",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "Hero h1 retained /contact/",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "Official brand retained /contact/",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "React Bits/R3F bundle loaded /contact/",
+      "details": "{\"loader\":true,\"fault\":null}"
+    },
+    {
+      "pass": true,
+      "name": "Visual assets decode /contact/",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "Desktop no horizontal overflow /contact/",
+      "details": "{\"scrollWidth\":1440,\"innerWidth\":1440}"
+    },
+    {
+      "pass": true,
+      "name": "Axe serious/critical contact",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "No runtime errors contact",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "Standalone lab available",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "All ten original techniques retained",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "Lab Study 10 loads true R3F island or deliberate software-WebGL fallback",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "Axe serious/critical motion-lab",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "No runtime errors motion-lab",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "Salryn mobile width 320",
+      "details": "{\"scroll\":320,\"width\":320}"
+    },
+    {
+      "pass": true,
+      "name": "Mobile R3F or reduced-GPU stage at 320",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "No runtime errors mobile 320",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "Salryn mobile width 390",
+      "details": "{\"scroll\":390,\"width\":390}"
+    },
+    {
+      "pass": true,
+      "name": "Mobile R3F or reduced-GPU stage at 390",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "Axe serious/critical mobile-390",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "No runtime errors mobile 390",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "Salryn mobile width 768",
+      "details": "{\"scroll\":768,\"width\":768}"
+    },
+    {
+      "pass": true,
+      "name": "Mobile R3F or reduced-GPU stage at 768",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "No runtime errors mobile 768",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "Reduced motion retains main",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "Reduced motion keeps semantic R2 styling",
+      "details": ""
+    },
+    {
+      "pass": true,
+      "name": "Reduced motion offers static kernel fallback",
+      "details": ""
+    },
+    {
+      "pass": false,
+      "name": "No runtime errors reduced",
+      "details": "error: Failed to load resource: net::ERR_CONNECTION_REFUSED"
+    }
+  ],
+  "timing": [],
+  "passed": false
+}

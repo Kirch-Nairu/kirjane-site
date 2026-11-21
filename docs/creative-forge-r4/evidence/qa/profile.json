@@ -1,0 +1,38 @@
+[
+  {
+    "label": "before",
+    "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dpr": 1,
+    "initialHeap": 18200000,
+    "transition": {
+      "calls": 6660,
+      "cpuMs": 8.699999928474426,
+      "primitives": 1557544,
+      "heap": 18200000
+    },
+    "idleExtraDrawCalls": 0,
+    "caveat": "CPU submission time and synthetic browser heap only. Not GPU timing, field FPS, INP or hardware/mobile qualification."
+  },
+  {
+    "label": "after",
+    "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dpr": 1,
+    "initialHeap": 17100000,
+    "transition": {
+      "calls": 6174,
+      "cpuMs": 11.099999785423279,
+      "primitives": 14302312,
+      "heap": 17100000
+    },
+    "idleExtraDrawCalls": 0,
+    "caveat": "CPU submission time and synthetic browser heap only. Not GPU timing, field FPS, INP or hardware/mobile qualification."
+  }
+]

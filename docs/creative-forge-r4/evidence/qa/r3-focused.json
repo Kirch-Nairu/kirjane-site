@@ -1,0 +1,1033 @@
+{
+  "dist": "C:\\Users\\arane\\KirionLabs\\kirjane-creative-lab\\r4-remaster\\dist\\r4-integrated-01",
+  "results": [
+    {
+      "ok": true,
+      "name": "1440 service 0 selected"
+    },
+    {
+      "ok": true,
+      "name": "1440 manual selection survives resize 0"
+    },
+    {
+      "ok": true,
+      "name": "1440 service 1 selected"
+    },
+    {
+      "ok": true,
+      "name": "1440 manual selection survives resize 1"
+    },
+    {
+      "ok": true,
+      "name": "1440 service 2 selected"
+    },
+    {
+      "ok": true,
+      "name": "1440 manual selection survives resize 2"
+    },
+    {
+      "ok": true,
+      "name": "1440 service 3 selected"
+    },
+    {
+      "ok": true,
+      "name": "1440 manual selection survives resize 3"
+    },
+    {
+      "ok": true,
+      "name": "1440 process stage 0"
+    },
+    {
+      "ok": true,
+      "name": "1440 process semantic stage 0"
+    },
+    {
+      "ok": true,
+      "name": "1440 process stage 1"
+    },
+    {
+      "ok": true,
+      "name": "1440 process semantic stage 1"
+    },
+    {
+      "ok": true,
+      "name": "1440 process stage 2"
+    },
+    {
+      "ok": true,
+      "name": "1440 process semantic stage 2"
+    },
+    {
+      "ok": true,
+      "name": "1440 process stage 3"
+    },
+    {
+      "ok": true,
+      "name": "1440 process semantic stage 3"
+    },
+    {
+      "ok": true,
+      "name": "1440 process stage 4"
+    },
+    {
+      "ok": true,
+      "name": "1440 process semantic stage 4"
+    },
+    {
+      "ok": true,
+      "name": "1440 process keyboard"
+    },
+    {
+      "ok": true,
+      "name": "1440 overflow",
+      "detail": {
+        "overflow": 0,
+        "render": "webgl",
+        "wide": [
+          [
+            "IMG",
+            "",
+            "",
+            1310.701904296875
+          ],
+          [
+            "CANVAS",
+            "home-clarity-canvas",
+            "cinematic-canvas-layer",
+            1490.39990234375
+          ]
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "name": "1440 no exceptions",
+      "detail": []
+    },
+    {
+      "ok": true,
+      "name": "1440 services axe",
+      "detail": []
+    },
+    {
+      "ok": true,
+      "name": "390 service 0 selected"
+    },
+    {
+      "ok": true,
+      "name": "390 manual selection survives resize 0"
+    },
+    {
+      "ok": true,
+      "name": "390 service 1 selected"
+    },
+    {
+      "ok": true,
+      "name": "390 manual selection survives resize 1"
+    },
+    {
+      "ok": true,
+      "name": "390 service 2 selected"
+    },
+    {
+      "ok": true,
+      "name": "390 manual selection survives resize 2"
+    },
+    {
+      "ok": true,
+      "name": "390 service 3 selected"
+    },
+    {
+      "ok": true,
+      "name": "390 manual selection survives resize 3"
+    },
+    {
+      "ok": true,
+      "name": "390 process stage 0"
+    },
+    {
+      "ok": true,
+      "name": "390 process semantic stage 0"
+    },
+    {
+      "ok": true,
+      "name": "390 process stage 1"
+    },
+    {
+      "ok": true,
+      "name": "390 process semantic stage 1"
+    },
+    {
+      "ok": true,
+      "name": "390 process stage 2"
+    },
+    {
+      "ok": true,
+      "name": "390 process semantic stage 2"
+    },
+    {
+      "ok": true,
+      "name": "390 process stage 3"
+    },
+    {
+      "ok": true,
+      "name": "390 process semantic stage 3"
+    },
+    {
+      "ok": true,
+      "name": "390 process stage 4"
+    },
+    {
+      "ok": true,
+      "name": "390 process semantic stage 4"
+    },
+    {
+      "ok": true,
+      "name": "390 process keyboard"
+    },
+    {
+      "ok": true,
+      "name": "390 overflow",
+      "detail": {
+        "overflow": 0,
+        "render": "webgl",
+        "wide": [
+          [
+            "IMG",
+            "",
+            "",
+            432.8999938964844
+          ],
+          [
+            "CANVAS",
+            "home-clarity-canvas",
+            "cinematic-canvas-layer",
+            396.14251708984375
+          ],
+          [
+            "BUTTON",
+            "",
+            "hairline-tab",
+            195
+          ],
+          [
+            "BUTTON",
+            "",
+            "hairline-tab",
+            208.203125
+          ]
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "name": "390 no exceptions",
+      "detail": []
+    },
+    {
+      "ok": true,
+      "name": "390 services axe",
+      "detail": []
+    },
+    {
+      "ok": true,
+      "name": "320 service 0 selected"
+    },
+    {
+      "ok": true,
+      "name": "320 manual selection survives resize 0"
+    },
+    {
+      "ok": true,
+      "name": "320 service 1 selected"
+    },
+    {
+      "ok": true,
+      "name": "320 manual selection survives resize 1"
+    },
+    {
+      "ok": true,
+      "name": "320 service 2 selected"
+    },
+    {
+      "ok": true,
+      "name": "320 manual selection survives resize 2"
+    },
+    {
+      "ok": true,
+      "name": "320 service 3 selected"
+    },
+    {
+      "ok": true,
+      "name": "320 manual selection survives resize 3"
+    },
+    {
+      "ok": true,
+      "name": "320 process stage 0"
+    },
+    {
+      "ok": true,
+      "name": "320 process semantic stage 0"
+    },
+    {
+      "ok": true,
+      "name": "320 process stage 1"
+    },
+    {
+      "ok": true,
+      "name": "320 process semantic stage 1"
+    },
+    {
+      "ok": true,
+      "name": "320 process stage 2"
+    },
+    {
+      "ok": true,
+      "name": "320 process semantic stage 2"
+    },
+    {
+      "ok": true,
+      "name": "320 process stage 3"
+    },
+    {
+      "ok": true,
+      "name": "320 process semantic stage 3"
+    },
+    {
+      "ok": true,
+      "name": "320 process stage 4"
+    },
+    {
+      "ok": true,
+      "name": "320 process semantic stage 4"
+    },
+    {
+      "ok": true,
+      "name": "320 process keyboard"
+    },
+    {
+      "ok": true,
+      "name": "320 overflow",
+      "detail": {
+        "overflow": 0,
+        "render": "webgl",
+        "wide": [
+          [
+            "IMG",
+            "",
+            "",
+            355.20001220703125
+          ],
+          [
+            "CANVAS",
+            "home-clarity-canvas",
+            "cinematic-canvas-layer",
+            325.0400390625
+          ],
+          [
+            "BUTTON",
+            "",
+            "hairline-tab",
+            196.921875
+          ],
+          [
+            "BUTTON",
+            "",
+            "hairline-tab",
+            195
+          ],
+          [
+            "BUTTON",
+            "",
+            "hairline-tab",
+            208.203125
+          ]
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "name": "320 no exceptions",
+      "detail": []
+    },
+    {
+      "ok": true,
+      "name": "320 services axe",
+      "detail": []
+    },
+    {
+      "ok": true,
+      "name": "1440 process direct deep link"
+    },
+    {
+      "ok": true,
+      "name": "1440 twelve canonical industries"
+    },
+    {
+      "ok": true,
+      "name": "1440 industry 0 step 0"
+    },
+    {
+      "ok": true,
+      "name": "1440 industry 0 step 1"
+    },
+    {
+      "ok": true,
+      "name": "1440 industry 0 step 2"
+    },
+    {
+      "ok": true,
+      "name": "1440 industry 0 step 3"
+    },
+    {
+      "ok": true,
+      "name": "1440 industry 0 workflow event 0"
+    },
+    {
+      "ok": true,
+      "name": "1440 industry 0 workflow event 1"
+    },
+    {
+      "ok": true,
+      "name": "1440 industry 0 workflow event 2"
+    },
+    {
+      "ok": true,
+      "name": "1440 industry 0 workflow event 3"
+    },
+    {
+      "ok": true,
+      "name": "1440 industry 0 workflow event 4"
+    },
+    {
+      "ok": true,
+      "name": "1440 industry 0 step 4"
+    },
+    {
+      "ok": true,
+      "name": "1440 industry 1 step 0"
+    },
+    {
+      "ok": true,
+      "name": "1440 industry 1 step 1"
+    },
+    {
+      "ok": true,
+      "name": "1440 industry 1 step 2"
+    },
+    {
+      "ok": true,
+      "name": "1440 industry 1 step 3"
+    },
+    {
+      "ok": true,
+      "name": "1440 industry 1 workflow event 0"
+    },
+    {
+      "ok": true,
+      "name": "1440 industry 1 workflow event 1"
+    },
+    {
+      "ok": true,
+      "name": "1440 industry 1 workflow event 2"
+    },
+    {
+      "ok": true,
+      "name": "1440 industry 1 workflow event 3"
+    },
+    {
+      "ok": true,
+      "name": "1440 industry 1 workflow event 4"
+    },
+    {
+      "ok": true,
+      "name": "1440 industry 1 step 4"
+    },
+    {
+      "ok": true,
+      "name": "1440 industry 9 step 0"
+    },
+    {
+      "ok": true,
+      "name": "1440 industry 9 step 1"
+    },
+    {
+      "ok": true,
+      "name": "1440 industry 9 step 2"
+    },
+    {
+      "ok": true,
+      "name": "1440 industry 9 step 3"
+    },
+    {
+      "ok": true,
+      "name": "1440 industry 9 workflow event 0"
+    },
+    {
+      "ok": true,
+      "name": "1440 industry 9 workflow event 1"
+    },
+    {
+      "ok": true,
+      "name": "1440 industry 9 workflow event 2"
+    },
+    {
+      "ok": true,
+      "name": "1440 industry 9 workflow event 3"
+    },
+    {
+      "ok": true,
+      "name": "1440 industry 9 workflow event 4"
+    },
+    {
+      "ok": true,
+      "name": "1440 industry 9 step 4"
+    },
+    {
+      "ok": true,
+      "name": "1440 inquiry preserves existing notes"
+    },
+    {
+      "ok": true,
+      "name": "1440 selected industry reaches inquiry"
+    },
+    {
+      "ok": true,
+      "name": "1440 industry replay"
+    },
+    {
+      "ok": true,
+      "name": "1440 resilience normal"
+    },
+    {
+      "ok": true,
+      "name": "1440 resilience local"
+    },
+    {
+      "ok": true,
+      "name": "1440 external action stays waiting in outage"
+    },
+    {
+      "ok": true,
+      "name": "1440 resilience exchange"
+    },
+    {
+      "ok": true,
+      "name": "1440 recovery requires authorized exchange"
+    },
+    {
+      "ok": true,
+      "name": "1440 eight inspectable engines"
+    },
+    {
+      "ok": true,
+      "name": "1440 selected engine 0"
+    },
+    {
+      "ok": true,
+      "name": "1440 selected engine 2"
+    },
+    {
+      "ok": true,
+      "name": "1440 selected engine 6"
+    },
+    {
+      "ok": true,
+      "name": "1440 selected engine 7"
+    },
+    {
+      "ok": true,
+      "name": "1440 mandatory foundations active"
+    },
+    {
+      "ok": true,
+      "name": "1440 optional module mirrors scene cap-commerce"
+    },
+    {
+      "ok": true,
+      "name": "1440 optional module mirrors scene cap-inventory"
+    },
+    {
+      "ok": true,
+      "name": "1440 optional module mirrors scene cap-procurement"
+    },
+    {
+      "ok": true,
+      "name": "1440 optional module mirrors scene cap-financial"
+    },
+    {
+      "ok": true,
+      "name": "1440 optional module mirrors scene cap-workforce"
+    },
+    {
+      "ok": true,
+      "name": "1440 optional module mirrors scene cap-operations"
+    },
+    {
+      "ok": true,
+      "name": "paused narrative retains its step"
+    },
+    {
+      "ok": true,
+      "name": "reading scroll retains chosen industry"
+    },
+    {
+      "ok": true,
+      "name": "1440 industry axe",
+      "detail": []
+    },
+    {
+      "ok": true,
+      "name": "1440 Salryn overflow"
+    },
+    {
+      "ok": true,
+      "name": "1440 process and Salryn exceptions",
+      "detail": []
+    },
+    {
+      "ok": true,
+      "name": "390 process direct deep link"
+    },
+    {
+      "ok": true,
+      "name": "390 twelve canonical industries"
+    },
+    {
+      "ok": true,
+      "name": "390 industry 0 step 0"
+    },
+    {
+      "ok": true,
+      "name": "390 industry 0 step 1"
+    },
+    {
+      "ok": true,
+      "name": "390 industry 0 step 2"
+    },
+    {
+      "ok": true,
+      "name": "390 industry 0 step 3"
+    },
+    {
+      "ok": true,
+      "name": "390 industry 0 workflow event 0"
+    },
+    {
+      "ok": true,
+      "name": "390 industry 0 workflow event 1"
+    },
+    {
+      "ok": true,
+      "name": "390 industry 0 workflow event 2"
+    },
+    {
+      "ok": true,
+      "name": "390 industry 0 workflow event 3"
+    },
+    {
+      "ok": true,
+      "name": "390 industry 0 workflow event 4"
+    },
+    {
+      "ok": true,
+      "name": "390 industry 0 step 4"
+    },
+    {
+      "ok": true,
+      "name": "390 industry 1 step 0"
+    },
+    {
+      "ok": true,
+      "name": "390 industry 1 step 1"
+    },
+    {
+      "ok": true,
+      "name": "390 industry 1 step 2"
+    },
+    {
+      "ok": true,
+      "name": "390 industry 1 step 3"
+    },
+    {
+      "ok": true,
+      "name": "390 industry 1 workflow event 0"
+    },
+    {
+      "ok": true,
+      "name": "390 industry 1 workflow event 1"
+    },
+    {
+      "ok": true,
+      "name": "390 industry 1 workflow event 2"
+    },
+    {
+      "ok": true,
+      "name": "390 industry 1 workflow event 3"
+    },
+    {
+      "ok": true,
+      "name": "390 industry 1 workflow event 4"
+    },
+    {
+      "ok": true,
+      "name": "390 industry 1 step 4"
+    },
+    {
+      "ok": true,
+      "name": "390 industry 9 step 0"
+    },
+    {
+      "ok": true,
+      "name": "390 industry 9 step 1"
+    },
+    {
+      "ok": true,
+      "name": "390 industry 9 step 2"
+    },
+    {
+      "ok": true,
+      "name": "390 industry 9 step 3"
+    },
+    {
+      "ok": true,
+      "name": "390 industry 9 workflow event 0"
+    },
+    {
+      "ok": true,
+      "name": "390 industry 9 workflow event 1"
+    },
+    {
+      "ok": true,
+      "name": "390 industry 9 workflow event 2"
+    },
+    {
+      "ok": true,
+      "name": "390 industry 9 workflow event 3"
+    },
+    {
+      "ok": true,
+      "name": "390 industry 9 workflow event 4"
+    },
+    {
+      "ok": true,
+      "name": "390 industry 9 step 4"
+    },
+    {
+      "ok": true,
+      "name": "390 inquiry preserves existing notes"
+    },
+    {
+      "ok": true,
+      "name": "390 selected industry reaches inquiry"
+    },
+    {
+      "ok": true,
+      "name": "390 industry replay"
+    },
+    {
+      "ok": true,
+      "name": "390 resilience normal"
+    },
+    {
+      "ok": true,
+      "name": "390 resilience local"
+    },
+    {
+      "ok": true,
+      "name": "390 external action stays waiting in outage"
+    },
+    {
+      "ok": true,
+      "name": "390 resilience exchange"
+    },
+    {
+      "ok": true,
+      "name": "390 recovery requires authorized exchange"
+    },
+    {
+      "ok": true,
+      "name": "390 eight inspectable engines"
+    },
+    {
+      "ok": true,
+      "name": "390 selected engine 0"
+    },
+    {
+      "ok": true,
+      "name": "390 selected engine 2"
+    },
+    {
+      "ok": true,
+      "name": "390 selected engine 6"
+    },
+    {
+      "ok": true,
+      "name": "390 selected engine 7"
+    },
+    {
+      "ok": true,
+      "name": "390 mandatory foundations active"
+    },
+    {
+      "ok": true,
+      "name": "390 optional module mirrors scene cap-commerce"
+    },
+    {
+      "ok": true,
+      "name": "390 optional module mirrors scene cap-inventory"
+    },
+    {
+      "ok": true,
+      "name": "390 optional module mirrors scene cap-procurement"
+    },
+    {
+      "ok": true,
+      "name": "390 optional module mirrors scene cap-financial"
+    },
+    {
+      "ok": true,
+      "name": "390 optional module mirrors scene cap-workforce"
+    },
+    {
+      "ok": true,
+      "name": "390 optional module mirrors scene cap-operations"
+    },
+    {
+      "ok": true,
+      "name": "390 industry axe",
+      "detail": []
+    },
+    {
+      "ok": true,
+      "name": "390 Salryn overflow"
+    },
+    {
+      "ok": true,
+      "name": "390 process and Salryn exceptions",
+      "detail": []
+    },
+    {
+      "ok": true,
+      "name": "320 process direct deep link"
+    },
+    {
+      "ok": true,
+      "name": "320 twelve canonical industries"
+    },
+    {
+      "ok": true,
+      "name": "320 industry 0 step 0"
+    },
+    {
+      "ok": true,
+      "name": "320 industry 0 step 1"
+    },
+    {
+      "ok": true,
+      "name": "320 industry 0 step 2"
+    },
+    {
+      "ok": true,
+      "name": "320 industry 0 step 3"
+    },
+    {
+      "ok": true,
+      "name": "320 industry 0 workflow event 0"
+    },
+    {
+      "ok": true,
+      "name": "320 industry 0 workflow event 1"
+    },
+    {
+      "ok": true,
+      "name": "320 industry 0 workflow event 2"
+    },
+    {
+      "ok": true,
+      "name": "320 industry 0 workflow event 3"
+    },
+    {
+      "ok": true,
+      "name": "320 industry 0 workflow event 4"
+    },
+    {
+      "ok": true,
+      "name": "320 industry 0 step 4"
+    },
+    {
+      "ok": true,
+      "name": "320 industry 1 step 0"
+    },
+    {
+      "ok": true,
+      "name": "320 industry 1 step 1"
+    },
+    {
+      "ok": true,
+      "name": "320 industry 1 step 2"
+    },
+    {
+      "ok": true,
+      "name": "320 industry 1 step 3"
+    },
+    {
+      "ok": true,
+      "name": "320 industry 1 workflow event 0"
+    },
+    {
+      "ok": true,
+      "name": "320 industry 1 workflow event 1"
+    },
+    {
+      "ok": true,
+      "name": "320 industry 1 workflow event 2"
+    },
+    {
+      "ok": true,
+      "name": "320 industry 1 workflow event 3"
+    },
+    {
+      "ok": true,
+      "name": "320 industry 1 workflow event 4"
+    },
+    {
+      "ok": true,
+      "name": "320 industry 1 step 4"
+    },
+    {
+      "ok": true,
+      "name": "320 industry 9 step 0"
+    },
+    {
+      "ok": true,
+      "name": "320 industry 9 step 1"
+    },
+    {
+      "ok": true,
+      "name": "320 industry 9 step 2"
+    },
+    {
+      "ok": true,
+      "name": "320 industry 9 step 3"
+    },
+    {
+      "ok": true,
+      "name": "320 industry 9 workflow event 0"
+    },
+    {
+      "ok": true,
+      "name": "320 industry 9 workflow event 1"
+    },
+    {
+      "ok": true,
+      "name": "320 industry 9 workflow event 2"
+    },
+    {
+      "ok": true,
+      "name": "320 industry 9 workflow event 3"
+    },
+    {
+      "ok": true,
+      "name": "320 industry 9 workflow event 4"
+    },
+    {
+      "ok": true,
+      "name": "320 industry 9 step 4"
+    },
+    {
+      "ok": true,
+      "name": "320 inquiry preserves existing notes"
+    },
+    {
+      "ok": true,
+      "name": "320 selected industry reaches inquiry"
+    },
+    {
+      "ok": true,
+      "name": "320 industry replay"
+    },
+    {
+      "ok": true,
+      "name": "320 resilience normal"
+    },
+    {
+      "ok": true,
+      "name": "320 resilience local"
+    },
+    {
+      "ok": true,
+      "name": "320 external action stays waiting in outage"
+    },
+    {
+      "ok": true,
+      "name": "320 resilience exchange"
+    },
+    {
+      "ok": true,
+      "name": "320 recovery requires authorized exchange"
+    },
+    {
+      "ok": true,
+      "name": "320 eight inspectable engines"
+    },
+    {
+      "ok": true,
+      "name": "320 selected engine 0"
+    },
+    {
+      "ok": true,
+      "name": "320 selected engine 2"
+    },
+    {
+      "ok": true,
+      "name": "320 selected engine 6"
+    },
+    {
+      "ok": true,
+      "name": "320 selected engine 7"
+    },
+    {
+      "ok": true,
+      "name": "320 mandatory foundations active"
+    },
+    {
+      "ok": true,
+      "name": "320 optional module mirrors scene cap-commerce"
+    },
+    {
+      "ok": true,
+      "name": "320 optional module mirrors scene cap-inventory"
+    },
+    {
+      "ok": true,
+      "name": "320 optional module mirrors scene cap-procurement"
+    },
+    {
+      "ok": true,
+      "name": "320 optional module mirrors scene cap-financial"
+    },
+    {
+      "ok": true,
+      "name": "320 optional module mirrors scene cap-workforce"
+    },
+    {
+      "ok": true,
+      "name": "320 optional module mirrors scene cap-operations"
+    },
+    {
+      "ok": true,
+      "name": "320 industry axe",
+      "detail": []
+    },
+    {
+      "ok": true,
+      "name": "320 Salryn overflow"
+    },
+    {
+      "ok": true,
+      "name": "320 process and Salryn exceptions",
+      "detail": []
+    }
+  ]
+}
