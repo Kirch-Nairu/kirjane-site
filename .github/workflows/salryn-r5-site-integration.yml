@@ -1,0 +1,65 @@
+name: Kirjane R2 with R5 Salryn Cinema
+on:
+  push:
+    branches: [experiment/salryn-cinema-site-integration-r1]
+  pull_request:
+    branches: [experiment/creative-forge-immersive-r2]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  film-site-integration:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install original website QA tooling
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Install real Chromium browser
+        run: npx playwright install --with-deps chromium
+      - name: Qualify imported R5 motion source
+        run: node --test creative/film/src/director/*.test.mjs
+      - name: Compile integrated noindex static website
+        run: python scripts/build_immersive_r2.py --output dist/cinema-integration
+      - name: Validate route set and film bundle
+        run: |
+          test -s dist/cinema-integration/js/forge-immersive-r2.js
+          test -s dist/cinema-integration/js/forge-salryn-cinema-r1.js
+          test -s dist/cinema-integration/js/forge-salryn-cinema-loader.js
+          grep -q noindex dist/cinema-integration/salryn/index.html
+          for page in index salryn services projects process about contact; do test -s dist/cinema-integration/$page.html; done
+      - name: Browser QA full site, cinema and mobile
+        run: node scripts/qa_salryn_site_integration.mjs
+      - name: Preserve QA screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: salryn-r5-embedded-browser-evidence
+          path: dist/cinema-integration-evidence/
+          retention-days: 14
+          if-no-files-found: warn
+      - name: Preserve full noindex site preview
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kirjane-r2-salryn-r5-integrated-noindex
+          path: dist/cinema-integration/
+          retention-days: 7
+          if-no-files-found: error
+      - name: Commit built film only on experimental branch after success
+        if: github.event_name == 'push' && github.ref_name == 'experiment/salryn-cinema-site-integration-r1' && success()
+        run: |
+          git config user.name 'kirjane-film-build[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add site/js/forge-salryn-cinema-r1.js
+          if ! git diff --cached --quiet; then
+            git commit -m "build(cinema): save qualified R5 on-site bundle"
+            git push origin HEAD:experiment/salryn-cinema-site-integration-r1
+          fi
