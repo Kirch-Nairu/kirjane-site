@@ -105,6 +105,7 @@ try {
   pass((await lab.locator('[data-arc-status]').innerText()).includes('2 of'),'Arc next button works');
   await lab.locator('[data-focus-next]').click();
   pass((await lab.locator('[data-focus-status]').innerText()).includes('2 / 3'),'Focus next button works');
+  await lab.locator('[data-demo-replay]').click();
   await lab.locator('[data-demo-advance]').click();
   pass((await lab.locator('[data-demo-status]').innerText()).includes('Step 2'),'Workflow manual advance works');
   await lab.screenshot({path:resolve(out,'motion-desktop.png'),fullPage:true});
