@@ -10,5 +10,5 @@ REACTBITS,https://github.com/DavidHDev/react-bits,upstream,optional React island
 R3F,https://github.com/pmndrs/react-three-fiber,upstream,optional Salryn 3D,version-specific license pending,NOT INTEGRATED,Existing CGI used as 2.5D proxy
 LIQUIDGLASS,https://github.com/dashersw/liquid-glass-js,upstream,material technique,MIT per manifest; pinned audit required,NOT INTEGRATED,No unnecessary blur overlay
 SHADERGRADIENT,https://github.com/ruucm/shadergradient,upstream,optional shader material,MIT in upstream README,NOT INTEGRATED,Single GPU scene gate
-LIQUIDLOGO,https://github.com/paper-design/liquid-logo,upstream,optional shader research,license not verified,NOT INTEGRATED,Official emblem geometry must remain unchanged
+LIQUIDLOGO,https://github.com/paper-design/liquid-logo,upstream,optional shader research,PolyForm Shield License 1.0.0 per upstream LICENSE; legal review required,NOT INTEGRATED,Official emblem geometry must remain unchanged
 CGLIB,existing Creative Forge local CGI/GFX/VFX/procedural libraries,Windows creative-lab workstation,creative asset masters,not available for direct audit,NOT INTEGRATED,Review actual library files before reuse
