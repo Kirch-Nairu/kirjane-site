@@ -11,6 +11,8 @@ gsap.registerPlugin(ScrollTrigger);
 const reduce = matchMedia('(prefers-reduced-motion: reduce)');
 const fine = matchMedia('(pointer: fine)');
 const wide = matchMedia('(min-width: 960px)');
+const forcedReduced = new URLSearchParams(location.search).get('reduce') === '1';
+function motionReduced() { return reduce.matches || forcedReduced; }
 const stopped = [];
 const sceneRecords = [];
 let context;
@@ -22,14 +24,14 @@ function listen(el, event, cb, options) {
   register(() => el?.removeEventListener(event, cb, options));
 }
 function animateFrom(el, options) {
-  if (el && !reduce.matches) gsap.from(el, options);
+  if (el && !motionReduced()) gsap.from(el, options);
 }
 function scrollTo(el, props) {
-  if (!el || reduce.matches) return;
+  if (!el || motionReduced()) return;
   gsap.to(el, { ...props, overwrite: 'auto' });
 }
 function record(name, scope) { sceneRecords.push({ name, scope }); }
-function allowMotion() { return !reduce.matches && !document.hidden; }
+function allowMotion() { return !motionReduced() && !document.hidden; }
 
 function setupLayeredParallax(root) {
   const scene = root.querySelector('[data-study="01"]');
@@ -200,8 +202,8 @@ function initLab() {
   boot.forEach(fn => fn(root));
   const toggle = document.getElementById('lab-motion-toggle');
   const setState = () => {
-    document.documentElement.classList.toggle('study-reduced', reduce.matches);
-    if (toggle) toggle.textContent = reduce.matches ? 'System requests reduced motion' : 'Motion enabled';
+    document.documentElement.classList.toggle('study-reduced', motionReduced());
+    if (toggle) toggle.textContent = motionReduced() ? 'System requests reduced motion' : 'Motion enabled';
   };
   setState();
   listen(reduce, 'change', setState);
