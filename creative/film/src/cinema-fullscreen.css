@@ -1,0 +1,504 @@
+/* R3 — The source-inspired Salryn application IS the cinematic canvas.
+   CSS stage only. Camera and cursor position come from pure seekable math.
+   Reuses source shell colors; it does not grant real product actions. */
+:root {
+  --cinema-ink: #f1f5ee;
+  --cinema-accent: #c2e970;
+  --cinema-deep: #06120e;
+}
+html, body { overscroll-behavior-y: auto; }
+.experience { background:#06130e; }
+.cinema-r3 { position: relative; isolation: isolate; }
+.cinema-r3 .cinema-sticky {
+  position:sticky;
+  top:0;
+  width:100%;
+  height:100svh;
+  min-height:0;
+  max-height:none;
+  overflow:hidden;
+  display:block;
+  isolation:isolate;
+  background:#0f1a2a;
+}
+.cinema-immersive-art {
+  position:absolute;
+  inset:0;
+  z-index:0;
+  overflow:hidden;
+  background:linear-gradient(145deg,#0f1a2a,#162438);
+  pointer-events:none;
+}
+.cinema-camera {
+  position:absolute;
+  top:0;
+  left:0;
+  width:920px;
+  height:555px;
+  transform-origin:0 0;
+  will-change:transform;
+  backface-visibility:hidden;
+  contain:layout style paint;
+}
+
+.cinema-camera .cinema-ui-layer {
+  position:absolute;
+  inset:0;
+  width:920px;
+  height:555px;
+  pointer-events:none;
+  will-change:opacity;
+}
+
+.cinema-camera .salryn-window {
+  width:920px;
+  height:555px;
+  border:0;
+  border-radius:0;
+  box-shadow:none;
+  transform:none;
+}
+.cinema-camera .ui-workspace {
+  background:#f6f7f9;
+}
+.cinema-sticky > .film-fake-cursor {
+  position:absolute;
+  top:0;
+  left:0;
+  width:26px;
+  height:31px;
+  transform:translate(-3px,-2px);
+  z-index:4;
+  pointer-events:none;
+  filter:drop-shadow(0 1.7px 2px #0009);
+}
+.cinema-sticky > .film-fake-cursor svg{position:relative;z-index:2;display:block;}
+.cinema-click-halo {
+  position:absolute;
+  z-index:1;
+  top:4px;
+  left:3px;
+  width:40px;
+  height:40px;
+  border:2px solid #84fa8c;
+  background:radial-gradient(circle,#c9ff8c55,#c9ff8c05 68%);
+  border-radius:50%;
+  pointer-events:none;
+  transform-origin:0 0;
+  box-shadow:0 0 0 8px #9bf29c15,0 0 24px #92ffa745;
+}
+.cinema-overlay-shade {
+  position:absolute;
+  inset:0;
+  z-index:2;
+  pointer-events:none;
+  background:
+    linear-gradient(90deg,
+      rgba(3,14,16,.96) 0%,
+      rgba(3,14,16,.88) 17%,
+      rgba(3,14,16,.63) 34%,
+      rgba(3,14,16,.25) 51%,
+      transparent 73%),
+    linear-gradient(0deg,
+      rgba(2,10,14,.87) 0%,
+      rgba(2,10,14,.35) 13%,
+      rgba(2,10,14,0) 48%),
+    linear-gradient(180deg,rgba(2,9,15,.68) 0%,rgba(2,9,15,.06) 17%,transparent 36%);
+}
+.cinema-horizon {
+  position:absolute;
+  z-index:2;
+  inset:-35%;
+  pointer-events:none;
+  opacity:.16;
+  background:
+     repeating-radial-gradient(ellipse at 72% 55%, transparent 0 126px, rgba(177,232,124,.22) 127px 128px,transparent 129px 192px);
+  mix-blend-mode:screen;
+  mask-image:linear-gradient(90deg,transparent 20%,black 78%);
+}
+.cinema-horizon > span{
+  display:block;width:55vw;height:55vw;
+  position:absolute;top:-25%;right:-8%;
+  border:1px solid #c2e970;
+  border-radius:50%;
+  opacity:.33;
+}
+.cinema-topline{
+  position:absolute;
+  z-index:6;
+  top:86px;
+  left:clamp(25px,6.15vw,108px);
+  right:clamp(20px,4vw,78px);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+  pointer-events:none;
+  font-size:10px;
+  line-height:1.5;
+  letter-spacing:.19em;
+  font-weight:650;
+  color:#d3e6ca;
+  text-transform:uppercase;
+}
+.cinema-topline-right{color:#f3f7f6;font-size:9px;letter-spacing:.16em;text-shadow:0 2px 9px #0009;}
+.cinema-dot{
+  display:inline-block;width:5px;height:5px;
+  margin:0 8px 1px;
+  border-radius:50%;background:var(--cinema-accent);
+  box-shadow:0 0 0 4px #c2e97022;
+}
+.cinema-narrative{
+  position:absolute;
+  z-index:5;
+  left:clamp(25px,6.15vw,108px);
+  bottom:clamp(120px,16vh,190px);
+  width:min(645px,56vw);
+  color:var(--cinema-ink);
+  pointer-events:none;
+  text-shadow:0 2px 20px #0007;
+  will-change:transform,opacity;
+}
+.cinema-chapter {
+  display:inline-flex;align-items:center;gap:12px;
+  font-size:11px;font-weight:750;letter-spacing:.20em;
+  color:var(--cinema-accent);text-transform:uppercase;
+}
+.cinema-chapter-rule{display:inline-block;width:29px;height:1px;background:var(--cinema-accent);}
+.cinema-narrative h1 {
+  max-width:13ch;
+  font-family:"Segoe UI Variable Display","Segoe UI",system-ui,sans-serif;
+  font-size:clamp(48px,5.4vw,102px);
+  font-weight:650;
+  letter-spacing:-.073em;
+  line-height:.99;
+  text-wrap:balance;
+  margin:24px 0 22px;
+  color:var(--cinema-ink);
+}
+.cinema-narrative p {
+  max-width:41ch;
+  margin:0;
+  font-size:clamp(16px,1.4vw,20px);
+  line-height:1.53;
+  letter-spacing:-.014em;
+  color:#d1dfd9;
+}
+.cinema-proof{
+  display:block;
+  margin-top:30px;
+  color:#98b5a4;
+  letter-spacing:.025em;
+  line-height:1.6;
+  font-size:11px;
+  text-shadow:0 2px 12px #000b;
+}
+.cinema-conversion {
+  display:inline-flex;
+  gap:23px;
+  margin-top:27px;
+  padding:15px 22px;
+  color:#091f12;
+  background:#d6f681;
+  border-radius:3px;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.09em;
+  pointer-events:auto;
+  box-shadow:0 8px 28px #0006;
+}
+.cinema-conversion:focus-visible{outline:3px solid white;outline-offset:5px;}
+.cinema-conversion:hover{background:white;}
+.cinema-bottomline {
+  position:absolute;
+  z-index:6;
+  bottom:80px;
+  left:clamp(25px,6.15vw,108px);
+  right:clamp(25px,6.15vw,108px);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+  pointer-events:none;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.16em;
+  color:#c4d8cb;
+}
+.cinema-scroll-hint{display:flex;align-items:center;gap:13px;}
+.cinema-wheel{position:relative;width:21px;height:34px;border:1px solid #c2e97099;border-radius:13px;display:grid;place-items:center;}
+.cinema-wheel span{width:2px;height:9px;background:#c2e970;border-radius:3px;}
+.cinema-scene-name{color:#bed0c8;letter-spacing:.13em;text-align:right;}
+.cinema-scene-name span:first-child{color:white;}
+.cinema-scene-name span:nth-child(2){color:var(--cinema-accent);}
+.cinema-r3 .cinema-progress {
+  position:absolute;
+  z-index:7;
+  padding:0 clamp(25px,6.15vw,108px);
+  bottom:25px;
+  left:0;right:0;
+  pointer-events:none;
+}
+.cinema-r3 .film-track{background:#c0dbcd3f;height:1px;overflow:visible;}
+.cinema-r3 .film-track>span{height:2px;background:#c5eb78;box-shadow:0 0 16px #bbdf79a0;}
+.cinema-r3 .film-meta {color:#9ec0a8;font-size:9px;letter-spacing:.19em;margin-top:12px;}
+.cinema-opening-identity{
+  position:absolute;inset:0;
+  display:grid;place-content:center;justify-items:center;
+  gap:28px;
+  color:#c8ea8e;
+  background:radial-gradient(ellipse 44% 44% at 68% 55%,#235c4366,transparent 75%),
+             linear-gradient(140deg,#081c1b,#07110f 66%,#142b28);
+}
+.cinema-opening-kernel{
+  width:clamp(175px,19vw,315px);
+  height:clamp(175px,19vw,315px);
+  display:grid;place-items:center;
+  position:relative;
+  z-index:3;
+  background:linear-gradient(143deg,#dff5b0,#508b5c 45%,#152e2b 83%);
+  border:1px solid #d5f8be77;
+  box-shadow:inset -40px -28px 65px #031c16af,inset 5px 6px 40px #f9ffb74f,
+      0 20px 90px #8de98316,0 0 2px 25px #81ce7d07;
+  border-radius:40%;
+  transform:rotate(-14deg);
+  font-size:clamp(104px,11vw,185px);
+  font-weight:900;
+  color:#102b1c;
+  text-shadow:1px 1px 0 #d3f8b8a6;
+}
+.cinema-opening-orbits{position:absolute;width:min(66vw,760px);height:min(66vw,760px);left:52%;top:50%;transform:translate(-45%,-50%);pointer-events:none;}
+.cinema-opening-orbits span{position:absolute;inset:12%;border:1px solid #9ceaab4a;border-radius:50%;transform:rotateX(64deg) rotateZ(26deg);}
+.cinema-opening-orbits span:nth-child(2){inset:5%;border-color:#abcf7070;transform:rotateX(44deg) rotateZ(-36deg);}
+.cinema-opening-orbits span:nth-child(3){inset:23%;border-color:#91c4a04f;transform:rotateY(67deg) rotateZ(43deg);}
+.cinema-opening-orbits span:nth-child(4){inset:-6%;border-color:#c9eb8455;transform:rotateX(85deg) rotateZ(18deg);}
+.cinema-opening-identity small{font-size:12px;font-weight:800;letter-spacing:.18em;text-align:center;line-height:1.8;color:#bad5b1;}
+/* Keep the operator interface sober and readable. It is the evidence. */
+.cinema-r3 .ui-card,
+.cinema-r3 .ui-tiles,
+.cinema-r3 .ui-receipt-paper{backdrop-filter:none;}
+@media (max-width:1024px){
+  .cinema-overlay-shade{
+    background:linear-gradient(90deg,#031014ef 0%,#031014c7 20%,#03101465 46%,transparent 78%),
+               linear-gradient(0deg,#031014a8,transparent 26%),
+               linear-gradient(180deg,#031014a6,transparent 24%);
+  }
+  .cinema-narrative{width:min(560px,66vw);}
+  .cinema-narrative h1{font-size:clamp(43px,5.5vw,73px);}
+}
+@media(max-width:719px){
+  .cinema-r3 .cinema-sticky {height:100dvh;}
+  .cinema-overlay-shade{
+    background:linear-gradient(180deg,
+      rgba(2,12,14,.99) 0%,
+      rgba(2,12,14,.98) 18%,
+      rgba(2,12,14,.97) 34%,
+      rgba(2,12,14,.88) 40%,
+      rgba(2,12,14,.16) 52%,
+      rgba(2,12,14,.03) 68%,
+      rgba(2,12,14,.53) 90%,
+      rgba(2,12,14,.90) 100%);
+  }
+  .cinema-topline{
+    top:72px;
+    left:20px;
+    right:20px;
+    font-size:8px;
+    letter-spacing:.14em;
+    gap:12px;
+  }
+  .cinema-topline-right{font-size:8px;text-align:right;max-width:130px;letter-spacing:.05em;}
+  .cinema-narrative{
+    left:22px;
+    right:22px;
+    top:clamp(100px,14.5dvh,158px);
+    bottom:auto;
+    width:auto;
+    max-width:100%;
+    text-shadow:0 2px 14px #000e;
+  }
+  .cinema-chapter{font-size:9px;gap:9px;letter-spacing:.14em;}
+  .cinema-chapter-rule{width:18px;}
+  .cinema-narrative h1{
+    max-width:14ch;
+    font-size:clamp(34px,9.25vw,62px);
+    margin:12px 0;
+    letter-spacing:-.067em;
+    line-height:1.05;
+  }
+  .cinema-narrative p{max-width:32ch;font-size:clamp(13px,3.5vw,17px);line-height:1.5;}
+  .cinema-proof{font-size:9px;line-height:1.4;max-width:40ch;margin-top:12px;}
+  .cinema-conversion{margin-top:14px;font-size:12px;padding:12px 16px;}
+  .cinema-bottomline{left:22px;right:22px;bottom:66px;gap:12px;font-size:9px;}
+  .cinema-scene-name{display:none;}
+  .cinema-r3 .cinema-progress{bottom:14px;padding:0 22px;}
+  .cinema-r3 .film-meta{margin-top:8px;font-size:9px;}
+  .cinema-opening-identity{align-content:end;padding-bottom:24vh;}
+  .cinema-opening-orbits{width:100vw;height:100vw;left:54%;top:60%;}
+  .cinema-opening-kernel{width:180px;height:180px;font-size:112px;}
+  .cinema-opening-identity small{font-size:10px;max-width:23ch;}
+}
+@media(max-width:390px) and (max-height:750px){
+  .cinema-narrative{top:85px;}
+  .cinema-narrative h1{font-size:clamp(29px,8.1vw,34px);margin:9px 0;}
+  .cinema-narrative p{font-size:12px;}
+  .cinema-proof{font-size:8px;max-width:36ch;}
+  .cinema-topline{display:none;}
+  .cinema-bottomline{bottom:54px;}
+  .cinema-r3 .cinema-progress{bottom:10px;}
+}
+@media(prefers-reduced-motion:reduce) {
+  .cinema-camera{will-change:auto;}
+  .cinema-horizon{display:none;}
+  .cinema-narrative{will-change:auto;}
+  .cinema-click-halo{display:none;}
+  .cinema-opening-kernel{box-shadow:none;}
+}
+/* The below sections remain ordinary readable HTML (including keyboard skip). */
+
+
+.site-header nav{display:flex;gap:clamp(12px,2vw,32px);align-items:center;}
+.site-header nav a{white-space:nowrap;}
+.cinema-reduced {
+  min-height:85svh;
+  background:radial-gradient(ellipse at 77% 49%,#244b38,#071714 58%,#07131a);
+  display:flex;
+  align-items:center;
+  padding:120px clamp(20px,7vw,130px) 90px;
+}
+.cinema-reduced-inner{max-width:850px;}
+.cinema-reduced h1{
+  font-size:clamp(42px,7vw,104px);
+  max-width:13ch;
+  letter-spacing:-.077em;
+  line-height:1.03;
+  margin:24px 0;
+}
+.cinema-reduced p{color:#d0dfd8;font-size:clamp(16px,1.4vw,20px);max-width:55ch;line-height:1.7;}
+.cinema-reduced a{display:inline-flex;color:#d4f28a;border-bottom:1px solid #d4f28a;padding:15px 0 8px;margin:5px 25px 5px 0;text-decoration:none;font-size:14px;}
+.cinema-reduced a:focus-visible{outline:3px solid #d4f28a;outline-offset:5px;}
+@media(max-width:480px){
+  .site-header nav{gap:12px;}
+  .site-header nav a{font-size:10px;max-width:110px;white-space:normal;text-align:right;}
+  .cinema-reduced {padding-top:85px;}
+}
+
+/* The film has its own scripted screen-space cursor. Hide the native pointer
+ * over the NON-INTERACTIVE pinned film, but preserve link affordance. */
+@media (pointer:fine) {
+  .cinema-sticky { cursor:none; }
+  .cinema-conversion { cursor:pointer; }
+}
+
+
+/* R5: frame-seekable tactile animation; none of these properties use wall-clock
+   keyframes, so scrolling backward undoes the interaction precisely. */
+.cinema-sticky > .film-fake-cursor {
+  will-change: left, top;
+}
+.cinema-click-ring,
+.cinema-click-impact {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  left: 3px;
+  top: 2px;
+  border-radius: 50%;
+  transform-origin: center center;
+}
+.cinema-click-ring {
+  width: 46px;
+  height: 46px;
+  border: 2px solid #d6ff9b;
+  background: radial-gradient(circle, #c5ff8a15, transparent 64%);
+  box-shadow: inset 0 0 11px #caff852b, 0 0 13px #caff8766, 0 0 0 1px #1738273b;
+  will-change: transform, opacity;
+}
+.cinema-click-impact {
+  width: 13px;
+  height: 13px;
+  background: radial-gradient(circle, #e8ffb6 5%, #adff88 27%, #adff8800 75%);
+  box-shadow: 0 0 18px #d6ffa6aa;
+  will-change: transform, opacity;
+}
+.cinema-sticky .cinema-cursor-arrow {
+  display: block;
+  position: relative;
+  z-index: 3;
+  transform-origin: 3px 2px;
+  will-change: transform;
+}
+.cinema-topline-actions {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: clamp(12px,1.8vw,26px);
+  min-width: 0;
+}
+.cinema-sound-toggle {
+  pointer-events: auto;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 13px;
+  min-height: 36px;
+  flex-shrink: 0;
+  appearance: none;
+  color: #eaf3e6;
+  border: 1px solid #b8dbaf6e;
+  border-radius: 999px;
+  background: #09221ecf;
+  box-shadow: 0 3px 22px #020c0866;
+  backdrop-filter: blur(12px);
+  font: inherit;
+  font-size: 9px;
+  line-height: 1;
+  font-weight: 760;
+  letter-spacing: .13em;
+  white-space: nowrap;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.cinema-sound-toggle:hover:not(:disabled) {
+  color: #f7ffe6;
+  border-color: #c6ed87;
+  background: #214334eb;
+}
+.cinema-sound-toggle[aria-pressed="true"] {
+  color: #102412;
+  background: #d7f58c;
+  border-color: #d7f58c;
+}
+.cinema-sound-toggle:focus-visible {
+  outline: 3px solid #edffcc;
+  outline-offset: 4px;
+}
+.cinema-sound-toggle:disabled {
+  opacity:.63;
+  cursor:not-allowed;
+}
+.cinema-sound-icon {
+  display:inline-block;
+  font-size:17px;
+  line-height:.7;
+  font-weight:700;
+  letter-spacing:-.08em;
+}
+@media(max-width:719px) {
+  .cinema-topline-actions { gap: 0; }
+  .cinema-topline-right { display:none; }
+  .cinema-sound-toggle { min-height:34px;padding:8px 10px;font-size:8px;gap:7px;letter-spacing:.06em; }
+  .cinema-sound-icon { font-size:16px; }
+}
+@media(max-width:390px) and (max-height:750px) {
+  .cinema-topline { display:flex;top:65px; }
+  .cinema-label { display:none; }
+  .cinema-topline-actions { margin-left:auto; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .cinema-click-ring,
+  .cinema-click-impact { display:none; }
+  .cinema-sticky .cinema-cursor-arrow { will-change:auto; }
+}
