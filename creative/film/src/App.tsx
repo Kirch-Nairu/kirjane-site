@@ -292,7 +292,6 @@ export default function App() {
           <div className="cinema-topline-actions">
             <span className="cinema-topline-right">A KIRJANE PRODUCT <span className="cinema-dot" /> DEMONSTRATION</span>
             <button type="button" className="cinema-sound-toggle" data-cinema-sound-toggle
-              aria-label={soundUnsupported ? "Audio unavailable in this browser" : soundOn ? "Mute cinematic click sounds" : "Enable cinematic click sounds"}
               aria-pressed={soundOn} onClick={enableOrMuteSound} disabled={soundUnsupported}>
               <span className="cinema-sound-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor"
