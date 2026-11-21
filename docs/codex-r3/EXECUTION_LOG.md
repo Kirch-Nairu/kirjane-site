@@ -56,3 +56,6 @@ CI 44920426737 qualified code 6e4b92f (61/79/68/29 + 183 + 44 + 5 + 20 captures)
 
 ### Broad fallback experiment rejected by visual review
 The headless/software-to-static quality experiment made the Home and Salryn documentary text stacks replace their selected cinematic beats in normal-motion captures. This materially weakened P1 composition. Restored the inherited adaptive-quality module byte-for-byte from 4c1f58f; the Windows R2 harness keeps its successful native Chromium launch. Existing R3F software fallback, OS reduced-motion and explicit webgl=off paths remain. The scoped services static-layout correction remains necessary for actual reduced/GPU-denied use. This is a visual correction, not a claim of hardware verification.
+
+### Separate production-workflow gate
+The R3 qualification passed at 6e4b92f, but the separate Production source verification workflow failed its final git diff --check gate on ten trailing spaces in the newly authored industry/resilience modules. Browser tests were not the cause. Removed the whitespace; retained the unchanged check. A later successful run is required before calling all branch checks green.
