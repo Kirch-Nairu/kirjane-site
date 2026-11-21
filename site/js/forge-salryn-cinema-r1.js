@@ -10443,7 +10443,6 @@ function A() {
 					}),
 					/* @__PURE__ */ (0, E.jsxs)("div", {
 						className: "cinema-topline",
-						"aria-hidden": "true",
 						children: [/* @__PURE__ */ (0, E.jsx)("span", {
 							className: "cinema-label",
 							children: "SALRYN / AN OPERATIONAL STORY"
@@ -10460,7 +10459,6 @@ function A() {
 								type: "button",
 								className: "cinema-sound-toggle",
 								"data-cinema-sound-toggle": !0,
-								"aria-label": o ? "Audio unavailable in this browser" : i ? "Mute cinematic click sounds" : "Enable cinematic click sounds",
 								"aria-pressed": i,
 								onClick: w,
 								disabled: o,
