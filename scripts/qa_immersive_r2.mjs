@@ -29,7 +29,10 @@ async function waitServer(){
 function guard(page,name){
  const exceptions=[];
  page.on('pageerror',e=>exceptions.push(String(e)));
- page.on('console',m=>{if(m.type()==='error')exceptions.push('console: '+m.text());});
+ page.on('console',m=>{
+    if(m.type()==='error'||(m.type()==='warning'&&m.text().includes('[Forge Immersive R2]')))
+      exceptions.push(m.type()+': '+m.text());
+  });
  return ()=>add(exceptions.length===0,'No runtime errors '+name,exceptions.slice(0,5).join(' | '));
 }
 async function decode(page){
@@ -77,7 +80,10 @@ try{
   add(await page.locator('h1').count()>=1,'Hero h1 retained '+route);
   add(await page.locator('img.official-brand-word').count()>=1,'Official brand retained '+route);
   await page.waitForFunction(()=>!!window.__KIRJANE_R2__,{timeout:8000}).catch(()=>{});
-  add(await page.evaluate(()=>!!window.__KIRJANE_R2__),'React Bits/R3F bundle loaded '+route);
+  add(await page.evaluate(()=>!!window.__KIRJANE_R2__),'React Bits/R3F bundle loaded '+route,
+    await page.evaluate(()=>JSON.stringify({loader:window.__KIRJANE_R2_LOADER__,
+      stub:document.documentElement.dataset.forgeIslands,
+      fault:window.__KIRJANE_R2_ERROR__?.slice(0,500) || null})));
   if(!name || name==='salryn'||name==='contact'){
     const errors=await decode(page);
     add(errors.length===0,'Visual assets decode '+route,errors.join(','));
