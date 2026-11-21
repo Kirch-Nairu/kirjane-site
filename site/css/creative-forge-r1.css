@@ -116,3 +116,7 @@ html.motion-lab-root { background: var(--lab-ink); color: var(--lab-paper); }
 [data-study="07"] { min-height: 135svh; }
 [data-study="07"] .study-kernel-stage { position: sticky; top: 13vh; }
 @media(max-width:760px) { [data-study="07"] { min-height: auto; } [data-study="07"] .study-kernel-stage { position:relative; top:auto; } }
+
+/* AXE R1: pale numbered folios were 2.16–2.40:1 on paper/mist; use dark ink (>=6.8:1). */
+.lab-study.paper .lab-study-number, .lab-study.mist .lab-study-number { color: #38523c; }
+.study-demo-step:not(.is-current) { opacity: .78; }
