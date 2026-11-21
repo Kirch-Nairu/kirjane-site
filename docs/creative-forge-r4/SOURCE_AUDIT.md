@@ -6,7 +6,7 @@ Baseline source: 7f3a3147c225aea8617820136b509306db3a143f, R3 Draft PR #15. Audi
 - 511 total tracked blobs in the recursively resolved R3 tree.
 - 342 raster + SVG assets in current repo (all including documentation and old/QA files).
 - 303 WebP, 14 PNG, 14 JPG and 11 SVG (from tree).
-- site/assets/cinematic/ contains 289 tracked files of different types. 256 frame files in four high-impact directories: Home desktop 72 frames + poster, Home mobile 36 frames + poster, Salryn documentary desktop 96 frames + poster, Salryn documentary mobile 48 frames + poster.
+- site/assets/cinematic/ contains 289 tracked files of different types. 256 files in four high-impact directories, comprising exactly 252 numbered frames plus 4 posters: Home desktop 72 frames + 1 poster, Home mobile 36 frames + 1 poster, Salryn documentary desktop 96 frames + 1 poster, Salryn documentary mobile 48 frames + 1 poster.
 - Site/brand: 9 images (canonical brand variants, LOCKED). Legacy R2: 12 WebP artworks, source archive.
 - Docs ten owner-reference JPGs and five R3 evidence PNGs are NOT website artwork.
 - R3 asset licenses in docs/codex-r3/ASSET_LICENSES.csv; earlier vendor registry docs/IMMERSIVE_R2_SOURCE_REGISTRY.csv.
