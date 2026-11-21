@@ -40,7 +40,9 @@ function instrumentProgress() {
  return ()=>progress.remove();
 }
 function injectIndex() {
- const page=document.body.dataset.page||'home';
+ const page=document.body.dataset.page ||
+   location.pathname.split('/').filter(Boolean).at(-1)?.replace('.html','') || 'home';
+ document.documentElement.dataset.forgePage=page;
  const el=document.createElement('div');
  el.className='forge-page-chapter';
  el.setAttribute('aria-hidden','true');
@@ -180,7 +182,7 @@ export function startKineticsR2(){
  },document);
  const resize=()=>ScrollTrigger.refresh();
  event(window,'load',resize,{once:true});
- const restore=()=>{document.documentElement.classList.remove('forge-immersive-r2');ctx?.revert();listeners.abort();clean.forEach(fn=>fn());live=false;ctx=null;};
+ const restore=()=>{document.documentElement.classList.remove('forge-immersive-r2');delete document.documentElement.dataset.forgePage;ctx?.revert();listeners.abort();clean.forEach(fn=>fn());live=false;ctx=null;};
  event(window,'pagehide',restore);
  window.__KIRJANE_KINETICS_R2__={stop:restore};
 }
