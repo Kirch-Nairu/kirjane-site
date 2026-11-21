@@ -19,7 +19,7 @@ export function createIndustryStory(host,families,engines,onControl){
  host.innerHTML='<div class="r3-story-head"><span>ONE KERNEL / TWELVE CONTEXTS</span><span data-story-counter>01 / 05</span></div>'+ 
   '<div class="r3-story-space"><div class="r3-story-core">SALRYN<small>SECURITY + INFRASTRUCTURE</small></div><div class="r3-story-nodes"></div></div>'+ 
   '<div class="r3-story-copy"><h3></h3><p></p></div><ol class="r3-workflow"></ol>'+ 
-  '<div class="r3-story-steps" role="group" aria-label="Industry narrative stage">'+STEPS.map((x,i)=>'<button type="button" data-story-step="'+i+'" aria-label="'+(i+1)+' '+x+'" aria-pressed="false">'+(i+1)+'<span>'+x+'</span></button>').join('')+'</div>'+ 
+  '<div class="r3-story-steps" role="group" aria-label="Industry narrative stage">'+STEPS.map((x,i)=>'<button type="button" data-story-step="'+i+'" aria-label="'+(i+1)+' '+x+'" aria-pressed="false">'+(i+1)+' <span>'+x+'</span></button>').join('')+'</div>'+ 
   '<div class="r3-story-actions"><button type="button" data-story-prev>Previous</button><button type="button" data-story-next>Next</button><button type="button" data-story-play aria-pressed="false">Play sequence</button><button type="button" data-story-replay>Replay</button><a href="#scene-g-configuration" data-story-inquire>Prepare this brief ↗</a></div>'+ 
   '<p class="r3-story-note">Illustrative workflow. Capabilities and availability depend on agreed project scope.</p>';
  host.querySelector('[data-story-inquire]').href=location.pathname+location.search+'#scene-g-configuration';
