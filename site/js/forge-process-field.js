@@ -12,6 +12,8 @@ export function createProcessField(host,reduced=false){
   const w=host.clientWidth,h=Math.max(220,host.clientHeight),dpr=Math.min(devicePixelRatio,1.5);
   if(canvas.width!==Math.round(w*dpr)||canvas.height!==Math.round(h*dpr)){canvas.width=w*dpr;canvas.height=h*dpr;}
   ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,w,h);ctx.fillStyle='#0b251c';ctx.fillRect(0,0,w,h);
+  const light=ctx.createRadialGradient(w*(.09+state.stage/4*.82),h*.49,0,w*(.09+state.stage/4*.82),h*.49,w*.46);
+  light.addColorStop(0,'#66874344');light.addColorStop(1,'#0b251c00');ctx.fillStyle=light;ctx.fillRect(0,0,w,h);
   const point=(u,v)=>{
    const focus=state.stage/4;
    const ridge=Math.exp(-Math.pow((u-focus)*3.3,2))*Math.cos(v*3)*(.2+state.stage*.018);
@@ -19,11 +21,21 @@ export function createProcessField(host,reduced=false){
   };
   for(let row=-18;row<=18;row++){
    ctx.beginPath();for(let col=0;col<=120;col++){const p=point(col/120,row/18);col?ctx.lineTo(...p):ctx.moveTo(...p);}
-   ctx.strokeStyle=row%3===0?'#56866c':'#2a523d';ctx.lineWidth=row%3===0?.9:.5;ctx.stroke();
+   ctx.strokeStyle=row%3===0?'#779b67':'#385d42';ctx.lineWidth=row%3===0?1:.6;ctx.stroke();
   }
   const stops=Array.from({length:5},(_,i)=>point(i/4,0));
   ctx.beginPath();for(let col=0;col<=120;col++){const p=point(col/120,0);col?ctx.lineTo(...p):ctx.moveTo(...p);}
   ctx.strokeStyle='#abc877';ctx.lineWidth=2;ctx.stroke();
+  ctx.beginPath();const lit=(state.stage+1)/5;
+  for(let col=0;col<=120*lit;col++){const p=point(col/120,0);col?ctx.lineTo(...p):ctx.moveTo(...p);}
+  ctx.save();ctx.strokeStyle='#d3f66b';ctx.lineWidth=2.4;ctx.shadowColor='#bbef76';ctx.shadowBlur=8;ctx.stroke();ctx.restore();
+  if(selected===3){
+   const a=point(.5,0),b=point(.85,0);ctx.beginPath();ctx.moveTo(...a);
+   ctx.bezierCurveTo(a[0]+w*.1,a[1]-h*.23,b[0]-w*.1,b[1]-h*.23,...b);
+   ctx.strokeStyle='#d6a76c';ctx.lineWidth=1.5;ctx.setLineDash([4,5]);ctx.stroke();ctx.setLineDash([]);
+   ctx.font='10px system-ui';ctx.fillStyle='#e5bd82';ctx.textAlign='center';ctx.fillText('EXCEPTION / REVIEW / RETRY',(a[0]+b[0])/2,Math.min(a[1],b[1])-h*.17);
+  }
+
   stops.forEach(([x,y],i)=>{
    ctx.fillStyle=i<=selected?'#d3f66b':'#163c2b';ctx.strokeStyle='#d3f66b';ctx.lineWidth=1;
    ctx.beginPath();ctx.arc(x,y,i===selected?9:4,0,Math.PI*2);ctx.fill();ctx.stroke();

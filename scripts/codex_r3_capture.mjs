@@ -26,7 +26,7 @@ const scenes = [
   { id:'03', label:'Home — engineering capability exhibition', path:'/', selector:'#capabilities-exhibition', phase:.24, width:1440,height:900 },
   { id:'04', label:'Home — process from complexity to clarity', path:'/', selector:'#home-process-section', phase:.32, width:1440,height:900 },
   { id:'05', label:'Salryn — hero core introduction', path:'/salryn/', selector:'.salryn-hero', phase:.12, width:1440,height:900 },
-  { id:'06', label:'Salryn — different workspaces shared records', path:'/salryn/', selector:'#scene-a-kernel', phase:.52, width:1440,height:900 },
+  { id:'06', label:'Salryn — different workspaces shared records', path:'/salryn/', selector:'#scene-a-kernel', phase:.31, width:1440,height:900 },
   { id:'07', label:'Salryn — specialization evolution', path:'/salryn/', selector:'#scene-a-kernel', phase:.9, width:1440,height:900 },
   { id:'08', label:'Salryn — industry/flavor selection', path:'/salryn/', selector:'#scene-c-flavors', phase:.18, width:1440,height:900 },
   { id:'09', label:'Salryn — eight-engine capability activation', path:'/salryn/', selector:'#scene-d-activation', phase:.24, width:1440,height:900 },
@@ -114,7 +114,17 @@ async function record(scene){
       !!document.querySelector('#salryn-cinema-experience')?.shadowRoot?.querySelector('.film-scroll,.cinema-reduced'),
       null,{timeout:30000});
   }
-  const g=await seek(page,scene.selector,scene.phase);
+  let g=await seek(page,scene.selector,scene.phase);
+  if(['08','m08'].includes(scene.id)){
+    await page.locator('#industry-profile').selectOption('1');
+    const step=page.locator('button[data-story-step="3"]');
+    if(await step.count())await step.click();
+    g=await seek(page,scene.selector,scene.phase);
+  }
+  if(['10','m10'].includes(scene.id)){
+    await page.locator('[data-sim-mode="local"]').click();
+    g=await seek(page,scene.selector,scene.phase);
+  }
   await settle(page);
   const state=await page.evaluate(({selector})=>{
     const el=document.querySelector(selector);
@@ -123,6 +133,9 @@ async function record(scene){
       sceneRect:r?{x:r.x,y:r.y,w:r.width,h:r.height}:null,
       scrollY:scrollY,scrollWidth:document.documentElement.scrollWidth,innerWidth:innerWidth,
       reduced:matchMedia('(prefers-reduced-motion: reduce)').matches,
+      selectedIndustry:document.querySelector('#industry-profile')?.value,
+      storyStep:document.querySelector('.r3-industry-story')?.dataset.storyStep,
+      networkMode:document.querySelector('#offline-sim-frame')?.dataset.networkMode,
       forgeRuntime:!!window.__KIRJANE_R2__,loadingError:window.__KIRJANE_R2_ERROR__?.slice(0,180)||null
     };
   },{selector:scene.selector});
@@ -156,7 +169,8 @@ try{
  const report={
    mission:'KIRJANE-CODEX-CINEMATIC-OVERHAUL-R3',
    generatedAt:new Date().toISOString(),dist,origin,
-   sourceSha:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),
+   sourceSha:process.env.CODEX_R3_SOURCE_SHA||execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),
+   captureHarnessSha:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),
    workingTree:execFileSync('git',['status','--short'],{encoding:'utf8'}).trim(),
    disclaimer:'Captured on this Playwright environment. Not the original owner image files. Software GPU may differ from Windows hardware. See SHOT_MAP.md.',
    captures,failures,pass:failures.length===0 && captures.length===all.length

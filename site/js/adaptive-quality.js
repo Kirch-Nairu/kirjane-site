@@ -84,13 +84,9 @@ export function detectQualityProfile(glContext = null) {
   const params = new URLSearchParams(location.search);
   const reduced = params.get('reduce') === '1' || window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const webglOff = params.get('webgl') === 'off';
-  // Headless/software drivers are a documented optical-fallback environment.
-  // Opt into actual software WebGL explicitly for diagnostics, never hardware proof.
-  const diagnostic3d=params.get('force3d') === '1';
-  const automatedHost=navigator.userAgent.includes('HeadlessChrome') && !diagnostic3d;
 
-  if (reduced || webglOff || automatedHost) {
-    cachedProfile = { ...TIER_CONFIGS.static, rendererString: automatedHost ? 'headless-optical-fallback-not-queried' : 'disabled-or-reduced-motion', isSoftware: false };
+  if (reduced || webglOff) {
+    cachedProfile = { ...TIER_CONFIGS.static, rendererString: 'disabled-or-reduced-motion', isSoftware: false };
     applyRootAttributes(cachedProfile);
     return cachedProfile;
   }
@@ -118,7 +114,7 @@ export function detectQualityProfile(glContext = null) {
   if (forcedTier && TIER_CONFIGS[forcedTier]) {
     chosen = forcedTier;
   } else if (isSoftware) {
-    chosen = diagnostic3d ? 'constrained' : 'static';
+    chosen = 'constrained';
   } else if (isMobileOrTouch || lowCores) {
     chosen = 'balanced';
   }

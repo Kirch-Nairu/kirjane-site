@@ -119,3 +119,11 @@ body[data-editorial] .project-study .study-art{background:#133a29}
 @media(max-width:600px){body[data-editorial] :is(.actions-row,.contact-actions){flex-wrap:wrap}body[data-editorial] :is(.asc-service-intro-copy,.about-reading,.contact-brief){min-width:0}}
 
 body[data-editorial] :is(#home-clarity-canvas,#salryn-kernel-canvas){filter:brightness(1.13) saturate(.94)}
+
+/* Enhancement owns the selected service; generic static-rail rules must not
+   expose all four articles in one narrow column when a GPU is unavailable. */
+html[data-r3-services] #home-cap-rail{transform:none!important;flex-wrap:nowrap!important}
+html[data-r3-services] #home-cap-rail [data-cap-card]{display:none!important}
+html[data-r3-services] #home-cap-rail [data-cap-card].is-highlighted{display:flex!important}
+html[data-quality-tier=static] body[data-editorial] #capabilities-exhibition{height:auto}
+html[data-quality-tier=static] body[data-editorial] #capabilities-exhibition .exhibition-sticky{position:relative;height:auto;min-height:0}

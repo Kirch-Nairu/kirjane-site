@@ -852,7 +852,7 @@
         c.inert = i !== clamped;
       });
       capJumpBtns.forEach((b, i) => b.setAttribute('aria-current', i === clamped ? 'step' : 'false'));
-      capRail.style.transform = hasTrack ? `translate3d(${-clamped * 100}%, 0, 0)` : 'none';
+      capRail.style.transform = 'none';
       if (capBeforeEl) capBeforeEl.textContent = CAP_COMPARE[clamped].before;
       if (capAfterEl) capAfterEl.textContent = CAP_COMPARE[clamped].after;
     }
