@@ -1,6 +1,6 @@
 # R3 OWNER SCREENSHOT MAP — ACTUAL VISUAL ACCEPTANCE BRIEF
 
-These ten observations come from the owner's numbered captures of the R2 website at 127.0.0.1:8080 on Windows. **The original screenshot image bytes are not in this branch.** The captures are described faithfully here so Codex can reproduce equivalent before shots using the checked-out source in Chromium and correlate them to page code. Do not pretend these notes are binary screenshots; treat the owner descriptions and live baseline as joint source evidence.
+These ten observations come from the owner's numbered captures of the R2 website at 127.0.0.1:8080 on Windows. **Ten owner-reference JPEG images are present in this branch as `docs/01-*.jpg` through `docs/10-*.jpg` (byte-for-byte identity with the original user uploads is unverified).** The captures are described faithfully here so Codex can reproduce equivalent before shots using the checked-out source in Chromium and correlate them to page code. Do not pretend these notes are binary screenshots; treat the owner descriptions and live baseline as joint source evidence.
 
 **Priority:** P0 = owner specifically called an eyesore or a failure. P1 = strong cinematic starting point that needs amplification.
 
@@ -137,3 +137,7 @@ E. Outcome & inquiry transition: selected industry/capability context passes to 
 - All live controls remain focusable/operable when GPU is missing.
 - Every claimed third-party library must be present in code and its real license recorded.
 - Resolve 03/04/08/09/10 before spending time on ornamental refinements.
+
+## Current integration: Salryn Cinema R5 (additional 5 capture states)
+
+The old ten-shot review predates the in-page 23-scene Salryn film. Capture and improve: `f01` film opening, `f02` checkout/shift, `f03` receipt, `f04` inventory, `f05` close/audit. Full film is at `#salryn-cinema-experience` after the Salryn hero. The film must retain deterministic native scroll, Shadow DOM containment, DOM-measured cursor and press/ripple math, audio muted until user opt-in, and accessible reduced-motion alternative. Treat its fictional UI as illustrative, not a live transactional POS. See `docs/codex-r3/INTEGRATION_CONTRACT.md`.
