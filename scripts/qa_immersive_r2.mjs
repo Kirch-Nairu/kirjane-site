@@ -42,7 +42,7 @@ async function decode(page){
 }
 async function go(page,path){
  const response=await page.goto(origin+path,{waitUntil:'domcontentloaded'});
- await page.waitForTimeout(700);
+ await page.waitForTimeout(350);
  return response;
 }
 async function requestReady(page,selector,timeout=18000){
@@ -76,17 +76,17 @@ try{
   add(await page.locator('main').count()===1,'Semantic main retained '+route);
   add(await page.locator('h1').count()>=1,'Hero h1 retained '+route);
   add(await page.locator('img.official-brand-word').count()>=1,'Official brand retained '+route);
-  await page.waitForFunction(()=>!!window.__KIRJANE_R2__,{timeout:20000}).catch(()=>{});
+  await page.waitForFunction(()=>!!window.__KIRJANE_R2__,{timeout:8000}).catch(()=>{});
   add(await page.evaluate(()=>!!window.__KIRJANE_R2__),'React Bits/R3F bundle loaded '+route);
   if(!name || name==='salryn'||name==='contact'){
     const errors=await decode(page);
     add(errors.length===0,'Visual assets decode '+route,errors.join(','));
-    await page.screenshot({path:resolve(evidence,'desktop-'+(name||'home')+'.png'),fullPage:true});
+    await page.screenshot({path:resolve(evidence,'desktop-'+(name||'home')+'.png'),fullPage:false});
   }
   const widths=await page.evaluate(()=>({scrollWidth:document.documentElement.scrollWidth,innerWidth}));
   add(widths.scrollWidth<=widths.innerWidth+1,'Desktop no horizontal overflow '+route,JSON.stringify(widths));
   if(name==='salryn'){
-    const mounted=await requestReady(page,'.forge-live-kernel',26000);
+    const mounted=await requestReady(page,'.forge-live-kernel',14000);
     add(mounted,'R3F real kernel rendered in Salryn (not SVG fallback)');
     if(mounted){
       const buttons=page.locator('.forge-live-kernel .forge-kernel-controls button');
@@ -133,10 +133,10 @@ try{
   await go(page,'/salryn/');
   const overflow=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,width:innerWidth}));
   add(overflow.scroll<=overflow.width+1,'Salryn mobile width '+width,JSON.stringify(overflow));
-  const ready=await requestReady(page,'.forge-live-kernel',23000);
+  const ready=await requestReady(page,'.forge-live-kernel',14000);
   add(ready,'Mobile R3F stage at '+width);
   if(width===390) {
-   await page.screenshot({path:resolve(evidence,'salryn-mobile-390.png'),fullPage:true});
+   await page.screenshot({path:resolve(evidence,'salryn-mobile-390.png'),fullPage:false});
    await audit(page,'mobile-390');
   }
   check();
