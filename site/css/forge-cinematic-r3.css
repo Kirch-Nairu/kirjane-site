@@ -136,3 +136,15 @@ html[data-quality-tier=static] body[data-editorial] #capabilities-exhibition .ex
  body[data-editorial] #home-process-section .process-progression button:last-child{grid-column:1/-1}
  body[data-editorial] #home-process-section .process-progression small{display:none}
 }
+
+.r3-workflow li{padding-top:0;border:0}
+.r3-workflow button{width:100%;text-align:left;min-height:90px;padding:.7rem .2rem;border:0;border-top:1px solid #5d7959;background:none;color:#c5d6b8;font:12px/1.4 system-ui}
+.r3-workflow button:disabled{opacity:1;cursor:default}
+.r3-workflow button[aria-pressed=true]{border-color:#d3f66b;background:#23492c;color:#f1f7e6}
+.r3-workflow button small{display:block;color:#cadcb3;font-size:9px;margin-top:.6rem}
+.r3-story-node.is-focused{outline:2px solid #f3f5ed;outline-offset:3px}
+.r3-workflow-detail{display:flex;align-items:center;gap:1rem;margin:1rem 0 1.5rem;color:#e0ecd4;font:14px/1.6 system-ui}
+.r3-workflow-detail[hidden]{display:none}
+.r3-workflow-detail p{flex:1}
+.r3-workflow-detail button{min-height:44px;padding:.7rem;border:1px solid #8ca875;background:#163923;color:#e0ecd4}
+@media(max-width:900px){.r3-workflow li{display:block}.r3-workflow button{min-height:54px;padding:.6rem}.r3-workflow button b{display:inline;margin-right:.5rem}.r3-workflow-detail{align-items:stretch;flex-direction:column}}

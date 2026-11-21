@@ -840,7 +840,6 @@
     // SCENE C: TWELVE INDUSTRY FLAVORS (RADIAL CONSTELLATION + HORIZONTAL TRACK)
     // =========================================================================
     const flavorsRail = document.getElementById('salryn-flavors-rail');
-    const radialHost = document.getElementById('salryn-radial-host');
 
     const industrySelect = document.getElementById('industry-profile');
     const industryExamples = [
@@ -867,51 +866,25 @@
     industrySelect.parentElement.hidden = false;
 
     const flavorCards = Array.from(flavorsRail.children);
-    let activeFamily = 0;
-    let familyManuallySelected = false;
-    const industryStory=createIndustryStory(document.querySelector('.flavors-radial-frame'),SALRYN_FAMILIES_12,SALRYN_ENGINES_8,()=>{familyManuallySelected=true;});
+    const industryStory=createIndustryStory(document.querySelector('.flavors-radial-frame'),SALRYN_FAMILIES_12,SALRYN_ENGINES_8,()=>{});
     window.addEventListener('pagehide',e=>{if(!e.persisted)industryStory.dispose();});
     function selectFamily(index) {
-      activeFamily = index;
       industryStory.selectFamily(index);
       industrySelect.value = String(index);
       flavorCards.forEach((card, i) => {
         card.classList.toggle('is-highlighted', i === index);
         card.inert = i !== index;
       });
-      flavorsRail.style.setProperty('--industry-offset', `${-index * 100}%`);
-      radialHost.querySelectorAll('.radial-flavor-item').forEach((item) => {
-        const selected = Number(item.dataset.family) === index;
-        item.classList.toggle('is-active', selected);
-        item.style.opacity = selected ? '1' : '0.45';
-      });
+
     }
     function chooseFamily(index) {
-      familyManuallySelected = true;
       selectFamily(index);
     }
     industrySelect.addEventListener('change', () => chooseFamily(Number(industrySelect.value)));
-    const releaseFamilySelection = () => { familyManuallySelected = false; };
-    window.addEventListener('wheel', releaseFamilySelection, {passive:true});
-    window.addEventListener('touchmove', releaseFamilySelection, {passive:true});
-    window.addEventListener('keydown', (event) => {
-      if (event.target.closest('input,select,textarea,button,[contenteditable]')) return;
-      if (['ArrowDown','ArrowUp','PageDown','PageUp','Home','End',' '].includes(event.key)) releaseFamilySelection();
-    });
     selectFamily(0);
 
-    let lastFlavorProgress = 0;
-    director.registerScene({
-      id: 'salryn-flavors',
-      el: document.getElementById('scene-c-flavors'),
-      onUpdate: ({ exact, inView, isReduced }) => {
-        if (!inView || isReduced || familyManuallySelected || window.innerWidth <= 900) return;
-        if (Math.abs(exact - lastFlavorProgress) < .001) return;
-        lastFlavorProgress = exact;
-        const index = Math.round(exact * (flavorCards.length - 1));
-        if (index !== activeFamily) selectFamily(index);
-      }
-    });
+    // The five-part industry story is explicitly controlled. Document scrolling
+    // must not silently switch a chosen industry while its workflow is read.
 
     // =========================================================================
     // SCENE D: FEATURE ACTIVATION (FOCUS-PRESERVED TOGGLES + SECURITY LOCK + COMPARATIVE SUMMARY)
@@ -1113,20 +1086,7 @@
       document.getElementById('sim-mode-title').textContent = m.title;
       document.getElementById('sim-mode-desc').textContent = m.desc;
       simButtons.forEach((b) => b.setAttribute('aria-current', b.dataset.simMode === mode ? 'step' : 'false'));
-      const svg = simFrame.querySelector('svg');
-      if (svg) {
-        const paths = svg.querySelectorAll('path');
-        paths.forEach((p) => {
-          p.style.transition = 'opacity 0.25s ease, stroke 0.25s ease';
-          p.style.opacity = mode === 'local' ? '0.28' : '0.95';
-          p.style.stroke = mode === 'exchange' ? '#D3F66B' : 'rgba(243,245,237,0.48)';
-        });
-        svg.querySelectorAll('rect[rx="18"]').forEach((r) => {
-          r.style.transition = 'stroke 0.25s ease, stroke-width 0.25s ease';
-          r.style.stroke = mode === 'multi' ? '#D3F66B' : '#1E9F6F';
-          r.style.strokeWidth = mode === 'multi' ? '2.2' : '1.4';
-        });
-      }
+
     }
 
     setSimMode('normal');

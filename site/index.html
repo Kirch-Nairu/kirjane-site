@@ -971,15 +971,7 @@
         button.tabIndex = i === idx ? 0 : -1;
         button.classList.toggle('is-complete', i < idx);
       });
-      const svg = topoMount.querySelector('svg');
-      if (svg) {
-        svg.querySelectorAll('[id^="d02-nucleus-"]').forEach((node, i) => {
-          node.style.opacity = i === idx ? '1' : i < idx ? '.65' : '.16';
-        });
-        svg.querySelectorAll('[id^="d02-synapse-bridge-"]').forEach((path, i) => {
-          path.style.opacity = i < idx ? '.9' : '.12';
-        });
-      }
+
     }
     stageButtons.forEach((button, index) => {
       button.addEventListener('click', () => syncStage(index));

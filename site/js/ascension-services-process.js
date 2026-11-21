@@ -85,18 +85,6 @@ function initProcess() {
   let active = -1;
   let manualHold = false;
   let pendingFrame = 0;
-  let nuclei = [];
-  let bridges = [];
-
-  function paintIllustration() {
-    nuclei.forEach((node, index) => {
-      node.style.opacity = index === active ? '1' : index < active ? '.72' : '.16';
-    });
-    bridges.forEach((bridge, index) => {
-      bridge.style.opacity = index < active ? '.88' : '.13';
-    });
-  }
-
   function setChapter(index) {
     if (index === active) return;
     active = index;
@@ -107,7 +95,6 @@ function initProcess() {
     });
     chapters.forEach((chapter, i) => chapter.classList.toggle('active', i === active));
     caption.textContent = links[active].textContent;
-    paintIllustration();
   }
 
   function applyLocation(event) {

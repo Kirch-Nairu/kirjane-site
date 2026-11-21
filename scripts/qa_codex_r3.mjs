@@ -60,10 +60,19 @@ try{
    for(let step=0;step<5;step++){
     await page.locator('button[data-story-step="'+step+'"]').click();
     check(await page.locator('.r3-industry-story').getAttribute('data-story-step')===String(step),width+' industry '+industry+' step '+step);
+    if(step===3){
+     for(let event=0;event<5;event++){
+      await page.locator('button[data-workflow-event="'+event+'"]').click();
+      check(await page.locator('.r3-industry-story').getAttribute('data-workflow-event')===String(event),width+' industry '+industry+' workflow event '+event);
+     }
+    }
+
    }
    await page.locator('.r3-industry-story').screenshot({path:join(out,width+'-industry-'+industry+'.png')});
   }
+  await page.locator('#cfg-note').fill('Keep the existing project note.');
   await page.locator('[data-story-inquire]').click();
+  check(await page.locator('#cfg-note').inputValue()==='Keep the existing project note.',width+' inquiry preserves existing notes');
   check(await page.locator('#cfg-industry').inputValue()==='Manufacturing',width+' selected industry reaches inquiry');
   await page.locator('[data-story-replay]').click();
   check(await page.locator('.r3-industry-story').getAttribute('data-story-step')==='0',width+' industry replay');
@@ -91,6 +100,14 @@ try{
   }
 
   await host.screenshot({path:join(out,width+'-kernel.png')});
+  if(width===1440){
+   await page.locator('[data-story-replay]').click();await page.locator('[data-story-play]').click();
+   await page.waitForTimeout(120);await page.locator('[data-story-play]').click();
+   const held=await page.locator('.r3-industry-story').getAttribute('data-story-step');await page.waitForTimeout(4200);
+   check(await page.locator('.r3-industry-story').getAttribute('data-story-step')===held&&await page.locator('[data-story-play]').getAttribute('aria-pressed')==='false','paused narrative retains its step');
+   await page.mouse.wheel(0,300);await page.waitForTimeout(100);
+   check(await page.locator('#industry-profile').inputValue()==='9','reading scroll retains chosen industry');
+  }
   const a=await new AxeBuilder({page}).include('#scene-c-flavors').withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();
   check(!a.violations.length,width+' industry axe',a.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>n.target)})));
   check(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),width+' Salryn overflow');
