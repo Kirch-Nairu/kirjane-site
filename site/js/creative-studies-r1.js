@@ -260,23 +260,23 @@ function initSiteStudies() {
 export function startCreativeStudies() {
   if (active) return;
   active = true;
-  if (document.querySelector('[data-motion-lab]')) initLab();
-  else initSiteStudies();
-  context = { cleanup: () => {
-    // Kill only Forge-owned triggers by tracking the trigger set at installation.
-    if (context?.createdTriggers) context.createdTriggers.forEach(t => t.kill(true));
-    context?.createdTweens?.forEach(t => t.kill());
-  }};
+  // GSAP Context scopes every tween and ScrollTrigger created by the studies.
+  // context.revert() restores original inline styles without touching existing site timelines.
+  context = gsap.context(() => {
+    if (document.querySelector('[data-motion-lab]')) initLab();
+    else initSiteStudies();
+  }, document);
   window.__KIRJANE_MOTION_R1__ = { version: 'R1', scenes: sceneRecords, stop };
   listen(window, 'pagehide', stop);
-  listen(document, 'visibilitychange', () => { if (document.hidden) gsap.ticker.sleep(); else gsap.ticker.wake(); });
-  // Critical: no competing RAF, Lenis, ScrollSmoother, or new GPU canvas.
+  // Do not stop the global GSAP ticker: the accepted site also uses it.
+  // Browser visibility suspension is handled natively by the animation platform.
 }
 export function stop() {
   if (!active) return;
   active = false;
   for (const fn of stopped.splice(0)) { try { fn(); } catch {} }
-  context?.cleanup?.();
+  context?.revert();
   context = null;
+  sceneRecords.splice(0);
   delete window.__KIRJANE_MOTION_R1__;
 }
