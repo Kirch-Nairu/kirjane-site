@@ -1,0 +1,92 @@
+Mission: KIRJANE-S02-IMAGEGEN-MOTION-INTEGRATION-R2
+Disposition: S02_MOTION_FIX_REQUIRED
+
+ACTUAL RESULT
+Created two bounded controlled-compositing motion tests, each with 24 distinct
+1672x941 poses (22 internal poses between first/last test poses). Each frame has
+actual changes in object position. No frame-count padding, full-frame crossfade
+or indiscriminate optical-flow warping. Forward and reverse MP4s run at 24 fps,
+one unique pose per video frame. They are one-second diagnostic tests, not a
+complete 15-second film. All eight accepted checkpoint PNGs remain byte-identical.
+
+Test A: extracted three document groups from accepted checkpoint 04, repaired
+their exposed desktop background with imagegen, and animated staggered translations
+with easing and small shadow offsets. This demonstrates actual visible grouping.
+It does NOT bridge the full chaos checkpoint 01 to organization checkpoint 04.
+It does not simulate page bending, friction, weight or human contact.
+
+Test B: extracted the complete monitor from accepted checkpoint 06 as one rigid
+layer. Screen, typography, stem and base translate together at fixed scale and
+elevation. The monitor starts outside frame and enters from camera-right. An
+image-generated background repairs the region behind the extracted device.
+No monitor morphing or independent stand/screen scale changes are introduced.
+It does NOT yet bridge checkpoint 04's physical paper arrangement to checkpoint
+06, nor does it match checkpoint 05's guiding hand. No motivating force is shown.
+
+CORRECTIONS ACTUALLY MADE
+First manual paper contours attached desk fragments and first monitor cleanup
+left a dark base-shadow patch. The paper polygons were retraced and the monitor
+mask/repair region replaced. A separate generated transparent paper extraction
+was rejected because it changed the page geometry/text. It was not used.
+The two clean plates are imagegen edits; the moving paper/monitor pixels are
+masked from the accepted originals. Exact prompts, masks and build source saved.
+
+VISUAL GATE — FAIL / DO NOT EXPAND YET
+Paper test: the inventory group was clipped by the source image's right edge.
+Moving it left exposes that straight crop edge; it reads as a cutout. Layers
+remain planar with no true lift/deformation; stack contacts and overlap need
+further authoring. Only a small portion of disorder is resolved, and the end
+pose does not match an accepted next anchor.
+Monitor test: rigid geometry is improved and typography stays stable. It moves
+as a flat photographic cutout; changing contact/shadow/reflection and a human
+guiding hand are not convincingly established. Its background is already the
+late organized arrangement, so joining it after checkpoint 04 would still jump.
+The clipped edge and missing anchor bridges require more source repair and
+motion authoring. These tests have NOT passed cinematic quality acceptance.
+No complete sequence, human-approval transition, final mobile art direction or
+homepage asset replacement was produced after this failed first gate.
+
+FRAME INSPECTION — SCOPE
+All 48 full-resolution PNGs were decoded and measured; pixel hashes establish
+24 unique states in each test and fixed-background regions were compared.
+All poses were visually inspected in 24-pose contact sheets; selected original-
+resolution poses were enlarged to identify masking/contact defects. Full-
+resolution manual acceptance of every pose is NOT claimed. A failed test does
+not become a pass because its frames are unique or files decode.
+
+REAL GIT WORKTREE / PREVIEW
+Base: 7f3a3147c225aea8617820136b509306db3a143f, fetched from authoritative R3.
+Branch: experiment/s02-imagegen-motion-integration-r2
+Worktree: C:/Users/arane/Documents/Codex/2026-11-22/ins/work/s02-motion-worktree
+Review URL: http://127.0.0.1:8722/motion-proof-r2/
+The page and its 48 WebPs are inside the real worktree at site/motion-proof-r2/.
+It supports native forward/reverse scroll, a manual frame slider, and separate
+forward/reverse playback controls for inspecting the tests. It is an explicitly
+labeled motion lab, NOT a claim that Section 02 has been integrated.
+The actual homepage, FrameSequencePlayer, MasterSceneDirector, clarityPhase,
+gradeSceneCanvas, CSS and original R3 sequences remain unchanged at this gate.
+This follows the work order's requirement not to integrate/expand broken tests.
+
+BROWSER VALIDATION — ACTUALLY EXECUTED
+Connected browser had been unavailable in the prior task. This handoff explicitly
+authorized local Playwright/Chrome fallback. Installed Playwright 1.65.2 in an
+isolated work/ runtime and successfully operated local headless Chrome 158.
+At 1440x900, 390x844 and 320x700, the browser executed motion-lab forward/reverse
+scroll checkpoints, forward/reverse play controls, real video playback, and OS-
+emulated reduced motion. It captured screenshots and browser recordings.
+See browser-qa-results.json for exact indices, media metadata, errors/overflow.
+These results cover the diagnostic lab, not final homepage integration.
+Real unmodified R3 Section 02 and neighboring Section 03 were also captured at
+the three viewports. This is baseline evidence; R3's old crystal still appears
+in the homepage because final animation is not eligible for integration yet.
+The mobile lab shrinks the landscape diagnostic image, so dashboard microtext
+is not legible on small screens. This is NOT accepted mobile art direction.
+
+ROLLBACK
+No changes were made to the original main checkout. In this isolated branch,
+only the new motion-proof-r2 page/assets and scoped evidence documentation were
+added. To stop reviewing the motion lab, use the existing unchanged index.html.
+Discarding this review branch/worktree later restores the exact R3 base. No
+old checkpoints, master, rejected scenes or production sequences were overwritten.
+
+NO BLENDER / NO QWEN / NO MERGE / NO DEPLOY / NO FINAL PRODUCTION ACCEPTANCE.

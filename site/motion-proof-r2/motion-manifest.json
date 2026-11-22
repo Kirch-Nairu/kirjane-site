@@ -1,0 +1,694 @@
+{
+  "mission": "KIRJANE-S02-IMAGEGEN-MOTION-INTEGRATION-R2",
+  "method": "AI clean-plate edits + explicitly authorized controlled 2.5D compositing. No full-frame crossfade, no optical flow, no duplicate count padding.",
+  "tests": {
+    "B": {
+      "count": 24,
+      "unique_frames": 24,
+      "source_anchor": "checkpoint-06.png",
+      "scope": "Rigid monitor translation in a fixed camera plane; not yet a matching bridge from checkpoints 04/05. No hand force is depicted.",
+      "frames": [
+        {
+          "index": 0,
+          "u": 0.0,
+          "translation_pixels": [
+            1145.0,
+            0
+          ],
+          "sha256": "709159fbea6da8be5653d94ae18687548f644f49cc8020e6ae426579feedaeb3"
+        },
+        {
+          "index": 1,
+          "u": 0.043478260869565216,
+          "translation_pixels": [
+            1131.8938,
+            0
+          ],
+          "sha256": "d4e8ceeee76b1d6df1756134068f8cbeb9c8d04daf52caf5b99d8da84d4d48cb"
+        },
+        {
+          "index": 2,
+          "u": 0.08695652173913043,
+          "translation_pixels": [
+            1115.1731,
+            0
+          ],
+          "sha256": "3ff458c3f4cb0999495ea359b9c6ddda62b342d99a6a03379d2050bc96a06492"
+        },
+        {
+          "index": 3,
+          "u": 0.13043478260869565,
+          "translation_pixels": [
+            1092.1403,
+            0
+          ],
+          "sha256": "359f3a8bd83e97de376f274998247fffb9c8eb976b4b7052b3efb689d81584cc"
+        },
+        {
+          "index": 4,
+          "u": 0.17391304347826086,
+          "translation_pixels": [
+            1061.0101,
+            0
+          ],
+          "sha256": "ae631151ddf8293a2bab780ee218871bc79af69a4fb5fbb1a13e10eaa8b1512e"
+        },
+        {
+          "index": 5,
+          "u": 0.21739130434782608,
+          "translation_pixels": [
+            1020.8139,
+            0
+          ],
+          "sha256": "e12c9bacea0601a468417e66493507f6c8002d7c6d99f884ef7f07ca4cd64fce"
+        },
+        {
+          "index": 6,
+          "u": 0.2608695652173913,
+          "translation_pixels": [
+            971.3035,
+            0
+          ],
+          "sha256": "0f06f9e76d741799213cedcfa18503cda29527101158ff863cff30910ee70d84"
+        },
+        {
+          "index": 7,
+          "u": 0.30434782608695654,
+          "translation_pixels": [
+            912.8551,
+            0
+          ],
+          "sha256": "e4562459335dbf0e9711a93997eeb68e89eef87c528663fe8ad623ed73ec38fb"
+        },
+        {
+          "index": 8,
+          "u": 0.34782608695652173,
+          "translation_pixels": [
+            846.3734,
+            0
+          ],
+          "sha256": "4aced4dcc2729393d3ccd81729caa11fcf2938cbb0669a4dcc3916d8a73f4207"
+        },
+        {
+          "index": 9,
+          "u": 0.391304347826087,
+          "translation_pixels": [
+            773.1952,
+            0
+          ],
+          "sha256": "2d0d667e3869e01bb4e1a4015d581806d90d08864e9d2157122b2b70b3a4fd54"
+        },
+        {
+          "index": 10,
+          "u": 0.43478260869565216,
+          "translation_pixels": [
+            694.9937,
+            0
+          ],
+          "sha256": "681644122c9bd2b7393ef42b3f07a1643ea12d118443d7880f58d89cf9c8c305"
+        },
+        {
+          "index": 11,
+          "u": 0.4782608695652174,
+          "translation_pixels": [
+            613.6821,
+            0
+          ],
+          "sha256": "3bbd7cf3e87d7583721016a2c1a06d4d848118798d224a201973a18533c3a532"
+        },
+        {
+          "index": 12,
+          "u": 0.5217391304347826,
+          "translation_pixels": [
+            531.3179,
+            0
+          ],
+          "sha256": "b4806eb05ff692d17090d3c2adf5220f341d4eb568afdb056d4e63a59e6248d3"
+        },
+        {
+          "index": 13,
+          "u": 0.5652173913043478,
+          "translation_pixels": [
+            450.0063,
+            0
+          ],
+          "sha256": "579b3bd19ddeb6e4b352334071b048b54bfddf3247ad14f677f82fbf4885390f"
+        },
+        {
+          "index": 14,
+          "u": 0.6086956521739131,
+          "translation_pixels": [
+            371.8048,
+            0
+          ],
+          "sha256": "fedaae69eb52a9d804e59151fff7af7ff130cbcf571caa76d84ab44c5806fcde"
+        },
+        {
+          "index": 15,
+          "u": 0.6521739130434783,
+          "translation_pixels": [
+            298.6266,
+            0
+          ],
+          "sha256": "8fe43d520f493d66a74a49901d7e9c66f1c8bba5142eb076bb42f43dd1eca01f"
+        },
+        {
+          "index": 16,
+          "u": 0.6956521739130435,
+          "translation_pixels": [
+            232.1449,
+            0
+          ],
+          "sha256": "22c669c171991bcf75b49f748337af0191e90459df8fc4c4f7300d019cac942c"
+        },
+        {
+          "index": 17,
+          "u": 0.7391304347826086,
+          "translation_pixels": [
+            173.6965,
+            0
+          ],
+          "sha256": "bf78de0990e8cd8324399bcbe28c14e2d90c1fd9b521e5176d9585ce5011759d"
+        },
+        {
+          "index": 18,
+          "u": 0.782608695652174,
+          "translation_pixels": [
+            124.1861,
+            0
+          ],
+          "sha256": "946fc54ec9437ad11c9e6619a08578dff641929edc4174fa98d2cf0bc5ef81b3"
+        },
+        {
+          "index": 19,
+          "u": 0.8260869565217391,
+          "translation_pixels": [
+            83.9899,
+            0
+          ],
+          "sha256": "159f202e69e6c050e20961887a5e5be35c7c73c659431e9ee8ea6ca19b363f6f"
+        },
+        {
+          "index": 20,
+          "u": 0.8695652173913043,
+          "translation_pixels": [
+            52.8597,
+            0
+          ],
+          "sha256": "1913f7e53b331d78fd6d477721f06b112b51ce6e3b8883d31d7130e7e7545297"
+        },
+        {
+          "index": 21,
+          "u": 0.9130434782608695,
+          "translation_pixels": [
+            29.8269,
+            0
+          ],
+          "sha256": "9de76cc8b41ded77a2b7b0ee23cc8c3ef2b30457da658f3aed75fa0ac1bf28fe"
+        },
+        {
+          "index": 22,
+          "u": 0.9565217391304348,
+          "translation_pixels": [
+            13.1062,
+            0
+          ],
+          "sha256": "77ec0a4e448f84ece017e9c54812a056a5ee2ed9176274badd577b4cb3b2f0ef"
+        },
+        {
+          "index": 23,
+          "u": 1.0,
+          "translation_pixels": [
+            0.0,
+            0
+          ],
+          "sha256": "933f94df911fb63c012018d5b039dc7d08ad2744bce2a1b764ed5661a525ab54"
+        }
+      ]
+    },
+    "A": {
+      "count": 24,
+      "unique_frames": 24,
+      "source_anchor": "checkpoint-04.png",
+      "scope": "Three extracted paper groups slide closer together; not the complete checkpoint 01 to 04 transformation; no simulated friction or true bending.",
+      "frames": [
+        {
+          "index": 0,
+          "u": 0.0,
+          "paper_translation_pixels": [
+            [
+              -0.0,
+              -0.0
+            ],
+            [
+              -0.0,
+              -0.0
+            ],
+            [
+              -0.0,
+              -0.0
+            ]
+          ],
+          "sha256": "3abddd862ca13976c4fa2d1649be140f7a3751bc6e7171f5af1589e08cdb576a"
+        },
+        {
+          "index": 1,
+          "u": 0.043478260869565216,
+          "paper_translation_pixels": [
+            [
+              -0.3038,
+              -0.8707
+            ],
+            [
+              -0.0,
+              -0.0
+            ],
+            [
+              -0.0,
+              -0.0
+            ]
+          ],
+          "sha256": "0f72164a1a59c2126b5915a63c8e822257d5c249271c5c785e2f93ac33c2543a"
+        },
+        {
+          "index": 2,
+          "u": 0.08695652173913043,
+          "paper_translation_pixels": [
+            [
+              -0.9048,
+              -2.593
+            ],
+            [
+              -0.09,
+              -0.1113
+            ],
+            [
+              -0.0,
+              -0.0
+            ]
+          ],
+          "sha256": "5e1738e67a113dad79af359bb3eaa3e1554afdbb7fc94d15fbdcbec09f3f5c1a"
+        },
+        {
+          "index": 3,
+          "u": 0.13043478260869565,
+          "paper_translation_pixels": [
+            [
+              -2.0094,
+              -5.7575
+            ],
+            [
+              -0.8403,
+              -1.0393
+            ],
+            [
+              -0.0,
+              -0.0
+            ]
+          ],
+          "sha256": "d123ecaedc86d5db5a022474574065f55f19a01af7fcbb29240f96df81636592"
+        },
+        {
+          "index": 4,
+          "u": 0.17391304347826086,
+          "paper_translation_pixels": [
+            [
+              -3.7357,
+              -10.6965
+            ],
+            [
+              -2.3482,
+              -2.9038
+            ],
+            [
+              -0.1951,
+              -0.2995
+            ]
+          ],
+          "sha256": "89d77739c726d0d8781928c096fee6271907ca1fc985785f91d5f3afc2f99a24"
+        },
+        {
+          "index": 5,
+          "u": 0.21739130434782608,
+          "paper_translation_pixels": [
+            [
+              -6.1244,
+              -17.5097
+            ],
+            [
+              -5.0444,
+              -6.2364
+            ],
+            [
+              -1.0829,
+              -1.6626
+            ]
+          ],
+          "sha256": "b78c6c92a927bb28a1a3395866c84093733562de207834c328692d38f054ca8b"
+        },
+        {
+          "index": 6,
+          "u": 0.2608695652173913,
+          "paper_translation_pixels": [
+            [
+              -9.1512,
+              -26.0864
+            ],
+            [
+              -9.1648,
+              -11.3217
+            ],
+            [
+              -2.8658,
+              -4.3998
+            ]
+          ],
+          "sha256": "b8ff830cf713a7ce63a450c9256a57032a44cf5fda76458bddeac015187ba563"
+        },
+        {
+          "index": 7,
+          "u": 0.30434782608695654,
+          "paper_translation_pixels": [
+            [
+              -12.7379,
+              -36.1332
+            ],
+            [
+              -14.7763,
+              -18.2218
+            ],
+            [
+              -5.9675,
+              -9.1594
+            ]
+          ],
+          "sha256": "e88844ee567c20bc33915dd3eecb2575b9119d24baa895abd120d24ccca1a485"
+        },
+        {
+          "index": 8,
+          "u": 0.34782608695652173,
+          "paper_translation_pixels": [
+            [
+              -16.7637,
+              -47.2153
+            ],
+            [
+              -21.8029,
+              -26.7975
+            ],
+            [
+              -10.6086,
+              -16.2718
+            ]
+          ],
+          "sha256": "cd9d2daf6ccf1fa554e86d772b61c66d8b31245f95bd6d06dea0b904c23172d5"
+        },
+        {
+          "index": 9,
+          "u": 0.391304347826087,
+          "paper_translation_pixels": [
+            [
+              -21.0775,
+              -58.8165
+            ],
+            [
+              -30.0513,
+              -36.7366
+            ],
+            [
+              -16.8339,
+              -25.782
+            ]
+          ],
+          "sha256": "a1d6f65795e7472060770adc7462fd1606f31923a3c713967f5d76ccb11cbb0d"
+        },
+        {
+          "index": 10,
+          "u": 0.43478260869565216,
+          "paper_translation_pixels": [
+            [
+              -25.5088,
+              -70.4096
+            ],
+            [
+              -39.2375,
+              -47.5973
+            ],
+            [
+              -24.5407,
+              -37.4824
+            ]
+          ],
+          "sha256": "f05bdd485fe8a0d2795b46302fe5906a93dde6febb4df8912794c9024a245e6d"
+        },
+        {
+          "index": 11,
+          "u": 0.4782608695652174,
+          "paper_translation_pixels": [
+            [
+              -29.8793,
+              -81.5181
+            ],
+            [
+              -49.0123,
+              -58.8699
+            ],
+            [
+              -33.506,
+              -50.9535
+            ]
+          ],
+          "sha256": "47beb28ee8ed706a0e6f1340b7e42375fb25a0b40851ae183a007aaa43be3a4a"
+        },
+        {
+          "index": 12,
+          "u": 0.5217391304347826,
+          "paper_translation_pixels": [
+            [
+              -34.0149,
+              -91.7515
+            ],
+            [
+              -58.9877,
+              -70.046
+            ],
+            [
+              -43.4142,
+              -65.62
+            ]
+          ],
+          "sha256": "0721368b880357d60f2214d8742e2a994222b00342ba59660f34712cb44a7e05"
+        },
+        {
+          "index": 13,
+          "u": 0.5652173913043478,
+          "paper_translation_pixels": [
+            [
+              -37.7569,
+              -100.8105
+            ],
+            [
+              -68.7625,
+              -80.6763
+            ],
+            [
+              -53.8853,
+              -80.8256
+            ]
+          ],
+          "sha256": "6f12821087ad397d4bbbd3efb8f143c698036e5830e59e5bf351edffb9dae64b"
+        },
+        {
+          "index": 14,
+          "u": 0.6086956521739131,
+          "paper_translation_pixels": [
+            [
+              -40.9737,
+              -108.4776
+            ],
+            [
+              -77.9487,
+              -90.3995
+            ],
+            [
+              -64.5017,
+              -95.9121
+            ]
+          ],
+          "sha256": "5d024ff0ac430e0c8c381ac50d2da640b28e8cddb969aca7c073975a21dc69ff"
+        },
+        {
+          "index": 15,
+          "u": 0.6521739130434783,
+          "paper_translation_pixels": [
+            [
+              -43.5721,
+              -114.612
+            ],
+            [
+              -86.1971,
+              -98.9429
+            ],
+            [
+              -74.8369,
+              -110.2836
+            ]
+          ],
+          "sha256": "3cfac4f53515b4717cc5b979b0bab4cf40f0c839aec5f6a0695e6658421dfef8"
+        },
+        {
+          "index": 16,
+          "u": 0.6956521739130435,
+          "paper_translation_pixels": [
+            [
+              -45.5092,
+              -119.1627
+            ],
+            [
+              -93.2237,
+              -106.1119
+            ],
+            [
+              -84.4822,
+              -123.4406
+            ]
+          ],
+          "sha256": "da77891210f6dba4bdb725af292760b9f2be0ef9f3f2bfb7e97dce23ed9bafef"
+        },
+        {
+          "index": 17,
+          "u": 0.7391304347826086,
+          "paper_translation_pixels": [
+            [
+              -46.8038,
+              -122.1978
+            ],
+            [
+              -98.8352,
+              -111.7858
+            ],
+            [
+              -93.0752,
+              -134.9884
+            ]
+          ],
+          "sha256": "8b79b5517f88771d9fc48016e8f9be56debebe53f0acecd5f61aafdf1c058bd1"
+        },
+        {
+          "index": 18,
+          "u": 0.782608695652174,
+          "paper_translation_pixels": [
+            [
+              -47.548,
+              -123.9412
+            ],
+            [
+              -102.9556,
+              -115.9333
+            ],
+            [
+              -100.327,
+              -144.6358
+            ]
+          ],
+          "sha256": "5b1abee0cd6fe121652f5dc9cecefb0241e15007d1a8de613803291ce6545c90"
+        },
+        {
+          "index": 19,
+          "u": 0.8260869565217391,
+          "paper_translation_pixels": [
+            [
+              -47.9186,
+              -124.8093
+            ],
+            [
+              -105.6518,
+              -118.6422
+            ],
+            [
+              -106.05,
+              -152.2048
+            ]
+          ],
+          "sha256": "6a3df7055eeb3d81666b062d177ab514c9e1d580bd7e1e81275f8e4e5c9ff89c"
+        },
+        {
+          "index": 20,
+          "u": 0.8695652173913043,
+          "paper_translation_pixels": [
+            [
+              -48.0,
+              -125.0
+            ],
+            [
+              -107.1597,
+              -120.1563
+            ],
+            [
+              -110.1857,
+              -157.659
+            ]
+          ],
+          "sha256": "6e46c982376a4eda95033eed93bf256f4e056147a0208cec6b6043beacb227c5"
+        },
+        {
+          "index": 21,
+          "u": 0.9130434782608695,
+          "paper_translation_pixels": [
+            [
+              -48.0,
+              -125.0
+            ],
+            [
+              -107.91,
+              -120.9097
+            ],
+            [
+              -112.8323,
+              -161.1453
+            ]
+          ],
+          "sha256": "76ad6fb870d536e4686479f99eb777c6eb61181aeab0d0cae063fb27c5c1457b"
+        },
+        {
+          "index": 22,
+          "u": 0.9565217391304348,
+          "paper_translation_pixels": [
+            [
+              -48.0,
+              -125.0
+            ],
+            [
+              -108.0,
+              -121.0
+            ],
+            [
+              -114.2722,
+              -163.0416
+            ]
+          ],
+          "sha256": "82d329654e0087c6b426ff8d10ac518c4b086b958465a54f43092329e889b723"
+        },
+        {
+          "index": 23,
+          "u": 1.0,
+          "paper_translation_pixels": [
+            [
+              -48.0,
+              -125.0
+            ],
+            [
+              -108.0,
+              -121.0
+            ],
+            [
+              -115.0,
+              -164.0
+            ]
+          ],
+          "sha256": "6cd2a5c67c5ec3e4138b762e201f4f4e3ae89989df237d9112243659c65cd5f3"
+        }
+      ]
+    }
+  }
+}

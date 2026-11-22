@@ -1,0 +1,290 @@
+[
+  {
+    "viewport": [
+      1440,
+      900
+    ],
+    "browser": "158.0.8127.36",
+    "scope": "Bounded motion-lab page in real R3 worktree, NOT final Section 02 integration",
+    "tests": {
+      "A": {
+        "scroll_forward_indices": [
+          0,
+          6,
+          11,
+          17,
+          23
+        ],
+        "scroll_reverse_indices": [
+          17,
+          11,
+          6,
+          0
+        ],
+        "forward_reverse_controls": true,
+        "video": {
+          "duration": 1,
+          "time": 1,
+          "ended": true,
+          "width": 1280,
+          "height": 720,
+          "error": null
+        },
+        "scroll_endpoints_match": true
+      },
+      "B": {
+        "scroll_forward_indices": [
+          0,
+          6,
+          11,
+          17,
+          23
+        ],
+        "scroll_reverse_indices": [
+          17,
+          11,
+          6,
+          0
+        ],
+        "forward_reverse_controls": true,
+        "video": {
+          "duration": 1,
+          "time": 1,
+          "ended": true,
+          "width": 1280,
+          "height": 720,
+          "error": null
+        },
+        "scroll_endpoints_match": true
+      }
+    },
+    "overflow": false,
+    "runtime_errors": [],
+    "baseline_section02": {
+      "telemetry": {
+        "home-complexity-to-clarity": {
+          "id": "home-complexity-to-clarity",
+          "frameCount": 72,
+          "variant": "desktop",
+          "cacheSize": 9,
+          "maxCache": 32,
+          "maxInflight": 4,
+          "decodedPixelBytes": 33177600,
+          "maxDecodedBytes": 83886080,
+          "singleFrameOverBudget": false,
+          "inflightCount": 0,
+          "targetIndex": 0,
+          "lastDrawnIndex": 0,
+          "posterReady": true,
+          "hasValidMedia": true,
+          "reducedMotion": false,
+          "hits": 0,
+          "misses": 0,
+          "evictions": 0,
+          "failedRequests": 0,
+          "abortedRequests": 0,
+          "drawnFrames": 3
+        }
+      },
+      "copy": "Complexity lives in the handoffs.\n                  A request changes hands. Someone confirms the details. The next team needs the right record to keep moving.\n                \n                \n                  Trace the work before writing code.\n                  We map who submits, reviews, and approves the work, then give each decision a place in the system.\n                \n                \n                  Make the next step clear.\n                  Give each team the records it needs and a clear way to move work forward. That same principle shapes Salryn.",
+      "overflow": false
+    },
+    "section03_present": true,
+    "motion_lab_reduced": {
+      "OS_emulated_reduce": true,
+      "index_unchanged_on_scroll": true
+    }
+  },
+  {
+    "viewport": [
+      390,
+      844
+    ],
+    "browser": "158.0.8127.36",
+    "scope": "Bounded motion-lab page in real R3 worktree, NOT final Section 02 integration",
+    "tests": {
+      "A": {
+        "scroll_forward_indices": [
+          0,
+          6,
+          11,
+          17,
+          23
+        ],
+        "scroll_reverse_indices": [
+          17,
+          11,
+          6,
+          0
+        ],
+        "forward_reverse_controls": true,
+        "video": {
+          "duration": 1,
+          "time": 1,
+          "ended": true,
+          "width": 1280,
+          "height": 720,
+          "error": null
+        },
+        "scroll_endpoints_match": true
+      },
+      "B": {
+        "scroll_forward_indices": [
+          0,
+          6,
+          11,
+          17,
+          23
+        ],
+        "scroll_reverse_indices": [
+          17,
+          11,
+          6,
+          0
+        ],
+        "forward_reverse_controls": true,
+        "video": {
+          "duration": 1,
+          "time": 1,
+          "ended": true,
+          "width": 1280,
+          "height": 720,
+          "error": null
+        },
+        "scroll_endpoints_match": true
+      }
+    },
+    "overflow": false,
+    "runtime_errors": [],
+    "baseline_section02": {
+      "telemetry": {
+        "home-complexity-to-clarity": {
+          "id": "home-complexity-to-clarity",
+          "frameCount": 36,
+          "variant": "mobile",
+          "cacheSize": 9,
+          "maxCache": 18,
+          "maxInflight": 4,
+          "decodedPixelBytes": 13996800,
+          "maxDecodedBytes": 33554432,
+          "singleFrameOverBudget": false,
+          "inflightCount": 0,
+          "targetIndex": 0,
+          "lastDrawnIndex": 0,
+          "posterReady": true,
+          "hasValidMedia": true,
+          "reducedMotion": false,
+          "hits": 0,
+          "misses": 0,
+          "evictions": 0,
+          "failedRequests": 0,
+          "abortedRequests": 0,
+          "drawnFrames": 3
+        }
+      },
+      "copy": "Complexity lives in the handoffs.\n                  A request changes hands. Someone confirms the details. The next team needs the right record to keep moving.\n                \n                \n                  Trace the work before writing code.\n                  We map who submits, reviews, and approves the work, then give each decision a place in the system.\n                \n                \n                  Make the next step clear.\n                  Give each team the records it needs and a clear way to move work forward. That same principle shapes Salryn.",
+      "overflow": false
+    },
+    "section03_present": true,
+    "motion_lab_reduced": {
+      "OS_emulated_reduce": true,
+      "index_unchanged_on_scroll": true
+    }
+  },
+  {
+    "viewport": [
+      320,
+      700
+    ],
+    "browser": "158.0.8127.36",
+    "scope": "Bounded motion-lab page in real R3 worktree, NOT final Section 02 integration",
+    "tests": {
+      "A": {
+        "scroll_forward_indices": [
+          0,
+          6,
+          11,
+          17,
+          23
+        ],
+        "scroll_reverse_indices": [
+          17,
+          11,
+          6,
+          0
+        ],
+        "forward_reverse_controls": true,
+        "video": {
+          "duration": 1,
+          "time": 1,
+          "ended": true,
+          "width": 1280,
+          "height": 720,
+          "error": null
+        },
+        "scroll_endpoints_match": true
+      },
+      "B": {
+        "scroll_forward_indices": [
+          0,
+          6,
+          11,
+          17,
+          23
+        ],
+        "scroll_reverse_indices": [
+          17,
+          11,
+          6,
+          0
+        ],
+        "forward_reverse_controls": true,
+        "video": {
+          "duration": 1,
+          "time": 1,
+          "ended": true,
+          "width": 1280,
+          "height": 720,
+          "error": null
+        },
+        "scroll_endpoints_match": true
+      }
+    },
+    "overflow": false,
+    "runtime_errors": [],
+    "baseline_section02": {
+      "telemetry": {
+        "home-complexity-to-clarity": {
+          "id": "home-complexity-to-clarity",
+          "frameCount": 36,
+          "variant": "mobile",
+          "cacheSize": 9,
+          "maxCache": 18,
+          "maxInflight": 4,
+          "decodedPixelBytes": 13996800,
+          "maxDecodedBytes": 33554432,
+          "singleFrameOverBudget": false,
+          "inflightCount": 0,
+          "targetIndex": 0,
+          "lastDrawnIndex": 0,
+          "posterReady": true,
+          "hasValidMedia": true,
+          "reducedMotion": false,
+          "hits": 0,
+          "misses": 0,
+          "evictions": 0,
+          "failedRequests": 0,
+          "abortedRequests": 0,
+          "drawnFrames": 3
+        }
+      },
+      "copy": "Complexity lives in the handoffs.\n                  A request changes hands. Someone confirms the details. The next team needs the right record to keep moving.\n                \n                \n                  Trace the work before writing code.\n                  We map who submits, reviews, and approves the work, then give each decision a place in the system.\n                \n                \n                  Make the next step clear.\n                  Give each team the records it needs and a clear way to move work forward. That same principle shapes Salryn.",
+      "overflow": false
+    },
+    "section03_present": true,
+    "motion_lab_reduced": {
+      "OS_emulated_reduce": true,
+      "index_unchanged_on_scroll": true
+    }
+  }
+]
