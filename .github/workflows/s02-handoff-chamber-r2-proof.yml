@@ -1,4 +1,4 @@
-name: S02 R4 coordination studio proof (no deploy)
+name: S02 R5 cinematic craft proof (no deploy)
 on:
   push:
     branches: [experiment/s02-handoff-chamber-r2-writer]
@@ -8,7 +8,7 @@ permissions:
 jobs:
   browser:
     runs-on: ubuntu-latest
-    timeout-minutes: 18
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
         with:
@@ -30,12 +30,12 @@ jobs:
           SERVER=$!
           trap 'kill "$SERVER"' EXIT
           for i in $(seq 1 20); do curl -fsS http://127.0.0.1:8723/ >/dev/null && break; sleep 1; done
-          S02_STILLS=1 S02_EVIDENCE=dist/s02-r4-stills node scripts/qa_s02_handoff_chamber.mjs
+          S02_STILLS=1 S02_EVIDENCE=dist/s02-r5-stills node scripts/qa_s02_handoff_chamber.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: s02-r4-early-stills
-          path: dist/s02-r4-stills/
+          name: s02-r5-early-stills
+          path: dist/s02-r5-stills/
           if-no-files-found: warn
       - name: Capture actual browser forward and reverse states
         run: |
@@ -47,7 +47,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: s02-r4-chamber-browser-evidence
+          name: s02-r5-chamber-browser-evidence
           path: dist/s02-chamber-evidence/
           if-no-files-found: warn
 
@@ -64,11 +64,11 @@ jobs:
           cache: npm
       - run: npm ci --ignore-scripts --no-audit --no-fund
       - run: npx playwright install --with-deps chromium
-      - name: Equivalent shots on immutable R1 and R3
+      - name: Equivalent shots on immutable R4
         run: |
           mkdir -p dist/s02-comparison
           failed=0
-          for pair in 'r1 f75a5f78e42581e05f11abb64150f036ca63915a' 'r3 786d42942c4ef3e8c5d7925a5a82bc415fcb76d1'; do
+          for pair in 'r4 ee51a99707d76f9ec2177fdae960e26296b2957c'; do
             read -r label sha <<< "$pair"
             git worktree add --detach "/tmp/s02-$label" "$sha"
             python -m http.server 8725 --bind 127.0.0.1 --directory "/tmp/s02-$label/site" > "/tmp/s02-$label.log" 2>&1 &
@@ -84,7 +84,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: s02-r4-protected-comparison
+          name: s02-r5-protected-comparison
           path: dist/s02-comparison/
           if-no-files-found: warn
 
