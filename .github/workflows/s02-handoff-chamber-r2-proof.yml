@@ -9,6 +9,12 @@ jobs:
   browser:
     runs-on: ubuntu-latest
     timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        viewport: [1440, 1024, 768, 844, 390, 320]
+    env:
+      S02_VIEWPORT: ${{ matrix.viewport }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -35,7 +41,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: s02-r5-early-stills
+          name: s02-r5-early-stills-${{ matrix.viewport }}
           path: dist/s02-r5-stills/
           if-no-files-found: warn
       - name: Capture actual browser forward and reverse states
@@ -48,7 +54,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: s02-r5-chamber-browser-evidence
+          name: s02-r5-chamber-browser-evidence-${{ matrix.viewport }}
           path: dist/s02-chamber-evidence/
           if-no-files-found: warn
 

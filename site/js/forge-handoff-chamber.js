@@ -30,7 +30,7 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
   const ambient=new T.HemisphereLight(0xe5efff,0xa98971,1.65);scene.add(ambient);
   const key=new T.DirectionalLight(0xffdab0,2.7);key.position.set(-6,9,-3);scene.add(key);
   key.castShadow=true;key.shadow.mapSize.set(1024,1024);Object.assign(key.shadow.camera,{left:-9,right:9,top:8,bottom:-8,near:.5,far:27});key.shadow.bias=-.00035;key.shadow.normalBias=.025;key.shadow.radius=2;
-  const rim=new T.DirectionalLight(0x9fcdf8,1.65);rim.position.set(6,4,7);scene.add(rim);
+  const rim=new T.DirectionalLight(0xc5e0ed,1.65);rim.position.set(4,5,8);scene.add(rim);
   const heroLight=new T.PointLight(0xffc587,0,6);scene.add(heroLight);
   const root=new T.Group();scene.add(root);
   const mat=(color,roughness=.85,metalness=0)=>new T.MeshStandardMaterial({color,roughness,metalness});
@@ -48,7 +48,7 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
   function grain(base,accent,seed,wood=false){return texture(256,256,(x,w,h)=>{x.fillStyle=base;x.fillRect(0,0,w,h);let n=seed;const r=()=>((n=(Math.imul(n,1664525)+1013904223)>>>0)/4294967296);for(let i=0;i<3000;i++){x.globalAlpha=.025+r()*.12;x.fillStyle=accent;x.fillRect(r()*w,r()*h,wood?12+r()*90:1+r()*3,wood?.5+r()*2:1+r()*3);}x.globalAlpha=1;});}
   timber.map=grain('#a9714d','#563729',17,true);timber.color.setHex(0xffffff);
   oak.map=grain('#d7ae80','#795536',71,true);oak.color.setHex(0xffffff);
-  plaster.map=grain('#d9cabb','#8e786d',42);plaster.color.setHex(0xffffff);
+  plaster.map=grain('#d9cabb','#8e786d',42);plaster.color.setHex(0xf4dfc6);
   rug.map=grain('#718a8a','#d0d4be',31);rug.color.setHex(0xffffff);
   const shadowTex=texture(128,128,x=>{const g=x.createRadialGradient(64,64,5,64,64,64);g.addColorStop(0,'rgba(28,22,20,.55)');g.addColorStop(.5,'rgba(28,22,20,.25)');g.addColorStop(1,'rgba(28,22,20,0)');x.fillStyle=g;x.fillRect(0,0,128,128);});
   const shadowMat=new T.MeshBasicMaterial({map:shadowTex,transparent:true,depthWrite:false,polygonOffset:true,polygonOffsetFactor:-1});
@@ -60,9 +60,12 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
   b(room,oak,0,-.16,2,28,.32,23);
   const plankMats=[mat(0xb98c65),mat(0xc69b72),mat(0xd1a77d),mat(0xb78b67)];
   for(let row=0;row<30;row++)for(let j=0;j<12;j++){const z=-5.25+row*.49,x=-10.78+j*1.96+(row%2)*.49;b(room,plankMats[(row*5+j*3)%4],x,.003,z,1.94,.012,.476);}
-  b(room,plaster,0,2.3,-5.35,23,4.6,.22);b(room,cream,0,.15,-5.18,23,.25,.08);b(room,timber,0,4.36,-5.10,23,.22,.42);
-  for(const x of [-7.1,2.72,7.35]){b(room,timber,x,2.18,-5.04,.16,4.36,.30);b(room,cream,x,2.2,-4.85,.05,4.2,.05);}
-  b(room,plaster,7.78,2.3,-2.3,.22,4.6,6.1);b(room,teal,7.64,1.08,-2.3,.08,2.1,6.0);
+  b(room,plaster,0,4.25,-5.35,23,8.5,.22);b(room,cream,0,.15,-5.18,23,.25,.08);b(room,timber,0,4.36,-5.10,23,.22,.42);
+  for(const x of [-7.1,2.72,7.35]){b(room,timber,x,4.1,-5.04,.16,8.2,.30);b(room,cream,x,4.1,-4.85,.05,8.1,.05);}
+  // Upper clerestory and continuous wall hide the stage edge in the master shot.
+  for(const x of [-5.2,-1.92,1.36]){b(room,ink,x,5.22,-5.14,2.98,1.28,.10);b(room,cream,x,5.22,-5.075,2.82,1.12,.045);b(room,timber,x,5.22,-5.02,.055,1.12,.055);}
+  b(room,timber,0,6.0,-5.03,23,.17,.34);
+  b(room,plaster,7.78,4.25,-2.3,.22,8.5,6.1);b(room,teal,7.64,1.08,-2.3,.08,2.1,6.0);
   const vista=texture(1024,512,(c,W,H)=>{let g=c.createLinearGradient(0,0,0,H);g.addColorStop(0,'#91becf');g.addColorStop(.62,'#e9e4c4');g.addColorStop(1,'#f5d7a4');c.fillStyle=g;c.fillRect(0,0,W,H);c.fillStyle='#f8e8b9';c.beginPath();c.arc(748,100,57,0,Math.PI*2);c.fill();for(let k=0;k<3;k++){c.fillStyle=['#8aa8a2','#6e978c','#567a6d'][k];c.beginPath();c.moveTo(0,H);for(let i=0;i<=64;i++)c.lineTo(i*16,270+k*53+Math.sin(i*.21+k)*43+Math.cos(i*.41+k)*21);c.lineTo(W,H);c.fill();}});
   const windowMats=Array.from({length:3},(_,i)=>{const t=vista.clone();t.repeat.set(1/3,1);t.offset.set(i/3,0);t.needsUpdate=true;textures.push(t);return new T.MeshBasicMaterial({map:t});});
   for(let i=0;i<3;i++){const x=-5.2+i*3.28;b(room,ink,x,2.72,-5.15,2.98,2.48,.08);mesh(planeGeo,windowMats[i],room,x,2.72,-5.095,2.83,2.33,1);b(room,timber,x,1.47,-4.99,3.12,.16,.35);b(room,cream,x,2.72,-5.045,.09,2.36,.06).castShadow=true;b(room,cream,x,3.19,-5.045,2.85,.075,.06).castShadow=true;}
@@ -91,7 +94,7 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
   const baseAngles=[-.17,.08,-.08,.12];
   const destinations=[[-.65,1.16,.24],[-.55,1.16,.23],[-.95,1.16,.32],[-.58,1.16,.25]];
   function desk(g,w,d,m){shadow(g,0,0,w+1,d+1.2);b(g,m,0,1.04,0,w,.15,d).castShadow=true;b(g,timber,0,.945,0,w-.18,.05,d-.14);for(const x of [-w/2+.22,w/2-.22])b(g,brass,x,.88,0,.035,.035,d-.25);for(const x of [-w/2+.19,w/2-.19])for(const z of [-d/2+.16,d/2-.16])beam(g,timber,[x,.04,z],[x*.94,.98,z*.86],.065);}
-  function chair(g,x,z,color,angle=0){const c=group(g,x,0,z);c.rotation.y=angle;shadow(c,0,0,1.2,1.2);for(const a of [-1,1])for(const d of [-1,1])beam(c,timber,[a*.27,0,d*.26],[a*.23,.47,d*.21],.045);ell(c,color,0,.49,0,.39,.09,.35).castShadow=true;ell(c,color,0,.87,-.29,.39,.39,.105);for(const x of [-.25,.25])beam(c,timber,[x,.45,-.22],[x,.83,-.29],.045);return c;}
+  function chair(g,x,z,color,angle=0){const c=group(g,x,0,z);c.rotation.y=angle;shadow(c,0,0,1.2,1.2);for(const a of [-1,1])for(const d of [-1,1])beam(c,timber,[a*.27,0,d*.26],[a*.23,.54,d*.21],.045);ell(c,color,0,.56,0,.39,.09,.35).castShadow=true;ell(c,color,0,.94,-.29,.39,.39,.105);for(const x of [-.25,.25])beam(c,timber,[x,.52,-.22],[x,.90,-.29],.045);return c;}
   const workDisplays=[];
   function laptop(g,x,z,title,sub,doneTitle,doneSub,threshold){const l=group(g,x,1.13,z);b(l,ink,0,.026,0,.77,.055,.51);b(l,black,0,.06,.04,.65,.014,.32);const s=group(l,0,.04,-.23);s.rotation.x=-.16;b(s,ink,0,.27,0,.77,.55,.05);const pending=placard(s,title,sub,0,.27,.032,.70,.46,'#d7e7dd','#2e5256');const done=placard(s,doneTitle,doneSub,0,.27,.033,.70,.46,'#e8efdb','#355a55');done.visible=false;workDisplays.push({pending,done,threshold});return l;}
   function lamp(g,x,z){const l=group(g,x,1.13,z);cyl(l,brass,0,.035,0,.17,.07);beam(l,brass,[0,.05,0],[0,.73,0],.022);beam(l,brass,[0,.73,0],[.30,.81,.13],.022);mesh(taperGeo,teal,l,.3,.74,.13,.20,.25,.20);cyl(l,white,.3,.62,.13,.17,.018);}
@@ -115,13 +118,13 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
   const handGeo=profileGeometry([[-.102,.023,.017],[-.079,.048,.025],[-.012,.052,.027],[.018,.037,.029],[.025,.005,.006]],10);
   function human(g,x,z,face,seated,palette){
     const o=group(g,x,0,z);o.rotation.y=face;animated.add(o);
-    const skin=mat(palette.skin,.67),hair=mat(palette.hair,.83),shirt=palette.shirt,trouser=palette.pants,pelvis=seated?.73:1.00;
+    const skin=mat(palette.skin,.67),hair=mat(palette.hair,.83),shirt=palette.shirt,trouser=palette.pants,pelvis=seated?.81:1.00;
     const torso=group(o,0,pelvis+.28,0);animated.add(torso);
     mesh(shirtGeo,shirt,torso,0,0,0,1,1,1).castShadow=true;
     const trim=mat(palette.style===0?0x203c3a:0x40494a,.8);
     for(const s of [-1,1]){
       const lapel=b(torso,palette.style===0?trim:shirt,s*.073,.20,.108,.077,.14,.024);lapel.rotation.z=s*.27;
-      const hip=[s*.105,pelvis,0],knee=[s*.118,seated?.54:.56,seated?.37:.02],ankle=[s*.13,.115,seated?.42:.035];
+      const hip=[s*.105,pelvis,0],knee=[s*.118,seated?.58:.56,seated?.37:.02],ankle=[s*.13,.115,seated?.42:.035];
       beam(o,trouser,hip,knee,.105);ell(o,trouser,...knee,.098,.105,.096);beam(o,trouser,knee,ankle,.073);
       ell(o,black,s*.13,.07,seated?.48:.12,.095,.065,.17);
     }
@@ -133,8 +136,8 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
     const lip=mat(0x79504b,.75),eye=mat(0x282727,.5),ivory=mat(0xe0d3bf,.65);
     for(const s of [-1,1]){
       ell(head,skin,s*.126,-.027,-.008,.025,.045,.025);
-      ell(head,ivory,s*.050,.025,.099,.029,.012,.012);
-      ell(head,eye,s*.050,.025,.111,.011,.010,.006);
+      ell(head,ivory,s*.050,.025,.099,.024,.009,.011);
+      ell(head,eye,s*.050,.025,.110,.009,.009,.006);
       const brow=ell(head,hair,s*.050,.052,.105,.035,.008,.008);brow.rotation.z=s*.09;
     }
     // Angular bridge and tip, not a spherical nose.
@@ -143,7 +146,7 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
     ell(head,lip,0,-.078,.099,.035,.008,.007);
     if(palette.style===1){ell(head,hair,0,-.025,-.082,.134,.19,.07);ell(head,hair,.078,.085,.064,.065,.10,.055);ell(head,hair,0,-.15,-.103,.069,.12,.067);}
     else if(palette.style===2){ell(head,hair,0,.14,-.025,.125,.07,.09);ell(head,hair,-.093,.07,-.01,.046,.083,.06);}
-    else {for(let j=0;j<3;j++){const lock=ell(head,hair,-.078+j*.073,.12,.052,.058,.077,.066);lock.rotation.z=-.25;}}
+    else {for(let j=0;j<3;j++){const lock=ell(head,hair,-.071+j*.071,.136-j*.008,.047,.050,.050,.061);lock.rotation.z=-.42;}}
     const arms=[];
     for(const s of [-1,1]){
       const a=group(torso,s*.225,.205,0);animated.add(a);
@@ -209,7 +212,7 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
     let segment=0,t=span(p,.19,.37);if(p>=.37&&p<.55){segment=1;t=span(p,.39,.55);}else if(p>=.55){segment=2;t=release;}
     request.position.copy(path[segment]).lerp(path[segment+1],t);
     if(segment===0){target.set(0,1.18,.12);stations[0].localToWorld(target);target.y+=.55+(1-trace)*.9;target.x+=.35*Math.sin(p*13)*(1-trace);request.position.copy(target).lerp(path[1],t);}
-    const spin=Math.sin(t*Math.PI);request.position.y+=spin*1.5;fileFlag.visible=p<.55||spin>.15;fileFlag.position.set(0,.29+spin*.15,.23*(1-spin));request.rotation.set(-.25*spin+(1-trace)*.19*Math.sin(p*19),.83*spin+(1-trace)*(.25+p*6),.24*spin+(1-trace)*.17*Math.cos(p*16));request.scale.setScalar(1+.16*spin+.12*(1-trace));
+    const spin=Math.sin(t*Math.PI);request.position.y+=spin*1.5;fileFlag.visible=p<.55||spin>.15;fileFlag.position.set(0,.29+spin*.15,.23*(1-spin));request.rotation.set(-.25*spin+(1-trace)*.19*Math.sin(p*19),.83*spin+(1-trace)*(.25+p*6),.24*spin+(1-trace)*.17*Math.cos(p*16));request.scale.setScalar(.94+.16*spin+.12*(1-trace));
     const press=span(p,.585,.635)-span(p,.66,.72);
 
     // ACTING / IK — all axes reset; no orientation from a preceding evaluation.
@@ -248,13 +251,15 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
     arm.wrist.quaternion.slerp(jointInv.identity(),engage);
     workDisplays.forEach(d=>{d.pending.visible=p<d.threshold;d.done.visible=p>=d.threshold;});
     reviewPending.visible=p<.69;reviewApproved.visible=p>=.69;receivePending.visible=p<.94;receiveDone.visible=p>=.94;
-    ambient.intensity=mix(.70,1.04,trace);key.intensity=mix(2.55,3.65,trace);rim.intensity=mix(.95,1.22,decision);heroLight.position.copy(request.position);heroLight.position.y+=.8;heroLight.position.z+=1;heroLight.intensity=1.4+4*spin+2*press;
+    ambient.intensity=mix(.87,1.12,trace);key.intensity=mix(2.45,3.28,trace);rim.intensity=mix(1.25,1.46,decision)+.34*press;heroLight.position.copy(request.position);heroLight.position.y+=.8;heroLight.position.z+=1;heroLight.intensity=1.4+4*spin+2*press;
     arcs.forEach((arc,i)=>{const from=[.18,.39,.75][i],to=[.37,.55,.94][i],q=span(p,from,to);arc.geometry.setDrawRange(0,Math.floor(q*64)+1);arc.material.opacity=.78*pulse(p,from,(from+to)/2,to+.065);});
     // CINEMATOGRAPHY — wide master, active record, intimate review, release, calm pullback.
     const portrait=w/h<1.05,compact=w<=900&&!portrait;
     let k=0;while(k<shots.length-2&&p>shots[k+1][0])k++;const l=shots[k],r=shots[k+1],v=span(p,l[0],r[0]),shot=n=>mix(l[n],r[n],v);
-    const cx=shot(1),cy=shot(2),cz=shot(3),angle=shot(4),radius=shot(portrait?7:5);
-    camera.fov=portrait?47:compact?49:40;camera.position.set(cx+Math.sin(angle)*radius,shot(portrait?8:6),cz+Math.cos(angle)*radius);camera.lookAt(cx,cy,cz);camera.setViewOffset(w,h,portrait?0:-w*(compact?.15:.14),portrait?h*.17:0,w,h);camera.updateProjectionMatrix();camera.updateMatrixWorld();
+    // Portrait opening follows the intake folder; receipt holds the destination before the pullback.
+    const intakeHold=1-span(p,.15,.37),receiptHold=span(p,.91,.97);
+    const cx=shot(1)+(portrait?(-3.65*intakeHold+1.65*receiptHold-.40*pulse(p,.30,.44,.53)):0),cy=shot(2),cz=shot(3)+(portrait?1.15*intakeHold:0),angle=shot(4),radius=shot(portrait?7:5);
+    camera.fov=portrait?49:compact?49:40;camera.position.set(cx+Math.sin(angle)*radius,shot(portrait?8:6),cz+Math.cos(angle)*radius);camera.lookAt(cx,cy,cz);camera.setViewOffset(w,h,portrait?0:-w*(compact?.15:.14),portrait?h*.17:0,w,h);camera.updateProjectionMatrix();camera.updateMatrixWorld();
     const caption=p<.18?'01 / A request arrives\nPR-017 · Ownership unclear':p<.55?'02 / Find the right record\nPR-017 · '+(p<.37?'Checking details':'Source confirmed'):p<.75?'03 / A human decision\nPR-017 · '+(p<.69?'Review pending':'Approved'):'04 / The next responsibility\nPR-017 · '+(p<.94?'Handover in progress':'Assigned to purchasing');
     if(caption!==lastCaption){status.textContent=caption;lastCaption=caption;}
     const started=qaEnabled?performance.now():0;

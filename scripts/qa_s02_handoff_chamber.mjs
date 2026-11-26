@@ -9,9 +9,13 @@ const stills=process.env.S02_STILLS==='1';
 await mkdir(out,{recursive:true});
 const browser=await chromium.launch({headless:true,args:['--enable-webgl','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
 const results=[],failures=[];
+const allViewports=[[1440,900],[1024,768],[768,1024],[844,390],[390,844],[320,700]];
+const viewportFilter=process.env.S02_VIEWPORT?Number(process.env.S02_VIEWPORT):0;
+const viewports=viewportFilter?allViewports.filter(([w])=>w===viewportFilter):allViewports;
+assert.ok(viewports.length,'valid viewport filter');
 const shots=[['opening',.04],['trace',.44],['review',.625],['approved',.72],['flight',.85],['receipt',.97]];
 try {
-  for(const [width,height] of [[1440,900],[1024,768],[768,1024],[844,390],[390,844],[320,700]]){
+  for(const [width,height] of viewports){
     const context=await browser.newContext({viewport:{width,height},deviceScaleFactor:1,recordVideo:comparison||stills?undefined:{dir:out+'/motion',size:{width,height}}});
     const page=await context.newPage();
     try {
@@ -45,7 +49,11 @@ try {
         results.push({width,height,name,phase:await stage.getAttribute('data-handoff-phase'),status:await status.textContent(),state,budget});
         if(!comparison){
           assert.equal(state.id,'PR-017');assert.equal(state.world,'coordination-studio');assert.equal(state.actors.length,4);assert.ok(state.actors.every(a=>a.length===10&&a.every(Number.isFinite)));assert.equal(state.owner,'native-scroll');assert.equal(state.mechanicalRoutes,0);
-          assert.equal(state.decision,p>=.69);assert.equal(state.receipt,p>=.94);assert.deepEqual(state.displays,[p>=.37,p>=.39,p>=.94]);
+          assert.equal(state.decision,p>=.69);assert.equal(state.receipt,p>=.94);
+          const safe=([x,y])=>x>.06&&x<.94&&y>.10&&y<.78;
+          assert.ok(safe(state.screen.request),'request out of frame '+name+' '+JSON.stringify(state.screen.request));
+          if(name==='review'||name==='approved')assert.ok(safe(state.screen.reviewer),'reviewer out of frame');
+          if(name==='flight'||name==='receipt')assert.ok(safe(state.screen.receiver),'receiver out of frame');assert.deepEqual(state.displays,[p>=.37,p>=.39,p>=.94]);
           assert.equal(state.paperCount,56);assert.deepEqual(state.papers.map(x=>x[0]),Array.from({length:56},(_,i)=>i));
           assert.ok(budget.calls>0&&budget.calls<240&&budget.triangles>0);assert.ok(state.jointMatrices.every(actor=>actor.length===8&&actor.every(m=>m.length===16&&m.every(Number.isFinite))));if(name==='review'){assert.ok(state.contact.engage>.99);assert.equal(state.contact.clamped,false);assert.ok(state.contact.error<.015,'actual grip residual '+state.contact.error);assert.ok(Math.abs(state.contact.stampFace[1]-state.contact.documentFace[1])<.035,'stamp must reach document surface');assert.equal(state.displays[2],false);}
           states.set(name,state);
@@ -98,7 +106,7 @@ try {
     } catch(error){failures.push({width,height,error:String(error)});console.error(width,height,error);}
     finally {await context.close();if(!comparison&&!stills){const video=page.video();if(video)await video.saveAs(out+'/motion/'+width+'-native-forward-reverse.webm');}}
   }
-  if(!comparison&&!stills)for(const mode of ['reduced','gpu-off','no-js','normal','shadow-off']){
+  if(!comparison&&!stills&&(!viewportFilter||viewportFilter===390))for(const mode of ['reduced','gpu-off','no-js','normal','shadow-off']){
     const page=await browser.newPage({viewport:{width:390,height:844},javaScriptEnabled:mode!=='no-js',reducedMotion:mode==='reduced'?'reduce':'no-preference'});
     await page.goto(base+(mode==='gpu-off'?'?webgl=off':mode==='shadow-off'?'?s02shadow=off&s02qa=1':''),{waitUntil:'domcontentloaded'});
     if(mode!=='no-js')await page.waitForFunction(()=>window.__SITE_READY__===true);
