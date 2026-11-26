@@ -16,7 +16,6 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
   canvas.id='handoff-chamber-webgl';
   canvas.setAttribute('aria-hidden','true');
   Object.assign(canvas.style,{position:'absolute',inset:'0',width:'100%',height:'100%',zIndex:'1',pointerEvents:'none',imageRendering:'pixelated'});
-  legacy.after(canvas);
   renderer.setPixelRatio(1);
   renderer.outputColorSpace=T.SRGBColorSpace;
   renderer.toneMapping=T.ACESFilmicToneMapping;
@@ -182,6 +181,7 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
   const status=document.createElement('div');
   status.className='handoff-scene-caption';status.setAttribute('aria-hidden','true');
   Object.assign(status.style,{position:'absolute',zIndex:'3',right:'4%',top:'12%',font:'600 11px monospace',letterSpacing:'.12em',color:'#c7e8b5',textAlign:'right',pointerEvents:'none',whiteSpace:'pre-line'});
+  legacy.after(canvas);
   stage.append(status);
   function draw(){
     if(disposed||failed||!visible||document.hidden)return;
@@ -225,14 +225,15 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
     camera.setViewOffset(w,h,portrait?0:-w*.17,0,w,h);
     camera.updateProjectionMatrix();
     status.textContent=p<.25?'01 / DISORDER\nPR-017 · ROUTE UNRESOLVED':p<.55?'02 / TRACE\nPR-017 · CUSTODY FOUND':p<.73?'03 / HUMAN REVIEW\nPR-017 · '+(p<.68?'AWAITING DECISION':'APPROVED'):'04 / HANDOVER\nPR-017 · '+(p<.94?'IN TRANSIT':'RECEIVED');
-    renderer.render(scene,camera);
+    try {renderer.render(scene,camera);stage.dataset.handoffPhase=p.toFixed(4);}
+    catch(error){console.warn("Handoff renderer failed",error);fallback();}
   }
   function resize(){
     if(disposed||failed)return;const r=stage.getBoundingClientRect();w=Math.max(1,Math.round(r.width));h=Math.max(1,Math.round(r.height*(w<901?.46:1)));canvas.style.height=w<901?"46%":"100%";
     const scale=w<901?.80:.75;renderer.setSize(Math.round(w*scale),Math.round(h*scale),false);
     camera.aspect=w/h;camera.updateProjectionMatrix();draw();
   }
-  const fallback=()=>{failed=true;canvas.hidden=true;canvas.style.display='none';legacy.style.visibility='';status.hidden=true;stage.removeAttribute('data-handoff-chamber');};
+  const fallback=()=>{failed=true;canvas.hidden=true;canvas.style.display='none';legacy.style.visibility='';status.hidden=true;stage.removeAttribute('data-handoff-chamber');stage.removeAttribute('data-handoff-phase');};
   canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();fallback();});
   canvas.addEventListener('webglcontextrestored',()=>{if(disposed)return;failed=false;canvas.hidden=false;canvas.style.display='';legacy.style.visibility='hidden';status.hidden=false;stage.dataset.handoffChamber='live';resize();});
   const ro=new ResizeObserver(resize);ro.observe(stage);
@@ -245,6 +246,6 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
     setPhase(p){phase=clamp(p);if(Math.abs(phase-last)>.0001){last=phase;draw();}},
     dispose(){if(disposed)return;disposed=true;ro.disconnect();io.disconnect();document.removeEventListener('visibilitychange',visibility);
       const geometries=new Set(),materials=new Set();scene.traverse(o=>{if(o.geometry)geometries.add(o.geometry);if(o.material)materials.add(o.material);});
-      geometries.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());textTextures.forEach(t=>t.dispose());renderer.dispose();canvas.remove();status.remove();legacy.style.visibility='';stage.removeAttribute('data-handoff-chamber');}
+      geometries.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());textTextures.forEach(t=>t.dispose());renderer.dispose();canvas.remove();status.remove();legacy.style.visibility='';stage.removeAttribute('data-handoff-chamber');stage.removeAttribute('data-handoff-phase');}
   };
 }
