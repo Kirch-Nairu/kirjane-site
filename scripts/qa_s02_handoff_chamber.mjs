@@ -44,6 +44,10 @@ try {
       for(const [name,p] of shots){
         await seek(p);
         await page.screenshot({path:out+'/'+width+'-'+name+'.png'});
+        if(!comparison&&height<610&&width<=900){
+          const rail=await stage.locator('.chapter-rail').boundingBox();
+          assert.ok(rail&&rail.y>=60&&rail.y+rail.height<=height-50,'short landscape controls must fit above fixed navigation: '+JSON.stringify(rail));
+        }
         const state=JSON.parse(await stage.getAttribute('data-handoff-state')||'null');
         const budget=JSON.parse(await stage.getAttribute('data-handoff-budget')||'null');
         results.push({width,height,name,phase:await stage.getAttribute('data-handoff-phase'),status:await status.textContent(),state,budget});
