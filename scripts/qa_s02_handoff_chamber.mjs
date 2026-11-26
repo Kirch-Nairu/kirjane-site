@@ -16,7 +16,7 @@ try {
     await stage.scrollIntoViewIfNeeded();
     await stage.locator('#handoff-chamber-webgl').waitFor({state:'visible',timeout:15000});
     const status=stage.locator('.handoff-scene-caption');
-    for(const [name,index,lo,hi] of [['disorder',0,0,.25],['trace',1,.34,.55],['handover',2,.94,1],['reverse',0,0,.25]]){
+    for(const [name,index,lo,hi] of [['disorder',0,0,.18],['trace',1,.40,.55],['handover',2,.94,1],['reverse',0,0,.25]]){
       await stage.locator('.chapter-rail button').nth(index).click();
       await page.waitForFunction(([a,b])=>{
         const x=Number(document.querySelector('[data-handoff-chamber]')?.dataset.handoffPhase);
@@ -29,6 +29,29 @@ try {
       await page.screenshot({path:out+'/'+width+'-'+name+'.png'});
       results.push({width,height,name,phase:await stage.getAttribute('data-handoff-phase'),status:text});
     }
+    // Scroll directly via the existing native director; capture review before
+    // decision, approved hold, transfer and receipt, then matched reverse.
+    const states=new Map();
+    for(const [name,p] of [['pending',.61],['approved',.72],['transfer',.84],['receipt',.97],['transfer-reverse',.84],['approved-reverse',.72],['pending-reverse',.61]]){
+      await page.evaluate(p=>window.__SCENE_DIRECTOR__.jumpTo('home-clarity',p),p);
+      await page.waitForFunction(p=>{const el=document.querySelector('[data-handoff-chamber]');const s=window.__SCENE_DIRECTOR__.getScenes()['home-clarity'];return el&&Math.abs(s.exact-p)<.003&&Math.abs(s.exact-s.smooth)<.0001&&Math.abs(Number(el.dataset.handoffPhase)-s.exact)<.0002;},p,{timeout:15000});
+      const state=JSON.parse(await stage.getAttribute('data-handoff-state'));
+      const budget=JSON.parse(await stage.getAttribute('data-handoff-budget'));
+      assert.equal(state.id,'PR-017');
+      assert.equal(state.decision,p>=.69);assert.equal(state.receipt,p>=.94);
+      assert.equal(state.position[1],1.19);
+      assert.ok(budget.calls>0&&budget.triangles>0);
+      if(name.endsWith('-reverse'))assert.deepEqual(state,states.get(name.replace('-reverse','')));
+      else states.set(name,state);
+      await page.screenshot({path:out+'/'+width+'-'+name+'.png'});
+      results.push({width,height,name,phase:await stage.getAttribute('data-handoff-phase'),state,budget});
+    }
+    const dimensions=await stage.evaluate(el=>({stage:el.getBoundingClientRect().height,canvas:el.querySelector('#handoff-chamber-webgl').getBoundingClientRect().height}));
+    assert.ok(Math.abs(dimensions.stage-dimensions.canvas)<2);
+    // Force loss on the actual existing context, verify inherited fallback.
+    const lost=await stage.locator('#handoff-chamber-webgl').evaluate(c=>{const gl=c.getContext('webgl2')||c.getContext('webgl');const ext=gl?.getExtension('WEBGL_lose_context');if(!ext)return false;ext.loseContext();return true;});
+    if(lost){await page.waitForFunction(()=>!document.querySelector('[data-handoff-chamber]'));assert.equal(await stage.locator('#home-clarity-canvas').evaluate(c=>getComputedStyle(c).visibility),'visible');await page.screenshot({path:out+'/'+width+'-context-lost.png'});}
+    results.push({width,height,contextLoss:lost?'fallback verified':'extension unavailable'});
     assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
     assert.deepEqual(errors,[]);
     await page.close();

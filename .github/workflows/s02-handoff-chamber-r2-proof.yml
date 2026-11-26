@@ -1,0 +1,37 @@
+name: S02 R2 writer visual proof (no deploy)
+on:
+  push:
+    branches: [experiment/s02-handoff-chamber-r2-writer]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: npx playwright install --with-deps chromium
+      - run: node --check site/js/forge-handoff-chamber.js
+      - run: python scripts/build.py --preview --output dist/s02-preview
+      - name: Capture actual browser forward and reverse states
+        run: |
+          python -m http.server 8723 --bind 127.0.0.1 --directory dist/s02-preview > /tmp/s02-http.log 2>&1 &
+          SERVER=$!
+          trap 'kill "$SERVER"' EXIT
+          for i in $(seq 1 20); do curl -fsS http://127.0.0.1:8723/ >/dev/null && break; sleep 1; done
+          node scripts/qa_s02_handoff_chamber.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: s02-r2-chamber-browser-evidence
+          path: dist/s02-chamber-evidence/
+          if-no-files-found: warn
