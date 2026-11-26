@@ -251,6 +251,21 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
     }
     beam(lane,iron,[a.x,-.8,a.z],[c.x,-.8,c.z],.11);
   }
+  // Physical interlock at the review exit, clear only after decision.
+  const outbound=path[3].clone().sub(path[2]).normalize();
+  const gateAt=path[2].clone().addScaledVector(outbound,1.28);
+  const gate=group(root,gateAt.x,1.04,gateAt.z);
+  gate.rotation.y=Math.atan2(outbound.x,outbound.z);
+  for(const x of [-.55,.55]){
+    b(gate,iron,x,.16,0,.14,.45,.22);
+    b(gate,dark,x,-.08,0,.28,.13,.30);
+  }
+  const gatePivot=group(gate,-.53,.32,0);
+  const gateArm=b(gatePivot,amber,.51,0,0,1.02,.10,.12);
+  for(let i=0;i<4;i++)b(gatePivot,dark,.14+i*.22,0,.065,.08,.105,.018);
+  const gateLamp=b(gate,amber,.55,.48,0,.13,.10,.13);
+  const headings=path.slice(1).map((point,i)=>Math.atan2(point.x-path[i].x,point.z-path[i].z));
+  const rotateBetween=(a,b,t)=>a+Math.atan2(Math.sin(b-a),Math.cos(b-a))*t;
   const wrong=group(root);
   for(let j=0;j<11;j++)b(wrong,red,-5.5+j*.3,-.8,2.2+j*.27,.17,.045,.17);
   sign(wrong,'NO OWNER',-2.05,.55,5.1,1.8,.52,'#ffc0a4','#542e23');
@@ -271,11 +286,13 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
     for(let j=0;j<5;j++)b(root,iron,x,0+j*.55,z+.35,.58,.18,.14);
     b(root,i%3===0?amber:green,x,3.18,z,.48,.11,.5);
   }
-  // Batch fixed box primitives by shared material. Animated actors, rails,
-  // work item and state indicators retain their individual transforms.
+  // Batch fixed box primitives by shared material across the entire hall.
+  // Only moving objects and changing indicators retain individual transforms.
   root.updateMatrixWorld(true);
   const buckets=new Map();
-  room.traverse(o=>{if(o.isMesh&&o.geometry===boxGeo){if(!buckets.has(o.material))buckets.set(o.material,[]);buckets.get(o.material).push(o);}});
+  const moving=new Set([request,wrong,signal,stamp,gatePivot,gateLamp,...operator.arms,...conduits.map(c=>c.mark)]);
+  const isMoving=o=>{for(let p=o;p;p=p.parent)if(moving.has(p))return true;return false;};
+  root.traverse(o=>{if(o.isMesh&&o.geometry===boxGeo&&!isMoving(o)){if(!buckets.has(o.material))buckets.set(o.material,[]);buckets.get(o.material).push(o);}});
   for(const [material,items] of buckets){
     const mesh=new T.InstancedMesh(boxGeo,material,items.length);
     items.forEach((o,i)=>{mesh.setMatrixAt(i,o.matrixWorld);o.removeFromParent();});
@@ -295,8 +312,13 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
     else if(p>=.55){a=path[2];c=path[3];t=span(p,.75,.94);}
     request.position.copy(a).lerp(c,t);
     // No airborne handoff: the trolley follows the desk-height rail.
-    const heading=Math.atan2(c.x-a.x,c.z-a.z);
+    // Rotate at custody/approval holds rather than snapping at segment boundaries.
+    const heading=p<.55?rotateBetween(headings[0],headings[1],span(p,.36,.39)):rotateBetween(headings[1],headings[2],span(p,.69,.75));
     request.rotation.set(0,heading,0);
+    const gateOpen=span(p,.69,.75);
+    gatePivot.rotation.z=gateOpen*Math.PI/2;
+    gateArm.material=p>=.69?live:amber;
+    gateLamp.material=p>=.69?live:amber;
     fileFlag.visible=true;
     signal.position.copy(request.position);signal.position.y=-.76;
     const press=span(p,.59,.64)-span(p,.66,.72);
@@ -325,8 +347,8 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
     camera.lookAt(cx,.1+focus*.9,cz);
     camera.setViewOffset(w,h,portrait?0:-w*.105,portrait?h*.18:0,w,h);
     camera.updateProjectionMatrix();
-    status.textContent=p<.18?'01 / DISORDER\\nPR-017 · ROUTE UNRESOLVED':p<.55?'02 / TRACE\\nPR-017 · CUSTODY FOUND':p<.75?'03 / HUMAN REVIEW\\nPR-017 · '+(p<.69?'AWAITING DECISION':'APPROVED'):'04 / HANDOVER\\nPR-017 · '+(p<.94?'IN TRANSIT':'RECEIVED');
-    stage.dataset.handoffState=JSON.stringify({id:'PR-017',position:request.position.toArray().map(v=>+v.toFixed(3)),decision:p>=.69,receipt:p>=.94,stamp:+press.toFixed(3),camera:camera.position.toArray().map(v=>+v.toFixed(3))});
+    status.textContent=p<.18?'01 / DISORDER\nPR-017 · ROUTE UNRESOLVED':p<.55?'02 / TRACE\nPR-017 · '+(p<.36?'CUSTODY UNCONFIRMED':'CUSTODY FOUND'):p<.75?'03 / HUMAN REVIEW\nPR-017 · '+(p<.69?'AWAITING DECISION':'APPROVED'):'04 / HANDOVER\nPR-017 · '+(p<.94?'IN TRANSIT':'RECEIVED');
+    stage.dataset.handoffState=JSON.stringify({id:'PR-017',position:request.position.toArray().map(v=>+v.toFixed(3)),decision:p>=.69,receipt:p>=.94,stamp:+press.toFixed(3),gate:+gateOpen.toFixed(3),heading:+heading.toFixed(3),camera:camera.position.toArray().map(v=>+v.toFixed(3))});
     try {renderer.render(scene,camera);stage.dataset.handoffPhase=p.toFixed(4);stage.dataset.handoffBudget=JSON.stringify({calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures});}
     catch(error){console.warn("Handoff renderer failed",error);fallback();}
   }

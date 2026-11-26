@@ -40,7 +40,11 @@ try {
       assert.equal(state.id,'PR-017');
       assert.equal(state.decision,p>=.69);assert.equal(state.receipt,p>=.94);
       assert.equal(state.position[1],1.19);
+      if(p<.69)assert.equal(state.gate,0);
+      if(p>.75)assert.equal(state.gate,1);
+      if(p===.72)assert.ok(state.gate>0&&state.gate<1);
       assert.ok(budget.calls>0&&budget.triangles>0);
+      assert.ok(budget.calls<240,`unexpected draw-call count ${budget.calls}`);
       if(name.endsWith('-reverse'))assert.deepEqual(state,states.get(name.replace('-reverse','')));
       else states.set(name,state);
       await page.screenshot({path:out+'/'+width+'-'+name+'.png'});

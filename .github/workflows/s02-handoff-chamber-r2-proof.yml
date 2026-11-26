@@ -35,3 +35,44 @@ jobs:
           name: s02-r2-chamber-browser-evidence
           path: dist/s02-chamber-evidence/
           if-no-files-found: warn
+
+  inherited-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: npx playwright install --with-deps chromium
+      - name: Inherited R3 and film math
+        run: node --test creative/film/src/director/*.test.mjs scripts/codex_r3_motion.test.mjs
+      - name: Build integrated seven-route candidate
+        run: python3 scripts/build_immersive_r2.py --output dist/cinema-integration
+      - name: Inherited Salryn integration
+        run: node scripts/qa_salryn_site_integration.mjs
+      - name: Inherited R2 accessibility
+        env:
+          FORGE_DIST: dist/cinema-integration
+          FORGE_EVIDENCE: dist/codex-r3-evidence/r2-regression
+        run: node scripts/qa_immersive_r2.mjs
+      - name: Inherited R3 focused and route checks
+        env:
+          FORGE_DIST: dist/cinema-integration
+        run: |
+          FORGE_EVIDENCE=dist/codex-r3-evidence/focused node scripts/qa_codex_r3.mjs
+          R3_ROUTES_ONLY=1 FORGE_EVIDENCE=dist/codex-r3-evidence/routes node scripts/qa_codex_r3.mjs
+          node scripts/codex_r3_adversarial.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: s02-r2-inherited-regression
+          path: |
+            dist/codex-r3-evidence/
+            dist/cinema-integration-evidence/
+          if-no-files-found: warn
