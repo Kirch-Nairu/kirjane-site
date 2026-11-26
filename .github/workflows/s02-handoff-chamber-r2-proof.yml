@@ -1,4 +1,4 @@
-name: S02 R3 cinematic corrective proof (no deploy)
+name: S02 R4 coordination studio proof (no deploy)
 on:
   push:
     branches: [experiment/s02-handoff-chamber-r2-writer]
@@ -24,6 +24,19 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - run: node --check site/js/forge-handoff-chamber.js
       - run: python scripts/build.py --preview --output dist/s02-preview
+      - name: Capture early stills for author inspection
+        run: |
+          python -m http.server 8723 --bind 127.0.0.1 --directory dist/s02-preview > /tmp/s02-http.log 2>&1 &
+          SERVER=$!
+          trap 'kill "$SERVER"' EXIT
+          for i in $(seq 1 20); do curl -fsS http://127.0.0.1:8723/ >/dev/null && break; sleep 1; done
+          S02_STILLS=1 S02_EVIDENCE=dist/s02-r4-stills node scripts/qa_s02_handoff_chamber.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: s02-r4-early-stills
+          path: dist/s02-r4-stills/
+          if-no-files-found: warn
       - name: Capture actual browser forward and reverse states
         run: |
           python -m http.server 8723 --bind 127.0.0.1 --directory dist/s02-preview > /tmp/s02-http.log 2>&1 &
@@ -34,7 +47,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: s02-r3-chamber-browser-evidence
+          name: s02-r4-chamber-browser-evidence
           path: dist/s02-chamber-evidence/
           if-no-files-found: warn
 
@@ -51,11 +64,11 @@ jobs:
           cache: npm
       - run: npm ci --ignore-scripts --no-audit --no-fund
       - run: npx playwright install --with-deps chromium
-      - name: Equivalent shots on immutable R1 and rejected R2
+      - name: Equivalent shots on immutable R1 and R3
         run: |
           mkdir -p dist/s02-comparison
           failed=0
-          for pair in 'r1 f75a5f78e42581e05f11abb64150f036ca63915a' 'r2 adbb968a2737b21c6043717162bd432c65898147'; do
+          for pair in 'r1 f75a5f78e42581e05f11abb64150f036ca63915a' 'r3 786d42942c4ef3e8c5d7925a5a82bc415fcb76d1'; do
             read -r label sha <<< "$pair"
             git worktree add --detach "/tmp/s02-$label" "$sha"
             python -m http.server 8725 --bind 127.0.0.1 --directory "/tmp/s02-$label/site" > "/tmp/s02-$label.log" 2>&1 &
@@ -71,7 +84,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: s02-r3-protected-comparison
+          name: s02-r4-protected-comparison
           path: dist/s02-comparison/
           if-no-files-found: warn
 

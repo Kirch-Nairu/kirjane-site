@@ -4,13 +4,14 @@ import {mkdir,writeFile} from 'node:fs/promises';
 const base=process.env.S02_URL || 'http://127.0.0.1:8723/';
 const out=process.env.S02_EVIDENCE || 'dist/s02-chamber-evidence';
 const comparison=process.env.S02_COMPARE==='1';
+const stills=process.env.S02_STILLS==='1';
 await mkdir(out,{recursive:true});
 const browser=await chromium.launch({headless:true,args:['--enable-webgl','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
 const results=[],failures=[];
 const shots=[['opening',.04],['trace',.44],['review',.625],['approved',.72],['flight',.85],['receipt',.97]];
 try {
   for(const [width,height] of [[1440,900],[390,844],[320,700]]){
-    const context=await browser.newContext({viewport:{width,height},deviceScaleFactor:1,recordVideo:comparison?undefined:{dir:out+'/motion',size:{width,height}}});
+    const context=await browser.newContext({viewport:{width,height},deviceScaleFactor:1,recordVideo:comparison||stills?undefined:{dir:out+'/motion',size:{width,height}}});
     const page=await context.newPage();
     try {
       const errors=[];page.on('pageerror',e=>errors.push(String(e)));
@@ -41,14 +42,14 @@ try {
         const budget=JSON.parse(await stage.getAttribute('data-handoff-budget')||'null');
         results.push({width,height,name,phase:await stage.getAttribute('data-handoff-phase'),status:await status.textContent(),state,budget});
         if(!comparison){
-          assert.equal(state.id,'PR-017');assert.equal(state.owner,'native-scroll');assert.equal(state.mechanicalRoutes,0);
+          assert.equal(state.id,'PR-017');assert.equal(state.world,'coordination-studio');assert.equal(state.actors.length,4);assert.equal(state.owner,'native-scroll');assert.equal(state.mechanicalRoutes,0);
           assert.equal(state.decision,p>=.69);assert.equal(state.receipt,p>=.94);
           assert.equal(state.paperCount,56);assert.deepEqual(state.papers.map(x=>x[0]),Array.from({length:56},(_,i)=>i));
           assert.ok(budget.calls>0&&budget.calls<240&&budget.triangles>0);
           states.set(name,state);
         }
       }
-      if(comparison)continue;
+      if(comparison||stills)continue;
       const opening=states.get('opening'),trace=states.get('trace'),receipt=states.get('receipt');
       const changed=opening.papers.filter((m,i)=>Math.hypot(...[13,14,15].map(j=>m[j]-receipt.papers[i][j]))>1).length;
       const rotated=opening.papers.filter((m,i)=>Math.hypot(...[1,2,3,5,6,7,9,10,11].map(j=>m[j]-receipt.papers[i][j]))>.2).length;
@@ -91,9 +92,9 @@ try {
       results.push({width,height,changed,rotated,contextLoss:lost?'fallback verified':'extension unavailable'});
       assert.deepEqual(errors,[]);
     } catch(error){failures.push({width,height,error:String(error)});console.error(width,height,error);}
-    finally {await context.close();if(!comparison){const video=page.video();if(video)await video.saveAs(out+'/motion/'+width+'-native-forward-reverse.webm');}}
+    finally {await context.close();if(!comparison&&!stills){const video=page.video();if(video)await video.saveAs(out+'/motion/'+width+'-native-forward-reverse.webm');}}
   }
-  if(!comparison)for(const mode of ['reduced','gpu-off']){
+  if(!comparison&&!stills)for(const mode of ['reduced','gpu-off']){
     const page=await browser.newPage({viewport:{width:390,height:844},reducedMotion:mode==='reduced'?'reduce':'no-preference'});
     await page.goto(base+(mode==='gpu-off'?'?webgl=off':''),{waitUntil:'domcontentloaded'});
     await page.waitForFunction(()=>window.__SITE_READY__===true);
