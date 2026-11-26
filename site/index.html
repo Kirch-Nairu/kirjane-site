@@ -29,6 +29,10 @@
   <link rel="stylesheet" href="./css/brand-opening.css" />
   <link rel="stylesheet" href="./css/forge-cinematic-r3.css" />
   <link rel="modulepreload" href="./js/editorial-opening.js" />
+  <style>
+    #complexity-clarity-scene [data-handoff-chamber="live"] .cinematic-stage-scrim{background:linear-gradient(90deg,#101a17 0%,rgba(16,26,23,.94) 25%,rgba(16,26,23,.22) 46%,transparent 70%)}
+    @media(max-width:900px){#complexity-clarity-scene [data-handoff-chamber="live"] .cinematic-stage-scrim{background:linear-gradient(180deg,transparent 0%,transparent 36%,#101a17 51%)}#complexity-clarity-scene [data-handoff-chamber="live"] .cinematic-stage-hud{padding-top:clamp(230px,40svh,390px);padding-bottom:1rem}#complexity-clarity-scene [data-handoff-chamber="live"] .beat-stack{min-height:150px}#complexity-clarity-scene .handoff-scene-caption{top:8%!important;font-size:9px!important}}
+  </style>
   <noscript>
     <style>
       .cinematic-scrub-section,.cinematic-scrub-section.compact-scrub,.exhibition-scroll-wrapper{height:auto!important;}
@@ -414,13 +418,13 @@
               <div class="chapter-rail" role="group" aria-label="Jump to sequence chapter">
                 <button type="button" class="chapter-pill" data-clarity-jump="0.06" data-beat-target="complexity" aria-current="step">Complexity</button>
                 <button type="button" class="chapter-pill" data-clarity-jump="0.50" data-beat-target="alignment" aria-current="false">Alignment</button>
-                <button type="button" class="chapter-pill" data-clarity-jump="0.92" data-beat-target="clarity" aria-current="false">Clarity</button>
+                <button type="button" class="chapter-pill" data-clarity-jump="0.97" data-beat-target="clarity" aria-current="false">Clarity</button>
               </div>
 
               <details class="sequence-details"><summary>Explore the sequence</summary><div class="callout-pin-row" id="clarity-callout-pins" role="group" aria-label="Transformation state checkpoints">
                 <button type="button" class="callout-pin is-active" data-clarity-jump="0.10" data-pin-idx="0">Workarounds</button>
                 <button type="button" class="callout-pin" data-clarity-jump="0.52" data-pin-idx="1">Rules and approvals</button>
-                <button type="button" class="callout-pin" data-clarity-jump="0.92" data-pin-idx="2">Shared system</button>
+                <button type="button" class="callout-pin" data-clarity-jump="0.97" data-pin-idx="2">Shared system</button>
               </div></details>
             </div>
             <div aria-hidden="true"></div>
@@ -736,6 +740,20 @@
       onFrameDrawn: (idx) => director.setCurrentFrame(idx)
     });
 
+    let handoffChamber=null, handoffPhase=0, handoffDisposed=false;
+    const handoffStage=clarityCanvas.parentElement;
+    const handoffObserver=new IntersectionObserver(entries=>{
+      if(!entries.some(e=>e.isIntersecting))return;
+      handoffObserver.disconnect();
+      if(reduced || shortCinematic.matches || new URLSearchParams(location.search).get("webgl")==="off")return;
+      import("./js/forge-handoff-chamber.js").then(({createHandoffChamber})=>{
+        if(handoffDisposed)return;
+        handoffChamber=createHandoffChamber(handoffStage,clarityCanvas,reduced);
+        handoffChamber?.setPhase(handoffPhase);
+      }).catch(error=>console.warn("S02 chamber unavailable; original sequence retained",error));
+    },{rootMargin:"300px"});
+    handoffObserver.observe(handoffStage);
+
     director.registerScene({
       id: 'home-clarity',
       el: document.getElementById('complexity-clarity-scene'),
@@ -745,7 +763,9 @@
         { id: 'clarity', start: 0.68, end: 1.0 }
       ],
       onUpdate: ({ smooth, direction, activeChapter, inView, isReduced }) => {
-        if (inView && scrollY > 8 && !shortCinematic.matches) clarityPlayer.setProgress(clarityPhase(smooth), direction);
+        handoffPhase=smooth;
+        if(handoffChamber?.active) handoffChamber.setPhase(smooth);
+        else if (inView && scrollY > 8 && !shortCinematic.matches) clarityPlayer.setProgress(clarityPhase(smooth), direction);
         gradeSceneCanvas(clarityCanvas,smooth,{kind:'home',mobile:window.innerWidth<=900,reduced:isReduced});
         if (clarityProgress) clarityProgress.style.transform = `scaleX(${isReduced ? 1 : smooth})`;
         if (!isReduced) {
@@ -989,6 +1009,9 @@
     document.fonts.ready.then(() => director.measureAll());
     window.addEventListener('pagehide', (event) => {
       if (event.persisted) return;
+      handoffDisposed=true;
+      handoffObserver.disconnect();
+      handoffChamber?.dispose();
       clarityPlayer.destroy();
       field.dispose();
       director.destroy();
