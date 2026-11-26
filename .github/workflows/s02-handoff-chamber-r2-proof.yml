@@ -23,6 +23,7 @@ jobs:
       - run: npm ci --ignore-scripts --no-audit --no-fund
       - run: npx playwright install --with-deps chromium
       - run: node --check site/js/forge-handoff-chamber.js
+      - run: node --test scripts/s02_r5_rig.test.mjs
       - run: python scripts/build.py --preview --output dist/s02-preview
       - name: Capture early stills for author inspection
         run: |

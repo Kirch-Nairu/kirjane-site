@@ -45,9 +45,9 @@ try {
         results.push({width,height,name,phase:await stage.getAttribute('data-handoff-phase'),status:await status.textContent(),state,budget});
         if(!comparison){
           assert.equal(state.id,'PR-017');assert.equal(state.world,'coordination-studio');assert.equal(state.actors.length,4);assert.ok(state.actors.every(a=>a.length===10&&a.every(Number.isFinite)));assert.equal(state.owner,'native-scroll');assert.equal(state.mechanicalRoutes,0);
-          assert.equal(state.decision,p>=.69);assert.equal(state.receipt,p>=.94);
+          assert.equal(state.decision,p>=.69);assert.equal(state.receipt,p>=.94);assert.deepEqual(state.displays,[p>=.37,p>=.39,p>=.94]);
           assert.equal(state.paperCount,56);assert.deepEqual(state.papers.map(x=>x[0]),Array.from({length:56},(_,i)=>i));
-          assert.ok(budget.calls>0&&budget.calls<240&&budget.triangles>0);assert.ok(state.jointMatrices.every(actor=>actor.length===8&&actor.every(m=>m.length===16&&m.every(Number.isFinite))));if(name==='review'){assert.ok(state.contact.engage>.99);assert.equal(state.contact.clamped,false);assert.ok(state.contact.error<.015,'actual grip residual '+state.contact.error);}
+          assert.ok(budget.calls>0&&budget.calls<240&&budget.triangles>0);assert.ok(state.jointMatrices.every(actor=>actor.length===8&&actor.every(m=>m.length===16&&m.every(Number.isFinite))));if(name==='review'){assert.ok(state.contact.engage>.99);assert.equal(state.contact.clamped,false);assert.ok(state.contact.error<.015,'actual grip residual '+state.contact.error);assert.ok(Math.abs(state.contact.stampFace[1]-state.contact.documentFace[1])<.035,'stamp must reach document surface');assert.equal(state.displays[2],false);}
           states.set(name,state);
         }
       }
@@ -98,11 +98,12 @@ try {
     } catch(error){failures.push({width,height,error:String(error)});console.error(width,height,error);}
     finally {await context.close();if(!comparison&&!stills){const video=page.video();if(video)await video.saveAs(out+'/motion/'+width+'-native-forward-reverse.webm');}}
   }
-  if(!comparison&&!stills)for(const mode of ['reduced','gpu-off','no-js','normal']){
+  if(!comparison&&!stills)for(const mode of ['reduced','gpu-off','no-js','normal','shadow-off']){
     const page=await browser.newPage({viewport:{width:390,height:844},javaScriptEnabled:mode!=='no-js',reducedMotion:mode==='reduced'?'reduce':'no-preference'});
-    await page.goto(base+(mode==='gpu-off'?'?webgl=off':''),{waitUntil:'domcontentloaded'});
+    await page.goto(base+(mode==='gpu-off'?'?webgl=off':mode==='shadow-off'?'?s02shadow=off&s02qa=1':''),{waitUntil:'domcontentloaded'});
     if(mode!=='no-js')await page.waitForFunction(()=>window.__SITE_READY__===true);
     await page.locator('#complexity-clarity-scene').scrollIntoViewIfNeeded();
+    if(mode==='shadow-off'){await page.locator('#handoff-chamber-webgl').waitFor({state:'visible',timeout:20000});await page.evaluate(()=>window.__SCENE_DIRECTOR__.jumpTo('home-clarity',.625));await page.waitForFunction(()=>Math.abs(Number(document.querySelector('[data-handoff-chamber]')?.dataset.handoffPhase)-.625)<.003);await page.screenshot({path:out+'/shadow-off-review.png'});results.push({mode,budget:JSON.parse(await page.locator('[data-handoff-chamber]').getAttribute('data-handoff-budget'))});await page.close();continue;}
     if(mode==='normal'){await page.locator('#handoff-chamber-webgl').waitFor({state:'visible',timeout:20000});assert.equal(await page.locator('[data-handoff-state]').count(),0);assert.equal(await page.locator('[data-handoff-budget]').count(),0);const frames=await page.evaluate(async()=>{const log=[];await new Promise(resolve=>{let last=performance.now(),start=last;function tick(now){log.push(now-last);last=now;window.__SCENE_DIRECTOR__.jumpTo('home-clarity',Math.min(.97,(now-start)/3500));if(now-start<3500)requestAnimationFrame(tick);else resolve();}requestAnimationFrame(tick);});return log;});results.push({mode,frames});await page.close();continue;}
     assert.equal(await page.locator('#handoff-chamber-webgl').count(),0);
     assert.equal(await page.locator('#complexity-clarity-scene .cinematic-poster-fallback').count(),1);

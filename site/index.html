@@ -37,6 +37,18 @@
     @media(max-width:360px){#complexity-clarity-scene [data-handoff-chamber="live"] .cinematic-stage-hud{padding-top:clamp(190px,34svh,245px);padding-bottom:.75rem}#complexity-clarity-scene [data-handoff-chamber="live"] .beat-stack{min-height:140px}}
     @media(max-height:610px) and (min-aspect-ratio:21/20){#complexity-clarity-scene [data-handoff-chamber="live"] .cinematic-stage-hud{grid-template-columns:minmax(0,44%) 1fr;padding:3.6rem 1.5rem .4rem}#complexity-clarity-scene [data-handoff-chamber="live"] .beat-stack{min-height:0}#complexity-clarity-scene [data-handoff-chamber="live"] .beat-card h2{font-size:clamp(1.45rem,4vw,2rem)}#complexity-clarity-scene .handoff-scene-caption{top:16%!important;font-size:10px!important}}
 
+
+    /* Only an initialized S02 studio restores scroll chapters in short landscape. */
+    @media(max-height:610px) and (max-width:900px) and (min-aspect-ratio:21/20) and (prefers-reduced-motion:no-preference){
+      #complexity-clarity-scene:has([data-studio-interactive]){height:380svh}
+      #complexity-clarity-scene [data-studio-interactive]{position:sticky;top:0;height:100svh;min-height:0}
+      #complexity-clarity-scene [data-studio-interactive] .chapter-rail{display:flex}
+      #complexity-clarity-scene [data-studio-interactive] .scrub-progress-track{display:block}
+      #complexity-clarity-scene [data-studio-interactive] .beat-stack{display:block;position:relative;min-height:122px}
+      #complexity-clarity-scene [data-studio-interactive] .beat-card{position:absolute;inset:0;opacity:0;visibility:hidden;pointer-events:none}
+      #complexity-clarity-scene [data-studio-interactive] .beat-card.is-active{opacity:1;visibility:visible;pointer-events:auto}
+      #complexity-clarity-scene [data-studio-interactive] .sequence-details{display:none}
+    }
   </style>
   <noscript>
     <style>

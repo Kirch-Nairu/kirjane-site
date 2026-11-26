@@ -6,6 +6,8 @@ const clamp = x => Math.max(0, Math.min(1,x));
 const ease = x => {x=clamp(x);return x*x*x*(x*(x*6-15)+10);};
 const span = (p,a,b) => ease((p-a)/(b-a));
 const mix = (a,b,t) => a+(b-a)*t;
+// Positive bone lengths; clamp against the reachable annulus without changing the target.
+export function reachDistance(raw,L,M){return Math.max(Math.abs(L-M)+.001,Math.min(L+M-.001,raw));}
 export function createHandoffChamber(stage, legacy, reduced=false) {
   if(reduced || matchMedia('(prefers-reduced-motion: reduce)').matches ||
     new URLSearchParams(location.search).get('webgl')==='off') return null;
@@ -20,7 +22,7 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
   renderer.outputColorSpace=T.SRGBColorSpace;
   renderer.toneMapping=T.ACESFilmicToneMapping;
   renderer.toneMappingExposure=.89;
-  renderer.shadowMap.enabled=true;renderer.shadowMap.type=T.PCFSoftShadowMap;
+  renderer.shadowMap.enabled=new URLSearchParams(location.search).get('s02shadow')!=='off';renderer.shadowMap.type=T.PCFSoftShadowMap;
   const qaEnabled=new URLSearchParams(location.search).get('s02qa')==='1';
 
   const scene=new T.Scene();scene.background=new T.Color(0x263b40);scene.fog=new T.Fog(0x435355,24,65);
@@ -90,7 +92,8 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
   const destinations=[[-.65,1.16,.24],[-.55,1.16,.23],[-.95,1.16,.32],[-.58,1.16,.25]];
   function desk(g,w,d,m){shadow(g,0,0,w+1,d+1.2);b(g,m,0,1.04,0,w,.15,d).castShadow=true;b(g,timber,0,.945,0,w-.18,.05,d-.14);for(const x of [-w/2+.22,w/2-.22])b(g,brass,x,.88,0,.035,.035,d-.25);for(const x of [-w/2+.19,w/2-.19])for(const z of [-d/2+.16,d/2-.16])beam(g,timber,[x,.04,z],[x*.94,.98,z*.86],.065);}
   function chair(g,x,z,color,angle=0){const c=group(g,x,0,z);c.rotation.y=angle;shadow(c,0,0,1.2,1.2);for(const a of [-1,1])for(const d of [-1,1])beam(c,timber,[a*.27,0,d*.26],[a*.23,.47,d*.21],.045);ell(c,color,0,.49,0,.39,.09,.35).castShadow=true;ell(c,color,0,.87,-.29,.39,.39,.105);for(const x of [-.25,.25])beam(c,timber,[x,.45,-.22],[x,.83,-.29],.045);return c;}
-  function laptop(g,x,z,title,sub){const l=group(g,x,1.13,z);b(l,ink,0,.026,0,.77,.055,.51);b(l,black,0,.06,.04,.65,.014,.32);const s=group(l,0,.04,-.23);s.rotation.x=-.16;b(s,ink,0,.27,0,.77,.55,.05);placard(s,title,sub,0,.27,.032,.70,.46,'#d7e7dd','#2e5256');return l;}
+  const workDisplays=[];
+  function laptop(g,x,z,title,sub,doneTitle,doneSub,threshold){const l=group(g,x,1.13,z);b(l,ink,0,.026,0,.77,.055,.51);b(l,black,0,.06,.04,.65,.014,.32);const s=group(l,0,.04,-.23);s.rotation.x=-.16;b(s,ink,0,.27,0,.77,.55,.05);const pending=placard(s,title,sub,0,.27,.032,.70,.46,'#d7e7dd','#2e5256');const done=placard(s,doneTitle,doneSub,0,.27,.033,.70,.46,'#e8efdb','#355a55');done.visible=false;workDisplays.push({pending,done,threshold});return l;}
   function lamp(g,x,z){const l=group(g,x,1.13,z);cyl(l,brass,0,.035,0,.17,.07);beam(l,brass,[0,.05,0],[0,.73,0],.022);beam(l,brass,[0,.73,0],[.30,.81,.13],.022);mesh(taperGeo,teal,l,.3,.74,.13,.20,.25,.20);cyl(l,white,.3,.62,.13,.17,.018);}
   function mug(g,x,z,color){const m=group(g,x,1.19,z);cyl(m,color,0,0,0,.095,.15);cyl(m,black,0,.078,0,.073,.012);mesh(new T.TorusGeometry(.055,.015,6,12),color,m,.102,0,0,1,1,1);}
 
@@ -159,13 +162,13 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
   let operator,stamp,reviewPending,reviewApproved,receivePending,receiveDone;
   for(let i=0;i<4;i++){
     const g=group(root,...positions[i]);stations.push(g);animated.add(g);
-    if(i===0){desk(g,2.55,1.25,oak);chair(g,-.2,-.94,clay,0);laptop(g,.62,-.28,'New request','Details missing');lamp(g,-1.03,-.36);mug(g,.93,.3,teal);placard(g,'Intake','Receive the request',0,.78,.64,1.65,.38);staffers.push({i,staff:human(g,-.2,-.94,0,true,palettes[i])});}
-    else if(i===1){desk(g,2.50,1.4,timber);chair(g,.1,-1.02,navy,0);for(let j=0;j<5;j++)b(g,[teal,clay,cream,navy,sage][j],-.83+j*.20,1.37,-.41,.16,.45,.46);laptop(g,.65,-.25,'Records check','Source located');mug(g,.95,.35,cream);placard(g,'Records','Confirm the details',0,.8,.72,1.65,.38);staffers.push({i,staff:human(g,.1,-1.02,0,true,palettes[i])});}
+    if(i===0){desk(g,2.55,1.25,oak);chair(g,-.2,-.94,clay,0);laptop(g,.62,-.28,'Intake','PR-017 · Details missing','Intake complete','PR-017 · Sent to records',.37);lamp(g,-1.03,-.36);mug(g,.93,.3,teal);placard(g,'Intake','Receive the request',0,.78,.64,1.65,.38);staffers.push({i,staff:human(g,-.2,-.94,0,true,palettes[i])});}
+    else if(i===1){desk(g,2.50,1.4,timber);chair(g,.1,-1.02,navy,0);for(let j=0;j<5;j++)b(g,[teal,clay,cream,navy,sage][j],-.83+j*.20,1.37,-.41,.16,.45,.46);laptop(g,.65,-.25,'Records check','PR-017 · Checking source','Source confirmed','PR-017 · Review required',.39);mug(g,.95,.35,cream);placard(g,'Records','Confirm the details',0,.8,.72,1.65,.38);staffers.push({i,staff:human(g,.1,-1.02,0,true,palettes[i])});}
     else if(i===2){shadow(g,0,0,4.2,3.0,.052);cyl(g,oak,0,1.04,0,1.6,.15,1.08).castShadow=true;cyl(g,timber,0,.95,0,1.49,.035,1.0);cyl(g,timber,0,.52,0,.29,1.0);cyl(g,ink,0,.075,0,.73,.15);chair(g,.12,-1.20,teal,0);chair(g,-1.55,.04,clay,Math.PI/2);chair(g,1.55,.04,navy,-Math.PI/2);
       operator=human(g,.12,-1.20,0,true,palettes[i]);lamp(g,-1,-.35);flatCard(g,'Review checklist','Scope • amount • owner',-.56,1.13,.30,.73,.45);
       stamp=group(g,.34,1.40,-.78);animated.add(stamp);cyl(stamp,brass,0,0,0,.06,.13);ell(stamp,timber,0,.065,0,.10,.055,.10);b(stamp,ink,0,-.085,0,.19,.06,.15);
       reviewPending=placard(g,'Review pending','Human decision required',-.87,1.33,.43,.94,.31,'#5b3526','#f6d6a2');reviewApproved=placard(g,'Approved','Decision recorded',-.87,1.33,.43,.94,.31,'#244943','#cae5cf');b(g,timber,-.87,1.14,.43,1.0,.05,.19);}
-    else{desk(g,2.7,1.30,oak);b(g,teal,.96,.48,-.08,.55,.82,.75);for(let j=0;j<2;j++){b(g,oak,.96,.36+j*.36,.31,.43,.27,.055);b(g,brass,.96,.39+j*.36,.35,.17,.035,.05);}laptop(g,-.8,-.27,'Purchasing','Assignment queue');lamp(g,.98,-.39);mug(g,.58,.36,clay);staffers.push({i,staff:human(g,.18,-.98,0,false,palettes[i])});
+    else{desk(g,2.7,1.30,oak);b(g,teal,.96,.48,-.08,.55,.82,.75);for(let j=0;j<2;j++){b(g,oak,.96,.36+j*.36,.31,.43,.27,.055);b(g,brass,.96,.39+j*.36,.35,.17,.035,.05);}laptop(g,-.8,-.27,'Purchasing','Awaiting approval','Receipt confirmed','PR-017 · Assigned',.94);lamp(g,.98,-.39);mug(g,.58,.36,clay);staffers.push({i,staff:human(g,.18,-.98,0,false,palettes[i])});
       receivePending=placard(g,'Purchasing','Awaiting approved record',0,.83,.661,1.76,.35);receiveDone=placard(g,'Assigned to purchasing','Receipt confirmed',0,.83,.662,1.76,.35,'#244943','#cae5cf');}
   }
   // CUSTODY — one physical folder, 56 independently conserved sheets.
@@ -193,6 +196,7 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
   Object.assign(status.style,{position:'absolute',zIndex:'3',right:'3%',top:'11%',font:'500 12px system-ui',letterSpacing:'.035em',color:'#fff3df',background:'rgba(22,37,40,.74)',padding:'7px 10px',borderLeft:'1px solid #e5b97e',textShadow:'none',textAlign:'right',pointerEvents:'none',whiteSpace:'pre-line'});
   legacy.after(canvas);
   stage.append(status);
+  const shots=[[0,-.4,1.65,-.5,.05,16.8,7.5,12.4,5.8],[.15,-2.65,1.85,.0,.02,11.8,5.5,9.2,4.9],[.37,-2.25,1.65,-1.05,-.13,9.2,4.6,8.2,4.5],[.55,.75,1.46,-.45,-.20,4.6,2.75,5.9,3.25],[.69,.75,1.46,-.45,-.12,4.55,2.7,5.9,3.25],[.83,2.9,1.8,-1.05,.04,7.7,4.1,8.3,4.5],[.95,4.1,1.55,-1.45,.14,6.5,3.5,7.6,4.2],[1,.1,1.6,-.6,.06,15.8,6.7,13,6]];
   function draw(){
     if(disposed||failed||!visible||document.hidden)return;
 
@@ -231,8 +235,8 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
     stamp.localToWorld(jointTarget.set(0,.065,0));
     operator.torso.worldToLocal(jointGoal.copy(jointTarget)).sub(arm.a.position);
     // Grip is .043 beyond the wrist along the lower arm. Solve to that actual anchor.
-    const L=.29,M=.333,rawDistance=jointGoal.length(),d=Math.max(Math.abs(L-M)+.001,Math.min(L+M-.001,rawDistance));
-    jointDir.copy(jointGoal).normalize();
+    const L=.29,M=.333,rawDistance=jointGoal.length(),d=reachDistance(rawDistance,L,M);
+    jointDir.copy(jointGoal);if(rawDistance<1e-9)jointDir.set(0,-1,0);else jointDir.multiplyScalar(1/rawDistance);
     jointBend.set(1,0,0).addScaledVector(jointDir,-jointDir.x).normalize();
     if(jointBend.lengthSq()<.001)jointBend.set(0,0,1).addScaledVector(jointDir,-jointDir.z).normalize();
     const along=(L*L-M*M+d*d)/(2*d);
@@ -242,12 +246,12 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
     jointQ2.setFromUnitVectors(jointDown,jointLower.applyQuaternion(jointInv.copy(jointQ1).invert()));
     arm.a.quaternion.slerp(jointQ1,engage);arm.elbow.quaternion.slerp(jointQ2,engage);
     arm.wrist.quaternion.slerp(jointInv.identity(),engage);
+    workDisplays.forEach(d=>{d.pending.visible=p<d.threshold;d.done.visible=p>=d.threshold;});
     reviewPending.visible=p<.69;reviewApproved.visible=p>=.69;receivePending.visible=p<.94;receiveDone.visible=p>=.94;
     ambient.intensity=mix(.70,1.04,trace);key.intensity=mix(2.55,3.65,trace);rim.intensity=mix(.95,1.22,decision);heroLight.position.copy(request.position);heroLight.position.y+=.8;heroLight.position.z+=1;heroLight.intensity=1.4+4*spin+2*press;
     arcs.forEach((arc,i)=>{const from=[.18,.39,.75][i],to=[.37,.55,.94][i],q=span(p,from,to);arc.geometry.setDrawRange(0,Math.floor(q*64)+1);arc.material.opacity=.78*pulse(p,from,(from+to)/2,to+.065);});
     // CINEMATOGRAPHY — wide master, active record, intimate review, release, calm pullback.
     const portrait=w/h<1.05,compact=w<=900&&!portrait;
-    const shots=[[0,-.4,1.65,-.5,.05,16.8,7.5,12.4,5.8],[.15,-2.65,1.85,.0,.02,11.8,5.5,9.2,4.9],[.37,-2.25,1.65,-1.05,-.13,9.2,4.6,8.2,4.5],[.55,.75,1.46,-.45,-.20,4.6,2.75,5.9,3.25],[.69,.75,1.46,-.45,-.12,4.55,2.7,5.9,3.25],[.83,2.9,1.8,-1.05,.04,7.7,4.1,8.3,4.5],[.95,4.1,1.55,-1.45,.14,6.5,3.5,7.6,4.2],[1,.1,1.6,-.6,.06,15.8,6.7,13,6]];
     let k=0;while(k<shots.length-2&&p>shots[k+1][0])k++;const l=shots[k],r=shots[k+1],v=span(p,l[0],r[0]),shot=n=>mix(l[n],r[n],v);
     const cx=shot(1),cy=shot(2),cz=shot(3),angle=shot(4),radius=shot(portrait?7:5);
     camera.fov=portrait?47:compact?49:40;camera.position.set(cx+Math.sin(angle)*radius,shot(portrait?8:6),cz+Math.cos(angle)*radius);camera.lookAt(cx,cy,cz);camera.setViewOffset(w,h,portrait?0:-w*(compact?.15:.14),portrait?h*.17:0,w,h);camera.updateProjectionMatrix();camera.updateMatrixWorld();
@@ -259,9 +263,9 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
     const round=v=>+v.toFixed(3),vec=v=>v.toArray().map(round);
     const actualGrip=arm.grip.getWorldPosition(sampleContact),contactError=actualGrip.distanceTo(jointTarget);
     const projection=o=>{o.getWorldPosition(projected).project(camera);return [round((projected.x+1)*.5),round((1-projected.y)*.5)];};
-    stage.dataset.handoffState=JSON.stringify({id:'PR-017',position:vec(request.position),rotation:[request.rotation.x,request.rotation.y,request.rotation.z].map(round),decision:p>=.69,receipt:p>=.94,stamp:round(press),camera:vec(camera.position),stations:stations.map(g=>[...vec(g.position),round(g.rotation.y)]),papers:debris.map(d=>{sheets.getMatrixAt(d.id,matrix);return [d.id,...matrix.elements.map(round)];}),paperCount:sheets.count,mechanicalRoutes:0,owner:'native-scroll',world:'coordination-studio',actors:[operator,...staffers.map(s=>s.staff)].map(s=>[round(s.head.rotation.x),round(s.head.rotation.y),...s.arms.flatMap(a=>a.elbow.quaternion.toArray().map(round))]),jointMatrices:actors.map(s=>[s.torso,s.head,...s.arms.flatMap(a=>[a.a,a.elbow,a.wrist])].map(o=>o.matrixWorld.elements.map(round))),contact:{error:round(contactError),engage:round(engage),distance:round(rawDistance),clamped:rawDistance>L+M-.001||rawDistance<Math.abs(L-M)+.001,grip:vec(actualGrip),target:vec(jointTarget)},screen:{request:projection(request),reviewer:projection(operator.head),receiver:projection(staffers[2].staff.head)}});
+    stage.dataset.handoffState=JSON.stringify({id:'PR-017',position:vec(request.position),rotation:[request.rotation.x,request.rotation.y,request.rotation.z].map(round),decision:p>=.69,receipt:p>=.94,stamp:round(press),camera:vec(camera.position),stations:stations.map(g=>[...vec(g.position),round(g.rotation.y)]),papers:debris.map(d=>{sheets.getMatrixAt(d.id,matrix);return [d.id,...matrix.elements.map(round)];}),paperCount:sheets.count,mechanicalRoutes:0,owner:'native-scroll',world:'coordination-studio',actors:[operator,...staffers.map(s=>s.staff)].map(s=>[round(s.head.rotation.x),round(s.head.rotation.y),...s.arms.flatMap(a=>a.elbow.quaternion.toArray().map(round))]),jointMatrices:actors.map(s=>[s.torso,s.head,...s.arms.flatMap(a=>[a.a,a.elbow,a.wrist])].map(o=>o.matrixWorld.elements.map(round))),contact:{error:round(contactError),engage:round(engage),distance:round(rawDistance),clamped:rawDistance>L+M-.001||rawDistance<Math.abs(L-M)+.001,grip:vec(actualGrip),target:vec(jointTarget),stampFace:vec(stamp.localToWorld(projected.set(0,-.115,0))),documentFace:vec(request.localToWorld(projected.set(0,.092,0)))},screen:{request:projection(request),reviewer:projection(operator.head),receiver:projection(staffers[2].staff.head)},displays:workDisplays.map(d=>d.done.visible)});
     }
-    try {renderer.render(scene,camera);drawCount++;stage.dataset.handoffPhase=p.toFixed(4);if(qaEnabled)stage.dataset.handoffBudget=JSON.stringify({calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures,renderMs:performance.now()-started,drawCount});}
+    try {renderer.render(scene,camera);drawCount++;stage.dataset.handoffPhase=p.toFixed(4);if(qaEnabled)stage.dataset.handoffBudget=JSON.stringify({calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures,shadowMap:key.shadow.map?.width||0,renderMs:performance.now()-started,drawCount});}
     catch(error){console.warn("Handoff renderer failed",error);fallback();}
   }
   function resize(){
@@ -276,13 +280,13 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
   const ro=new ResizeObserver(resize);ro.observe(stage);
   const io=new IntersectionObserver(([e])=>{visible=e.isIntersecting;if(visible)draw();});io.observe(stage);
   const visibility=()=>{if(!document.hidden)draw();};document.addEventListener('visibilitychange',visibility);
-  legacy.style.visibility='hidden';stage.dataset.handoffChamber='live';
+  legacy.style.visibility='hidden';stage.dataset.studioInteractive='true';stage.dataset.handoffChamber='live';
   resize();
   return {
     get active(){return !failed&&!disposed;},
     setPhase(p){phase=clamp(p);if(phase!==last){last=phase;draw();}},
     dispose(){if(disposed)return;disposed=true;ro.disconnect();io.disconnect();document.removeEventListener('visibilitychange',visibility);
       scene.traverse(o=>{if(o.geometry)geometries.add(o.geometry);if(o.material)materials.add(o.material);});
-      geometries.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());textures.forEach(t=>t.dispose());key.shadow.dispose();canvas.removeEventListener('webglcontextlost',onLost);canvas.removeEventListener('webglcontextrestored',onRestored);renderer.dispose();canvas.remove();status.remove();legacy.style.visibility='';stage.removeAttribute('data-handoff-chamber');stage.removeAttribute('data-handoff-phase');stage.removeAttribute('data-handoff-state');stage.removeAttribute('data-handoff-budget');}
+      geometries.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());textures.forEach(t=>t.dispose());key.shadow.dispose();canvas.removeEventListener('webglcontextlost',onLost);canvas.removeEventListener('webglcontextrestored',onRestored);renderer.dispose();canvas.remove();status.remove();legacy.style.visibility='';stage.removeAttribute('data-studio-interactive');stage.removeAttribute('data-handoff-chamber');stage.removeAttribute('data-handoff-phase');stage.removeAttribute('data-handoff-state');stage.removeAttribute('data-handoff-budget');}
   };
 }
