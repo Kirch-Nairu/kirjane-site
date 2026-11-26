@@ -6,7 +6,7 @@ const out=process.env.S02_EVIDENCE || 'dist/s02-chamber-evidence';
 const comparison=process.env.S02_COMPARE==='1';
 await mkdir(out,{recursive:true});
 const browser=await chromium.launch({headless:true,args:['--enable-webgl','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
-const results=[];
+const results=[],failures=[];
 const shots=[['opening',.04],['trace',.44],['review',.625],['approved',.72],['flight',.85],['receipt',.97]];
 try {
   for(const [width,height] of [[1440,900],[390,844],[320,700]]){
@@ -21,9 +21,17 @@ try {
       await stage.locator('#handoff-chamber-webgl').waitFor({state:'visible',timeout:20000});
       const status=stage.locator('.handoff-scene-caption');
       async function seek(p){
-        // Instant native scroll followed by the real director's damping. No scene setters.
-        await page.evaluate(p=>{const el=document.getElementById('complexity-clarity-scene'),r=el.getBoundingClientRect();window.scrollTo({top:Math.round(scrollY+r.top+p*Math.max(1,r.height-innerHeight)),behavior:'instant'});},p);
-        await page.waitForFunction(({p,comparison})=>{const e=document.querySelector('[data-handoff-chamber]'),s=window.__SCENE_DIRECTOR__.getScenes()['home-clarity'];return e&&s&&Math.abs(s.exact-p)<.004&&Math.abs(s.exact-s.smooth)<.0001&&Math.abs(Number(e.dataset.handoffPhase)-s.exact)<(comparison ? .001 : .0002);},{p,comparison},{timeout:20000});
+        // Use the native director to remeasure responsive geometry. Never inject
+        // a visual phase or bypass the real scroll listener.
+        await page.evaluate(p=>window.__SCENE_DIRECTOR__.jumpTo('home-clarity',p),p);
+        try {
+          await page.waitForFunction(({p,comparison})=>{const e=document.querySelector('[data-handoff-chamber]'),s=window.__SCENE_DIRECTOR__.getScenes()['home-clarity'];return e&&s&&Math.abs(s.exact-p)<.004&&Math.abs(s.exact-s.smooth)<.0001&&Math.abs(Number(e.dataset.handoffPhase)-s.exact)<(comparison ? .001 : .0002);},{p,comparison},{timeout:30000});
+        } catch(error){
+          const diagnostics=await page.evaluate(()=>{const e=document.querySelector('[data-handoff-chamber]');return {scene:window.__SCENE_DIRECTOR__.getScenes()['home-clarity'],phase:e?.dataset.handoffPhase,scroll:scrollY,viewport:[innerWidth,innerHeight],stage:e?.getBoundingClientRect().toJSON()};});
+          results.push({width,height,target:p,diagnostics,error:String(error)});
+          await page.screenshot({path:out+'/'+width+'-seek-failure-'+p+'.png'});
+          throw error;
+        }
       }
       const states=new Map();
       for(const [name,p] of shots){
@@ -82,7 +90,8 @@ try {
       if(lost){await page.waitForFunction(()=>!document.querySelector('[data-handoff-chamber]'));assert.equal(await stage.locator('#home-clarity-canvas').evaluate(c=>getComputedStyle(c).visibility),'visible');await page.screenshot({path:out+'/'+width+'-context-lost.png'});}
       results.push({width,height,changed,rotated,contextLoss:lost?'fallback verified':'extension unavailable'});
       assert.deepEqual(errors,[]);
-    } finally {await context.close();if(!comparison){const video=page.video();if(video)await video.saveAs(out+'/motion/'+width+'-native-forward-reverse.webm');}}
+    } catch(error){failures.push({width,height,error:String(error)});console.error(width,height,error);}
+    finally {await context.close();if(!comparison){const video=page.video();if(video)await video.saveAs(out+'/motion/'+width+'-native-forward-reverse.webm');}}
   }
   if(!comparison)for(const mode of ['reduced','gpu-off']){
     const page=await browser.newPage({viewport:{width:390,height:844},reducedMotion:mode==='reduced'?'reduce':'no-preference'});
@@ -93,5 +102,5 @@ try {
     assert.equal(await page.locator('#complexity-clarity-scene .cinematic-poster-fallback').count(),1);
     results.push({mode,result:'fallback present'});await page.close();
   }
-} finally {await writeFile(out+'/results.json',JSON.stringify(results,null,2));await browser.close();}
-console.log('S02 browser evidence:',results.length);
+} finally {await writeFile(out+'/results.json',JSON.stringify({results,failures},null,2));await browser.close();}
+console.log('S02 browser evidence:',results.length);assert.deepEqual(failures,[],'viewport failures');

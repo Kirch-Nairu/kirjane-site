@@ -54,6 +54,7 @@ jobs:
       - name: Equivalent shots on immutable R1 and rejected R2
         run: |
           mkdir -p dist/s02-comparison
+          failed=0
           for pair in 'r1 f75a5f78e42581e05f11abb64150f036ca63915a' 'r2 adbb968a2737b21c6043717162bd432c65898147'; do
             read -r label sha <<< "$pair"
             git worktree add --detach "/tmp/s02-$label" "$sha"
@@ -61,11 +62,12 @@ jobs:
             server=$!
             trap 'kill "$server" 2>/dev/null || true' EXIT
             for i in $(seq 1 20); do curl -fsS http://127.0.0.1:8725/ >/dev/null && break; sleep 1; done
-            S02_COMPARE=1 S02_URL=http://127.0.0.1:8725/ S02_EVIDENCE="dist/s02-comparison/$label" node scripts/qa_s02_handoff_chamber.mjs
+            S02_COMPARE=1 S02_URL=http://127.0.0.1:8725/ S02_EVIDENCE="dist/s02-comparison/$label" node scripts/qa_s02_handoff_chamber.mjs || failed=1
             kill "$server"
             wait "$server" || true
             trap - EXIT
           done
+          exit "$failed"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
