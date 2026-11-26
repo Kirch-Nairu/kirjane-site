@@ -217,18 +217,18 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
     const focus=span(p,.43,.55)-span(p,.69,.82);
     const angle=mix(.45,-.29,span(p,0,.48))+span(p,.78,1)*.48;
     const portrait=w<901;
-    const radius=(portrait?27:23)-focus*(portrait?5:8);
+    const radius=(portrait?34:25)-focus*(portrait?12:8);
     const cx=mix(0,2,focus),cz=mix(0,1.5,focus);
-    camera.position.set(cx+Math.sin(angle)*radius, mix(portrait?17:13,6,focus),cz+Math.cos(angle)*radius);
+    camera.position.set(cx+Math.sin(angle)*radius, mix(portrait?20:14,7,focus),cz+Math.cos(angle)*radius);
     camera.lookAt(cx, .15+focus*.75,cz);
     // Off-axis lens composition leaves the editorial copy area undisturbed.
-    camera.setViewOffset(w,h,portrait?0:-w*.20,portrait?h*.21:0,w,h);
+    camera.setViewOffset(w,h,portrait?0:-w*.17,0,w,h);
     camera.updateProjectionMatrix();
     status.textContent=p<.25?'01 / DISORDER\nPR-017 · ROUTE UNRESOLVED':p<.55?'02 / TRACE\nPR-017 · CUSTODY FOUND':p<.73?'03 / HUMAN REVIEW\nPR-017 · '+(p<.68?'AWAITING DECISION':'APPROVED'):'04 / HANDOVER\nPR-017 · '+(p<.94?'IN TRANSIT':'RECEIVED');
     renderer.render(scene,camera);
   }
   function resize(){
-    if(disposed||failed)return;const r=stage.getBoundingClientRect();w=Math.max(1,Math.round(r.width));h=Math.max(1,Math.round(r.height));
+    if(disposed||failed)return;const r=stage.getBoundingClientRect();w=Math.max(1,Math.round(r.width));h=Math.max(1,Math.round(r.height*(w<901?.46:1)));canvas.style.height=w<901?"46%":"100%";
     const scale=w<901?.80:.75;renderer.setSize(Math.round(w*scale),Math.round(h*scale),false);
     camera.aspect=w/h;camera.updateProjectionMatrix();draw();
   }
