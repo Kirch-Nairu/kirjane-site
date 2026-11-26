@@ -42,7 +42,7 @@ try {
         const budget=JSON.parse(await stage.getAttribute('data-handoff-budget')||'null');
         results.push({width,height,name,phase:await stage.getAttribute('data-handoff-phase'),status:await status.textContent(),state,budget});
         if(!comparison){
-          assert.equal(state.id,'PR-017');assert.equal(state.world,'coordination-studio');assert.equal(state.actors.length,4);assert.equal(state.owner,'native-scroll');assert.equal(state.mechanicalRoutes,0);
+          assert.equal(state.id,'PR-017');assert.equal(state.world,'coordination-studio');assert.equal(state.actors.length,4);assert.ok(state.actors.every(a=>a.length===10&&a.every(Number.isFinite)));assert.equal(state.owner,'native-scroll');assert.equal(state.mechanicalRoutes,0);
           assert.equal(state.decision,p>=.69);assert.equal(state.receipt,p>=.94);
           assert.equal(state.paperCount,56);assert.deepEqual(state.papers.map(x=>x[0]),Array.from({length:56},(_,i)=>i));
           assert.ok(budget.calls>0&&budget.calls<240&&budget.triangles>0);
