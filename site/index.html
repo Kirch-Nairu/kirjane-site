@@ -764,9 +764,10 @@
         { id: 'alignment', start: 0.34, end: 0.68 },
         { id: 'clarity', start: 0.68, end: 1.0 }
       ],
-      onUpdate: ({ smooth, direction, activeChapter, inView, isReduced }) => {
-        handoffPhase=smooth;
-        if(handoffChamber?.active) handoffChamber.setPhase(smooth);
+      onUpdate: ({ exact, smooth, direction, activeChapter, inView, isReduced }) => {
+        // Match the native director's settle threshold before it clears its dirty flag.
+        handoffPhase=Math.abs(exact-smooth)<.0004?exact:smooth;
+        if(handoffChamber?.active) handoffChamber.setPhase(handoffPhase);
         else if (inView && scrollY > 8 && !shortCinematic.matches) clarityPlayer.setProgress(clarityPhase(smooth), direction);
         gradeSceneCanvas(clarityCanvas,smooth,{kind:'home',mobile:window.innerWidth<=900,reduced:isReduced});
         if (clarityProgress) clarityProgress.style.transform = `scaleX(${isReduced ? 1 : smooth})`;
