@@ -1,6 +1,6 @@
 import * as T from '../vendor/three/three.module.js';
 
-// S02 R2: THE HANDOFF CHAMBER — a full architectural transfer room. All motion is a pure function of director phase.
+// S02 R3: THE HANDOFF CHAMBER — a living office diorama, directed in scroll time. All motion is a pure function of director phase.
 // No external assets, extra RAF, timers, or simulated backend.
 const clamp = x => Math.max(0, Math.min(1,x));
 const ease = x => {x=clamp(x);return x*x*x*(x*(x*6-15)+10);};
@@ -24,11 +24,12 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
   scene.background=new T.Color(0x101a17);
   scene.fog=new T.FogExp2(0x101a17,.014);
   const camera=new T.PerspectiveCamera(43,1,.1,120);
-  scene.add(new T.HemisphereLight(0xb5c8bc,0x594531,1.55));
+  const ambient=new T.HemisphereLight(0xb5c8bc,0x594531,1.55);scene.add(ambient);
   const key=new T.DirectionalLight(0xffe5b6,3.6);key.position.set(-6,13,8);scene.add(key);
   const rim=new T.DirectionalLight(0x6cc9ae,1.8);rim.position.set(9,5,-10);scene.add(rim);
   const amberLight=new T.PointLight(0xffa052,18,9);amberLight.position.set(1,2,1);scene.add(amberLight);
   const root=new T.Group();scene.add(root);
+  const heroLight=new T.PointLight(0xffd9a2,0,7);scene.add(heroLight);
   const mat=(color,roughness=.82,metalness=.08)=>new T.MeshStandardMaterial({color,roughness,metalness,flatShading:true});
   const concrete=mat(0x777b68), dark=mat(0x222c28), iron=mat(0x414c43,.48,.5), rust=mat(0x805b3a);
   const ivory=mat(0xd6c9a3), paper=mat(0xf1e6c5), wood=mat(0x6c4f39), green=mat(0x427f60);
@@ -92,7 +93,7 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
     b(room,iron,side*10.6,-.75,-5.5+i*2.3,1.15,1.65,.85);
     b(room,recess,side*10.6,-.65,-5.04+i*2.3,.88,.9,.05);
   }
-  sign(room,'OPERATIONS / TRANSFER HALL',0,6.1,-7.8,7,.68,'#d9dfc3','#26352d');
+  sign(room,'OPERATIONS / SHARED RECORDS',0,6.1,-7.8,7,.68,'#d9dfc3','#26352d');
   // Soft baked contact shadows: no expensive real-time shadow maps.
   const shadowCanvas=document.createElement('canvas');shadowCanvas.width=shadowCanvas.height=64;
   const sx=shadowCanvas.getContext('2d'),sg=sx.createRadialGradient(32,32,6,32,32,31);
@@ -137,7 +138,7 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
     beam(root,iron,[side*8.8,.44,-5],[side*8.8,.44,5],.13);
     beam(root,iron,[side*8.8,-.08,-5],[side*8.8,-.08,5],.075);
   }
-  const stations=[];
+  const stations=[],staffers=[];
   const positions=[[-5.9,0,2.3],[-2.6,0,-2.7],[2.25,0,1.55],[6.5,0,-1.7]];
   const names=['01 / INTAKE','02 / RECORDS','03 / REVIEW','04 / RECEIVING'];
   function papers(parent,x,y,z,count=6){
@@ -211,73 +212,65 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
       reviewApproved=sign(g,'APPROVED',0,2.36,-.62,1.55,.44,'#bdf5aa','#18382d');
       b(g,amber,-.48,1.1,.56,.24,.075,.22);
     }else{
-      const staff=human(g,-.88,.85,Math.PI+.2);
-      staff.arms[0].rotation.x=-.35;staff.arms[1].rotation.x=-.6;
+      const staff=human(g,-.88,.85,Math.PI+.2);staffers.push({staff,i});
     }
     if(i===3){receivePending=sign(g,'AWAITING',0,2.36,-.62,1.55,.44,'#e2c290','#2e3026');receiveDone=sign(g,'RECEIVED',0,2.36,-.62,1.55,.44,'#bcf3aa','#18382d');}
   }
   // A single durable file object, not generated frames. Paper and green spine.
   const request=group(root);
-  // A low wheeled carrier remains under the sole request on the physical track.
-  b(request,iron,0,-.09,0,1.12,.10,.82);
-  for(const x of [-.37,.37])for(const z of [-.33,.33]){const wheel=cylinder(request,black,x,-.15,z,.095,.09,.095,10);wheel.rotation.x=Math.PI/2;}
-  b(request,wood,0,0,0,.96,.12,.7);b(request,paper,0,.079,0,.82,.06,.59);
-  b(request,green,-.36,.13,0,.16,.035,.67);b(request,amber,.31,.13,-.24,.13,.025,.1);
-  const fileLabel=sign(request,'PR-017',0,.12,0,.66,.27,'#243b30','#e9dfb9');fileLabel.rotation.x=-Math.PI/2;
-  const fileFlag=sign(request,'PR-017',0,.04,.39,.88,.21,'#e6e8bf','#20372c');
-  // Fixed infrastructure rail, red dead-end and green valid route. Light bars track route state.
+  b(request,wood,0,0,0,1.15,.13,.84);b(request,paper,0,.083,0,1.04,.06,.73);
+  b(request,green,-.46,.13,0,.19,.04,.8);b(request,amber,.42,.13,-.29,.14,.03,.11);
+  const fileLabel=sign(request,'PR-017',0,.125,0,.86,.34,'#243b30','#f5e6bd');fileLabel.rotation.x=-Math.PI/2;
+  // Camera-facing custody plate follows the one file, never a duplicate prop.
+  const labelSource=sign(request,'PR-017',0,.62,0,1.36,.34,'#f4e8c5','#234437');
+  const fileFlag=new T.Sprite(new T.SpriteMaterial({map:labelSource.material.map,depthTest:false,depthWrite:false,toneMapped:false}));
+  fileFlag.position.set(0,.62,0);fileFlag.scale.set(1.52,.38,1);fileFlag.renderOrder=9;
+  request.add(fileFlag);labelSource.removeFromParent();labelSource.geometry.dispose();labelSource.material.dispose();
   const path=positions.map(([x,,z])=>new T.Vector3(x,1.19,z+.15));
-  const conduits=[];
+  // A fine graphic trace lives on the floor; suspended arcs are light, not machinery.
+  const conduits=[],arcs=[];
   for(let i=0;i<3;i++){
-    const a=path[i],c=path[i+1];const lane=group(root);
-    const d=c.clone().sub(a),len=Math.hypot(d.x,d.z),steps=Math.ceil(len/.46);
-    const unit=d.clone().normalize(),normal=new T.Vector3(-unit.z,0,unit.x);
-    // Between desk edges: continuous twin rails and a dark roller bed.
-    const start=a.clone().addScaledVector(unit,1.12),end=c.clone().addScaledVector(unit,-1.12);
-    for(const offset of [-.39,.39]){
-      const aa=start.clone().addScaledVector(normal,offset),bb=end.clone().addScaledVector(normal,offset);
-      beam(lane,iron,[aa.x,1.04,aa.z],[bb.x,1.04,bb.z],.10);
-    }
-    for(let j=0;j<Math.ceil((len-2.24)/.28);j++){
-      const t=(j+.5)/Math.ceil((len-2.24)/.28),v=start.clone().lerp(end,t);
-      const aa=v.clone().addScaledVector(normal,-.36),bb=v.clone().addScaledVector(normal,.36);
-      beam(lane,j%3===0?iron:dark,[aa.x,.98,aa.z],[bb.x,.98,bb.z],.13);
-      if(j%7===0){b(lane,iron,v.x,-.05,v.z,.16,1.9,.16);shadow(lane,v.x,-1.12,v.z,.65,.65);}
-    }
+    const a=path[i],c=path[i+1],len=a.distanceTo(c),steps=Math.ceil(len/.45);
     for(let j=0;j<steps;j++){
       const t=(j+.5)/steps,x=mix(a.x,c.x,t),z=mix(a.z,c.z,t);
-      b(lane,iron,x,-.99,z,.43,.19,.43);
-      const mark=b(lane,live,x,-.86,z,.24,.045,.24);conduits.push({mark,i,t});
+      const mark=b(root,live,x,-1.145,z,.16,.025,.16);conduits.push({mark,i,t});
     }
-    beam(lane,iron,[a.x,-.8,a.z],[c.x,-.8,c.z],.11);
+    const pts=[];
+    for(let j=0;j<=48;j++){const t=j/48;pts.push(new T.Vector3(mix(a.x,c.x,t),1.19+Math.sin(t*Math.PI)*1.85,mix(a.z,c.z,t)));}
+    const geo=new T.BufferGeometry().setFromPoints(pts);
+    const material=new T.LineBasicMaterial({color:0xc1e9aa,transparent:true,opacity:0,depthWrite:false});
+    const arc=new T.Line(geo,material);root.add(arc);arcs.push(arc);
   }
-  // Physical interlock at the review exit, clear only after decision.
-  const outbound=path[3].clone().sub(path[2]).normalize();
-  const gateAt=path[2].clone().addScaledVector(outbound,1.28);
-  const gate=group(root,gateAt.x,1.04,gateAt.z);
-  gate.rotation.y=Math.atan2(outbound.x,outbound.z);
-  for(const x of [-.55,.55]){
-    b(gate,iron,x,.16,0,.14,.45,.22);
-    b(gate,dark,x,-.08,0,.28,.13,.30);
-  }
-  const gatePivot=group(gate,-.53,.32,0);
-  const gateArm=b(gatePivot,amber,.51,0,0,1.02,.10,.12);
-  for(let i=0;i<4;i++)b(gatePivot,dark,.14+i*.22,0,.065,.08,.105,.018);
-  const gateLamp=b(gate,amber,.55,.48,0,.13,.10,.13);
-  const headings=path.slice(1).map((point,i)=>Math.atan2(point.x-path[i].x,point.z-path[i].z));
-  const rotateBetween=(a,b,t)=>a+Math.atan2(Math.sin(b-a),Math.cos(b-a))*t;
   const wrong=group(root);
   for(let j=0;j<11;j++)b(wrong,red,-5.5+j*.3,-.8,2.2+j*.27,.17,.045,.17);
   sign(wrong,'NO OWNER',-2.05,.55,5.1,1.8,.52,'#ffc0a4','#542e23');
   const rejected=sign(wrong,'UNASSIGNED / CLOSED',-2.05,.56,5.12,1.8,.52,'#e7cc9d','#423a2e');
   const wrongSign=wrong.children.find(o=>o.material?.map&&o!==rejected);
   const signal=group(root);
-  cylinder(signal,live,0,0,0,.17,.11);
-  const debris=[];
-  for(let i=0;i<27;i++){
-    const o=b(root,i%4===0?ivory:paper,0,0,0,.36+(i%3)*.08,.025,.52);
-    debris.push(o);
-    const [x,,z]=positions[i%4];o.position.set(x-1.05+(i%3)*.16,1.115+Math.floor(i/4)*.023,z-.43+(i%2)*.14);o.rotation.y=Math.sin(i*2.7)*.23;
+  cylinder(signal,live,0,0,0,.17,.03);
+  const paperMap=(()=>{
+    const c=document.createElement('canvas');c.width=128;c.height=160;const x=c.getContext('2d');
+    x.fillStyle='#e9dfbf';x.fillRect(0,0,128,160);x.fillStyle='#536755';x.fillRect(12,12,67,8);
+    x.fillStyle='#a5a18c';for(let i=0;i<9;i++)x.fillRect(12,32+i*11,92-(i%3)*13,2);
+    x.strokeStyle='#a48156';x.strokeRect(84,119,30,23);x.fillStyle='#a48156';x.fillRect(88,125,22,3);
+    const t=new T.CanvasTexture(c);t.colorSpace=T.SRGBColorSpace;t.magFilter=T.NearestFilter;textTextures.push(t);return t;
+  })();
+  const sheetMaterial=mat(0xffffff);sheetMaterial.map=paperMap;
+  const debris=[],paperCount=56;
+  const sheets=new T.InstancedMesh(boxGeo,sheetMaterial,paperCount);sheets.instanceMatrix.setUsage(T.DynamicDrawUsage);
+  sheets.frustumCulled=false;root.add(sheets);
+  const target=new T.Vector3();
+  for(let i=0;i<paperCount;i++){
+    // Stable IDs, seeded initial positions and four desk destinations.
+    const theta=i*2.39996323,r=2.1+(i%11)*.57;
+    debris.push({id:i,theta,r,desk:i%4,layer:Math.floor(i/4),
+      pose:new T.Object3D()});
+  }
+  const pulse=(p,a,b,c)=>span(p,a,b)-span(p,b,c);
+  const flares=[];
+  for(let i=0;i<4;i++){
+    const material=new T.MeshBasicMaterial({color:0xc5f3a4,transparent:true,opacity:0,depthWrite:false,side:T.DoubleSide});
+    const ring=new T.Mesh(new T.RingGeometry(.88,.94,48),material);ring.rotation.x=-Math.PI/2;root.add(ring);flares.push(ring);
   }
   // Distant vertical service structures, not random floating neon.
   for(let i=0;i<7;i++){
@@ -286,17 +279,22 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
     for(let j=0;j<5;j++)b(root,iron,x,0+j*.55,z+.35,.58,.18,.14);
     b(root,i%3===0?amber:green,x,3.18,z,.48,.11,.5);
   }
-  // Batch fixed box primitives by shared material across the entire hall.
-  // Only moving objects and changing indicators retain individual transforms.
+  // Preserve room batching and batch each moving desk in its own local frame.
+  // Animated papers use their own dynamic instance buffer; no paper is discarded.
   root.updateMatrixWorld(true);
-  const buckets=new Map();
-  const moving=new Set([request,wrong,signal,stamp,gatePivot,gateLamp,...operator.arms,...conduits.map(c=>c.mark)]);
+  const moving=new Set([request,wrong,signal,stamp,...operator.arms,...staffers.flatMap(s=>s.staff.arms),...conduits.map(c=>c.mark),sheets]);
   const isMoving=o=>{for(let p=o;p;p=p.parent)if(moving.has(p))return true;return false;};
-  root.traverse(o=>{if(o.isMesh&&o.geometry===boxGeo&&!isMoving(o)){if(!buckets.has(o.material))buckets.set(o.material,[]);buckets.get(o.material).push(o);}});
-  for(const [material,items] of buckets){
-    const mesh=new T.InstancedMesh(boxGeo,material,items.length);
-    items.forEach((o,i)=>{mesh.setMatrixAt(i,o.matrixWorld);o.removeFromParent();});
-    mesh.instanceMatrix.needsUpdate=true;mesh.computeBoundingSphere();root.add(mesh);
+  const buckets=new Map();
+  root.traverse(o=>{
+    if(!o.isMesh||o.isInstancedMesh||o.geometry!==boxGeo||isMoving(o))return;
+    let parent=root;for(let a=o.parent;a&&a!==root;a=a.parent)if(stations.includes(a)){parent=a;break;}
+    if(!buckets.has(parent))buckets.set(parent,new Map());
+    const byMat=buckets.get(parent);if(!byMat.has(o.material))byMat.set(o.material,[]);byMat.get(o.material).push(o);
+  });
+  for(const [parent,byMat] of buckets)for(const [material,items] of byMat){
+    const mesh=new T.InstancedMesh(boxGeo,material,items.length),inv=parent.matrixWorld.clone().invert();
+    items.forEach((o,i)=>{mesh.setMatrixAt(i,new T.Matrix4().multiplyMatrices(inv,o.matrixWorld));o.removeFromParent();});
+    mesh.instanceMatrix.needsUpdate=true;mesh.computeBoundingSphere();parent.add(mesh);
   }
   let phase=0,disposed=false,failed=false,visible=false,last=-1,w=1,h=1;
   const status=document.createElement('div');
@@ -306,49 +304,102 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
   stage.append(status);
   function draw(){
     if(disposed||failed||!visible||document.hidden)return;
-    const p=phase,trace=span(p,.16,.40),decision=span(p,.58,.69);
-    let a=path[0],c=path[1],t=span(p,.18,.36);
-    if(p>=.36&&p<.55){a=path[1];c=path[2];t=span(p,.39,.55);}
-    else if(p>=.55){a=path[2];c=path[3];t=span(p,.75,.94);}
+    const p=phase,trace=span(p,.12,.48),decision=span(p,.58,.69),release=span(p,.76,.94);
+    // A choreographed, staggered alignment of the desks inside stationary architecture.
+    stations.forEach((g,i)=>{
+      const [x,y,z]=positions[i],q=span(p,.10+i*.026,.43+i*.018),s=1-q;
+      g.position.set(x+s*Math.sin(i*4+1)*1.15,y+s*Math.cos(i*3)*.12,z+s*Math.cos(i*4)*1.1);
+      g.rotation.y=s*Math.sin(i*2.6+.7)*.36;
+    });
+    root.updateMatrixWorld(true);
+    // Spiral inward, tumble and settle into four visible, conserved record stacks.
+    for(const d of debris){
+      const i=d.id,q=span(p,.035+(i%9)*.018,.35+(i%9)*.019),u=1-q;
+      const theta=d.theta+p*13*(.55+(i%4)*.17)+q*3.3;
+      target.set(-.86+(d.layer%2)*.67,1.12+Math.floor(d.layer/2)*.034,.28);
+      stations[d.desk].localToWorld(target);
+      const o=d.pose;
+      o.position.set(mix(target.x,Math.sin(theta)*d.r+1.1,u),
+        mix(target.y,.95+(i%8)*.59+Math.sin(theta*1.6)*.73,u)+Math.sin(q*Math.PI)*.62,
+        mix(target.z,Math.cos(theta)*d.r*.69+1.0,u));
+      o.rotation.set(u*(Math.sin(theta*1.4)*1.7),mix(stations[d.desk].rotation.y+(i%2)*.05,theta*1.6,u),u*Math.cos(theta*1.3)*1.35);
+      o.scale.set(.48+(i%3)*.055,.025,.68);o.updateMatrix();sheets.setMatrixAt(i,o.matrix);
+    }
+    sheets.instanceMatrix.needsUpdate=true;
+    let segment=0,t=span(p,.19,.37);
+    if(p>=.37&&p<.55){segment=1;t=span(p,.39,.55);}
+    else if(p>=.55){segment=2;t=release;}
+    const a=path[segment],c=path[segment+1];
     request.position.copy(a).lerp(c,t);
-    // No airborne handoff: the trolley follows the desk-height rail.
-    // Rotate at custody/approval holds rather than snapping at segment boundaries.
-    const heading=p<.55?rotateBetween(headings[0],headings[1],span(p,.36,.39)):rotateBetween(headings[1],headings[2],span(p,.69,.75));
-    request.rotation.set(0,heading,0);
-    const gateOpen=span(p,.69,.75);
-    gatePivot.rotation.z=gateOpen*Math.PI/2;
-    gateArm.material=p>=.69?live:amber;
-    gateLamp.material=p>=.69?live:amber;
-    fileFlag.visible=true;
-    signal.position.copy(request.position);signal.position.y=-.76;
-    const press=span(p,.59,.64)-span(p,.66,.72);
-    operator.arms[0].rotation.x=-.22-1.02*press;
-    operator.arms[0].rotation.z=-.16*press;
-    stamp.position.y=.7-.28*press;
+    if(segment===0){
+      target.set(0,1.19,.15);stations[0].localToWorld(target);
+      target.y+=.65+(1-trace)*.9;target.x+=.55*Math.sin(p*13)*(1-trace);
+      request.position.copy(target).lerp(c,t);
+    }
+    request.position.y+=Math.sin(t*Math.PI)*1.85;
+    const spin=Math.sin(t*Math.PI),chaos=1-trace;
+    request.rotation.set(-.28*spin+chaos*.22*Math.sin(p*19),.9*spin+chaos*(.3+p*7),.25*spin+chaos*.17*Math.cos(p*16));
+    request.scale.setScalar(1+.20*spin+.12*(1-trace));
+    signal.position.copy(request.position);signal.position.y=-1.12;
+    const press=span(p,.585,.635)-span(p,.66,.72);
+    operator.arms[0].rotation.x=-.2-1.28*press;
+    operator.arms[0].rotation.z=-.28*press;
+    operator.arms[1].rotation.x=-.28-.38*press;
+    stamp.position.y=.7-.36*press;
+    staffers.forEach(({staff,i})=>{
+      const action=i===0?pulse(p,.04,.14,.22):i===1?pulse(p,.30,.37,.47):pulse(p,.86,.94,1.01);
+      staff.arms[0].rotation.x=-.27-.94*action;staff.arms[1].rotation.x=-.4-.57*action;
+      staff.arms[1].rotation.z=.16*action;
+    });
     reviewPending.visible=p<.69;reviewApproved.visible=p>=.69;
     receivePending.visible=p<.94;receiveDone.visible=p>=.94;
     wrongSign.visible=p<.42;rejected.visible=p>=.42;
-    wrong.children.forEach(o=>{if(o.geometry===boxGeo)o.scale.y=mix(.045,.012,trace);});
-    amberLight.intensity=mix(20,3,decision);
+    wrong.children.forEach(o=>{if(o.geometry===boxGeo){o.scale.y=mix(.045,.008,trace);o.visible=p<.47;}});
+    amberLight.intensity=mix(24,2,decision);
+    ambient.intensity=mix(.95,1.65,trace);key.intensity=mix(2.3,3.5,trace);
+    rim.intensity=mix(2.5,1.35,decision);
+    heroLight.position.copy(request.position).add(new T.Vector3(0,1.1,.8));heroLight.intensity=10+18*spin+12*press;
     conduits.forEach(({mark,i,t})=>{
-      mark.visible=true;
-      const traced=p>=.16+i*.08+t*.08;
-      mark.material=!traced?black:(i===2&&p<.69?amber:live);
+      const start=[.13,.34,.69][i]+t*.13;
+      mark.visible=p>=start;mark.material=i===2&&p<.76?amber:live;
     });
-    // Three distinct cinematic framings, driven exclusively by scroll.
-    // Wider architecture at entry and receipt, close human decision in between.
-    const focus=span(p,.36,.55)-span(p,.73,.92);
-    const angle=mix(.36,-.42,span(p,0,.54))+span(p,.77,1)*.60;
+    arcs.forEach((arc,i)=>{
+      const from=[.18,.39,.75][i],to=[.37,.55,.94][i],q=span(p,from,to);
+      arc.geometry.setDrawRange(0,Math.floor(q*48)+1);
+      arc.material.opacity=.65*pulse(p,from,(from+to)/2,to+.065);
+    });
+    flares.forEach((ring,i)=>{
+      const at=[.19,.37,.69,.94][i],q=span(p,at,at+.065);
+      ring.position.set(path[i].x,-1.105,path[i].z);
+      ring.scale.setScalar(1+q*1.5);ring.material.opacity=(1-q)*span(p,at-.015,at)*.65;
+    });
+    // Editorial framing: storm overhead, diagonal sweep, close human review,
+    // then a receiving-focused orbit and a calm wide lead-out.
     const portrait=w<=900;
-    const radius=(portrait?36:20.5)-focus*(portrait?18:7.5);
-    const cx=mix(.15,2.25,focus),cz=mix(-.7,1.5,focus);
-    camera.fov=portrait?57:43;
-    camera.position.set(cx+Math.sin(angle)*radius,mix(portrait?25:12.6,portrait?12:7.3,focus),cz+Math.cos(angle)*radius);
-    camera.lookAt(cx,.1+focus*.9,cz);
-    camera.setViewOffset(w,h,portrait?0:-w*.105,portrait?h*.18:0,w,h);
+    const shots=[
+      [0,-1.6,1.25,1.7,.48,18.7,10.7,32,17.5],
+      [.15,-1.3,1.55,1.5,.18,18.2,12.1,30,19],
+      [.37,-1.8,1.15,-.7,-.32,16.8,10.2,26,16],
+      [.55,2.25,1.45,1.55,-.58,8.7,5.2,12.5,7.4],
+      [.69,2.25,1.45,1.55,-.43,8.2,4.8,12,7],
+      [.83,4.65,1.65,.2,-.16,12.2,7.8,17,11],
+      [.95,5.1,.95,-.8,.28,15.2,9.4,23,14],
+      [1,1.1,.6,-.3,.44,19.6,12.3,31,19]
+    ];
+    let k=0;while(k<shots.length-2&&p>shots[k+1][0])k++;
+    const l=shots[k],r=shots[k+1],v=span(p,l[0],r[0]),shot=n=>mix(l[n],r[n],v);
+    const cx=shot(1),cy=shot(2),cz=shot(3),angle=shot(4),radius=shot(portrait?7:5);
+    camera.fov=portrait?54:42;
+    camera.position.set(cx+Math.sin(angle)*radius,shot(portrait?8:6),cz+Math.cos(angle)*radius);
+    camera.lookAt(cx,cy,cz);
+    camera.setViewOffset(w,h,portrait?0:-w*.17,portrait?h*.22:0,w,h);
     camera.updateProjectionMatrix();
-    status.textContent=p<.18?'01 / DISORDER\nPR-017 · ROUTE UNRESOLVED':p<.55?'02 / TRACE\nPR-017 · '+(p<.36?'CUSTODY UNCONFIRMED':'CUSTODY FOUND'):p<.75?'03 / HUMAN REVIEW\nPR-017 · '+(p<.69?'AWAITING DECISION':'APPROVED'):'04 / HANDOVER\nPR-017 · '+(p<.94?'IN TRANSIT':'RECEIVED');
-    stage.dataset.handoffState=JSON.stringify({id:'PR-017',position:request.position.toArray().map(v=>+v.toFixed(3)),decision:p>=.69,receipt:p>=.94,stamp:+press.toFixed(3),gate:+gateOpen.toFixed(3),heading:+heading.toFixed(3),camera:camera.position.toArray().map(v=>+v.toFixed(3))});
+    status.textContent=p<.18?'01 / DISORDER\nPR-017 · ROUTE UNRESOLVED':p<.55?'02 / TRACE\nPR-017 · '+(p<.37?'CUSTODY UNCONFIRMED':'CUSTODY FOUND'):p<.75?'03 / HUMAN REVIEW\nPR-017 · '+(p<.69?'AWAITING DECISION':'APPROVED'):'04 / HANDOVER\nPR-017 · '+(p<.94?'IN TRANSIT':'RECEIVED');
+    const round=v=>+v.toFixed(3),vec=v=>v.toArray().map(round);
+    stage.dataset.handoffState=JSON.stringify({id:'PR-017',position:vec(request.position),rotation:[request.rotation.x,request.rotation.y,request.rotation.z].map(round),decision:p>=.69,receipt:p>=.94,stamp:round(press),camera:vec(camera.position),
+      stations:stations.map(g=>[...vec(g.position),round(g.rotation.y)]),
+      papers:debris.map(d=>{const m=new T.Matrix4();sheets.getMatrixAt(d.id,m);return [d.id,...m.elements.map(round)];}),
+      paperCount:sheets.count,mechanicalRoutes:0,owner:'native-scroll'});
     try {renderer.render(scene,camera);stage.dataset.handoffPhase=p.toFixed(4);stage.dataset.handoffBudget=JSON.stringify({calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures});}
     catch(error){console.warn("Handoff renderer failed",error);fallback();}
   }

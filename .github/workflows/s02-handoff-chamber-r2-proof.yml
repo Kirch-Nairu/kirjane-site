@@ -1,4 +1,4 @@
-name: S02 R2 writer visual proof (no deploy)
+name: S02 R3 cinematic corrective proof (no deploy)
 on:
   push:
     branches: [experiment/s02-handoff-chamber-r2-writer]
@@ -8,9 +8,11 @@ permissions:
 jobs:
   browser:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 18
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -32,8 +34,43 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: s02-r2-chamber-browser-evidence
+          name: s02-r3-chamber-browser-evidence
           path: dist/s02-chamber-evidence/
+          if-no-files-found: warn
+
+  comparison:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: npx playwright install --with-deps chromium
+      - name: Equivalent shots on immutable R1 and rejected R2
+        run: |
+          mkdir -p dist/s02-comparison
+          for pair in 'r1 f75a5f78e42581e05f11abb64150f036ca63915a' 'r2 adbb968a2737b21c6043717162bd432c65898147'; do
+            read -r label sha <<< "$pair"
+            git worktree add --detach "/tmp/s02-$label" "$sha"
+            python -m http.server 8725 --bind 127.0.0.1 --directory "/tmp/s02-$label/site" > "/tmp/s02-$label.log" 2>&1 &
+            server=$!
+            trap 'kill "$server" 2>/dev/null || true' EXIT
+            for i in $(seq 1 20); do curl -fsS http://127.0.0.1:8725/ >/dev/null && break; sleep 1; done
+            S02_COMPARE=1 S02_URL=http://127.0.0.1:8725/ S02_EVIDENCE="dist/s02-comparison/$label" node scripts/qa_s02_handoff_chamber.mjs
+            kill "$server"
+            wait "$server" || true
+            trap - EXIT
+          done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: s02-r3-protected-comparison
+          path: dist/s02-comparison/
           if-no-files-found: warn
 
   inherited-regression:
