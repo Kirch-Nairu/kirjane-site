@@ -791,8 +791,9 @@
       onUpdate: ({ exact, smooth, direction, activeChapter, inView, isReduced }) => {
         // Match the native director's settle threshold before it clears its dirty flag.
         handoffPhase=Math.abs(exact-smooth)<.0004?exact:smooth;
-        if(handoffChamber?.active) handoffChamber.setPhase(handoffPhase);
-        else if (inView && scrollY > 8 && !shortCinematic.matches) clarityPlayer.setProgress(clarityPhase(smooth), direction);
+        // Retain native phase through context loss; restored renderer samples current scroll.
+        handoffChamber?.setPhase(handoffPhase);
+        if (!handoffChamber?.active && inView && scrollY > 8 && !shortCinematic.matches) clarityPlayer.setProgress(clarityPhase(smooth), direction);
         gradeSceneCanvas(clarityCanvas,smooth,{kind:'home',mobile:window.innerWidth<=900,reduced:isReduced});
         if (clarityProgress) clarityProgress.style.transform = `scaleX(${isReduced ? 1 : smooth})`;
         if (!isReduced) {
