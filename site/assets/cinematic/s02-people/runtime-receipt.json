@@ -1,0 +1,38 @@
+[
+  {
+    "role": "capture",
+    "sourceSha256": "9a9311ab51041a61eb54d7b405be0ec5b3eaa7ab9e3a7ad5f19875104e963053",
+    "sha256": "3c5c64c05ac8c73de750c759c13e006deec6f50a4d744dc1f9800d687fa3bb03",
+    "sourceBytes": 4854700,
+    "bytes": 946472,
+    "bones": 80,
+    "primitives": 3
+  },
+  {
+    "role": "connect",
+    "sourceSha256": "218961f3efa7fd2718d64497de69382e28a37f658efbb429587b39e97a95432a",
+    "sha256": "5392de80e2da93a892adac9e619c378a0c544745c6702c1728a42ea592a26d70",
+    "sourceBytes": 3476720,
+    "bytes": 644436,
+    "bones": 80,
+    "primitives": 2
+  },
+  {
+    "role": "decide",
+    "sourceSha256": "f7c9c56a344f11b6453265d6c8f2d2ea556f6dbb85ae84a733eb9cc74e015e9b",
+    "sha256": "b09cf367595fc8b64b995efebb35a41da776b246fea6bc4bb3f053b1d8f83394",
+    "sourceBytes": 7492224,
+    "bytes": 1547720,
+    "bones": 80,
+    "primitives": 4
+  },
+  {
+    "role": "act",
+    "sourceSha256": "767dd93cb991f31f0b3c5c26e5aa2ae7c0ae25e89784ac99738639e4a9e36ce3",
+    "sha256": "cddc95b73c797a92a00f23fa89ef9b00f03660c83d5f914ed4e044ec22a313b4",
+    "sourceBytes": 5601088,
+    "bytes": 1019196,
+    "bones": 80,
+    "primitives": 3
+  }
+]
