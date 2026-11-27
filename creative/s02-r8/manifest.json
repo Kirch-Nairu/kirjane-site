@@ -1,0 +1,161 @@
+{
+  "source": "microsoft/Microsoft-Rocketbox",
+  "commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
+  "license": "MIT",
+  "licenseFile": {
+    "path": "LICENSE.md",
+    "sha": "9bcfb3ece5301a55d3a41bbd00a029ab27d61d13",
+    "bytes": 1066
+  },
+  "assets": [
+    {
+      "role": "capture",
+      "name": "Business_Female_04",
+      "files": [
+        {
+          "path": "Assets/Avatars/Professions/Business_Female_04/Export/Business_Female_04.fbx",
+          "sha": "649706db3132dbee6ecfe17df504a0c6245d21c0",
+          "bytes": 588672
+        },
+        {
+          "path": "Assets/Avatars/Professions/Business_Female_04/Textures/f020_body_color.tga",
+          "sha": "560b52b40ddd056def5385176a76897645ea322a",
+          "bytes": 12582956
+        },
+        {
+          "path": "Assets/Avatars/Professions/Business_Female_04/Textures/f020_body_normal.tga",
+          "sha": "ed74302140c4838722ccbcc57ab0dc8c2826fb5d",
+          "bytes": 12582956
+        },
+        {
+          "path": "Assets/Avatars/Professions/Business_Female_04/Textures/f020_head_color.tga",
+          "sha": "8ea1df2f4d723f98548c5456e3cb7a17e8f8120e",
+          "bytes": 12582956
+        },
+        {
+          "path": "Assets/Avatars/Professions/Business_Female_04/Textures/f020_head_normal.tga",
+          "sha": "fc5624d844bd7c91a5b5bd9f75f7243123225723",
+          "bytes": 12582956
+        },
+        {
+          "path": "Assets/Avatars/Professions/Business_Female_04/Textures/f020_opacity_color.tga",
+          "sha": "e3d2d54055c606fac90d5c176a71377bd8d8bf60",
+          "bytes": 2097196
+        }
+      ]
+    },
+    {
+      "role": "connect",
+      "name": "Business_Male_06",
+      "files": [
+        {
+          "path": "Assets/Avatars/Professions/Business_Male_06/Export/Business_Male_06.fbx",
+          "sha": "206130a1b01ae0320773fff4088a4a14e12d1f83",
+          "bytes": 507712
+        },
+        {
+          "path": "Assets/Avatars/Professions/Business_Male_06/Textures/m025_body_color.tga",
+          "sha": "cec2659255236a8fc25232ba19073e313921a4c2",
+          "bytes": 12582956
+        },
+        {
+          "path": "Assets/Avatars/Professions/Business_Male_06/Textures/m025_body_normal.tga",
+          "sha": "8530628f74914ad941b2e696ff5815ecc6605fbb",
+          "bytes": 12582956
+        },
+        {
+          "path": "Assets/Avatars/Professions/Business_Male_06/Textures/m025_head_color.tga",
+          "sha": "90de47970d57dcb4ff2e8657656b52fb8cbd8217",
+          "bytes": 12582956
+        },
+        {
+          "path": "Assets/Avatars/Professions/Business_Male_06/Textures/m025_head_normal.tga",
+          "sha": "c88353acc675b9a5955157133bc16d2b4896c028",
+          "bytes": 12582956
+        }
+      ]
+    },
+    {
+      "role": "decide",
+      "name": "Business_Female_02",
+      "files": [
+        {
+          "path": "Assets/Avatars/Professions/Business_Female_02/Export/Business_Female_02.fbx",
+          "sha": "b574cf754e39b1fe4bf43e02aef8e7dc6f5a82ca",
+          "bytes": 612848
+        },
+        {
+          "path": "Assets/Avatars/Professions/Business_Female_02/Textures/f015_body_color.tga",
+          "sha": "9a3d5fbd2b69e34628ec0220572b64cb314c51d7",
+          "bytes": 12582956
+        },
+        {
+          "path": "Assets/Avatars/Professions/Business_Female_02/Textures/f015_body_normal.tga",
+          "sha": "f8fd6f901665a43b3c46ae151734bbf1cc610ff9",
+          "bytes": 12582956
+        },
+        {
+          "path": "Assets/Avatars/Professions/Business_Female_02/Textures/f015_glasses_normal.tga",
+          "sha": "bd00a20c0ba7391d69ca3d7bad2dd0c899f7ddb7",
+          "bytes": 393260
+        },
+        {
+          "path": "Assets/Avatars/Professions/Business_Female_02/Textures/f015_glasses_opacity_color.tga",
+          "sha": "4041db975842d4655e0fb76ff673ee59fd9a7c3d",
+          "bytes": 524332
+        },
+        {
+          "path": "Assets/Avatars/Professions/Business_Female_02/Textures/f015_head_color.tga",
+          "sha": "41eac4aaed7ed8f36b32d53ae96599694a7fd687",
+          "bytes": 12582956
+        },
+        {
+          "path": "Assets/Avatars/Professions/Business_Female_02/Textures/f015_head_normal.tga",
+          "sha": "83b20203ee6d2597ea2626e765d350b8e94ffc69",
+          "bytes": 12582956
+        },
+        {
+          "path": "Assets/Avatars/Professions/Business_Female_02/Textures/f015_opacity_color.tga",
+          "sha": "b96abab3f5c8fae7bd72fab26a17a31b91c70ac5",
+          "bytes": 16777260
+        }
+      ]
+    },
+    {
+      "role": "act",
+      "name": "Business_Male_03",
+      "files": [
+        {
+          "path": "Assets/Avatars/Professions/Business_Male_03/Export/Business_Male_03.fbx",
+          "sha": "90d5a0ef48c870a33ec31c3d3160e084a83b45a8",
+          "bytes": 534112
+        },
+        {
+          "path": "Assets/Avatars/Professions/Business_Male_03/Textures/m020_body_color.tga",
+          "sha": "67e0fdf3f2c94386f490c2cb00b2576fe479c572",
+          "bytes": 12582956
+        },
+        {
+          "path": "Assets/Avatars/Professions/Business_Male_03/Textures/m020_body_normal.tga",
+          "sha": "8433c2ca7eb8dde767e3de48ca20893996ab957c",
+          "bytes": 12582956
+        },
+        {
+          "path": "Assets/Avatars/Professions/Business_Male_03/Textures/m020_head_color.tga",
+          "sha": "2a9997ac7f28cdd63bc34b8607725f488be37351",
+          "bytes": 12582956
+        },
+        {
+          "path": "Assets/Avatars/Professions/Business_Male_03/Textures/m020_head_normal.tga",
+          "sha": "0def77d382d3f1d1896a2459b2da24434c85f115",
+          "bytes": 12582956
+        },
+        {
+          "path": "Assets/Avatars/Professions/Business_Male_03/Textures/m020_opacity_color.tga",
+          "sha": "72972c248d2ebbd5b744914ccf17a0f28ad06e02",
+          "bytes": 16777260
+        }
+      ]
+    }
+  ]
+}
