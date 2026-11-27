@@ -102,19 +102,20 @@ export function bindHuman(model,control,role){
     const palmLocal=hand.worldToLocal(point(middle)).multiplyScalar(.55);
     const across=hand.worldToLocal(point(index)).sub(hand.worldToLocal(point(pinky)));
     const localBasis=basis(palmLocal,across);
-    const fingers=[1,2,3,4].map(i=>{
+    const fingers=[0,1,2,3,4].map(i=>{
       const base=bone(name+' Finger'+i),mid=bone(name+' Finger'+i+'1'),tip=bone(name+' Finger'+i+'2');
       return {base,mid,tip};
     });
     arms.push({side,upper,fore,hand,palmLocal,localBasis,fingers});
   }
-  const controlled=[pelvis,spine,chest,head,...legs.flatMap(x=>[x.thigh,x.calf,x.foot]),...arms.flatMap(x=>[x.upper,x.fore,x.hand,...x.fingers.flatMap(f=>[f.base,f.mid,f.tip])])];
+  const face= ['R','L'].map(n=>({eye:bone(n+'Eye'),top:bone(n+'EyeBlinkTop'),bottom:bone(n+'EyeBlinkBottom'),brow:bone(n+'InnerEyebrow')}));
+  const controlled=[pelvis,spine,chest,head,...face.flatMap(f=>[f.eye,f.top,f.bottom,f.brow]),...legs.flatMap(x=>[x.thigh,x.calf,x.foot]),...arms.flatMap(x=>[x.upper,x.fore,x.hand,...x.fingers.flatMap(f=>[f.base,f.mid,f.tip])])];
   const rest=controlled.map(b=>({b,q:b.quaternion.clone(),p:b.position.clone()}));
   const seated=role!=='act';
   const seatHeight=(restPelvis.y>.9?.84:.80)/humanScale;
-  return {role,wrapper,model,control,bones,meshes,pelvis,spine,chest,head,nose,legs,arms,rest,restPelvis,seated,seatHeight,humanScale,receipt:null};
+  return {role,wrapper,model,control,bones,meshes,pelvis,spine,chest,head,nose,legs,arms,rest,restPelvis,seated,seatHeight,humanScale,face,receipt:null};
 }
-export function poseHuman(a,contacts){
+export function poseHuman(a,contacts,phase=0){
   for(const r of a.rest){r.b.quaternion.copy(r.q);r.b.position.copy(r.p);}
   const {wrapper,pelvis,spine,chest,head,control}=a;
   wrapper.position.copy(control.o.position);wrapper.quaternion.copy(control.o.quaternion);
@@ -148,7 +149,29 @@ export function poseHuman(a,contacts){
   const hr=control.head.rotation;
   const hd=Q().setFromEuler(new T.Euler(hr.x*.75,hr.y,hr.z*.45));
   setWorldQ(head,wq.clone().multiply(hd).multiply(wq.clone().invert()).multiply(head.getWorldQuaternion(Q())));
-  const evidence=[];
+  // Facial bones are part of the original weighted rig. Move upper and lower
+  // lids towards one another in world space, rotate actual eyes, and lift brows.
+  const blink=Math.max(0,Math.min(1,(1-control.eyes.scale.y)/.88));
+  const moveWorld=(b,delta)=>{b.position.copy(b.parent.worldToLocal(point(b).add(delta)));b.updateWorldMatrix(false,true);};
+  const eyePitch=.055+.075*Math.max(0,hr.x),eyeYaw=hr.y*.28;
+  const gazeQ=Q().setFromAxisAngle(worldDirection(V(0,1,0)),eyeYaw).multiply(Q().setFromAxisAngle(worldDirection(V(1,0,0)),eyePitch));
+  const gaps=[];
+  for(const f of a.face){
+    setWorldQ(f.eye,gazeQ.clone().multiply(f.eye.getWorldQuaternion(Q())));
+    const gap=point(f.top).sub(point(f.bottom)),before=gap.length();
+    moveWorld(f.top,gap.clone().multiplyScalar(-.68*blink));
+    moveWorld(f.bottom,gap.clone().multiplyScalar(.27*blink));
+    moveWorld(f.brow,worldDirection(V(0,.004*Math.max(0,hr.x-.06),0)));
+    gaps.push(point(f.top).distanceTo(point(f.bottom))/before);
+  }
+  const evidence=[],digitAngles=[];
+  const bendDigit=(b,child,angle)=>{
+    const v=point(child).sub(point(b)).normalize(),down=V(0,-1,0).addScaledVector(v,v.y).normalize();
+    if(down.lengthSq()<.1)return 0;
+    const before=b.quaternion.clone();
+    aimBone(b,child,v.multiplyScalar(Math.cos(angle)).addScaledVector(down,Math.sin(angle)));
+    return before.angleTo(b.quaternion);
+  };
   for(const limb of a.arms){
     const c=contacts.find(c=>c.side===limb.side);
     const weight=c?.weight??0;
@@ -159,12 +182,19 @@ export function poseHuman(a,contacts){
     const handQ=basis(forward,across).multiply(limb.localBasis.clone().invert());
     const palmOffset=limb.palmLocal.clone().multiply(limb.hand.getWorldScale(V())).applyQuaternion(handQ);
     const wristTarget=target.clone().sub(palmOffset);
-    const result=solveChain(limb.upper,limb.fore,limb.hand,wristTarget,worldDirection(V(limb.side*.72,-.65,-.10)));
+    const result=solveChain(limb.upper,limb.fore,limb.hand,wristTarget,worldDirection(V(limb.side*.48,-.85,-.06)));
     setWorldQ(limb.hand,handQ);
+    for(const [i,f] of limb.fingers.entries()){
+      const stamp=a.role==='decide'&&limb.side===1;
+      const typing=a.role!=='decide';
+      const angle=stamp?(.10+.43*weight):typing?(.075+weight*(.10+.055*Math.sin(phase*140+i*1.9+limb.side))):(.055+.06*weight);
+      const flex=angle*(i===0?.53:1);
+      digitAngles.push(bendDigit(f.base,f.mid,flex),bendDigit(f.mid,f.tip,flex*.72));
+    }
     const palm=limb.hand.localToWorld(limb.palmLocal.clone());
     evidence.push({side:limb.side,engage:weight,error:palm.distanceTo(target),contactError:c?palm.distanceTo(c.target):null,distance:result.raw,reach:result.reach,clamped:result.clamped,palm:palm.toArray(),target:target.toArray()});
   }
-  a.receipt={role:a.role,bones:a.bones.size,meshes:a.meshes.length,visible:a.wrapper.visible,seated:a.seated,contacts:evidence,head:point(a.nose).toArray(),pelvis:localVector(wrapper,pelvis).map(v=>v*a.humanScale),feet:a.legs.map(x=>localVector(wrapper,x.foot).map(v=>v*a.humanScale)),humanScale:a.humanScale};
+  a.receipt={role:a.role,bones:a.bones.size,meshes:a.meshes.length,visible:a.wrapper.visible,seated:a.seated,contacts:evidence,head:point(a.nose).toArray(),pelvis:localVector(wrapper,pelvis).map(v=>v*a.humanScale),feet:a.legs.map(x=>localVector(wrapper,x.foot).map(v=>v*a.humanScale)),humanScale:a.humanScale,face:{blink,eyeYaw,eyePitch,lidGap:Math.min(...gaps),fingerFlex:Math.max(...digitAngles),digitJoints:digitAngles.length}};
   return a.receipt;
 }
 const localVector=(wrapper,b)=>wrapper.worldToLocal(point(b)).toArray();

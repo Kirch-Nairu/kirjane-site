@@ -31,9 +31,11 @@
   <link rel="modulepreload" href="./js/editorial-opening.js" />
   <style>
     #complexity-clarity-scene #home-clarity-canvas{opacity:0}
-    #complexity-clarity-scene .cinematic-stage-scrim{background:linear-gradient(90deg,rgba(15,30,31,.96),rgba(15,30,31,.83) 22%,rgba(15,30,31,.33) 40%,transparent 60%),linear-gradient(0deg,rgba(11,24,24,.65),transparent 20%)}
+    #complexity-clarity-scene .cinematic-stage-scrim{background:linear-gradient(90deg,rgba(15,30,31,.93),rgba(15,30,31,.76) 19%,rgba(15,30,31,.22) 39%,transparent 57%),linear-gradient(0deg,rgba(11,24,24,.65),transparent 20%)}
     #complexity-clarity-scene [data-handoff-chamber="live"] .cinematic-stage-hud{grid-template-columns:minmax(0,430px) 1fr}
-    @media(max-aspect-ratio: 21/20){#complexity-clarity-scene .cinematic-stage-scrim{background:linear-gradient(180deg,transparent 0%,transparent 39%,rgba(15,30,31,.65) 53%,rgba(15,30,31,.97) 74%)}#complexity-clarity-scene [data-handoff-chamber="live"] .cinematic-stage-hud{grid-template-columns:1fr;padding-top:clamp(215px,38svh,390px);padding-bottom:1rem}#complexity-clarity-scene [data-handoff-chamber="live"] .beat-stack{min-height:145px}#complexity-clarity-scene .handoff-scene-caption{top:10%!important;font-size:10px!important}}
+    #complexity-clarity-scene .beat-card{text-shadow:0 2px 12px rgba(0,0,0,.68)}
+    @media(min-width:1050px) and (min-aspect-ratio:21/20){#complexity-clarity-scene [data-handoff-chamber="live"] .beat-card h2{font-size:clamp(2.2rem,3.2vw,3.5rem);line-height:1.02}}
+    @media(max-aspect-ratio: 21/20){#complexity-clarity-scene .cinematic-stage-scrim{background:linear-gradient(180deg,transparent 0%,transparent 43%,rgba(15,30,31,.47) 59%,rgba(15,30,31,.78) 82%,rgba(15,30,31,.88) 100%)}#complexity-clarity-scene [data-handoff-chamber="live"] .cinematic-stage-hud{grid-template-columns:1fr;padding-top:clamp(215px,38svh,390px);padding-bottom:1rem}#complexity-clarity-scene [data-handoff-chamber="live"] .beat-stack{min-height:145px}#complexity-clarity-scene .handoff-scene-caption{top:10%!important;font-size:10px!important}}
     @media(max-width:360px){#complexity-clarity-scene [data-handoff-chamber="live"] .cinematic-stage-hud{padding-top:clamp(190px,34svh,245px);padding-bottom:.75rem}#complexity-clarity-scene [data-handoff-chamber="live"] .beat-stack{min-height:140px}}
     @media(max-height:610px) and (min-aspect-ratio:21/20){#complexity-clarity-scene [data-handoff-chamber="live"] .cinematic-stage-hud{grid-template-columns:minmax(0,44%) 1fr;padding:3.6rem 1.5rem .4rem}#complexity-clarity-scene [data-handoff-chamber="live"] .beat-stack{min-height:0}#complexity-clarity-scene [data-handoff-chamber="live"] .beat-card h2{font-size:clamp(1.45rem,4vw,2rem)}#complexity-clarity-scene .handoff-scene-caption{top:16%!important;font-size:10px!important}}
 
@@ -781,6 +783,7 @@
         if(handoffDisposed)return;
         handoffChamber=createHandoffChamber(handoffStage,clarityCanvas,reduced);
         handoffChamber?.setPhase(handoffPhase);
+        const narrativeChapter=handoffPhase<.34?'complexity':handoffPhase<.68?'alignment':'clarity';
       }).catch(error=>console.warn("S02 chamber unavailable; studio poster retained",error));
     },{rootMargin:"300px"});
     handoffObserver.observe(handoffStage);
@@ -802,14 +805,14 @@
         gradeSceneCanvas(clarityCanvas,smooth,{kind:'home',mobile:window.innerWidth<=900,reduced:isReduced});
         if (clarityProgress) clarityProgress.style.transform = `scaleX(${isReduced ? 1 : smooth})`;
         if (!isReduced) {
-          clarityBeatEls.forEach((card) => card.classList.toggle('is-active', card.dataset.beat === activeChapter));
+          clarityBeatEls.forEach((card) => card.classList.toggle('is-active', card.dataset.beat === narrativeChapter));
         }
         clarityJumpBtns.forEach((btn) => {
           if (btn.dataset.beatTarget) {
-            btn.setAttribute('aria-current', btn.dataset.beatTarget === activeChapter ? 'step' : 'false');
+            btn.setAttribute('aria-current', btn.dataset.beatTarget === narrativeChapter ? 'step' : 'false');
           }
         });
-        const pinIdx = smooth < 0.34 ? 0 : smooth < 0.68 ? 1 : 2;
+        const pinIdx = handoffPhase < 0.34 ? 0 : handoffPhase < 0.68 ? 1 : 2;
         clarityPins.forEach((p, i) => p.classList.toggle('is-active', i === pinIdx));
       },
       onResize: () => clarityPlayer.resize(window.innerWidth <= 900)
