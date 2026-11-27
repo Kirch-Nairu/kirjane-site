@@ -20,11 +20,11 @@ try {
     const page=await context.newPage();
     try {
       const errors=[];page.on('pageerror',e=>errors.push(String(e)));
-      await page.goto(comparison?base:qaUrl.href,{waitUntil:'domcontentloaded'});
+      await page.goto(qaUrl.href,{waitUntil:'domcontentloaded'});
       await page.waitForFunction(()=>window.__SITE_READY__===true);
       const stage=page.locator('#complexity-clarity-scene .cinematic-sticky-stage');
       await stage.scrollIntoViewIfNeeded();
-      if(comparison&&height<610&&width<=900){await page.screenshot({path:out+'/'+width+'-r4-short-fallback.png'});results.push({width,height,baseline:'R4 short landscape fallback'});continue;}
+      if(comparison&&process.env.S02_BASELINE==='r4'&&height<610&&width<=900){await page.screenshot({path:out+'/'+width+'-r4-short-fallback.png'});results.push({width,height,baseline:'R4 short landscape fallback'});continue;}
       await stage.locator('#handoff-chamber-webgl').waitFor({state:'visible',timeout:20000});
       const status=stage.locator('.handoff-scene-caption');
       async function seek(p){
@@ -53,7 +53,7 @@ try {
         results.push({width,height,name,phase:await stage.getAttribute('data-handoff-phase'),status:await status.textContent(),state,budget});
         if(!comparison){
           assert.equal(state.id,'PR-017');assert.equal(state.world,'coordination-studio');assert.equal(state.actors.length,4);assert.ok(state.actors.every(a=>a.length===10&&a.every(Number.isFinite)));assert.equal(state.owner,'native-scroll');assert.equal(state.mechanicalRoutes,0);
-          assert.equal(state.decision,p>=.69);assert.equal(state.receipt,p>=.94);
+          assert.equal(state.decision,p>=.69);assert.equal(state.receipt,p>=.94);assert.equal(state.physicalApproval,p>=.69);
           const safe=([x,y])=>x>.06&&x<.94&&y>.10&&y<.78;
           assert.ok(safe(state.screen.request),'request out of frame '+name+' '+JSON.stringify(state.screen.request));
           if(name==='review'||name==='approved')assert.ok(safe(state.screen.reviewer),'reviewer out of frame');
@@ -81,9 +81,9 @@ try {
           await new Promise(resolve=>{function frame(now){const t=Math.min(1,(now-start)/7000),p=direction===1?t:1-t;window.scrollTo({top:Math.round(top+p*travel),behavior:'instant'});const s=document.querySelector('[data-handoff-chamber]');log.push({phase:Number(s?.dataset.handoffPhase),scroll:scrollY});if(t<1)requestAnimationFrame(frame);else resolve();}requestAnimationFrame(frame);});
           return log;
         },direction);
-        assert.ok(samples.length>=12&&new Set(samples.map(x=>x.phase)).size>=10);
-        assert.ok(direction===1?samples.at(-1).phase>samples[0].phase:samples.at(-1).phase<samples[0].phase);
         results.push({width,height,direction,samples});
+        assert.ok(samples.length>=12&&new Set(samples.map(x=>x.phase)).size>=10,'continuous samples '+direction+' total='+samples.length+' distinct='+new Set(samples.map(x=>x.phase)).size);
+        assert.ok(direction===1?samples.at(-1).phase>samples[0].phase:samples.at(-1).phase<samples[0].phase);
         await seek(direction===1?1:0);
       }
       for(const [name,p] of [...shots].reverse()){

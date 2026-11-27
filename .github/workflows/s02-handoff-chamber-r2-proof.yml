@@ -1,4 +1,4 @@
-name: S02 R5 cinematic craft proof (no deploy)
+name: S02 R6 cinematic craft proof (no deploy)
 on:
   push:
     branches: [experiment/s02-handoff-chamber-r2-writer]
@@ -37,12 +37,12 @@ jobs:
           SERVER=$!
           trap 'kill "$SERVER"' EXIT
           for i in $(seq 1 20); do curl -fsS http://127.0.0.1:8723/ >/dev/null && break; sleep 1; done
-          S02_STILLS=1 S02_EVIDENCE=dist/s02-r5-stills node scripts/qa_s02_handoff_chamber.mjs
+          S02_STILLS=1 S02_EVIDENCE=dist/s02-r6-stills node scripts/qa_s02_handoff_chamber.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: s02-r5-early-stills-${{ matrix.viewport }}
-          path: dist/s02-r5-stills/
+          name: s02-r6-early-stills-${{ matrix.viewport }}
+          path: dist/s02-r6-stills/
           if-no-files-found: warn
       - name: Capture actual browser forward and reverse states
         run: |
@@ -54,7 +54,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: s02-r5-chamber-browser-evidence-${{ matrix.viewport }}
+          name: s02-r6-chamber-browser-evidence-${{ matrix.viewport }}
           path: dist/s02-chamber-evidence/
           if-no-files-found: warn
 
@@ -71,11 +71,11 @@ jobs:
           cache: npm
       - run: npm ci --ignore-scripts --no-audit --no-fund
       - run: npx playwright install --with-deps chromium
-      - name: Equivalent shots on immutable R4
+      - name: Equivalent shots on immutable R5
         run: |
           mkdir -p dist/s02-comparison
           failed=0
-          for pair in 'r4 ee51a99707d76f9ec2177fdae960e26296b2957c'; do
+          for pair in 'r5 173d6eb90f1cf585fe1b61a4eee0d2340370b71d'; do
             read -r label sha <<< "$pair"
             git worktree add --detach "/tmp/s02-$label" "$sha"
             python -m http.server 8725 --bind 127.0.0.1 --directory "/tmp/s02-$label/site" > "/tmp/s02-$label.log" 2>&1 &
@@ -91,7 +91,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: s02-r5-protected-comparison
+          name: s02-r6-protected-comparison
           path: dist/s02-comparison/
           if-no-files-found: warn
 
