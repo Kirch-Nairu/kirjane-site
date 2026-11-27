@@ -24,7 +24,7 @@ export function actingScore(p,role){
   const blinkCenters=[prepare+.009,Math.min(.985,end-.018)];
   const blink=Math.max(...blinkCenters.map(b=>accent(p,b-.009,b,b+.012)));
   const focus=span(p,start,prepare)-span(p,hit,end);
-  return {anticipate,action,recover,blink,focus};
+  return {anticipate:clamp(anticipate),action:clamp(action),recover:clamp(recover),blink:clamp(blink),focus:clamp(focus)};
 }
 export function paperFollowThrough(p,id){
   const end=.35+(id%9)*.019,local=clamp((p-end)/.042);
