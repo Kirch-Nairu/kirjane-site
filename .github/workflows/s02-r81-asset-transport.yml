@@ -1,0 +1,76 @@
+name: S02 R8.1 verified asset transport (isolated branch only)
+on:
+  push:
+    branches: [experiment/s02-handoff-chamber-r2-writer]
+    paths:
+      - 'creative/s02-r8/optimize_glb.py'
+      - '.github/workflows/s02-r81-asset-transport.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+jobs:
+  transport:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    if: github.ref == 'refs/heads/experiment/s02-handoff-chamber-r2-writer'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Acquire exact qualified source artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          test "$(gh api repos/${{ github.repository }}/actions/runs/45997644216 --jq .conclusion)" = success
+          test "$(gh api repos/${{ github.repository }}/actions/runs/45997644216 --jq .head_sha)" = 9c5a0bc628849e1aa6d44a76ffabb9cfbd11936d
+          gh run download 45997644216 -n s02-r8-offline-character-workshop -D dist/s02-r81-source
+          python -m pip install --disable-pip-version-check Pillow==11.3.0
+          python creative/s02-r8/optimize_glb.py dist/s02-r81-source site/assets/cinematic/s02-people
+      - name: Vendor matching Three.js glTF loader without package scripts
+        run: |
+          set -euo pipefail
+          revision=$(node --input-type=module -e "import {REVISION} from './site/vendor/three/three.module.js'; console.log(REVISION)")
+          [[ "$revision" =~ ^[0-9]+$ ]]
+          mkdir -p dist/s02-r81-three
+          cd dist/s02-r81-three
+          npm pack "three@0.$revision.0" --ignore-scripts --silent
+          tar -xzf "three-0.$revision.0.tgz"
+          cd ../..
+          # Verify the exact version of the core, not merely a compatible semver.
+          cmp site/vendor/three/three.core.js dist/s02-r81-three/package/build/three.core.js
+          cmp site/vendor/three/three.module.js dist/s02-r81-three/package/build/three.module.js
+          mkdir -p site/vendor/three/addons/loaders site/vendor/three/addons/utils
+          cp dist/s02-r81-three/package/examples/jsm/loaders/GLTFLoader.js site/vendor/three/addons/loaders/
+          cp dist/s02-r81-three/package/examples/jsm/utils/BufferGeometryUtils.js site/vendor/three/addons/utils/
+          # Vendored browser ESM has no import map and no package runtime.
+          sed -i "s|from 'three'|from '../../three.module.js'|g" site/vendor/three/addons/{loaders/GLTFLoader,utils/BufferGeometryUtils}.js
+          grep -E '^import|^} from' site/vendor/three/addons/{loaders/GLTFLoader,utils/BufferGeometryUtils}.js
+          node --input-type=module -e "import {GLTFLoader} from './site/vendor/three/addons/loaders/GLTFLoader.js'; console.log(typeof GLTFLoader)"
+      - name: Publish only generated assets to authorized branch
+        run: |
+          set -euo pipefail
+          branch=experiment/s02-handoff-chamber-r2-writer
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          git fetch origin "refs/heads/$branch"
+          test "$(git rev-parse FETCH_HEAD)" = "$GITHUB_SHA"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add site/assets/cinematic/s02-people site/vendor/three/addons/loaders/GLTFLoader.js site/vendor/three/addons/utils/BufferGeometryUtils.js
+          git diff --cached --name-only
+          git diff --cached --quiet && exit 0
+          git commit -m "build(s02): vendor verified optimized authored character assets"
+          git push origin "HEAD:refs/heads/$branch"
+          git rev-parse HEAD
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: s02-r81-optimized-asset-receipt
+          path: site/assets/cinematic/s02-people/
