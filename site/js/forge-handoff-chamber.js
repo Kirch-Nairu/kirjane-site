@@ -18,7 +18,7 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
   if(reduced || matchMedia('(prefers-reduced-motion: reduce)').matches ||
     new URLSearchParams(location.search).get('webgl')==='off') return null;
   let renderer;
-  try {renderer=new T.WebGLRenderer({antialias:false,alpha:false,powerPreference:'high-performance'});}
+  try {renderer=new T.WebGLRenderer({antialias:true,alpha:false,powerPreference:'high-performance'});}
   catch {return null;}
   const gl=renderer.getContext(),debug=gl.getExtension('WEBGL_debug_renderer_info');
   const backend=debug?String(gl.getParameter(debug.UNMASKED_RENDERER_WEBGL)):'unknown';
@@ -128,7 +128,7 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
   function chair(g,x,z,color,angle=0){const c=group(g,x,0,z);c.rotation.y=angle;shadow(c,0,0,1.2,1.2);for(const a of [-1,1])for(const d of [-1,1])beam(c,timber,[a*.27,0,d*.26],[a*.23,.54,d*.21],.045);ell(c,color,0,.56,0,.39,.09,.35).castShadow=true;ell(c,color,0,.94,-.29,.39,.39,.105);for(const x of [-.25,.25])beam(c,timber,[x,.52,-.22],[x,.90,-.29],.045);return c;}
   const workDisplays=[];
   function laptop(g,x,z,title,sub,doneTitle,doneSub,threshold){const l=group(g,x,1.13,z);b(l,ink,0,.026,0,.77,.055,.51);b(l,black,0,.06,.04,.65,.014,.32);const s=group(l,0,.04,-.23);s.rotation.x=-.16;b(s,ink,0,.27,0,.77,.55,.05);const pending=placard(s,title,sub,0,.27,.032,.70,.46,'#d7e7dd','#2e5256');const done=placard(s,doneTitle,doneSub,0,.27,.033,.70,.46,'#e8efdb','#355a55');done.visible=false;workDisplays.push({pending,done,threshold});return l;}
-  function lamp(g,x,z){const l=group(g,x,1.13,z);cyl(l,brass,0,.035,0,.17,.07);beam(l,brass,[0,.05,0],[0,.73,0],.022);beam(l,brass,[0,.73,0],[.30,.81,.13],.022);mesh(taperGeo,teal,l,.3,.74,.13,.20,.25,.20);cyl(l,white,.3,.62,.13,.17,.018);}
+  function lamp(g,x,z){const l=group(g,x,1.13,z);cyl(l,brass,0,.035,0,.17,.07);beam(l,brass,[0,.05,0],[0,.73,0],.022);beam(l,brass,[0,.73,0],[.30,.81,.13],.022);mesh(taperGeo,teal,l,.3,.74,.13,.165,.20,.165);cyl(l,white,.3,.645,.13,.14,.018);}
   function mug(g,x,z,color){const m=group(g,x,1.19,z);cyl(m,color,0,0,0,.095,.15);cyl(m,black,0,.078,0,.073,.012);mesh(new T.TorusGeometry(.055,.015,6,12),color,m,.102,0,0,1,1,1);}
 
   // CHARACTER WORKSHOP — ring meshes with deliberately shaped adult silhouettes.
@@ -141,20 +141,59 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
     }
     const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(vertices,3));g.setIndex(indices);g.computeVertexNormals();geometries.add(g);return g;
   }
-  const faceGeo=profileGeometry([[-.175,.005,.008,.024],[-.155,.058,.064,.021],[-.123,.087,.081,.013],[-.075,.109,.095,.005],[-.026,.127,.105,.002],[.018,.126,.103,0],[.056,.122,.104,-.002],[.102,.118,.104,-.008],[.148,.085,.080,-.016],[.174,.005,.008,-.015]],20);
+  // A single sculpted head surface: chin, jaw, cheeks, brows, eye sockets and
+  // integrated nose are geometry, not detached balls. Shared topology; skin palettes differ.
+  const faceGeo=profileGeometry([[-.175,.005,.008,.024],[-.155,.058,.064,.021],[-.129,.083,.081,.014],[-.102,.096,.088,.010],[-.075,.109,.095,.005],[-.052,.121,.102,.003],[-.026,.127,.105,.002],[0,.127,.104,.001],[.018,.126,.103,0],[.039,.124,.104,-.001],[.056,.122,.104,-.002],[.080,.121,.105,-.005],[.108,.116,.101,-.008],[.148,.085,.080,-.016],[.174,.005,.008,-.015]],36);
+  function gauss(x,y,cx,cy,sx,sy){return Math.exp(-((x-cx)/sx)**2-((y-cy)/sy)**2);}
+  {
+    const a=faceGeo.attributes.position,colors=[];
+    for(let i=0;i<a.count;i++){
+      const x=a.getX(i),y=a.getY(i),z=a.getZ(i),front=clamp((z-.025)/.065);
+      const eye=gauss(Math.abs(x),y,.052,.024,.027,.025),brow=gauss(Math.abs(x),y,.052,.052,.037,.019);
+      const cheek=gauss(Math.abs(x),y,.087,-.044,.035,.038);
+      const bridge=gauss(x,y,0,.017,.020,.057),tip=gauss(x,y,0,-.031,.026,.023);
+      const mouth=gauss(x,y,0,-.079,.039,.015);
+      a.setZ(i,z+front*(.019*bridge+.032*tip+.010*brow+.008*cheek-.012*eye+.005*mouth));
+      colors.push(1-.07*front*eye,1-.08*front*eye-.025*cheek,1-.085*front*eye-.055*cheek);
+    }
+    faceGeo.setAttribute('color',new T.Float32BufferAttribute(colors,3));
+    faceGeo.computeVertexNormals();
+  }
   const shirtGeo=profileGeometry([[-.30,.173,.109],[-.21,.183,.119],[-.12,.176,.115],[.015,.188,.123],[.13,.224,.139],[.22,.23,.12],[.28,.141,.088],[.30,.058,.056]],16);
-  const hairGeo=profileGeometry([[.055,.130,.108,-.026],[.10,.135,.113,-.023],[.15,.107,.094,-.018],[.185,.055,.055,-.011],[.19,.004,.004]],20);
+  // Continuous asymmetric scalp meshes, with cut hairlines and swept strand tones.
+  function scalpGeometry(style){
+    const pos=[],cols=[],idx=[],segments=40,rings=10;
+    for(let j=0;j<=rings;j++)for(let i=0;i<segments;i++){
+      const a=2*Math.PI*i/segments,front=Math.cos(a),side=Math.sin(a),t=j/rings;
+      const line=style===0?.035+.070*front+.016*side:style===1?.005+.090*front: .027+.064*front;
+      const y=mix(.195,line,t);
+      const radius=Math.sqrt(Math.max(.002,1-((y-.009)/.193)**2));
+      const groove=1+.015*Math.sin(a*17+t*5)+.018*Math.sin(a*7-t*4);
+      pos.push(Math.sin(a)*.145*radius*groove,y,Math.cos(a)*.127*radius*groove-.012);
+      const strand=.84+.12*Math.sin(a*19+t*3)**2+.035*Math.sin(a*8-t*4);
+      cols.push(strand,strand*.96,strand*.92);
+    }
+    for(let j=0;j<rings;j++)for(let i=0;i<segments;i++){
+      const a=j*segments+i,b=j*segments+(i+1)%segments,c=b+segments,d=a+segments;
+      idx.push(a,d,b,b,d,c);
+    }
+    const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(pos,3));g.setAttribute('color',new T.Float32BufferAttribute(cols,3));g.setIndex(idx);g.computeVertexNormals();geometries.add(g);return g;
+  }
+  const hairGeos=[0,1,2].map(scalpGeometry);
+  const collarGeo=new T.BufferGeometry();
+  collarGeo.setAttribute('position',new T.Float32BufferAttribute([-.097,.235,.120,-.023,.135,.146,0,.230,.131,0,.230,.131,.023,.135,.146,.097,.235,.120],3));collarGeo.computeVertexNormals();geometries.add(collarGeo);
   const upperGeo=profileGeometry([[-.29,.057,.061],[-.23,.074,.078],[-.09,.092,.087],[.015,.085,.081],[.043,.025,.025]],10);
   const foreGeo=profileGeometry([[-.29,.038,.036],[-.23,.044,.041],[-.09,.061,.058],[.01,.056,.055],[.025,.025,.025]],10);
   const handGeo=profileGeometry([[-.102,.023,.017],[-.079,.048,.025],[-.012,.052,.027],[.018,.037,.029],[.025,.005,.006]],10);
   function human(g,x,z,face,seated,palette){
     const o=group(g,x,0,z);o.rotation.y=face;animated.add(o);
     const skin=mat(palette.skin,.67),hair=mat(palette.hair,.83),shirt=palette.shirt,trouser=palette.pants,pelvis=seated?.81:1.00;
+    const complexion=skin.clone();complexion.vertexColors=true;const scalp=hair.clone();scalp.vertexColors=true;
     const torso=group(o,0,pelvis+.28,0);animated.add(torso);
     mesh(shirtGeo,shirt,torso,0,0,0,1,1,1).castShadow=true;
-    const trim=mat(palette.style===0?0x203c3a:0x40494a,.8);
+    const trim=mat(palette.style===0?0x315956:palette.style===2?0x3c526a:0xb4a38d,.8);
+    mesh(collarGeo,trim,torso,0,0,0,1,1,1);
     for(const s of [-1,1]){
-      const lapel=b(torso,palette.style===0?trim:shirt,s*.073,.20,.108,.077,.14,.024);lapel.rotation.z=s*.27;
       const hip=[s*.105,pelvis,0],knee=[s*.118,seated?.58:.56,seated?.37:.02],ankle=[s*.13,.115,seated?.42:.035];
       beam(o,trouser,hip,knee,.105);ell(o,trouser,...knee,.098,.105,.096);beam(o,trouser,knee,ankle,.073);
       ell(o,black,s*.13,.07,seated?.48:.12,.095,.065,.17);
@@ -165,22 +204,19 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
     b(torso,shirt,-.114,.079,.132,.095,.098,.015);
     cyl(torso,skin,0,.33,0,.058,.13);
     const head=group(torso,0,.487,0);animated.add(head);
-    mesh(faceGeo,skin,head,0,0,0,1,1,1).castShadow=true;
-    mesh(hairGeo,hair,head,0,0,0,1,1,1);
+    mesh(faceGeo,complexion,head,0,0,0,1,1,1).castShadow=true;
+    mesh(hairGeos[palette.style],scalp,head,0,0,0,1,1,1);
     const lip=mat(0x79504b,.75),eye=mat(0x282727,.5),ivory=mat(0xe0d3bf,.65);
     for(const s of [-1,1]){
       ell(head,skin,s*.126,-.027,-.008,.025,.045,.025);
-      ell(head,ivory,s*.050,.025,.100,.023,.0075,.010);
-      ell(head,eye,s*.050,.025,.109,.008,.008,.006);
-      const brow=ell(head,hair,s*.050,.052,.105,.035,.008,.008);brow.rotation.z=s*.09;
+      ell(head,ivory,s*.050,.025,.096,.022,.007,.009);
+      ell(head,eye,s*.050,.025,.103,.0075,.0075,.006);
+      const brow=ell(head,hair,s*.050,.052,.110,.030,.004,.006);brow.rotation.z=s*.10;
+      const lid=ell(head,hair,s*.050,.033,.101,.022,.0024,.005);lid.rotation.z=s*.04;
     }
-    // Angular bridge and tip, not a spherical nose.
-    const nose=profileGeometry([[-.048,.018,.023,.105],[-.025,.023,.032,.111],[.029,.012,.018,.110],[.05,.004,.004,.105]],8);
-    mesh(nose,skin,head,0,0,0,1,1,1);
-    ell(head,lip,0,-.079,.099,.032,.0045,.005);
-    if(palette.style===1){ell(head,hair,0,-.025,-.082,.134,.19,.07);ell(head,hair,.078,.085,.064,.065,.10,.055);ell(head,hair,0,-.15,-.103,.069,.12,.067);}
-    else if(palette.style===2){ell(head,hair,0,.14,-.025,.125,.07,.09);ell(head,hair,-.093,.07,-.01,.046,.083,.06);}
-    else {for(let j=0;j<3;j++){const lock=ell(head,hair,-.071+j*.071,.136-j*.008,.047,.050,.050,.061);lock.rotation.z=-.42;}}
+    // The nose is integrated into faceGeo; small lips and eyelids supply scale cues.
+    ell(head,lip,0,-.079,.103,.029,.004,.004);
+    if(palette.style===1){ell(head,hair,0,-.046,-.102,.105,.13,.065);ell(head,hair,0,-.143,-.112,.055,.072,.057);}
     const arms=[];
     for(const s of [-1,1]){
       const a=group(torso,s*.225,.205,0);animated.add(a);
@@ -204,7 +240,7 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
     else if(i===1){desk(g,2.50,1.4,timber);chair(g,.1,-1.02,navy,0);for(let j=0;j<5;j++)b(g,[teal,clay,cream,navy,sage][j],-.83+j*.20,1.37,-.41,.16,.45,.46);laptop(g,.65,-.25,'Records check','PR-017 · Checking source','Source confirmed','PR-017 · Review required',.39);mug(g,.95,.35,cream);placard(g,'Records','Confirm the details',0,.8,.72,1.65,.38);staffers.push({i,staff:human(g,.1,-1.02,0,true,palettes[i])});}
     else if(i===2){shadow(g,0,0,4.2,3.0,.052);const top=cyl(g,oak,0,1.04,0,1.42,.15,.91);top.castShadow=true;top.receiveShadow=true;cyl(g,timber,0,.95,0,1.32,.035,.85);cyl(g,timber,0,.52,0,.29,1.0);cyl(g,ink,0,.075,0,.73,.15);chair(g,.12,-1.20,teal,0);chair(g,-1.48,.18,clay,Math.PI/2);chair(g,1.48,.18,navy,-Math.PI/2);
       operator=human(g,.12,-1.20,0,true,palettes[i]);lamp(g,-1,-.35);flatCard(g,'Review checklist','Scope • amount • owner',-.56,1.13,.30,.73,.45);
-      stamp=group(g,.34,1.40,-.78);animated.add(stamp);cyl(stamp,brass,0,0,0,.06,.13);ell(stamp,timber,0,.065,0,.10,.055,.10);b(stamp,ink,0,-.085,0,.19,.06,.15);
+      stamp=group(g,.34,1.40,-.78);animated.add(stamp);cyl(stamp,brass,0,0,0,.06,.13);ell(stamp,timber,0,.065,0,.065,.044,.065);b(stamp,ink,0,-.085,0,.17,.06,.13);
       reviewPending=placard(g,'Review pending','Human decision required',-.87,1.33,.43,.94,.31,'#5b3526','#f6d6a2');reviewApproved=placard(g,'Approved','Decision recorded',-.87,1.33,.43,.94,.31,'#244943','#cae5cf');b(g,timber,-.87,1.14,.43,1.0,.05,.19);}
     else{desk(g,2.7,1.30,oak);b(g,teal,.96,.48,-.08,.55,.82,.75);for(let j=0;j<2;j++){b(g,oak,.96,.36+j*.36,.31,.43,.27,.055);b(g,brass,.96,.39+j*.36,.35,.17,.035,.05);}laptop(g,-.8,-.27,'Purchasing','Awaiting approval','Receipt confirmed','PR-017 · Assigned',.94);lamp(g,.98,-.39);mug(g,.58,.36,clay);staffers.push({i,staff:human(g,.18,-.98,0,false,palettes[i])});
       receivePending=placard(g,'Purchasing','Awaiting approved record',0,.83,.661,1.76,.35);receiveDone=placard(g,'Assigned to purchasing','Receipt confirmed',0,.83,.662,1.76,.35,'#244943','#cae5cf');}
@@ -212,7 +248,13 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
   // CUSTODY — one physical folder, 56 independently conserved sheets.
   const request=group(root);animated.add(request);b(request,clay,0,0,0,.96,.08,.69).castShadow=true;b(request,paper,.035,.057,0,.83,.055,.60);b(request,teal,-.39,.083,0,.15,.03,.63);flatCard(request,'PR-017','Purchase request',.06,.092,0,.68,.43);
   // Permanent visual custody mark travels with the original document, not a second folder.
-  const approvalMark=flatCard(request,'APPROVED','Review complete',.23,.098,-.105,.28,.13);approvalMark.rotation.z=-.12;approvalMark.visible=false;
+  const sealTexture=texture(512,220,(c,W,H)=>{
+    c.strokeStyle='#98452f';c.fillStyle='#98452f';c.lineWidth=10;c.strokeRect(15,15,W-30,H-30);c.lineWidth=2;c.strokeRect(27,27,W-54,H-54);
+    c.font='700 69px Arial';c.textAlign='center';c.fillText('APPROVED',W/2,116,W-60);
+    c.font='600 31px Arial';c.fillText('PR-017 / REVIEW COMPLETE',W/2,168,W-64);
+  });
+  const approvalMark=mesh(planeGeo,new T.MeshBasicMaterial({map:sealTexture,transparent:true,depthWrite:false,polygonOffset:true,polygonOffsetFactor:-1}),request,.23,.098,-.105,.28,.13,1);
+  approvalMark.rotation.set(-Math.PI/2,0,-.12);approvalMark.visible=false;
   const tag=placard(request,'PR-017','Purchase request',0,.58,0,1.1,.38,'#253b43','#f7e8cf');
   const fileFlag=new T.Sprite(new T.SpriteMaterial({map:tag.material.map,depthTest:false,depthWrite:false,toneMapped:false}));fileFlag.position.set(0,.53,0);fileFlag.scale.set(.88,.293,1);fileFlag.renderOrder=9;request.add(fileFlag);tag.removeFromParent();tag.material.dispose();
   const path=positions.map(([x,,z],i)=>new T.Vector3(x+(i===2?.14:0),1.18,z+(i===2?-.63:.12)));
@@ -222,15 +264,52 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
   const sheets=new T.InstancedMesh(boxGeo,sheetMaterial,56);sheets.instanceMatrix.setUsage(T.DynamicDrawUsage);sheets.frustumCulled=false;sheets.castShadow=true;sheets.receiveShadow=false;root.add(sheets);
   const debris=Array.from({length:56},(_,id)=>({id,theta:id*2.39996323,r:1.5+(id%11)*.43,desk:id%4,layer:Math.floor(id/4),pose:new T.Object3D()}));
   const target=new T.Vector3(),matrix=new T.Matrix4();const pulse=(p,a,b,c)=>span(p,a,b)-span(p,b,c);
-  // Preserve local animation by batching under each nearest animated ancestor.
-  animated.add(root);root.updateMatrixWorld(true);const buckets=new Map();
-  root.traverse(o=>{if(!o.isMesh||o.isInstancedMesh||![boxGeo,sphereGeo,cylGeo,taperGeo].includes(o.geometry))return;let parent=o.parent;while(parent&&!animated.has(parent))parent=parent.parent;if(!parent)return;if(!buckets.has(parent))buckets.set(parent,new Map());const by=buckets.get(parent),k=o.geometry.uuid+o.material.uuid+Number(o.castShadow)+Number(o.receiveShadow);if(!by.has(k))by.set(k,[]);by.get(k).push(o);});
-  for(const [parent,by] of buckets)for(const items of by.values()){if(items.length<2)continue;const m=new T.InstancedMesh(items[0].geometry,items[0].material,items.length),inv=parent.matrixWorld.clone().invert();items.forEach((o,i)=>{m.setMatrixAt(i,new T.Matrix4().multiplyMatrices(inv,o.matrixWorld));o.removeFromParent();});m.castShadow=items[0].castShadow;m.receiveShadow=items[0].receiveShadow;m.instanceMatrix.needsUpdate=true;m.computeBoundingSphere();parent.add(m);}
+  // STATIC GEOMETRY CONSOLIDATION
+  // Keep visibility-driven signs and individual animated joints separate.
+  // Merge different primitive shapes with the same material/flags into one local geometry;
+  // retain instancing for repeated identical shapes. No dynamic transform is baked.
+  animated.add(root);
+  root.updateMatrixWorld(true);
+  const buckets=new Map(),primitives=new Set([boxGeo,sphereGeo,cylGeo,taperGeo]);
+  root.traverse(o=>{
+    if(!o.isMesh||o.isInstancedMesh||!primitives.has(o.geometry)||o.material.transparent)return;
+    let parent=o.parent;while(parent&&!animated.has(parent))parent=parent.parent;
+    if(!parent)return;
+    if(!buckets.has(parent))buckets.set(parent,new Map());
+    const by=buckets.get(parent),key=o.material.uuid+Number(o.castShadow)+Number(o.receiveShadow);
+    if(!by.has(key))by.set(key,[]);by.get(key).push(o);
+  });
+  function combine(items,inv){
+    const pos=[],normal=[],uv=[],indices=[],local=new T.Matrix4(),nmat=new T.Matrix3(),point=new T.Vector3(),n=new T.Vector3();
+    for(const o of items){
+      local.multiplyMatrices(inv,o.matrixWorld);nmat.getNormalMatrix(local);
+      const g=o.geometry,base=pos.length/3,p=g.attributes.position,norm=g.attributes.normal,tex=g.attributes.uv;
+      for(let i=0;i<p.count;i++){
+        point.fromBufferAttribute(p,i).applyMatrix4(local);n.fromBufferAttribute(norm,i).applyNormalMatrix(nmat);
+        pos.push(point.x,point.y,point.z);normal.push(n.x,n.y,n.z);uv.push(tex.getX(i),tex.getY(i));
+      }
+      if(g.index)for(let i=0;i<g.index.count;i++)indices.push(base+g.index.getX(i));
+      else for(let i=0;i<p.count;i++)indices.push(base+i);
+    }
+    const g=new T.BufferGeometry();
+    g.setAttribute('position',new T.Float32BufferAttribute(pos,3));g.setAttribute('normal',new T.Float32BufferAttribute(normal,3));g.setAttribute('uv',new T.Float32BufferAttribute(uv,2));g.setIndex(indices);g.computeBoundingSphere();geometries.add(g);return g;
+  }
+  for(const [parent,by] of buckets)for(const items of by.values()){
+    if(items.length<2)continue;
+    const first=items[0],inv=parent.matrixWorld.clone().invert();let m;
+    if(items.every(o=>o.geometry===first.geometry)){
+      m=new T.InstancedMesh(first.geometry,first.material,items.length);
+      items.forEach((o,i)=>m.setMatrixAt(i,new T.Matrix4().multiplyMatrices(inv,o.matrixWorld)));
+      m.instanceMatrix.needsUpdate=true;m.computeBoundingSphere();
+    }else m=new T.Mesh(combine(items,inv),first.material);
+    m.castShadow=first.castShadow;m.receiveShadow=first.receiveShadow;
+    items.forEach(o=>o.removeFromParent());parent.add(m);
+  }
   // RENDERER / LIFECYCLE — one director phase; expensive diagnostics only in opt-in QA.
   let phase=0,disposed=false,failed=false,visible=false,last=-1,w=1,h=1,lastCaption='',drawCount=0;
   const jointTarget=new T.Vector3(),jointGoal=new T.Vector3(),jointDir=new T.Vector3(),jointBend=new T.Vector3(),jointElbow=new T.Vector3(),jointLower=new T.Vector3(),jointUpper=new T.Vector3(),jointDown=new T.Vector3(0,-1,0),jointQ1=new T.Quaternion(),jointQ2=new T.Quaternion(),jointInv=new T.Quaternion();
   const actors=[operator,...staffers.map(s=>s.staff)];
-  const sampleContact=new T.Vector3(),projected=new T.Vector3();
+  const sampleContact=new T.Vector3(),projected=new T.Vector3(),stampLocal=new T.Vector3();
   const status=document.createElement('div');
   status.className='handoff-scene-caption';status.setAttribute('role','status');status.setAttribute('aria-live','polite');
   Object.assign(status.style,{position:'absolute',zIndex:'3',right:'3%',top:'11%',font:'500 12px system-ui',letterSpacing:'.035em',color:'#fff3df',background:'rgba(22,37,40,.74)',padding:'7px 10px',borderLeft:'1px solid #e5b97e',textShadow:'none',textAlign:'right',pointerEvents:'none',whiteSpace:'pre-line'});
@@ -288,7 +367,7 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
     arm.wrist.quaternion.slerp(jointInv.identity(),engage);
     workDisplays.forEach(d=>{d.pending.visible=p<d.threshold;d.done.visible=p>=d.threshold;});
     reviewPending.visible=p<.69;reviewApproved.visible=p>=.69;receivePending.visible=p<.94;receiveDone.visible=p>=.94;
-    ambient.intensity=mix(.70,.94,trace);key.intensity=mix(2.00,2.55,trace);rim.intensity=mix(.75,1.12,decision)+.22*press;
+    ambient.intensity=mix(.82,1.02,trace);key.intensity=mix(1.75,2.30,trace);rim.intensity=mix(1.03,1.30,decision)+.20*press;
     arcs.forEach((arc,i)=>{const from=[.18,.39,.75][i],to=[.37,.55,.94][i],q=span(p,from,to);arc.geometry.setDrawRange(0,Math.floor(q*64)+1);arc.material.opacity=.78*pulse(p,from,(from+to)/2,to+.065);});
     // CINEMATOGRAPHY — wide master, active record, intimate review, release, calm pullback.
     const portrait=w/h<1.05,compact=w<=900&&!portrait;
@@ -304,8 +383,9 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
     root.updateMatrixWorld(true);
     const round=v=>+v.toFixed(3),vec=v=>v.toArray().map(round);
     const actualGrip=arm.grip.getWorldPosition(sampleContact),contactError=actualGrip.distanceTo(jointTarget);
+    request.worldToLocal(stamp.localToWorld(stampLocal.set(0,-.115,0)));
     const projection=o=>{o.getWorldPosition(projected).project(camera);return [round((projected.x+1)*.5),round((1-projected.y)*.5)];};
-    stage.dataset.handoffState=JSON.stringify({id:'PR-017',position:vec(request.position),rotation:[request.rotation.x,request.rotation.y,request.rotation.z].map(round),decision:p>=.69,receipt:p>=.94,stamp:round(press),camera:vec(camera.position),stations:stations.map(g=>[...vec(g.position),round(g.rotation.y)]),papers:debris.map(d=>{sheets.getMatrixAt(d.id,matrix);return [d.id,...matrix.elements.map(round)];}),paperCount:sheets.count,mechanicalRoutes:0,owner:'native-scroll',world:'coordination-studio',actors:[operator,...staffers.map(s=>s.staff)].map(s=>[round(s.head.rotation.x),round(s.head.rotation.y),...s.arms.flatMap(a=>a.elbow.quaternion.toArray().map(round))]),jointMatrices:actors.map(s=>[s.torso,s.head,...s.arms.flatMap(a=>[a.a,a.elbow,a.wrist])].map(o=>o.matrixWorld.elements.map(round))),contact:{error:round(contactError),engage:round(engage),distance:round(rawDistance),clamped:rawDistance>L+M-.001||rawDistance<Math.abs(L-M)+.001,grip:vec(actualGrip),target:vec(jointTarget),stampFace:vec(stamp.localToWorld(projected.set(0,-.115,0))),documentFace:vec(request.localToWorld(projected.set(0,.092,0)))},screen:{request:projection(request),reviewer:projection(operator.head),receiver:projection(staffers[2].staff.head)},displays:workDisplays.map(d=>d.done.visible),physicalApproval:approvalMark.visible});
+    stage.dataset.handoffState=JSON.stringify({id:'PR-017',position:vec(request.position),rotation:[request.rotation.x,request.rotation.y,request.rotation.z].map(round),decision:p>=.69,receipt:p>=.94,stamp:round(press),camera:vec(camera.position),stations:stations.map(g=>[...vec(g.position),round(g.rotation.y)]),papers:debris.map(d=>{sheets.getMatrixAt(d.id,matrix);return [d.id,...matrix.elements.map(round)];}),paperCount:sheets.count,mechanicalRoutes:0,owner:'native-scroll',world:'coordination-studio',actors:[operator,...staffers.map(s=>s.staff)].map(s=>[round(s.head.rotation.x),round(s.head.rotation.y),...s.arms.flatMap(a=>a.elbow.quaternion.toArray().map(round))]),jointMatrices:actors.map(s=>[s.torso,s.head,...s.arms.flatMap(a=>[a.a,a.elbow,a.wrist])].map(o=>o.matrixWorld.elements.map(round))),contact:{error:round(contactError),engage:round(engage),distance:round(rawDistance),clamped:rawDistance>L+M-.001||rawDistance<Math.abs(L-M)+.001,grip:vec(actualGrip),target:vec(jointTarget),stampFace:vec(stamp.localToWorld(projected.set(0,-.115,0))),stampOnDocument:vec(stampLocal),documentFace:vec(request.localToWorld(projected.set(0,.092,0)))},screen:{request:projection(request),reviewer:projection(operator.head),receiver:projection(staffers[2].staff.head)},displays:workDisplays.map(d=>d.done.visible),physicalApproval:approvalMark.visible});
     }
     try {renderer.render(scene,camera);drawCount++;stage.dataset.handoffPhase=p.toFixed(4);if(qaEnabled)stage.dataset.handoffBudget=JSON.stringify({calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures,shadowMap:key.shadow.map?.width||0,raster:[canvas.width,canvas.height],tier:constrained?'constrained':'standard',renderMs:performance.now()-started,drawCount});}
     catch(error){console.warn("Handoff renderer failed",error);fallback();}

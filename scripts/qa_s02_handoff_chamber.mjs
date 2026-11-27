@@ -59,7 +59,7 @@ try {
           if(name==='review'||name==='approved')assert.ok(safe(state.screen.reviewer),'reviewer out of frame');
           if(name==='flight'||name==='receipt')assert.ok(safe(state.screen.receiver),'receiver out of frame');assert.deepEqual(state.displays,[p>=.37,p>=.39,p>=.94]);
           assert.equal(state.paperCount,56);assert.deepEqual(state.papers.map(x=>x[0]),Array.from({length:56},(_,i)=>i));
-          assert.ok(budget.calls>0&&budget.calls<240&&budget.triangles>0);assert.ok(state.jointMatrices.every(actor=>actor.length===8&&actor.every(m=>m.length===16&&m.every(Number.isFinite))));if(name==='review'){assert.ok(state.contact.engage>.99);assert.equal(state.contact.clamped,false);assert.ok(state.contact.error<.015,'actual grip residual '+state.contact.error);assert.ok(Math.abs(state.contact.stampFace[1]-state.contact.documentFace[1])<.035,'stamp must reach document surface');assert.equal(state.displays[2],false);}
+          assert.ok(budget.calls>0&&budget.calls<240&&budget.triangles>0);assert.ok(state.jointMatrices.every(actor=>actor.length===8&&actor.every(m=>m.length===16&&m.every(Number.isFinite))));if(name==='review'){assert.ok(state.contact.engage>.99);assert.equal(state.contact.clamped,false);assert.ok(state.contact.error<.015,'actual grip residual '+state.contact.error);assert.ok(Math.abs(state.contact.stampFace[1]-state.contact.documentFace[1])<.035,'stamp must reach document surface');const [sx,sy,sz]=state.contact.stampOnDocument;assert.ok(sx>.06-.34&&sx<.06+.34&&Math.abs(sz)<.215&&Math.abs(sy-.092)<.035,'stamp surface lies on document, not merely at same height');assert.equal(state.displays[2],false);}
           states.set(name,state);
         }
       }
