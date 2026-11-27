@@ -56,6 +56,11 @@
       #complexity-clarity-scene [data-studio-interactive] .beat-card p{font-size:.83rem;line-height:1.35}
       #complexity-clarity-scene [data-studio-interactive] .scrub-progress-track{margin-top:.45rem}
       #complexity-clarity-scene [data-studio-interactive] .chapter-rail{margin-top:.45rem;gap:.4rem}
+      /* R7: press feedback only; avoid hover scaling and delayed keyboard state. */
+      #complexity-clarity-scene [data-studio-interactive] .chapter-pill{transition:transform 120ms cubic-bezier(.23,1,.32,1);transform-origin:center}
+      @media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){#complexity-clarity-scene [data-studio-interactive] .chapter-pill:active:not(:focus-visible){transform:scale(.97)}}
+      @media(prefers-reduced-motion:reduce){#complexity-clarity-scene [data-studio-interactive] .chapter-pill{transition:none;transform:none}}
+
       #complexity-clarity-scene [data-studio-interactive] .chapter-pill{min-height:40px;padding:.3rem .38rem;font-size:.73rem}
 
     }

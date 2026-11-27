@@ -1,11 +1,41 @@
 import * as T from '../vendor/three/three.module.js';
 
-// S02 R6: THE COORDINATION STUDIO — THE HUMAN DECISION — an authored architectural cutscene, directed in scroll time. All motion is a pure function of director phase.
+// S02 R7: THE COORDINATION STUDIO — THE RHYTHM OF WORK — an authored architectural cutscene, directed in scroll time. All motion is a pure function of director phase.
 // No external assets, extra RAF, timers, or simulated backend.
 const clamp = x => Math.max(0, Math.min(1,x));
 const ease = x => {x=clamp(x);return x*x*x*(x*(x*6-15)+10);};
 const span = (p,a,b) => ease((p-a)/(b-a));
 const mix = (a,b,t) => a+(b-a)*t;
+// A score in scroll-space, not wall-clock time. Each gesture has preparation,
+// readable contact, and release. Semantic approvals are never inferred from animation.
+export const S02_BEATS=Object.freeze({
+  arrive:.04, source:.37, reviewStart:.53, reviewContact:.625,
+  approved:.69, handoff:.76, receipt:.94, resolved:.97
+});
+const accent=(p,a,b,c)=>span(p,a,b)-span(p,b,c);
+export function actingScore(p,role){
+  p=clamp(p);
+  const windows=[[.018,.075,.14,.23],[.245,.315,.405,.52],[.49,.55,.635,.745],[.73,.80,.925,1.0]];
+  const [start,prepare,hit,end]=windows[role];
+  const anticipate=accent(p,start,prepare,hit);
+  const action=span(p,prepare,hit)-span(p,hit,end);
+  const recover=accent(p,hit,hit+(end-hit)*.52,end);
+  // Offset eye closure from the large body gesture, never from the current clock.
+  const blinkCenters=[prepare+.009,Math.min(.985,end-.018)];
+  const blink=Math.max(...blinkCenters.map(b=>accent(p,b-.009,b,b+.012)));
+  const focus=span(p,start,prepare)-span(p,hit,end);
+  return {anticipate,action,recover,blink,focus};
+}
+export function paperFollowThrough(p,id){
+  const end=.35+(id%9)*.019,local=clamp((p-end)/.042);
+  // A finite, damped final wobble. Exactly zero before and after the landing.
+  return Math.sin(local*Math.PI*2)*Math.sin(local*Math.PI)*(1-local)*.10;
+}
+export function deliveryArc(t,segment){
+  const q=clamp(t),wave=Math.sin(Math.PI*q);
+  return {lift:wave*1.5,side:wave*wave*(segment===1?-.30:.24),bank:wave*.24};
+}
+
 // Positive bone lengths; clamp against the reachable annulus without changing the target.
 export function reachDistance(raw,L,M){return Math.max(Math.abs(L-M)+.001,Math.min(L+M-.001,raw));}
 // Pixel ceilings are presentation policy, never narrative or QA policy.
@@ -207,15 +237,19 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
     mesh(faceGeo,complexion,head,0,0,0,1,1,1).castShadow=true;
     mesh(hairGeos[palette.style],scalp,head,0,0,0,1,1,1);
     const lip=mat(0x79504b,.75),eye=mat(0x282727,.5),ivory=mat(0xe0d3bf,.65);
+    // One eye rig per actor keeps the white and iris silhouettes together.
+    // Scaling about the eye line closes them without squashing the face.
+    const eyes=group(head,0,.025,0);animated.add(eyes);
+    const pupils=group(eyes,0,0,0);animated.add(pupils);
     for(const s of [-1,1]){
       ell(head,skin,s*.126,-.027,-.008,.025,.045,.025);
-      ell(head,ivory,s*.050,.025,.096,.022,.007,.009);
-      ell(head,eye,s*.050,.025,.103,.0075,.0075,.006);
+      ell(eyes,ivory,s*.050,0,.096,.022,.007,.009);
+      ell(pupils,eye,s*.050,0,.103,.0075,.0075,.006);
       const brow=ell(head,hair,s*.050,.052,.110,.030,.004,.006);brow.rotation.z=s*.10;
       const lid=ell(head,hair,s*.050,.033,.101,.022,.0024,.005);lid.rotation.z=s*.04;
     }
     // The nose is integrated into faceGeo; small lips and eyelids supply scale cues.
-    ell(head,lip,0,-.079,.103,.029,.004,.004);
+    const mouth=ell(head,lip,0,-.079,.103,.029,.004,.004);animated.add(mouth);
     if(palette.style===1){ell(head,hair,0,-.046,-.102,.105,.13,.065);ell(head,hair,0,-.143,-.112,.055,.072,.057);}
     const arms=[];
     for(const s of [-1,1]){
@@ -230,7 +264,7 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
       const grip=group(wrist,0,-.043,0);
       arms.push({a,elbow,wrist,grip,s});
     }
-    return {o,torso,head,arms};
+    return {o,torso,head,arms,eyes,pupils,mouth};
   }
   const palettes=[{skin:0xb97f56,hair:0x352823,shirt:clay,pants:navy,style:1},{skin:0x875b41,hair:0x242223,shirt:navy,pants:ink,style:2},{skin:0xd1a17b,hair:0x583d2b,shirt:teal,pants:ink,style:0},{skin:0xb57e59,hair:0x2b2524,shirt:cream,pants:navy,style:1}];
   let operator,stamp,reviewPending,reviewApproved,receivePending,receiveDone;
@@ -246,7 +280,25 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
       receivePending=placard(g,'Purchasing','Awaiting approved record',0,.83,.661,1.76,.35);receiveDone=placard(g,'Assigned to purchasing','Receipt confirmed',0,.83,.662,1.76,.35,'#244943','#cae5cf');}
   }
   // CUSTODY — one physical folder, 56 independently conserved sheets.
-  const request=group(root);animated.add(request);b(request,clay,0,0,0,.96,.08,.69).castShadow=true;b(request,paper,.035,.057,0,.83,.055,.60);b(request,teal,-.39,.083,0,.15,.03,.63);flatCard(request,'PR-017','Purchase request',.06,.092,0,.68,.43);
+  const request=group(root);animated.add(request);b(request,clay,0,0,0,.96,.08,.69).castShadow=true;b(request,paper,.035,.057,0,.83,.055,.60);b(request,teal,-.39,.083,0,.15,.03,.63);// Canvas illustration: actual stationery, not a floating UI screenshot.
+  const requestArt=texture(768,488,(c,W,H)=>{
+    c.fillStyle='#f3e8d2';c.fillRect(0,0,W,H);
+    c.fillStyle='#325d58';c.fillRect(0,0,W,28);
+    c.fillStyle='#273f3c';c.font='700 70px Georgia';c.fillText('PR-017',48,111);
+    c.font='600 29px Arial';c.fillText('PURCHASE REQUEST',48,156);
+    c.strokeStyle='#a79c87';c.lineWidth=2;c.beginPath();c.moveTo(48,177);c.lineTo(W-48,177);c.stroke();
+    c.font='500 20px Arial';c.fillStyle='#57645b';
+    ['REQUEST DETAILS','SOURCE RECORD','REVIEW / AUTHORIZATION'].forEach((label,i)=>{
+      const y=220+i*72;c.fillText(label,48,y);c.strokeStyle='#b9b09e';c.strokeRect(48,y+10,346,32);
+      c.fillStyle='#57645b';
+    });
+    c.strokeStyle='#b9b09e';c.strokeRect(430,210,290,222);
+    c.font='500 18px Arial';c.fillText('DECISION RECORD',448,414);
+    // Restrained spot-color registration and deterministic printed paper grain.
+    for(let i=0;i<2400;i++){const x=(i*197.37)%W,y=(i*117.61)%H;c.fillStyle=i%2?'rgba(95,71,48,.035)':'rgba(255,255,255,.09)';c.fillRect(x,y,1.4,1.4);}
+  });
+  const documentSurface=mesh(planeGeo,new T.MeshBasicMaterial({map:requestArt,side:T.DoubleSide}),request,.06,.092,0,.68,.43,1);
+  documentSurface.rotation.x=-Math.PI/2;
   // Permanent visual custody mark travels with the original document, not a second folder.
   const sealTexture=texture(512,220,(c,W,H)=>{
     c.strokeStyle='#98452f';c.fillStyle='#98452f';c.lineWidth=10;c.strokeRect(15,15,W-30,H-30);c.lineWidth=2;c.strokeRect(27,27,W-54,H-54);
@@ -323,27 +375,36 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
     stations.forEach((g,i)=>{const [x,y,z]=positions[i],q=span(p,.10+i*.024,.43+i*.018),s=1-q;g.position.set(x+s*Math.sin(i*4+1)*.78,y,z+s*Math.cos(i*4)*.64);g.rotation.y=baseAngles[i]+s*Math.sin(i*2.6+.7)*.40;});
     stations.forEach(g=>g.updateWorldMatrix(true,false));
     for(const d of debris){const i=d.id,q=span(p,.035+(i%9)*.018,.35+(i%9)*.019),u=1-q,theta=d.theta+p*15*(.52+(i%4)*.17)+q*3.7;const dest=destinations[d.desk];target.set(dest[0]+(d.layer%2)*.49,dest[1]+Math.floor(d.layer/2)*.008,dest[2]);stations[d.desk].localToWorld(target);const o=d.pose;
-      o.position.set(mix(target.x,Math.sin(theta)*d.r-.35,u),mix(target.y,1.3+(i%8)*.42+Math.sin(theta*1.6)*.6,u)+Math.sin(q*Math.PI)*.7,mix(target.z,Math.cos(theta)*d.r*.78+.6,u));o.rotation.set(u*Math.sin(theta*1.4)*1.75,mix(stations[d.desk].rotation.y+(i%2)*.05,theta*1.6,u),u*Math.cos(theta*1.3)*1.3);o.scale.set(.42+(i%3)*.045,.006,.58);o.updateMatrix();sheets.setMatrixAt(i,o.matrix);}
+      o.position.set(mix(target.x,Math.sin(theta)*d.r-.35,u),mix(target.y,1.3+(i%8)*.42+Math.sin(theta*1.6)*.6,u)+Math.sin(q*Math.PI)*.7,mix(target.z,Math.cos(theta)*d.r*.78+.6,u));o.rotation.set(u*Math.sin(theta*1.4)*1.75,mix(stations[d.desk].rotation.y+(i%2)*.05,theta*1.6,u),u*Math.cos(theta*1.3)*1.3+paperFollowThrough(p,i));o.scale.set(.42+(i%3)*.045,.006,.58);o.updateMatrix();sheets.setMatrixAt(i,o.matrix);}
     sheets.instanceMatrix.needsUpdate=true;
     let segment=0,t=span(p,.19,.37);if(p>=.37&&p<.55){segment=1;t=span(p,.39,.55);}else if(p>=.55){segment=2;t=release;}
     request.position.copy(path[segment]).lerp(path[segment+1],t);
     if(segment===0){target.set(0,1.18,.12);stations[0].localToWorld(target);target.y+=.55+(1-trace)*.9;target.x+=.35*Math.sin(p*13)*(1-trace);request.position.copy(target).lerp(path[1],t);}
-    const spin=Math.sin(t*Math.PI);request.position.y+=spin*1.5;fileFlag.visible=p<.55||spin>.15;fileFlag.position.set(0,.29+spin*.15,.23*(1-spin));approvalMark.visible=p>=.69;request.rotation.set(-.25*spin+(1-trace)*.19*Math.sin(p*19),.83*spin+(1-trace)*(.25+p*6),.24*spin+(1-trace)*.17*Math.cos(p*16));request.scale.setScalar(.94+.16*spin+.12*(1-trace));
+    const arc=deliveryArc(t,segment),spin=Math.sin(t*Math.PI);request.position.y+=arc.lift;request.position.z+=arc.side;fileFlag.visible=p<.55||spin>.15;fileFlag.position.set(0,.29+spin*.15,.23*(1-spin));approvalMark.visible=p>=.69;request.rotation.set(-.25*spin+(1-trace)*.19*Math.sin(p*19),.83*spin+(1-trace)*(.25+p*6),arc.bank+(1-trace)*.17*Math.cos(p*16));request.scale.setScalar(.94+.16*spin+.12*(1-trace));
     const press=span(p,.585,.635)-span(p,.66,.72);
 
     // ACTING / IK — all axes reset; no orientation from a preceding evaluation.
     function pose(staff,action,look,role){
       // Role-specific body language: intake receives, records checks, reviewer
       // stabilizes and stamps, purchasing reaches. Every axis is reset per phase.
-      const lean=role===3?.04+.11*action:.055+.10*action;
-      staff.torso.rotation.set(lean,look*.19,(role===3?1:-1)*.035*action);
-      staff.head.rotation.set(.055+action*(role===1?.12:.19),look,(role===3?1:-1)*.035);
+      const score=actingScore(p,role);
+      // For the reviewer keep the contact plateau unchanged; anticipation and
+      // follow-through outside it are deliberately separate from both IK targets.
+      const contactLock=role===2?span(p,.55,.60)-span(p,.70,.75):0;
+      const free=1-contactLock;
+      const lean=(role===3?.04+.11*action:.055+.10*action)+free*(.035*score.anticipate-.024*score.recover);
+      staff.torso.rotation.set(lean,look*.19+free*.035*score.focus,(role===3?1:-1)*.035*action);
+      staff.head.rotation.set(.055+action*(role===1?.12:.19)+.055*score.focus-.035*score.recover,look+.065*score.anticipate-.045*score.recover,(role===3?1:-1)*(.035+.021*score.focus));
+      staff.eyes.scale.y=1-.88*score.blink;
+      staff.pupils.position.x=.004*Math.sin(look*3)*score.focus;
+      staff.mouth.scale.y=.004*(1+.35*score.recover);
+
       staff.arms.forEach(({a,elbow,wrist,s})=>{
         const reach=role===0?(s<0?.78:.35):role===1?(s<0?.28:.86):role===3?(s<0?.75:.56):(s<0?.50:.74);
         const side=role===1&&s>0?.20*action:0;
-        a.rotation.set(-.43-action*reach,s*.04+side,s*(.12-action*.06));
+        a.rotation.set(-.43-action*reach+free*.10*score.anticipate,s*.04+side,s*(.12-action*.06)+free*s*.05*score.recover);
         elbow.rotation.set(-.86-action*(role===1&&s>0?.10:.36),0,s*.025);
-        wrist.rotation.set(.10-action*.12,0,s*.04);
+        wrist.rotation.set(.10-action*.12+free*.13*score.recover,0,s*.04);
       });
     }
     pose(operator,press,.10-.18*press,2);
@@ -354,7 +415,7 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
     });
     // The stamp is lifted, pressed against the request, then released.
     const stampContact=span(p,.59,.625)-span(p,.66,.70);
-    stamp.position.set(.34,1.48-.105*stampContact,-.78);
+    stamp.position.set(.34,1.48-.105*stampContact+.023*accent(p,.545,.574,.59),-.78);
     operator.torso.updateWorldMatrix(true,false);stamp.updateWorldMatrix(true,false);
     const arm=operator.arms[1],engage=span(p,.53,.58)-span(p,.69,.75);
     stamp.localToWorld(jointTarget.set(0,.065,0));
@@ -389,7 +450,8 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
     let k=0;while(k<shots.length-2&&p>shots[k+1][0])k++;const l=shots[k],r=shots[k+1],v=span(p,l[0],r[0]),shot=n=>mix(l[n],r[n],v);
     // Portrait opening follows the intake folder; receipt holds the destination before the pullback.
     const intakeHold=1-span(p,.15,.37),receiptHold=span(p,.91,.97);
-    const cx=shot(1)+(portrait?(-3.65*intakeHold+1.65*receiptHold-.40*pulse(p,.30,.44,.53)):0),cy=shot(2),cz=shot(3)+(portrait?1.15*intakeHold:0),angle=shot(4),radius=shot(portrait?7:5);
+    const drift=accent(p,.18,.26,.37)*.09-accent(p,.76,.85,.94)*.08;
+    const cx=shot(1)+drift+(portrait?(-3.65*intakeHold+1.65*receiptHold-.40*pulse(p,.30,.44,.53)):0),cy=shot(2),cz=shot(3)+(portrait?1.15*intakeHold:0),angle=shot(4),radius=shot(portrait?7:5);
     camera.fov=portrait?49:compact?49:40;camera.position.set(cx+Math.sin(angle)*radius,shot(portrait?8:6),cz+Math.cos(angle)*radius);camera.lookAt(cx,cy,cz);camera.setViewOffset(w,h,portrait?0:-w*(compact?.15:.14),portrait?h*.17:0,w,h);camera.updateProjectionMatrix();camera.updateMatrixWorld();
     const caption=p<.18?'01 / A request arrives\nPR-017 · Ownership unclear':p<.55?'02 / Find the right record\nPR-017 · '+(p<.37?'Checking details':'Source confirmed'):p<.75?'03 / A human decision\nPR-017 · '+(p<.69?'Review pending':'Approved'):'04 / The next responsibility\nPR-017 · '+(p<.94?'Handover in progress':'Assigned to purchasing');
     if(caption!==lastCaption){status.textContent=caption;lastCaption=caption;}
@@ -401,7 +463,7 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
     operator.arms[0].grip.getWorldPosition(supportGrip);
     request.worldToLocal(stamp.localToWorld(stampLocal.set(0,-.115,0)));
     const projection=o=>{o.getWorldPosition(projected).project(camera);return [round((projected.x+1)*.5),round((1-projected.y)*.5)];};
-    stage.dataset.handoffState=JSON.stringify({id:'PR-017',position:vec(request.position),rotation:[request.rotation.x,request.rotation.y,request.rotation.z].map(round),decision:p>=.69,receipt:p>=.94,stamp:round(press),camera:vec(camera.position),stations:stations.map(g=>[...vec(g.position),round(g.rotation.y)]),papers:debris.map(d=>{sheets.getMatrixAt(d.id,matrix);return [d.id,...matrix.elements.map(round)];}),paperCount:sheets.count,mechanicalRoutes:0,owner:'native-scroll',world:'coordination-studio',actors:[operator,...staffers.map(s=>s.staff)].map(s=>[round(s.head.rotation.x),round(s.head.rotation.y),...s.arms.flatMap(a=>a.elbow.quaternion.toArray().map(round))]),jointMatrices:actors.map(s=>[s.torso,s.head,...s.arms.flatMap(a=>[a.a,a.elbow,a.wrist])].map(o=>o.matrixWorld.elements.map(round))),contact:{error:round(contactError),engage:round(engage),distance:round(rawDistance),clamped:rawDistance>L+M-.001||rawDistance<Math.abs(L-M)+.001,grip:vec(actualGrip),target:vec(jointTarget),stampFace:vec(stamp.localToWorld(projected.set(0,-.115,0))),stampOnDocument:vec(stampLocal),documentFace:vec(request.localToWorld(projected.set(0,.092,0)))},screen:{request:projection(request),reviewer:projection(operator.head),receiver:projection(staffers[2].staff.head)},displays:workDisplays.map(d=>d.done.visible),physicalApproval:approvalMark.visible,supportContact:{error:round(supportGrip.distanceTo(supportTarget)),engage:round(supporting),distance:round(supportDistance),grip:vec(supportGrip),target:vec(supportTarget)}});
+    stage.dataset.handoffState=JSON.stringify({id:'PR-017',position:vec(request.position),rotation:[request.rotation.x,request.rotation.y,request.rotation.z].map(round),decision:p>=.69,receipt:p>=.94,stamp:round(press),camera:vec(camera.position),stations:stations.map(g=>[...vec(g.position),round(g.rotation.y)]),papers:debris.map(d=>{sheets.getMatrixAt(d.id,matrix);return [d.id,...matrix.elements.map(round)];}),paperCount:sheets.count,mechanicalRoutes:0,owner:'native-scroll',world:'coordination-studio',actors:[operator,...staffers.map(s=>s.staff)].map(s=>[round(s.head.rotation.x),round(s.head.rotation.y),...s.arms.flatMap(a=>a.elbow.quaternion.toArray().map(round))]),jointMatrices:actors.map(s=>[s.torso,s.head,...s.arms.flatMap(a=>[a.a,a.elbow,a.wrist])].map(o=>o.matrixWorld.elements.map(round))),contact:{error:round(contactError),engage:round(engage),distance:round(rawDistance),clamped:rawDistance>L+M-.001||rawDistance<Math.abs(L-M)+.001,grip:vec(actualGrip),target:vec(jointTarget),stampFace:vec(stamp.localToWorld(projected.set(0,-.115,0))),stampOnDocument:vec(stampLocal),documentFace:vec(request.localToWorld(projected.set(0,.092,0)))},screen:{request:projection(request),reviewer:projection(operator.head),receiver:projection(staffers[2].staff.head)},displays:workDisplays.map(d=>d.done.visible),physicalApproval:approvalMark.visible,acting:actors.map(s=>({eye:round(s.eyes.scale.y),gaze:round(s.pupils.position.x)})),supportContact:{error:round(supportGrip.distanceTo(supportTarget)),engage:round(supporting),distance:round(supportDistance),grip:vec(supportGrip),target:vec(supportTarget)}});
     }
     try {renderer.render(scene,camera);drawCount++;stage.dataset.handoffPhase=p.toFixed(4);if(qaEnabled)stage.dataset.handoffBudget=JSON.stringify({calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures,shadowMap:key.shadow.map?.width||0,raster:[canvas.width,canvas.height],tier:constrained?'constrained':'standard',renderMs:performance.now()-started,drawCount});}
     catch(error){console.warn("Handoff renderer failed",error);fallback();}
