@@ -1,0 +1,42 @@
+name: S02 R8 offline character asset workshop (no deploy)
+on:
+  push:
+    branches: [experiment/s02-handoff-chamber-r2-writer]
+    paths:
+      - 'creative/s02-r8/**'
+      - '.github/workflows/s02-r8-asset-workshop.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  workshop:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Blender authoring runtime
+        run: |
+          set -euo pipefail
+          VERSION=4.5.16
+          ARCHIVE=blender-$VERSION-linux-x64.tar.xz
+          BASE=https://download.blender.org/release/Blender4.5
+          cd "$RUNNER_TEMP"
+          curl --fail --location --retry 3 "$BASE/$ARCHIVE" --output "$ARCHIVE"
+          curl --fail --location --retry 3 "$BASE/blender-$VERSION.sha256" --output blender-checksums.txt
+          grep -F "$ARCHIVE" blender-checksums.txt | sha256sum -c -
+          tar -xf "$ARCHIVE"
+          echo "$RUNNER_TEMP/blender-$VERSION-linux-x64" >> "$GITHUB_PATH"
+          "$RUNNER_TEMP/blender-$VERSION-linux-x64/blender" --background --factory-startup --python-exit-code 1 --python-expr "import bpy,numpy; print(bpy.app.version_string,numpy.__version__)"
+      - name: Verify and acquire immutable licensed source assets
+        run: python creative/s02-r8/fetch_sources.py
+      - name: Convert authored human meshes with weights and render isolated model evidence
+        run: blender -b -t 4 --python-exit-code 1 --python creative/s02-r8/workshop.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: s02-r8-offline-character-workshop
+          path: dist/s02-r8-workshop/
+          if-no-files-found: warn

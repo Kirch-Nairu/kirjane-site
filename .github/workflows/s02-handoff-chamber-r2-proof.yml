@@ -1,0 +1,137 @@
+name: S02 R9 authored studio cinematic craft proof (no deploy)
+on:
+  push:
+    branches: [experiment/s02-handoff-chamber-r2-writer]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        viewport: [1536, 1440, 1060, 1024, 768, 844, 390, 320]
+    env:
+      S02_VIEWPORT: ${{ matrix.viewport }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: npx playwright install --with-deps chromium
+      - run: node --check site/js/forge-handoff-chamber.js
+      - run: node --test scripts/s02_r5_rig.test.mjs
+      - run: python scripts/build.py --preview --output dist/s02-preview
+      - name: Capture early stills for author inspection
+        run: |
+          python -m http.server 8723 --bind 127.0.0.1 --directory dist/s02-preview > /tmp/s02-http.log 2>&1 &
+          SERVER=$!
+          trap 'kill "$SERVER"' EXIT
+          for i in $(seq 1 20); do curl -fsS http://127.0.0.1:8723/ >/dev/null && break; sleep 1; done
+          S02_STILLS=1 S02_EVIDENCE=dist/s02-r9-stills node scripts/qa_s02_handoff_chamber.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: s02-r9-early-stills-${{ matrix.viewport }}
+          path: dist/s02-r9-stills/
+          if-no-files-found: warn
+      - name: Capture actual browser forward and reverse states
+        run: |
+          python -m http.server 8723 --bind 127.0.0.1 --directory dist/s02-preview > /tmp/s02-http.log 2>&1 &
+          SERVER=$!
+          trap 'kill "$SERVER"' EXIT
+          for i in $(seq 1 20); do curl -fsS http://127.0.0.1:8723/ >/dev/null && break; sleep 1; done
+          node scripts/qa_s02_handoff_chamber.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: s02-r9-chamber-browser-evidence-${{ matrix.viewport }}
+          path: dist/s02-chamber-evidence/
+          if-no-files-found: warn
+
+  comparison:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: npx playwright install --with-deps chromium
+      - name: Equivalent shots on immutable R8.3
+        run: |
+          mkdir -p dist/s02-comparison
+          failed=0
+          for pair in 'r83 1680e8698aeee40d4ed1d1a5bd50c40db075c2da'; do
+            read -r label sha <<< "$pair"
+            git worktree add --detach "/tmp/s02-$label" "$sha"
+            python -m http.server 8725 --bind 127.0.0.1 --directory "/tmp/s02-$label/site" > "/tmp/s02-$label.log" 2>&1 &
+            server=$!
+            trap 'kill "$server" 2>/dev/null || true' EXIT
+            for i in $(seq 1 20); do curl -fsS http://127.0.0.1:8725/ >/dev/null && break; sleep 1; done
+            S02_COMPARE=1 S02_URL=http://127.0.0.1:8725/ S02_EVIDENCE="dist/s02-comparison/$label" node scripts/qa_s02_handoff_chamber.mjs || failed=1
+            kill "$server"
+            wait "$server" || true
+            trap - EXIT
+          done
+          exit "$failed"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: s02-r9-protected-comparison
+          path: dist/s02-comparison/
+          if-no-files-found: warn
+
+  inherited-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: npx playwright install --with-deps chromium
+      - name: Inherited R3 and film math
+        run: node --test creative/film/src/director/*.test.mjs scripts/codex_r3_motion.test.mjs
+      - name: Build integrated seven-route candidate
+        run: python3 scripts/build_immersive_r2.py --output dist/cinema-integration
+      - name: Inherited Salryn integration
+        run: node scripts/qa_salryn_site_integration.mjs
+      - name: Inherited R2 accessibility
+        env:
+          FORGE_DIST: dist/cinema-integration
+          FORGE_EVIDENCE: dist/codex-r3-evidence/r2-regression
+        run: node scripts/qa_immersive_r2.mjs
+      - name: Inherited R3 focused and route checks
+        env:
+          FORGE_DIST: dist/cinema-integration
+        run: |
+          FORGE_EVIDENCE=dist/codex-r3-evidence/focused node scripts/qa_codex_r3.mjs
+          R3_ROUTES_ONLY=1 FORGE_EVIDENCE=dist/codex-r3-evidence/routes node scripts/qa_codex_r3.mjs
+          node scripts/codex_r3_adversarial.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: s02-r2-inherited-regression
+          path: |
+            dist/codex-r3-evidence/
+            dist/cinema-integration-evidence/
+          if-no-files-found: warn

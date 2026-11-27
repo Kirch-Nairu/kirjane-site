@@ -1,0 +1,52 @@
+{
+  "sourceAssets": [
+    {
+      "asset": "european_walnut_veneer_04",
+      "license": "CC0",
+      "credit": "Poly Haven",
+      "source": "https://polyhaven.com/a/european_walnut_veneer_04",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/european_walnut_veneer_04/european_walnut_veneer_04_diff_1k.jpg",
+      "md5": "3cc970e0c17fb29e574ea0f90f53c143",
+      "sha256": "7550a170633834ca97776504b997031bcc4b0ac32f4729293fcc43c9b8c53fff",
+      "bytes": 534251
+    },
+    {
+      "asset": "white_plaster_02",
+      "license": "CC0",
+      "credit": "Poly Haven",
+      "source": "https://polyhaven.com/a/white_plaster_02",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/white_plaster_02/white_plaster_02_diff_1k.jpg",
+      "md5": "7b10c2686bcfd76d1f309a20fd06b57e",
+      "sha256": "a1ebbe091bd1ae93d2abd5de8d69f9003a8d0ee6532bcf9a87c2492c97051f23",
+      "bytes": 527219
+    },
+    {
+      "asset": "green_point_park",
+      "license": "CC0",
+      "credit": "Poly Haven",
+      "source": "https://polyhaven.com/a/green_point_park",
+      "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/green_point_park_1k.hdr",
+      "md5": "850e2b9b07c72eb2ae1fc8e13d12ab85",
+      "sha256": "e58425aa1a4ba915796c2b5500eb0b960160249cfd0cf7fcd617d55b9ab89b60",
+      "bytes": 1664799
+    }
+  ],
+  "generated": [
+    {
+      "path": "garden-vista.jpg",
+      "sha256": "69b30b9b5fad1960245dc7d780c68796e7821b535e03f40d32db749a774bb2c4",
+      "bytes": 153595
+    },
+    {
+      "path": "plaster.jpg",
+      "sha256": "43a5e8d11a341a37682bc85ca47b99cc9c81ccabd59d7951381d62ae5fab7b40",
+      "bytes": 436104
+    },
+    {
+      "path": "walnut.jpg",
+      "sha256": "d0cf3ec9c20098ce81e6c87ea601f70bdbba1cd820e5d37a5e90f1a606a0d738",
+      "bytes": 191248
+    }
+  ],
+  "windowYawRadians": 5.235987755982989
+}

@@ -30,8 +30,42 @@
   <link rel="stylesheet" href="./css/forge-cinematic-r3.css" />
   <link rel="modulepreload" href="./js/editorial-opening.js" />
   <style>
-    #complexity-clarity-scene [data-handoff-chamber="live"] .cinematic-stage-scrim{background:linear-gradient(90deg,#101a17 0%,rgba(16,26,23,.94) 25%,rgba(16,26,23,.22) 46%,transparent 70%)}
-    @media(max-width:900px){#complexity-clarity-scene [data-handoff-chamber="live"] .cinematic-stage-scrim{background:linear-gradient(180deg,transparent 0%,transparent 36%,#101a17 51%)}#complexity-clarity-scene [data-handoff-chamber="live"] .cinematic-stage-hud{padding-top:clamp(230px,40svh,390px);padding-bottom:1rem}#complexity-clarity-scene [data-handoff-chamber="live"] .beat-stack{min-height:150px}#complexity-clarity-scene .handoff-scene-caption{top:8%!important;font-size:9px!important}}
+    #complexity-clarity-scene #home-clarity-canvas{opacity:0}
+    #complexity-clarity-scene .cinematic-stage-scrim{background:linear-gradient(90deg,rgba(15,30,31,.93),rgba(15,30,31,.76) 19%,rgba(15,30,31,.22) 39%,transparent 57%),linear-gradient(0deg,rgba(11,24,24,.65),transparent 20%)}
+    #complexity-clarity-scene [data-handoff-chamber="live"] .cinematic-stage-hud{grid-template-columns:minmax(0,430px) 1fr}
+    #complexity-clarity-scene .beat-card{text-shadow:0 2px 12px rgba(0,0,0,.68)}
+    @media(min-width:1050px) and (min-aspect-ratio:21/20){#complexity-clarity-scene [data-handoff-chamber="live"] .beat-card h2{font-size:clamp(2.2rem,3.2vw,3.5rem);line-height:1.02}}
+    @media(max-aspect-ratio: 21/20){#complexity-clarity-scene .cinematic-stage-scrim{background:linear-gradient(180deg,transparent 0%,transparent 43%,rgba(15,30,31,.47) 59%,rgba(15,30,31,.78) 82%,rgba(15,30,31,.88) 100%)}#complexity-clarity-scene [data-handoff-chamber="live"] .cinematic-stage-hud{grid-template-columns:1fr;padding-top:clamp(215px,38svh,390px);padding-bottom:1rem}#complexity-clarity-scene [data-handoff-chamber="live"] .beat-stack{min-height:145px}#complexity-clarity-scene .handoff-scene-caption{top:10%!important;font-size:10px!important}}
+    @media(max-width:360px){#complexity-clarity-scene [data-handoff-chamber="live"] .cinematic-stage-hud{padding-top:clamp(190px,34svh,245px);padding-bottom:.75rem}#complexity-clarity-scene [data-handoff-chamber="live"] .beat-stack{min-height:140px}}
+    @media(max-height:610px) and (min-aspect-ratio:21/20){#complexity-clarity-scene [data-handoff-chamber="live"] .cinematic-stage-hud{grid-template-columns:minmax(0,44%) 1fr;padding:3.6rem 1.5rem .4rem}#complexity-clarity-scene [data-handoff-chamber="live"] .beat-stack{min-height:0}#complexity-clarity-scene [data-handoff-chamber="live"] .beat-card h2{font-size:clamp(1.45rem,4vw,2rem)}#complexity-clarity-scene .handoff-scene-caption{top:16%!important;font-size:10px!important}}
+
+
+    /* Only an initialized S02 studio restores scroll chapters in short landscape. */
+    @media(max-height:610px) and (max-width:900px) and (min-aspect-ratio:21/20) and (prefers-reduced-motion:no-preference){
+      #complexity-clarity-scene:has([data-studio-interactive]){height:380svh}
+      #complexity-clarity-scene [data-studio-interactive]{position:sticky;top:0;height:100svh;min-height:0}
+      #complexity-clarity-scene [data-studio-interactive] .chapter-rail{display:flex}
+      #complexity-clarity-scene [data-studio-interactive] .scrub-progress-track{display:block}
+      #complexity-clarity-scene [data-studio-interactive] .beat-stack{display:block;position:relative;min-height:122px}
+      #complexity-clarity-scene [data-studio-interactive] .beat-card{position:absolute;inset:0;opacity:0;visibility:hidden;pointer-events:none}
+      #complexity-clarity-scene [data-studio-interactive] .beat-card.is-active{opacity:1;visibility:visible;pointer-events:auto}
+      #complexity-clarity-scene [data-studio-interactive] .sequence-details{display:none}
+      #complexity-clarity-scene [data-studio-interactive]{align-items:flex-start}
+      #complexity-clarity-scene [data-studio-interactive] .cinematic-stage-hud{align-items:start;align-content:start;box-sizing:border-box;height:100%;padding:76px 24px 56px;gap:0}
+      #complexity-clarity-scene [data-studio-interactive] .beat-stack{min-height:120px}
+      #complexity-clarity-scene [data-studio-interactive] .beat-card{justify-content:flex-start;gap:.42rem}
+      #complexity-clarity-scene [data-studio-interactive] .beat-card h2{font-size:clamp(1.25rem,3vw,1.65rem);line-height:1.08}
+      #complexity-clarity-scene [data-studio-interactive] .beat-card p{font-size:.83rem;line-height:1.35}
+      #complexity-clarity-scene [data-studio-interactive] .scrub-progress-track{margin-top:.45rem}
+      #complexity-clarity-scene [data-studio-interactive] .chapter-rail{margin-top:.45rem;gap:.4rem}
+      /* R7: press feedback only; avoid hover scaling and delayed keyboard state. */
+      #complexity-clarity-scene [data-studio-interactive] .chapter-pill{transition:transform 120ms cubic-bezier(.23,1,.32,1);transform-origin:center}
+      @media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){#complexity-clarity-scene [data-studio-interactive] .chapter-pill:active:not(:focus-visible){transform:scale(.97)}}
+      @media(prefers-reduced-motion:reduce){#complexity-clarity-scene [data-studio-interactive] .chapter-pill{transition:none;transform:none}}
+
+      #complexity-clarity-scene [data-studio-interactive] .chapter-pill{min-height:40px;padding:.3rem .38rem;font-size:.73rem}
+
+    }
   </style>
   <noscript>
     <style>
@@ -387,8 +421,7 @@
       <section class="cinematic-scrub-section compact-scrub" id="complexity-clarity-scene" aria-label="Complexity into Clarity interactive sequence">
         <div class="cinematic-sticky-stage">
           <picture>
-            <source media="(max-width: 900px)" srcset="./assets/cinematic/home-complexity-to-clarity-mobile/poster.webp" />
-            <img class="cinematic-poster-fallback" src="./assets/cinematic/home-complexity-to-clarity-desktop/poster.webp" alt="Faceted blown-emerald architectural crystal surrounded by calibrated topographic rings" />
+            <img class="cinematic-poster-fallback" src="./assets/cinematic/coordination-studio-r5.svg" alt="Illustrated operations studio: capture, connected records, human review, and a coordinated next step" />
           </picture>
           <canvas id="home-clarity-canvas" class="cinematic-canvas-layer" aria-hidden="true"></canvas>
           <div class="cinematic-stage-scrim" aria-hidden="true"></div>
@@ -399,15 +432,15 @@
               <div class="beat-stack" id="home-clarity-beats" aria-live="polite">
                 <article class="beat-card is-active" data-beat="complexity">
                   <h2>Complexity lives in the handoffs.</h2>
-                  <p>A request changes hands. Someone confirms the details. The next team needs the right record to keep moving.</p>
+                  <p>Information is scattered across people, tools, and processes. Work stalls when context is lost.</p>
                 </article>
                 <article class="beat-card" data-beat="alignment">
                   <h2>Trace the work before writing code.</h2>
-                  <p>We map who submits, reviews, and approves the work, then give each decision a place in the system.</p>
+                  <p>We connect information, responsibilities, and decisions, then engineer a shared workflow around them.</p>
                 </article>
                 <article class="beat-card" data-beat="clarity">
                   <h2>Make the next step clear.</h2>
-                  <p>Give each team the records it needs and a clear way to move work forward. That same principle shapes Salryn.</p>
+                  <p>One coherent system gives each team the context and ownership to move work forward. That principle shapes Salryn.</p>
                 </article>
               </div>
 
@@ -745,12 +778,12 @@
     const handoffObserver=new IntersectionObserver(entries=>{
       if(!entries.some(e=>e.isIntersecting))return;
       handoffObserver.disconnect();
-      if(reduced || shortCinematic.matches || new URLSearchParams(location.search).get("webgl")==="off")return;
+      if(reduced || new URLSearchParams(location.search).get("webgl")==="off")return;
       import("./js/forge-handoff-chamber.js").then(({createHandoffChamber})=>{
         if(handoffDisposed)return;
         handoffChamber=createHandoffChamber(handoffStage,clarityCanvas,reduced);
         handoffChamber?.setPhase(handoffPhase);
-      }).catch(error=>console.warn("S02 chamber unavailable; original sequence retained",error));
+      }).catch(error=>console.warn("S02 chamber unavailable; studio poster retained",error));
     },{rootMargin:"300px"});
     handoffObserver.observe(handoffStage);
 
@@ -762,21 +795,24 @@
         { id: 'alignment', start: 0.34, end: 0.68 },
         { id: 'clarity', start: 0.68, end: 1.0 }
       ],
-      onUpdate: ({ smooth, direction, activeChapter, inView, isReduced }) => {
-        handoffPhase=smooth;
-        if(handoffChamber?.active) handoffChamber.setPhase(smooth);
-        else if (inView && scrollY > 8 && !shortCinematic.matches) clarityPlayer.setProgress(clarityPhase(smooth), direction);
+      onUpdate: ({ exact, smooth, direction, activeChapter, inView, isReduced }) => {
+        // Match the native director's settle threshold before it clears its dirty flag.
+        handoffPhase=Math.abs(exact-smooth)<.0004?exact:smooth;
+        const narrativeChapter=handoffPhase<.34?'complexity':handoffPhase<.68?'alignment':'clarity';
+        // Retain native phase through context loss; restored renderer samples current scroll.
+        handoffChamber?.setPhase(handoffPhase);
+        if (!handoffChamber?.active && inView && scrollY > 8 && !shortCinematic.matches) clarityPlayer.setProgress(clarityPhase(smooth), direction);
         gradeSceneCanvas(clarityCanvas,smooth,{kind:'home',mobile:window.innerWidth<=900,reduced:isReduced});
         if (clarityProgress) clarityProgress.style.transform = `scaleX(${isReduced ? 1 : smooth})`;
         if (!isReduced) {
-          clarityBeatEls.forEach((card) => card.classList.toggle('is-active', card.dataset.beat === activeChapter));
+          clarityBeatEls.forEach((card) => card.classList.toggle('is-active', card.dataset.beat === narrativeChapter));
         }
         clarityJumpBtns.forEach((btn) => {
           if (btn.dataset.beatTarget) {
-            btn.setAttribute('aria-current', btn.dataset.beatTarget === activeChapter ? 'step' : 'false');
+            btn.setAttribute('aria-current', btn.dataset.beatTarget === narrativeChapter ? 'step' : 'false');
           }
         });
-        const pinIdx = smooth < 0.34 ? 0 : smooth < 0.68 ? 1 : 2;
+        const pinIdx = handoffPhase < 0.34 ? 0 : handoffPhase < 0.68 ? 1 : 2;
         clarityPins.forEach((p, i) => p.classList.toggle('is-active', i === pinIdx));
       },
       onResize: () => clarityPlayer.resize(window.innerWidth <= 900)

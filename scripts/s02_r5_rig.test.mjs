@@ -1,0 +1,9 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {reachDistance,rasterScale,actingScore,paperFollowThrough,deliveryArc,S02_BEATS} from '../site/js/forge-handoff-chamber.js';
+test('two-bone reach annulus',()=>{const L=.29,M=.333;assert.equal(reachDistance(.4,L,M),.4);assert.ok(Math.abs(reachDistance(10,L,M)-.622)<1e-12);assert.ok(Math.abs(reachDistance(0,L,M)-.044)<1e-12);assert.ok(Math.abs(reachDistance(.01,L,M)-.044)<1e-12);});
+
+test('raster policy bounds pixel costs without phase or QA dependencies',()=>{for(const [w,h] of [[1440,900],[3840,2160],[390,844],[844,390]]){assert.ok(w*h*rasterScale(w,h,true)**2<=420000+.001);assert.ok(w*h*rasterScale(w,h,false)**2<=1050000+.001);assert.ok(rasterScale(w,h,true)<=rasterScale(w,h,false));}});
+
+test('R7 blocked acting score is bounded, seekable, and neutral at endpoints',()=>{for(let role=0;role<4;role++){const phases=Array.from({length:1001},(_,i)=>i/1000);const f=phases.map(p=>actingScore(p,role));assert.deepEqual([...phases].reverse().map(p=>actingScore(p,role)).reverse(),f);for(const s of f)assert.ok(Object.values(s).every(v=>Number.isFinite(v)&&v>=0&&v<=1));for(const k of ['anticipate','action','recover','blink','focus'])assert.ok(f.some(s=>s[k]>.5),k);assert.ok(Object.values(actingScore(0,role)).every(x=>x===0));assert.ok(Object.values(actingScore(1,role)).every(x=>x===0));}});
+test('R7 paper follow-through and delivery arcs finish at physical anchors',()=>{for(let i=0;i<56;i++){assert.equal(paperFollowThrough(0,i),0);assert.ok(Math.abs(paperFollowThrough(1,i))<1e-12);for(let p=0;p<=1;p+=.01)assert.ok(Math.abs(paperFollowThrough(p,i))<=.1);}for(let i=0;i<3;i++){assert.equal(deliveryArc(0,i).lift,0);assert.ok(Math.abs(deliveryArc(1,i).lift)<1e-12);assert.equal(deliveryArc(.5,i).lift,1.5);}assert.equal(S02_BEATS.approved,.69);assert.equal(S02_BEATS.receipt,.94);});

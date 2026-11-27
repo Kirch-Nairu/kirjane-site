@@ -1,0 +1,19 @@
+{
+  "sha256": "94eb3f79432bfbcee9f0154229976628e2dd14adf1855b1e3e0f0d3fa657e3de",
+  "bytes": 680512,
+  "templates": [
+    "Desk",
+    "Chair",
+    "MeetingTable",
+    "TaskLamp",
+    "Plant"
+  ],
+  "polygons": {
+    "Desk": 1274,
+    "Chair": 1496,
+    "MeetingTable": 1464,
+    "TaskLamp": 1470,
+    "Plant": 2260
+  },
+  "source": "Original Kirjane R9 Blender workshop"
+}
