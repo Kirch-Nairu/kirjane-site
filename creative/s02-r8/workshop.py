@@ -49,11 +49,13 @@ def rematerialize(meshes, folder):
             opacity = [p for p in files if "opacity_color" in p.name and ("glass" in p.name)==("glass" in tag)]
         else:
             opacity = []
-        color_candidates = opacity or [p for p in files if p.name.endswith("_"+kind+"_color.tga")]
+        exact=[p for p in files if p.stem.lower()==mat.name.lower().split(".")[0]+"_color"]
+        color_candidates = exact or opacity or [p for p in files if p.name.endswith("_"+kind+"_color.tga")]
         normal_candidates = [p for p in files if p.name.endswith("_"+kind+"_normal.tga")]
         if not color_candidates:
             raise RuntimeError("Unresolved material: "+mat.name)
         color = color_candidates[0]
+        opacity = [color] if "opacity" in color.name else []
         mat.use_nodes = True
         nt=mat.node_tree;nt.nodes.clear()
         shader=nt.nodes.new("ShaderNodeBsdfPrincipled");shader.inputs["Roughness"].default_value=.72
@@ -99,7 +101,14 @@ for item in MANIFEST["assets"]:
     role=item["role"];folder=SOURCE/role
     bpy.ops.wm.read_factory_settings(use_empty=True)
     fbx=folder/(item["name"]+".fbx")
-    bpy.ops.import_scene.fbx(filepath=str(fbx),use_image_search=True)
+    # Blender 5 replaced the legacy FBX importer; query actual operator RNA.
+    importer=bpy.ops.import_scene.fbx
+    props={p.identifier for p in importer.get_rna_type().properties}
+    options={"filepath":str(fbx)}
+    for key,value in {"use_image_search":True,"automatic_bone_orientation":False}.items():
+        if key in props: options[key]=value
+    importer(**options)
+    print("IMPORT",role,bpy.app.version_string,[(o.name,o.type) for o in bpy.context.scene.objects],flush=True)
     bpy.context.view_layer.update()
     all_meshes=[o for o in bpy.context.scene.objects if o.type=="MESH"]
     rig=[o for o in bpy.context.scene.objects if o.type=="ARMATURE"]
@@ -141,7 +150,12 @@ for item in MANIFEST["assets"]:
         for poly in o.data.polygons: poly.use_smooth=True
         o.data.calc_loop_triangles()
     output=OUT/(role+".glb")
-    bpy.ops.export_scene.gltf(filepath=str(output),export_format="GLB",export_animations=False,export_skins=True,export_apply=False)
+    exporter=bpy.ops.export_scene.gltf
+    export_props={p.identifier for p in exporter.get_rna_type().properties}
+    options={"filepath":str(output),"export_format":"GLB"}
+    for key,value in {"export_animations":False,"export_skins":True,"export_apply":False}.items():
+        if key in export_props: options[key]=value
+    exporter(**options)
     raw=output.read_bytes()
     if raw[:4]!=b"glTF": raise RuntimeError("invalid GLB")
     jslen=int.from_bytes(raw[12:16],"little")
