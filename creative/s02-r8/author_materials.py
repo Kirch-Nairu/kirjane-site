@@ -17,6 +17,8 @@ def get(url):
 def source(id,key,fmt):
     meta=json.loads(get("https://api.polyhaven.com/files/"+id))
     spec=meta[key]["1k"][fmt]
+    expected={"european_walnut_veneer_04":"3cc970e0c17fb29e574ea0f90f53c143","white_plaster_02":"7b10c2686bcfd76d1f309a20fd06b57e","green_point_park":"850e2b9b07c72eb2ae1fc8e13d12ab85"}
+    assert spec["md5"]==expected[id], "provider source revision changed"
     url=spec["url"]
     assert url.startswith("https://dl.polyhaven.org/") or url.startswith("https://cdn.polyhaven.com/")
     raw=get(url)
@@ -24,7 +26,7 @@ def source(id,key,fmt):
     receipt.append({"asset":id,"license":"CC0","credit":"Poly Haven","source":"https://polyhaven.com/a/"+id,"url":url,"md5":spec["md5"],"sha256":hashlib.sha256(raw).hexdigest(),"bytes":len(raw)})
     return raw
 def texture(id,name):
-    im=Image.open(io.BytesIO(source(id,"diff","jpg"))).convert("RGB")
+    im=Image.open(io.BytesIO(source(id,"Diffuse","jpg"))).convert("RGB")
     im.thumbnail((1024,1024),Image.Resampling.LANCZOS)
     im.save(OUT/name,quality=91,subsampling=0,optimize=True)
 texture("european_walnut_veneer_04","walnut.jpg")
