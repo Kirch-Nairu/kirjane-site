@@ -49,10 +49,10 @@ jobs:
           cmp site/vendor/three/three.module.js dist/s02-r81-three/package/build/three.module.js
           mkdir -p site/vendor/three/addons/loaders site/vendor/three/addons/utils
           cp dist/s02-r81-three/package/examples/jsm/loaders/GLTFLoader.js site/vendor/three/addons/loaders/
-          cp dist/s02-r81-three/package/examples/jsm/utils/BufferGeometryUtils.js site/vendor/three/addons/utils/
+          cp dist/s02-r81-three/package/examples/jsm/utils/{BufferGeometryUtils,SkeletonUtils}.js site/vendor/three/addons/utils/
           # Vendored browser ESM has no import map and no package runtime.
-          sed -i "s|from 'three'|from '../../three.module.js'|g" site/vendor/three/addons/{loaders/GLTFLoader,utils/BufferGeometryUtils}.js
-          grep -E '^import|^} from' site/vendor/three/addons/{loaders/GLTFLoader,utils/BufferGeometryUtils}.js
+          sed -i "s|from 'three'|from '../../three.module.js'|g" site/vendor/three/addons/{loaders/GLTFLoader,utils/BufferGeometryUtils,utils/SkeletonUtils}.js
+          grep -E '^import|^} from' site/vendor/three/addons/{loaders/GLTFLoader,utils/BufferGeometryUtils,utils/SkeletonUtils}.js
           node --input-type=module -e "import {GLTFLoader} from './site/vendor/three/addons/loaders/GLTFLoader.js'; console.log(typeof GLTFLoader)"
       - name: Publish only generated assets to authorized branch
         run: |
@@ -63,7 +63,7 @@ jobs:
           test "$(git rev-parse FETCH_HEAD)" = "$GITHUB_SHA"
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add site/assets/cinematic/s02-people site/vendor/three/addons/loaders/GLTFLoader.js site/vendor/three/addons/utils/BufferGeometryUtils.js
+          git add site/assets/cinematic/s02-people site/vendor/three/addons/loaders/GLTFLoader.js site/vendor/three/addons/utils/{BufferGeometryUtils,SkeletonUtils}.js
           git diff --cached --name-only
           git diff --cached --quiet && exit 0
           git commit -m "build(s02): vendor verified optimized authored character assets"
