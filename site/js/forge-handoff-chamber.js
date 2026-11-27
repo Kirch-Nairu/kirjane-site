@@ -165,12 +165,12 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
     const pos=[],cols=[],idx=[],segments=40,rings=10;
     for(let j=0;j<=rings;j++)for(let i=0;i<segments;i++){
       const a=2*Math.PI*i/segments,front=Math.cos(a),side=Math.sin(a),t=j/rings;
-      const line=style===0?.035+.070*front+.016*side:style===1?.005+.090*front: .027+.064*front;
+      const line=style===0?.035+.070*front+.016*side+.016*Math.max(0,front)*Math.sin(a*3+.7):style===1?.005+.090*front+.009*Math.sin(a*2): .027+.064*front+.008*Math.sin(a*3);
       const y=mix(.195,line,t);
-      const radius=Math.sqrt(Math.max(.002,1-((y-.009)/.193)**2));
-      const groove=1+.015*Math.sin(a*17+t*5)+.018*Math.sin(a*7-t*4);
+      const radius=j===0?0:Math.sqrt(Math.max(.002,1-((y-.009)/.193)**2));
+      const groove=1+.023*Math.sin(a*13+t*6)+.020*Math.sin(a*5-t*5);
       pos.push(Math.sin(a)*.145*radius*groove,y,Math.cos(a)*.127*radius*groove-.012);
-      const strand=.84+.12*Math.sin(a*19+t*3)**2+.035*Math.sin(a*8-t*4);
+      const strand=.80+.15*Math.sin(a*19+t*3)**2+.045*Math.sin(a*8-t*4);
       cols.push(strand,strand*.96,strand*.92);
     }
     for(let j=0;j<rings;j++)for(let i=0;i<segments;i++){
@@ -241,7 +241,7 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
     else if(i===2){shadow(g,0,0,4.2,3.0,.052);const top=cyl(g,oak,0,1.04,0,1.42,.15,.91);top.castShadow=true;top.receiveShadow=true;cyl(g,timber,0,.95,0,1.32,.035,.85);cyl(g,timber,0,.52,0,.29,1.0);cyl(g,ink,0,.075,0,.73,.15);chair(g,.12,-1.20,teal,0);chair(g,-1.48,.18,clay,Math.PI/2);chair(g,1.48,.18,navy,-Math.PI/2);
       operator=human(g,.12,-1.20,0,true,palettes[i]);lamp(g,-1,-.35);flatCard(g,'Review checklist','Scope • amount • owner',-.56,1.13,.30,.73,.45);
       stamp=group(g,.34,1.40,-.78);animated.add(stamp);cyl(stamp,brass,0,0,0,.06,.13);ell(stamp,timber,0,.065,0,.065,.044,.065);b(stamp,ink,0,-.085,0,.17,.06,.13);
-      reviewPending=placard(g,'Review pending','Human decision required',-.87,1.33,.43,.94,.31,'#5b3526','#f6d6a2');reviewApproved=placard(g,'Approved','Decision recorded',-.87,1.33,.43,.94,.31,'#244943','#cae5cf');b(g,timber,-.87,1.14,.43,1.0,.05,.19);}
+      reviewPending=placard(g,'Review pending','Human decision required',-.87,1.34,.57,.94,.31,'#5b3526','#f6d6a2');reviewApproved=placard(g,'Approved','Decision recorded',-.87,1.34,.57,.94,.31,'#244943','#cae5cf');b(g,timber,-.87,1.14,.57,1.0,.05,.19);}
     else{desk(g,2.7,1.30,oak);b(g,teal,.96,.48,-.08,.55,.82,.75);for(let j=0;j<2;j++){b(g,oak,.96,.36+j*.36,.31,.43,.27,.055);b(g,brass,.96,.39+j*.36,.35,.17,.035,.05);}laptop(g,-.8,-.27,'Purchasing','Awaiting approval','Receipt confirmed','PR-017 · Assigned',.94);lamp(g,.98,-.39);mug(g,.58,.36,clay);staffers.push({i,staff:human(g,.18,-.98,0,false,palettes[i])});
       receivePending=placard(g,'Purchasing','Awaiting approved record',0,.83,.661,1.76,.35);receiveDone=placard(g,'Assigned to purchasing','Receipt confirmed',0,.83,.662,1.76,.35,'#244943','#cae5cf');}
   }
@@ -309,21 +309,21 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
   let phase=0,disposed=false,failed=false,visible=false,last=-1,w=1,h=1,lastCaption='',drawCount=0;
   const jointTarget=new T.Vector3(),jointGoal=new T.Vector3(),jointDir=new T.Vector3(),jointBend=new T.Vector3(),jointElbow=new T.Vector3(),jointLower=new T.Vector3(),jointUpper=new T.Vector3(),jointDown=new T.Vector3(0,-1,0),jointQ1=new T.Quaternion(),jointQ2=new T.Quaternion(),jointInv=new T.Quaternion();
   const actors=[operator,...staffers.map(s=>s.staff)];
-  const sampleContact=new T.Vector3(),projected=new T.Vector3(),stampLocal=new T.Vector3();
+  const sampleContact=new T.Vector3(),projected=new T.Vector3(),stampLocal=new T.Vector3(),supportTarget=new T.Vector3(),supportGrip=new T.Vector3();
   const status=document.createElement('div');
   status.className='handoff-scene-caption';status.setAttribute('role','status');status.setAttribute('aria-live','polite');
   Object.assign(status.style,{position:'absolute',zIndex:'3',right:'3%',top:'11%',font:'500 12px system-ui',letterSpacing:'.035em',color:'#fff3df',background:'rgba(22,37,40,.74)',padding:'7px 10px',borderLeft:'1px solid #e5b97e',textShadow:'none',textAlign:'right',pointerEvents:'none',whiteSpace:'pre-line'});
   legacy.after(canvas);
   stage.append(status);
-  const shots=[[0,-.4,1.65,-.5,.05,16.8,7.5,12.4,5.8],[.15,-2.65,1.85,.0,.02,11.8,5.5,9.2,4.9],[.37,-2.25,1.65,-1.05,-.13,9.2,4.6,8.2,4.5],[.55,.86,1.64,-.57,-.15,3.95,2.30,5.1,2.80],[.69,.86,1.64,-.57,-.10,3.95,2.30,5.1,2.80],[.83,2.9,1.8,-1.05,.04,7.7,4.1,8.3,4.5],[.95,4.1,1.55,-1.45,.14,6.5,3.5,7.6,4.2],[1,.1,1.6,-.6,.06,15.8,6.7,13,6]];
+  const shots=[[0,-.4,1.65,-.5,.05,16.8,7.5,12.4,5.8],[.15,-2.65,1.85,.0,.02,11.8,5.5,9.2,4.9],[.37,-2.25,1.65,-1.05,-.13,9.2,4.6,8.2,4.5],[.55,.86,1.61,-.57,-.17,3.60,2.17,4.75,2.68],[.69,.86,1.61,-.57,-.10,3.60,2.17,4.75,2.68],[.83,2.9,1.8,-1.05,.04,7.7,4.1,8.3,4.5],[.95,4.1,1.55,-1.45,.14,6.5,3.5,7.6,4.2],[1,.1,1.6,-.6,.06,15.8,6.7,13,6]];
   function draw(){
     if(disposed||failed||!visible||document.hidden)return;
 
     const p=phase,trace=span(p,.09,.48),decision=span(p,.58,.69),release=span(p,.76,.94);
     stations.forEach((g,i)=>{const [x,y,z]=positions[i],q=span(p,.10+i*.024,.43+i*.018),s=1-q;g.position.set(x+s*Math.sin(i*4+1)*.78,y,z+s*Math.cos(i*4)*.64);g.rotation.y=baseAngles[i]+s*Math.sin(i*2.6+.7)*.40;});
     stations.forEach(g=>g.updateWorldMatrix(true,false));
-    for(const d of debris){const i=d.id,q=span(p,.035+(i%9)*.018,.35+(i%9)*.019),u=1-q,theta=d.theta+p*15*(.52+(i%4)*.17)+q*3.7;const dest=destinations[d.desk];target.set(dest[0]+(d.layer%2)*.49,dest[1]+Math.floor(d.layer/2)*.018,dest[2]);stations[d.desk].localToWorld(target);const o=d.pose;
-      o.position.set(mix(target.x,Math.sin(theta)*d.r-.35,u),mix(target.y,1.3+(i%8)*.42+Math.sin(theta*1.6)*.6,u)+Math.sin(q*Math.PI)*.7,mix(target.z,Math.cos(theta)*d.r*.78+.6,u));o.rotation.set(u*Math.sin(theta*1.4)*1.75,mix(stations[d.desk].rotation.y+(i%2)*.05,theta*1.6,u),u*Math.cos(theta*1.3)*1.3);o.scale.set(.42+(i%3)*.045,.018,.58);o.updateMatrix();sheets.setMatrixAt(i,o.matrix);}
+    for(const d of debris){const i=d.id,q=span(p,.035+(i%9)*.018,.35+(i%9)*.019),u=1-q,theta=d.theta+p*15*(.52+(i%4)*.17)+q*3.7;const dest=destinations[d.desk];target.set(dest[0]+(d.layer%2)*.49,dest[1]+Math.floor(d.layer/2)*.008,dest[2]);stations[d.desk].localToWorld(target);const o=d.pose;
+      o.position.set(mix(target.x,Math.sin(theta)*d.r-.35,u),mix(target.y,1.3+(i%8)*.42+Math.sin(theta*1.6)*.6,u)+Math.sin(q*Math.PI)*.7,mix(target.z,Math.cos(theta)*d.r*.78+.6,u));o.rotation.set(u*Math.sin(theta*1.4)*1.75,mix(stations[d.desk].rotation.y+(i%2)*.05,theta*1.6,u),u*Math.cos(theta*1.3)*1.3);o.scale.set(.42+(i%3)*.045,.006,.58);o.updateMatrix();sheets.setMatrixAt(i,o.matrix);}
     sheets.instanceMatrix.needsUpdate=true;
     let segment=0,t=span(p,.19,.37);if(p>=.37&&p<.55){segment=1;t=span(p,.39,.55);}else if(p>=.55){segment=2;t=release;}
     request.position.copy(path[segment]).lerp(path[segment+1],t);
@@ -332,19 +332,25 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
     const press=span(p,.585,.635)-span(p,.66,.72);
 
     // ACTING / IK — all axes reset; no orientation from a preceding evaluation.
-    function pose(staff,action,look,variant){
-      staff.torso.rotation.set(.055+action*.10,look*.17,variant*.035*action);
-      staff.head.rotation.set(.07+action*.19,look,variant*.035);
+    function pose(staff,action,look,role){
+      // Role-specific body language: intake receives, records checks, reviewer
+      // stabilizes and stamps, purchasing reaches. Every axis is reset per phase.
+      const lean=role===3?.04+.11*action:.055+.10*action;
+      staff.torso.rotation.set(lean,look*.19,(role===3?1:-1)*.035*action);
+      staff.head.rotation.set(.055+action*(role===1?.12:.19),look,(role===3?1:-1)*.035);
       staff.arms.forEach(({a,elbow,wrist,s})=>{
-        a.rotation.set(-.43-action*(s<0?.50:.74),s*.04,s*(.12-action*.06));
-        elbow.rotation.set(-.86-action*.36,0,s*.025);
+        const reach=role===0?(s<0?.78:.35):role===1?(s<0?.28:.86):role===3?(s<0?.75:.56):(s<0?.50:.74);
+        const side=role===1&&s>0?.20*action:0;
+        a.rotation.set(-.43-action*reach,s*.04+side,s*(.12-action*.06));
+        elbow.rotation.set(-.86-action*(role===1&&s>0?.10:.36),0,s*.025);
         wrist.rotation.set(.10-action*.12,0,s*.04);
       });
     }
-    pose(operator,press,.10-.18*press,-1);
+    pose(operator,press,.10-.18*press,2);
     staffers.forEach(({staff,i})=>{
       const a=i===0?pulse(p,.01,.12,.24):i===1?pulse(p,.28,.40,.53):pulse(p,.79,.94,1.01);
-      pose(staff,a,(i===0?.23:-.18)*(1-a),i===3?1:-1);
+      const look=i===0?.23-.31*a:i===1?-.18+.34*a:-.18-.10*a;
+      pose(staff,a,look,i);
     });
     // The stamp is lifted, pressed against the request, then released.
     const stampContact=span(p,.59,.625)-span(p,.66,.70);
@@ -352,19 +358,28 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
     operator.torso.updateWorldMatrix(true,false);stamp.updateWorldMatrix(true,false);
     const arm=operator.arms[1],engage=span(p,.53,.58)-span(p,.69,.75);
     stamp.localToWorld(jointTarget.set(0,.065,0));
-    operator.torso.worldToLocal(jointGoal.copy(jointTarget)).sub(arm.a.position);
-    // Grip is .043 beyond the wrist along the lower arm. Solve to that actual anchor.
-    const L=.29,M=.333,rawDistance=jointGoal.length(),d=reachDistance(rawDistance,L,M);
-    jointDir.copy(jointGoal);if(rawDistance<1e-9)jointDir.set(0,-1,0);else jointDir.multiplyScalar(1/rawDistance);
-    jointBend.set(1,0,0).addScaledVector(jointDir,-jointDir.x).normalize();
-    if(jointBend.lengthSq()<.001)jointBend.set(0,0,1).addScaledVector(jointDir,-jointDir.z).normalize();
-    const along=(L*L-M*M+d*d)/(2*d);
-    jointElbow.copy(jointDir).multiplyScalar(along).addScaledVector(jointBend,Math.sqrt(Math.max(0,L*L-along*along)));
-    jointUpper.copy(jointElbow).normalize();jointLower.copy(jointDir).multiplyScalar(d).sub(jointElbow).normalize();
-    jointQ1.setFromUnitVectors(jointDown,jointUpper);
-    jointQ2.setFromUnitVectors(jointDown,jointLower.applyQuaternion(jointInv.copy(jointQ1).invert()));
-    arm.a.quaternion.slerp(jointQ1,engage);arm.elbow.quaternion.slerp(jointQ2,engage);
-    arm.wrist.quaternion.slerp(jointInv.identity(),engage);
+    // Both contact targets use the same deterministic local-space two-bone solver.
+    // The left hand supports the document while the right hand makes the decision.
+    const L=.29,M=.333;
+    function solveGrip(limb,worldTarget,weight,bendSide){
+      operator.torso.worldToLocal(jointGoal.copy(worldTarget)).sub(limb.a.position);
+      const raw=jointGoal.length(),d=reachDistance(raw,L,M);
+      jointDir.copy(jointGoal);if(raw<1e-9)jointDir.set(0,-1,0);else jointDir.multiplyScalar(1/raw);
+      jointBend.set(bendSide,0,0).addScaledVector(jointDir,-bendSide*jointDir.x).normalize();
+      if(jointBend.lengthSq()<.001)jointBend.set(0,0,1).addScaledVector(jointDir,-jointDir.z).normalize();
+      const along=(L*L-M*M+d*d)/(2*d);
+      jointElbow.copy(jointDir).multiplyScalar(along).addScaledVector(jointBend,Math.sqrt(Math.max(0,L*L-along*along)));
+      jointUpper.copy(jointElbow).normalize();jointLower.copy(jointDir).multiplyScalar(d).sub(jointElbow).normalize();
+      jointQ1.setFromUnitVectors(jointDown,jointUpper);
+      jointQ2.setFromUnitVectors(jointDown,jointLower.applyQuaternion(jointInv.copy(jointQ1).invert()));
+      limb.a.quaternion.slerp(jointQ1,weight);limb.elbow.quaternion.slerp(jointQ2,weight);
+      limb.wrist.quaternion.slerp(jointInv.identity(),weight);
+      return raw;
+    }
+    const rawDistance=solveGrip(arm,jointTarget,engage,1);
+    const supporting=span(p,.55,.60)-span(p,.70,.75);
+    request.localToWorld(supportTarget.set(-.30,.11,-.12));
+    const supportDistance=solveGrip(operator.arms[0],supportTarget,supporting,-1);
     workDisplays.forEach(d=>{d.pending.visible=p<d.threshold;d.done.visible=p>=d.threshold;});
     reviewPending.visible=p<.69;reviewApproved.visible=p>=.69;receivePending.visible=p<.94;receiveDone.visible=p>=.94;
     ambient.intensity=mix(.82,1.02,trace);key.intensity=mix(1.75,2.30,trace);rim.intensity=mix(1.03,1.30,decision)+.20*press;
@@ -383,9 +398,10 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
     root.updateMatrixWorld(true);
     const round=v=>+v.toFixed(3),vec=v=>v.toArray().map(round);
     const actualGrip=arm.grip.getWorldPosition(sampleContact),contactError=actualGrip.distanceTo(jointTarget);
+    operator.arms[0].grip.getWorldPosition(supportGrip);
     request.worldToLocal(stamp.localToWorld(stampLocal.set(0,-.115,0)));
     const projection=o=>{o.getWorldPosition(projected).project(camera);return [round((projected.x+1)*.5),round((1-projected.y)*.5)];};
-    stage.dataset.handoffState=JSON.stringify({id:'PR-017',position:vec(request.position),rotation:[request.rotation.x,request.rotation.y,request.rotation.z].map(round),decision:p>=.69,receipt:p>=.94,stamp:round(press),camera:vec(camera.position),stations:stations.map(g=>[...vec(g.position),round(g.rotation.y)]),papers:debris.map(d=>{sheets.getMatrixAt(d.id,matrix);return [d.id,...matrix.elements.map(round)];}),paperCount:sheets.count,mechanicalRoutes:0,owner:'native-scroll',world:'coordination-studio',actors:[operator,...staffers.map(s=>s.staff)].map(s=>[round(s.head.rotation.x),round(s.head.rotation.y),...s.arms.flatMap(a=>a.elbow.quaternion.toArray().map(round))]),jointMatrices:actors.map(s=>[s.torso,s.head,...s.arms.flatMap(a=>[a.a,a.elbow,a.wrist])].map(o=>o.matrixWorld.elements.map(round))),contact:{error:round(contactError),engage:round(engage),distance:round(rawDistance),clamped:rawDistance>L+M-.001||rawDistance<Math.abs(L-M)+.001,grip:vec(actualGrip),target:vec(jointTarget),stampFace:vec(stamp.localToWorld(projected.set(0,-.115,0))),stampOnDocument:vec(stampLocal),documentFace:vec(request.localToWorld(projected.set(0,.092,0)))},screen:{request:projection(request),reviewer:projection(operator.head),receiver:projection(staffers[2].staff.head)},displays:workDisplays.map(d=>d.done.visible),physicalApproval:approvalMark.visible});
+    stage.dataset.handoffState=JSON.stringify({id:'PR-017',position:vec(request.position),rotation:[request.rotation.x,request.rotation.y,request.rotation.z].map(round),decision:p>=.69,receipt:p>=.94,stamp:round(press),camera:vec(camera.position),stations:stations.map(g=>[...vec(g.position),round(g.rotation.y)]),papers:debris.map(d=>{sheets.getMatrixAt(d.id,matrix);return [d.id,...matrix.elements.map(round)];}),paperCount:sheets.count,mechanicalRoutes:0,owner:'native-scroll',world:'coordination-studio',actors:[operator,...staffers.map(s=>s.staff)].map(s=>[round(s.head.rotation.x),round(s.head.rotation.y),...s.arms.flatMap(a=>a.elbow.quaternion.toArray().map(round))]),jointMatrices:actors.map(s=>[s.torso,s.head,...s.arms.flatMap(a=>[a.a,a.elbow,a.wrist])].map(o=>o.matrixWorld.elements.map(round))),contact:{error:round(contactError),engage:round(engage),distance:round(rawDistance),clamped:rawDistance>L+M-.001||rawDistance<Math.abs(L-M)+.001,grip:vec(actualGrip),target:vec(jointTarget),stampFace:vec(stamp.localToWorld(projected.set(0,-.115,0))),stampOnDocument:vec(stampLocal),documentFace:vec(request.localToWorld(projected.set(0,.092,0)))},screen:{request:projection(request),reviewer:projection(operator.head),receiver:projection(staffers[2].staff.head)},displays:workDisplays.map(d=>d.done.visible),physicalApproval:approvalMark.visible,supportContact:{error:round(supportGrip.distanceTo(supportTarget)),engage:round(supporting),distance:round(supportDistance),grip:vec(supportGrip),target:vec(supportTarget)}});
     }
     try {renderer.render(scene,camera);drawCount++;stage.dataset.handoffPhase=p.toFixed(4);if(qaEnabled)stage.dataset.handoffBudget=JSON.stringify({calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures,shadowMap:key.shadow.map?.width||0,raster:[canvas.width,canvas.height],tier:constrained?'constrained':'standard',renderMs:performance.now()-started,drawCount});}
     catch(error){console.warn("Handoff renderer failed",error);fallback();}
