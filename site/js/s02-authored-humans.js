@@ -114,6 +114,9 @@ export function poseHuman(a,contacts){
   for(const r of a.rest){r.b.quaternion.copy(r.q);r.b.position.copy(r.p);}
   const {wrapper,pelvis,spine,chest,head,control}=a;
   wrapper.position.copy(control.o.position);wrapper.quaternion.copy(control.o.quaternion);
+  // Move the real hips to the forward part of the existing seat; the shorter
+  // authored arms then reach the work, rather than extending their bones.
+  wrapper.position.add(V(0,0,a.seated?.09:.05).applyQuaternion(wrapper.quaternion));
   wrapper.updateWorldMatrix(true,true);
   const wq=wrapper.getWorldQuaternion(Q());
   const worldDirection=v=>v.applyQuaternion(wq);
@@ -125,7 +128,7 @@ export function poseHuman(a,contacts){
     pelvis.position.copy(pelvis.parent.worldToLocal(p));
     pelvis.updateWorldMatrix(false,true);
     for(const leg of a.legs){
-      const target=worldPoint(V(leg.ankle.x,leg.ankle.y,.33));
+      const target=worldPoint(V(leg.ankle.x,leg.ankle.y,.25));
       solveChain(leg.thigh,leg.calf,leg.foot,target,worldDirection(V(0,.08,1)));
       setWorldQ(leg.foot,wq.clone().multiply(leg.footQ));
     }

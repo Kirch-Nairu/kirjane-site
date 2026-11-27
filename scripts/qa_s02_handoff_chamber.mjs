@@ -40,7 +40,7 @@ try {
           throw error;
         }
       }
-      const states=new Map();
+      const states=new Map(),phaseFailures=[];
       for(const [name,p] of shots){
         await seek(p);
         await page.screenshot({path:out+'/'+width+'-'+name+'.png'});
@@ -51,7 +51,7 @@ try {
         const state=JSON.parse(await stage.getAttribute('data-handoff-state')||'null');
         const budget=JSON.parse(await stage.getAttribute('data-handoff-budget')||'null');
         results.push({width,height,name,phase:await stage.getAttribute('data-handoff-phase'),status:await status.textContent(),state,budget});
-        if(!comparison){
+        if(!comparison){try{
           assert.equal(state.id,'PR-017');assert.equal(state.world,'coordination-studio');assert.equal(state.actors.length,4);assert.ok(state.actors.every(a=>a.length===10&&a.every(Number.isFinite)));assert.equal(state.owner,'native-scroll');assert.equal(state.mechanicalRoutes,0);
           assert.equal(state.decision,p>=.69);assert.equal(state.receipt,p>=.94);assert.equal(state.physicalApproval,p>=.69);assert.equal(state.authored.length,4);assert.deepEqual(state.authored.map(a=>a.role),['capture','connect','decide','act']);for(const a of state.authored){assert.equal(a.bones,80);assert.ok(a.meshes>=2&&a.visible);assert.equal(a.contacts.length,2);for(const c of a.contacts){assert.ok(Number.isFinite(c.error)&&Number.isFinite(c.reach));if(c.engage>.99){assert.ok(c.contactError<.02,'authored palm contact '+a.role+' '+JSON.stringify(c));assert.equal(c.clamped,false,'authored palm reachable');}}if(a.seated)assert.ok(a.pelvis[1]>.68&&a.pelvis[1]<.82,'seated pelvis');}assert.equal(state.workstationOrientation.length,3);for(const d of state.workstationOrientation){assert.ok(d.facing>.95,'actual screen faces operator '+JSON.stringify(d));assert.ok(d.keyDistance<d.screenDistance,'keyboard must be closer to operator than lid '+JSON.stringify(d));assert.equal(d.oneSided,true);assert.ok(d.hands.every(h=>h.distance<.622),'keyboard outside reachable arm envelope '+JSON.stringify(d));if(d.engage>.99)assert.ok(d.hands.every(h=>h.error<.015),'actual keyboard contact '+JSON.stringify(d));}assert.doesNotMatch(await status.textContent(),/PR-017|purchasing/i);if(name==='opening'||name==='trace'||name==='receipt'){const idx=name==='opening'?0:name==='trace'?1:2;assert.ok(state.workstationOrientation[idx].engage>.99,'active workstation requires physical keyboard contact');}assert.equal(state.acting.length,4);assert.ok(state.acting.every(a=>a.eye>=.12&&a.eye<=1&&Math.abs(a.gaze)<=.004));
           const safe=([x,y])=>x>.06&&x<.94&&y>.10&&y<.78;
@@ -61,8 +61,10 @@ try {
           assert.equal(state.paperCount,56);assert.deepEqual(state.papers.map(x=>x[0]),Array.from({length:56},(_,i)=>i));
           assert.ok(budget.calls>0&&budget.calls<240&&budget.triangles>0);assert.ok(state.jointMatrices.every(actor=>actor.length===8&&actor.every(m=>m.length===16&&m.every(Number.isFinite))));if(name==='review'){assert.ok(state.contact.engage>.99);assert.ok(state.supportContact.engage>.99);assert.ok(state.supportContact.error<.015,'left hand document support residual '+state.supportContact.error);assert.equal(state.contact.clamped,false);assert.ok(state.contact.error<.015,'actual grip residual '+state.contact.error);assert.ok(Math.abs(state.contact.stampFace[1]-state.contact.documentFace[1])<.035,'stamp must reach document surface');const [sx,sy,sz]=state.contact.stampOnDocument;assert.ok(sx>.06-.34&&sx<.06+.34&&Math.abs(sz)<.215&&Math.abs(sy-.092)<.035,'stamp surface lies on document, not merely at same height');assert.equal(state.displays[2],false);}
           states.set(name,state);
-        }
+        }catch(error){phaseFailures.push({name,error:String(error)});}}
       }
+      if(phaseFailures.length)results.push({width,height,phaseFailures});
+      assert.deepEqual(phaseFailures,[],'all captured phase assertions');
       if(comparison||stills)continue;
       const opening=states.get('opening'),trace=states.get('trace'),receipt=states.get('receipt');
       const changed=opening.papers.filter((m,i)=>Math.hypot(...[13,14,15].map(j=>m[j]-receipt.papers[i][j]))>1).length;
