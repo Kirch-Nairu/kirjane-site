@@ -19,9 +19,17 @@ jobs:
           python-version: '3.12'
       - name: Install Blender authoring runtime
         run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y blender
-          blender --version
+          set -euo pipefail
+          VERSION=4.5.16
+          ARCHIVE=blender-$VERSION-linux-x64.tar.xz
+          BASE=https://download.blender.org/release/Blender4.5
+          cd "$RUNNER_TEMP"
+          curl --fail --location --retry 3 "$BASE/$ARCHIVE" --output "$ARCHIVE"
+          curl --fail --location --retry 3 "$BASE/blender-$VERSION.sha256" --output blender-checksums.txt
+          grep -F "$ARCHIVE" blender-checksums.txt | sha256sum -c -
+          tar -xf "$ARCHIVE"
+          echo "$RUNNER_TEMP/blender-$VERSION-linux-x64" >> "$GITHUB_PATH"
+          "$RUNNER_TEMP/blender-$VERSION-linux-x64/blender" --background --factory-startup --python-exit-code 1 --python-expr "import bpy,numpy; print(bpy.app.version_string,numpy.__version__)"
       - name: Verify and acquire immutable licensed source assets
         run: python creative/s02-r8/fetch_sources.py
       - name: Convert authored human meshes with weights and render isolated model evidence
