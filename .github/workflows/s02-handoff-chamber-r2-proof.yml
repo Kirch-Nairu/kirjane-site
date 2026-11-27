@@ -1,4 +1,4 @@
-name: S02 R8.1 authored human cinematic craft proof (no deploy)
+name: S02 R8.3 authored studio cinematic craft proof (no deploy)
 on:
   push:
     branches: [experiment/s02-handoff-chamber-r2-writer]
@@ -37,12 +37,12 @@ jobs:
           SERVER=$!
           trap 'kill "$SERVER"' EXIT
           for i in $(seq 1 20); do curl -fsS http://127.0.0.1:8723/ >/dev/null && break; sleep 1; done
-          S02_STILLS=1 S02_EVIDENCE=dist/s02-r81-stills node scripts/qa_s02_handoff_chamber.mjs
+          S02_STILLS=1 S02_EVIDENCE=dist/s02-r83-stills node scripts/qa_s02_handoff_chamber.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: s02-r81-early-stills-${{ matrix.viewport }}
-          path: dist/s02-r81-stills/
+          name: s02-r83-early-stills-${{ matrix.viewport }}
+          path: dist/s02-r83-stills/
           if-no-files-found: warn
       - name: Capture actual browser forward and reverse states
         run: |
@@ -54,7 +54,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: s02-r81-chamber-browser-evidence-${{ matrix.viewport }}
+          name: s02-r83-chamber-browser-evidence-${{ matrix.viewport }}
           path: dist/s02-chamber-evidence/
           if-no-files-found: warn
 
@@ -91,7 +91,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: s02-r81-protected-comparison
+          name: s02-r83-protected-comparison
           path: dist/s02-comparison/
           if-no-files-found: warn
 
