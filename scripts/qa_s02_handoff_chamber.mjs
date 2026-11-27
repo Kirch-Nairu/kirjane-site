@@ -19,7 +19,7 @@ try {
     const context=await browser.newContext({viewport:{width,height},deviceScaleFactor:1,recordVideo:comparison||stills?undefined:{dir:out+'/motion',size:{width,height}}});
     const page=await context.newPage();
     try {
-      const errors=[];page.on('pageerror',e=>errors.push(String(e)));
+      const errors=[];page.on('pageerror',e=>{errors.push(String(e));console.error('PAGE ERROR',String(e));});page.on('console',m=>{if(m.type()==='error'||m.type()==='warning')console.error('BROWSER',m.type(),m.text());});
       await page.goto(qaUrl.href,{waitUntil:'domcontentloaded'});
       await page.waitForFunction(()=>window.__SITE_READY__===true);
       const stage=page.locator('#complexity-clarity-scene .cinematic-sticky-stage');

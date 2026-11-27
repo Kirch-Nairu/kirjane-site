@@ -783,7 +783,6 @@
         if(handoffDisposed)return;
         handoffChamber=createHandoffChamber(handoffStage,clarityCanvas,reduced);
         handoffChamber?.setPhase(handoffPhase);
-        const narrativeChapter=handoffPhase<.34?'complexity':handoffPhase<.68?'alignment':'clarity';
       }).catch(error=>console.warn("S02 chamber unavailable; studio poster retained",error));
     },{rootMargin:"300px"});
     handoffObserver.observe(handoffStage);
@@ -799,6 +798,7 @@
       onUpdate: ({ exact, smooth, direction, activeChapter, inView, isReduced }) => {
         // Match the native director's settle threshold before it clears its dirty flag.
         handoffPhase=Math.abs(exact-smooth)<.0004?exact:smooth;
+        const narrativeChapter=handoffPhase<.34?'complexity':handoffPhase<.68?'alignment':'clarity';
         // Retain native phase through context loss; restored renderer samples current scroll.
         handoffChamber?.setPhase(handoffPhase);
         if (!handoffChamber?.active && inView && scrollY > 8 && !shortCinematic.matches) clarityPlayer.setProgress(clarityPhase(smooth), direction);
