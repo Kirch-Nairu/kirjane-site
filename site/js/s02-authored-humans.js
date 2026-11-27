@@ -66,6 +66,10 @@ function solveChain(a,b,c,target,pole){
 export function bindHuman(model,control,role){
   const wrapper=new T.Group();wrapper.name='Authored human / '+role;
   wrapper.position.copy(control.o.position);wrapper.quaternion.copy(control.o.quaternion);
+  // The office was authored in stage units: 1.38 stage units per human metre.
+  // Preserve mesh anatomy and bone proportions via a uniform scale only.
+  const humanScale=role==='act'?1.26:1.38;
+  wrapper.scale.setScalar(humanScale);
   control.o.parent.add(wrapper);wrapper.add(model);
   wrapper.updateWorldMatrix(true,true);
   const bones=new Map(),meshes=[];
@@ -107,8 +111,8 @@ export function bindHuman(model,control,role){
   const controlled=[pelvis,spine,chest,head,...legs.flatMap(x=>[x.thigh,x.calf,x.foot]),...arms.flatMap(x=>[x.upper,x.fore,x.hand,...x.fingers.flatMap(f=>[f.base,f.mid,f.tip])])];
   const rest=controlled.map(b=>({b,q:b.quaternion.clone(),p:b.position.clone()}));
   const seated=role!=='act';
-  const seatHeight=restPelvis.y>.9?.77:.73;
-  return {role,wrapper,model,control,bones,meshes,pelvis,spine,chest,head,nose,legs,arms,rest,restPelvis,seated,seatHeight,receipt:null};
+  const seatHeight=(restPelvis.y>.9?.84:.80)/humanScale;
+  return {role,wrapper,model,control,bones,meshes,pelvis,spine,chest,head,nose,legs,arms,rest,restPelvis,seated,seatHeight,humanScale,receipt:null};
 }
 export function poseHuman(a,contacts){
   for(const r of a.rest){r.b.quaternion.copy(r.q);r.b.position.copy(r.p);}
@@ -116,7 +120,7 @@ export function poseHuman(a,contacts){
   wrapper.position.copy(control.o.position);wrapper.quaternion.copy(control.o.quaternion);
   // Move the real hips to the forward part of the existing seat; the shorter
   // authored arms then reach the work, rather than extending their bones.
-  wrapper.position.add(V(0,0,a.seated?.09:.05).applyQuaternion(wrapper.quaternion));
+  wrapper.position.add(V(0,0,a.seated?.10:.10).applyQuaternion(wrapper.quaternion));
   wrapper.updateWorldMatrix(true,true);
   const wq=wrapper.getWorldQuaternion(Q());
   const worldDirection=v=>v.applyQuaternion(wq);
@@ -128,7 +132,7 @@ export function poseHuman(a,contacts){
     pelvis.position.copy(pelvis.parent.worldToLocal(p));
     pelvis.updateWorldMatrix(false,true);
     for(const leg of a.legs){
-      const target=worldPoint(V(leg.ankle.x,leg.ankle.y,.25));
+      const target=worldPoint(V(leg.ankle.x,leg.ankle.y,.35));
       solveChain(leg.thigh,leg.calf,leg.foot,target,worldDirection(V(0,.08,1)));
       setWorldQ(leg.foot,wq.clone().multiply(leg.footQ));
     }
@@ -148,7 +152,7 @@ export function poseHuman(a,contacts){
   for(const limb of a.arms){
     const c=contacts.find(c=>c.side===limb.side);
     const weight=c?.weight??0;
-    const idle=worldPoint(V(limb.side*.19,a.seated?.86:1.00,.24));
+    const idle=worldPoint(V(limb.side*.19,a.seated?.78:.94,.26));
     const target=idle.clone().lerp(c?.target??idle,weight);
     const forward=worldDirection(V(0,-.12-.15*(1-weight),1)).normalize();
     const across=worldDirection(V(-limb.side,0,0));
@@ -160,7 +164,7 @@ export function poseHuman(a,contacts){
     const palm=limb.hand.localToWorld(limb.palmLocal.clone());
     evidence.push({side:limb.side,engage:weight,error:palm.distanceTo(target),contactError:c?palm.distanceTo(c.target):null,distance:result.raw,reach:result.reach,clamped:result.clamped,palm:palm.toArray(),target:target.toArray()});
   }
-  a.receipt={role:a.role,bones:a.bones.size,meshes:a.meshes.length,visible:a.wrapper.visible,seated:a.seated,contacts:evidence,head:point(a.nose).toArray(),pelvis:localVector(wrapper,pelvis),feet:a.legs.map(x=>localVector(wrapper,x.foot))};
+  a.receipt={role:a.role,bones:a.bones.size,meshes:a.meshes.length,visible:a.wrapper.visible,seated:a.seated,contacts:evidence,head:point(a.nose).toArray(),pelvis:localVector(wrapper,pelvis).map(v=>v*a.humanScale),feet:a.legs.map(x=>localVector(wrapper,x.foot).map(v=>v*a.humanScale)),humanScale:a.humanScale};
   return a.receipt;
 }
 const localVector=(wrapper,b)=>wrapper.worldToLocal(point(b)).toArray();

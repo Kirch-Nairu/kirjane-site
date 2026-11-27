@@ -1,7 +1,7 @@
 import * as T from '../vendor/three/three.module.js';
 import {loadHumanCast,bindHuman,poseHuman,disposeHuman} from './s02-authored-humans.js';
 
-// S02 R8.1: THE COORDINATION STUDIO — FROM FRAGMENTS TO SYSTEMS — an authored architectural cutscene, directed in scroll time. All motion is a pure function of director phase.
+// S02 R8.2: THE COORDINATION STUDIO — FROM FRAGMENTS TO SYSTEMS — an authored architectural cutscene, directed in scroll time. All motion is a pure function of director phase.
 // Locally vendored authored character assets. No external requests, extra RAF or simulated backend.
 const clamp = x => Math.max(0, Math.min(1,x));
 const ease = x => {x=clamp(x);return x*x*x*(x*(x*6-15)+10);};
@@ -61,16 +61,17 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
   renderer.setPixelRatio(1);
   renderer.outputColorSpace=T.SRGBColorSpace;
   renderer.toneMapping=T.ACESFilmicToneMapping;
-  renderer.toneMappingExposure=.96;
+  renderer.toneMappingExposure=1.08;
   renderer.shadowMap.enabled=new URLSearchParams(location.search).get('s02shadow')!=='off';renderer.shadowMap.type=T.PCFSoftShadowMap;
   const qaEnabled=new URLSearchParams(location.search).get('s02qa')==='1';
 
   const scene=new T.Scene();scene.background=new T.Color(0x263b40);scene.fog=new T.Fog(0x435355,24,65);
   const camera=new T.PerspectiveCamera(40,1,.1,100);
-  const ambient=new T.HemisphereLight(0xe5efff,0xa98971,1.65);scene.add(ambient);
-  const key=new T.DirectionalLight(0xffdab0,2.7);key.position.set(-6,9,-3);scene.add(key);
+  const ambient=new T.HemisphereLight(0xe1e9eb,0x9d7859,1.3);scene.add(ambient);
+  const key=new T.DirectionalLight(0xffdfb9,2.7);key.position.set(-4,8,5);scene.add(key);
   key.castShadow=true;key.shadow.mapSize.set(1024,1024);Object.assign(key.shadow.camera,{left:-9,right:9,top:8,bottom:-8,near:.5,far:27});key.shadow.bias=-.00035;key.shadow.normalBias=.025;key.shadow.radius=2;
-  const rim=new T.DirectionalLight(0xc5e0ed,1.65);rim.position.set(4,5,8);scene.add(rim);
+  const rim=new T.DirectionalLight(0xb8d4ea,1.65);rim.position.set(4,5,-6);scene.add(rim);
+  const bounce=new T.DirectionalLight(0xf2ead9,.36);bounce.position.set(5,3,5);scene.add(bounce);
   // Two directional keys + hemisphere: no per-fragment point attenuation over the entire room.
   const root=new T.Group();scene.add(root);
   const mat=(color,roughness=.85,metalness=0)=>metalness>0?new T.MeshStandardMaterial({color,roughness,metalness}):new T.MeshLambertMaterial({color});
@@ -163,6 +164,7 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
   // Preserve the two observable meshes for QA; the screen is one-sided.
   function laptop(g,x,z,operatorX,operatorZ,title,sub,doneTitle,doneSub,threshold){
     const l=group(g,x,1.13,z);
+    l.scale.setScalar(.83);
     l.rotation.y=Math.atan2(operatorX-x,operatorZ-z);
     b(l,ink,0,.026,0,.77,.045,.51);
     const keyboard=b(l,black,0,.052,.025,.65,.012,.25);
@@ -298,14 +300,14 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
   let operator,stamp,reviewPending,reviewApproved,receivePending,receiveDone;
   for(let i=0;i<4;i++){
     const g=group(root,...positions[i]);stations.push(g);animated.add(g);
-    if(i===0){desk(g,2.55,1.25,oak);chair(g,-.2,-.91,clay,0);laptop(g,-.1,-.35,-.2,-.91,'New work','Context incomplete','Context captured','Ready for verification',.37);lamp(g,-1.03,-.36);mug(g,.93,.3,teal);placard(g,'Capture','Understand the work',0,.78,.64,1.65,.38);staffers.push({i,staff:human(g,-.2,-.91,0,true,palettes[i])});}
-    else if(i===1){desk(g,2.50,1.4,timber);chair(g,.1,-.91,navy,0);for(let j=0;j<5;j++)b(g,[teal,clay,cream,navy,sage][j],-1.08+j*.16,1.37,-.41,.14,.45,.34);laptop(g,.22,-.35,.1,-.91,'Connected records','Verifying information','Context verified','Ready for decision',.39);mug(g,.95,.35,cream);placard(g,'Connect','Verify the context',0,.8,.72,1.65,.38);staffers.push({i,staff:human(g,.1,-.91,0,true,palettes[i])});}
-    else if(i===2){shadow(g,0,0,4.2,3.0,.052);const top=cyl(g,oak,0,1.04,0,1.42,.15,.91);top.castShadow=true;top.receiveShadow=true;cyl(g,timber,0,.95,0,1.32,.035,.85);cyl(g,timber,0,.52,0,.29,1.0);cyl(g,ink,0,.075,0,.73,.15);chair(g,.12,-1.20,teal,0);chair(g,-1.48,.18,clay,Math.PI/2);chair(g,1.48,.18,navy,-Math.PI/2);
-      operator=human(g,.12,-1.20,0,true,palettes[i]);lamp(g,-1,-.35);flatCard(g,'Review checklist','Scope • amount • owner',-.56,1.13,.30,.73,.45);
-      stamp=group(g,.34,1.40,-.78);animated.add(stamp);cyl(stamp,brass,0,0,0,.06,.13);ell(stamp,timber,0,.065,0,.065,.044,.065);b(stamp,ink,0,-.085,0,.17,.06,.13);
-      reviewPending=placard(g,'Human review','Decision required',-.87,1.34,.57,.94,.31,'#5b3526','#f6d6a2');reviewApproved=placard(g,'Decision made','Authorization recorded',-.87,1.34,.57,.94,.31,'#244943','#cae5cf');b(g,timber,-.87,1.14,.57,1.0,.05,.19);}
+    if(i===0){desk(g,2.55,1.25,oak);chair(g,-.2,-.91,clay,0);laptop(g,-.1,-.35,-.2,-.91,'New work','Context incomplete','Context captured','Ready for verification',.37);lamp(g,-1.03,-.36);mug(g,.93,.3,teal);placard(g,'Capture','Understand the work',0,.78,.64,1.12,.26);staffers.push({i,staff:human(g,-.2,-.91,0,true,palettes[i])});}
+    else if(i===1){desk(g,2.50,1.4,timber);chair(g,.1,-.91,navy,0);for(let j=0;j<5;j++)b(g,[teal,clay,cream,navy,sage][j],-1.08+j*.16,1.37,-.41,.14,.45,.34);laptop(g,.22,-.35,.1,-.91,'Connected records','Verifying information','Context verified','Ready for decision',.39);mug(g,.95,.35,cream);placard(g,'Connect','Verify the context',0,.8,.72,1.12,.26);staffers.push({i,staff:human(g,.1,-.91,0,true,palettes[i])});}
+    else if(i===2){shadow(g,0,0,4.2,3.0,.052);const top=cyl(g,oak,0,1.04,0,1.19,.15,.91);top.castShadow=true;top.receiveShadow=true;cyl(g,timber,0,.95,0,1.11,.035,.85);cyl(g,timber,0,.52,0,.29,1.0);cyl(g,ink,0,.075,0,.73,.15);chair(g,.12,-1.20,teal,0);chair(g,-1.30,.18,clay,Math.PI/2);chair(g,1.30,.18,navy,-Math.PI/2);
+      operator=human(g,.12,-1.20,0,true,palettes[i]);lamp(g,-1,-.35);flatCard(g,'Review checklist','Context • rules • owner',-.50,1.13,.25,.52,.34);
+      stamp=group(g,.30,1.40,-.78);animated.add(stamp);cyl(stamp,brass,0,0,0,.06,.13);ell(stamp,timber,0,.065,0,.065,.044,.065);b(stamp,ink,0,-.085,0,.17,.06,.13);
+      reviewPending=placard(g,'Human review','Decision required',-.69,1.25,.53,.73,.24,'#5b3526','#f6d6a2');reviewApproved=placard(g,'Decision made','Authorization recorded',-.69,1.25,.53,.73,.24,'#244943','#cae5cf');b(g,timber,-.69,1.14,.53,.77,.05,.15);}
     else{desk(g,2.7,1.30,oak);b(g,teal,.96,.48,-.08,.55,.82,.75);for(let j=0;j<2;j++){b(g,oak,.96,.36+j*.36,.31,.43,.27,.055);b(g,brass,.96,.39+j*.36,.35,.17,.035,.05);}laptop(g,.12,-.36,.18,-.87,'Next responsibility','Awaiting decision','Work assigned','Context and owner linked',.94);lamp(g,.98,-.39);mug(g,.58,.36,clay);staffers.push({i,staff:human(g,.18,-.87,0,false,palettes[i])});
-      receivePending=placard(g,'Coordinate','Awaiting authorization',0,.83,.661,1.76,.35);receiveDone=placard(g,'Work connected','Owner and context linked',0,.83,.662,1.76,.35,'#244943','#cae5cf');}
+      receivePending=placard(g,'Coordinate','Awaiting authorization',0,.83,.661,1.20,.25);receiveDone=placard(g,'Work connected','Owner and context linked',0,.83,.662,1.20,.25,'#244943','#cae5cf');}
   }
   // CUSTODY — one physical folder, 56 independently conserved sheets.
   const request=group(root);animated.add(request);b(request,clay,0,0,0,.96,.08,.69).castShadow=true;b(request,paper,.035,.057,0,.83,.055,.60);b(request,teal,-.39,.083,0,.15,.03,.63);// Canvas illustration: actual stationery, not a floating UI screenshot.
@@ -400,7 +402,7 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
   Object.assign(status.style,{position:'absolute',zIndex:'3',right:'3%',top:'11%',font:'500 12px system-ui',letterSpacing:'.035em',color:'#fff3df',background:'rgba(22,37,40,.74)',padding:'7px 10px',borderLeft:'1px solid #e5b97e',textShadow:'none',textAlign:'right',pointerEvents:'none',whiteSpace:'pre-line'});
   legacy.after(canvas);
   stage.append(status);
-  const shots=[[0,-.4,1.65,-.5,.05,16.8,7.5,12.4,5.8],[.15,-2.65,1.85,.0,.02,11.8,5.5,9.2,4.9],[.37,-2.25,1.65,-1.05,-.13,9.2,4.6,8.2,4.5],[.55,.86,1.61,-.57,-.17,3.60,2.17,4.75,2.68],[.69,.86,1.61,-.57,-.10,3.60,2.17,4.75,2.68],[.83,2.9,1.8,-1.05,.04,7.7,4.1,8.3,4.5],[.95,4.1,1.55,-1.45,.14,6.5,3.5,7.6,4.2],[1,.1,1.6,-.6,.06,15.8,6.7,13,6]];
+  const shots=[[0,-.8,1.75,-.5,.05,15.4,6.9,12.4,5.8],[.15,-2.65,1.85,.0,.02,11.3,5.3,9.2,4.9],[.37,-2.25,1.70,-1.05,-.13,8.8,4.3,8.2,4.5],[.55,.83,1.65,-.71,.29,3.35,2.35,4.75,2.78],[.69,.83,1.65,-.71,.29,3.35,2.35,4.75,2.78],[.83,2.9,1.85,-1.05,.04,7.2,3.9,8.3,4.5],[.95,4.0,1.80,-1.45,.26,5.7,3.3,7.6,4.2],[1,.1,1.75,-.6,.06,14.5,6.2,13,6]];
   function draw(){
     if(disposed||failed||castState!=='ready'||!visible||document.hidden)return;
 
@@ -413,7 +415,7 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
     let segment=0,t=span(p,.19,.37);if(p>=.37&&p<.55){segment=1;t=span(p,.39,.55);}else if(p>=.55){segment=2;t=release;}
     request.position.copy(path[segment]).lerp(path[segment+1],t);
     if(segment===0){target.set(0,1.18,.12);stations[0].localToWorld(target);target.y+=.55+(1-trace)*.9;target.x+=.35*Math.sin(p*13)*(1-trace);request.position.copy(target).lerp(path[1],t);}
-    const arc=deliveryArc(t,segment),spin=Math.sin(t*Math.PI);request.position.y+=arc.lift;request.position.z+=arc.side;fileFlag.visible=p<.18&&spin>.15;fileFlag.position.set(0,.29+spin*.15,.23*(1-spin));approvalMark.visible=p>=.69;request.rotation.set(-.25*spin+(1-trace)*.19*Math.sin(p*19),.83*spin+(1-trace)*(.25+p*6),arc.bank+(1-trace)*.17*Math.cos(p*16));request.scale.setScalar(.94+.16*spin+.12*(1-trace));
+    const arc=deliveryArc(t,segment),spin=Math.sin(t*Math.PI);request.position.y+=arc.lift;request.position.z+=arc.side;fileFlag.visible=p<.18&&spin>.15;fileFlag.position.set(0,.29+spin*.15,.23*(1-spin));approvalMark.visible=p>=.69;request.rotation.set(-.25*spin+(1-trace)*.19*Math.sin(p*19),.83*spin+(1-trace)*(.25+p*6),arc.bank+(1-trace)*.17*Math.cos(p*16));request.scale.setScalar(.76+.12*spin+.09*(1-trace));
     const press=span(p,.585,.635)-span(p,.66,.72);
 
     // ACTING / IK — all axes reset; no orientation from a preceding evaluation.
@@ -448,7 +450,7 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
     });
     // The stamp is lifted, pressed against the request, then released.
     const stampContact=span(p,.59,.625)-span(p,.66,.70);
-    stamp.position.set(.34,1.48-.105*stampContact+.023*accent(p,.545,.574,.59),-.78);
+    stamp.position.set(.30,1.465-.105*stampContact+.023*accent(p,.545,.574,.59),-.78);
     operator.torso.updateWorldMatrix(true,false);stamp.updateWorldMatrix(true,false);
     const arm=operator.arms[1],engage=span(p,.53,.58)-span(p,.69,.75);
     stamp.localToWorld(jointTarget.set(0,.065,0));
@@ -501,7 +503,7 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
     const actualContacts=[keyContacts[0],keyContacts[1],[{side:-1,target:supportTarget.clone(),weight:supporting},{side:1,target:jointTarget.clone(),weight:engage}],keyContacts[2]];
     const authoredState=authored.map((a,i)=>poseHuman(a,actualContacts[i]));
     reviewPending.visible=p<.69;reviewApproved.visible=p>=.69;receivePending.visible=p<.94;receiveDone.visible=p>=.94;
-    ambient.intensity=mix(.82,1.02,trace);key.intensity=mix(1.75,2.30,trace);rim.intensity=mix(1.03,1.30,decision)+.20*press;
+    ambient.intensity=mix(1.08,1.28,trace);key.intensity=mix(2.10,2.55,trace);rim.intensity=mix(.80,1.15,decision)+.15*press;
     arcs.forEach((arc,i)=>{const from=[.18,.39,.75][i],to=[.37,.55,.94][i],q=span(p,from,to);arc.geometry.setDrawRange(0,Math.floor(q*64)+1);arc.material.opacity=.78*pulse(p,from,(from+to)/2,to+.065);});
     // CINEMATOGRAPHY — wide master, active record, intimate review, release, calm pullback.
     const portrait=w/h<1.05,compact=w<=900&&!portrait;
@@ -532,7 +534,7 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
       });
       return {facing:round(laptopNormal.dot(laptopUser)),keyDistance:round(keyDistance),screenDistance:round(screenDistance),oneSided:d.pending.material.side===T.FrontSide&&d.done.material.side===T.FrontSide,engage:round(keyboardWeights[i]),hands};
     });
-    stage.dataset.handoffState=JSON.stringify({id:'PR-017',position:vec(request.position),rotation:[request.rotation.x,request.rotation.y,request.rotation.z].map(round),decision:p>=.69,receipt:p>=.94,stamp:round(press),camera:vec(camera.position),stations:stations.map(g=>[...vec(g.position),round(g.rotation.y)]),papers:debris.map(d=>{sheets.getMatrixAt(d.id,matrix);return [d.id,...matrix.elements.map(round)];}),paperCount:sheets.count,mechanicalRoutes:0,owner:'native-scroll',world:'coordination-studio',actors:[operator,...staffers.map(s=>s.staff)].map(s=>[round(s.head.rotation.x),round(s.head.rotation.y),...s.arms.flatMap(a=>a.elbow.quaternion.toArray().map(round))]),jointMatrices:actors.map(s=>[s.torso,s.head,...s.arms.flatMap(a=>[a.a,a.elbow,a.wrist])].map(o=>o.matrixWorld.elements.map(round))),contact:{error:round(contactError),engage:round(engage),distance:round(rawDistance),clamped:rawDistance>L+M-.001||rawDistance<Math.abs(L-M)+.001,grip:vec(actualGrip),target:vec(jointTarget),stampFace:vec(stamp.localToWorld(projected.set(0,-.115,0))),stampOnDocument:vec(stampLocal),documentFace:vec(request.localToWorld(projected.set(0,.092,0)))},screen:{request:projection(request),reviewer:projection(operator.head),receiver:projection(staffers[2].staff.head)},displays:workDisplays.map(d=>d.done.visible),physicalApproval:approvalMark.visible,workstationOrientation,authored:authoredState.map(a=>({...a,head:a.head.map(round),pelvis:a.pelvis.map(round),feet:a.feet.map(v=>v.map(round)),contacts:a.contacts.map(c=>({...c,engage:round(c.engage),error:round(c.error),contactError:c.contactError===null?null:round(c.contactError),distance:round(c.distance),reach:round(c.reach),palm:c.palm.map(round),target:c.target.map(round)}))})),acting:actors.map(s=>({eye:round(s.eyes.scale.y),gaze:round(s.pupils.position.x)})),supportContact:{error:round(supportGrip.distanceTo(supportTarget)),engage:round(supporting),distance:round(supportDistance),grip:vec(supportGrip),target:vec(supportTarget)}});
+    stage.dataset.handoffState=JSON.stringify({id:'PR-017',position:vec(request.position),rotation:[request.rotation.x,request.rotation.y,request.rotation.z].map(round),decision:p>=.69,receipt:p>=.94,stamp:round(press),camera:vec(camera.position),stations:stations.map(g=>[...vec(g.position),round(g.rotation.y)]),papers:debris.map(d=>{sheets.getMatrixAt(d.id,matrix);return [d.id,...matrix.elements.map(round)];}),paperCount:sheets.count,mechanicalRoutes:0,owner:'native-scroll',world:'coordination-studio',actors:[operator,...staffers.map(s=>s.staff)].map(s=>[round(s.head.rotation.x),round(s.head.rotation.y),...s.arms.flatMap(a=>a.elbow.quaternion.toArray().map(round))]),jointMatrices:actors.map(s=>[s.torso,s.head,...s.arms.flatMap(a=>[a.a,a.elbow,a.wrist])].map(o=>o.matrixWorld.elements.map(round))),contact:{error:round(contactError),engage:round(engage),distance:round(rawDistance),clamped:rawDistance>L+M-.001||rawDistance<Math.abs(L-M)+.001,grip:vec(actualGrip),target:vec(jointTarget),stampFace:vec(stamp.localToWorld(projected.set(0,-.115,0))),stampOnDocument:vec(stampLocal),documentFace:vec(request.localToWorld(projected.set(0,.092,0)))},screen:{request:projection(request),reviewer:projection(authored[2].nose),receiver:projection(authored[3].nose)},displays:workDisplays.map(d=>d.done.visible),physicalApproval:approvalMark.visible,workstationOrientation,authored:authoredState.map(a=>({...a,head:a.head.map(round),pelvis:a.pelvis.map(round),feet:a.feet.map(v=>v.map(round)),contacts:a.contacts.map(c=>({...c,engage:round(c.engage),error:round(c.error),contactError:c.contactError===null?null:round(c.contactError),distance:round(c.distance),reach:round(c.reach),palm:c.palm.map(round),target:c.target.map(round)}))})),acting:actors.map(s=>({eye:round(s.eyes.scale.y),gaze:round(s.pupils.position.x)})),supportContact:{error:round(supportGrip.distanceTo(supportTarget)),engage:round(supporting),distance:round(supportDistance),grip:vec(supportGrip),target:vec(supportTarget)}});
     }
     try {renderer.render(scene,camera);drawCount++;stage.dataset.handoffPhase=p.toFixed(4);if(qaEnabled)stage.dataset.handoffBudget=JSON.stringify({calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures,shadowMap:key.shadow.map?.width||0,raster:[canvas.width,canvas.height],tier:constrained?'constrained':'standard',renderMs:performance.now()-started,drawCount});}
     catch(error){console.warn("Handoff renderer failed",error);fallback();}
