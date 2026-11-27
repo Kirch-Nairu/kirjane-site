@@ -144,7 +144,7 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
   // A single sculpted head surface: chin, jaw, cheeks, brows, eye sockets and
   // integrated nose are geometry, not detached balls. Shared topology; skin palettes differ.
   const faceGeo=profileGeometry([[-.175,.005,.008,.024],[-.155,.058,.064,.021],[-.129,.083,.081,.014],[-.102,.096,.088,.010],[-.075,.109,.095,.005],[-.052,.121,.102,.003],[-.026,.127,.105,.002],[0,.127,.104,.001],[.018,.126,.103,0],[.039,.124,.104,-.001],[.056,.122,.104,-.002],[.080,.121,.105,-.005],[.108,.116,.101,-.008],[.148,.085,.080,-.016],[.174,.005,.008,-.015]],36);
-  function gauss(x,y,cx,cy,sx,sy){return Math.exp(-((x-cx)/sx)**2-((y-cy)/sy)**2);}
+  function gauss(x,y,cx,cy,sx,sy){return Math.exp(-(((x-cx)/sx)**2+((y-cy)/sy)**2));}
   {
     const a=faceGeo.attributes.position,colors=[];
     for(let i=0;i<a.count;i++){
