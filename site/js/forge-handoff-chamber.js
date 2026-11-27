@@ -1,6 +1,6 @@
 import * as T from '../vendor/three/three.module.js';
 
-// S02 R7: THE COORDINATION STUDIO — THE RHYTHM OF WORK — an authored architectural cutscene, directed in scroll time. All motion is a pure function of director phase.
+// S02 R8: THE COORDINATION STUDIO — FROM FRAGMENTS TO SYSTEMS — an authored architectural cutscene, directed in scroll time. All motion is a pure function of director phase.
 // No external assets, extra RAF, timers, or simulated backend.
 const clamp = x => Math.max(0, Math.min(1,x));
 const ease = x => {x=clamp(x);return x*x*x*(x*(x*6-15)+10);};
@@ -125,9 +125,9 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
   b(room,teal,5.57,1.35,-5.08,3.38,2.65,.22);b(room,oak,5.57,.86,-4.71,3.43,.14,.72);
   for(let i=0;i<3;i++){b(room,ink,4.45+i*1.12,.45,-4.67,1.04,.7,.65);b(room,brass,4.45+i*1.12,.65,-4.31,.25,.045,.05);}
   for(let k=0;k<2;k++){b(room,oak,5.56,1.45+k*.78,-4.78,3.31,.09,.53);for(let i=0;i<12;i++){const h=.26+((i*7+k*3)%7)*.055;b(room,[clay,cream,navy,sage,timber][i%5],4.15+i*.235,1.51+k*.78+h/2,-4.72,.19,h,.32);}}
-  placard(room,'Coordination studio','People • records • decisions',5.54,3.45,-4.99,3.0,.73,'#f0e6d2','#345a59');
+  placard(room,'Operations studio','People • information • decisions',5.54,3.45,-4.99,3.0,.73,'#f0e6d2','#345a59');
   // Authored glass dividers, framed workflow print and room-specific shelf objects.
-  const workflowBoard=placard(room,'Every request has an owner','INTAKE  /  RECORDS  /  REVIEW  /  RECEIPT',5.54,4.16,-4.99,3.0,.50,'#435c57','#e3d3b5');
+  const workflowBoard=placard(room,'From fragments to systems','CAPTURE  /  CONNECT  /  DECIDE  /  ACT',5.54,4.16,-4.99,3.0,.50,'#435c57','#e3d3b5');
   b(room,timber,5.54,4.16,-5.04,3.09,.59,.07);
   b(room,brass,5.54,2.85,-4.71,3.36,.025,.025);
   for(const [x,z] of [[-7.03,-2.7],[7.03,-3.8]]){
@@ -157,7 +157,34 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
   function desk(g,w,d,m){shadow(g,0,0,w+1,d+1.2);const top=b(g,m,0,1.04,0,w,.15,d);top.castShadow=true;top.receiveShadow=true;b(g,timber,0,.945,0,w-.18,.05,d-.14);for(const x of [-w/2+.22,w/2-.22])b(g,brass,x,.88,0,.035,.035,d-.25);for(const x of [-w/2+.19,w/2-.19])for(const z of [-d/2+.16,d/2-.16])beam(g,timber,[x,.04,z],[x*.94,.98,z*.86],.065);}
   function chair(g,x,z,color,angle=0){const c=group(g,x,0,z);c.rotation.y=angle;shadow(c,0,0,1.2,1.2);for(const a of [-1,1])for(const d of [-1,1])beam(c,timber,[a*.27,0,d*.26],[a*.23,.54,d*.21],.045);ell(c,color,0,.56,0,.39,.09,.35).castShadow=true;ell(c,color,0,.94,-.29,.39,.39,.105);for(const x of [-.25,.25])beam(c,timber,[x,.52,-.22],[x,.90,-.29],.045);return c;}
   const workDisplays=[];
-  function laptop(g,x,z,title,sub,doneTitle,doneSub,threshold){const l=group(g,x,1.13,z);b(l,ink,0,.026,0,.77,.055,.51);b(l,black,0,.06,.04,.65,.014,.32);const s=group(l,0,.04,-.23);s.rotation.x=-.16;b(s,ink,0,.27,0,.77,.55,.05);const pending=placard(s,title,sub,0,.27,.032,.70,.46,'#d7e7dd','#2e5256');const done=placard(s,doneTitle,doneSub,0,.27,.033,.70,.46,'#e8efdb','#355a55');done.visible=false;workDisplays.push({pending,done,threshold});return l;}
+  // Laptop's +Z is the USER side: keyboard in front, hinge away from user.
+  // Orient against the actual operator in station coordinates, not the camera.
+  // Preserve the two observable meshes for QA; the screen is one-sided.
+  function laptop(g,x,z,operatorX,operatorZ,title,sub,doneTitle,doneSub,threshold){
+    const l=group(g,x,1.13,z);
+    l.rotation.y=Math.atan2(operatorX-x,operatorZ-z);
+    b(l,ink,0,.026,0,.77,.045,.51);
+    const keyboard=b(l,black,0,.052,.025,.65,.012,.25);
+    keyboard.userData.keepForQA=true;
+    const keys=texture(512,256,(c,W,H)=>{
+      c.fillStyle='#252a2c';c.fillRect(0,0,W,H);c.fillStyle='#626a6b';
+      for(let row=0;row<5;row++)for(let col=0;col<15;col++){const x=14+col*32,y=12+row*42;c.fillRect(x,y,28,33);c.fillStyle='#929a98';c.fillRect(x+9,y+9,6,3);c.fillStyle='#626a6b';}
+    });
+    const keysSurface=mesh(planeGeo,new T.MeshBasicMaterial({map:keys}),l,0,.059,.025,.64,.245,1);
+    keysSurface.rotation.x=-Math.PI/2;
+    b(l,ink,0,.051,.195,.23,.008,.08);
+    const lid=group(l,0,.04,-.23);lid.rotation.x=-.16;
+    const lidMesh=b(lid,ink,0,.27,0,.77,.55,.042);lidMesh.userData.keepForQA=true;
+    // Make the lid back read as a real aluminium shell without logos or UI text.
+    b(lid,mat(0x677879),0,.27,-.025,.724,.505,.009);
+    const pending=placard(lid,title,sub,0,.27,.026,.70,.46,'#d7e7dd','#2e5256');
+    const done=placard(lid,doneTitle,doneSub,0,.27,.027,.70,.46,'#e8efdb','#355a55');
+    pending.material.side=T.FrontSide;done.material.side=T.FrontSide;
+    done.visible=false;
+    const operatorAnchor=group(g,operatorX,1.43,operatorZ);
+    workDisplays.push({pending,done,threshold,keyboard,lidMesh,operatorAnchor});
+    return l;
+  }
   function lamp(g,x,z){const l=group(g,x,1.13,z);cyl(l,brass,0,.035,0,.17,.07);beam(l,brass,[0,.05,0],[0,.73,0],.022);beam(l,brass,[0,.73,0],[.30,.81,.13],.022);mesh(taperGeo,teal,l,.3,.74,.13,.165,.20,.165);cyl(l,white,.3,.645,.13,.14,.018);}
   function mug(g,x,z,color){const m=group(g,x,1.19,z);cyl(m,color,0,0,0,.095,.15);cyl(m,black,0,.078,0,.073,.012);mesh(new T.TorusGeometry(.055,.015,6,12),color,m,.102,0,0,1,1,1);}
 
@@ -270,22 +297,22 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
   let operator,stamp,reviewPending,reviewApproved,receivePending,receiveDone;
   for(let i=0;i<4;i++){
     const g=group(root,...positions[i]);stations.push(g);animated.add(g);
-    if(i===0){desk(g,2.55,1.25,oak);chair(g,-.2,-.94,clay,0);laptop(g,.62,-.28,'Intake','PR-017 · Details missing','Intake complete','PR-017 · Sent to records',.37);lamp(g,-1.03,-.36);mug(g,.93,.3,teal);placard(g,'Intake','Receive the request',0,.78,.64,1.65,.38);staffers.push({i,staff:human(g,-.2,-.94,0,true,palettes[i])});}
-    else if(i===1){desk(g,2.50,1.4,timber);chair(g,.1,-1.02,navy,0);for(let j=0;j<5;j++)b(g,[teal,clay,cream,navy,sage][j],-.83+j*.20,1.37,-.41,.16,.45,.46);laptop(g,.65,-.25,'Records check','PR-017 · Checking source','Source confirmed','PR-017 · Review required',.39);mug(g,.95,.35,cream);placard(g,'Records','Confirm the details',0,.8,.72,1.65,.38);staffers.push({i,staff:human(g,.1,-1.02,0,true,palettes[i])});}
+    if(i===0){desk(g,2.55,1.25,oak);chair(g,-.2,-.94,clay,0);laptop(g,.42,.0,-.2,-.94,'New work','Context incomplete','Context captured','Ready for verification',.37);lamp(g,-1.03,-.36);mug(g,.93,.3,teal);placard(g,'Capture','Understand the work',0,.78,.64,1.65,.38);staffers.push({i,staff:human(g,-.2,-.94,0,true,palettes[i])});}
+    else if(i===1){desk(g,2.50,1.4,timber);chair(g,.1,-1.02,navy,0);for(let j=0;j<5;j++)b(g,[teal,clay,cream,navy,sage][j],-.83+j*.20,1.37,-.41,.16,.45,.46);laptop(g,.55,.08,.1,-1.02,'Connected records','Verifying information','Context verified','Ready for decision',.39);mug(g,.95,.35,cream);placard(g,'Connect','Verify the context',0,.8,.72,1.65,.38);staffers.push({i,staff:human(g,.1,-1.02,0,true,palettes[i])});}
     else if(i===2){shadow(g,0,0,4.2,3.0,.052);const top=cyl(g,oak,0,1.04,0,1.42,.15,.91);top.castShadow=true;top.receiveShadow=true;cyl(g,timber,0,.95,0,1.32,.035,.85);cyl(g,timber,0,.52,0,.29,1.0);cyl(g,ink,0,.075,0,.73,.15);chair(g,.12,-1.20,teal,0);chair(g,-1.48,.18,clay,Math.PI/2);chair(g,1.48,.18,navy,-Math.PI/2);
       operator=human(g,.12,-1.20,0,true,palettes[i]);lamp(g,-1,-.35);flatCard(g,'Review checklist','Scope • amount • owner',-.56,1.13,.30,.73,.45);
       stamp=group(g,.34,1.40,-.78);animated.add(stamp);cyl(stamp,brass,0,0,0,.06,.13);ell(stamp,timber,0,.065,0,.065,.044,.065);b(stamp,ink,0,-.085,0,.17,.06,.13);
-      reviewPending=placard(g,'Review pending','Human decision required',-.87,1.34,.57,.94,.31,'#5b3526','#f6d6a2');reviewApproved=placard(g,'Approved','Decision recorded',-.87,1.34,.57,.94,.31,'#244943','#cae5cf');b(g,timber,-.87,1.14,.57,1.0,.05,.19);}
-    else{desk(g,2.7,1.30,oak);b(g,teal,.96,.48,-.08,.55,.82,.75);for(let j=0;j<2;j++){b(g,oak,.96,.36+j*.36,.31,.43,.27,.055);b(g,brass,.96,.39+j*.36,.35,.17,.035,.05);}laptop(g,-.8,-.27,'Purchasing','Awaiting approval','Receipt confirmed','PR-017 · Assigned',.94);lamp(g,.98,-.39);mug(g,.58,.36,clay);staffers.push({i,staff:human(g,.18,-.98,0,false,palettes[i])});
-      receivePending=placard(g,'Purchasing','Awaiting approved record',0,.83,.661,1.76,.35);receiveDone=placard(g,'Assigned to purchasing','Receipt confirmed',0,.83,.662,1.76,.35,'#244943','#cae5cf');}
+      reviewPending=placard(g,'Human review','Decision required',-.87,1.34,.57,.94,.31,'#5b3526','#f6d6a2');reviewApproved=placard(g,'Decision made','Authorization recorded',-.87,1.34,.57,.94,.31,'#244943','#cae5cf');b(g,timber,-.87,1.14,.57,1.0,.05,.19);}
+    else{desk(g,2.7,1.30,oak);b(g,teal,.96,.48,-.08,.55,.82,.75);for(let j=0;j<2;j++){b(g,oak,.96,.36+j*.36,.31,.43,.27,.055);b(g,brass,.96,.39+j*.36,.35,.17,.035,.05);}laptop(g,-.42,.02,.18,-.98,'Next responsibility','Awaiting decision','Work assigned','Context and owner linked',.94);lamp(g,.98,-.39);mug(g,.58,.36,clay);staffers.push({i,staff:human(g,.18,-.98,0,false,palettes[i])});
+      receivePending=placard(g,'Coordinate','Awaiting authorization',0,.83,.661,1.76,.35);receiveDone=placard(g,'Work connected','Owner and context linked',0,.83,.662,1.76,.35,'#244943','#cae5cf');}
   }
   // CUSTODY — one physical folder, 56 independently conserved sheets.
   const request=group(root);animated.add(request);b(request,clay,0,0,0,.96,.08,.69).castShadow=true;b(request,paper,.035,.057,0,.83,.055,.60);b(request,teal,-.39,.083,0,.15,.03,.63);// Canvas illustration: actual stationery, not a floating UI screenshot.
   const requestArt=texture(768,488,(c,W,H)=>{
     c.fillStyle='#f3e8d2';c.fillRect(0,0,W,H);
     c.fillStyle='#325d58';c.fillRect(0,0,W,28);
-    c.fillStyle='#273f3c';c.font='700 70px Georgia';c.fillText('PR-017',48,111);
-    c.font='600 29px Arial';c.fillText('PURCHASE REQUEST',48,156);
+    c.fillStyle='#273f3c';c.font='700 70px Georgia';c.fillText('WORK REQUEST',48,111,W-96);
+    c.font='600 29px Arial';c.fillText('SHARED WORKFLOW RECORD',48,156);
     c.strokeStyle='#a79c87';c.lineWidth=2;c.beginPath();c.moveTo(48,177);c.lineTo(W-48,177);c.stroke();
     c.font='500 20px Arial';c.fillStyle='#57645b';
     ['REQUEST DETAILS','SOURCE RECORD','REVIEW / AUTHORIZATION'].forEach((label,i)=>{
@@ -303,11 +330,11 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
   const sealTexture=texture(512,220,(c,W,H)=>{
     c.strokeStyle='#98452f';c.fillStyle='#98452f';c.lineWidth=10;c.strokeRect(15,15,W-30,H-30);c.lineWidth=2;c.strokeRect(27,27,W-54,H-54);
     c.font='700 69px Arial';c.textAlign='center';c.fillText('APPROVED',W/2,116,W-60);
-    c.font='600 31px Arial';c.fillText('PR-017 / REVIEW COMPLETE',W/2,168,W-64);
+    c.font='600 31px Arial';c.fillText('DECISION RECORDED',W/2,168,W-64);
   });
   const approvalMark=mesh(planeGeo,new T.MeshBasicMaterial({map:sealTexture,transparent:true,depthWrite:false,polygonOffset:true,polygonOffsetFactor:-1}),request,.23,.098,-.105,.28,.13,1);
   approvalMark.rotation.set(-Math.PI/2,0,-.12);approvalMark.visible=false;
-  const tag=placard(request,'PR-017','Purchase request',0,.58,0,1.1,.38,'#253b43','#f7e8cf');
+  const tag=placard(request,'Work request','Shared context',0,.58,0,1.1,.38,'#253b43','#f7e8cf');
   const fileFlag=new T.Sprite(new T.SpriteMaterial({map:tag.material.map,depthTest:false,depthWrite:false,toneMapped:false}));fileFlag.position.set(0,.53,0);fileFlag.scale.set(.88,.293,1);fileFlag.renderOrder=9;request.add(fileFlag);tag.removeFromParent();tag.material.dispose();
   const path=positions.map(([x,,z],i)=>new T.Vector3(x+(i===2?.14:0),1.18,z+(i===2?-.63:.12)));
   const arcs=[];for(let i=0;i<3;i++){const a=path[i],c=path[i+1],pts=[];for(let j=0;j<=64;j++){const t=j/64;pts.push(new T.Vector3(mix(a.x,c.x,t),1.18+Math.sin(t*Math.PI)*1.5,mix(a.z,c.z,t)));}const geo=new T.BufferGeometry().setFromPoints(pts),material=new T.LineBasicMaterial({color:0xf3d19a,transparent:true,opacity:0,depthWrite:false});const arc=new T.Line(geo,material);root.add(arc);arcs.push(arc);}
@@ -324,7 +351,7 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
   root.updateMatrixWorld(true);
   const buckets=new Map(),primitives=new Set([boxGeo,sphereGeo,cylGeo,taperGeo]);
   root.traverse(o=>{
-    if(!o.isMesh||o.isInstancedMesh||!primitives.has(o.geometry)||o.material.transparent)return;
+    if(!o.isMesh||o.isInstancedMesh||!primitives.has(o.geometry)||o.material.transparent||o.userData.keepForQA)return;
     let parent=o.parent;while(parent&&!animated.has(parent))parent=parent.parent;
     if(!parent)return;
     if(!buckets.has(parent))buckets.set(parent,new Map());
@@ -361,6 +388,7 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
   let phase=0,disposed=false,failed=false,visible=false,last=-1,w=1,h=1,lastCaption='',drawCount=0;
   const jointTarget=new T.Vector3(),jointGoal=new T.Vector3(),jointDir=new T.Vector3(),jointBend=new T.Vector3(),jointElbow=new T.Vector3(),jointLower=new T.Vector3(),jointUpper=new T.Vector3(),jointDown=new T.Vector3(0,-1,0),jointQ1=new T.Quaternion(),jointQ2=new T.Quaternion(),jointInv=new T.Quaternion();
   const actors=[operator,...staffers.map(s=>s.staff)];
+  const laptopScreen=new T.Vector3(),laptopUser=new T.Vector3(),laptopNormal=new T.Vector3(),laptopKeys=new T.Vector3(),laptopQ=new T.Quaternion();
   const sampleContact=new T.Vector3(),projected=new T.Vector3(),stampLocal=new T.Vector3(),supportTarget=new T.Vector3(),supportGrip=new T.Vector3();
   const status=document.createElement('div');
   status.className='handoff-scene-caption';status.setAttribute('role','status');status.setAttribute('aria-live','polite');
@@ -380,7 +408,7 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
     let segment=0,t=span(p,.19,.37);if(p>=.37&&p<.55){segment=1;t=span(p,.39,.55);}else if(p>=.55){segment=2;t=release;}
     request.position.copy(path[segment]).lerp(path[segment+1],t);
     if(segment===0){target.set(0,1.18,.12);stations[0].localToWorld(target);target.y+=.55+(1-trace)*.9;target.x+=.35*Math.sin(p*13)*(1-trace);request.position.copy(target).lerp(path[1],t);}
-    const arc=deliveryArc(t,segment),spin=Math.sin(t*Math.PI);request.position.y+=arc.lift;request.position.z+=arc.side;fileFlag.visible=p<.55||spin>.15;fileFlag.position.set(0,.29+spin*.15,.23*(1-spin));approvalMark.visible=p>=.69;request.rotation.set(-.25*spin+(1-trace)*.19*Math.sin(p*19),.83*spin+(1-trace)*(.25+p*6),arc.bank+(1-trace)*.17*Math.cos(p*16));request.scale.setScalar(.94+.16*spin+.12*(1-trace));
+    const arc=deliveryArc(t,segment),spin=Math.sin(t*Math.PI);request.position.y+=arc.lift;request.position.z+=arc.side;fileFlag.visible=p<.18&&spin>.15;fileFlag.position.set(0,.29+spin*.15,.23*(1-spin));approvalMark.visible=p>=.69;request.rotation.set(-.25*spin+(1-trace)*.19*Math.sin(p*19),.83*spin+(1-trace)*(.25+p*6),arc.bank+(1-trace)*.17*Math.cos(p*16));request.scale.setScalar(.94+.16*spin+.12*(1-trace));
     const press=span(p,.585,.635)-span(p,.66,.72);
 
     // ACTING / IK — all axes reset; no orientation from a preceding evaluation.
@@ -453,7 +481,7 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
     const drift=accent(p,.18,.26,.37)*.09-accent(p,.76,.85,.94)*.08;
     const cx=shot(1)+drift+(portrait?(-3.65*intakeHold+1.65*receiptHold-.40*pulse(p,.30,.44,.53)):0),cy=shot(2),cz=shot(3)+(portrait?1.15*intakeHold:0),angle=shot(4),radius=shot(portrait?7:5);
     camera.fov=portrait?49:compact?49:40;camera.position.set(cx+Math.sin(angle)*radius,shot(portrait?8:6),cz+Math.cos(angle)*radius);camera.lookAt(cx,cy,cz);camera.setViewOffset(w,h,portrait?0:-w*(compact?.15:.14),portrait?h*.17:0,w,h);camera.updateProjectionMatrix();camera.updateMatrixWorld();
-    const caption=p<.18?'01 / A request arrives\nPR-017 · Ownership unclear':p<.55?'02 / Find the right record\nPR-017 · '+(p<.37?'Checking details':'Source confirmed'):p<.75?'03 / A human decision\nPR-017 · '+(p<.69?'Review pending':'Approved'):'04 / The next responsibility\nPR-017 · '+(p<.94?'Handover in progress':'Assigned to purchasing');
+    const caption=p<.18?'01 / Fragmented operations\nInformation scattered':p<.55?'02 / Engineered coordination\n'+(p<.37?'Connecting the records':'Context verified'):p<.75?'03 / Accountable decisions\n'+(p<.69?'Human review':'Decision recorded'):'04 / Operational clarity\n'+(p<.94?'Connecting the next step':'Work and responsibility connected');
     if(caption!==lastCaption){status.textContent=caption;lastCaption=caption;}
     const started=qaEnabled?performance.now():0;
     if(qaEnabled){
@@ -463,7 +491,13 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
     operator.arms[0].grip.getWorldPosition(supportGrip);
     request.worldToLocal(stamp.localToWorld(stampLocal.set(0,-.115,0)));
     const projection=o=>{o.getWorldPosition(projected).project(camera);return [round((projected.x+1)*.5),round((1-projected.y)*.5)];};
-    stage.dataset.handoffState=JSON.stringify({id:'PR-017',position:vec(request.position),rotation:[request.rotation.x,request.rotation.y,request.rotation.z].map(round),decision:p>=.69,receipt:p>=.94,stamp:round(press),camera:vec(camera.position),stations:stations.map(g=>[...vec(g.position),round(g.rotation.y)]),papers:debris.map(d=>{sheets.getMatrixAt(d.id,matrix);return [d.id,...matrix.elements.map(round)];}),paperCount:sheets.count,mechanicalRoutes:0,owner:'native-scroll',world:'coordination-studio',actors:[operator,...staffers.map(s=>s.staff)].map(s=>[round(s.head.rotation.x),round(s.head.rotation.y),...s.arms.flatMap(a=>a.elbow.quaternion.toArray().map(round))]),jointMatrices:actors.map(s=>[s.torso,s.head,...s.arms.flatMap(a=>[a.a,a.elbow,a.wrist])].map(o=>o.matrixWorld.elements.map(round))),contact:{error:round(contactError),engage:round(engage),distance:round(rawDistance),clamped:rawDistance>L+M-.001||rawDistance<Math.abs(L-M)+.001,grip:vec(actualGrip),target:vec(jointTarget),stampFace:vec(stamp.localToWorld(projected.set(0,-.115,0))),stampOnDocument:vec(stampLocal),documentFace:vec(request.localToWorld(projected.set(0,.092,0)))},screen:{request:projection(request),reviewer:projection(operator.head),receiver:projection(staffers[2].staff.head)},displays:workDisplays.map(d=>d.done.visible),physicalApproval:approvalMark.visible,acting:actors.map(s=>({eye:round(s.eyes.scale.y),gaze:round(s.pupils.position.x)})),supportContact:{error:round(supportGrip.distanceTo(supportTarget)),engage:round(supporting),distance:round(supportDistance),grip:vec(supportGrip),target:vec(supportTarget)}});
+    const workstationOrientation=workDisplays.map(d=>{
+      d.pending.getWorldPosition(laptopScreen);d.operatorAnchor.getWorldPosition(laptopUser);d.keyboard.getWorldPosition(laptopKeys);
+      const keyDistance=Math.hypot(laptopUser.x-laptopKeys.x,laptopUser.z-laptopKeys.z),screenDistance=Math.hypot(laptopUser.x-laptopScreen.x,laptopUser.z-laptopScreen.z);
+      d.pending.getWorldQuaternion(laptopQ);laptopNormal.set(0,0,1).applyQuaternion(laptopQ).setY(0).normalize();laptopUser.sub(laptopScreen).setY(0).normalize();
+      return {facing:round(laptopNormal.dot(laptopUser)),keyDistance:round(keyDistance),screenDistance:round(screenDistance),oneSided:d.pending.material.side===T.FrontSide&&d.done.material.side===T.FrontSide};
+    });
+    stage.dataset.handoffState=JSON.stringify({id:'PR-017',position:vec(request.position),rotation:[request.rotation.x,request.rotation.y,request.rotation.z].map(round),decision:p>=.69,receipt:p>=.94,stamp:round(press),camera:vec(camera.position),stations:stations.map(g=>[...vec(g.position),round(g.rotation.y)]),papers:debris.map(d=>{sheets.getMatrixAt(d.id,matrix);return [d.id,...matrix.elements.map(round)];}),paperCount:sheets.count,mechanicalRoutes:0,owner:'native-scroll',world:'coordination-studio',actors:[operator,...staffers.map(s=>s.staff)].map(s=>[round(s.head.rotation.x),round(s.head.rotation.y),...s.arms.flatMap(a=>a.elbow.quaternion.toArray().map(round))]),jointMatrices:actors.map(s=>[s.torso,s.head,...s.arms.flatMap(a=>[a.a,a.elbow,a.wrist])].map(o=>o.matrixWorld.elements.map(round))),contact:{error:round(contactError),engage:round(engage),distance:round(rawDistance),clamped:rawDistance>L+M-.001||rawDistance<Math.abs(L-M)+.001,grip:vec(actualGrip),target:vec(jointTarget),stampFace:vec(stamp.localToWorld(projected.set(0,-.115,0))),stampOnDocument:vec(stampLocal),documentFace:vec(request.localToWorld(projected.set(0,.092,0)))},screen:{request:projection(request),reviewer:projection(operator.head),receiver:projection(staffers[2].staff.head)},displays:workDisplays.map(d=>d.done.visible),physicalApproval:approvalMark.visible,workstationOrientation,acting:actors.map(s=>({eye:round(s.eyes.scale.y),gaze:round(s.pupils.position.x)})),supportContact:{error:round(supportGrip.distanceTo(supportTarget)),engage:round(supporting),distance:round(supportDistance),grip:vec(supportGrip),target:vec(supportTarget)}});
     }
     try {renderer.render(scene,camera);drawCount++;stage.dataset.handoffPhase=p.toFixed(4);if(qaEnabled)stage.dataset.handoffBudget=JSON.stringify({calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures,shadowMap:key.shadow.map?.width||0,raster:[canvas.width,canvas.height],tier:constrained?'constrained':'standard',renderMs:performance.now()-started,drawCount});}
     catch(error){console.warn("Handoff renderer failed",error);fallback();}

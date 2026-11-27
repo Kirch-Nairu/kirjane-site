@@ -53,7 +53,7 @@ try {
         results.push({width,height,name,phase:await stage.getAttribute('data-handoff-phase'),status:await status.textContent(),state,budget});
         if(!comparison){
           assert.equal(state.id,'PR-017');assert.equal(state.world,'coordination-studio');assert.equal(state.actors.length,4);assert.ok(state.actors.every(a=>a.length===10&&a.every(Number.isFinite)));assert.equal(state.owner,'native-scroll');assert.equal(state.mechanicalRoutes,0);
-          assert.equal(state.decision,p>=.69);assert.equal(state.receipt,p>=.94);assert.equal(state.physicalApproval,p>=.69);assert.equal(state.acting.length,4);assert.ok(state.acting.every(a=>a.eye>=.12&&a.eye<=1&&Math.abs(a.gaze)<=.004));
+          assert.equal(state.decision,p>=.69);assert.equal(state.receipt,p>=.94);assert.equal(state.physicalApproval,p>=.69);assert.equal(state.workstationOrientation.length,3);for(const d of state.workstationOrientation){assert.ok(d.facing>.95,'actual screen faces operator '+JSON.stringify(d));assert.ok(d.keyDistance<d.screenDistance,'keyboard must be closer to operator than lid '+JSON.stringify(d));assert.equal(d.oneSided,true);}assert.doesNotMatch(await status.textContent(),/PR-017|purchasing/i);assert.equal(state.acting.length,4);assert.ok(state.acting.every(a=>a.eye>=.12&&a.eye<=1&&Math.abs(a.gaze)<=.004));
           const safe=([x,y])=>x>.06&&x<.94&&y>.10&&y<.78;
           assert.ok(safe(state.screen.request),'request out of frame '+name+' '+JSON.stringify(state.screen.request));
           if(name==='review'||name==='approved')assert.ok(safe(state.screen.reviewer),'reviewer out of frame');
@@ -97,7 +97,7 @@ try {
         const button=stage.locator('.chapter-rail button').nth(index),p=Number(await button.getAttribute('data-clarity-jump'));
         await button.click();
         await page.waitForFunction(p=>{const s=window.__SCENE_DIRECTOR__.getScenes()['home-clarity'];return s&&Math.abs(s.exact-p)<.004&&Math.abs(s.exact-s.smooth)<.0001;},p,{timeout:20000});
-        assert.match(await status.textContent(),/PR-017/);
+        assert.match(await status.textContent(),/Fragmented operations|Engineered coordination|Accountable decisions|Operational clarity/);
         assert.equal(await button.getAttribute('aria-current'),'step');
       }
       const dimensions=await stage.evaluate(el=>({stage:el.getBoundingClientRect().height,canvas:el.querySelector('#handoff-chamber-webgl').getBoundingClientRect().height}));
