@@ -1,7 +1,8 @@
 import * as T from '../vendor/three/three.module.js';
+import {loadHumanCast,bindHuman,poseHuman,disposeHuman} from './s02-authored-humans.js';
 
-// S02 R8: THE COORDINATION STUDIO — FROM FRAGMENTS TO SYSTEMS — an authored architectural cutscene, directed in scroll time. All motion is a pure function of director phase.
-// No external assets, extra RAF, timers, or simulated backend.
+// S02 R8.1: THE COORDINATION STUDIO — FROM FRAGMENTS TO SYSTEMS — an authored architectural cutscene, directed in scroll time. All motion is a pure function of director phase.
+// Locally vendored authored character assets. No external requests, extra RAF or simulated backend.
 const clamp = x => Math.max(0, Math.min(1,x));
 const ease = x => {x=clamp(x);return x*x*x*(x*(x*6-15)+10);};
 const span = (p,a,b) => ease((p-a)/(b-a));
@@ -388,6 +389,9 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
   let phase=0,disposed=false,failed=false,visible=false,last=-1,w=1,h=1,lastCaption='',drawCount=0;
   const jointTarget=new T.Vector3(),jointGoal=new T.Vector3(),jointDir=new T.Vector3(),jointBend=new T.Vector3(),jointElbow=new T.Vector3(),jointLower=new T.Vector3(),jointUpper=new T.Vector3(),jointDown=new T.Vector3(0,-1,0),jointQ1=new T.Quaternion(),jointQ2=new T.Quaternion(),jointInv=new T.Quaternion();
   const actors=[operator,...staffers.map(s=>s.staff)];
+  const roleActors=[staffers[0].staff,staffers[1].staff,operator,staffers[2].staff];
+  const roleNames=['capture','connect','decide','act'];
+  let authored=[],castState='idle';
   const laptopScreen=new T.Vector3(),laptopUser=new T.Vector3(),laptopNormal=new T.Vector3(),laptopKeys=new T.Vector3(),laptopQ=new T.Quaternion();
   const keyboardTarget=new T.Vector3(),keyboardHand=new T.Vector3();
   const sampleContact=new T.Vector3(),projected=new T.Vector3(),stampLocal=new T.Vector3(),supportTarget=new T.Vector3(),supportGrip=new T.Vector3();
@@ -398,7 +402,7 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
   stage.append(status);
   const shots=[[0,-.4,1.65,-.5,.05,16.8,7.5,12.4,5.8],[.15,-2.65,1.85,.0,.02,11.8,5.5,9.2,4.9],[.37,-2.25,1.65,-1.05,-.13,9.2,4.6,8.2,4.5],[.55,.86,1.61,-.57,-.17,3.60,2.17,4.75,2.68],[.69,.86,1.61,-.57,-.10,3.60,2.17,4.75,2.68],[.83,2.9,1.8,-1.05,.04,7.7,4.1,8.3,4.5],[.95,4.1,1.55,-1.45,.14,6.5,3.5,7.6,4.2],[1,.1,1.6,-.6,.06,15.8,6.7,13,6]];
   function draw(){
-    if(disposed||failed||!visible||document.hidden)return;
+    if(disposed||failed||castState!=='ready'||!visible||document.hidden)return;
 
     const p=phase,trace=span(p,.09,.48),decision=span(p,.58,.69),release=span(p,.76,.94);
     stations.forEach((g,i)=>{const [x,y,z]=positions[i],q=span(p,.10+i*.024,.43+i*.018),s=1-q;g.position.set(x+s*Math.sin(i*4+1)*.78,y,z+s*Math.cos(i*4)*.64);g.rotation.y=baseAngles[i]+s*Math.sin(i*2.6+.7)*.40;});
@@ -477,19 +481,25 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
       span(p,.29,.39)-span(p,.46,.54),
       span(p,.86,.94)-span(p,.978,1)
     ];
-    const keyboardDistances=[];
+    const keyboardDistances=[],keyContacts=[];
     workDisplays.forEach((d,i)=>{
       const staff=staffers[i].staff;
       staff.torso.updateWorldMatrix(true,false);
-      const reach=[];
+      const reach=[],contacts=[];
       for(const limb of staff.arms){
         d.keyboard.localToWorld(keyboardTarget.set(-limb.s*.23,.58,.04));
         const distance=solveGrip(staff,limb,keyboardTarget,keyboardWeights[i],limb.s);
         reach.push(distance);
+        // Palm sits slightly above the real keyboard surface; this is a
+        // different physical anchor from the old proxy grip point.
+        const palm=keyboardTarget.clone();palm.y+=.022;
+        contacts.push({side:limb.s,target:palm,weight:keyboardWeights[i]});
       }
-      keyboardDistances.push(reach);
+      keyboardDistances.push(reach);keyContacts.push(contacts);
       d.pending.visible=p<d.threshold;d.done.visible=p>=d.threshold;
     });
+    const actualContacts=[keyContacts[0],keyContacts[1],[{side:-1,target:supportTarget.clone(),weight:supporting},{side:1,target:jointTarget.clone(),weight:engage}],keyContacts[2]];
+    const authoredState=authored.map((a,i)=>poseHuman(a,actualContacts[i]));
     reviewPending.visible=p<.69;reviewApproved.visible=p>=.69;receivePending.visible=p<.94;receiveDone.visible=p>=.94;
     ambient.intensity=mix(.82,1.02,trace);key.intensity=mix(1.75,2.30,trace);rim.intensity=mix(1.03,1.30,decision)+.20*press;
     arcs.forEach((arc,i)=>{const from=[.18,.39,.75][i],to=[.37,.55,.94][i],q=span(p,from,to);arc.geometry.setDrawRange(0,Math.floor(q*64)+1);arc.material.opacity=.78*pulse(p,from,(from+to)/2,to+.065);});
@@ -522,7 +532,7 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
       });
       return {facing:round(laptopNormal.dot(laptopUser)),keyDistance:round(keyDistance),screenDistance:round(screenDistance),oneSided:d.pending.material.side===T.FrontSide&&d.done.material.side===T.FrontSide,engage:round(keyboardWeights[i]),hands};
     });
-    stage.dataset.handoffState=JSON.stringify({id:'PR-017',position:vec(request.position),rotation:[request.rotation.x,request.rotation.y,request.rotation.z].map(round),decision:p>=.69,receipt:p>=.94,stamp:round(press),camera:vec(camera.position),stations:stations.map(g=>[...vec(g.position),round(g.rotation.y)]),papers:debris.map(d=>{sheets.getMatrixAt(d.id,matrix);return [d.id,...matrix.elements.map(round)];}),paperCount:sheets.count,mechanicalRoutes:0,owner:'native-scroll',world:'coordination-studio',actors:[operator,...staffers.map(s=>s.staff)].map(s=>[round(s.head.rotation.x),round(s.head.rotation.y),...s.arms.flatMap(a=>a.elbow.quaternion.toArray().map(round))]),jointMatrices:actors.map(s=>[s.torso,s.head,...s.arms.flatMap(a=>[a.a,a.elbow,a.wrist])].map(o=>o.matrixWorld.elements.map(round))),contact:{error:round(contactError),engage:round(engage),distance:round(rawDistance),clamped:rawDistance>L+M-.001||rawDistance<Math.abs(L-M)+.001,grip:vec(actualGrip),target:vec(jointTarget),stampFace:vec(stamp.localToWorld(projected.set(0,-.115,0))),stampOnDocument:vec(stampLocal),documentFace:vec(request.localToWorld(projected.set(0,.092,0)))},screen:{request:projection(request),reviewer:projection(operator.head),receiver:projection(staffers[2].staff.head)},displays:workDisplays.map(d=>d.done.visible),physicalApproval:approvalMark.visible,workstationOrientation,acting:actors.map(s=>({eye:round(s.eyes.scale.y),gaze:round(s.pupils.position.x)})),supportContact:{error:round(supportGrip.distanceTo(supportTarget)),engage:round(supporting),distance:round(supportDistance),grip:vec(supportGrip),target:vec(supportTarget)}});
+    stage.dataset.handoffState=JSON.stringify({id:'PR-017',position:vec(request.position),rotation:[request.rotation.x,request.rotation.y,request.rotation.z].map(round),decision:p>=.69,receipt:p>=.94,stamp:round(press),camera:vec(camera.position),stations:stations.map(g=>[...vec(g.position),round(g.rotation.y)]),papers:debris.map(d=>{sheets.getMatrixAt(d.id,matrix);return [d.id,...matrix.elements.map(round)];}),paperCount:sheets.count,mechanicalRoutes:0,owner:'native-scroll',world:'coordination-studio',actors:[operator,...staffers.map(s=>s.staff)].map(s=>[round(s.head.rotation.x),round(s.head.rotation.y),...s.arms.flatMap(a=>a.elbow.quaternion.toArray().map(round))]),jointMatrices:actors.map(s=>[s.torso,s.head,...s.arms.flatMap(a=>[a.a,a.elbow,a.wrist])].map(o=>o.matrixWorld.elements.map(round))),contact:{error:round(contactError),engage:round(engage),distance:round(rawDistance),clamped:rawDistance>L+M-.001||rawDistance<Math.abs(L-M)+.001,grip:vec(actualGrip),target:vec(jointTarget),stampFace:vec(stamp.localToWorld(projected.set(0,-.115,0))),stampOnDocument:vec(stampLocal),documentFace:vec(request.localToWorld(projected.set(0,.092,0)))},screen:{request:projection(request),reviewer:projection(operator.head),receiver:projection(staffers[2].staff.head)},displays:workDisplays.map(d=>d.done.visible),physicalApproval:approvalMark.visible,workstationOrientation,authored:authoredState.map(a=>({...a,head:a.head.map(round),pelvis:a.pelvis.map(round),feet:a.feet.map(v=>v.map(round)),contacts:a.contacts.map(c=>({...c,engage:round(c.engage),error:round(c.error),contactError:c.contactError===null?null:round(c.contactError),distance:round(c.distance),reach:round(c.reach),palm:c.palm.map(round),target:c.target.map(round)}))})),acting:actors.map(s=>({eye:round(s.eyes.scale.y),gaze:round(s.pupils.position.x)})),supportContact:{error:round(supportGrip.distanceTo(supportTarget)),engage:round(supporting),distance:round(supportDistance),grip:vec(supportGrip),target:vec(supportTarget)}});
     }
     try {renderer.render(scene,camera);drawCount++;stage.dataset.handoffPhase=p.toFixed(4);if(qaEnabled)stage.dataset.handoffBudget=JSON.stringify({calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures,shadowMap:key.shadow.map?.width||0,raster:[canvas.width,canvas.height],tier:constrained?'constrained':'standard',renderMs:performance.now()-started,drawCount});}
     catch(error){console.warn("Handoff renderer failed",error);fallback();}
@@ -532,20 +542,34 @@ export function createHandoffChamber(stage, legacy, reduced=false) {
     const scale=rasterScale(w,h,constrained);const shadowSize=constrained||w<=900?512:1024;if(key.shadow.mapSize.x!==shadowSize){key.shadow.map?.dispose();key.shadow.map=null;key.shadow.mapSize.set(shadowSize,shadowSize);}renderer.setSize(Math.round(w*scale),Math.round(h*scale),false);
     camera.aspect=w/h;camera.updateProjectionMatrix();draw();
   }
-  const fallback=()=>{failed=true;canvas.hidden=true;canvas.style.display='none';legacy.style.visibility='';status.hidden=true;stage.removeAttribute('data-handoff-chamber');stage.removeAttribute('data-handoff-phase');stage.removeAttribute('data-handoff-state');stage.removeAttribute('data-handoff-budget');};
+  const fallback=()=>{failed=true;canvas.hidden=true;canvas.style.display='none';legacy.style.visibility='';status.hidden=true;stage.removeAttribute('data-handoff-chamber');stage.removeAttribute('data-authored-cast');stage.removeAttribute('data-handoff-phase');stage.removeAttribute('data-handoff-state');stage.removeAttribute('data-handoff-budget');};
   const onLost=e=>{e.preventDefault();fallback();};
-  const onRestored=()=>{if(disposed)return;failed=false;canvas.hidden=false;canvas.style.display='';legacy.style.visibility='hidden';status.hidden=false;stage.dataset.handoffChamber='live';resize();};
+  const revealCast=()=>{if(disposed||failed||castState!=='ready')return;canvas.hidden=false;canvas.style.display='';legacy.style.visibility='hidden';status.hidden=false;stage.dataset.handoffChamber='live';stage.dataset.authoredCast='ready';resize();};
+  const onRestored=()=>{if(disposed)return;failed=false;revealCast();};
   canvas.addEventListener('webglcontextlost',onLost);canvas.addEventListener('webglcontextrestored',onRestored);
   const ro=new ResizeObserver(resize);ro.observe(stage);
-  const io=new IntersectionObserver(([e])=>{visible=e.isIntersecting;if(visible)draw();});io.observe(stage);
+  async function startCast(){
+    if(castState!=='idle'||disposed)return;castState='loading';
+    let models=[];
+    try{
+      models=await loadHumanCast();
+      if(disposed){models.forEach(disposeHuman);return;}
+      authored=models.map((m,i)=>bindHuman(m,roleActors[i],roleNames[i]));
+      roleActors.forEach(a=>a.o.visible=false);
+      castState='ready';revealCast();
+    }catch(error){models.forEach(disposeHuman);authored.forEach(a=>a.wrapper.removeFromParent());authored=[];castState='failed';console.warn('S02 authored cast could not be prepared',error);fallback();}
+  }
+  const io=new IntersectionObserver(([e])=>{visible=e.isIntersecting;if(visible){startCast();draw();}},{rootMargin:'180px 0px'});io.observe(stage);
   const visibility=()=>{if(!document.hidden)draw();};document.addEventListener('visibilitychange',visibility);
-  legacy.style.visibility='hidden';stage.dataset.studioInteractive='true';stage.dataset.handoffChamber='live';
+  // Keep the authored static poster visible until the whole cast is ready.
+  canvas.hidden=true;canvas.style.display='none';status.hidden=true;stage.dataset.studioInteractive='true';
   resize();
   return {
     get active(){return !failed&&!disposed;},
     setPhase(p){phase=clamp(p);if(phase!==last){last=phase;draw();}},
     dispose(){if(disposed)return;disposed=true;ro.disconnect();io.disconnect();document.removeEventListener('visibilitychange',visibility);
+      authored.forEach(a=>{disposeHuman(a.model);a.wrapper.removeFromParent();});authored=[];
       scene.traverse(o=>{if(o.geometry)geometries.add(o.geometry);if(o.material)materials.add(o.material);});
-      geometries.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());textures.forEach(t=>t.dispose());key.shadow.dispose();canvas.removeEventListener('webglcontextlost',onLost);canvas.removeEventListener('webglcontextrestored',onRestored);renderer.dispose();canvas.remove();status.remove();legacy.style.visibility='';stage.removeAttribute('data-studio-interactive');stage.removeAttribute('data-handoff-chamber');stage.removeAttribute('data-handoff-phase');stage.removeAttribute('data-handoff-state');stage.removeAttribute('data-handoff-budget');}
+      geometries.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());textures.forEach(t=>t.dispose());key.shadow.dispose();canvas.removeEventListener('webglcontextlost',onLost);canvas.removeEventListener('webglcontextrestored',onRestored);renderer.dispose();canvas.remove();status.remove();legacy.style.visibility='';stage.removeAttribute('data-studio-interactive');stage.removeAttribute('data-authored-cast');stage.removeAttribute('data-handoff-chamber');stage.removeAttribute('data-handoff-phase');stage.removeAttribute('data-handoff-state');stage.removeAttribute('data-handoff-budget');}
   };
 }
